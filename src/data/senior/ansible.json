@@ -1,0 +1,136 @@
+{
+  "level": "senior",
+  "topic": "ansible",
+  "questions": [
+    {
+      "id": "sans-001",
+      "type": "single",
+      "scenario": "Playbook syntax check yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site.yml -i inventory --syntax-check",
+          "hint_text": "Syntax kontrolu icin `--syntax-check` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-002",
+      "type": "single",
+      "scenario": "`Deploy app` task'inden baslayarak playbook'u calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site.yml -i inventory --start-at-task 'Deploy app'",
+          "hint_text": "Belirli task'ten devam etmek icin `--start-at-task` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-003",
+      "type": "single",
+      "scenario": "Playbook'u sadece `web` ve `prod` kesisimi host'larda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site.yml -i inventory --limit 'web:&prod'",
+          "hint_text": "Inventory pattern ile grup kesisimi al.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-004",
+      "type": "single",
+      "scenario": "`group_vars/prod.yml` vault dosyasinin sifresini degistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-vault rekey group_vars/prod.yml",
+          "hint_text": "Vault rekey icin `ansible-vault rekey` kullan.",
+          "hint_partial": "ansible-vault ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-005",
+      "type": "single",
+      "scenario": "`requirements.yml` icindeki role'leri yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-galaxy role install -r requirements.yml",
+          "hint_text": "Role install icin `ansible-galaxy role install -r` kullan.",
+          "hint_partial": "ansible-galaxy ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-006",
+      "type": "single",
+      "scenario": "Tum host'larda `/srv/app` directory'sini 0755 ile olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory -b -m file -a 'path=/srv/app state=directory mode=0755'",
+          "hint_text": "File module ile directory olustur.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-007",
+      "type": "single",
+      "scenario": "Tum host'larda `deploy` kullanicisini `docker` grubuna ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory -b -m user -a 'name=deploy groups=docker append=yes'",
+          "hint_text": "User module ile gruba ekle.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-008",
+      "type": "single",
+      "scenario": "Playbook'u `env=prod` extra var'i ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site.yml -i inventory -e env=prod",
+          "hint_text": "Extra var icin `-e key=value` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-009",
+      "type": "single",
+      "scenario": "Playbook'u 20 fork ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site.yml -i inventory --forks 20",
+          "hint_text": "Paralellik icin `--forks` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-010",
+      "type": "single",
+      "scenario": "Inventory'yi graph seklinde goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-inventory -i inventory --graph",
+          "hint_text": "Grup grafi icin `ansible-inventory --graph` kullan.",
+          "hint_partial": "ansible-inventory ..."
+        }
+      ]
+    }
+  ]
+}

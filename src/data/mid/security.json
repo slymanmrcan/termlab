@@ -1,0 +1,129 @@
+{
+  "level": "mid",
+  "topic": "security",
+  "questions": [
+    {
+      "id": "msec-001",
+      "type": "single",
+      "scenario": "Sadece 10.0.0.5 IP'sinin 22/tcp port'una erişmesine izin ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ufw allow from 10.0.0.5 to any port 22 proto tcp",
+          "hint_text": "Kaynak IP kısıtlamak için `ufw allow from ...` formatını kullan.",
+          "hint_partial": "ufw allow from ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-002",
+      "type": "multi-step",
+      "scenario": "sshd config degisikliginden sonra once syntax'i kontrol et, sonra etkili Port degerini dogrula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sshd -t",
+          "hint_text": "Syntax kontrolu icin `sshd -t` kullan.",
+          "hint_partial": "sshd -t"
+        },
+        {
+          "prompt": "$ ",
+          "answer": "sshd -T | grep '^port '",
+          "hint_text": "Etkili Port ayarini gormek icin `sshd -T` cikisini filtrele.",
+          "hint_partial": "sshd -T | grep '^port '"
+        }
+      ]
+    },
+    {
+      "id": "msec-003",
+      "type": "single",
+      "scenario": "example.com:443 için TLS handshake detayını göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "openssl s_client -connect example.com:443",
+          "hint_text": "TLS bağlantısı test etmek için `openssl s_client` kullan.",
+          "hint_partial": "openssl s_client -connect ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-004",
+      "type": "single",
+      "scenario": "Fail2ban'de sshd jail içindeki banned IP listesini göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fail2ban-client status sshd",
+          "hint_text": "Belirli jail durumu için `fail2ban-client status sshd` kullan.",
+          "hint_partial": "fail2ban-client status ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-006",
+      "type": "single",
+      "scenario": "UFW üzerinde 443/tcp port'una izin ver ve kuralı verbose listede kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ufw allow 443/tcp",
+          "hint_text": "Önce kuralı `ufw allow` ile ekle.",
+          "hint_partial": "ufw allow ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-007",
+      "type": "single",
+      "scenario": "OpenSSH server'ın effective config'inde `PasswordAuthentication` değerini göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sshd -T | grep passwordauthentication",
+          "hint_text": "Effective config için `sshd -T` kullan.",
+          "hint_partial": "sshd -T | grep ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-008",
+      "type": "single",
+      "scenario": "PEM private key file'ının şifresiz doğrulamasını yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "openssl rsa -in server.key -check",
+          "hint_text": "RSA key kontrolü için `openssl rsa -check` kullan.",
+          "hint_partial": "openssl rsa -in ... -check"
+        }
+      ]
+    },
+    {
+      "id": "msec-009",
+      "type": "single",
+      "scenario": "UFW log'larını `journalctl` ile göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "journalctl -u ufw",
+          "hint_text": "Service log'u için `journalctl -u` kullan.",
+          "hint_partial": "journalctl -u ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-010",
+      "type": "single",
+      "scenario": "Belirli bir banned IP'yi Fail2ban sshd jail'inden çıkar.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fail2ban-client set sshd unbanip 10.0.0.8",
+          "hint_text": "IP kaldırmak için `unbanip` komutunu kullan.",
+          "hint_partial": "fail2ban-client set ... unbanip ..."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2606 @@
+{
+  "level": "mid",
+  "topic": "storage",
+  "questions": [
+    {
+      "id": "mstg-011",
+      "type": "single",
+      "scenario": "Block device'leri filesystem tipiyle birlikte goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsblk -f",
+          "hint_text": "Filesystem kolonlari icin `lsblk -f` kullan.",
+          "hint_partial": "lsblk -..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-012",
+      "type": "single",
+      "scenario": "Device UUID bilgilerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "blkid",
+          "hint_text": "UUID ve label bilgisi icin `blkid` kullan.",
+          "hint_partial": "bl..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-013",
+      "type": "single",
+      "scenario": "`/dev/sdb1` device'ini `/mnt/data` altina mount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount /dev/sdb1 /mnt/data",
+          "hint_text": "Temel mount icin `mount device target` kullan.",
+          "hint_partial": "mount /dev/..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-014",
+      "type": "single",
+      "scenario": "`/mnt/data` mount noktasini unmount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "umount /mnt/data",
+          "hint_text": "Unmount icin `umount` kullan.",
+          "hint_partial": "umount ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-015",
+      "type": "single",
+      "scenario": "Filesystem tipleriyle beraber disk kullanimini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "df -Th",
+          "hint_text": "Tip kolonu icin `df -Th` kullan.",
+          "hint_partial": "df -..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-016",
+      "type": "single",
+      "scenario": "`/var` altindaki en buyuk 10 girdiyi boyuta gore goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "du -xh /var | sort -h | tail -10",
+          "hint_text": "`du`, `sort -h` ve `tail` kombinasyonunu kullan.",
+          "hint_partial": "du -xh /var | ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-017",
+      "type": "single",
+      "scenario": "`/mnt/data` icin mount bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "findmnt /mnt/data",
+          "hint_text": "Belirli mount noktasi icin `findmnt` kullan.",
+          "hint_partial": "findmnt ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-018",
+      "type": "single",
+      "scenario": "Aktif swap alanlarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "swapon --show",
+          "hint_text": "Swap listesi icin `swapon --show` kullan.",
+          "hint_partial": "swapon ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-019",
+      "type": "single",
+      "scenario": "Mount cikisindan sadece `/dev/sdb1` satirini filtrele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount | grep /dev/sdb1",
+          "hint_text": "Mount cikisini `grep` ile daralt.",
+          "hint_partial": "mount | grep ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-020",
+      "type": "single",
+      "scenario": "`/dev/sdb1` ext4 ayarlarini ozetle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tune2fs -l /dev/sdb1 | head",
+          "hint_text": "Ext filesystem metadata icin `tune2fs -l` kullan.",
+          "hint_partial": "tune2fs -l ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-021",
+      "type": "single",
+      "scenario": "`/dev/sdb1` icin kalici fstab kaydi ekle: `/data ext4 defaults 0 2`.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "echo '/dev/sdb1 /data ext4 defaults 0 2' >> /etc/fstab",
+          "hint_text": "Kalici mount icin `/etc/fstab` satiri ekle.",
+          "hint_partial": "echo '/dev/sdb1 ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-022",
+      "type": "single",
+      "scenario": "fstab kayitlarini hemen test et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount -a",
+          "hint_text": "fstab dogrulama icin `mount -a` kullan.",
+          "hint_partial": "mount -a"
+        }
+      ]
+    },
+    {
+      "id": "mstg-023",
+      "type": "single",
+      "scenario": "Inode kullanimini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "df -i",
+          "hint_text": "Inode ozeti icin `df -i` kullan.",
+          "hint_partial": "df -i"
+        }
+      ]
+    },
+    {
+      "id": "mstg-024",
+      "type": "single",
+      "scenario": "`/dev/disk/by-uuid` altindaki UUID symlink'lerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls -l /dev/disk/by-uuid",
+          "hint_text": "UUID symlink listesi icin `ls -l` kullan.",
+          "hint_partial": "ls -l /dev/..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-025",
+      "type": "single",
+      "scenario": "`/dev/sdb1` filesystem'ini buyut.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "resize2fs /dev/sdb1",
+          "hint_text": "ext filesystem genisletme icin `resize2fs` kullan.",
+          "hint_partial": "resize2fs ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-011-r1",
+      "type": "single",
+      "scenario": "Bakim oncesi block device'leri filesystem tipiyle birlikte goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsblk -f",
+          "hint_text": "Filesystem kolonlari icin `lsblk -f` kullan.",
+          "hint_partial": "lsblk -..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-012-r2",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda device UUID bilgilerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "blkid",
+          "hint_text": "UUID ve label bilgisi icin `blkid` kullan.",
+          "hint_partial": "bl..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-013-r3",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/dev/sdb1` device'ini `/mnt/data-3` altina mount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount /dev/sdb1 /mnt/data-3",
+          "hint_text": "Temel mount icin `mount device target` kullan.",
+          "hint_partial": "mount /dev/..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-014-r4",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/mnt/data-4` mount noktasini unmount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "umount /mnt/data-4",
+          "hint_text": "Unmount icin `umount` kullan.",
+          "hint_partial": "umount ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-015-r5",
+      "type": "single",
+      "scenario": "Yeni acilan hostta filesystem tipleriyle beraber disk kullanimini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "df -Th",
+          "hint_text": "Tip kolonu icin `df -Th` kullan.",
+          "hint_partial": "df -..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-016-r6",
+      "type": "single",
+      "scenario": "Runbook adiminda `/var/queue-6` altindaki en buyuk 10 girdiyi boyuta gore goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "du -xh /var/queue-6 | sort -h | tail -3",
+          "hint_text": "`du`, `sort -h` ve `tail` kombinasyonunu kullan.",
+          "hint_partial": "du -xh /var/queue-6 | ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-017-r7",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `/mnt/data-7` icin mount bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "findmnt /mnt/data-7",
+          "hint_text": "Belirli mount noktasi icin `findmnt` kullan.",
+          "hint_partial": "findmnt ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-018-r8",
+      "type": "single",
+      "scenario": "Incident sonrasinda aktif swap alanlarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "swapon --show",
+          "hint_text": "Swap listesi icin `swapon --show` kullan.",
+          "hint_partial": "swapon ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-019-r9",
+      "type": "single",
+      "scenario": "Bakim oncesi mount cikisindan sadece `/dev/sdb1` satirini filtrele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount | grep /dev/sdb1",
+          "hint_text": "Mount cikisini `grep` ile daralt.",
+          "hint_partial": "mount | grep ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-020-r10",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/dev/sdb1` ext4 ayarlarini ozetle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tune2fs -l /dev/sdb1 | head",
+          "hint_text": "Ext filesystem metadata icin `tune2fs -l` kullan.",
+          "hint_partial": "tune2fs -l ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-021-r11",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/dev/sdb1` icin kalici fstab kaydi ekle: `/data-11 ext4 defaults 0 2`.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "echo '/dev/sdb1 /data-11 ext4 defaults 0 2' >> /etc/fstab",
+          "hint_text": "Kalici mount icin `/etc/fstab` satiri ekle.",
+          "hint_partial": "echo '/dev/sdb1 ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-022-r12",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde fstab kayitlarini hemen test et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount -a",
+          "hint_text": "fstab dogrulama icin `mount -a` kullan.",
+          "hint_partial": "mount -a"
+        }
+      ]
+    },
+    {
+      "id": "mstg-023-r13",
+      "type": "single",
+      "scenario": "Yeni acilan hostta inode kullanimini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "df -i",
+          "hint_text": "Inode ozeti icin `df -i` kullan.",
+          "hint_partial": "df -i"
+        }
+      ]
+    },
+    {
+      "id": "mstg-024-r14",
+      "type": "single",
+      "scenario": "Runbook adiminda `/dev/disk/by-uuid` altindaki UUID symlink'lerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls -l /dev/disk/by-uuid",
+          "hint_text": "UUID symlink listesi icin `ls -l` kullan.",
+          "hint_partial": "ls -l /dev/..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-025-r15",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `/dev/sdb1` filesystem'ini buyut.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "resize2fs /dev/sdb1",
+          "hint_text": "ext filesystem genisletme icin `resize2fs` kullan.",
+          "hint_partial": "resize2fs ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-011-r16",
+      "type": "single",
+      "scenario": "Incident sonrasinda block device'leri filesystem tipiyle birlikte goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsblk -f",
+          "hint_text": "Filesystem kolonlari icin `lsblk -f` kullan.",
+          "hint_partial": "lsblk -..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-012-r17",
+      "type": "single",
+      "scenario": "Bakim oncesi device UUID bilgilerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "blkid",
+          "hint_text": "UUID ve label bilgisi icin `blkid` kullan.",
+          "hint_partial": "bl..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-013-r18",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/dev/sdb1` device'ini `/mnt/data-18` altina mount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount /dev/sdb1 /mnt/data-18",
+          "hint_text": "Temel mount icin `mount device target` kullan.",
+          "hint_partial": "mount /dev/..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-014-r19",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/mnt/data-19` mount noktasini unmount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "umount /mnt/data-19",
+          "hint_text": "Unmount icin `umount` kullan.",
+          "hint_partial": "umount ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-015-r20",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde filesystem tipleriyle beraber disk kullanimini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "df -Th",
+          "hint_text": "Tip kolonu icin `df -Th` kullan.",
+          "hint_partial": "df -..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-016-r21",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `/var/cache-21-21` altindaki en buyuk 10 girdiyi boyuta gore goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "du -xh /var/cache-21-21 | sort -h | tail -3",
+          "hint_text": "`du`, `sort -h` ve `tail` kombinasyonunu kullan.",
+          "hint_partial": "du -xh /var/cache-21-21 | ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-017-r22",
+      "type": "single",
+      "scenario": "Runbook adiminda `/mnt/data-22` icin mount bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "findmnt /mnt/data-22",
+          "hint_text": "Belirli mount noktasi icin `findmnt` kullan.",
+          "hint_partial": "findmnt ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-018-r23",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde aktif swap alanlarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "swapon --show",
+          "hint_text": "Swap listesi icin `swapon --show` kullan.",
+          "hint_partial": "swapon ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-019-r24",
+      "type": "single",
+      "scenario": "Incident sonrasinda mount cikisindan sadece `/dev/sdb1` satirini filtrele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount | grep /dev/sdb1",
+          "hint_text": "Mount cikisini `grep` ile daralt.",
+          "hint_partial": "mount | grep ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-020-r25",
+      "type": "single",
+      "scenario": "Bakim oncesi `/dev/sdb1` ext4 ayarlarini ozetle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tune2fs -l /dev/sdb1 | head",
+          "hint_text": "Ext filesystem metadata icin `tune2fs -l` kullan.",
+          "hint_partial": "tune2fs -l ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-021-r26",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/dev/sdb1` icin kalici fstab kaydi ekle: `/data-26 ext4 defaults 0 2`.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "echo '/dev/sdb1 /data-26 ext4 defaults 0 2' >> /etc/fstab",
+          "hint_text": "Kalici mount icin `/etc/fstab` satiri ekle.",
+          "hint_partial": "echo '/dev/sdb1 ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-022-r27",
+      "type": "single",
+      "scenario": "Deploy sonrasi fstab kayitlarini hemen test et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount -a",
+          "hint_text": "fstab dogrulama icin `mount -a` kullan.",
+          "hint_partial": "mount -a"
+        }
+      ]
+    },
+    {
+      "id": "mstg-023-r28",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde inode kullanimini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "df -i",
+          "hint_text": "Inode ozeti icin `df -i` kullan.",
+          "hint_partial": "df -i"
+        }
+      ]
+    },
+    {
+      "id": "mstg-024-r29",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `/dev/disk/by-uuid` altindaki UUID symlink'lerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls -l /dev/disk/by-uuid",
+          "hint_text": "UUID symlink listesi icin `ls -l` kullan.",
+          "hint_partial": "ls -l /dev/..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-025-r30",
+      "type": "single",
+      "scenario": "Runbook adiminda `/dev/sdb1` filesystem'ini buyut.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "resize2fs /dev/sdb1",
+          "hint_text": "ext filesystem genisletme icin `resize2fs` kullan.",
+          "hint_partial": "resize2fs ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-011-r31",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde block device'leri filesystem tipiyle birlikte goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsblk -f",
+          "hint_text": "Filesystem kolonlari icin `lsblk -f` kullan.",
+          "hint_partial": "lsblk -..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-012-r32",
+      "type": "single",
+      "scenario": "Incident sonrasinda device UUID bilgilerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "blkid",
+          "hint_text": "UUID ve label bilgisi icin `blkid` kullan.",
+          "hint_partial": "bl..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-013-r33",
+      "type": "single",
+      "scenario": "Bakim oncesi `/dev/sdb1` device'ini `/mnt/data-33` altina mount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount /dev/sdb1 /mnt/data-33",
+          "hint_text": "Temel mount icin `mount device target` kullan.",
+          "hint_partial": "mount /dev/..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-014-r34",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/mnt/data-34` mount noktasini unmount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "umount /mnt/data-34",
+          "hint_text": "Unmount icin `umount` kullan.",
+          "hint_partial": "umount ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-015-r35",
+      "type": "single",
+      "scenario": "Deploy sonrasi filesystem tipleriyle beraber disk kullanimini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "df -Th",
+          "hint_text": "Tip kolonu icin `df -Th` kullan.",
+          "hint_partial": "df -..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-016-r36",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/var/db-36-36` altindaki en buyuk 10 girdiyi boyuta gore goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "du -xh /var/db-36-36 | sort -h | tail -3",
+          "hint_text": "`du`, `sort -h` ve `tail` kombinasyonunu kullan.",
+          "hint_partial": "du -xh /var/db-36-36 | ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-017-r37",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `/mnt/data-37` icin mount bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "findmnt /mnt/data-37",
+          "hint_text": "Belirli mount noktasi icin `findmnt` kullan.",
+          "hint_partial": "findmnt ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-018-r38",
+      "type": "single",
+      "scenario": "Runbook adiminda aktif swap alanlarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "swapon --show",
+          "hint_text": "Swap listesi icin `swapon --show` kullan.",
+          "hint_partial": "swapon ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-019-r39",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde mount cikisindan sadece `/dev/sdb1` satirini filtrele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount | grep /dev/sdb1",
+          "hint_text": "Mount cikisini `grep` ile daralt.",
+          "hint_partial": "mount | grep ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-020-r40",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/dev/sdb1` ext4 ayarlarini ozetle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tune2fs -l /dev/sdb1 | head",
+          "hint_text": "Ext filesystem metadata icin `tune2fs -l` kullan.",
+          "hint_partial": "tune2fs -l ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-021-r41",
+      "type": "single",
+      "scenario": "Bakim oncesi `/dev/sdb1` icin kalici fstab kaydi ekle: `/data-41 ext4 defaults 0 2`.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "echo '/dev/sdb1 /data-41 ext4 defaults 0 2' >> /etc/fstab",
+          "hint_text": "Kalici mount icin `/etc/fstab` satiri ekle.",
+          "hint_partial": "echo '/dev/sdb1 ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-022-r42",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda fstab kayitlarini hemen test et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount -a",
+          "hint_text": "fstab dogrulama icin `mount -a` kullan.",
+          "hint_partial": "mount -a"
+        }
+      ]
+    },
+    {
+      "id": "mstg-023-r43",
+      "type": "single",
+      "scenario": "Deploy sonrasi inode kullanimini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "df -i",
+          "hint_text": "Inode ozeti icin `df -i` kullan.",
+          "hint_partial": "df -i"
+        }
+      ]
+    },
+    {
+      "id": "mstg-024-r44",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/dev/disk/by-uuid` altindaki UUID symlink'lerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls -l /dev/disk/by-uuid",
+          "hint_text": "UUID symlink listesi icin `ls -l` kullan.",
+          "hint_partial": "ls -l /dev/..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-025-r45",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `/dev/sdb1` filesystem'ini buyut.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "resize2fs /dev/sdb1",
+          "hint_text": "ext filesystem genisletme icin `resize2fs` kullan.",
+          "hint_partial": "resize2fs ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-011-r46",
+      "type": "single",
+      "scenario": "Runbook adiminda block device'leri filesystem tipiyle birlikte goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsblk -f",
+          "hint_text": "Filesystem kolonlari icin `lsblk -f` kullan.",
+          "hint_partial": "lsblk -..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-012-r47",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde device UUID bilgilerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "blkid",
+          "hint_text": "UUID ve label bilgisi icin `blkid` kullan.",
+          "hint_partial": "bl..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-013-r48",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/dev/sdb1` device'ini `/mnt/data-48` altina mount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount /dev/sdb1 /mnt/data-48",
+          "hint_text": "Temel mount icin `mount device target` kullan.",
+          "hint_partial": "mount /dev/..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-014-r49",
+      "type": "single",
+      "scenario": "Bakim oncesi `/mnt/data-49` mount noktasini unmount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "umount /mnt/data-49",
+          "hint_text": "Unmount icin `umount` kullan.",
+          "hint_partial": "umount ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-015-r50",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda filesystem tipleriyle beraber disk kullanimini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "df -Th",
+          "hint_text": "Tip kolonu icin `df -Th` kullan.",
+          "hint_partial": "df -..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-016-r51",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/var/queue-51-51` altindaki en buyuk 10 girdiyi boyuta gore goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "du -xh /var/queue-51-51 | sort -h | tail -3",
+          "hint_text": "`du`, `sort -h` ve `tail` kombinasyonunu kullan.",
+          "hint_partial": "du -xh /var/queue-51-51 | ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-017-r52",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/mnt/data-52` icin mount bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "findmnt /mnt/data-52",
+          "hint_text": "Belirli mount noktasi icin `findmnt` kullan.",
+          "hint_partial": "findmnt ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-018-r53",
+      "type": "single",
+      "scenario": "Yeni acilan hostta aktif swap alanlarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "swapon --show",
+          "hint_text": "Swap listesi icin `swapon --show` kullan.",
+          "hint_partial": "swapon ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-019-r54",
+      "type": "single",
+      "scenario": "Runbook adiminda mount cikisindan sadece `/dev/sdb1` satirini filtrele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount | grep /dev/sdb1",
+          "hint_text": "Mount cikisini `grep` ile daralt.",
+          "hint_partial": "mount | grep ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-020-r55",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `/dev/sdb1` ext4 ayarlarini ozetle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tune2fs -l /dev/sdb1 | head",
+          "hint_text": "Ext filesystem metadata icin `tune2fs -l` kullan.",
+          "hint_partial": "tune2fs -l ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-021-r56",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/dev/sdb1` icin kalici fstab kaydi ekle: `/data-56 ext4 defaults 0 2`.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "echo '/dev/sdb1 /data-56 ext4 defaults 0 2' >> /etc/fstab",
+          "hint_text": "Kalici mount icin `/etc/fstab` satiri ekle.",
+          "hint_partial": "echo '/dev/sdb1 ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-022-r57",
+      "type": "single",
+      "scenario": "Bakim oncesi fstab kayitlarini hemen test et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount -a",
+          "hint_text": "fstab dogrulama icin `mount -a` kullan.",
+          "hint_partial": "mount -a"
+        }
+      ]
+    },
+    {
+      "id": "mstg-023-r58",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda inode kullanimini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "df -i",
+          "hint_text": "Inode ozeti icin `df -i` kullan.",
+          "hint_partial": "df -i"
+        }
+      ]
+    },
+    {
+      "id": "mstg-024-r59",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/dev/disk/by-uuid` altindaki UUID symlink'lerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls -l /dev/disk/by-uuid",
+          "hint_text": "UUID symlink listesi icin `ls -l` kullan.",
+          "hint_partial": "ls -l /dev/..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-025-r60",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/dev/sdb1` filesystem'ini buyut.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "resize2fs /dev/sdb1",
+          "hint_text": "ext filesystem genisletme icin `resize2fs` kullan.",
+          "hint_partial": "resize2fs ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-011-r61",
+      "type": "single",
+      "scenario": "Yeni acilan hostta block device'leri filesystem tipiyle birlikte goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsblk -f",
+          "hint_text": "Filesystem kolonlari icin `lsblk -f` kullan.",
+          "hint_partial": "lsblk -..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-012-r62",
+      "type": "single",
+      "scenario": "Runbook adiminda device UUID bilgilerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "blkid",
+          "hint_text": "UUID ve label bilgisi icin `blkid` kullan.",
+          "hint_partial": "bl..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-013-r63",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `/dev/sdb1` device'ini `/mnt/data-63` altina mount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount /dev/sdb1 /mnt/data-63",
+          "hint_text": "Temel mount icin `mount device target` kullan.",
+          "hint_partial": "mount /dev/..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-014-r64",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/mnt/data-64` mount noktasini unmount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "umount /mnt/data-64",
+          "hint_text": "Unmount icin `umount` kullan.",
+          "hint_partial": "umount ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-015-r65",
+      "type": "single",
+      "scenario": "Bakim oncesi filesystem tipleriyle beraber disk kullanimini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "df -Th",
+          "hint_text": "Tip kolonu icin `df -Th` kullan.",
+          "hint_partial": "df -..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-016-r66",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/var/cache-66-66-66` altindaki en buyuk 10 girdiyi boyuta gore goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "du -xh /var/cache-66-66-66 | sort -h | tail -3",
+          "hint_text": "`du`, `sort -h` ve `tail` kombinasyonunu kullan.",
+          "hint_partial": "du -xh /var/cache-66-66-66 | ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-017-r67",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/mnt/data-67` icin mount bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "findmnt /mnt/data-67",
+          "hint_text": "Belirli mount noktasi icin `findmnt` kullan.",
+          "hint_partial": "findmnt ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-018-r68",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde aktif swap alanlarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "swapon --show",
+          "hint_text": "Swap listesi icin `swapon --show` kullan.",
+          "hint_partial": "swapon ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-019-r69",
+      "type": "single",
+      "scenario": "Yeni acilan hostta mount cikisindan sadece `/dev/sdb1` satirini filtrele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount | grep /dev/sdb1",
+          "hint_text": "Mount cikisini `grep` ile daralt.",
+          "hint_partial": "mount | grep ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-020-r70",
+      "type": "single",
+      "scenario": "Runbook adiminda `/dev/sdb1` ext4 ayarlarini ozetle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tune2fs -l /dev/sdb1 | head",
+          "hint_text": "Ext filesystem metadata icin `tune2fs -l` kullan.",
+          "hint_partial": "tune2fs -l ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-021-r71",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `/dev/sdb1` icin kalici fstab kaydi ekle: `/data-71 ext4 defaults 0 2`.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "echo '/dev/sdb1 /data-71 ext4 defaults 0 2' >> /etc/fstab",
+          "hint_text": "Kalici mount icin `/etc/fstab` satiri ekle.",
+          "hint_partial": "echo '/dev/sdb1 ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-022-r72",
+      "type": "single",
+      "scenario": "Incident sonrasinda fstab kayitlarini hemen test et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount -a",
+          "hint_text": "fstab dogrulama icin `mount -a` kullan.",
+          "hint_partial": "mount -a"
+        }
+      ]
+    },
+    {
+      "id": "mstg-023-r73",
+      "type": "single",
+      "scenario": "Bakim oncesi inode kullanimini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "df -i",
+          "hint_text": "Inode ozeti icin `df -i` kullan.",
+          "hint_partial": "df -i"
+        }
+      ]
+    },
+    {
+      "id": "mstg-024-r74",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/dev/disk/by-uuid` altindaki UUID symlink'lerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls -l /dev/disk/by-uuid",
+          "hint_text": "UUID symlink listesi icin `ls -l` kullan.",
+          "hint_partial": "ls -l /dev/..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-025-r75",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/dev/sdb1` filesystem'ini buyut.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "resize2fs /dev/sdb1",
+          "hint_text": "ext filesystem genisletme icin `resize2fs` kullan.",
+          "hint_partial": "resize2fs ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-011-r76",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde block device'leri filesystem tipiyle birlikte goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsblk -f",
+          "hint_text": "Filesystem kolonlari icin `lsblk -f` kullan.",
+          "hint_partial": "lsblk -..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-012-r77",
+      "type": "single",
+      "scenario": "Yeni acilan hostta device UUID bilgilerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "blkid",
+          "hint_text": "UUID ve label bilgisi icin `blkid` kullan.",
+          "hint_partial": "bl..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-013-r78",
+      "type": "single",
+      "scenario": "Runbook adiminda `/dev/sdb1` device'ini `/mnt/data-78` altina mount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount /dev/sdb1 /mnt/data-78",
+          "hint_text": "Temel mount icin `mount device target` kullan.",
+          "hint_partial": "mount /dev/..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-014-r79",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `/mnt/data-79` mount noktasini unmount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "umount /mnt/data-79",
+          "hint_text": "Unmount icin `umount` kullan.",
+          "hint_partial": "umount ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-015-r80",
+      "type": "single",
+      "scenario": "Incident sonrasinda filesystem tipleriyle beraber disk kullanimini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "df -Th",
+          "hint_text": "Tip kolonu icin `df -Th` kullan.",
+          "hint_partial": "df -..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-016-r81",
+      "type": "single",
+      "scenario": "Bakim oncesi `/var/web-81-81` altindaki en buyuk 10 girdiyi boyuta gore goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "du -xh /var/web-81-81 | sort -h | tail -3",
+          "hint_text": "`du`, `sort -h` ve `tail` kombinasyonunu kullan.",
+          "hint_partial": "du -xh /var/web-81-81 | ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-017-r82",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/mnt/data-82` icin mount bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "findmnt /mnt/data-82",
+          "hint_text": "Belirli mount noktasi icin `findmnt` kullan.",
+          "hint_partial": "findmnt ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-018-r83",
+      "type": "single",
+      "scenario": "Deploy sonrasi aktif swap alanlarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "swapon --show",
+          "hint_text": "Swap listesi icin `swapon --show` kullan.",
+          "hint_partial": "swapon ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-019-r84",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde mount cikisindan sadece `/dev/sdb1` satirini filtrele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount | grep /dev/sdb1",
+          "hint_text": "Mount cikisini `grep` ile daralt.",
+          "hint_partial": "mount | grep ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-020-r85",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `/dev/sdb1` ext4 ayarlarini ozetle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tune2fs -l /dev/sdb1 | head",
+          "hint_text": "Ext filesystem metadata icin `tune2fs -l` kullan.",
+          "hint_partial": "tune2fs -l ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-021-r86",
+      "type": "single",
+      "scenario": "Runbook adiminda `/dev/sdb1` icin kalici fstab kaydi ekle: `/data-86 ext4 defaults 0 2`.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "echo '/dev/sdb1 /data-86 ext4 defaults 0 2' >> /etc/fstab",
+          "hint_text": "Kalici mount icin `/etc/fstab` satiri ekle.",
+          "hint_partial": "echo '/dev/sdb1 ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-022-r87",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde fstab kayitlarini hemen test et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount -a",
+          "hint_text": "fstab dogrulama icin `mount -a` kullan.",
+          "hint_partial": "mount -a"
+        }
+      ]
+    },
+    {
+      "id": "mstg-023-r88",
+      "type": "single",
+      "scenario": "Incident sonrasinda inode kullanimini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "df -i",
+          "hint_text": "Inode ozeti icin `df -i` kullan.",
+          "hint_partial": "df -i"
+        }
+      ]
+    },
+    {
+      "id": "mstg-024-r89",
+      "type": "single",
+      "scenario": "Bakim oncesi `/dev/disk/by-uuid` altindaki UUID symlink'lerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls -l /dev/disk/by-uuid",
+          "hint_text": "UUID symlink listesi icin `ls -l` kullan.",
+          "hint_partial": "ls -l /dev/..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-025-r90",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/dev/sdb1` filesystem'ini buyut.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "resize2fs /dev/sdb1",
+          "hint_text": "ext filesystem genisletme icin `resize2fs` kullan.",
+          "hint_partial": "resize2fs ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-011-r91",
+      "type": "single",
+      "scenario": "Deploy sonrasi block device'leri filesystem tipiyle birlikte goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsblk -f",
+          "hint_text": "Filesystem kolonlari icin `lsblk -f` kullan.",
+          "hint_partial": "lsblk -..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-012-r92",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde device UUID bilgilerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "blkid",
+          "hint_text": "UUID ve label bilgisi icin `blkid` kullan.",
+          "hint_partial": "bl..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-013-r93",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `/dev/sdb1` device'ini `/mnt/data-93` altina mount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount /dev/sdb1 /mnt/data-93",
+          "hint_text": "Temel mount icin `mount device target` kullan.",
+          "hint_partial": "mount /dev/..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-014-r94",
+      "type": "single",
+      "scenario": "Runbook adiminda `/mnt/data-94` mount noktasini unmount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "umount /mnt/data-94",
+          "hint_text": "Unmount icin `umount` kullan.",
+          "hint_partial": "umount ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-015-r95",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde filesystem tipleriyle beraber disk kullanimini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "df -Th",
+          "hint_text": "Tip kolonu icin `df -Th` kullan.",
+          "hint_partial": "df -..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-016-r96",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/var/proxy-96` altindaki en buyuk 10 girdiyi boyuta gore goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "du -xh /var/proxy-96 | sort -h | tail -3",
+          "hint_text": "`du`, `sort -h` ve `tail` kombinasyonunu kullan.",
+          "hint_partial": "du -xh /var/proxy-96 | ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-017-r97",
+      "type": "single",
+      "scenario": "Bakim oncesi `/mnt/data-97` icin mount bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "findmnt /mnt/data-97",
+          "hint_text": "Belirli mount noktasi icin `findmnt` kullan.",
+          "hint_partial": "findmnt ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-018-r98",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda aktif swap alanlarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "swapon --show",
+          "hint_text": "Swap listesi icin `swapon --show` kullan.",
+          "hint_partial": "swapon ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-019-r99",
+      "type": "single",
+      "scenario": "Deploy sonrasi mount cikisindan sadece `/dev/sdb1` satirini filtrele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount | grep /dev/sdb1",
+          "hint_text": "Mount cikisini `grep` ile daralt.",
+          "hint_partial": "mount | grep ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-020-r100",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/dev/sdb1` ext4 ayarlarini ozetle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tune2fs -l /dev/sdb1 | head",
+          "hint_text": "Ext filesystem metadata icin `tune2fs -l` kullan.",
+          "hint_partial": "tune2fs -l ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-021-r101",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `/dev/sdb1` icin kalici fstab kaydi ekle: `/data-101 ext4 defaults 0 2`.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "echo '/dev/sdb1 /data-101 ext4 defaults 0 2' >> /etc/fstab",
+          "hint_text": "Kalici mount icin `/etc/fstab` satiri ekle.",
+          "hint_partial": "echo '/dev/sdb1 ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-022-r102",
+      "type": "single",
+      "scenario": "Runbook adiminda fstab kayitlarini hemen test et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount -a",
+          "hint_text": "fstab dogrulama icin `mount -a` kullan.",
+          "hint_partial": "mount -a"
+        }
+      ]
+    },
+    {
+      "id": "mstg-023-r103",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde inode kullanimini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "df -i",
+          "hint_text": "Inode ozeti icin `df -i` kullan.",
+          "hint_partial": "df -i"
+        }
+      ]
+    },
+    {
+      "id": "mstg-024-r104",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/dev/disk/by-uuid` altindaki UUID symlink'lerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls -l /dev/disk/by-uuid",
+          "hint_text": "UUID symlink listesi icin `ls -l` kullan.",
+          "hint_partial": "ls -l /dev/..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-025-r105",
+      "type": "single",
+      "scenario": "Bakim oncesi `/dev/sdb1` filesystem'ini buyut.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "resize2fs /dev/sdb1",
+          "hint_text": "ext filesystem genisletme icin `resize2fs` kullan.",
+          "hint_partial": "resize2fs ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-011-r106",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda block device'leri filesystem tipiyle birlikte goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsblk -f",
+          "hint_text": "Filesystem kolonlari icin `lsblk -f` kullan.",
+          "hint_partial": "lsblk -..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-012-r107",
+      "type": "single",
+      "scenario": "Deploy sonrasi device UUID bilgilerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "blkid",
+          "hint_text": "UUID ve label bilgisi icin `blkid` kullan.",
+          "hint_partial": "bl..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-013-r108",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/dev/sdb1` device'ini `/mnt/data-108` altina mount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount /dev/sdb1 /mnt/data-108",
+          "hint_text": "Temel mount icin `mount device target` kullan.",
+          "hint_partial": "mount /dev/..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-014-r109",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `/mnt/data-109` mount noktasini unmount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "umount /mnt/data-109",
+          "hint_text": "Unmount icin `umount` kullan.",
+          "hint_partial": "umount ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-015-r110",
+      "type": "single",
+      "scenario": "Runbook adiminda filesystem tipleriyle beraber disk kullanimini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "df -Th",
+          "hint_text": "Tip kolonu icin `df -Th` kullan.",
+          "hint_partial": "df -..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-016-r111",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `/var/bastion-111` altindaki en buyuk 10 girdiyi boyuta gore goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "du -xh /var/bastion-111 | sort -h | tail -3",
+          "hint_text": "`du`, `sort -h` ve `tail` kombinasyonunu kullan.",
+          "hint_partial": "du -xh /var/bastion-111 | ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-017-r112",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/mnt/data-112` icin mount bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "findmnt /mnt/data-112",
+          "hint_text": "Belirli mount noktasi icin `findmnt` kullan.",
+          "hint_partial": "findmnt ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-018-r113",
+      "type": "single",
+      "scenario": "Bakim oncesi aktif swap alanlarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "swapon --show",
+          "hint_text": "Swap listesi icin `swapon --show` kullan.",
+          "hint_partial": "swapon ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-019-r114",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda mount cikisindan sadece `/dev/sdb1` satirini filtrele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount | grep /dev/sdb1",
+          "hint_text": "Mount cikisini `grep` ile daralt.",
+          "hint_partial": "mount | grep ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-020-r115",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/dev/sdb1` ext4 ayarlarini ozetle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tune2fs -l /dev/sdb1 | head",
+          "hint_text": "Ext filesystem metadata icin `tune2fs -l` kullan.",
+          "hint_partial": "tune2fs -l ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-021-r116",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/dev/sdb1` icin kalici fstab kaydi ekle: `/data-116 ext4 defaults 0 2`.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "echo '/dev/sdb1 /data-116 ext4 defaults 0 2' >> /etc/fstab",
+          "hint_text": "Kalici mount icin `/etc/fstab` satiri ekle.",
+          "hint_partial": "echo '/dev/sdb1 ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-022-r117",
+      "type": "single",
+      "scenario": "Yeni acilan hostta fstab kayitlarini hemen test et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount -a",
+          "hint_text": "fstab dogrulama icin `mount -a` kullan.",
+          "hint_partial": "mount -a"
+        }
+      ]
+    },
+    {
+      "id": "mstg-023-r118",
+      "type": "single",
+      "scenario": "Runbook adiminda inode kullanimini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "df -i",
+          "hint_text": "Inode ozeti icin `df -i` kullan.",
+          "hint_partial": "df -i"
+        }
+      ]
+    },
+    {
+      "id": "mstg-024-r119",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `/dev/disk/by-uuid` altindaki UUID symlink'lerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls -l /dev/disk/by-uuid",
+          "hint_text": "UUID symlink listesi icin `ls -l` kullan.",
+          "hint_partial": "ls -l /dev/..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-025-r120",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/dev/sdb1` filesystem'ini buyut.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "resize2fs /dev/sdb1",
+          "hint_text": "ext filesystem genisletme icin `resize2fs` kullan.",
+          "hint_partial": "resize2fs ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-011-r121",
+      "type": "single",
+      "scenario": "Bakim oncesi block device'leri filesystem tipiyle birlikte goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsblk -f",
+          "hint_text": "Filesystem kolonlari icin `lsblk -f` kullan.",
+          "hint_partial": "lsblk -..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-012-r122",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda device UUID bilgilerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "blkid",
+          "hint_text": "UUID ve label bilgisi icin `blkid` kullan.",
+          "hint_partial": "bl..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-013-r123",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/dev/sdb1` device'ini `/mnt/data-123` altina mount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount /dev/sdb1 /mnt/data-123",
+          "hint_text": "Temel mount icin `mount device target` kullan.",
+          "hint_partial": "mount /dev/..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-014-r124",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/mnt/data-124` mount noktasini unmount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "umount /mnt/data-124",
+          "hint_text": "Unmount icin `umount` kullan.",
+          "hint_partial": "umount ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-015-r125",
+      "type": "single",
+      "scenario": "Yeni acilan hostta filesystem tipleriyle beraber disk kullanimini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "df -Th",
+          "hint_text": "Tip kolonu icin `df -Th` kullan.",
+          "hint_partial": "df -..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-016-r126",
+      "type": "single",
+      "scenario": "Runbook adiminda `/var/queue-126` altindaki en buyuk 10 girdiyi boyuta gore goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "du -xh /var/queue-126 | sort -h | tail -3",
+          "hint_text": "`du`, `sort -h` ve `tail` kombinasyonunu kullan.",
+          "hint_partial": "du -xh /var/queue-126 | ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-017-r127",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `/mnt/data-127` icin mount bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "findmnt /mnt/data-127",
+          "hint_text": "Belirli mount noktasi icin `findmnt` kullan.",
+          "hint_partial": "findmnt ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-018-r128",
+      "type": "single",
+      "scenario": "Incident sonrasinda aktif swap alanlarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "swapon --show",
+          "hint_text": "Swap listesi icin `swapon --show` kullan.",
+          "hint_partial": "swapon ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-019-r129",
+      "type": "single",
+      "scenario": "Bakim oncesi mount cikisindan sadece `/dev/sdb1` satirini filtrele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount | grep /dev/sdb1",
+          "hint_text": "Mount cikisini `grep` ile daralt.",
+          "hint_partial": "mount | grep ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-020-r130",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/dev/sdb1` ext4 ayarlarini ozetle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tune2fs -l /dev/sdb1 | head",
+          "hint_text": "Ext filesystem metadata icin `tune2fs -l` kullan.",
+          "hint_partial": "tune2fs -l ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-021-r131",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/dev/sdb1` icin kalici fstab kaydi ekle: `/data-131 ext4 defaults 0 2`.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "echo '/dev/sdb1 /data-131 ext4 defaults 0 2' >> /etc/fstab",
+          "hint_text": "Kalici mount icin `/etc/fstab` satiri ekle.",
+          "hint_partial": "echo '/dev/sdb1 ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-022-r132",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde fstab kayitlarini hemen test et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount -a",
+          "hint_text": "fstab dogrulama icin `mount -a` kullan.",
+          "hint_partial": "mount -a"
+        }
+      ]
+    },
+    {
+      "id": "mstg-023-r133",
+      "type": "single",
+      "scenario": "Yeni acilan hostta inode kullanimini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "df -i",
+          "hint_text": "Inode ozeti icin `df -i` kullan.",
+          "hint_partial": "df -i"
+        }
+      ]
+    },
+    {
+      "id": "mstg-024-r134",
+      "type": "single",
+      "scenario": "Runbook adiminda `/dev/disk/by-uuid` altindaki UUID symlink'lerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls -l /dev/disk/by-uuid",
+          "hint_text": "UUID symlink listesi icin `ls -l` kullan.",
+          "hint_partial": "ls -l /dev/..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-025-r135",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `/dev/sdb1` filesystem'ini buyut.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "resize2fs /dev/sdb1",
+          "hint_text": "ext filesystem genisletme icin `resize2fs` kullan.",
+          "hint_partial": "resize2fs ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-011-r136",
+      "type": "single",
+      "scenario": "Incident sonrasinda block device'leri filesystem tipiyle birlikte goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsblk -f",
+          "hint_text": "Filesystem kolonlari icin `lsblk -f` kullan.",
+          "hint_partial": "lsblk -..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-012-r137",
+      "type": "single",
+      "scenario": "Bakim oncesi device UUID bilgilerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "blkid",
+          "hint_text": "UUID ve label bilgisi icin `blkid` kullan.",
+          "hint_partial": "bl..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-013-r138",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/dev/sdb1` device'ini `/mnt/data-138` altina mount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount /dev/sdb1 /mnt/data-138",
+          "hint_text": "Temel mount icin `mount device target` kullan.",
+          "hint_partial": "mount /dev/..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-014-r139",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/mnt/data-139` mount noktasini unmount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "umount /mnt/data-139",
+          "hint_text": "Unmount icin `umount` kullan.",
+          "hint_partial": "umount ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-015-r140",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde filesystem tipleriyle beraber disk kullanimini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "df -Th",
+          "hint_text": "Tip kolonu icin `df -Th` kullan.",
+          "hint_partial": "df -..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-016-r141",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `/var/cache-141-141` altindaki en buyuk 10 girdiyi boyuta gore goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "du -xh /var/cache-141-141 | sort -h | tail -3",
+          "hint_text": "`du`, `sort -h` ve `tail` kombinasyonunu kullan.",
+          "hint_partial": "du -xh /var/cache-141-141 | ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-017-r142",
+      "type": "single",
+      "scenario": "Runbook adiminda `/mnt/data-142` icin mount bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "findmnt /mnt/data-142",
+          "hint_text": "Belirli mount noktasi icin `findmnt` kullan.",
+          "hint_partial": "findmnt ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-018-r143",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde aktif swap alanlarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "swapon --show",
+          "hint_text": "Swap listesi icin `swapon --show` kullan.",
+          "hint_partial": "swapon ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-019-r144",
+      "type": "single",
+      "scenario": "Incident sonrasinda mount cikisindan sadece `/dev/sdb1` satirini filtrele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount | grep /dev/sdb1",
+          "hint_text": "Mount cikisini `grep` ile daralt.",
+          "hint_partial": "mount | grep ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-020-r145",
+      "type": "single",
+      "scenario": "Bakim oncesi `/dev/sdb1` ext4 ayarlarini ozetle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tune2fs -l /dev/sdb1 | head",
+          "hint_text": "Ext filesystem metadata icin `tune2fs -l` kullan.",
+          "hint_partial": "tune2fs -l ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-021-r146",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/dev/sdb1` icin kalici fstab kaydi ekle: `/data-146 ext4 defaults 0 2`.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "echo '/dev/sdb1 /data-146 ext4 defaults 0 2' >> /etc/fstab",
+          "hint_text": "Kalici mount icin `/etc/fstab` satiri ekle.",
+          "hint_partial": "echo '/dev/sdb1 ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-022-r147",
+      "type": "single",
+      "scenario": "Deploy sonrasi fstab kayitlarini hemen test et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount -a",
+          "hint_text": "fstab dogrulama icin `mount -a` kullan.",
+          "hint_partial": "mount -a"
+        }
+      ]
+    },
+    {
+      "id": "mstg-023-r148",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde inode kullanimini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "df -i",
+          "hint_text": "Inode ozeti icin `df -i` kullan.",
+          "hint_partial": "df -i"
+        }
+      ]
+    },
+    {
+      "id": "mstg-024-r149",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `/dev/disk/by-uuid` altindaki UUID symlink'lerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls -l /dev/disk/by-uuid",
+          "hint_text": "UUID symlink listesi icin `ls -l` kullan.",
+          "hint_partial": "ls -l /dev/..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-025-r150",
+      "type": "single",
+      "scenario": "Runbook adiminda `/dev/sdb1` filesystem'ini buyut.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "resize2fs /dev/sdb1",
+          "hint_text": "ext filesystem genisletme icin `resize2fs` kullan.",
+          "hint_partial": "resize2fs ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-011-r151",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde block device'leri filesystem tipiyle birlikte goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsblk -f",
+          "hint_text": "Filesystem kolonlari icin `lsblk -f` kullan.",
+          "hint_partial": "lsblk -..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-012-r152",
+      "type": "single",
+      "scenario": "Incident sonrasinda device UUID bilgilerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "blkid",
+          "hint_text": "UUID ve label bilgisi icin `blkid` kullan.",
+          "hint_partial": "bl..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-013-r153",
+      "type": "single",
+      "scenario": "Bakim oncesi `/dev/sdb1` device'ini `/mnt/data-153` altina mount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount /dev/sdb1 /mnt/data-153",
+          "hint_text": "Temel mount icin `mount device target` kullan.",
+          "hint_partial": "mount /dev/..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-014-r154",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/mnt/data-154` mount noktasini unmount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "umount /mnt/data-154",
+          "hint_text": "Unmount icin `umount` kullan.",
+          "hint_partial": "umount ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-015-r155",
+      "type": "single",
+      "scenario": "Deploy sonrasi filesystem tipleriyle beraber disk kullanimini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "df -Th",
+          "hint_text": "Tip kolonu icin `df -Th` kullan.",
+          "hint_partial": "df -..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-016-r156",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/var/db-156-156` altindaki en buyuk 10 girdiyi boyuta gore goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "du -xh /var/db-156-156 | sort -h | tail -3",
+          "hint_text": "`du`, `sort -h` ve `tail` kombinasyonunu kullan.",
+          "hint_partial": "du -xh /var/db-156-156 | ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-017-r157",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `/mnt/data-157` icin mount bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "findmnt /mnt/data-157",
+          "hint_text": "Belirli mount noktasi icin `findmnt` kullan.",
+          "hint_partial": "findmnt ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-018-r158",
+      "type": "single",
+      "scenario": "Runbook adiminda aktif swap alanlarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "swapon --show",
+          "hint_text": "Swap listesi icin `swapon --show` kullan.",
+          "hint_partial": "swapon ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-019-r159",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde mount cikisindan sadece `/dev/sdb1` satirini filtrele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount | grep /dev/sdb1",
+          "hint_text": "Mount cikisini `grep` ile daralt.",
+          "hint_partial": "mount | grep ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-020-r160",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/dev/sdb1` ext4 ayarlarini ozetle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tune2fs -l /dev/sdb1 | head",
+          "hint_text": "Ext filesystem metadata icin `tune2fs -l` kullan.",
+          "hint_partial": "tune2fs -l ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-021-r161",
+      "type": "single",
+      "scenario": "Bakim oncesi `/dev/sdb1` icin kalici fstab kaydi ekle: `/data-161 ext4 defaults 0 2`.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "echo '/dev/sdb1 /data-161 ext4 defaults 0 2' >> /etc/fstab",
+          "hint_text": "Kalici mount icin `/etc/fstab` satiri ekle.",
+          "hint_partial": "echo '/dev/sdb1 ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-022-r162",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda fstab kayitlarini hemen test et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount -a",
+          "hint_text": "fstab dogrulama icin `mount -a` kullan.",
+          "hint_partial": "mount -a"
+        }
+      ]
+    },
+    {
+      "id": "mstg-023-r163",
+      "type": "single",
+      "scenario": "Deploy sonrasi inode kullanimini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "df -i",
+          "hint_text": "Inode ozeti icin `df -i` kullan.",
+          "hint_partial": "df -i"
+        }
+      ]
+    },
+    {
+      "id": "mstg-024-r164",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/dev/disk/by-uuid` altindaki UUID symlink'lerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls -l /dev/disk/by-uuid",
+          "hint_text": "UUID symlink listesi icin `ls -l` kullan.",
+          "hint_partial": "ls -l /dev/..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-025-r165",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `/dev/sdb1` filesystem'ini buyut.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "resize2fs /dev/sdb1",
+          "hint_text": "ext filesystem genisletme icin `resize2fs` kullan.",
+          "hint_partial": "resize2fs ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-011-r166",
+      "type": "single",
+      "scenario": "Runbook adiminda block device'leri filesystem tipiyle birlikte goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsblk -f",
+          "hint_text": "Filesystem kolonlari icin `lsblk -f` kullan.",
+          "hint_partial": "lsblk -..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-012-r167",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde device UUID bilgilerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "blkid",
+          "hint_text": "UUID ve label bilgisi icin `blkid` kullan.",
+          "hint_partial": "bl..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-013-r168",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/dev/sdb1` device'ini `/mnt/data-168` altina mount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount /dev/sdb1 /mnt/data-168",
+          "hint_text": "Temel mount icin `mount device target` kullan.",
+          "hint_partial": "mount /dev/..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-014-r169",
+      "type": "single",
+      "scenario": "Bakim oncesi `/mnt/data-169` mount noktasini unmount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "umount /mnt/data-169",
+          "hint_text": "Unmount icin `umount` kullan.",
+          "hint_partial": "umount ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-015-r170",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda filesystem tipleriyle beraber disk kullanimini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "df -Th",
+          "hint_text": "Tip kolonu icin `df -Th` kullan.",
+          "hint_partial": "df -..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-016-r171",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/var/queue-171-171` altindaki en buyuk 10 girdiyi boyuta gore goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "du -xh /var/queue-171-171 | sort -h | tail -3",
+          "hint_text": "`du`, `sort -h` ve `tail` kombinasyonunu kullan.",
+          "hint_partial": "du -xh /var/queue-171-171 | ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-017-r172",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/mnt/data-172` icin mount bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "findmnt /mnt/data-172",
+          "hint_text": "Belirli mount noktasi icin `findmnt` kullan.",
+          "hint_partial": "findmnt ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-018-r173",
+      "type": "single",
+      "scenario": "Yeni acilan hostta aktif swap alanlarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "swapon --show",
+          "hint_text": "Swap listesi icin `swapon --show` kullan.",
+          "hint_partial": "swapon ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-019-r174",
+      "type": "single",
+      "scenario": "Runbook adiminda mount cikisindan sadece `/dev/sdb1` satirini filtrele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount | grep /dev/sdb1",
+          "hint_text": "Mount cikisini `grep` ile daralt.",
+          "hint_partial": "mount | grep ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-020-r175",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `/dev/sdb1` ext4 ayarlarini ozetle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tune2fs -l /dev/sdb1 | head",
+          "hint_text": "Ext filesystem metadata icin `tune2fs -l` kullan.",
+          "hint_partial": "tune2fs -l ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-021-r176",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/dev/sdb1` icin kalici fstab kaydi ekle: `/data-176 ext4 defaults 0 2`.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "echo '/dev/sdb1 /data-176 ext4 defaults 0 2' >> /etc/fstab",
+          "hint_text": "Kalici mount icin `/etc/fstab` satiri ekle.",
+          "hint_partial": "echo '/dev/sdb1 ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-022-r177",
+      "type": "single",
+      "scenario": "Bakim oncesi fstab kayitlarini hemen test et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount -a",
+          "hint_text": "fstab dogrulama icin `mount -a` kullan.",
+          "hint_partial": "mount -a"
+        }
+      ]
+    },
+    {
+      "id": "mstg-023-r178",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda inode kullanimini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "df -i",
+          "hint_text": "Inode ozeti icin `df -i` kullan.",
+          "hint_partial": "df -i"
+        }
+      ]
+    },
+    {
+      "id": "mstg-024-r179",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/dev/disk/by-uuid` altindaki UUID symlink'lerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls -l /dev/disk/by-uuid",
+          "hint_text": "UUID symlink listesi icin `ls -l` kullan.",
+          "hint_partial": "ls -l /dev/..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-025-r180",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/dev/sdb1` filesystem'ini buyut.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "resize2fs /dev/sdb1",
+          "hint_text": "ext filesystem genisletme icin `resize2fs` kullan.",
+          "hint_partial": "resize2fs ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-011-r181",
+      "type": "single",
+      "scenario": "Yeni acilan hostta block device'leri filesystem tipiyle birlikte goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsblk -f",
+          "hint_text": "Filesystem kolonlari icin `lsblk -f` kullan.",
+          "hint_partial": "lsblk -..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-012-r182",
+      "type": "single",
+      "scenario": "Runbook adiminda device UUID bilgilerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "blkid",
+          "hint_text": "UUID ve label bilgisi icin `blkid` kullan.",
+          "hint_partial": "bl..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-013-r183",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `/dev/sdb1` device'ini `/mnt/data-183` altina mount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount /dev/sdb1 /mnt/data-183",
+          "hint_text": "Temel mount icin `mount device target` kullan.",
+          "hint_partial": "mount /dev/..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-014-r184",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/mnt/data-184` mount noktasini unmount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "umount /mnt/data-184",
+          "hint_text": "Unmount icin `umount` kullan.",
+          "hint_partial": "umount ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-015-r185",
+      "type": "single",
+      "scenario": "Bakim oncesi filesystem tipleriyle beraber disk kullanimini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "df -Th",
+          "hint_text": "Tip kolonu icin `df -Th` kullan.",
+          "hint_partial": "df -..."
+        }
+      ]
+    }
+  ]
+}

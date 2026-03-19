@@ -1,0 +1,136 @@
+{
+  "level": "senior",
+  "topic": "helm",
+  "questions": [
+    {
+      "id": "shelm-001",
+      "type": "single",
+      "scenario": "Repo'dan chart'i indirip ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "helm pull bitnami/nginx --untar",
+          "hint_text": "Chart'i acik halde almak icin `helm pull --untar` kullan.",
+          "hint_partial": "helm pull ..."
+        }
+      ]
+    },
+    {
+      "id": "shelm-002",
+      "type": "single",
+      "scenario": "Current directory icin chart repo index olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "helm repo index .",
+          "hint_text": "Repo index icin `helm repo index .` kullan.",
+          "hint_partial": "helm repo ..."
+        }
+      ]
+    },
+    {
+      "id": "shelm-003",
+      "type": "single",
+      "scenario": "Local chart'i `prod` namespace'ine kur ve namespace'i yoksa olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "helm install web ./chart --namespace prod --create-namespace",
+          "hint_text": "Namespace olusturarak kurulum icin ilgili flag'leri ekle.",
+          "hint_partial": "helm install ..."
+        }
+      ]
+    },
+    {
+      "id": "shelm-004",
+      "type": "single",
+      "scenario": "Local chart upgrade'ini atomic ve 5 dakikalik timeout ile yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "helm upgrade web ./chart --atomic --timeout 5m",
+          "hint_text": "Atomic upgrade icin `--atomic --timeout` kullan.",
+          "hint_partial": "helm upgrade ..."
+        }
+      ]
+    },
+    {
+      "id": "shelm-005",
+      "type": "single",
+      "scenario": "`web` release test'lerini calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "helm test web",
+          "hint_text": "Release test icin `helm test` kullan.",
+          "hint_partial": "helm test ..."
+        }
+      ]
+    },
+    {
+      "id": "shelm-006",
+      "type": "single",
+      "scenario": "Imzali package'i verify et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "helm verify web-1.0.0.tgz",
+          "hint_text": "Package verify icin `helm verify` kullan.",
+          "hint_partial": "helm verify ..."
+        }
+      ]
+    },
+    {
+      "id": "shelm-007",
+      "type": "single",
+      "scenario": "Chart metadata bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "helm show chart ./chart",
+          "hint_text": "Chart metadata icin `helm show chart` kullan.",
+          "hint_partial": "helm show ..."
+        }
+      ]
+    },
+    {
+      "id": "shelm-008",
+      "type": "single",
+      "scenario": "`web` release ile ilgili tum bilgileri getir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "helm get all web",
+          "hint_text": "Tum release bilgisi icin `helm get all` kullan.",
+          "hint_partial": "helm get ..."
+        }
+      ]
+    },
+    {
+      "id": "shelm-009",
+      "type": "single",
+      "scenario": "`web` release'ini history'yi koruyarak sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "helm uninstall web --keep-history",
+          "hint_text": "History korumak icin `--keep-history` kullan.",
+          "hint_partial": "helm uninstall ..."
+        }
+      ]
+    },
+    {
+      "id": "shelm-010",
+      "type": "single",
+      "scenario": "Image tag'ini set ederek upgrade yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "helm upgrade web ./chart --set image.tag=1.27.0",
+          "hint_text": "Tek parametre set etmek icin `--set` kullan.",
+          "hint_partial": "helm upgrade ..."
+        }
+      ]
+    }
+  ]
+}

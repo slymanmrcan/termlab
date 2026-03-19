@@ -1,0 +1,2606 @@
+{
+  "level": "junior",
+  "topic": "docker-swarm",
+  "questions": [
+    {
+      "id": "jds-001",
+      "type": "single",
+      "scenario": "Mevcut node'da swarm modunu baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm init",
+          "hint_text": "Swarm baslatmak icin `docker swarm init` kullan.",
+          "hint_partial": "docker swarm ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-002",
+      "type": "single",
+      "scenario": "Swarm node listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node ls",
+          "hint_text": "Node listesi icin `docker node ls` kullan.",
+          "hint_partial": "docker node ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-003",
+      "type": "single",
+      "scenario": "Swarm service listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service ls",
+          "hint_text": "Service listesi icin `docker service ls` kullan.",
+          "hint_partial": "docker service ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-004",
+      "type": "single",
+      "scenario": "`web` adinda nginx service olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service create --name web nginx",
+          "hint_text": "Temel service olusturmak icin `docker service create` kullan.",
+          "hint_partial": "docker service create ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-005",
+      "type": "single",
+      "scenario": "`web` service task'lerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service ps web",
+          "hint_text": "Task listesi icin `docker service ps` kullan.",
+          "hint_partial": "docker service ps ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-006",
+      "type": "single",
+      "scenario": "`web` service replica sayisini 3 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service scale web=3",
+          "hint_text": "Replica artirmak icin `docker service scale` kullan.",
+          "hint_partial": "docker service scale ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-007",
+      "type": "single",
+      "scenario": "`web` service'ini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service rm web",
+          "hint_text": "Service silmek icin `docker service rm` kullan.",
+          "hint_partial": "docker service rm ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-008",
+      "type": "single",
+      "scenario": "`app-net` adinda overlay network olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network create -d overlay app-net",
+          "hint_text": "Overlay network icin `-d overlay` kullan.",
+          "hint_partial": "docker network create ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-009",
+      "type": "single",
+      "scenario": "Docker node'un swarm durumunu bilgi ekranindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker info",
+          "hint_text": "Swarm durumunu `docker info` icinde gorebilirsin.",
+          "hint_partial": "docker info"
+        }
+      ]
+    },
+    {
+      "id": "jds-010",
+      "type": "single",
+      "scenario": "Node'u swarm cluster'dan ayir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm leave",
+          "hint_text": "Swarm'dan cikmak icin `docker swarm leave` kullan.",
+          "hint_partial": "docker swarm leave"
+        }
+      ]
+    },
+    {
+      "id": "jds-001-r1",
+      "type": "single",
+      "scenario": "Bakim oncesi mevcut node'da swarm modunu baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm init",
+          "hint_text": "Swarm baslatmak icin `docker swarm init` kullan.",
+          "hint_partial": "docker swarm ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-002-r2",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda swarm node listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node ls",
+          "hint_text": "Node listesi icin `docker node ls` kullan.",
+          "hint_partial": "docker node ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-003-r3",
+      "type": "single",
+      "scenario": "Deploy sonrasi swarm service listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service ls",
+          "hint_text": "Service listesi icin `docker service ls` kullan.",
+          "hint_partial": "docker service ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-004-r4",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `db-4-4` adinda traefik-4 service olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service create --name db-4-4 traefik-4",
+          "hint_text": "Temel service olusturmak icin `docker service create` kullan.",
+          "hint_partial": "docker service create ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-005-r5",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `cache-5-5` service task'lerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service ps cache-5-5",
+          "hint_text": "Task listesi icin `docker service ps` kullan.",
+          "hint_partial": "docker service ps ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-006-r6",
+      "type": "single",
+      "scenario": "Runbook adiminda `queue-6` service replica sayisini 3 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service scale queue-6=3",
+          "hint_text": "Replica artirmak icin `docker service scale` kullan.",
+          "hint_partial": "docker service scale ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-007-r7",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `bastion-7` service'ini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service rm bastion-7",
+          "hint_text": "Service silmek icin `docker service rm` kullan.",
+          "hint_partial": "docker service rm ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-008-r8",
+      "type": "single",
+      "scenario": "Incident sonrasinda `app-net` adinda overlay network olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network create -d overlay app-net",
+          "hint_text": "Overlay network icin `-d overlay` kullan.",
+          "hint_partial": "docker network create ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-009-r9",
+      "type": "single",
+      "scenario": "Bakim oncesi docker node'un swarm durumunu bilgi ekranindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker info",
+          "hint_text": "Swarm durumunu `docker info` icinde gorebilirsin.",
+          "hint_partial": "docker info"
+        }
+      ]
+    },
+    {
+      "id": "jds-010-r10",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda node'u swarm cluster'dan ayir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm leave",
+          "hint_text": "Swarm'dan cikmak icin `docker swarm leave` kullan.",
+          "hint_partial": "docker swarm leave"
+        }
+      ]
+    },
+    {
+      "id": "jds-001-r11",
+      "type": "single",
+      "scenario": "Deploy sonrasi mevcut node'da swarm modunu baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm init",
+          "hint_text": "Swarm baslatmak icin `docker swarm init` kullan.",
+          "hint_partial": "docker swarm ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-002-r12",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde swarm node listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node ls",
+          "hint_text": "Node listesi icin `docker node ls` kullan.",
+          "hint_partial": "docker node ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-003-r13",
+      "type": "single",
+      "scenario": "Yeni acilan hostta swarm service listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service ls",
+          "hint_text": "Service listesi icin `docker service ls` kullan.",
+          "hint_partial": "docker service ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-004-r14",
+      "type": "single",
+      "scenario": "Runbook adiminda `queue-14` adinda postgres-14-14 service olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service create --name queue-14 postgres-14-14",
+          "hint_text": "Temel service olusturmak icin `docker service create` kullan.",
+          "hint_partial": "docker service create ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-005-r15",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `bastion-15` service task'lerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service ps bastion-15",
+          "hint_text": "Task listesi icin `docker service ps` kullan.",
+          "hint_partial": "docker service ps ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-006-r16",
+      "type": "single",
+      "scenario": "Incident sonrasinda `proxy-16` service replica sayisini 3 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service scale proxy-16=3",
+          "hint_text": "Replica artirmak icin `docker service scale` kullan.",
+          "hint_partial": "docker service scale ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-007-r17",
+      "type": "single",
+      "scenario": "Bakim oncesi `web-17` service'ini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service rm web-17",
+          "hint_text": "Service silmek icin `docker service rm` kullan.",
+          "hint_partial": "docker service rm ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-008-r18",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `app-net` adinda overlay network olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network create -d overlay app-net",
+          "hint_text": "Overlay network icin `-d overlay` kullan.",
+          "hint_partial": "docker network create ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-009-r19",
+      "type": "single",
+      "scenario": "Deploy sonrasi docker node'un swarm durumunu bilgi ekranindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker info",
+          "hint_text": "Swarm durumunu `docker info` icinde gorebilirsin.",
+          "hint_partial": "docker info"
+        }
+      ]
+    },
+    {
+      "id": "jds-010-r20",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde node'u swarm cluster'dan ayir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm leave",
+          "hint_text": "Swarm'dan cikmak icin `docker swarm leave` kullan.",
+          "hint_partial": "docker swarm leave"
+        }
+      ]
+    },
+    {
+      "id": "jds-001-r21",
+      "type": "single",
+      "scenario": "Yeni acilan hostta mevcut node'da swarm modunu baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm init",
+          "hint_text": "Swarm baslatmak icin `docker swarm init` kullan.",
+          "hint_partial": "docker swarm ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-002-r22",
+      "type": "single",
+      "scenario": "Runbook adiminda swarm node listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node ls",
+          "hint_text": "Node listesi icin `docker node ls` kullan.",
+          "hint_partial": "docker node ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-003-r23",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde swarm service listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service ls",
+          "hint_text": "Service listesi icin `docker service ls` kullan.",
+          "hint_partial": "docker service ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-004-r24",
+      "type": "single",
+      "scenario": "Incident sonrasinda `proxy-24` adinda vault-24 service olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service create --name proxy-24 vault-24",
+          "hint_text": "Temel service olusturmak icin `docker service create` kullan.",
+          "hint_partial": "docker service create ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-005-r25",
+      "type": "single",
+      "scenario": "Bakim oncesi `web-25` service task'lerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service ps web-25",
+          "hint_text": "Task listesi icin `docker service ps` kullan.",
+          "hint_partial": "docker service ps ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-006-r26",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `cache-26-26-26` service replica sayisini 3 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service scale cache-26-26-26=3",
+          "hint_text": "Replica artirmak icin `docker service scale` kullan.",
+          "hint_partial": "docker service scale ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-007-r27",
+      "type": "single",
+      "scenario": "Deploy sonrasi `worker-27` service'ini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service rm worker-27",
+          "hint_text": "Service silmek icin `docker service rm` kullan.",
+          "hint_partial": "docker service rm ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-008-r28",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `app-net` adinda overlay network olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network create -d overlay app-net",
+          "hint_text": "Overlay network icin `-d overlay` kullan.",
+          "hint_partial": "docker network create ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-009-r29",
+      "type": "single",
+      "scenario": "Yeni acilan hostta docker node'un swarm durumunu bilgi ekranindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker info",
+          "hint_text": "Swarm durumunu `docker info` icinde gorebilirsin.",
+          "hint_partial": "docker info"
+        }
+      ]
+    },
+    {
+      "id": "jds-010-r30",
+      "type": "single",
+      "scenario": "Runbook adiminda node'u swarm cluster'dan ayir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm leave",
+          "hint_text": "Swarm'dan cikmak icin `docker swarm leave` kullan.",
+          "hint_partial": "docker swarm leave"
+        }
+      ]
+    },
+    {
+      "id": "jds-001-r31",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde mevcut node'da swarm modunu baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm init",
+          "hint_text": "Swarm baslatmak icin `docker swarm init` kullan.",
+          "hint_partial": "docker swarm ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-002-r32",
+      "type": "single",
+      "scenario": "Incident sonrasinda swarm node listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node ls",
+          "hint_text": "Node listesi icin `docker node ls` kullan.",
+          "hint_partial": "docker node ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-003-r33",
+      "type": "single",
+      "scenario": "Bakim oncesi swarm service listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service ls",
+          "hint_text": "Service listesi icin `docker service ls` kullan.",
+          "hint_partial": "docker service ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-004-r34",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `cache-34-34-34` adinda traefik-34 service olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service create --name cache-34-34-34 traefik-34",
+          "hint_text": "Temel service olusturmak icin `docker service create` kullan.",
+          "hint_partial": "docker service create ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-005-r35",
+      "type": "single",
+      "scenario": "Deploy sonrasi `worker-35` service task'lerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service ps worker-35",
+          "hint_text": "Task listesi icin `docker service ps` kullan.",
+          "hint_partial": "docker service ps ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-006-r36",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `db-36-36` service replica sayisini 3 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service scale db-36-36=3",
+          "hint_text": "Replica artirmak icin `docker service scale` kullan.",
+          "hint_partial": "docker service scale ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-007-r37",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `cache-37-37` service'ini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service rm cache-37-37",
+          "hint_text": "Service silmek icin `docker service rm` kullan.",
+          "hint_partial": "docker service rm ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-008-r38",
+      "type": "single",
+      "scenario": "Runbook adiminda `app-net` adinda overlay network olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network create -d overlay app-net",
+          "hint_text": "Overlay network icin `-d overlay` kullan.",
+          "hint_partial": "docker network create ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-009-r39",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde docker node'un swarm durumunu bilgi ekranindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker info",
+          "hint_text": "Swarm durumunu `docker info` icinde gorebilirsin.",
+          "hint_partial": "docker info"
+        }
+      ]
+    },
+    {
+      "id": "jds-010-r40",
+      "type": "single",
+      "scenario": "Incident sonrasinda node'u swarm cluster'dan ayir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm leave",
+          "hint_text": "Swarm'dan cikmak icin `docker swarm leave` kullan.",
+          "hint_partial": "docker swarm leave"
+        }
+      ]
+    },
+    {
+      "id": "jds-001-r41",
+      "type": "single",
+      "scenario": "Bakim oncesi mevcut node'da swarm modunu baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm init",
+          "hint_text": "Swarm baslatmak icin `docker swarm init` kullan.",
+          "hint_partial": "docker swarm ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-002-r42",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda swarm node listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node ls",
+          "hint_text": "Node listesi icin `docker node ls` kullan.",
+          "hint_partial": "docker node ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-003-r43",
+      "type": "single",
+      "scenario": "Deploy sonrasi swarm service listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service ls",
+          "hint_text": "Service listesi icin `docker service ls` kullan.",
+          "hint_partial": "docker service ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-004-r44",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `db-44-44` adinda postgres-44-44 service olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service create --name db-44-44 postgres-44-44",
+          "hint_text": "Temel service olusturmak icin `docker service create` kullan.",
+          "hint_partial": "docker service create ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-005-r45",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `cache-45-45` service task'lerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service ps cache-45-45",
+          "hint_text": "Task listesi icin `docker service ps` kullan.",
+          "hint_partial": "docker service ps ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-006-r46",
+      "type": "single",
+      "scenario": "Runbook adiminda `queue-46` service replica sayisini 3 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service scale queue-46=3",
+          "hint_text": "Replica artirmak icin `docker service scale` kullan.",
+          "hint_partial": "docker service scale ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-007-r47",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `bastion-47` service'ini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service rm bastion-47",
+          "hint_text": "Service silmek icin `docker service rm` kullan.",
+          "hint_partial": "docker service rm ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-008-r48",
+      "type": "single",
+      "scenario": "Incident sonrasinda `app-net` adinda overlay network olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network create -d overlay app-net",
+          "hint_text": "Overlay network icin `-d overlay` kullan.",
+          "hint_partial": "docker network create ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-009-r49",
+      "type": "single",
+      "scenario": "Bakim oncesi docker node'un swarm durumunu bilgi ekranindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker info",
+          "hint_text": "Swarm durumunu `docker info` icinde gorebilirsin.",
+          "hint_partial": "docker info"
+        }
+      ]
+    },
+    {
+      "id": "jds-010-r50",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda node'u swarm cluster'dan ayir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm leave",
+          "hint_text": "Swarm'dan cikmak icin `docker swarm leave` kullan.",
+          "hint_partial": "docker swarm leave"
+        }
+      ]
+    },
+    {
+      "id": "jds-001-r51",
+      "type": "single",
+      "scenario": "Deploy sonrasi mevcut node'da swarm modunu baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm init",
+          "hint_text": "Swarm baslatmak icin `docker swarm init` kullan.",
+          "hint_partial": "docker swarm ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-002-r52",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde swarm node listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node ls",
+          "hint_text": "Node listesi icin `docker node ls` kullan.",
+          "hint_partial": "docker node ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-003-r53",
+      "type": "single",
+      "scenario": "Yeni acilan hostta swarm service listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service ls",
+          "hint_text": "Service listesi icin `docker service ls` kullan.",
+          "hint_partial": "docker service ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-004-r54",
+      "type": "single",
+      "scenario": "Runbook adiminda `queue-54` adinda vault-54 service olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service create --name queue-54 vault-54",
+          "hint_text": "Temel service olusturmak icin `docker service create` kullan.",
+          "hint_partial": "docker service create ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-005-r55",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `bastion-55` service task'lerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service ps bastion-55",
+          "hint_text": "Task listesi icin `docker service ps` kullan.",
+          "hint_partial": "docker service ps ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-006-r56",
+      "type": "single",
+      "scenario": "Incident sonrasinda `proxy-56` service replica sayisini 3 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service scale proxy-56=3",
+          "hint_text": "Replica artirmak icin `docker service scale` kullan.",
+          "hint_partial": "docker service scale ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-007-r57",
+      "type": "single",
+      "scenario": "Bakim oncesi `web-57` service'ini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service rm web-57",
+          "hint_text": "Service silmek icin `docker service rm` kullan.",
+          "hint_partial": "docker service rm ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-008-r58",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `app-net` adinda overlay network olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network create -d overlay app-net",
+          "hint_text": "Overlay network icin `-d overlay` kullan.",
+          "hint_partial": "docker network create ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-009-r59",
+      "type": "single",
+      "scenario": "Deploy sonrasi docker node'un swarm durumunu bilgi ekranindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker info",
+          "hint_text": "Swarm durumunu `docker info` icinde gorebilirsin.",
+          "hint_partial": "docker info"
+        }
+      ]
+    },
+    {
+      "id": "jds-010-r60",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde node'u swarm cluster'dan ayir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm leave",
+          "hint_text": "Swarm'dan cikmak icin `docker swarm leave` kullan.",
+          "hint_partial": "docker swarm leave"
+        }
+      ]
+    },
+    {
+      "id": "jds-001-r61",
+      "type": "single",
+      "scenario": "Yeni acilan hostta mevcut node'da swarm modunu baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm init",
+          "hint_text": "Swarm baslatmak icin `docker swarm init` kullan.",
+          "hint_partial": "docker swarm ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-002-r62",
+      "type": "single",
+      "scenario": "Runbook adiminda swarm node listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node ls",
+          "hint_text": "Node listesi icin `docker node ls` kullan.",
+          "hint_partial": "docker node ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-003-r63",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde swarm service listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service ls",
+          "hint_text": "Service listesi icin `docker service ls` kullan.",
+          "hint_partial": "docker service ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-004-r64",
+      "type": "single",
+      "scenario": "Incident sonrasinda `proxy-64` adinda traefik-64 service olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service create --name proxy-64 traefik-64",
+          "hint_text": "Temel service olusturmak icin `docker service create` kullan.",
+          "hint_partial": "docker service create ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-005-r65",
+      "type": "single",
+      "scenario": "Bakim oncesi `web-65` service task'lerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service ps web-65",
+          "hint_text": "Task listesi icin `docker service ps` kullan.",
+          "hint_partial": "docker service ps ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-006-r66",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `cache-66-66-66` service replica sayisini 3 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service scale cache-66-66-66=3",
+          "hint_text": "Replica artirmak icin `docker service scale` kullan.",
+          "hint_partial": "docker service scale ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-007-r67",
+      "type": "single",
+      "scenario": "Deploy sonrasi `worker-67` service'ini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service rm worker-67",
+          "hint_text": "Service silmek icin `docker service rm` kullan.",
+          "hint_partial": "docker service rm ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-008-r68",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `app-net` adinda overlay network olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network create -d overlay app-net",
+          "hint_text": "Overlay network icin `-d overlay` kullan.",
+          "hint_partial": "docker network create ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-009-r69",
+      "type": "single",
+      "scenario": "Yeni acilan hostta docker node'un swarm durumunu bilgi ekranindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker info",
+          "hint_text": "Swarm durumunu `docker info` icinde gorebilirsin.",
+          "hint_partial": "docker info"
+        }
+      ]
+    },
+    {
+      "id": "jds-010-r70",
+      "type": "single",
+      "scenario": "Runbook adiminda node'u swarm cluster'dan ayir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm leave",
+          "hint_text": "Swarm'dan cikmak icin `docker swarm leave` kullan.",
+          "hint_partial": "docker swarm leave"
+        }
+      ]
+    },
+    {
+      "id": "jds-001-r71",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde mevcut node'da swarm modunu baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm init",
+          "hint_text": "Swarm baslatmak icin `docker swarm init` kullan.",
+          "hint_partial": "docker swarm ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-002-r72",
+      "type": "single",
+      "scenario": "Incident sonrasinda swarm node listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node ls",
+          "hint_text": "Node listesi icin `docker node ls` kullan.",
+          "hint_partial": "docker node ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-003-r73",
+      "type": "single",
+      "scenario": "Bakim oncesi swarm service listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service ls",
+          "hint_text": "Service listesi icin `docker service ls` kullan.",
+          "hint_partial": "docker service ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-004-r74",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `cache-74-74-74` adinda postgres-74-74 service olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service create --name cache-74-74-74 postgres-74-74",
+          "hint_text": "Temel service olusturmak icin `docker service create` kullan.",
+          "hint_partial": "docker service create ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-005-r75",
+      "type": "single",
+      "scenario": "Deploy sonrasi `worker-75` service task'lerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service ps worker-75",
+          "hint_text": "Task listesi icin `docker service ps` kullan.",
+          "hint_partial": "docker service ps ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-006-r76",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `db-76-76` service replica sayisini 3 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service scale db-76-76=3",
+          "hint_text": "Replica artirmak icin `docker service scale` kullan.",
+          "hint_partial": "docker service scale ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-007-r77",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `cache-77-77` service'ini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service rm cache-77-77",
+          "hint_text": "Service silmek icin `docker service rm` kullan.",
+          "hint_partial": "docker service rm ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-008-r78",
+      "type": "single",
+      "scenario": "Runbook adiminda `app-net` adinda overlay network olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network create -d overlay app-net",
+          "hint_text": "Overlay network icin `-d overlay` kullan.",
+          "hint_partial": "docker network create ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-009-r79",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde docker node'un swarm durumunu bilgi ekranindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker info",
+          "hint_text": "Swarm durumunu `docker info` icinde gorebilirsin.",
+          "hint_partial": "docker info"
+        }
+      ]
+    },
+    {
+      "id": "jds-010-r80",
+      "type": "single",
+      "scenario": "Incident sonrasinda node'u swarm cluster'dan ayir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm leave",
+          "hint_text": "Swarm'dan cikmak icin `docker swarm leave` kullan.",
+          "hint_partial": "docker swarm leave"
+        }
+      ]
+    },
+    {
+      "id": "jds-001-r81",
+      "type": "single",
+      "scenario": "Bakim oncesi mevcut node'da swarm modunu baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm init",
+          "hint_text": "Swarm baslatmak icin `docker swarm init` kullan.",
+          "hint_partial": "docker swarm ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-002-r82",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda swarm node listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node ls",
+          "hint_text": "Node listesi icin `docker node ls` kullan.",
+          "hint_partial": "docker node ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-003-r83",
+      "type": "single",
+      "scenario": "Deploy sonrasi swarm service listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service ls",
+          "hint_text": "Service listesi icin `docker service ls` kullan.",
+          "hint_partial": "docker service ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-004-r84",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `db-84-84` adinda vault-84 service olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service create --name db-84-84 vault-84",
+          "hint_text": "Temel service olusturmak icin `docker service create` kullan.",
+          "hint_partial": "docker service create ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-005-r85",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `cache-85-85` service task'lerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service ps cache-85-85",
+          "hint_text": "Task listesi icin `docker service ps` kullan.",
+          "hint_partial": "docker service ps ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-006-r86",
+      "type": "single",
+      "scenario": "Runbook adiminda `queue-86` service replica sayisini 3 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service scale queue-86=3",
+          "hint_text": "Replica artirmak icin `docker service scale` kullan.",
+          "hint_partial": "docker service scale ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-007-r87",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `bastion-87` service'ini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service rm bastion-87",
+          "hint_text": "Service silmek icin `docker service rm` kullan.",
+          "hint_partial": "docker service rm ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-008-r88",
+      "type": "single",
+      "scenario": "Incident sonrasinda `app-net` adinda overlay network olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network create -d overlay app-net",
+          "hint_text": "Overlay network icin `-d overlay` kullan.",
+          "hint_partial": "docker network create ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-009-r89",
+      "type": "single",
+      "scenario": "Bakim oncesi docker node'un swarm durumunu bilgi ekranindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker info",
+          "hint_text": "Swarm durumunu `docker info` icinde gorebilirsin.",
+          "hint_partial": "docker info"
+        }
+      ]
+    },
+    {
+      "id": "jds-010-r90",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda node'u swarm cluster'dan ayir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm leave",
+          "hint_text": "Swarm'dan cikmak icin `docker swarm leave` kullan.",
+          "hint_partial": "docker swarm leave"
+        }
+      ]
+    },
+    {
+      "id": "jds-001-r91",
+      "type": "single",
+      "scenario": "Deploy sonrasi mevcut node'da swarm modunu baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm init",
+          "hint_text": "Swarm baslatmak icin `docker swarm init` kullan.",
+          "hint_partial": "docker swarm ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-002-r92",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde swarm node listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node ls",
+          "hint_text": "Node listesi icin `docker node ls` kullan.",
+          "hint_partial": "docker node ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-003-r93",
+      "type": "single",
+      "scenario": "Yeni acilan hostta swarm service listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service ls",
+          "hint_text": "Service listesi icin `docker service ls` kullan.",
+          "hint_partial": "docker service ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-004-r94",
+      "type": "single",
+      "scenario": "Runbook adiminda `queue-94` adinda traefik-94 service olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service create --name queue-94 traefik-94",
+          "hint_text": "Temel service olusturmak icin `docker service create` kullan.",
+          "hint_partial": "docker service create ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-005-r95",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `bastion-95` service task'lerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service ps bastion-95",
+          "hint_text": "Task listesi icin `docker service ps` kullan.",
+          "hint_partial": "docker service ps ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-006-r96",
+      "type": "single",
+      "scenario": "Incident sonrasinda `proxy-96` service replica sayisini 3 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service scale proxy-96=3",
+          "hint_text": "Replica artirmak icin `docker service scale` kullan.",
+          "hint_partial": "docker service scale ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-007-r97",
+      "type": "single",
+      "scenario": "Bakim oncesi `web-97` service'ini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service rm web-97",
+          "hint_text": "Service silmek icin `docker service rm` kullan.",
+          "hint_partial": "docker service rm ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-008-r98",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `app-net` adinda overlay network olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network create -d overlay app-net",
+          "hint_text": "Overlay network icin `-d overlay` kullan.",
+          "hint_partial": "docker network create ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-009-r99",
+      "type": "single",
+      "scenario": "Deploy sonrasi docker node'un swarm durumunu bilgi ekranindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker info",
+          "hint_text": "Swarm durumunu `docker info` icinde gorebilirsin.",
+          "hint_partial": "docker info"
+        }
+      ]
+    },
+    {
+      "id": "jds-010-r100",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde node'u swarm cluster'dan ayir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm leave",
+          "hint_text": "Swarm'dan cikmak icin `docker swarm leave` kullan.",
+          "hint_partial": "docker swarm leave"
+        }
+      ]
+    },
+    {
+      "id": "jds-001-r101",
+      "type": "single",
+      "scenario": "Yeni acilan hostta mevcut node'da swarm modunu baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm init",
+          "hint_text": "Swarm baslatmak icin `docker swarm init` kullan.",
+          "hint_partial": "docker swarm ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-002-r102",
+      "type": "single",
+      "scenario": "Runbook adiminda swarm node listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node ls",
+          "hint_text": "Node listesi icin `docker node ls` kullan.",
+          "hint_partial": "docker node ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-003-r103",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde swarm service listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service ls",
+          "hint_text": "Service listesi icin `docker service ls` kullan.",
+          "hint_partial": "docker service ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-004-r104",
+      "type": "single",
+      "scenario": "Incident sonrasinda `proxy-104` adinda postgres-104-104 service olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service create --name proxy-104 postgres-104-104",
+          "hint_text": "Temel service olusturmak icin `docker service create` kullan.",
+          "hint_partial": "docker service create ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-005-r105",
+      "type": "single",
+      "scenario": "Bakim oncesi `web-105` service task'lerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service ps web-105",
+          "hint_text": "Task listesi icin `docker service ps` kullan.",
+          "hint_partial": "docker service ps ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-006-r106",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `cache-106-106-106` service replica sayisini 3 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service scale cache-106-106-106=3",
+          "hint_text": "Replica artirmak icin `docker service scale` kullan.",
+          "hint_partial": "docker service scale ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-007-r107",
+      "type": "single",
+      "scenario": "Deploy sonrasi `worker-107` service'ini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service rm worker-107",
+          "hint_text": "Service silmek icin `docker service rm` kullan.",
+          "hint_partial": "docker service rm ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-008-r108",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `app-net` adinda overlay network olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network create -d overlay app-net",
+          "hint_text": "Overlay network icin `-d overlay` kullan.",
+          "hint_partial": "docker network create ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-009-r109",
+      "type": "single",
+      "scenario": "Yeni acilan hostta docker node'un swarm durumunu bilgi ekranindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker info",
+          "hint_text": "Swarm durumunu `docker info` icinde gorebilirsin.",
+          "hint_partial": "docker info"
+        }
+      ]
+    },
+    {
+      "id": "jds-010-r110",
+      "type": "single",
+      "scenario": "Runbook adiminda node'u swarm cluster'dan ayir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm leave",
+          "hint_text": "Swarm'dan cikmak icin `docker swarm leave` kullan.",
+          "hint_partial": "docker swarm leave"
+        }
+      ]
+    },
+    {
+      "id": "jds-001-r111",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde mevcut node'da swarm modunu baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm init",
+          "hint_text": "Swarm baslatmak icin `docker swarm init` kullan.",
+          "hint_partial": "docker swarm ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-002-r112",
+      "type": "single",
+      "scenario": "Incident sonrasinda swarm node listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node ls",
+          "hint_text": "Node listesi icin `docker node ls` kullan.",
+          "hint_partial": "docker node ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-003-r113",
+      "type": "single",
+      "scenario": "Bakim oncesi swarm service listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service ls",
+          "hint_text": "Service listesi icin `docker service ls` kullan.",
+          "hint_partial": "docker service ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-004-r114",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `cache-114-114-114` adinda vault-114 service olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service create --name cache-114-114-114 vault-114",
+          "hint_text": "Temel service olusturmak icin `docker service create` kullan.",
+          "hint_partial": "docker service create ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-005-r115",
+      "type": "single",
+      "scenario": "Deploy sonrasi `worker-115` service task'lerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service ps worker-115",
+          "hint_text": "Task listesi icin `docker service ps` kullan.",
+          "hint_partial": "docker service ps ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-006-r116",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `db-116-116` service replica sayisini 3 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service scale db-116-116=3",
+          "hint_text": "Replica artirmak icin `docker service scale` kullan.",
+          "hint_partial": "docker service scale ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-007-r117",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `cache-117-117` service'ini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service rm cache-117-117",
+          "hint_text": "Service silmek icin `docker service rm` kullan.",
+          "hint_partial": "docker service rm ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-008-r118",
+      "type": "single",
+      "scenario": "Runbook adiminda `app-net` adinda overlay network olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network create -d overlay app-net",
+          "hint_text": "Overlay network icin `-d overlay` kullan.",
+          "hint_partial": "docker network create ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-009-r119",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde docker node'un swarm durumunu bilgi ekranindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker info",
+          "hint_text": "Swarm durumunu `docker info` icinde gorebilirsin.",
+          "hint_partial": "docker info"
+        }
+      ]
+    },
+    {
+      "id": "jds-010-r120",
+      "type": "single",
+      "scenario": "Incident sonrasinda node'u swarm cluster'dan ayir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm leave",
+          "hint_text": "Swarm'dan cikmak icin `docker swarm leave` kullan.",
+          "hint_partial": "docker swarm leave"
+        }
+      ]
+    },
+    {
+      "id": "jds-001-r121",
+      "type": "single",
+      "scenario": "Bakim oncesi mevcut node'da swarm modunu baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm init",
+          "hint_text": "Swarm baslatmak icin `docker swarm init` kullan.",
+          "hint_partial": "docker swarm ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-002-r122",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda swarm node listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node ls",
+          "hint_text": "Node listesi icin `docker node ls` kullan.",
+          "hint_partial": "docker node ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-003-r123",
+      "type": "single",
+      "scenario": "Deploy sonrasi swarm service listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service ls",
+          "hint_text": "Service listesi icin `docker service ls` kullan.",
+          "hint_partial": "docker service ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-004-r124",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `db-124-124` adinda traefik-124 service olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service create --name db-124-124 traefik-124",
+          "hint_text": "Temel service olusturmak icin `docker service create` kullan.",
+          "hint_partial": "docker service create ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-005-r125",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `cache-125-125` service task'lerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service ps cache-125-125",
+          "hint_text": "Task listesi icin `docker service ps` kullan.",
+          "hint_partial": "docker service ps ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-006-r126",
+      "type": "single",
+      "scenario": "Runbook adiminda `queue-126` service replica sayisini 3 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service scale queue-126=3",
+          "hint_text": "Replica artirmak icin `docker service scale` kullan.",
+          "hint_partial": "docker service scale ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-007-r127",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `bastion-127` service'ini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service rm bastion-127",
+          "hint_text": "Service silmek icin `docker service rm` kullan.",
+          "hint_partial": "docker service rm ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-008-r128",
+      "type": "single",
+      "scenario": "Incident sonrasinda `app-net` adinda overlay network olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network create -d overlay app-net",
+          "hint_text": "Overlay network icin `-d overlay` kullan.",
+          "hint_partial": "docker network create ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-009-r129",
+      "type": "single",
+      "scenario": "Bakim oncesi docker node'un swarm durumunu bilgi ekranindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker info",
+          "hint_text": "Swarm durumunu `docker info` icinde gorebilirsin.",
+          "hint_partial": "docker info"
+        }
+      ]
+    },
+    {
+      "id": "jds-010-r130",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda node'u swarm cluster'dan ayir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm leave",
+          "hint_text": "Swarm'dan cikmak icin `docker swarm leave` kullan.",
+          "hint_partial": "docker swarm leave"
+        }
+      ]
+    },
+    {
+      "id": "jds-001-r131",
+      "type": "single",
+      "scenario": "Deploy sonrasi mevcut node'da swarm modunu baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm init",
+          "hint_text": "Swarm baslatmak icin `docker swarm init` kullan.",
+          "hint_partial": "docker swarm ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-002-r132",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde swarm node listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node ls",
+          "hint_text": "Node listesi icin `docker node ls` kullan.",
+          "hint_partial": "docker node ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-003-r133",
+      "type": "single",
+      "scenario": "Yeni acilan hostta swarm service listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service ls",
+          "hint_text": "Service listesi icin `docker service ls` kullan.",
+          "hint_partial": "docker service ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-004-r134",
+      "type": "single",
+      "scenario": "Runbook adiminda `queue-134` adinda postgres-134-134 service olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service create --name queue-134 postgres-134-134",
+          "hint_text": "Temel service olusturmak icin `docker service create` kullan.",
+          "hint_partial": "docker service create ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-005-r135",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `bastion-135` service task'lerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service ps bastion-135",
+          "hint_text": "Task listesi icin `docker service ps` kullan.",
+          "hint_partial": "docker service ps ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-006-r136",
+      "type": "single",
+      "scenario": "Incident sonrasinda `proxy-136` service replica sayisini 3 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service scale proxy-136=3",
+          "hint_text": "Replica artirmak icin `docker service scale` kullan.",
+          "hint_partial": "docker service scale ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-007-r137",
+      "type": "single",
+      "scenario": "Bakim oncesi `web-137` service'ini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service rm web-137",
+          "hint_text": "Service silmek icin `docker service rm` kullan.",
+          "hint_partial": "docker service rm ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-008-r138",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `app-net` adinda overlay network olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network create -d overlay app-net",
+          "hint_text": "Overlay network icin `-d overlay` kullan.",
+          "hint_partial": "docker network create ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-009-r139",
+      "type": "single",
+      "scenario": "Deploy sonrasi docker node'un swarm durumunu bilgi ekranindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker info",
+          "hint_text": "Swarm durumunu `docker info` icinde gorebilirsin.",
+          "hint_partial": "docker info"
+        }
+      ]
+    },
+    {
+      "id": "jds-010-r140",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde node'u swarm cluster'dan ayir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm leave",
+          "hint_text": "Swarm'dan cikmak icin `docker swarm leave` kullan.",
+          "hint_partial": "docker swarm leave"
+        }
+      ]
+    },
+    {
+      "id": "jds-001-r141",
+      "type": "single",
+      "scenario": "Yeni acilan hostta mevcut node'da swarm modunu baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm init",
+          "hint_text": "Swarm baslatmak icin `docker swarm init` kullan.",
+          "hint_partial": "docker swarm ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-002-r142",
+      "type": "single",
+      "scenario": "Runbook adiminda swarm node listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node ls",
+          "hint_text": "Node listesi icin `docker node ls` kullan.",
+          "hint_partial": "docker node ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-003-r143",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde swarm service listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service ls",
+          "hint_text": "Service listesi icin `docker service ls` kullan.",
+          "hint_partial": "docker service ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-004-r144",
+      "type": "single",
+      "scenario": "Incident sonrasinda `proxy-144` adinda vault-144 service olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service create --name proxy-144 vault-144",
+          "hint_text": "Temel service olusturmak icin `docker service create` kullan.",
+          "hint_partial": "docker service create ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-005-r145",
+      "type": "single",
+      "scenario": "Bakim oncesi `web-145` service task'lerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service ps web-145",
+          "hint_text": "Task listesi icin `docker service ps` kullan.",
+          "hint_partial": "docker service ps ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-006-r146",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `cache-146-146-146` service replica sayisini 3 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service scale cache-146-146-146=3",
+          "hint_text": "Replica artirmak icin `docker service scale` kullan.",
+          "hint_partial": "docker service scale ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-007-r147",
+      "type": "single",
+      "scenario": "Deploy sonrasi `worker-147` service'ini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service rm worker-147",
+          "hint_text": "Service silmek icin `docker service rm` kullan.",
+          "hint_partial": "docker service rm ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-008-r148",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `app-net` adinda overlay network olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network create -d overlay app-net",
+          "hint_text": "Overlay network icin `-d overlay` kullan.",
+          "hint_partial": "docker network create ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-009-r149",
+      "type": "single",
+      "scenario": "Yeni acilan hostta docker node'un swarm durumunu bilgi ekranindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker info",
+          "hint_text": "Swarm durumunu `docker info` icinde gorebilirsin.",
+          "hint_partial": "docker info"
+        }
+      ]
+    },
+    {
+      "id": "jds-010-r150",
+      "type": "single",
+      "scenario": "Runbook adiminda node'u swarm cluster'dan ayir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm leave",
+          "hint_text": "Swarm'dan cikmak icin `docker swarm leave` kullan.",
+          "hint_partial": "docker swarm leave"
+        }
+      ]
+    },
+    {
+      "id": "jds-001-r151",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde mevcut node'da swarm modunu baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm init",
+          "hint_text": "Swarm baslatmak icin `docker swarm init` kullan.",
+          "hint_partial": "docker swarm ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-002-r152",
+      "type": "single",
+      "scenario": "Incident sonrasinda swarm node listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node ls",
+          "hint_text": "Node listesi icin `docker node ls` kullan.",
+          "hint_partial": "docker node ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-003-r153",
+      "type": "single",
+      "scenario": "Bakim oncesi swarm service listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service ls",
+          "hint_text": "Service listesi icin `docker service ls` kullan.",
+          "hint_partial": "docker service ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-004-r154",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `cache-154-154-154` adinda traefik-154 service olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service create --name cache-154-154-154 traefik-154",
+          "hint_text": "Temel service olusturmak icin `docker service create` kullan.",
+          "hint_partial": "docker service create ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-005-r155",
+      "type": "single",
+      "scenario": "Deploy sonrasi `worker-155` service task'lerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service ps worker-155",
+          "hint_text": "Task listesi icin `docker service ps` kullan.",
+          "hint_partial": "docker service ps ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-006-r156",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `db-156-156` service replica sayisini 3 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service scale db-156-156=3",
+          "hint_text": "Replica artirmak icin `docker service scale` kullan.",
+          "hint_partial": "docker service scale ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-007-r157",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `cache-157-157` service'ini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service rm cache-157-157",
+          "hint_text": "Service silmek icin `docker service rm` kullan.",
+          "hint_partial": "docker service rm ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-008-r158",
+      "type": "single",
+      "scenario": "Runbook adiminda `app-net` adinda overlay network olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network create -d overlay app-net",
+          "hint_text": "Overlay network icin `-d overlay` kullan.",
+          "hint_partial": "docker network create ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-009-r159",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde docker node'un swarm durumunu bilgi ekranindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker info",
+          "hint_text": "Swarm durumunu `docker info` icinde gorebilirsin.",
+          "hint_partial": "docker info"
+        }
+      ]
+    },
+    {
+      "id": "jds-010-r160",
+      "type": "single",
+      "scenario": "Incident sonrasinda node'u swarm cluster'dan ayir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm leave",
+          "hint_text": "Swarm'dan cikmak icin `docker swarm leave` kullan.",
+          "hint_partial": "docker swarm leave"
+        }
+      ]
+    },
+    {
+      "id": "jds-001-r161",
+      "type": "single",
+      "scenario": "Bakim oncesi mevcut node'da swarm modunu baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm init",
+          "hint_text": "Swarm baslatmak icin `docker swarm init` kullan.",
+          "hint_partial": "docker swarm ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-002-r162",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda swarm node listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node ls",
+          "hint_text": "Node listesi icin `docker node ls` kullan.",
+          "hint_partial": "docker node ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-003-r163",
+      "type": "single",
+      "scenario": "Deploy sonrasi swarm service listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service ls",
+          "hint_text": "Service listesi icin `docker service ls` kullan.",
+          "hint_partial": "docker service ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-004-r164",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `db-164-164` adinda postgres-164-164 service olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service create --name db-164-164 postgres-164-164",
+          "hint_text": "Temel service olusturmak icin `docker service create` kullan.",
+          "hint_partial": "docker service create ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-005-r165",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `cache-165-165` service task'lerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service ps cache-165-165",
+          "hint_text": "Task listesi icin `docker service ps` kullan.",
+          "hint_partial": "docker service ps ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-006-r166",
+      "type": "single",
+      "scenario": "Runbook adiminda `queue-166` service replica sayisini 3 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service scale queue-166=3",
+          "hint_text": "Replica artirmak icin `docker service scale` kullan.",
+          "hint_partial": "docker service scale ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-007-r167",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `bastion-167` service'ini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service rm bastion-167",
+          "hint_text": "Service silmek icin `docker service rm` kullan.",
+          "hint_partial": "docker service rm ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-008-r168",
+      "type": "single",
+      "scenario": "Incident sonrasinda `app-net` adinda overlay network olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network create -d overlay app-net",
+          "hint_text": "Overlay network icin `-d overlay` kullan.",
+          "hint_partial": "docker network create ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-009-r169",
+      "type": "single",
+      "scenario": "Bakim oncesi docker node'un swarm durumunu bilgi ekranindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker info",
+          "hint_text": "Swarm durumunu `docker info` icinde gorebilirsin.",
+          "hint_partial": "docker info"
+        }
+      ]
+    },
+    {
+      "id": "jds-010-r170",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda node'u swarm cluster'dan ayir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm leave",
+          "hint_text": "Swarm'dan cikmak icin `docker swarm leave` kullan.",
+          "hint_partial": "docker swarm leave"
+        }
+      ]
+    },
+    {
+      "id": "jds-001-r171",
+      "type": "single",
+      "scenario": "Deploy sonrasi mevcut node'da swarm modunu baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm init",
+          "hint_text": "Swarm baslatmak icin `docker swarm init` kullan.",
+          "hint_partial": "docker swarm ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-002-r172",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde swarm node listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node ls",
+          "hint_text": "Node listesi icin `docker node ls` kullan.",
+          "hint_partial": "docker node ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-003-r173",
+      "type": "single",
+      "scenario": "Yeni acilan hostta swarm service listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service ls",
+          "hint_text": "Service listesi icin `docker service ls` kullan.",
+          "hint_partial": "docker service ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-004-r174",
+      "type": "single",
+      "scenario": "Runbook adiminda `queue-174` adinda vault-174 service olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service create --name queue-174 vault-174",
+          "hint_text": "Temel service olusturmak icin `docker service create` kullan.",
+          "hint_partial": "docker service create ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-005-r175",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `bastion-175` service task'lerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service ps bastion-175",
+          "hint_text": "Task listesi icin `docker service ps` kullan.",
+          "hint_partial": "docker service ps ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-006-r176",
+      "type": "single",
+      "scenario": "Incident sonrasinda `proxy-176` service replica sayisini 3 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service scale proxy-176=3",
+          "hint_text": "Replica artirmak icin `docker service scale` kullan.",
+          "hint_partial": "docker service scale ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-007-r177",
+      "type": "single",
+      "scenario": "Bakim oncesi `web-177` service'ini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service rm web-177",
+          "hint_text": "Service silmek icin `docker service rm` kullan.",
+          "hint_partial": "docker service rm ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-008-r178",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `app-net` adinda overlay network olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network create -d overlay app-net",
+          "hint_text": "Overlay network icin `-d overlay` kullan.",
+          "hint_partial": "docker network create ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-009-r179",
+      "type": "single",
+      "scenario": "Deploy sonrasi docker node'un swarm durumunu bilgi ekranindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker info",
+          "hint_text": "Swarm durumunu `docker info` icinde gorebilirsin.",
+          "hint_partial": "docker info"
+        }
+      ]
+    },
+    {
+      "id": "jds-010-r180",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde node'u swarm cluster'dan ayir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm leave",
+          "hint_text": "Swarm'dan cikmak icin `docker swarm leave` kullan.",
+          "hint_partial": "docker swarm leave"
+        }
+      ]
+    },
+    {
+      "id": "jds-001-r181",
+      "type": "single",
+      "scenario": "Yeni acilan hostta mevcut node'da swarm modunu baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm init",
+          "hint_text": "Swarm baslatmak icin `docker swarm init` kullan.",
+          "hint_partial": "docker swarm ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-002-r182",
+      "type": "single",
+      "scenario": "Runbook adiminda swarm node listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node ls",
+          "hint_text": "Node listesi icin `docker node ls` kullan.",
+          "hint_partial": "docker node ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-003-r183",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde swarm service listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service ls",
+          "hint_text": "Service listesi icin `docker service ls` kullan.",
+          "hint_partial": "docker service ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-004-r184",
+      "type": "single",
+      "scenario": "Incident sonrasinda `proxy-184` adinda traefik-184 service olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service create --name proxy-184 traefik-184",
+          "hint_text": "Temel service olusturmak icin `docker service create` kullan.",
+          "hint_partial": "docker service create ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-005-r185",
+      "type": "single",
+      "scenario": "Bakim oncesi `web-185` service task'lerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service ps web-185",
+          "hint_text": "Task listesi icin `docker service ps` kullan.",
+          "hint_partial": "docker service ps ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-006-r186",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `cache-186-186-186` service replica sayisini 3 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service scale cache-186-186-186=3",
+          "hint_text": "Replica artirmak icin `docker service scale` kullan.",
+          "hint_partial": "docker service scale ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-007-r187",
+      "type": "single",
+      "scenario": "Deploy sonrasi `worker-187` service'ini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service rm worker-187",
+          "hint_text": "Service silmek icin `docker service rm` kullan.",
+          "hint_partial": "docker service rm ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-008-r188",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `app-net` adinda overlay network olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network create -d overlay app-net",
+          "hint_text": "Overlay network icin `-d overlay` kullan.",
+          "hint_partial": "docker network create ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-009-r189",
+      "type": "single",
+      "scenario": "Yeni acilan hostta docker node'un swarm durumunu bilgi ekranindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker info",
+          "hint_text": "Swarm durumunu `docker info` icinde gorebilirsin.",
+          "hint_partial": "docker info"
+        }
+      ]
+    },
+    {
+      "id": "jds-010-r190",
+      "type": "single",
+      "scenario": "Runbook adiminda node'u swarm cluster'dan ayir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm leave",
+          "hint_text": "Swarm'dan cikmak icin `docker swarm leave` kullan.",
+          "hint_partial": "docker swarm leave"
+        }
+      ]
+    }
+  ]
+}

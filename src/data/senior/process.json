@@ -1,0 +1,225 @@
+{
+  "level": "senior",
+  "topic": "process",
+  "questions": [
+    {
+      "id": "sproc-001",
+      "type": "multi-step",
+      "scenario": "Production'da memory leak şüphesi var. Process'in memory büyümesini zaman içinde izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "watch -n 5 'ps -p $(pgrep myapp) -o pid,rss,vsz,pmem'",
+          "hint_text": "watch ile her 5 saniyede ps çalıştır, memory field'larını izle",
+          "hint_partial": "watch -n 5 'ps -p $(pgrep myapp) -o pid,rss,vsz,..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-002",
+      "type": "single",
+      "scenario": "PID 9999 process'ine ait tüm memory mapping'lerini göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pmap -x 9999",
+          "hint_text": "pmap ile process memory map",
+          "hint_partial": "pmap -x ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-003",
+      "type": "multi-step",
+      "scenario": "myapp process'ini `strace` ile izle; en çok çağrılan system call'ları gör.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "strace -c -p $(pgrep myapp)",
+          "hint_text": "strace -c summary mode, -p ile PID'e attach",
+          "hint_partial": "strace -c -p ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-004",
+      "type": "single",
+      "scenario": "cgroup v2'de myapp için memory limit 512MB olarak ayarla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "echo 536870912 > /sys/fs/cgroup/myapp/memory.max",
+          "hint_text": "cgroup memory.max file'ına byte cinsinden yaz (512*1024*1024)",
+          "hint_partial": "echo 536870912 > /sys/fs/cgroup/myapp/..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-005",
+      "type": "multi-step",
+      "scenario": "Process'in hangi shared library'leri kullandığını ve hangisinin eksik olduğunu bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ldd /usr/bin/myapp",
+          "hint_text": "ldd ile binary'nin dynamic dependencies",
+          "hint_partial": "ldd ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "ldconfig -p | grep libmissing",
+          "hint_text": "ldconfig -p library cache'i listeler",
+          "hint_partial": "ldconfig -p | grep ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-006",
+      "type": "single",
+      "scenario": "Process'lerin CPU core'larına nasıl dağıldığını göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps -eo pid,psr,comm | sort -k2",
+          "hint_text": "ps -eo ile custom format, psr = processor number",
+          "hint_partial": "ps -eo pid,psr,comm | ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-007",
+      "type": "multi-step",
+      "scenario": "myapp'ı sadece CPU 0 ve 1'de çalışacak şekilde CPU affinity ayarla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "taskset -c 0,1 -p $(pgrep myapp)",
+          "hint_text": "taskset -c CPU listesi, -p PID",
+          "hint_partial": "taskset -c 0,1 -p ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "taskset -p $(pgrep myapp)",
+          "hint_text": "taskset -p ile mevcut affinity mask'i göster",
+          "hint_partial": "taskset -p ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-008",
+      "type": "single",
+      "scenario": "Bir process'in açık file descriptor sayısını ve limitini göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls /proc/$(pgrep myapp)/fd | wc -l",
+          "hint_text": "/proc/PID/fd directory'sindeki her entry bir fd",
+          "hint_partial": "ls /proc/$(pgrep myapp)/fd | ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-009",
+      "type": "single",
+      "scenario": "systemd unit file'ı olmadan myapp'ı restart policy ile başlatmak için hangi komutu kullanırsın? (systemd-run)",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "systemd-run --on-failure-restart /opt/myapp/myapp",
+          "hint_text": "systemd-run ile geçici service olarak çalıştır",
+          "hint_partial": "systemd-run --on-failure-restart ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-010",
+      "type": "multi-step",
+      "scenario": "Process core dump oluşturulmasını aktif et, sonra test için mevcut core dump limitini kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ulimit -c unlimited",
+          "hint_text": "ulimit -c core file size limiti",
+          "hint_partial": "ulimit -c ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "ulimit -a",
+          "hint_text": "tüm limitleri listele",
+          "hint_partial": "ulimit ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-011",
+      "type": "single",
+      "scenario": "FD sizintisi supesinde PID 4242 icin `Max open files` soft/hard limitlerini cikar.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "grep 'Max open files' /proc/4242/limits",
+          "hint_text": "Belirli limit satirini almak icin `/proc/<pid>/limits` icinden grep yap.",
+          "hint_partial": "grep 'Max open files' /proc/4242/limits"
+        }
+      ]
+    },
+    {
+      "id": "sproc-012",
+      "type": "single",
+      "scenario": "CPU affinity bilgisi icin PID 4242 process'ini gorev setiyle sorgula",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "taskset -p 4242",
+          "hint_text": "Surecin CPU affinity bilgisini taskset ile goster",
+          "hint_partial": "taskset -p ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-013",
+      "type": "single",
+      "scenario": "Tum java process'lerini tam komut satiriyla listele",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pgrep -af java",
+          "hint_text": "Tam komut satiri icin pgrep -af kullan",
+          "hint_partial": "pgrep -af ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-014",
+      "type": "single",
+      "scenario": "PID 4242 process'e acik file'lari ve thread bilgilerini goster",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps -T -p 4242",
+          "hint_text": "Thread seviyesinde ps ciktisi almak icin -T kullan",
+          "hint_partial": "ps -T -p ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-015",
+      "type": "multi-step",
+      "scenario": "PID 4242 process'e önce strace ile baglan sonra acik file'larini goster",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "strace -p 4242",
+          "hint_text": "Ilk adimda system call seviyesinde izle",
+          "hint_partial": "strace -p ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "lsof -p 4242",
+          "hint_text": "Ikinci adimda acik file'lari kontrol et",
+          "hint_partial": "lsof -p ..."
+        }
+      ]
+    }
+  ]
+}

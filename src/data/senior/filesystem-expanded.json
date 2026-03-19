@@ -1,0 +1,2606 @@
+{
+  "level": "senior",
+  "topic": "filesystem",
+  "questions": [
+    {
+      "id": "sfs-016",
+      "type": "single",
+      "scenario": "`/data` altindaki acik file'lari recursive olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof +D /data",
+          "hint_text": "Directory altindaki acik dosyalar icin `lsof +D` kullan.",
+          "hint_partial": "lsof +D ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-017",
+      "type": "single",
+      "scenario": "`/dev/sdb1` icin fsck'nin ne yapacagini degistirmeden goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fsck -N /dev/sdb1",
+          "hint_text": "Dry-run benzeri gosterim icin `fsck -N` kullan.",
+          "hint_partial": "fsck -N ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-018",
+      "type": "single",
+      "scenario": "`/data` mount noktasinin filesystem turu ve block size bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "stat -f /data",
+          "hint_text": "Filesystem stat icin `stat -f` kullan.",
+          "hint_partial": "stat -f ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-019",
+      "type": "single",
+      "scenario": "`/srv/releases/current` yolunu `/var/www/html` altina bind mount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount --bind /srv/releases/current /var/www/html",
+          "hint_text": "Bind mount icin `mount --bind source target` kullan.",
+          "hint_partial": "mount --bind ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-020",
+      "type": "single",
+      "scenario": "`/data` mount noktasini `noatime` ile remount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount -o remount,noatime /data",
+          "hint_text": "Mount secenegini degistirmek icin `remount` kullan.",
+          "hint_partial": "mount -o remount,..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-021",
+      "type": "single",
+      "scenario": "`/var/log/app.log` ile ayni inode'a bagli hard link'leri ara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /var/log -samefile /var/log/app.log",
+          "hint_text": "Ayni inode icin `find -samefile` kullan.",
+          "hint_partial": "find /var/log ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-022",
+      "type": "single",
+      "scenario": "10GB boyutunda sparse bir `disk.img` file'i olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "truncate -s 10G disk.img",
+          "hint_text": "Sparse dosya icin `truncate -s` kullan.",
+          "hint_partial": "truncate -s ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-023",
+      "type": "single",
+      "scenario": "`/srv/app/config.yml` dosyasinin extended attribute'larini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getfattr -d /srv/app/config.yml",
+          "hint_text": "xattr okumak icin `getfattr -d` kullan.",
+          "hint_partial": "getfattr -d ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-024",
+      "type": "single",
+      "scenario": "`/srv/app/config.yml` dosyasina `user.env=prod` extended attribute'ini ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setfattr -n user.env -v prod /srv/app/config.yml",
+          "hint_text": "xattr yazmak icin `setfattr -n name -v value` kullan.",
+          "hint_partial": "setfattr -n ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-025",
+      "type": "single",
+      "scenario": "Kernel buffer'larindaki dirty data'yi diske flush et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sync",
+          "hint_text": "Filesystem buffer flush icin `sync` kullan.",
+          "hint_partial": "sync"
+        }
+      ]
+    },
+    {
+      "id": "sfs-016-r1",
+      "type": "single",
+      "scenario": "Bakim oncesi `/data-1` altindaki acik file'lari recursive olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof +D /data-1",
+          "hint_text": "Directory altindaki acik dosyalar icin `lsof +D` kullan.",
+          "hint_partial": "lsof +D ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-017-r2",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/dev/sdb1` icin fsck'nin ne yapacagini degistirmeden goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fsck -N /dev/sdb1",
+          "hint_text": "Dry-run benzeri gosterim icin `fsck -N` kullan.",
+          "hint_partial": "fsck -N ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-018-r3",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/data-3` mount noktasinin filesystem turu ve block size bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "stat -f /data-3",
+          "hint_text": "Filesystem stat icin `stat -f` kullan.",
+          "hint_partial": "stat -f ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-019-r4",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/srv/app/db-4-4-4/releases/current` yolunu `/var/db-4-4/www/html` altina bind mount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount --bind /srv/app/db-4-4-4/releases/current /var/db-4-4/www/html",
+          "hint_text": "Bind mount icin `mount --bind source target` kullan.",
+          "hint_partial": "mount --bind ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-020-r5",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `/data-5` mount noktasini `noatime` ile remount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount -o remount,noatime /data-5",
+          "hint_text": "Mount secenegini degistirmek icin `remount` kullan.",
+          "hint_partial": "mount -o remount,..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-021-r6",
+      "type": "single",
+      "scenario": "Runbook adiminda `/var/queue-6/log/queue-6/app/queue-6-6.log` ile ayni inode'a bagli hard link'leri ara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /var/queue-6/log/queue-6 -samefile /var/queue-6/log/queue-6/app/queue-6-6.log",
+          "hint_text": "Ayni inode icin `find -samefile` kullan.",
+          "hint_partial": "find /var/queue-6/log/queue-6 ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-022-r7",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde 3GB boyutunda sparse bir `disk-7.img` file'i olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "truncate -s 3G disk-7.img",
+          "hint_text": "Sparse dosya icin `truncate -s` kullan.",
+          "hint_partial": "truncate -s ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-023-r8",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/srv/app/proxy-8-8/app/proxy-8/config.yml` dosyasinin extended attribute'larini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getfattr -d /srv/app/proxy-8-8/app/proxy-8/config.yml",
+          "hint_text": "xattr okumak icin `getfattr -d` kullan.",
+          "hint_partial": "getfattr -d ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-024-r9",
+      "type": "single",
+      "scenario": "Bakim oncesi `/srv/app/web-9-9-9/app/web-9-9/config.yml` dosyasina `user.env=dev-9` extended attribute'ini ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setfattr -n user.env -v dev-9 /srv/app/web-9-9-9/app/web-9-9/config.yml",
+          "hint_text": "xattr yazmak icin `setfattr -n name -v value` kullan.",
+          "hint_partial": "setfattr -n ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-025-r10",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda kernel buffer'larindaki dirty data'yi diske flush et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sync",
+          "hint_text": "Filesystem buffer flush icin `sync` kullan.",
+          "hint_partial": "sync"
+        }
+      ]
+    },
+    {
+      "id": "sfs-016-r11",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/data-11` altindaki acik file'lari recursive olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof +D /data-11",
+          "hint_text": "Directory altindaki acik dosyalar icin `lsof +D` kullan.",
+          "hint_partial": "lsof +D ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-017-r12",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/dev/sdb1` icin fsck'nin ne yapacagini degistirmeden goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fsck -N /dev/sdb1",
+          "hint_text": "Dry-run benzeri gosterim icin `fsck -N` kullan.",
+          "hint_partial": "fsck -N ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-018-r13",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `/data-13` mount noktasinin filesystem turu ve block size bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "stat -f /data-13",
+          "hint_text": "Filesystem stat icin `stat -f` kullan.",
+          "hint_partial": "stat -f ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-019-r14",
+      "type": "single",
+      "scenario": "Runbook adiminda `/srv/app/queue-14-14/releases/current` yolunu `/var/queue-14/www/html` altina bind mount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount --bind /srv/app/queue-14-14/releases/current /var/queue-14/www/html",
+          "hint_text": "Bind mount icin `mount --bind source target` kullan.",
+          "hint_partial": "mount --bind ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-020-r15",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `/data-15` mount noktasini `noatime` ile remount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount -o remount,noatime /data-15",
+          "hint_text": "Mount secenegini degistirmek icin `remount` kullan.",
+          "hint_partial": "mount -o remount,..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-021-r16",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/var/proxy-16/log/proxy-16/app/proxy-16-16.log` ile ayni inode'a bagli hard link'leri ara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /var/proxy-16/log/proxy-16 -samefile /var/proxy-16/log/proxy-16/app/proxy-16-16.log",
+          "hint_text": "Ayni inode icin `find -samefile` kullan.",
+          "hint_partial": "find /var/proxy-16/log/proxy-16 ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-022-r17",
+      "type": "single",
+      "scenario": "Bakim oncesi 1GB boyutunda sparse bir `disk-17.img` file'i olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "truncate -s 1G disk-17.img",
+          "hint_text": "Sparse dosya icin `truncate -s` kullan.",
+          "hint_partial": "truncate -s ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-023-r18",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/srv/app/cache-18-18-18-18/app/cache-18-18-18/config.yml` dosyasinin extended attribute'larini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getfattr -d /srv/app/cache-18-18-18-18/app/cache-18-18-18/config.yml",
+          "hint_text": "xattr okumak icin `getfattr -d` kullan.",
+          "hint_partial": "getfattr -d ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-024-r19",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/srv/app/queue-19-19-19/app/queue-19-19/config.yml` dosyasina `user.env=prod-19` extended attribute'ini ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setfattr -n user.env -v prod-19 /srv/app/queue-19-19-19/app/queue-19-19/config.yml",
+          "hint_text": "xattr yazmak icin `setfattr -n name -v value` kullan.",
+          "hint_partial": "setfattr -n ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-025-r20",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde kernel buffer'larindaki dirty data'yi diske flush et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sync",
+          "hint_text": "Filesystem buffer flush icin `sync` kullan.",
+          "hint_partial": "sync"
+        }
+      ]
+    },
+    {
+      "id": "sfs-016-r21",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `/data-21` altindaki acik file'lari recursive olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof +D /data-21",
+          "hint_text": "Directory altindaki acik dosyalar icin `lsof +D` kullan.",
+          "hint_partial": "lsof +D ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-017-r22",
+      "type": "single",
+      "scenario": "Runbook adiminda `/dev/sdb1` icin fsck'nin ne yapacagini degistirmeden goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fsck -N /dev/sdb1",
+          "hint_text": "Dry-run benzeri gosterim icin `fsck -N` kullan.",
+          "hint_partial": "fsck -N ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-018-r23",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `/data-23` mount noktasinin filesystem turu ve block size bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "stat -f /data-23",
+          "hint_text": "Filesystem stat icin `stat -f` kullan.",
+          "hint_partial": "stat -f ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-019-r24",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/srv/app/proxy-24-24/releases/current` yolunu `/var/proxy-24/www/html` altina bind mount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount --bind /srv/app/proxy-24-24/releases/current /var/proxy-24/www/html",
+          "hint_text": "Bind mount icin `mount --bind source target` kullan.",
+          "hint_partial": "mount --bind ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-020-r25",
+      "type": "single",
+      "scenario": "Bakim oncesi `/data-25` mount noktasini `noatime` ile remount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount -o remount,noatime /data-25",
+          "hint_text": "Mount secenegini degistirmek icin `remount` kullan.",
+          "hint_partial": "mount -o remount,..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-021-r26",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/var/cache-26-26-26/log/cache-26-26-26/app/cache-26-26-26-26.log` ile ayni inode'a bagli hard link'leri ara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /var/cache-26-26-26/log/cache-26-26-26 -samefile /var/cache-26-26-26/log/cache-26-26-26/app/cache-26-26-26-26.log",
+          "hint_text": "Ayni inode icin `find -samefile` kullan.",
+          "hint_partial": "find /var/cache-26-26-26/log/cache-26-26-26 ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-022-r27",
+      "type": "single",
+      "scenario": "Deploy sonrasi 3GB boyutunda sparse bir `disk-27.img` file'i olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "truncate -s 3G disk-27.img",
+          "hint_text": "Sparse dosya icin `truncate -s` kullan.",
+          "hint_partial": "truncate -s ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-023-r28",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/srv/app/db-28-28-28/app/db-28-28/config.yml` dosyasinin extended attribute'larini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getfattr -d /srv/app/db-28-28-28/app/db-28-28/config.yml",
+          "hint_text": "xattr okumak icin `getfattr -d` kullan.",
+          "hint_partial": "getfattr -d ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-024-r29",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `/srv/app/cache-29-29-29/app/cache-29-29/config.yml` dosyasina `user.env=payments-29` extended attribute'ini ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setfattr -n user.env -v payments-29 /srv/app/cache-29-29-29/app/cache-29-29/config.yml",
+          "hint_text": "xattr yazmak icin `setfattr -n name -v value` kullan.",
+          "hint_partial": "setfattr -n ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-025-r30",
+      "type": "single",
+      "scenario": "Runbook adiminda kernel buffer'larindaki dirty data'yi diske flush et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sync",
+          "hint_text": "Filesystem buffer flush icin `sync` kullan.",
+          "hint_partial": "sync"
+        }
+      ]
+    },
+    {
+      "id": "sfs-016-r31",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `/data-31` altindaki acik file'lari recursive olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof +D /data-31",
+          "hint_text": "Directory altindaki acik dosyalar icin `lsof +D` kullan.",
+          "hint_partial": "lsof +D ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-017-r32",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/dev/sdb1` icin fsck'nin ne yapacagini degistirmeden goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fsck -N /dev/sdb1",
+          "hint_text": "Dry-run benzeri gosterim icin `fsck -N` kullan.",
+          "hint_partial": "fsck -N ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-018-r33",
+      "type": "single",
+      "scenario": "Bakim oncesi `/data-33` mount noktasinin filesystem turu ve block size bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "stat -f /data-33",
+          "hint_text": "Filesystem stat icin `stat -f` kullan.",
+          "hint_partial": "stat -f ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-019-r34",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/srv/app/cache-34-34-34-34/releases/current` yolunu `/var/cache-34-34-34/www/html` altina bind mount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount --bind /srv/app/cache-34-34-34-34/releases/current /var/cache-34-34-34/www/html",
+          "hint_text": "Bind mount icin `mount --bind source target` kullan.",
+          "hint_partial": "mount --bind ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-020-r35",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/data-35` mount noktasini `noatime` ile remount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount -o remount,noatime /data-35",
+          "hint_text": "Mount secenegini degistirmek icin `remount` kullan.",
+          "hint_partial": "mount -o remount,..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-021-r36",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/var/db-36-36/log/db-36-36/app/db-36-36-36.log` ile ayni inode'a bagli hard link'leri ara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /var/db-36-36/log/db-36-36 -samefile /var/db-36-36/log/db-36-36/app/db-36-36-36.log",
+          "hint_text": "Ayni inode icin `find -samefile` kullan.",
+          "hint_partial": "find /var/db-36-36/log/db-36-36 ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-022-r37",
+      "type": "single",
+      "scenario": "Yeni acilan hostta 1GB boyutunda sparse bir `disk-37.img` file'i olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "truncate -s 1G disk-37.img",
+          "hint_text": "Sparse dosya icin `truncate -s` kullan.",
+          "hint_partial": "truncate -s ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-023-r38",
+      "type": "single",
+      "scenario": "Runbook adiminda `/srv/app/queue-38-38/app/queue-38/config.yml` dosyasinin extended attribute'larini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getfattr -d /srv/app/queue-38-38/app/queue-38/config.yml",
+          "hint_text": "xattr okumak icin `getfattr -d` kullan.",
+          "hint_partial": "getfattr -d ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-024-r39",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `/srv/app/bastion-39-39/app/bastion-39/config.yml` dosyasina `user.env=dev-39` extended attribute'ini ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setfattr -n user.env -v dev-39 /srv/app/bastion-39-39/app/bastion-39/config.yml",
+          "hint_text": "xattr yazmak icin `setfattr -n name -v value` kullan.",
+          "hint_partial": "setfattr -n ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-025-r40",
+      "type": "single",
+      "scenario": "Incident sonrasinda kernel buffer'larindaki dirty data'yi diske flush et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sync",
+          "hint_text": "Filesystem buffer flush icin `sync` kullan.",
+          "hint_partial": "sync"
+        }
+      ]
+    },
+    {
+      "id": "sfs-016-r41",
+      "type": "single",
+      "scenario": "Bakim oncesi `/data-41` altindaki acik file'lari recursive olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof +D /data-41",
+          "hint_text": "Directory altindaki acik dosyalar icin `lsof +D` kullan.",
+          "hint_partial": "lsof +D ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-017-r42",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/dev/sdb1` icin fsck'nin ne yapacagini degistirmeden goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fsck -N /dev/sdb1",
+          "hint_text": "Dry-run benzeri gosterim icin `fsck -N` kullan.",
+          "hint_partial": "fsck -N ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-018-r43",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/data-43` mount noktasinin filesystem turu ve block size bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "stat -f /data-43",
+          "hint_text": "Filesystem stat icin `stat -f` kullan.",
+          "hint_partial": "stat -f ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-019-r44",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/srv/app/db-44-44-44/releases/current` yolunu `/var/db-44-44/www/html` altina bind mount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount --bind /srv/app/db-44-44-44/releases/current /var/db-44-44/www/html",
+          "hint_text": "Bind mount icin `mount --bind source target` kullan.",
+          "hint_partial": "mount --bind ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-020-r45",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `/data-45` mount noktasini `noatime` ile remount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount -o remount,noatime /data-45",
+          "hint_text": "Mount secenegini degistirmek icin `remount` kullan.",
+          "hint_partial": "mount -o remount,..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-021-r46",
+      "type": "single",
+      "scenario": "Runbook adiminda `/var/queue-46/log/queue-46/app/queue-46-46.log` ile ayni inode'a bagli hard link'leri ara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /var/queue-46/log/queue-46 -samefile /var/queue-46/log/queue-46/app/queue-46-46.log",
+          "hint_text": "Ayni inode icin `find -samefile` kullan.",
+          "hint_partial": "find /var/queue-46/log/queue-46 ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-022-r47",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde 3GB boyutunda sparse bir `disk-47.img` file'i olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "truncate -s 3G disk-47.img",
+          "hint_text": "Sparse dosya icin `truncate -s` kullan.",
+          "hint_partial": "truncate -s ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-023-r48",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/srv/app/proxy-48-48/app/proxy-48/config.yml` dosyasinin extended attribute'larini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getfattr -d /srv/app/proxy-48-48/app/proxy-48/config.yml",
+          "hint_text": "xattr okumak icin `getfattr -d` kullan.",
+          "hint_partial": "getfattr -d ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-024-r49",
+      "type": "single",
+      "scenario": "Bakim oncesi `/srv/app/web-49-49-49/app/web-49-49/config.yml` dosyasina `user.env=prod-49` extended attribute'ini ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setfattr -n user.env -v prod-49 /srv/app/web-49-49-49/app/web-49-49/config.yml",
+          "hint_text": "xattr yazmak icin `setfattr -n name -v value` kullan.",
+          "hint_partial": "setfattr -n ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-025-r50",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda kernel buffer'larindaki dirty data'yi diske flush et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sync",
+          "hint_text": "Filesystem buffer flush icin `sync` kullan.",
+          "hint_partial": "sync"
+        }
+      ]
+    },
+    {
+      "id": "sfs-016-r51",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/data-51` altindaki acik file'lari recursive olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof +D /data-51",
+          "hint_text": "Directory altindaki acik dosyalar icin `lsof +D` kullan.",
+          "hint_partial": "lsof +D ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-017-r52",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/dev/sdb1` icin fsck'nin ne yapacagini degistirmeden goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fsck -N /dev/sdb1",
+          "hint_text": "Dry-run benzeri gosterim icin `fsck -N` kullan.",
+          "hint_partial": "fsck -N ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-018-r53",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `/data-53` mount noktasinin filesystem turu ve block size bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "stat -f /data-53",
+          "hint_text": "Filesystem stat icin `stat -f` kullan.",
+          "hint_partial": "stat -f ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-019-r54",
+      "type": "single",
+      "scenario": "Runbook adiminda `/srv/app/queue-54-54/releases/current` yolunu `/var/queue-54/www/html` altina bind mount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount --bind /srv/app/queue-54-54/releases/current /var/queue-54/www/html",
+          "hint_text": "Bind mount icin `mount --bind source target` kullan.",
+          "hint_partial": "mount --bind ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-020-r55",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `/data-55` mount noktasini `noatime` ile remount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount -o remount,noatime /data-55",
+          "hint_text": "Mount secenegini degistirmek icin `remount` kullan.",
+          "hint_partial": "mount -o remount,..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-021-r56",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/var/proxy-56/log/proxy-56/app/proxy-56-56.log` ile ayni inode'a bagli hard link'leri ara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /var/proxy-56/log/proxy-56 -samefile /var/proxy-56/log/proxy-56/app/proxy-56-56.log",
+          "hint_text": "Ayni inode icin `find -samefile` kullan.",
+          "hint_partial": "find /var/proxy-56/log/proxy-56 ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-022-r57",
+      "type": "single",
+      "scenario": "Bakim oncesi 1GB boyutunda sparse bir `disk-57.img` file'i olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "truncate -s 1G disk-57.img",
+          "hint_text": "Sparse dosya icin `truncate -s` kullan.",
+          "hint_partial": "truncate -s ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-023-r58",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/srv/app/cache-58-58-58-58/app/cache-58-58-58/config.yml` dosyasinin extended attribute'larini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getfattr -d /srv/app/cache-58-58-58-58/app/cache-58-58-58/config.yml",
+          "hint_text": "xattr okumak icin `getfattr -d` kullan.",
+          "hint_partial": "getfattr -d ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-024-r59",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/srv/app/queue-59-59-59/app/queue-59-59/config.yml` dosyasina `user.env=payments-59` extended attribute'ini ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setfattr -n user.env -v payments-59 /srv/app/queue-59-59-59/app/queue-59-59/config.yml",
+          "hint_text": "xattr yazmak icin `setfattr -n name -v value` kullan.",
+          "hint_partial": "setfattr -n ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-025-r60",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde kernel buffer'larindaki dirty data'yi diske flush et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sync",
+          "hint_text": "Filesystem buffer flush icin `sync` kullan.",
+          "hint_partial": "sync"
+        }
+      ]
+    },
+    {
+      "id": "sfs-016-r61",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `/data-61` altindaki acik file'lari recursive olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof +D /data-61",
+          "hint_text": "Directory altindaki acik dosyalar icin `lsof +D` kullan.",
+          "hint_partial": "lsof +D ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-017-r62",
+      "type": "single",
+      "scenario": "Runbook adiminda `/dev/sdb1` icin fsck'nin ne yapacagini degistirmeden goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fsck -N /dev/sdb1",
+          "hint_text": "Dry-run benzeri gosterim icin `fsck -N` kullan.",
+          "hint_partial": "fsck -N ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-018-r63",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `/data-63` mount noktasinin filesystem turu ve block size bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "stat -f /data-63",
+          "hint_text": "Filesystem stat icin `stat -f` kullan.",
+          "hint_partial": "stat -f ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-019-r64",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/srv/app/proxy-64-64/releases/current` yolunu `/var/proxy-64/www/html` altina bind mount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount --bind /srv/app/proxy-64-64/releases/current /var/proxy-64/www/html",
+          "hint_text": "Bind mount icin `mount --bind source target` kullan.",
+          "hint_partial": "mount --bind ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-020-r65",
+      "type": "single",
+      "scenario": "Bakim oncesi `/data-65` mount noktasini `noatime` ile remount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount -o remount,noatime /data-65",
+          "hint_text": "Mount secenegini degistirmek icin `remount` kullan.",
+          "hint_partial": "mount -o remount,..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-021-r66",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/var/cache-66-66-66/log/cache-66-66-66/app/cache-66-66-66-66.log` ile ayni inode'a bagli hard link'leri ara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /var/cache-66-66-66/log/cache-66-66-66 -samefile /var/cache-66-66-66/log/cache-66-66-66/app/cache-66-66-66-66.log",
+          "hint_text": "Ayni inode icin `find -samefile` kullan.",
+          "hint_partial": "find /var/cache-66-66-66/log/cache-66-66-66 ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-022-r67",
+      "type": "single",
+      "scenario": "Deploy sonrasi 3GB boyutunda sparse bir `disk-67.img` file'i olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "truncate -s 3G disk-67.img",
+          "hint_text": "Sparse dosya icin `truncate -s` kullan.",
+          "hint_partial": "truncate -s ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-023-r68",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/srv/app/db-68-68-68/app/db-68-68/config.yml` dosyasinin extended attribute'larini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getfattr -d /srv/app/db-68-68-68/app/db-68-68/config.yml",
+          "hint_text": "xattr okumak icin `getfattr -d` kullan.",
+          "hint_partial": "getfattr -d ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-024-r69",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `/srv/app/cache-69-69-69/app/cache-69-69/config.yml` dosyasina `user.env=dev-69` extended attribute'ini ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setfattr -n user.env -v dev-69 /srv/app/cache-69-69-69/app/cache-69-69/config.yml",
+          "hint_text": "xattr yazmak icin `setfattr -n name -v value` kullan.",
+          "hint_partial": "setfattr -n ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-025-r70",
+      "type": "single",
+      "scenario": "Runbook adiminda kernel buffer'larindaki dirty data'yi diske flush et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sync",
+          "hint_text": "Filesystem buffer flush icin `sync` kullan.",
+          "hint_partial": "sync"
+        }
+      ]
+    },
+    {
+      "id": "sfs-016-r71",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `/data-71` altindaki acik file'lari recursive olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof +D /data-71",
+          "hint_text": "Directory altindaki acik dosyalar icin `lsof +D` kullan.",
+          "hint_partial": "lsof +D ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-017-r72",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/dev/sdb1` icin fsck'nin ne yapacagini degistirmeden goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fsck -N /dev/sdb1",
+          "hint_text": "Dry-run benzeri gosterim icin `fsck -N` kullan.",
+          "hint_partial": "fsck -N ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-018-r73",
+      "type": "single",
+      "scenario": "Bakim oncesi `/data-73` mount noktasinin filesystem turu ve block size bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "stat -f /data-73",
+          "hint_text": "Filesystem stat icin `stat -f` kullan.",
+          "hint_partial": "stat -f ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-019-r74",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/srv/app/cache-74-74-74-74/releases/current` yolunu `/var/cache-74-74-74/www/html` altina bind mount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount --bind /srv/app/cache-74-74-74-74/releases/current /var/cache-74-74-74/www/html",
+          "hint_text": "Bind mount icin `mount --bind source target` kullan.",
+          "hint_partial": "mount --bind ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-020-r75",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/data-75` mount noktasini `noatime` ile remount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount -o remount,noatime /data-75",
+          "hint_text": "Mount secenegini degistirmek icin `remount` kullan.",
+          "hint_partial": "mount -o remount,..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-021-r76",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/var/db-76-76/log/db-76-76/app/db-76-76-76.log` ile ayni inode'a bagli hard link'leri ara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /var/db-76-76/log/db-76-76 -samefile /var/db-76-76/log/db-76-76/app/db-76-76-76.log",
+          "hint_text": "Ayni inode icin `find -samefile` kullan.",
+          "hint_partial": "find /var/db-76-76/log/db-76-76 ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-022-r77",
+      "type": "single",
+      "scenario": "Yeni acilan hostta 1GB boyutunda sparse bir `disk-77.img` file'i olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "truncate -s 1G disk-77.img",
+          "hint_text": "Sparse dosya icin `truncate -s` kullan.",
+          "hint_partial": "truncate -s ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-023-r78",
+      "type": "single",
+      "scenario": "Runbook adiminda `/srv/app/queue-78-78/app/queue-78/config.yml` dosyasinin extended attribute'larini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getfattr -d /srv/app/queue-78-78/app/queue-78/config.yml",
+          "hint_text": "xattr okumak icin `getfattr -d` kullan.",
+          "hint_partial": "getfattr -d ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-024-r79",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `/srv/app/bastion-79-79/app/bastion-79/config.yml` dosyasina `user.env=prod-79` extended attribute'ini ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setfattr -n user.env -v prod-79 /srv/app/bastion-79-79/app/bastion-79/config.yml",
+          "hint_text": "xattr yazmak icin `setfattr -n name -v value` kullan.",
+          "hint_partial": "setfattr -n ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-025-r80",
+      "type": "single",
+      "scenario": "Incident sonrasinda kernel buffer'larindaki dirty data'yi diske flush et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sync",
+          "hint_text": "Filesystem buffer flush icin `sync` kullan.",
+          "hint_partial": "sync"
+        }
+      ]
+    },
+    {
+      "id": "sfs-016-r81",
+      "type": "single",
+      "scenario": "Bakim oncesi `/data-81` altindaki acik file'lari recursive olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof +D /data-81",
+          "hint_text": "Directory altindaki acik dosyalar icin `lsof +D` kullan.",
+          "hint_partial": "lsof +D ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-017-r82",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/dev/sdb1` icin fsck'nin ne yapacagini degistirmeden goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fsck -N /dev/sdb1",
+          "hint_text": "Dry-run benzeri gosterim icin `fsck -N` kullan.",
+          "hint_partial": "fsck -N ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-018-r83",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/data-83` mount noktasinin filesystem turu ve block size bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "stat -f /data-83",
+          "hint_text": "Filesystem stat icin `stat -f` kullan.",
+          "hint_partial": "stat -f ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-019-r84",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/srv/app/db-84-84-84/releases/current` yolunu `/var/db-84-84/www/html` altina bind mount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount --bind /srv/app/db-84-84-84/releases/current /var/db-84-84/www/html",
+          "hint_text": "Bind mount icin `mount --bind source target` kullan.",
+          "hint_partial": "mount --bind ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-020-r85",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `/data-85` mount noktasini `noatime` ile remount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount -o remount,noatime /data-85",
+          "hint_text": "Mount secenegini degistirmek icin `remount` kullan.",
+          "hint_partial": "mount -o remount,..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-021-r86",
+      "type": "single",
+      "scenario": "Runbook adiminda `/var/queue-86/log/queue-86/app/queue-86-86.log` ile ayni inode'a bagli hard link'leri ara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /var/queue-86/log/queue-86 -samefile /var/queue-86/log/queue-86/app/queue-86-86.log",
+          "hint_text": "Ayni inode icin `find -samefile` kullan.",
+          "hint_partial": "find /var/queue-86/log/queue-86 ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-022-r87",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde 3GB boyutunda sparse bir `disk-87.img` file'i olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "truncate -s 3G disk-87.img",
+          "hint_text": "Sparse dosya icin `truncate -s` kullan.",
+          "hint_partial": "truncate -s ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-023-r88",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/srv/app/proxy-88-88/app/proxy-88/config.yml` dosyasinin extended attribute'larini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getfattr -d /srv/app/proxy-88-88/app/proxy-88/config.yml",
+          "hint_text": "xattr okumak icin `getfattr -d` kullan.",
+          "hint_partial": "getfattr -d ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-024-r89",
+      "type": "single",
+      "scenario": "Bakim oncesi `/srv/app/web-89-89-89/app/web-89-89/config.yml` dosyasina `user.env=payments-89` extended attribute'ini ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setfattr -n user.env -v payments-89 /srv/app/web-89-89-89/app/web-89-89/config.yml",
+          "hint_text": "xattr yazmak icin `setfattr -n name -v value` kullan.",
+          "hint_partial": "setfattr -n ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-025-r90",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda kernel buffer'larindaki dirty data'yi diske flush et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sync",
+          "hint_text": "Filesystem buffer flush icin `sync` kullan.",
+          "hint_partial": "sync"
+        }
+      ]
+    },
+    {
+      "id": "sfs-016-r91",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/data-91` altindaki acik file'lari recursive olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof +D /data-91",
+          "hint_text": "Directory altindaki acik dosyalar icin `lsof +D` kullan.",
+          "hint_partial": "lsof +D ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-017-r92",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/dev/sdb1` icin fsck'nin ne yapacagini degistirmeden goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fsck -N /dev/sdb1",
+          "hint_text": "Dry-run benzeri gosterim icin `fsck -N` kullan.",
+          "hint_partial": "fsck -N ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-018-r93",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `/data-93` mount noktasinin filesystem turu ve block size bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "stat -f /data-93",
+          "hint_text": "Filesystem stat icin `stat -f` kullan.",
+          "hint_partial": "stat -f ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-019-r94",
+      "type": "single",
+      "scenario": "Runbook adiminda `/srv/app/queue-94-94/releases/current` yolunu `/var/queue-94/www/html` altina bind mount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount --bind /srv/app/queue-94-94/releases/current /var/queue-94/www/html",
+          "hint_text": "Bind mount icin `mount --bind source target` kullan.",
+          "hint_partial": "mount --bind ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-020-r95",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `/data-95` mount noktasini `noatime` ile remount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount -o remount,noatime /data-95",
+          "hint_text": "Mount secenegini degistirmek icin `remount` kullan.",
+          "hint_partial": "mount -o remount,..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-021-r96",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/var/proxy-96/log/proxy-96/app/proxy-96-96.log` ile ayni inode'a bagli hard link'leri ara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /var/proxy-96/log/proxy-96 -samefile /var/proxy-96/log/proxy-96/app/proxy-96-96.log",
+          "hint_text": "Ayni inode icin `find -samefile` kullan.",
+          "hint_partial": "find /var/proxy-96/log/proxy-96 ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-022-r97",
+      "type": "single",
+      "scenario": "Bakim oncesi 1GB boyutunda sparse bir `disk-97.img` file'i olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "truncate -s 1G disk-97.img",
+          "hint_text": "Sparse dosya icin `truncate -s` kullan.",
+          "hint_partial": "truncate -s ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-023-r98",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/srv/app/cache-98-98-98-98/app/cache-98-98-98/config.yml` dosyasinin extended attribute'larini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getfattr -d /srv/app/cache-98-98-98-98/app/cache-98-98-98/config.yml",
+          "hint_text": "xattr okumak icin `getfattr -d` kullan.",
+          "hint_partial": "getfattr -d ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-024-r99",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/srv/app/queue-99-99-99/app/queue-99-99/config.yml` dosyasina `user.env=dev-99` extended attribute'ini ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setfattr -n user.env -v dev-99 /srv/app/queue-99-99-99/app/queue-99-99/config.yml",
+          "hint_text": "xattr yazmak icin `setfattr -n name -v value` kullan.",
+          "hint_partial": "setfattr -n ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-025-r100",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde kernel buffer'larindaki dirty data'yi diske flush et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sync",
+          "hint_text": "Filesystem buffer flush icin `sync` kullan.",
+          "hint_partial": "sync"
+        }
+      ]
+    },
+    {
+      "id": "sfs-016-r101",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `/data-101` altindaki acik file'lari recursive olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof +D /data-101",
+          "hint_text": "Directory altindaki acik dosyalar icin `lsof +D` kullan.",
+          "hint_partial": "lsof +D ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-017-r102",
+      "type": "single",
+      "scenario": "Runbook adiminda `/dev/sdb1` icin fsck'nin ne yapacagini degistirmeden goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fsck -N /dev/sdb1",
+          "hint_text": "Dry-run benzeri gosterim icin `fsck -N` kullan.",
+          "hint_partial": "fsck -N ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-018-r103",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `/data-103` mount noktasinin filesystem turu ve block size bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "stat -f /data-103",
+          "hint_text": "Filesystem stat icin `stat -f` kullan.",
+          "hint_partial": "stat -f ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-019-r104",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/srv/app/proxy-104-104/releases/current` yolunu `/var/proxy-104/www/html` altina bind mount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount --bind /srv/app/proxy-104-104/releases/current /var/proxy-104/www/html",
+          "hint_text": "Bind mount icin `mount --bind source target` kullan.",
+          "hint_partial": "mount --bind ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-020-r105",
+      "type": "single",
+      "scenario": "Bakim oncesi `/data-105` mount noktasini `noatime` ile remount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount -o remount,noatime /data-105",
+          "hint_text": "Mount secenegini degistirmek icin `remount` kullan.",
+          "hint_partial": "mount -o remount,..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-021-r106",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/var/cache-106-106-106/log/cache-106-106-106/app/cache-106-106-106-106.log` ile ayni inode'a bagli hard link'leri ara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /var/cache-106-106-106/log/cache-106-106-106 -samefile /var/cache-106-106-106/log/cache-106-106-106/app/cache-106-106-106-106.log",
+          "hint_text": "Ayni inode icin `find -samefile` kullan.",
+          "hint_partial": "find /var/cache-106-106-106/log/cache-106-106-106 ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-022-r107",
+      "type": "single",
+      "scenario": "Deploy sonrasi 3GB boyutunda sparse bir `disk-107.img` file'i olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "truncate -s 3G disk-107.img",
+          "hint_text": "Sparse dosya icin `truncate -s` kullan.",
+          "hint_partial": "truncate -s ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-023-r108",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/srv/app/db-108-108-108/app/db-108-108/config.yml` dosyasinin extended attribute'larini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getfattr -d /srv/app/db-108-108-108/app/db-108-108/config.yml",
+          "hint_text": "xattr okumak icin `getfattr -d` kullan.",
+          "hint_partial": "getfattr -d ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-024-r109",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `/srv/app/cache-109-109-109/app/cache-109-109/config.yml` dosyasina `user.env=prod-109` extended attribute'ini ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setfattr -n user.env -v prod-109 /srv/app/cache-109-109-109/app/cache-109-109/config.yml",
+          "hint_text": "xattr yazmak icin `setfattr -n name -v value` kullan.",
+          "hint_partial": "setfattr -n ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-025-r110",
+      "type": "single",
+      "scenario": "Runbook adiminda kernel buffer'larindaki dirty data'yi diske flush et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sync",
+          "hint_text": "Filesystem buffer flush icin `sync` kullan.",
+          "hint_partial": "sync"
+        }
+      ]
+    },
+    {
+      "id": "sfs-016-r111",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `/data-111` altindaki acik file'lari recursive olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof +D /data-111",
+          "hint_text": "Directory altindaki acik dosyalar icin `lsof +D` kullan.",
+          "hint_partial": "lsof +D ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-017-r112",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/dev/sdb1` icin fsck'nin ne yapacagini degistirmeden goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fsck -N /dev/sdb1",
+          "hint_text": "Dry-run benzeri gosterim icin `fsck -N` kullan.",
+          "hint_partial": "fsck -N ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-018-r113",
+      "type": "single",
+      "scenario": "Bakim oncesi `/data-113` mount noktasinin filesystem turu ve block size bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "stat -f /data-113",
+          "hint_text": "Filesystem stat icin `stat -f` kullan.",
+          "hint_partial": "stat -f ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-019-r114",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/srv/app/cache-114-114-114-114/releases/current` yolunu `/var/cache-114-114-114/www/html` altina bind mount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount --bind /srv/app/cache-114-114-114-114/releases/current /var/cache-114-114-114/www/html",
+          "hint_text": "Bind mount icin `mount --bind source target` kullan.",
+          "hint_partial": "mount --bind ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-020-r115",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/data-115` mount noktasini `noatime` ile remount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount -o remount,noatime /data-115",
+          "hint_text": "Mount secenegini degistirmek icin `remount` kullan.",
+          "hint_partial": "mount -o remount,..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-021-r116",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/var/db-116-116/log/db-116-116/app/db-116-116-116.log` ile ayni inode'a bagli hard link'leri ara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /var/db-116-116/log/db-116-116 -samefile /var/db-116-116/log/db-116-116/app/db-116-116-116.log",
+          "hint_text": "Ayni inode icin `find -samefile` kullan.",
+          "hint_partial": "find /var/db-116-116/log/db-116-116 ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-022-r117",
+      "type": "single",
+      "scenario": "Yeni acilan hostta 1GB boyutunda sparse bir `disk-117.img` file'i olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "truncate -s 1G disk-117.img",
+          "hint_text": "Sparse dosya icin `truncate -s` kullan.",
+          "hint_partial": "truncate -s ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-023-r118",
+      "type": "single",
+      "scenario": "Runbook adiminda `/srv/app/queue-118-118/app/queue-118/config.yml` dosyasinin extended attribute'larini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getfattr -d /srv/app/queue-118-118/app/queue-118/config.yml",
+          "hint_text": "xattr okumak icin `getfattr -d` kullan.",
+          "hint_partial": "getfattr -d ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-024-r119",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `/srv/app/bastion-119-119/app/bastion-119/config.yml` dosyasina `user.env=payments-119` extended attribute'ini ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setfattr -n user.env -v payments-119 /srv/app/bastion-119-119/app/bastion-119/config.yml",
+          "hint_text": "xattr yazmak icin `setfattr -n name -v value` kullan.",
+          "hint_partial": "setfattr -n ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-025-r120",
+      "type": "single",
+      "scenario": "Incident sonrasinda kernel buffer'larindaki dirty data'yi diske flush et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sync",
+          "hint_text": "Filesystem buffer flush icin `sync` kullan.",
+          "hint_partial": "sync"
+        }
+      ]
+    },
+    {
+      "id": "sfs-016-r121",
+      "type": "single",
+      "scenario": "Bakim oncesi `/data-121` altindaki acik file'lari recursive olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof +D /data-121",
+          "hint_text": "Directory altindaki acik dosyalar icin `lsof +D` kullan.",
+          "hint_partial": "lsof +D ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-017-r122",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/dev/sdb1` icin fsck'nin ne yapacagini degistirmeden goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fsck -N /dev/sdb1",
+          "hint_text": "Dry-run benzeri gosterim icin `fsck -N` kullan.",
+          "hint_partial": "fsck -N ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-018-r123",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/data-123` mount noktasinin filesystem turu ve block size bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "stat -f /data-123",
+          "hint_text": "Filesystem stat icin `stat -f` kullan.",
+          "hint_partial": "stat -f ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-019-r124",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/srv/app/db-124-124-124/releases/current` yolunu `/var/db-124-124/www/html` altina bind mount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount --bind /srv/app/db-124-124-124/releases/current /var/db-124-124/www/html",
+          "hint_text": "Bind mount icin `mount --bind source target` kullan.",
+          "hint_partial": "mount --bind ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-020-r125",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `/data-125` mount noktasini `noatime` ile remount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount -o remount,noatime /data-125",
+          "hint_text": "Mount secenegini degistirmek icin `remount` kullan.",
+          "hint_partial": "mount -o remount,..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-021-r126",
+      "type": "single",
+      "scenario": "Runbook adiminda `/var/queue-126/log/queue-126/app/queue-126-126.log` ile ayni inode'a bagli hard link'leri ara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /var/queue-126/log/queue-126 -samefile /var/queue-126/log/queue-126/app/queue-126-126.log",
+          "hint_text": "Ayni inode icin `find -samefile` kullan.",
+          "hint_partial": "find /var/queue-126/log/queue-126 ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-022-r127",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde 3GB boyutunda sparse bir `disk-127.img` file'i olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "truncate -s 3G disk-127.img",
+          "hint_text": "Sparse dosya icin `truncate -s` kullan.",
+          "hint_partial": "truncate -s ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-023-r128",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/srv/app/proxy-128-128/app/proxy-128/config.yml` dosyasinin extended attribute'larini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getfattr -d /srv/app/proxy-128-128/app/proxy-128/config.yml",
+          "hint_text": "xattr okumak icin `getfattr -d` kullan.",
+          "hint_partial": "getfattr -d ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-024-r129",
+      "type": "single",
+      "scenario": "Bakim oncesi `/srv/app/web-129-129-129/app/web-129-129/config.yml` dosyasina `user.env=dev-129` extended attribute'ini ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setfattr -n user.env -v dev-129 /srv/app/web-129-129-129/app/web-129-129/config.yml",
+          "hint_text": "xattr yazmak icin `setfattr -n name -v value` kullan.",
+          "hint_partial": "setfattr -n ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-025-r130",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda kernel buffer'larindaki dirty data'yi diske flush et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sync",
+          "hint_text": "Filesystem buffer flush icin `sync` kullan.",
+          "hint_partial": "sync"
+        }
+      ]
+    },
+    {
+      "id": "sfs-016-r131",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/data-131` altindaki acik file'lari recursive olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof +D /data-131",
+          "hint_text": "Directory altindaki acik dosyalar icin `lsof +D` kullan.",
+          "hint_partial": "lsof +D ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-017-r132",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/dev/sdb1` icin fsck'nin ne yapacagini degistirmeden goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fsck -N /dev/sdb1",
+          "hint_text": "Dry-run benzeri gosterim icin `fsck -N` kullan.",
+          "hint_partial": "fsck -N ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-018-r133",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `/data-133` mount noktasinin filesystem turu ve block size bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "stat -f /data-133",
+          "hint_text": "Filesystem stat icin `stat -f` kullan.",
+          "hint_partial": "stat -f ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-019-r134",
+      "type": "single",
+      "scenario": "Runbook adiminda `/srv/app/queue-134-134/releases/current` yolunu `/var/queue-134/www/html` altina bind mount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount --bind /srv/app/queue-134-134/releases/current /var/queue-134/www/html",
+          "hint_text": "Bind mount icin `mount --bind source target` kullan.",
+          "hint_partial": "mount --bind ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-020-r135",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `/data-135` mount noktasini `noatime` ile remount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount -o remount,noatime /data-135",
+          "hint_text": "Mount secenegini degistirmek icin `remount` kullan.",
+          "hint_partial": "mount -o remount,..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-021-r136",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/var/proxy-136/log/proxy-136/app/proxy-136-136.log` ile ayni inode'a bagli hard link'leri ara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /var/proxy-136/log/proxy-136 -samefile /var/proxy-136/log/proxy-136/app/proxy-136-136.log",
+          "hint_text": "Ayni inode icin `find -samefile` kullan.",
+          "hint_partial": "find /var/proxy-136/log/proxy-136 ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-022-r137",
+      "type": "single",
+      "scenario": "Bakim oncesi 1GB boyutunda sparse bir `disk-137.img` file'i olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "truncate -s 1G disk-137.img",
+          "hint_text": "Sparse dosya icin `truncate -s` kullan.",
+          "hint_partial": "truncate -s ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-023-r138",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/srv/app/cache-138-138-138-138/app/cache-138-138-138/config.yml` dosyasinin extended attribute'larini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getfattr -d /srv/app/cache-138-138-138-138/app/cache-138-138-138/config.yml",
+          "hint_text": "xattr okumak icin `getfattr -d` kullan.",
+          "hint_partial": "getfattr -d ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-024-r139",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/srv/app/queue-139-139-139/app/queue-139-139/config.yml` dosyasina `user.env=prod-139` extended attribute'ini ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setfattr -n user.env -v prod-139 /srv/app/queue-139-139-139/app/queue-139-139/config.yml",
+          "hint_text": "xattr yazmak icin `setfattr -n name -v value` kullan.",
+          "hint_partial": "setfattr -n ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-025-r140",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde kernel buffer'larindaki dirty data'yi diske flush et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sync",
+          "hint_text": "Filesystem buffer flush icin `sync` kullan.",
+          "hint_partial": "sync"
+        }
+      ]
+    },
+    {
+      "id": "sfs-016-r141",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `/data-141` altindaki acik file'lari recursive olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof +D /data-141",
+          "hint_text": "Directory altindaki acik dosyalar icin `lsof +D` kullan.",
+          "hint_partial": "lsof +D ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-017-r142",
+      "type": "single",
+      "scenario": "Runbook adiminda `/dev/sdb1` icin fsck'nin ne yapacagini degistirmeden goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fsck -N /dev/sdb1",
+          "hint_text": "Dry-run benzeri gosterim icin `fsck -N` kullan.",
+          "hint_partial": "fsck -N ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-018-r143",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `/data-143` mount noktasinin filesystem turu ve block size bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "stat -f /data-143",
+          "hint_text": "Filesystem stat icin `stat -f` kullan.",
+          "hint_partial": "stat -f ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-019-r144",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/srv/app/proxy-144-144/releases/current` yolunu `/var/proxy-144/www/html` altina bind mount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount --bind /srv/app/proxy-144-144/releases/current /var/proxy-144/www/html",
+          "hint_text": "Bind mount icin `mount --bind source target` kullan.",
+          "hint_partial": "mount --bind ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-020-r145",
+      "type": "single",
+      "scenario": "Bakim oncesi `/data-145` mount noktasini `noatime` ile remount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount -o remount,noatime /data-145",
+          "hint_text": "Mount secenegini degistirmek icin `remount` kullan.",
+          "hint_partial": "mount -o remount,..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-021-r146",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/var/cache-146-146-146/log/cache-146-146-146/app/cache-146-146-146-146.log` ile ayni inode'a bagli hard link'leri ara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /var/cache-146-146-146/log/cache-146-146-146 -samefile /var/cache-146-146-146/log/cache-146-146-146/app/cache-146-146-146-146.log",
+          "hint_text": "Ayni inode icin `find -samefile` kullan.",
+          "hint_partial": "find /var/cache-146-146-146/log/cache-146-146-146 ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-022-r147",
+      "type": "single",
+      "scenario": "Deploy sonrasi 3GB boyutunda sparse bir `disk-147.img` file'i olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "truncate -s 3G disk-147.img",
+          "hint_text": "Sparse dosya icin `truncate -s` kullan.",
+          "hint_partial": "truncate -s ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-023-r148",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/srv/app/db-148-148-148/app/db-148-148/config.yml` dosyasinin extended attribute'larini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getfattr -d /srv/app/db-148-148-148/app/db-148-148/config.yml",
+          "hint_text": "xattr okumak icin `getfattr -d` kullan.",
+          "hint_partial": "getfattr -d ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-024-r149",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `/srv/app/cache-149-149-149/app/cache-149-149/config.yml` dosyasina `user.env=payments-149` extended attribute'ini ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setfattr -n user.env -v payments-149 /srv/app/cache-149-149-149/app/cache-149-149/config.yml",
+          "hint_text": "xattr yazmak icin `setfattr -n name -v value` kullan.",
+          "hint_partial": "setfattr -n ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-025-r150",
+      "type": "single",
+      "scenario": "Runbook adiminda kernel buffer'larindaki dirty data'yi diske flush et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sync",
+          "hint_text": "Filesystem buffer flush icin `sync` kullan.",
+          "hint_partial": "sync"
+        }
+      ]
+    },
+    {
+      "id": "sfs-016-r151",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `/data-151` altindaki acik file'lari recursive olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof +D /data-151",
+          "hint_text": "Directory altindaki acik dosyalar icin `lsof +D` kullan.",
+          "hint_partial": "lsof +D ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-017-r152",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/dev/sdb1` icin fsck'nin ne yapacagini degistirmeden goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fsck -N /dev/sdb1",
+          "hint_text": "Dry-run benzeri gosterim icin `fsck -N` kullan.",
+          "hint_partial": "fsck -N ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-018-r153",
+      "type": "single",
+      "scenario": "Bakim oncesi `/data-153` mount noktasinin filesystem turu ve block size bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "stat -f /data-153",
+          "hint_text": "Filesystem stat icin `stat -f` kullan.",
+          "hint_partial": "stat -f ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-019-r154",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/srv/app/cache-154-154-154-154/releases/current` yolunu `/var/cache-154-154-154/www/html` altina bind mount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount --bind /srv/app/cache-154-154-154-154/releases/current /var/cache-154-154-154/www/html",
+          "hint_text": "Bind mount icin `mount --bind source target` kullan.",
+          "hint_partial": "mount --bind ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-020-r155",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/data-155` mount noktasini `noatime` ile remount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount -o remount,noatime /data-155",
+          "hint_text": "Mount secenegini degistirmek icin `remount` kullan.",
+          "hint_partial": "mount -o remount,..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-021-r156",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/var/db-156-156/log/db-156-156/app/db-156-156-156.log` ile ayni inode'a bagli hard link'leri ara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /var/db-156-156/log/db-156-156 -samefile /var/db-156-156/log/db-156-156/app/db-156-156-156.log",
+          "hint_text": "Ayni inode icin `find -samefile` kullan.",
+          "hint_partial": "find /var/db-156-156/log/db-156-156 ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-022-r157",
+      "type": "single",
+      "scenario": "Yeni acilan hostta 1GB boyutunda sparse bir `disk-157.img` file'i olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "truncate -s 1G disk-157.img",
+          "hint_text": "Sparse dosya icin `truncate -s` kullan.",
+          "hint_partial": "truncate -s ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-023-r158",
+      "type": "single",
+      "scenario": "Runbook adiminda `/srv/app/queue-158-158/app/queue-158/config.yml` dosyasinin extended attribute'larini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getfattr -d /srv/app/queue-158-158/app/queue-158/config.yml",
+          "hint_text": "xattr okumak icin `getfattr -d` kullan.",
+          "hint_partial": "getfattr -d ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-024-r159",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `/srv/app/bastion-159-159/app/bastion-159/config.yml` dosyasina `user.env=dev-159` extended attribute'ini ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setfattr -n user.env -v dev-159 /srv/app/bastion-159-159/app/bastion-159/config.yml",
+          "hint_text": "xattr yazmak icin `setfattr -n name -v value` kullan.",
+          "hint_partial": "setfattr -n ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-025-r160",
+      "type": "single",
+      "scenario": "Incident sonrasinda kernel buffer'larindaki dirty data'yi diske flush et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sync",
+          "hint_text": "Filesystem buffer flush icin `sync` kullan.",
+          "hint_partial": "sync"
+        }
+      ]
+    },
+    {
+      "id": "sfs-016-r161",
+      "type": "single",
+      "scenario": "Bakim oncesi `/data-161` altindaki acik file'lari recursive olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof +D /data-161",
+          "hint_text": "Directory altindaki acik dosyalar icin `lsof +D` kullan.",
+          "hint_partial": "lsof +D ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-017-r162",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/dev/sdb1` icin fsck'nin ne yapacagini degistirmeden goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fsck -N /dev/sdb1",
+          "hint_text": "Dry-run benzeri gosterim icin `fsck -N` kullan.",
+          "hint_partial": "fsck -N ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-018-r163",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/data-163` mount noktasinin filesystem turu ve block size bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "stat -f /data-163",
+          "hint_text": "Filesystem stat icin `stat -f` kullan.",
+          "hint_partial": "stat -f ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-019-r164",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/srv/app/db-164-164-164/releases/current` yolunu `/var/db-164-164/www/html` altina bind mount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount --bind /srv/app/db-164-164-164/releases/current /var/db-164-164/www/html",
+          "hint_text": "Bind mount icin `mount --bind source target` kullan.",
+          "hint_partial": "mount --bind ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-020-r165",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `/data-165` mount noktasini `noatime` ile remount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount -o remount,noatime /data-165",
+          "hint_text": "Mount secenegini degistirmek icin `remount` kullan.",
+          "hint_partial": "mount -o remount,..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-021-r166",
+      "type": "single",
+      "scenario": "Runbook adiminda `/var/queue-166/log/queue-166/app/queue-166-166.log` ile ayni inode'a bagli hard link'leri ara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /var/queue-166/log/queue-166 -samefile /var/queue-166/log/queue-166/app/queue-166-166.log",
+          "hint_text": "Ayni inode icin `find -samefile` kullan.",
+          "hint_partial": "find /var/queue-166/log/queue-166 ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-022-r167",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde 3GB boyutunda sparse bir `disk-167.img` file'i olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "truncate -s 3G disk-167.img",
+          "hint_text": "Sparse dosya icin `truncate -s` kullan.",
+          "hint_partial": "truncate -s ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-023-r168",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/srv/app/proxy-168-168/app/proxy-168/config.yml` dosyasinin extended attribute'larini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getfattr -d /srv/app/proxy-168-168/app/proxy-168/config.yml",
+          "hint_text": "xattr okumak icin `getfattr -d` kullan.",
+          "hint_partial": "getfattr -d ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-024-r169",
+      "type": "single",
+      "scenario": "Bakim oncesi `/srv/app/web-169-169-169/app/web-169-169/config.yml` dosyasina `user.env=prod-169` extended attribute'ini ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setfattr -n user.env -v prod-169 /srv/app/web-169-169-169/app/web-169-169/config.yml",
+          "hint_text": "xattr yazmak icin `setfattr -n name -v value` kullan.",
+          "hint_partial": "setfattr -n ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-025-r170",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda kernel buffer'larindaki dirty data'yi diske flush et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sync",
+          "hint_text": "Filesystem buffer flush icin `sync` kullan.",
+          "hint_partial": "sync"
+        }
+      ]
+    },
+    {
+      "id": "sfs-016-r171",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/data-171` altindaki acik file'lari recursive olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof +D /data-171",
+          "hint_text": "Directory altindaki acik dosyalar icin `lsof +D` kullan.",
+          "hint_partial": "lsof +D ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-017-r172",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/dev/sdb1` icin fsck'nin ne yapacagini degistirmeden goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fsck -N /dev/sdb1",
+          "hint_text": "Dry-run benzeri gosterim icin `fsck -N` kullan.",
+          "hint_partial": "fsck -N ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-018-r173",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `/data-173` mount noktasinin filesystem turu ve block size bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "stat -f /data-173",
+          "hint_text": "Filesystem stat icin `stat -f` kullan.",
+          "hint_partial": "stat -f ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-019-r174",
+      "type": "single",
+      "scenario": "Runbook adiminda `/srv/app/queue-174-174/releases/current` yolunu `/var/queue-174/www/html` altina bind mount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount --bind /srv/app/queue-174-174/releases/current /var/queue-174/www/html",
+          "hint_text": "Bind mount icin `mount --bind source target` kullan.",
+          "hint_partial": "mount --bind ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-020-r175",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `/data-175` mount noktasini `noatime` ile remount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount -o remount,noatime /data-175",
+          "hint_text": "Mount secenegini degistirmek icin `remount` kullan.",
+          "hint_partial": "mount -o remount,..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-021-r176",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/var/proxy-176/log/proxy-176/app/proxy-176-176.log` ile ayni inode'a bagli hard link'leri ara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /var/proxy-176/log/proxy-176 -samefile /var/proxy-176/log/proxy-176/app/proxy-176-176.log",
+          "hint_text": "Ayni inode icin `find -samefile` kullan.",
+          "hint_partial": "find /var/proxy-176/log/proxy-176 ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-022-r177",
+      "type": "single",
+      "scenario": "Bakim oncesi 1GB boyutunda sparse bir `disk-177.img` file'i olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "truncate -s 1G disk-177.img",
+          "hint_text": "Sparse dosya icin `truncate -s` kullan.",
+          "hint_partial": "truncate -s ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-023-r178",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/srv/app/cache-178-178-178-178/app/cache-178-178-178/config.yml` dosyasinin extended attribute'larini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getfattr -d /srv/app/cache-178-178-178-178/app/cache-178-178-178/config.yml",
+          "hint_text": "xattr okumak icin `getfattr -d` kullan.",
+          "hint_partial": "getfattr -d ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-024-r179",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/srv/app/queue-179-179-179/app/queue-179-179/config.yml` dosyasina `user.env=payments-179` extended attribute'ini ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setfattr -n user.env -v payments-179 /srv/app/queue-179-179-179/app/queue-179-179/config.yml",
+          "hint_text": "xattr yazmak icin `setfattr -n name -v value` kullan.",
+          "hint_partial": "setfattr -n ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-025-r180",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde kernel buffer'larindaki dirty data'yi diske flush et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sync",
+          "hint_text": "Filesystem buffer flush icin `sync` kullan.",
+          "hint_partial": "sync"
+        }
+      ]
+    },
+    {
+      "id": "sfs-016-r181",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `/data-181` altindaki acik file'lari recursive olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof +D /data-181",
+          "hint_text": "Directory altindaki acik dosyalar icin `lsof +D` kullan.",
+          "hint_partial": "lsof +D ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-017-r182",
+      "type": "single",
+      "scenario": "Runbook adiminda `/dev/sdb1` icin fsck'nin ne yapacagini degistirmeden goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fsck -N /dev/sdb1",
+          "hint_text": "Dry-run benzeri gosterim icin `fsck -N` kullan.",
+          "hint_partial": "fsck -N ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-018-r183",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `/data-183` mount noktasinin filesystem turu ve block size bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "stat -f /data-183",
+          "hint_text": "Filesystem stat icin `stat -f` kullan.",
+          "hint_partial": "stat -f ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-019-r184",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/srv/app/proxy-184-184/releases/current` yolunu `/var/proxy-184/www/html` altina bind mount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount --bind /srv/app/proxy-184-184/releases/current /var/proxy-184/www/html",
+          "hint_text": "Bind mount icin `mount --bind source target` kullan.",
+          "hint_partial": "mount --bind ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-020-r185",
+      "type": "single",
+      "scenario": "Bakim oncesi `/data-185` mount noktasini `noatime` ile remount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount -o remount,noatime /data-185",
+          "hint_text": "Mount secenegini degistirmek icin `remount` kullan.",
+          "hint_partial": "mount -o remount,..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-021-r186",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/var/cache-186-186-186/log/cache-186-186-186/app/cache-186-186-186-186.log` ile ayni inode'a bagli hard link'leri ara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /var/cache-186-186-186/log/cache-186-186-186 -samefile /var/cache-186-186-186/log/cache-186-186-186/app/cache-186-186-186-186.log",
+          "hint_text": "Ayni inode icin `find -samefile` kullan.",
+          "hint_partial": "find /var/cache-186-186-186/log/cache-186-186-186 ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-022-r187",
+      "type": "single",
+      "scenario": "Deploy sonrasi 3GB boyutunda sparse bir `disk-187.img` file'i olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "truncate -s 3G disk-187.img",
+          "hint_text": "Sparse dosya icin `truncate -s` kullan.",
+          "hint_partial": "truncate -s ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-023-r188",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/srv/app/db-188-188-188/app/db-188-188/config.yml` dosyasinin extended attribute'larini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getfattr -d /srv/app/db-188-188-188/app/db-188-188/config.yml",
+          "hint_text": "xattr okumak icin `getfattr -d` kullan.",
+          "hint_partial": "getfattr -d ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-024-r189",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `/srv/app/cache-189-189-189/app/cache-189-189/config.yml` dosyasina `user.env=dev-189` extended attribute'ini ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setfattr -n user.env -v dev-189 /srv/app/cache-189-189-189/app/cache-189-189/config.yml",
+          "hint_text": "xattr yazmak icin `setfattr -n name -v value` kullan.",
+          "hint_partial": "setfattr -n ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-025-r190",
+      "type": "single",
+      "scenario": "Runbook adiminda kernel buffer'larindaki dirty data'yi diske flush et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sync",
+          "hint_text": "Filesystem buffer flush icin `sync` kullan.",
+          "hint_partial": "sync"
+        }
+      ]
+    }
+  ]
+}

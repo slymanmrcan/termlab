@@ -1,0 +1,2606 @@
+{
+  "level": "mid",
+  "topic": "docker",
+  "questions": [
+    {
+      "id": "mctr-011",
+      "type": "single",
+      "scenario": "Docker Compose servis durumlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose ps",
+          "hint_text": "Compose servis listesi icin `docker compose ps` kullan.",
+          "hint_partial": "docker compose ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-012",
+      "type": "single",
+      "scenario": "Compose stack'ini detached modda kaldir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose up -d",
+          "hint_text": "Detached compose baslatmak icin `docker compose up -d` kullan.",
+          "hint_partial": "docker compose up ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-013",
+      "type": "single",
+      "scenario": "web container'inin state bilgisini formatlayarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker inspect --format '{{.State.Status}}' web",
+          "hint_text": "Tek alan almak icin `docker inspect --format` kullan.",
+          "hint_partial": "docker inspect --format ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-014",
+      "type": "single",
+      "scenario": "web container'i icinde interactive shell ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker exec -it web sh",
+          "hint_text": "Interactive exec icin `docker exec -it` kullan.",
+          "hint_partial": "docker exec -it ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-015",
+      "type": "single",
+      "scenario": "web container loglarinin son 50 satirini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker logs --tail 50 web",
+          "hint_text": "Log sonunu kisitlamak icin `--tail` kullan.",
+          "hint_partial": "docker logs --tail ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-016",
+      "type": "single",
+      "scenario": "web container'indeki `nginx.conf` dosyasini local'e kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker cp web:/etc/nginx/nginx.conf .",
+          "hint_text": "Container'dan host'a dosya almak icin `docker cp` kullan.",
+          "hint_partial": "docker cp ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-017",
+      "type": "single",
+      "scenario": "Image listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker image ls",
+          "hint_text": "Image listesi icin `docker image ls` kullan.",
+          "hint_partial": "docker image ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-018",
+      "type": "single",
+      "scenario": "Durmus container'lari temizle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker container prune",
+          "hint_text": "Stopped container cleanup icin `docker container prune` kullan.",
+          "hint_partial": "docker container ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-019",
+      "type": "single",
+      "scenario": "Docker network listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network ls",
+          "hint_text": "Network listesi icin `docker network ls` kullan.",
+          "hint_partial": "docker network ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-020",
+      "type": "single",
+      "scenario": "`mydata` volume bilgisini inspect et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker volume inspect mydata",
+          "hint_text": "Volume detaylari icin `docker volume inspect` kullan.",
+          "hint_partial": "docker volume inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-021",
+      "type": "single",
+      "scenario": "Container kaynak kullanimini tek seferlik goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stats --no-stream",
+          "hint_text": "Anlik istatistik icin `--no-stream` kullan.",
+          "hint_partial": "docker stats ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-022",
+      "type": "single",
+      "scenario": "Current directory'yi `/app` altina mount ederek gecici alpine container'da `ls /app` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker run --rm -v \"$PWD\":/app alpine ls /app",
+          "hint_text": "Bind mount icin `-v`, gecici calisma icin `--rm` kullan.",
+          "hint_partial": "docker run --rm -v ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-023",
+      "type": "single",
+      "scenario": "Compose loglarini follow modda izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose logs -f",
+          "hint_text": "Compose log takibi icin `docker compose logs -f` kullan.",
+          "hint_partial": "docker compose logs ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-024",
+      "type": "single",
+      "scenario": "web container'ini force ederek sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker rm -f web",
+          "hint_text": "Caliyan container'i silmek icin `docker rm -f` kullan.",
+          "hint_partial": "docker rm -f ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-025",
+      "type": "single",
+      "scenario": "Kullanilmayan tum image'lari agresif sekilde temizle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker image prune -a",
+          "hint_text": "Tum unused image'lar icin `docker image prune -a` kullan.",
+          "hint_partial": "docker image prune ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-011-r1",
+      "type": "single",
+      "scenario": "Bakim oncesi docker Compose servis durumlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose ps",
+          "hint_text": "Compose servis listesi icin `docker compose ps` kullan.",
+          "hint_partial": "docker compose ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-012-r2",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda compose stack'ini detached modda kaldir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose up -d",
+          "hint_text": "Detached compose baslatmak icin `docker compose up -d` kullan.",
+          "hint_partial": "docker compose up ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-013-r3",
+      "type": "single",
+      "scenario": "Deploy sonrasi worker-3 container'inin state bilgisini formatlayarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker inspect --format '{{.State.Status}}' worker-3",
+          "hint_text": "Tek alan almak icin `docker inspect --format` kullan.",
+          "hint_partial": "docker inspect --format ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-014-r4",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde db-4-4 container'i icinde interactive shell ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker exec -it db-4-4 sh",
+          "hint_text": "Interactive exec icin `docker exec -it` kullan.",
+          "hint_partial": "docker exec -it ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-015-r5",
+      "type": "single",
+      "scenario": "Yeni acilan hostta cache-5-5 container loglarinin son 50 satirini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker logs --tail 50 cache-5-5",
+          "hint_text": "Log sonunu kisitlamak icin `--tail` kullan.",
+          "hint_partial": "docker logs --tail ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-016-r6",
+      "type": "single",
+      "scenario": "Runbook adiminda queue-6 container'indeki `vault-6-6.conf` dosyasini local'e kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker cp queue-6:/etc/vault-6/vault-6-6.conf .",
+          "hint_text": "Container'dan host'a dosya almak icin `docker cp` kullan.",
+          "hint_partial": "docker cp ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-017-r7",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde image listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker image ls",
+          "hint_text": "Image listesi icin `docker image ls` kullan.",
+          "hint_partial": "docker image ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-018-r8",
+      "type": "single",
+      "scenario": "Incident sonrasinda durmus container'lari temizle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker container prune",
+          "hint_text": "Stopped container cleanup icin `docker container prune` kullan.",
+          "hint_partial": "docker container ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-019-r9",
+      "type": "single",
+      "scenario": "Bakim oncesi docker network listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network ls",
+          "hint_text": "Network listesi icin `docker network ls` kullan.",
+          "hint_partial": "docker network ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-020-r10",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `mydata` volume bilgisini inspect et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker volume inspect mydata",
+          "hint_text": "Volume detaylari icin `docker volume inspect` kullan.",
+          "hint_partial": "docker volume inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-021-r11",
+      "type": "single",
+      "scenario": "Deploy sonrasi container kaynak kullanimini tek seferlik goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stats --no-stream",
+          "hint_text": "Anlik istatistik icin `--no-stream` kullan.",
+          "hint_partial": "docker stats ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-022-r12",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde current directory'yi `/app/db-12-12` altina mount ederek gecici alpine container'da `ls /app/db-12-12` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker run --rm -v \"$PWD\":/app/db-12-12 alpine ls /app/db-12-12",
+          "hint_text": "Bind mount icin `-v`, gecici calisma icin `--rm` kullan.",
+          "hint_partial": "docker run --rm -v ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-023-r13",
+      "type": "single",
+      "scenario": "Yeni acilan hostta compose loglarini follow modda izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose logs -f",
+          "hint_text": "Compose log takibi icin `docker compose logs -f` kullan.",
+          "hint_partial": "docker compose logs ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-024-r14",
+      "type": "single",
+      "scenario": "Runbook adiminda queue-14 container'ini force ederek sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker rm -f queue-14",
+          "hint_text": "Caliyan container'i silmek icin `docker rm -f` kullan.",
+          "hint_partial": "docker rm -f ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-025-r15",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde kullanilmayan tum image'lari agresif sekilde temizle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker image prune -a",
+          "hint_text": "Tum unused image'lar icin `docker image prune -a` kullan.",
+          "hint_partial": "docker image prune ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-011-r16",
+      "type": "single",
+      "scenario": "Incident sonrasinda docker Compose servis durumlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose ps",
+          "hint_text": "Compose servis listesi icin `docker compose ps` kullan.",
+          "hint_partial": "docker compose ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-012-r17",
+      "type": "single",
+      "scenario": "Bakim oncesi compose stack'ini detached modda kaldir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose up -d",
+          "hint_text": "Detached compose baslatmak icin `docker compose up -d` kullan.",
+          "hint_partial": "docker compose up ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-013-r18",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda cache-18-18-18 container'inin state bilgisini formatlayarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker inspect --format '{{.State.Status}}' cache-18-18-18",
+          "hint_text": "Tek alan almak icin `docker inspect --format` kullan.",
+          "hint_partial": "docker inspect --format ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-014-r19",
+      "type": "single",
+      "scenario": "Deploy sonrasi worker-19 container'i icinde interactive shell ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker exec -it worker-19 sh",
+          "hint_text": "Interactive exec icin `docker exec -it` kullan.",
+          "hint_partial": "docker exec -it ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-015-r20",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde db-20-20 container loglarinin son 50 satirini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker logs --tail 50 db-20-20",
+          "hint_text": "Log sonunu kisitlamak icin `--tail` kullan.",
+          "hint_partial": "docker logs --tail ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-016-r21",
+      "type": "single",
+      "scenario": "Yeni acilan hostta cache-21-21 container'indeki `redis-21-21.conf` dosyasini local'e kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker cp cache-21-21:/etc/redis-21/redis-21-21.conf .",
+          "hint_text": "Container'dan host'a dosya almak icin `docker cp` kullan.",
+          "hint_partial": "docker cp ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-017-r22",
+      "type": "single",
+      "scenario": "Runbook adiminda image listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker image ls",
+          "hint_text": "Image listesi icin `docker image ls` kullan.",
+          "hint_partial": "docker image ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-018-r23",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde durmus container'lari temizle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker container prune",
+          "hint_text": "Stopped container cleanup icin `docker container prune` kullan.",
+          "hint_partial": "docker container ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-019-r24",
+      "type": "single",
+      "scenario": "Incident sonrasinda docker network listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network ls",
+          "hint_text": "Network listesi icin `docker network ls` kullan.",
+          "hint_partial": "docker network ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-020-r25",
+      "type": "single",
+      "scenario": "Bakim oncesi `mydata` volume bilgisini inspect et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker volume inspect mydata",
+          "hint_text": "Volume detaylari icin `docker volume inspect` kullan.",
+          "hint_partial": "docker volume inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-021-r26",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda container kaynak kullanimini tek seferlik goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stats --no-stream",
+          "hint_text": "Anlik istatistik icin `--no-stream` kullan.",
+          "hint_partial": "docker stats ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-022-r27",
+      "type": "single",
+      "scenario": "Deploy sonrasi current directory'yi `/app/queue-27-27` altina mount ederek gecici alpine container'da `ls /app/queue-27-27` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker run --rm -v \"$PWD\":/app/queue-27-27 alpine ls /app/queue-27-27",
+          "hint_text": "Bind mount icin `-v`, gecici calisma icin `--rm` kullan.",
+          "hint_partial": "docker run --rm -v ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-023-r28",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde compose loglarini follow modda izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose logs -f",
+          "hint_text": "Compose log takibi icin `docker compose logs -f` kullan.",
+          "hint_partial": "docker compose logs ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-024-r29",
+      "type": "single",
+      "scenario": "Yeni acilan hostta cache-29-29 container'ini force ederek sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker rm -f cache-29-29",
+          "hint_text": "Caliyan container'i silmek icin `docker rm -f` kullan.",
+          "hint_partial": "docker rm -f ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-025-r30",
+      "type": "single",
+      "scenario": "Runbook adiminda kullanilmayan tum image'lari agresif sekilde temizle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker image prune -a",
+          "hint_text": "Tum unused image'lar icin `docker image prune -a` kullan.",
+          "hint_partial": "docker image prune ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-011-r31",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde docker Compose servis durumlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose ps",
+          "hint_text": "Compose servis listesi icin `docker compose ps` kullan.",
+          "hint_partial": "docker compose ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-012-r32",
+      "type": "single",
+      "scenario": "Incident sonrasinda compose stack'ini detached modda kaldir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose up -d",
+          "hint_text": "Detached compose baslatmak icin `docker compose up -d` kullan.",
+          "hint_partial": "docker compose up ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-013-r33",
+      "type": "single",
+      "scenario": "Bakim oncesi web-33 container'inin state bilgisini formatlayarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker inspect --format '{{.State.Status}}' web-33",
+          "hint_text": "Tek alan almak icin `docker inspect --format` kullan.",
+          "hint_partial": "docker inspect --format ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-014-r34",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda cache-34-34-34 container'i icinde interactive shell ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker exec -it cache-34-34-34 sh",
+          "hint_text": "Interactive exec icin `docker exec -it` kullan.",
+          "hint_partial": "docker exec -it ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-015-r35",
+      "type": "single",
+      "scenario": "Deploy sonrasi worker-35 container loglarinin son 50 satirini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker logs --tail 50 worker-35",
+          "hint_text": "Log sonunu kisitlamak icin `--tail` kullan.",
+          "hint_partial": "docker logs --tail ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-016-r36",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde db-36-36 container'indeki `vault-36-36.conf` dosyasini local'e kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker cp db-36-36:/etc/vault-36/vault-36-36.conf .",
+          "hint_text": "Container'dan host'a dosya almak icin `docker cp` kullan.",
+          "hint_partial": "docker cp ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-017-r37",
+      "type": "single",
+      "scenario": "Yeni acilan hostta image listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker image ls",
+          "hint_text": "Image listesi icin `docker image ls` kullan.",
+          "hint_partial": "docker image ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-018-r38",
+      "type": "single",
+      "scenario": "Runbook adiminda durmus container'lari temizle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker container prune",
+          "hint_text": "Stopped container cleanup icin `docker container prune` kullan.",
+          "hint_partial": "docker container ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-019-r39",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde docker network listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network ls",
+          "hint_text": "Network listesi icin `docker network ls` kullan.",
+          "hint_partial": "docker network ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-020-r40",
+      "type": "single",
+      "scenario": "Incident sonrasinda `mydata` volume bilgisini inspect et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker volume inspect mydata",
+          "hint_text": "Volume detaylari icin `docker volume inspect` kullan.",
+          "hint_partial": "docker volume inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-021-r41",
+      "type": "single",
+      "scenario": "Bakim oncesi container kaynak kullanimini tek seferlik goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stats --no-stream",
+          "hint_text": "Anlik istatistik icin `--no-stream` kullan.",
+          "hint_partial": "docker stats ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-022-r42",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda current directory'yi `/app/cache-42-42-42` altina mount ederek gecici alpine container'da `ls /app/cache-42-42-42` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker run --rm -v \"$PWD\":/app/cache-42-42-42 alpine ls /app/cache-42-42-42",
+          "hint_text": "Bind mount icin `-v`, gecici calisma icin `--rm` kullan.",
+          "hint_partial": "docker run --rm -v ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-023-r43",
+      "type": "single",
+      "scenario": "Deploy sonrasi compose loglarini follow modda izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose logs -f",
+          "hint_text": "Compose log takibi icin `docker compose logs -f` kullan.",
+          "hint_partial": "docker compose logs ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-024-r44",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde db-44-44 container'ini force ederek sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker rm -f db-44-44",
+          "hint_text": "Caliyan container'i silmek icin `docker rm -f` kullan.",
+          "hint_partial": "docker rm -f ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-025-r45",
+      "type": "single",
+      "scenario": "Yeni acilan hostta kullanilmayan tum image'lari agresif sekilde temizle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker image prune -a",
+          "hint_text": "Tum unused image'lar icin `docker image prune -a` kullan.",
+          "hint_partial": "docker image prune ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-011-r46",
+      "type": "single",
+      "scenario": "Runbook adiminda docker Compose servis durumlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose ps",
+          "hint_text": "Compose servis listesi icin `docker compose ps` kullan.",
+          "hint_partial": "docker compose ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-012-r47",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde compose stack'ini detached modda kaldir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose up -d",
+          "hint_text": "Detached compose baslatmak icin `docker compose up -d` kullan.",
+          "hint_partial": "docker compose up ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-013-r48",
+      "type": "single",
+      "scenario": "Incident sonrasinda proxy-48 container'inin state bilgisini formatlayarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker inspect --format '{{.State.Status}}' proxy-48",
+          "hint_text": "Tek alan almak icin `docker inspect --format` kullan.",
+          "hint_partial": "docker inspect --format ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-014-r49",
+      "type": "single",
+      "scenario": "Bakim oncesi web-49 container'i icinde interactive shell ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker exec -it web-49 sh",
+          "hint_text": "Interactive exec icin `docker exec -it` kullan.",
+          "hint_partial": "docker exec -it ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-015-r50",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda cache-50-50-50 container loglarinin son 50 satirini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker logs --tail 50 cache-50-50-50",
+          "hint_text": "Log sonunu kisitlamak icin `--tail` kullan.",
+          "hint_partial": "docker logs --tail ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-016-r51",
+      "type": "single",
+      "scenario": "Deploy sonrasi worker-51 container'indeki `redis-51-51.conf` dosyasini local'e kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker cp worker-51:/etc/redis-51/redis-51-51.conf .",
+          "hint_text": "Container'dan host'a dosya almak icin `docker cp` kullan.",
+          "hint_partial": "docker cp ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-017-r52",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde image listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker image ls",
+          "hint_text": "Image listesi icin `docker image ls` kullan.",
+          "hint_partial": "docker image ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-018-r53",
+      "type": "single",
+      "scenario": "Yeni acilan hostta durmus container'lari temizle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker container prune",
+          "hint_text": "Stopped container cleanup icin `docker container prune` kullan.",
+          "hint_partial": "docker container ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-019-r54",
+      "type": "single",
+      "scenario": "Runbook adiminda docker network listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network ls",
+          "hint_text": "Network listesi icin `docker network ls` kullan.",
+          "hint_partial": "docker network ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-020-r55",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `mydata` volume bilgisini inspect et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker volume inspect mydata",
+          "hint_text": "Volume detaylari icin `docker volume inspect` kullan.",
+          "hint_partial": "docker volume inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-021-r56",
+      "type": "single",
+      "scenario": "Incident sonrasinda container kaynak kullanimini tek seferlik goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stats --no-stream",
+          "hint_text": "Anlik istatistik icin `--no-stream` kullan.",
+          "hint_partial": "docker stats ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-022-r57",
+      "type": "single",
+      "scenario": "Bakim oncesi current directory'yi `/app/web-57-57` altina mount ederek gecici alpine container'da `ls /app/web-57-57` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker run --rm -v \"$PWD\":/app/web-57-57 alpine ls /app/web-57-57",
+          "hint_text": "Bind mount icin `-v`, gecici calisma icin `--rm` kullan.",
+          "hint_partial": "docker run --rm -v ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-023-r58",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda compose loglarini follow modda izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose logs -f",
+          "hint_text": "Compose log takibi icin `docker compose logs -f` kullan.",
+          "hint_partial": "docker compose logs ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-024-r59",
+      "type": "single",
+      "scenario": "Deploy sonrasi worker-59 container'ini force ederek sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker rm -f worker-59",
+          "hint_text": "Caliyan container'i silmek icin `docker rm -f` kullan.",
+          "hint_partial": "docker rm -f ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-025-r60",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde kullanilmayan tum image'lari agresif sekilde temizle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker image prune -a",
+          "hint_text": "Tum unused image'lar icin `docker image prune -a` kullan.",
+          "hint_partial": "docker image prune ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-011-r61",
+      "type": "single",
+      "scenario": "Yeni acilan hostta docker Compose servis durumlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose ps",
+          "hint_text": "Compose servis listesi icin `docker compose ps` kullan.",
+          "hint_partial": "docker compose ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-012-r62",
+      "type": "single",
+      "scenario": "Runbook adiminda compose stack'ini detached modda kaldir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose up -d",
+          "hint_text": "Detached compose baslatmak icin `docker compose up -d` kullan.",
+          "hint_partial": "docker compose up ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-013-r63",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde bastion-63 container'inin state bilgisini formatlayarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker inspect --format '{{.State.Status}}' bastion-63",
+          "hint_text": "Tek alan almak icin `docker inspect --format` kullan.",
+          "hint_partial": "docker inspect --format ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-014-r64",
+      "type": "single",
+      "scenario": "Incident sonrasinda proxy-64 container'i icinde interactive shell ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker exec -it proxy-64 sh",
+          "hint_text": "Interactive exec icin `docker exec -it` kullan.",
+          "hint_partial": "docker exec -it ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-015-r65",
+      "type": "single",
+      "scenario": "Bakim oncesi web-65 container loglarinin son 50 satirini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker logs --tail 50 web-65",
+          "hint_text": "Log sonunu kisitlamak icin `--tail` kullan.",
+          "hint_partial": "docker logs --tail ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-016-r66",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda cache-66-66-66 container'indeki `vault-66-66.conf` dosyasini local'e kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker cp cache-66-66-66:/etc/vault-66/vault-66-66.conf .",
+          "hint_text": "Container'dan host'a dosya almak icin `docker cp` kullan.",
+          "hint_partial": "docker cp ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-017-r67",
+      "type": "single",
+      "scenario": "Deploy sonrasi image listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker image ls",
+          "hint_text": "Image listesi icin `docker image ls` kullan.",
+          "hint_partial": "docker image ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-018-r68",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde durmus container'lari temizle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker container prune",
+          "hint_text": "Stopped container cleanup icin `docker container prune` kullan.",
+          "hint_partial": "docker container ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-019-r69",
+      "type": "single",
+      "scenario": "Yeni acilan hostta docker network listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network ls",
+          "hint_text": "Network listesi icin `docker network ls` kullan.",
+          "hint_partial": "docker network ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-020-r70",
+      "type": "single",
+      "scenario": "Runbook adiminda `mydata` volume bilgisini inspect et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker volume inspect mydata",
+          "hint_text": "Volume detaylari icin `docker volume inspect` kullan.",
+          "hint_partial": "docker volume inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-021-r71",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde container kaynak kullanimini tek seferlik goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stats --no-stream",
+          "hint_text": "Anlik istatistik icin `--no-stream` kullan.",
+          "hint_partial": "docker stats ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-022-r72",
+      "type": "single",
+      "scenario": "Incident sonrasinda current directory'yi `/app/proxy-72` altina mount ederek gecici alpine container'da `ls /app/proxy-72` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker run --rm -v \"$PWD\":/app/proxy-72 alpine ls /app/proxy-72",
+          "hint_text": "Bind mount icin `-v`, gecici calisma icin `--rm` kullan.",
+          "hint_partial": "docker run --rm -v ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-023-r73",
+      "type": "single",
+      "scenario": "Bakim oncesi compose loglarini follow modda izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose logs -f",
+          "hint_text": "Compose log takibi icin `docker compose logs -f` kullan.",
+          "hint_partial": "docker compose logs ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-024-r74",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda cache-74-74-74 container'ini force ederek sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker rm -f cache-74-74-74",
+          "hint_text": "Caliyan container'i silmek icin `docker rm -f` kullan.",
+          "hint_partial": "docker rm -f ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-025-r75",
+      "type": "single",
+      "scenario": "Deploy sonrasi kullanilmayan tum image'lari agresif sekilde temizle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker image prune -a",
+          "hint_text": "Tum unused image'lar icin `docker image prune -a` kullan.",
+          "hint_partial": "docker image prune ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-011-r76",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde docker Compose servis durumlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose ps",
+          "hint_text": "Compose servis listesi icin `docker compose ps` kullan.",
+          "hint_partial": "docker compose ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-012-r77",
+      "type": "single",
+      "scenario": "Yeni acilan hostta compose stack'ini detached modda kaldir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose up -d",
+          "hint_text": "Detached compose baslatmak icin `docker compose up -d` kullan.",
+          "hint_partial": "docker compose up ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-013-r78",
+      "type": "single",
+      "scenario": "Runbook adiminda queue-78 container'inin state bilgisini formatlayarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker inspect --format '{{.State.Status}}' queue-78",
+          "hint_text": "Tek alan almak icin `docker inspect --format` kullan.",
+          "hint_partial": "docker inspect --format ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-014-r79",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde bastion-79 container'i icinde interactive shell ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker exec -it bastion-79 sh",
+          "hint_text": "Interactive exec icin `docker exec -it` kullan.",
+          "hint_partial": "docker exec -it ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-015-r80",
+      "type": "single",
+      "scenario": "Incident sonrasinda proxy-80 container loglarinin son 50 satirini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker logs --tail 50 proxy-80",
+          "hint_text": "Log sonunu kisitlamak icin `--tail` kullan.",
+          "hint_partial": "docker logs --tail ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-016-r81",
+      "type": "single",
+      "scenario": "Bakim oncesi web-81 container'indeki `redis-81-81.conf` dosyasini local'e kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker cp web-81:/etc/redis-81/redis-81-81.conf .",
+          "hint_text": "Container'dan host'a dosya almak icin `docker cp` kullan.",
+          "hint_partial": "docker cp ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-017-r82",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda image listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker image ls",
+          "hint_text": "Image listesi icin `docker image ls` kullan.",
+          "hint_partial": "docker image ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-018-r83",
+      "type": "single",
+      "scenario": "Deploy sonrasi durmus container'lari temizle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker container prune",
+          "hint_text": "Stopped container cleanup icin `docker container prune` kullan.",
+          "hint_partial": "docker container ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-019-r84",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde docker network listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network ls",
+          "hint_text": "Network listesi icin `docker network ls` kullan.",
+          "hint_partial": "docker network ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-020-r85",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `mydata` volume bilgisini inspect et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker volume inspect mydata",
+          "hint_text": "Volume detaylari icin `docker volume inspect` kullan.",
+          "hint_partial": "docker volume inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-021-r86",
+      "type": "single",
+      "scenario": "Runbook adiminda container kaynak kullanimini tek seferlik goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stats --no-stream",
+          "hint_text": "Anlik istatistik icin `--no-stream` kullan.",
+          "hint_partial": "docker stats ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-022-r87",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde current directory'yi `/app/bastion-87` altina mount ederek gecici alpine container'da `ls /app/bastion-87` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker run --rm -v \"$PWD\":/app/bastion-87 alpine ls /app/bastion-87",
+          "hint_text": "Bind mount icin `-v`, gecici calisma icin `--rm` kullan.",
+          "hint_partial": "docker run --rm -v ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-023-r88",
+      "type": "single",
+      "scenario": "Incident sonrasinda compose loglarini follow modda izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose logs -f",
+          "hint_text": "Compose log takibi icin `docker compose logs -f` kullan.",
+          "hint_partial": "docker compose logs ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-024-r89",
+      "type": "single",
+      "scenario": "Bakim oncesi web-89 container'ini force ederek sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker rm -f web-89",
+          "hint_text": "Caliyan container'i silmek icin `docker rm -f` kullan.",
+          "hint_partial": "docker rm -f ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-025-r90",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda kullanilmayan tum image'lari agresif sekilde temizle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker image prune -a",
+          "hint_text": "Tum unused image'lar icin `docker image prune -a` kullan.",
+          "hint_partial": "docker image prune ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-011-r91",
+      "type": "single",
+      "scenario": "Deploy sonrasi docker Compose servis durumlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose ps",
+          "hint_text": "Compose servis listesi icin `docker compose ps` kullan.",
+          "hint_partial": "docker compose ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-012-r92",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde compose stack'ini detached modda kaldir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose up -d",
+          "hint_text": "Detached compose baslatmak icin `docker compose up -d` kullan.",
+          "hint_partial": "docker compose up ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-013-r93",
+      "type": "single",
+      "scenario": "Yeni acilan hostta cache-93-93 container'inin state bilgisini formatlayarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker inspect --format '{{.State.Status}}' cache-93-93",
+          "hint_text": "Tek alan almak icin `docker inspect --format` kullan.",
+          "hint_partial": "docker inspect --format ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-014-r94",
+      "type": "single",
+      "scenario": "Runbook adiminda queue-94 container'i icinde interactive shell ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker exec -it queue-94 sh",
+          "hint_text": "Interactive exec icin `docker exec -it` kullan.",
+          "hint_partial": "docker exec -it ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-015-r95",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde bastion-95 container loglarinin son 50 satirini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker logs --tail 50 bastion-95",
+          "hint_text": "Log sonunu kisitlamak icin `--tail` kullan.",
+          "hint_partial": "docker logs --tail ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-016-r96",
+      "type": "single",
+      "scenario": "Incident sonrasinda proxy-96 container'indeki `vault-96-96.conf` dosyasini local'e kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker cp proxy-96:/etc/vault-96/vault-96-96.conf .",
+          "hint_text": "Container'dan host'a dosya almak icin `docker cp` kullan.",
+          "hint_partial": "docker cp ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-017-r97",
+      "type": "single",
+      "scenario": "Bakim oncesi image listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker image ls",
+          "hint_text": "Image listesi icin `docker image ls` kullan.",
+          "hint_partial": "docker image ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-018-r98",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda durmus container'lari temizle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker container prune",
+          "hint_text": "Stopped container cleanup icin `docker container prune` kullan.",
+          "hint_partial": "docker container ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-019-r99",
+      "type": "single",
+      "scenario": "Deploy sonrasi docker network listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network ls",
+          "hint_text": "Network listesi icin `docker network ls` kullan.",
+          "hint_partial": "docker network ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-020-r100",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `mydata` volume bilgisini inspect et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker volume inspect mydata",
+          "hint_text": "Volume detaylari icin `docker volume inspect` kullan.",
+          "hint_partial": "docker volume inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-021-r101",
+      "type": "single",
+      "scenario": "Yeni acilan hostta container kaynak kullanimini tek seferlik goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stats --no-stream",
+          "hint_text": "Anlik istatistik icin `--no-stream` kullan.",
+          "hint_partial": "docker stats ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-022-r102",
+      "type": "single",
+      "scenario": "Runbook adiminda current directory'yi `/app/queue-102` altina mount ederek gecici alpine container'da `ls /app/queue-102` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker run --rm -v \"$PWD\":/app/queue-102 alpine ls /app/queue-102",
+          "hint_text": "Bind mount icin `-v`, gecici calisma icin `--rm` kullan.",
+          "hint_partial": "docker run --rm -v ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-023-r103",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde compose loglarini follow modda izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose logs -f",
+          "hint_text": "Compose log takibi icin `docker compose logs -f` kullan.",
+          "hint_partial": "docker compose logs ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-024-r104",
+      "type": "single",
+      "scenario": "Incident sonrasinda proxy-104 container'ini force ederek sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker rm -f proxy-104",
+          "hint_text": "Caliyan container'i silmek icin `docker rm -f` kullan.",
+          "hint_partial": "docker rm -f ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-025-r105",
+      "type": "single",
+      "scenario": "Bakim oncesi kullanilmayan tum image'lari agresif sekilde temizle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker image prune -a",
+          "hint_text": "Tum unused image'lar icin `docker image prune -a` kullan.",
+          "hint_partial": "docker image prune ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-011-r106",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda docker Compose servis durumlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose ps",
+          "hint_text": "Compose servis listesi icin `docker compose ps` kullan.",
+          "hint_partial": "docker compose ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-012-r107",
+      "type": "single",
+      "scenario": "Deploy sonrasi compose stack'ini detached modda kaldir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose up -d",
+          "hint_text": "Detached compose baslatmak icin `docker compose up -d` kullan.",
+          "hint_partial": "docker compose up ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-013-r108",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde db-108-108 container'inin state bilgisini formatlayarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker inspect --format '{{.State.Status}}' db-108-108",
+          "hint_text": "Tek alan almak icin `docker inspect --format` kullan.",
+          "hint_partial": "docker inspect --format ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-014-r109",
+      "type": "single",
+      "scenario": "Yeni acilan hostta cache-109-109 container'i icinde interactive shell ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker exec -it cache-109-109 sh",
+          "hint_text": "Interactive exec icin `docker exec -it` kullan.",
+          "hint_partial": "docker exec -it ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-015-r110",
+      "type": "single",
+      "scenario": "Runbook adiminda queue-110 container loglarinin son 50 satirini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker logs --tail 50 queue-110",
+          "hint_text": "Log sonunu kisitlamak icin `--tail` kullan.",
+          "hint_partial": "docker logs --tail ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-016-r111",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde bastion-111 container'indeki `redis-111-111.conf` dosyasini local'e kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker cp bastion-111:/etc/redis-111/redis-111-111.conf .",
+          "hint_text": "Container'dan host'a dosya almak icin `docker cp` kullan.",
+          "hint_partial": "docker cp ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-017-r112",
+      "type": "single",
+      "scenario": "Incident sonrasinda image listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker image ls",
+          "hint_text": "Image listesi icin `docker image ls` kullan.",
+          "hint_partial": "docker image ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-018-r113",
+      "type": "single",
+      "scenario": "Bakim oncesi durmus container'lari temizle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker container prune",
+          "hint_text": "Stopped container cleanup icin `docker container prune` kullan.",
+          "hint_partial": "docker container ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-019-r114",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda docker network listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network ls",
+          "hint_text": "Network listesi icin `docker network ls` kullan.",
+          "hint_partial": "docker network ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-020-r115",
+      "type": "single",
+      "scenario": "Deploy sonrasi `mydata` volume bilgisini inspect et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker volume inspect mydata",
+          "hint_text": "Volume detaylari icin `docker volume inspect` kullan.",
+          "hint_partial": "docker volume inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-021-r116",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde container kaynak kullanimini tek seferlik goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stats --no-stream",
+          "hint_text": "Anlik istatistik icin `--no-stream` kullan.",
+          "hint_partial": "docker stats ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-022-r117",
+      "type": "single",
+      "scenario": "Yeni acilan hostta current directory'yi `/app/cache-117-117` altina mount ederek gecici alpine container'da `ls /app/cache-117-117` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker run --rm -v \"$PWD\":/app/cache-117-117 alpine ls /app/cache-117-117",
+          "hint_text": "Bind mount icin `-v`, gecici calisma icin `--rm` kullan.",
+          "hint_partial": "docker run --rm -v ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-023-r118",
+      "type": "single",
+      "scenario": "Runbook adiminda compose loglarini follow modda izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose logs -f",
+          "hint_text": "Compose log takibi icin `docker compose logs -f` kullan.",
+          "hint_partial": "docker compose logs ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-024-r119",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde bastion-119 container'ini force ederek sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker rm -f bastion-119",
+          "hint_text": "Caliyan container'i silmek icin `docker rm -f` kullan.",
+          "hint_partial": "docker rm -f ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-025-r120",
+      "type": "single",
+      "scenario": "Incident sonrasinda kullanilmayan tum image'lari agresif sekilde temizle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker image prune -a",
+          "hint_text": "Tum unused image'lar icin `docker image prune -a` kullan.",
+          "hint_partial": "docker image prune ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-011-r121",
+      "type": "single",
+      "scenario": "Bakim oncesi docker Compose servis durumlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose ps",
+          "hint_text": "Compose servis listesi icin `docker compose ps` kullan.",
+          "hint_partial": "docker compose ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-012-r122",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda compose stack'ini detached modda kaldir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose up -d",
+          "hint_text": "Detached compose baslatmak icin `docker compose up -d` kullan.",
+          "hint_partial": "docker compose up ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-013-r123",
+      "type": "single",
+      "scenario": "Deploy sonrasi worker-123 container'inin state bilgisini formatlayarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker inspect --format '{{.State.Status}}' worker-123",
+          "hint_text": "Tek alan almak icin `docker inspect --format` kullan.",
+          "hint_partial": "docker inspect --format ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-014-r124",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde db-124-124 container'i icinde interactive shell ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker exec -it db-124-124 sh",
+          "hint_text": "Interactive exec icin `docker exec -it` kullan.",
+          "hint_partial": "docker exec -it ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-015-r125",
+      "type": "single",
+      "scenario": "Yeni acilan hostta cache-125-125 container loglarinin son 50 satirini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker logs --tail 50 cache-125-125",
+          "hint_text": "Log sonunu kisitlamak icin `--tail` kullan.",
+          "hint_partial": "docker logs --tail ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-016-r126",
+      "type": "single",
+      "scenario": "Runbook adiminda queue-126 container'indeki `vault-126-126.conf` dosyasini local'e kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker cp queue-126:/etc/vault-126/vault-126-126.conf .",
+          "hint_text": "Container'dan host'a dosya almak icin `docker cp` kullan.",
+          "hint_partial": "docker cp ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-017-r127",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde image listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker image ls",
+          "hint_text": "Image listesi icin `docker image ls` kullan.",
+          "hint_partial": "docker image ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-018-r128",
+      "type": "single",
+      "scenario": "Incident sonrasinda durmus container'lari temizle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker container prune",
+          "hint_text": "Stopped container cleanup icin `docker container prune` kullan.",
+          "hint_partial": "docker container ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-019-r129",
+      "type": "single",
+      "scenario": "Bakim oncesi docker network listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network ls",
+          "hint_text": "Network listesi icin `docker network ls` kullan.",
+          "hint_partial": "docker network ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-020-r130",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `mydata` volume bilgisini inspect et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker volume inspect mydata",
+          "hint_text": "Volume detaylari icin `docker volume inspect` kullan.",
+          "hint_partial": "docker volume inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-021-r131",
+      "type": "single",
+      "scenario": "Deploy sonrasi container kaynak kullanimini tek seferlik goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stats --no-stream",
+          "hint_text": "Anlik istatistik icin `--no-stream` kullan.",
+          "hint_partial": "docker stats ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-022-r132",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde current directory'yi `/app/db-132-132` altina mount ederek gecici alpine container'da `ls /app/db-132-132` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker run --rm -v \"$PWD\":/app/db-132-132 alpine ls /app/db-132-132",
+          "hint_text": "Bind mount icin `-v`, gecici calisma icin `--rm` kullan.",
+          "hint_partial": "docker run --rm -v ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-023-r133",
+      "type": "single",
+      "scenario": "Yeni acilan hostta compose loglarini follow modda izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose logs -f",
+          "hint_text": "Compose log takibi icin `docker compose logs -f` kullan.",
+          "hint_partial": "docker compose logs ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-024-r134",
+      "type": "single",
+      "scenario": "Runbook adiminda queue-134 container'ini force ederek sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker rm -f queue-134",
+          "hint_text": "Caliyan container'i silmek icin `docker rm -f` kullan.",
+          "hint_partial": "docker rm -f ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-025-r135",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde kullanilmayan tum image'lari agresif sekilde temizle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker image prune -a",
+          "hint_text": "Tum unused image'lar icin `docker image prune -a` kullan.",
+          "hint_partial": "docker image prune ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-011-r136",
+      "type": "single",
+      "scenario": "Incident sonrasinda docker Compose servis durumlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose ps",
+          "hint_text": "Compose servis listesi icin `docker compose ps` kullan.",
+          "hint_partial": "docker compose ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-012-r137",
+      "type": "single",
+      "scenario": "Bakim oncesi compose stack'ini detached modda kaldir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose up -d",
+          "hint_text": "Detached compose baslatmak icin `docker compose up -d` kullan.",
+          "hint_partial": "docker compose up ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-013-r138",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda cache-138-138-138 container'inin state bilgisini formatlayarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker inspect --format '{{.State.Status}}' cache-138-138-138",
+          "hint_text": "Tek alan almak icin `docker inspect --format` kullan.",
+          "hint_partial": "docker inspect --format ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-014-r139",
+      "type": "single",
+      "scenario": "Deploy sonrasi worker-139 container'i icinde interactive shell ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker exec -it worker-139 sh",
+          "hint_text": "Interactive exec icin `docker exec -it` kullan.",
+          "hint_partial": "docker exec -it ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-015-r140",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde db-140-140 container loglarinin son 50 satirini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker logs --tail 50 db-140-140",
+          "hint_text": "Log sonunu kisitlamak icin `--tail` kullan.",
+          "hint_partial": "docker logs --tail ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-016-r141",
+      "type": "single",
+      "scenario": "Yeni acilan hostta cache-141-141 container'indeki `redis-141-141.conf` dosyasini local'e kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker cp cache-141-141:/etc/redis-141/redis-141-141.conf .",
+          "hint_text": "Container'dan host'a dosya almak icin `docker cp` kullan.",
+          "hint_partial": "docker cp ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-017-r142",
+      "type": "single",
+      "scenario": "Runbook adiminda image listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker image ls",
+          "hint_text": "Image listesi icin `docker image ls` kullan.",
+          "hint_partial": "docker image ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-018-r143",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde durmus container'lari temizle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker container prune",
+          "hint_text": "Stopped container cleanup icin `docker container prune` kullan.",
+          "hint_partial": "docker container ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-019-r144",
+      "type": "single",
+      "scenario": "Incident sonrasinda docker network listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network ls",
+          "hint_text": "Network listesi icin `docker network ls` kullan.",
+          "hint_partial": "docker network ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-020-r145",
+      "type": "single",
+      "scenario": "Bakim oncesi `mydata` volume bilgisini inspect et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker volume inspect mydata",
+          "hint_text": "Volume detaylari icin `docker volume inspect` kullan.",
+          "hint_partial": "docker volume inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-021-r146",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda container kaynak kullanimini tek seferlik goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stats --no-stream",
+          "hint_text": "Anlik istatistik icin `--no-stream` kullan.",
+          "hint_partial": "docker stats ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-022-r147",
+      "type": "single",
+      "scenario": "Deploy sonrasi current directory'yi `/app/queue-147-147` altina mount ederek gecici alpine container'da `ls /app/queue-147-147` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker run --rm -v \"$PWD\":/app/queue-147-147 alpine ls /app/queue-147-147",
+          "hint_text": "Bind mount icin `-v`, gecici calisma icin `--rm` kullan.",
+          "hint_partial": "docker run --rm -v ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-023-r148",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde compose loglarini follow modda izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose logs -f",
+          "hint_text": "Compose log takibi icin `docker compose logs -f` kullan.",
+          "hint_partial": "docker compose logs ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-024-r149",
+      "type": "single",
+      "scenario": "Yeni acilan hostta cache-149-149 container'ini force ederek sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker rm -f cache-149-149",
+          "hint_text": "Caliyan container'i silmek icin `docker rm -f` kullan.",
+          "hint_partial": "docker rm -f ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-025-r150",
+      "type": "single",
+      "scenario": "Runbook adiminda kullanilmayan tum image'lari agresif sekilde temizle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker image prune -a",
+          "hint_text": "Tum unused image'lar icin `docker image prune -a` kullan.",
+          "hint_partial": "docker image prune ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-011-r151",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde docker Compose servis durumlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose ps",
+          "hint_text": "Compose servis listesi icin `docker compose ps` kullan.",
+          "hint_partial": "docker compose ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-012-r152",
+      "type": "single",
+      "scenario": "Incident sonrasinda compose stack'ini detached modda kaldir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose up -d",
+          "hint_text": "Detached compose baslatmak icin `docker compose up -d` kullan.",
+          "hint_partial": "docker compose up ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-013-r153",
+      "type": "single",
+      "scenario": "Bakim oncesi web-153 container'inin state bilgisini formatlayarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker inspect --format '{{.State.Status}}' web-153",
+          "hint_text": "Tek alan almak icin `docker inspect --format` kullan.",
+          "hint_partial": "docker inspect --format ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-014-r154",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda cache-154-154-154 container'i icinde interactive shell ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker exec -it cache-154-154-154 sh",
+          "hint_text": "Interactive exec icin `docker exec -it` kullan.",
+          "hint_partial": "docker exec -it ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-015-r155",
+      "type": "single",
+      "scenario": "Deploy sonrasi worker-155 container loglarinin son 50 satirini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker logs --tail 50 worker-155",
+          "hint_text": "Log sonunu kisitlamak icin `--tail` kullan.",
+          "hint_partial": "docker logs --tail ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-016-r156",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde db-156-156 container'indeki `vault-156-156.conf` dosyasini local'e kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker cp db-156-156:/etc/vault-156/vault-156-156.conf .",
+          "hint_text": "Container'dan host'a dosya almak icin `docker cp` kullan.",
+          "hint_partial": "docker cp ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-017-r157",
+      "type": "single",
+      "scenario": "Yeni acilan hostta image listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker image ls",
+          "hint_text": "Image listesi icin `docker image ls` kullan.",
+          "hint_partial": "docker image ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-018-r158",
+      "type": "single",
+      "scenario": "Runbook adiminda durmus container'lari temizle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker container prune",
+          "hint_text": "Stopped container cleanup icin `docker container prune` kullan.",
+          "hint_partial": "docker container ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-019-r159",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde docker network listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network ls",
+          "hint_text": "Network listesi icin `docker network ls` kullan.",
+          "hint_partial": "docker network ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-020-r160",
+      "type": "single",
+      "scenario": "Incident sonrasinda `mydata` volume bilgisini inspect et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker volume inspect mydata",
+          "hint_text": "Volume detaylari icin `docker volume inspect` kullan.",
+          "hint_partial": "docker volume inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-021-r161",
+      "type": "single",
+      "scenario": "Bakim oncesi container kaynak kullanimini tek seferlik goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stats --no-stream",
+          "hint_text": "Anlik istatistik icin `--no-stream` kullan.",
+          "hint_partial": "docker stats ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-022-r162",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda current directory'yi `/app/cache-162-162-162` altina mount ederek gecici alpine container'da `ls /app/cache-162-162-162` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker run --rm -v \"$PWD\":/app/cache-162-162-162 alpine ls /app/cache-162-162-162",
+          "hint_text": "Bind mount icin `-v`, gecici calisma icin `--rm` kullan.",
+          "hint_partial": "docker run --rm -v ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-023-r163",
+      "type": "single",
+      "scenario": "Deploy sonrasi compose loglarini follow modda izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose logs -f",
+          "hint_text": "Compose log takibi icin `docker compose logs -f` kullan.",
+          "hint_partial": "docker compose logs ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-024-r164",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde db-164-164 container'ini force ederek sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker rm -f db-164-164",
+          "hint_text": "Caliyan container'i silmek icin `docker rm -f` kullan.",
+          "hint_partial": "docker rm -f ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-025-r165",
+      "type": "single",
+      "scenario": "Yeni acilan hostta kullanilmayan tum image'lari agresif sekilde temizle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker image prune -a",
+          "hint_text": "Tum unused image'lar icin `docker image prune -a` kullan.",
+          "hint_partial": "docker image prune ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-011-r166",
+      "type": "single",
+      "scenario": "Runbook adiminda docker Compose servis durumlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose ps",
+          "hint_text": "Compose servis listesi icin `docker compose ps` kullan.",
+          "hint_partial": "docker compose ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-012-r167",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde compose stack'ini detached modda kaldir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose up -d",
+          "hint_text": "Detached compose baslatmak icin `docker compose up -d` kullan.",
+          "hint_partial": "docker compose up ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-013-r168",
+      "type": "single",
+      "scenario": "Incident sonrasinda proxy-168 container'inin state bilgisini formatlayarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker inspect --format '{{.State.Status}}' proxy-168",
+          "hint_text": "Tek alan almak icin `docker inspect --format` kullan.",
+          "hint_partial": "docker inspect --format ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-014-r169",
+      "type": "single",
+      "scenario": "Bakim oncesi web-169 container'i icinde interactive shell ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker exec -it web-169 sh",
+          "hint_text": "Interactive exec icin `docker exec -it` kullan.",
+          "hint_partial": "docker exec -it ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-015-r170",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda cache-170-170-170 container loglarinin son 50 satirini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker logs --tail 50 cache-170-170-170",
+          "hint_text": "Log sonunu kisitlamak icin `--tail` kullan.",
+          "hint_partial": "docker logs --tail ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-016-r171",
+      "type": "single",
+      "scenario": "Deploy sonrasi worker-171 container'indeki `redis-171-171.conf` dosyasini local'e kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker cp worker-171:/etc/redis-171/redis-171-171.conf .",
+          "hint_text": "Container'dan host'a dosya almak icin `docker cp` kullan.",
+          "hint_partial": "docker cp ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-017-r172",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde image listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker image ls",
+          "hint_text": "Image listesi icin `docker image ls` kullan.",
+          "hint_partial": "docker image ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-018-r173",
+      "type": "single",
+      "scenario": "Yeni acilan hostta durmus container'lari temizle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker container prune",
+          "hint_text": "Stopped container cleanup icin `docker container prune` kullan.",
+          "hint_partial": "docker container ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-019-r174",
+      "type": "single",
+      "scenario": "Runbook adiminda docker network listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network ls",
+          "hint_text": "Network listesi icin `docker network ls` kullan.",
+          "hint_partial": "docker network ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-020-r175",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `mydata` volume bilgisini inspect et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker volume inspect mydata",
+          "hint_text": "Volume detaylari icin `docker volume inspect` kullan.",
+          "hint_partial": "docker volume inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-021-r176",
+      "type": "single",
+      "scenario": "Incident sonrasinda container kaynak kullanimini tek seferlik goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stats --no-stream",
+          "hint_text": "Anlik istatistik icin `--no-stream` kullan.",
+          "hint_partial": "docker stats ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-022-r177",
+      "type": "single",
+      "scenario": "Bakim oncesi current directory'yi `/app/web-177-177` altina mount ederek gecici alpine container'da `ls /app/web-177-177` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker run --rm -v \"$PWD\":/app/web-177-177 alpine ls /app/web-177-177",
+          "hint_text": "Bind mount icin `-v`, gecici calisma icin `--rm` kullan.",
+          "hint_partial": "docker run --rm -v ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-023-r178",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda compose loglarini follow modda izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose logs -f",
+          "hint_text": "Compose log takibi icin `docker compose logs -f` kullan.",
+          "hint_partial": "docker compose logs ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-024-r179",
+      "type": "single",
+      "scenario": "Deploy sonrasi worker-179 container'ini force ederek sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker rm -f worker-179",
+          "hint_text": "Caliyan container'i silmek icin `docker rm -f` kullan.",
+          "hint_partial": "docker rm -f ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-025-r180",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde kullanilmayan tum image'lari agresif sekilde temizle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker image prune -a",
+          "hint_text": "Tum unused image'lar icin `docker image prune -a` kullan.",
+          "hint_partial": "docker image prune ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-011-r181",
+      "type": "single",
+      "scenario": "Yeni acilan hostta docker Compose servis durumlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose ps",
+          "hint_text": "Compose servis listesi icin `docker compose ps` kullan.",
+          "hint_partial": "docker compose ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-012-r182",
+      "type": "single",
+      "scenario": "Runbook adiminda compose stack'ini detached modda kaldir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose up -d",
+          "hint_text": "Detached compose baslatmak icin `docker compose up -d` kullan.",
+          "hint_partial": "docker compose up ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-013-r183",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde bastion-183 container'inin state bilgisini formatlayarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker inspect --format '{{.State.Status}}' bastion-183",
+          "hint_text": "Tek alan almak icin `docker inspect --format` kullan.",
+          "hint_partial": "docker inspect --format ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-014-r184",
+      "type": "single",
+      "scenario": "Incident sonrasinda proxy-184 container'i icinde interactive shell ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker exec -it proxy-184 sh",
+          "hint_text": "Interactive exec icin `docker exec -it` kullan.",
+          "hint_partial": "docker exec -it ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-015-r185",
+      "type": "single",
+      "scenario": "Bakim oncesi web-185 container loglarinin son 50 satirini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker logs --tail 50 web-185",
+          "hint_text": "Log sonunu kisitlamak icin `--tail` kullan.",
+          "hint_partial": "docker logs --tail ..."
+        }
+      ]
+    }
+  ]
+}

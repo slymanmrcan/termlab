@@ -1,0 +1,2606 @@
+{
+  "level": "senior",
+  "topic": "scripting",
+  "questions": [
+    {
+      "id": "sscr-011",
+      "type": "single",
+      "scenario": "`deploy.sh` script'ini trace ederek calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "bash -x deploy.sh",
+          "hint_text": "Trace execution icin `bash -x` kullan.",
+          "hint_partial": "bash -x ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-012",
+      "type": "single",
+      "scenario": "`config.tmpl` dosyasini environment variable'larla render ederek `config.yml` uret.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "envsubst < config.tmpl > config.yml",
+          "hint_text": "Template render icin `envsubst` kullan.",
+          "hint_partial": "envsubst < ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-013",
+      "type": "single",
+      "scenario": "`data.json` icindeki tum item isimlerini jq ile cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "jq -r '.items[].name' data.json",
+          "hint_text": "JSON alan secimi icin `jq -r` kullan.",
+          "hint_partial": "jq -r ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-014",
+      "type": "single",
+      "scenario": "`deploy.yaml` icindeki replica sayisini yq ile oku.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "yq '.spec.replicas' deploy.yaml",
+          "hint_text": "YAML alan secimi icin `yq` kullan.",
+          "hint_partial": "yq ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-015",
+      "type": "single",
+      "scenario": "`hosts.txt` listesindeki host'larda 4 paralel is ile `uptime` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "parallel -a hosts.txt -j 4 'ssh {} uptime'",
+          "hint_text": "GNU parallel icin `-a` ve `-j` kullan.",
+          "hint_partial": "parallel -a ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-016",
+      "type": "single",
+      "scenario": "Bir curl denemesini 10 saniye sonra timeout et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "timeout 10 bash -c 'curl -fsS https://example.com'",
+          "hint_text": "Sure limiti icin `timeout` kullan.",
+          "hint_partial": "timeout 10 ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-017",
+      "type": "single",
+      "scenario": "`hosts.txt` dosyasini `hosts` adli diziye yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mapfile -t hosts < hosts.txt",
+          "hint_text": "Diziye satir yuklemek icin `mapfile -t` kullan.",
+          "hint_partial": "mapfile -t ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-018",
+      "type": "single",
+      "scenario": "`hosts` dizisindeki her host'ta `uptime` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "for host in \"${hosts[@]}\"; do ssh \"$host\" uptime; done",
+          "hint_text": "Dizi guvenli dongu icin `\"${arr[@]}\"` kullan.",
+          "hint_partial": "for host in ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-019",
+      "type": "single",
+      "scenario": "7 gunden eski tum `.log` dosyalarini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find . -name '*.log' -mtime +7 -delete",
+          "hint_text": "Yasa dayali silme icin `find ... -mtime +7 -delete` kullan.",
+          "hint_partial": "find . -name ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-020",
+      "type": "single",
+      "scenario": "`deploy.sh` script'ini kilit dosyasi ile tek instance calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "flock /tmp/deploy.lock -c './deploy.sh'",
+          "hint_text": "Single-run lock icin `flock file -c` kullan.",
+          "hint_partial": "flock ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-021",
+      "type": "single",
+      "scenario": "`data.csv` dosyasinda baslik sonrasi 3. kolon toplamini hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk -F, 'NR>1 {sum+=$3} END {print sum}' data.csv",
+          "hint_text": "Kolon toplami icin `awk -F,` ile topla.",
+          "hint_partial": "awk -F, ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-022",
+      "type": "single",
+      "scenario": "`app.log` dosyasinin ilk 20 satirini yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sed -n '1,20p' app.log",
+          "hint_text": "Aralik yazdirmak icin `sed -n 'start,endp'` kullan.",
+          "hint_partial": "sed -n ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-023",
+      "type": "single",
+      "scenario": "`old.txt` ve `new.txt` arasindaki farkli satirlari `comm` ile goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "comm -3 old.txt new.txt",
+          "hint_text": "Ortak olmayan satirlar icin `comm -3` kullan.",
+          "hint_partial": "comm -3 ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-024",
+      "type": "single",
+      "scenario": "Null-delimited file listesi uzerinden 4 paralel is ile gzip calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "xargs -0 -n 1 -P 4 gzip < files.txt",
+          "hint_text": "Paralel xargs icin `-0 -n 1 -P 4` kullan.",
+          "hint_partial": "xargs -0 ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-025",
+      "type": "single",
+      "scenario": "INT veya TERM gelince tum child process'leri oldurecek trap tanimla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "trap 'kill 0' INT TERM",
+          "hint_text": "Signal yakalamak icin `trap` kullan.",
+          "hint_partial": "trap ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-011-r1",
+      "type": "single",
+      "scenario": "Bakim oncesi `deploy.sh` script'ini trace ederek calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "bash -x deploy.sh",
+          "hint_text": "Trace execution icin `bash -x` kullan.",
+          "hint_partial": "bash -x ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-012-r2",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `config.tmpl` dosyasini environment variable'larla render ederek `config.yml` uret.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "envsubst < config.tmpl > config.yml",
+          "hint_text": "Template render icin `envsubst` kullan.",
+          "hint_partial": "envsubst < ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-013-r3",
+      "type": "single",
+      "scenario": "Deploy sonrasi `data.json` icindeki tum item isimlerini jq ile cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "jq -r '.items[].name' data.json",
+          "hint_text": "JSON alan secimi icin `jq -r` kullan.",
+          "hint_partial": "jq -r ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-014-r4",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `deploy.yaml` icindeki replica sayisini yq ile oku.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "yq '.spec.replicas' deploy.yaml",
+          "hint_text": "YAML alan secimi icin `yq` kullan.",
+          "hint_partial": "yq ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-015-r5",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `hosts.txt` listesindeki host'larda 4 paralel is ile `uptime` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "parallel -a hosts.txt -j 4 'ssh {} uptime'",
+          "hint_text": "GNU parallel icin `-a` ve `-j` kullan.",
+          "hint_partial": "parallel -a ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-016-r6",
+      "type": "single",
+      "scenario": "Runbook adiminda bir curl denemesini 10 saniye sonra timeout et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "timeout 10 bash -c 'curl -fsS https://srv6.internal'",
+          "hint_text": "Sure limiti icin `timeout` kullan.",
+          "hint_partial": "timeout 10 ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-017-r7",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `hosts.txt` dosyasini `hosts` adli diziye yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mapfile -t hosts < hosts.txt",
+          "hint_text": "Diziye satir yuklemek icin `mapfile -t` kullan.",
+          "hint_partial": "mapfile -t ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-018-r8",
+      "type": "single",
+      "scenario": "Incident sonrasinda `hosts` dizisindeki her host'ta `uptime` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "for host in \"${hosts[@]}\"; do ssh \"$host\" uptime; done",
+          "hint_text": "Dizi guvenli dongu icin `\"${arr[@]}\"` kullan.",
+          "hint_partial": "for host in ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-019-r9",
+      "type": "single",
+      "scenario": "Bakim oncesi 7 gunden eski tum `.log` dosyalarini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find . -name '*.log' -mtime +7 -delete",
+          "hint_text": "Yasa dayali silme icin `find ... -mtime +7 -delete` kullan.",
+          "hint_partial": "find . -name ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-020-r10",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `deploy.sh` script'ini kilit dosyasi ile tek instance calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "flock /tmp/job-10/deploy.lock -c './deploy.sh'",
+          "hint_text": "Single-run lock icin `flock file -c` kullan.",
+          "hint_partial": "flock ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-021-r11",
+      "type": "single",
+      "scenario": "Deploy sonrasi `data.csv` dosyasinda baslik sonrasi 3. kolon toplamini hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk -F, 'NR>1 {sum+=$3} END {print sum}' data.csv",
+          "hint_text": "Kolon toplami icin `awk -F,` ile topla.",
+          "hint_partial": "awk -F, ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-022-r12",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `app-12.log` dosyasinin ilk 20 satirini yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sed -n '1,20p' app-12.log",
+          "hint_text": "Aralik yazdirmak icin `sed -n 'start,endp'` kullan.",
+          "hint_partial": "sed -n ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-023-r13",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `old.txt` ve `new.txt` arasindaki farkli satirlari `comm` ile goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "comm -3 old.txt new.txt",
+          "hint_text": "Ortak olmayan satirlar icin `comm -3` kullan.",
+          "hint_partial": "comm -3 ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-024-r14",
+      "type": "single",
+      "scenario": "Runbook adiminda null-delimited file listesi uzerinden 4 paralel is ile gzip calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "xargs -0 -n 1 -P 4 gzip < files.txt",
+          "hint_text": "Paralel xargs icin `-0 -n 1 -P 4` kullan.",
+          "hint_partial": "xargs -0 ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-025-r15",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde iNT veya TERM gelince tum child process'leri oldurecek trap tanimla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "trap 'kill 0' INT TERM",
+          "hint_text": "Signal yakalamak icin `trap` kullan.",
+          "hint_partial": "trap ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-011-r16",
+      "type": "single",
+      "scenario": "Incident sonrasinda `deploy.sh` script'ini trace ederek calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "bash -x deploy.sh",
+          "hint_text": "Trace execution icin `bash -x` kullan.",
+          "hint_partial": "bash -x ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-012-r17",
+      "type": "single",
+      "scenario": "Bakim oncesi `config.tmpl` dosyasini environment variable'larla render ederek `config.yml` uret.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "envsubst < config.tmpl > config.yml",
+          "hint_text": "Template render icin `envsubst` kullan.",
+          "hint_partial": "envsubst < ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-013-r18",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `data.json` icindeki tum item isimlerini jq ile cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "jq -r '.items[].name' data.json",
+          "hint_text": "JSON alan secimi icin `jq -r` kullan.",
+          "hint_partial": "jq -r ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-014-r19",
+      "type": "single",
+      "scenario": "Deploy sonrasi `deploy.yaml` icindeki replica sayisini yq ile oku.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "yq '.spec.replicas' deploy.yaml",
+          "hint_text": "YAML alan secimi icin `yq` kullan.",
+          "hint_partial": "yq ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-015-r20",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `hosts.txt` listesindeki host'larda 4 paralel is ile `uptime` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "parallel -a hosts.txt -j 4 'ssh {} uptime'",
+          "hint_text": "GNU parallel icin `-a` ve `-j` kullan.",
+          "hint_partial": "parallel -a ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-016-r21",
+      "type": "single",
+      "scenario": "Yeni acilan hostta bir curl denemesini 10 saniye sonra timeout et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "timeout 10 bash -c 'curl -fsS https://srv21.internal'",
+          "hint_text": "Sure limiti icin `timeout` kullan.",
+          "hint_partial": "timeout 10 ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-017-r22",
+      "type": "single",
+      "scenario": "Runbook adiminda `hosts.txt` dosyasini `hosts` adli diziye yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mapfile -t hosts < hosts.txt",
+          "hint_text": "Diziye satir yuklemek icin `mapfile -t` kullan.",
+          "hint_partial": "mapfile -t ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-018-r23",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `hosts` dizisindeki her host'ta `uptime` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "for host in \"${hosts[@]}\"; do ssh \"$host\" uptime; done",
+          "hint_text": "Dizi guvenli dongu icin `\"${arr[@]}\"` kullan.",
+          "hint_partial": "for host in ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-019-r24",
+      "type": "single",
+      "scenario": "Incident sonrasinda 7 gunden eski tum `.log` dosyalarini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find . -name '*.log' -mtime +7 -delete",
+          "hint_text": "Yasa dayali silme icin `find ... -mtime +7 -delete` kullan.",
+          "hint_partial": "find . -name ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-020-r25",
+      "type": "single",
+      "scenario": "Bakim oncesi `deploy.sh` script'ini kilit dosyasi ile tek instance calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "flock /tmp/job-25/deploy.lock -c './deploy.sh'",
+          "hint_text": "Single-run lock icin `flock file -c` kullan.",
+          "hint_partial": "flock ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-021-r26",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `data.csv` dosyasinda baslik sonrasi 3. kolon toplamini hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk -F, 'NR>1 {sum+=$3} END {print sum}' data.csv",
+          "hint_text": "Kolon toplami icin `awk -F,` ile topla.",
+          "hint_partial": "awk -F, ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-022-r27",
+      "type": "single",
+      "scenario": "Deploy sonrasi `app-27.log` dosyasinin ilk 20 satirini yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sed -n '1,20p' app-27.log",
+          "hint_text": "Aralik yazdirmak icin `sed -n 'start,endp'` kullan.",
+          "hint_partial": "sed -n ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-023-r28",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `old.txt` ve `new.txt` arasindaki farkli satirlari `comm` ile goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "comm -3 old.txt new.txt",
+          "hint_text": "Ortak olmayan satirlar icin `comm -3` kullan.",
+          "hint_partial": "comm -3 ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-024-r29",
+      "type": "single",
+      "scenario": "Yeni acilan hostta null-delimited file listesi uzerinden 4 paralel is ile gzip calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "xargs -0 -n 1 -P 4 gzip < files.txt",
+          "hint_text": "Paralel xargs icin `-0 -n 1 -P 4` kullan.",
+          "hint_partial": "xargs -0 ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-025-r30",
+      "type": "single",
+      "scenario": "Runbook adiminda iNT veya TERM gelince tum child process'leri oldurecek trap tanimla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "trap 'kill 0' INT TERM",
+          "hint_text": "Signal yakalamak icin `trap` kullan.",
+          "hint_partial": "trap ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-011-r31",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `deploy.sh` script'ini trace ederek calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "bash -x deploy.sh",
+          "hint_text": "Trace execution icin `bash -x` kullan.",
+          "hint_partial": "bash -x ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-012-r32",
+      "type": "single",
+      "scenario": "Incident sonrasinda `config.tmpl` dosyasini environment variable'larla render ederek `config.yml` uret.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "envsubst < config.tmpl > config.yml",
+          "hint_text": "Template render icin `envsubst` kullan.",
+          "hint_partial": "envsubst < ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-013-r33",
+      "type": "single",
+      "scenario": "Bakim oncesi `data.json` icindeki tum item isimlerini jq ile cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "jq -r '.items[].name' data.json",
+          "hint_text": "JSON alan secimi icin `jq -r` kullan.",
+          "hint_partial": "jq -r ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-014-r34",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `deploy.yaml` icindeki replica sayisini yq ile oku.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "yq '.spec.replicas' deploy.yaml",
+          "hint_text": "YAML alan secimi icin `yq` kullan.",
+          "hint_partial": "yq ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-015-r35",
+      "type": "single",
+      "scenario": "Deploy sonrasi `hosts.txt` listesindeki host'larda 4 paralel is ile `uptime` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "parallel -a hosts.txt -j 4 'ssh {} uptime'",
+          "hint_text": "GNU parallel icin `-a` ve `-j` kullan.",
+          "hint_partial": "parallel -a ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-016-r36",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde bir curl denemesini 10 saniye sonra timeout et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "timeout 10 bash -c 'curl -fsS https://srv36.internal'",
+          "hint_text": "Sure limiti icin `timeout` kullan.",
+          "hint_partial": "timeout 10 ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-017-r37",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `hosts.txt` dosyasini `hosts` adli diziye yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mapfile -t hosts < hosts.txt",
+          "hint_text": "Diziye satir yuklemek icin `mapfile -t` kullan.",
+          "hint_partial": "mapfile -t ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-018-r38",
+      "type": "single",
+      "scenario": "Runbook adiminda `hosts` dizisindeki her host'ta `uptime` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "for host in \"${hosts[@]}\"; do ssh \"$host\" uptime; done",
+          "hint_text": "Dizi guvenli dongu icin `\"${arr[@]}\"` kullan.",
+          "hint_partial": "for host in ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-019-r39",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde 7 gunden eski tum `.log` dosyalarini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find . -name '*.log' -mtime +7 -delete",
+          "hint_text": "Yasa dayali silme icin `find ... -mtime +7 -delete` kullan.",
+          "hint_partial": "find . -name ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-020-r40",
+      "type": "single",
+      "scenario": "Incident sonrasinda `deploy.sh` script'ini kilit dosyasi ile tek instance calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "flock /tmp/job-40/deploy.lock -c './deploy.sh'",
+          "hint_text": "Single-run lock icin `flock file -c` kullan.",
+          "hint_partial": "flock ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-021-r41",
+      "type": "single",
+      "scenario": "Bakim oncesi `data.csv` dosyasinda baslik sonrasi 3. kolon toplamini hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk -F, 'NR>1 {sum+=$3} END {print sum}' data.csv",
+          "hint_text": "Kolon toplami icin `awk -F,` ile topla.",
+          "hint_partial": "awk -F, ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-022-r42",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `app-42.log` dosyasinin ilk 20 satirini yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sed -n '1,20p' app-42.log",
+          "hint_text": "Aralik yazdirmak icin `sed -n 'start,endp'` kullan.",
+          "hint_partial": "sed -n ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-023-r43",
+      "type": "single",
+      "scenario": "Deploy sonrasi `old.txt` ve `new.txt` arasindaki farkli satirlari `comm` ile goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "comm -3 old.txt new.txt",
+          "hint_text": "Ortak olmayan satirlar icin `comm -3` kullan.",
+          "hint_partial": "comm -3 ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-024-r44",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde null-delimited file listesi uzerinden 4 paralel is ile gzip calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "xargs -0 -n 1 -P 4 gzip < files.txt",
+          "hint_text": "Paralel xargs icin `-0 -n 1 -P 4` kullan.",
+          "hint_partial": "xargs -0 ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-025-r45",
+      "type": "single",
+      "scenario": "Yeni acilan hostta iNT veya TERM gelince tum child process'leri oldurecek trap tanimla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "trap 'kill 0' INT TERM",
+          "hint_text": "Signal yakalamak icin `trap` kullan.",
+          "hint_partial": "trap ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-011-r46",
+      "type": "single",
+      "scenario": "Runbook adiminda `deploy.sh` script'ini trace ederek calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "bash -x deploy.sh",
+          "hint_text": "Trace execution icin `bash -x` kullan.",
+          "hint_partial": "bash -x ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-012-r47",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `config.tmpl` dosyasini environment variable'larla render ederek `config.yml` uret.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "envsubst < config.tmpl > config.yml",
+          "hint_text": "Template render icin `envsubst` kullan.",
+          "hint_partial": "envsubst < ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-013-r48",
+      "type": "single",
+      "scenario": "Incident sonrasinda `data.json` icindeki tum item isimlerini jq ile cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "jq -r '.items[].name' data.json",
+          "hint_text": "JSON alan secimi icin `jq -r` kullan.",
+          "hint_partial": "jq -r ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-014-r49",
+      "type": "single",
+      "scenario": "Bakim oncesi `deploy.yaml` icindeki replica sayisini yq ile oku.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "yq '.spec.replicas' deploy.yaml",
+          "hint_text": "YAML alan secimi icin `yq` kullan.",
+          "hint_partial": "yq ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-015-r50",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `hosts.txt` listesindeki host'larda 4 paralel is ile `uptime` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "parallel -a hosts.txt -j 4 'ssh {} uptime'",
+          "hint_text": "GNU parallel icin `-a` ve `-j` kullan.",
+          "hint_partial": "parallel -a ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-016-r51",
+      "type": "single",
+      "scenario": "Deploy sonrasi bir curl denemesini 10 saniye sonra timeout et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "timeout 10 bash -c 'curl -fsS https://srv51.internal'",
+          "hint_text": "Sure limiti icin `timeout` kullan.",
+          "hint_partial": "timeout 10 ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-017-r52",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `hosts.txt` dosyasini `hosts` adli diziye yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mapfile -t hosts < hosts.txt",
+          "hint_text": "Diziye satir yuklemek icin `mapfile -t` kullan.",
+          "hint_partial": "mapfile -t ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-018-r53",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `hosts` dizisindeki her host'ta `uptime` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "for host in \"${hosts[@]}\"; do ssh \"$host\" uptime; done",
+          "hint_text": "Dizi guvenli dongu icin `\"${arr[@]}\"` kullan.",
+          "hint_partial": "for host in ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-019-r54",
+      "type": "single",
+      "scenario": "Runbook adiminda 7 gunden eski tum `.log` dosyalarini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find . -name '*.log' -mtime +7 -delete",
+          "hint_text": "Yasa dayali silme icin `find ... -mtime +7 -delete` kullan.",
+          "hint_partial": "find . -name ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-020-r55",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `deploy.sh` script'ini kilit dosyasi ile tek instance calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "flock /tmp/job-55/deploy.lock -c './deploy.sh'",
+          "hint_text": "Single-run lock icin `flock file -c` kullan.",
+          "hint_partial": "flock ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-021-r56",
+      "type": "single",
+      "scenario": "Incident sonrasinda `data.csv` dosyasinda baslik sonrasi 3. kolon toplamini hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk -F, 'NR>1 {sum+=$3} END {print sum}' data.csv",
+          "hint_text": "Kolon toplami icin `awk -F,` ile topla.",
+          "hint_partial": "awk -F, ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-022-r57",
+      "type": "single",
+      "scenario": "Bakim oncesi `app-57.log` dosyasinin ilk 20 satirini yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sed -n '1,20p' app-57.log",
+          "hint_text": "Aralik yazdirmak icin `sed -n 'start,endp'` kullan.",
+          "hint_partial": "sed -n ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-023-r58",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `old.txt` ve `new.txt` arasindaki farkli satirlari `comm` ile goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "comm -3 old.txt new.txt",
+          "hint_text": "Ortak olmayan satirlar icin `comm -3` kullan.",
+          "hint_partial": "comm -3 ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-024-r59",
+      "type": "single",
+      "scenario": "Deploy sonrasi null-delimited file listesi uzerinden 4 paralel is ile gzip calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "xargs -0 -n 1 -P 4 gzip < files.txt",
+          "hint_text": "Paralel xargs icin `-0 -n 1 -P 4` kullan.",
+          "hint_partial": "xargs -0 ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-025-r60",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde iNT veya TERM gelince tum child process'leri oldurecek trap tanimla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "trap 'kill 0' INT TERM",
+          "hint_text": "Signal yakalamak icin `trap` kullan.",
+          "hint_partial": "trap ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-011-r61",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `deploy.sh` script'ini trace ederek calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "bash -x deploy.sh",
+          "hint_text": "Trace execution icin `bash -x` kullan.",
+          "hint_partial": "bash -x ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-012-r62",
+      "type": "single",
+      "scenario": "Runbook adiminda `config.tmpl` dosyasini environment variable'larla render ederek `config.yml` uret.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "envsubst < config.tmpl > config.yml",
+          "hint_text": "Template render icin `envsubst` kullan.",
+          "hint_partial": "envsubst < ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-013-r63",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `data.json` icindeki tum item isimlerini jq ile cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "jq -r '.items[].name' data.json",
+          "hint_text": "JSON alan secimi icin `jq -r` kullan.",
+          "hint_partial": "jq -r ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-014-r64",
+      "type": "single",
+      "scenario": "Incident sonrasinda `deploy.yaml` icindeki replica sayisini yq ile oku.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "yq '.spec.replicas' deploy.yaml",
+          "hint_text": "YAML alan secimi icin `yq` kullan.",
+          "hint_partial": "yq ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-015-r65",
+      "type": "single",
+      "scenario": "Bakim oncesi `hosts.txt` listesindeki host'larda 4 paralel is ile `uptime` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "parallel -a hosts.txt -j 4 'ssh {} uptime'",
+          "hint_text": "GNU parallel icin `-a` ve `-j` kullan.",
+          "hint_partial": "parallel -a ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-016-r66",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda bir curl denemesini 10 saniye sonra timeout et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "timeout 10 bash -c 'curl -fsS https://srv66.internal'",
+          "hint_text": "Sure limiti icin `timeout` kullan.",
+          "hint_partial": "timeout 10 ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-017-r67",
+      "type": "single",
+      "scenario": "Deploy sonrasi `hosts.txt` dosyasini `hosts` adli diziye yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mapfile -t hosts < hosts.txt",
+          "hint_text": "Diziye satir yuklemek icin `mapfile -t` kullan.",
+          "hint_partial": "mapfile -t ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-018-r68",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `hosts` dizisindeki her host'ta `uptime` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "for host in \"${hosts[@]}\"; do ssh \"$host\" uptime; done",
+          "hint_text": "Dizi guvenli dongu icin `\"${arr[@]}\"` kullan.",
+          "hint_partial": "for host in ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-019-r69",
+      "type": "single",
+      "scenario": "Yeni acilan hostta 7 gunden eski tum `.log` dosyalarini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find . -name '*.log' -mtime +7 -delete",
+          "hint_text": "Yasa dayali silme icin `find ... -mtime +7 -delete` kullan.",
+          "hint_partial": "find . -name ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-020-r70",
+      "type": "single",
+      "scenario": "Runbook adiminda `deploy.sh` script'ini kilit dosyasi ile tek instance calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "flock /tmp/job-70/deploy.lock -c './deploy.sh'",
+          "hint_text": "Single-run lock icin `flock file -c` kullan.",
+          "hint_partial": "flock ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-021-r71",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `data.csv` dosyasinda baslik sonrasi 3. kolon toplamini hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk -F, 'NR>1 {sum+=$3} END {print sum}' data.csv",
+          "hint_text": "Kolon toplami icin `awk -F,` ile topla.",
+          "hint_partial": "awk -F, ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-022-r72",
+      "type": "single",
+      "scenario": "Incident sonrasinda `app-72.log` dosyasinin ilk 20 satirini yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sed -n '1,20p' app-72.log",
+          "hint_text": "Aralik yazdirmak icin `sed -n 'start,endp'` kullan.",
+          "hint_partial": "sed -n ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-023-r73",
+      "type": "single",
+      "scenario": "Bakim oncesi `old.txt` ve `new.txt` arasindaki farkli satirlari `comm` ile goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "comm -3 old.txt new.txt",
+          "hint_text": "Ortak olmayan satirlar icin `comm -3` kullan.",
+          "hint_partial": "comm -3 ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-024-r74",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda null-delimited file listesi uzerinden 4 paralel is ile gzip calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "xargs -0 -n 1 -P 4 gzip < files.txt",
+          "hint_text": "Paralel xargs icin `-0 -n 1 -P 4` kullan.",
+          "hint_partial": "xargs -0 ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-025-r75",
+      "type": "single",
+      "scenario": "Deploy sonrasi iNT veya TERM gelince tum child process'leri oldurecek trap tanimla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "trap 'kill 0' INT TERM",
+          "hint_text": "Signal yakalamak icin `trap` kullan.",
+          "hint_partial": "trap ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-011-r76",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `deploy.sh` script'ini trace ederek calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "bash -x deploy.sh",
+          "hint_text": "Trace execution icin `bash -x` kullan.",
+          "hint_partial": "bash -x ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-012-r77",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `config.tmpl` dosyasini environment variable'larla render ederek `config.yml` uret.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "envsubst < config.tmpl > config.yml",
+          "hint_text": "Template render icin `envsubst` kullan.",
+          "hint_partial": "envsubst < ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-013-r78",
+      "type": "single",
+      "scenario": "Runbook adiminda `data.json` icindeki tum item isimlerini jq ile cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "jq -r '.items[].name' data.json",
+          "hint_text": "JSON alan secimi icin `jq -r` kullan.",
+          "hint_partial": "jq -r ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-014-r79",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `deploy.yaml` icindeki replica sayisini yq ile oku.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "yq '.spec.replicas' deploy.yaml",
+          "hint_text": "YAML alan secimi icin `yq` kullan.",
+          "hint_partial": "yq ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-015-r80",
+      "type": "single",
+      "scenario": "Incident sonrasinda `hosts.txt` listesindeki host'larda 4 paralel is ile `uptime` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "parallel -a hosts.txt -j 4 'ssh {} uptime'",
+          "hint_text": "GNU parallel icin `-a` ve `-j` kullan.",
+          "hint_partial": "parallel -a ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-016-r81",
+      "type": "single",
+      "scenario": "Bakim oncesi bir curl denemesini 10 saniye sonra timeout et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "timeout 10 bash -c 'curl -fsS https://srv81.internal'",
+          "hint_text": "Sure limiti icin `timeout` kullan.",
+          "hint_partial": "timeout 10 ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-017-r82",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `hosts.txt` dosyasini `hosts` adli diziye yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mapfile -t hosts < hosts.txt",
+          "hint_text": "Diziye satir yuklemek icin `mapfile -t` kullan.",
+          "hint_partial": "mapfile -t ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-018-r83",
+      "type": "single",
+      "scenario": "Deploy sonrasi `hosts` dizisindeki her host'ta `uptime` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "for host in \"${hosts[@]}\"; do ssh \"$host\" uptime; done",
+          "hint_text": "Dizi guvenli dongu icin `\"${arr[@]}\"` kullan.",
+          "hint_partial": "for host in ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-019-r84",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde 7 gunden eski tum `.log` dosyalarini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find . -name '*.log' -mtime +7 -delete",
+          "hint_text": "Yasa dayali silme icin `find ... -mtime +7 -delete` kullan.",
+          "hint_partial": "find . -name ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-020-r85",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `deploy.sh` script'ini kilit dosyasi ile tek instance calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "flock /tmp/job-85/deploy.lock -c './deploy.sh'",
+          "hint_text": "Single-run lock icin `flock file -c` kullan.",
+          "hint_partial": "flock ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-021-r86",
+      "type": "single",
+      "scenario": "Runbook adiminda `data.csv` dosyasinda baslik sonrasi 3. kolon toplamini hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk -F, 'NR>1 {sum+=$3} END {print sum}' data.csv",
+          "hint_text": "Kolon toplami icin `awk -F,` ile topla.",
+          "hint_partial": "awk -F, ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-022-r87",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `app-87.log` dosyasinin ilk 20 satirini yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sed -n '1,20p' app-87.log",
+          "hint_text": "Aralik yazdirmak icin `sed -n 'start,endp'` kullan.",
+          "hint_partial": "sed -n ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-023-r88",
+      "type": "single",
+      "scenario": "Incident sonrasinda `old.txt` ve `new.txt` arasindaki farkli satirlari `comm` ile goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "comm -3 old.txt new.txt",
+          "hint_text": "Ortak olmayan satirlar icin `comm -3` kullan.",
+          "hint_partial": "comm -3 ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-024-r89",
+      "type": "single",
+      "scenario": "Bakim oncesi null-delimited file listesi uzerinden 4 paralel is ile gzip calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "xargs -0 -n 1 -P 4 gzip < files.txt",
+          "hint_text": "Paralel xargs icin `-0 -n 1 -P 4` kullan.",
+          "hint_partial": "xargs -0 ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-025-r90",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda iNT veya TERM gelince tum child process'leri oldurecek trap tanimla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "trap 'kill 0' INT TERM",
+          "hint_text": "Signal yakalamak icin `trap` kullan.",
+          "hint_partial": "trap ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-011-r91",
+      "type": "single",
+      "scenario": "Deploy sonrasi `deploy.sh` script'ini trace ederek calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "bash -x deploy.sh",
+          "hint_text": "Trace execution icin `bash -x` kullan.",
+          "hint_partial": "bash -x ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-012-r92",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `config.tmpl` dosyasini environment variable'larla render ederek `config.yml` uret.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "envsubst < config.tmpl > config.yml",
+          "hint_text": "Template render icin `envsubst` kullan.",
+          "hint_partial": "envsubst < ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-013-r93",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `data.json` icindeki tum item isimlerini jq ile cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "jq -r '.items[].name' data.json",
+          "hint_text": "JSON alan secimi icin `jq -r` kullan.",
+          "hint_partial": "jq -r ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-014-r94",
+      "type": "single",
+      "scenario": "Runbook adiminda `deploy.yaml` icindeki replica sayisini yq ile oku.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "yq '.spec.replicas' deploy.yaml",
+          "hint_text": "YAML alan secimi icin `yq` kullan.",
+          "hint_partial": "yq ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-015-r95",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `hosts.txt` listesindeki host'larda 4 paralel is ile `uptime` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "parallel -a hosts.txt -j 4 'ssh {} uptime'",
+          "hint_text": "GNU parallel icin `-a` ve `-j` kullan.",
+          "hint_partial": "parallel -a ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-016-r96",
+      "type": "single",
+      "scenario": "Incident sonrasinda bir curl denemesini 10 saniye sonra timeout et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "timeout 10 bash -c 'curl -fsS https://srv96.internal'",
+          "hint_text": "Sure limiti icin `timeout` kullan.",
+          "hint_partial": "timeout 10 ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-017-r97",
+      "type": "single",
+      "scenario": "Bakim oncesi `hosts.txt` dosyasini `hosts` adli diziye yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mapfile -t hosts < hosts.txt",
+          "hint_text": "Diziye satir yuklemek icin `mapfile -t` kullan.",
+          "hint_partial": "mapfile -t ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-018-r98",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `hosts` dizisindeki her host'ta `uptime` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "for host in \"${hosts[@]}\"; do ssh \"$host\" uptime; done",
+          "hint_text": "Dizi guvenli dongu icin `\"${arr[@]}\"` kullan.",
+          "hint_partial": "for host in ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-019-r99",
+      "type": "single",
+      "scenario": "Deploy sonrasi 7 gunden eski tum `.log` dosyalarini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find . -name '*.log' -mtime +7 -delete",
+          "hint_text": "Yasa dayali silme icin `find ... -mtime +7 -delete` kullan.",
+          "hint_partial": "find . -name ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-020-r100",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `deploy.sh` script'ini kilit dosyasi ile tek instance calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "flock /tmp/job-100/deploy.lock -c './deploy.sh'",
+          "hint_text": "Single-run lock icin `flock file -c` kullan.",
+          "hint_partial": "flock ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-021-r101",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `data.csv` dosyasinda baslik sonrasi 3. kolon toplamini hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk -F, 'NR>1 {sum+=$3} END {print sum}' data.csv",
+          "hint_text": "Kolon toplami icin `awk -F,` ile topla.",
+          "hint_partial": "awk -F, ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-022-r102",
+      "type": "single",
+      "scenario": "Runbook adiminda `app-102.log` dosyasinin ilk 20 satirini yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sed -n '1,20p' app-102.log",
+          "hint_text": "Aralik yazdirmak icin `sed -n 'start,endp'` kullan.",
+          "hint_partial": "sed -n ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-023-r103",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `old.txt` ve `new.txt` arasindaki farkli satirlari `comm` ile goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "comm -3 old.txt new.txt",
+          "hint_text": "Ortak olmayan satirlar icin `comm -3` kullan.",
+          "hint_partial": "comm -3 ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-024-r104",
+      "type": "single",
+      "scenario": "Incident sonrasinda null-delimited file listesi uzerinden 4 paralel is ile gzip calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "xargs -0 -n 1 -P 4 gzip < files.txt",
+          "hint_text": "Paralel xargs icin `-0 -n 1 -P 4` kullan.",
+          "hint_partial": "xargs -0 ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-025-r105",
+      "type": "single",
+      "scenario": "Bakim oncesi iNT veya TERM gelince tum child process'leri oldurecek trap tanimla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "trap 'kill 0' INT TERM",
+          "hint_text": "Signal yakalamak icin `trap` kullan.",
+          "hint_partial": "trap ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-011-r106",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `deploy.sh` script'ini trace ederek calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "bash -x deploy.sh",
+          "hint_text": "Trace execution icin `bash -x` kullan.",
+          "hint_partial": "bash -x ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-012-r107",
+      "type": "single",
+      "scenario": "Deploy sonrasi `config.tmpl` dosyasini environment variable'larla render ederek `config.yml` uret.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "envsubst < config.tmpl > config.yml",
+          "hint_text": "Template render icin `envsubst` kullan.",
+          "hint_partial": "envsubst < ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-013-r108",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `data.json` icindeki tum item isimlerini jq ile cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "jq -r '.items[].name' data.json",
+          "hint_text": "JSON alan secimi icin `jq -r` kullan.",
+          "hint_partial": "jq -r ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-014-r109",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `deploy.yaml` icindeki replica sayisini yq ile oku.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "yq '.spec.replicas' deploy.yaml",
+          "hint_text": "YAML alan secimi icin `yq` kullan.",
+          "hint_partial": "yq ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-015-r110",
+      "type": "single",
+      "scenario": "Runbook adiminda `hosts.txt` listesindeki host'larda 4 paralel is ile `uptime` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "parallel -a hosts.txt -j 4 'ssh {} uptime'",
+          "hint_text": "GNU parallel icin `-a` ve `-j` kullan.",
+          "hint_partial": "parallel -a ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-016-r111",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde bir curl denemesini 10 saniye sonra timeout et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "timeout 10 bash -c 'curl -fsS https://srv111.internal'",
+          "hint_text": "Sure limiti icin `timeout` kullan.",
+          "hint_partial": "timeout 10 ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-017-r112",
+      "type": "single",
+      "scenario": "Incident sonrasinda `hosts.txt` dosyasini `hosts` adli diziye yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mapfile -t hosts < hosts.txt",
+          "hint_text": "Diziye satir yuklemek icin `mapfile -t` kullan.",
+          "hint_partial": "mapfile -t ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-018-r113",
+      "type": "single",
+      "scenario": "Bakim oncesi `hosts` dizisindeki her host'ta `uptime` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "for host in \"${hosts[@]}\"; do ssh \"$host\" uptime; done",
+          "hint_text": "Dizi guvenli dongu icin `\"${arr[@]}\"` kullan.",
+          "hint_partial": "for host in ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-019-r114",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda 7 gunden eski tum `.log` dosyalarini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find . -name '*.log' -mtime +7 -delete",
+          "hint_text": "Yasa dayali silme icin `find ... -mtime +7 -delete` kullan.",
+          "hint_partial": "find . -name ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-020-r115",
+      "type": "single",
+      "scenario": "Deploy sonrasi `deploy.sh` script'ini kilit dosyasi ile tek instance calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "flock /tmp/job-115/deploy.lock -c './deploy.sh'",
+          "hint_text": "Single-run lock icin `flock file -c` kullan.",
+          "hint_partial": "flock ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-021-r116",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `data.csv` dosyasinda baslik sonrasi 3. kolon toplamini hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk -F, 'NR>1 {sum+=$3} END {print sum}' data.csv",
+          "hint_text": "Kolon toplami icin `awk -F,` ile topla.",
+          "hint_partial": "awk -F, ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-022-r117",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `app-117.log` dosyasinin ilk 20 satirini yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sed -n '1,20p' app-117.log",
+          "hint_text": "Aralik yazdirmak icin `sed -n 'start,endp'` kullan.",
+          "hint_partial": "sed -n ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-023-r118",
+      "type": "single",
+      "scenario": "Runbook adiminda `old.txt` ve `new.txt` arasindaki farkli satirlari `comm` ile goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "comm -3 old.txt new.txt",
+          "hint_text": "Ortak olmayan satirlar icin `comm -3` kullan.",
+          "hint_partial": "comm -3 ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-024-r119",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde null-delimited file listesi uzerinden 4 paralel is ile gzip calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "xargs -0 -n 1 -P 4 gzip < files.txt",
+          "hint_text": "Paralel xargs icin `-0 -n 1 -P 4` kullan.",
+          "hint_partial": "xargs -0 ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-025-r120",
+      "type": "single",
+      "scenario": "Incident sonrasinda iNT veya TERM gelince tum child process'leri oldurecek trap tanimla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "trap 'kill 0' INT TERM",
+          "hint_text": "Signal yakalamak icin `trap` kullan.",
+          "hint_partial": "trap ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-011-r121",
+      "type": "single",
+      "scenario": "Bakim oncesi `deploy.sh` script'ini trace ederek calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "bash -x deploy.sh",
+          "hint_text": "Trace execution icin `bash -x` kullan.",
+          "hint_partial": "bash -x ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-012-r122",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `config.tmpl` dosyasini environment variable'larla render ederek `config.yml` uret.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "envsubst < config.tmpl > config.yml",
+          "hint_text": "Template render icin `envsubst` kullan.",
+          "hint_partial": "envsubst < ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-013-r123",
+      "type": "single",
+      "scenario": "Deploy sonrasi `data.json` icindeki tum item isimlerini jq ile cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "jq -r '.items[].name' data.json",
+          "hint_text": "JSON alan secimi icin `jq -r` kullan.",
+          "hint_partial": "jq -r ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-014-r124",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `deploy.yaml` icindeki replica sayisini yq ile oku.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "yq '.spec.replicas' deploy.yaml",
+          "hint_text": "YAML alan secimi icin `yq` kullan.",
+          "hint_partial": "yq ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-015-r125",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `hosts.txt` listesindeki host'larda 4 paralel is ile `uptime` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "parallel -a hosts.txt -j 4 'ssh {} uptime'",
+          "hint_text": "GNU parallel icin `-a` ve `-j` kullan.",
+          "hint_partial": "parallel -a ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-016-r126",
+      "type": "single",
+      "scenario": "Runbook adiminda bir curl denemesini 10 saniye sonra timeout et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "timeout 10 bash -c 'curl -fsS https://srv126.internal'",
+          "hint_text": "Sure limiti icin `timeout` kullan.",
+          "hint_partial": "timeout 10 ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-017-r127",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `hosts.txt` dosyasini `hosts` adli diziye yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mapfile -t hosts < hosts.txt",
+          "hint_text": "Diziye satir yuklemek icin `mapfile -t` kullan.",
+          "hint_partial": "mapfile -t ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-018-r128",
+      "type": "single",
+      "scenario": "Incident sonrasinda `hosts` dizisindeki her host'ta `uptime` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "for host in \"${hosts[@]}\"; do ssh \"$host\" uptime; done",
+          "hint_text": "Dizi guvenli dongu icin `\"${arr[@]}\"` kullan.",
+          "hint_partial": "for host in ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-019-r129",
+      "type": "single",
+      "scenario": "Bakim oncesi 7 gunden eski tum `.log` dosyalarini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find . -name '*.log' -mtime +7 -delete",
+          "hint_text": "Yasa dayali silme icin `find ... -mtime +7 -delete` kullan.",
+          "hint_partial": "find . -name ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-020-r130",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `deploy.sh` script'ini kilit dosyasi ile tek instance calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "flock /tmp/job-130/deploy.lock -c './deploy.sh'",
+          "hint_text": "Single-run lock icin `flock file -c` kullan.",
+          "hint_partial": "flock ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-021-r131",
+      "type": "single",
+      "scenario": "Deploy sonrasi `data.csv` dosyasinda baslik sonrasi 3. kolon toplamini hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk -F, 'NR>1 {sum+=$3} END {print sum}' data.csv",
+          "hint_text": "Kolon toplami icin `awk -F,` ile topla.",
+          "hint_partial": "awk -F, ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-022-r132",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `app-132.log` dosyasinin ilk 20 satirini yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sed -n '1,20p' app-132.log",
+          "hint_text": "Aralik yazdirmak icin `sed -n 'start,endp'` kullan.",
+          "hint_partial": "sed -n ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-023-r133",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `old.txt` ve `new.txt` arasindaki farkli satirlari `comm` ile goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "comm -3 old.txt new.txt",
+          "hint_text": "Ortak olmayan satirlar icin `comm -3` kullan.",
+          "hint_partial": "comm -3 ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-024-r134",
+      "type": "single",
+      "scenario": "Runbook adiminda null-delimited file listesi uzerinden 4 paralel is ile gzip calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "xargs -0 -n 1 -P 4 gzip < files.txt",
+          "hint_text": "Paralel xargs icin `-0 -n 1 -P 4` kullan.",
+          "hint_partial": "xargs -0 ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-025-r135",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde iNT veya TERM gelince tum child process'leri oldurecek trap tanimla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "trap 'kill 0' INT TERM",
+          "hint_text": "Signal yakalamak icin `trap` kullan.",
+          "hint_partial": "trap ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-011-r136",
+      "type": "single",
+      "scenario": "Incident sonrasinda `deploy.sh` script'ini trace ederek calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "bash -x deploy.sh",
+          "hint_text": "Trace execution icin `bash -x` kullan.",
+          "hint_partial": "bash -x ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-012-r137",
+      "type": "single",
+      "scenario": "Bakim oncesi `config.tmpl` dosyasini environment variable'larla render ederek `config.yml` uret.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "envsubst < config.tmpl > config.yml",
+          "hint_text": "Template render icin `envsubst` kullan.",
+          "hint_partial": "envsubst < ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-013-r138",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `data.json` icindeki tum item isimlerini jq ile cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "jq -r '.items[].name' data.json",
+          "hint_text": "JSON alan secimi icin `jq -r` kullan.",
+          "hint_partial": "jq -r ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-014-r139",
+      "type": "single",
+      "scenario": "Deploy sonrasi `deploy.yaml` icindeki replica sayisini yq ile oku.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "yq '.spec.replicas' deploy.yaml",
+          "hint_text": "YAML alan secimi icin `yq` kullan.",
+          "hint_partial": "yq ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-015-r140",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `hosts.txt` listesindeki host'larda 4 paralel is ile `uptime` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "parallel -a hosts.txt -j 4 'ssh {} uptime'",
+          "hint_text": "GNU parallel icin `-a` ve `-j` kullan.",
+          "hint_partial": "parallel -a ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-016-r141",
+      "type": "single",
+      "scenario": "Yeni acilan hostta bir curl denemesini 10 saniye sonra timeout et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "timeout 10 bash -c 'curl -fsS https://srv141.internal'",
+          "hint_text": "Sure limiti icin `timeout` kullan.",
+          "hint_partial": "timeout 10 ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-017-r142",
+      "type": "single",
+      "scenario": "Runbook adiminda `hosts.txt` dosyasini `hosts` adli diziye yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mapfile -t hosts < hosts.txt",
+          "hint_text": "Diziye satir yuklemek icin `mapfile -t` kullan.",
+          "hint_partial": "mapfile -t ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-018-r143",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `hosts` dizisindeki her host'ta `uptime` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "for host in \"${hosts[@]}\"; do ssh \"$host\" uptime; done",
+          "hint_text": "Dizi guvenli dongu icin `\"${arr[@]}\"` kullan.",
+          "hint_partial": "for host in ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-019-r144",
+      "type": "single",
+      "scenario": "Incident sonrasinda 7 gunden eski tum `.log` dosyalarini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find . -name '*.log' -mtime +7 -delete",
+          "hint_text": "Yasa dayali silme icin `find ... -mtime +7 -delete` kullan.",
+          "hint_partial": "find . -name ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-020-r145",
+      "type": "single",
+      "scenario": "Bakim oncesi `deploy.sh` script'ini kilit dosyasi ile tek instance calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "flock /tmp/job-145/deploy.lock -c './deploy.sh'",
+          "hint_text": "Single-run lock icin `flock file -c` kullan.",
+          "hint_partial": "flock ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-021-r146",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `data.csv` dosyasinda baslik sonrasi 3. kolon toplamini hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk -F, 'NR>1 {sum+=$3} END {print sum}' data.csv",
+          "hint_text": "Kolon toplami icin `awk -F,` ile topla.",
+          "hint_partial": "awk -F, ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-022-r147",
+      "type": "single",
+      "scenario": "Deploy sonrasi `app-147.log` dosyasinin ilk 20 satirini yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sed -n '1,20p' app-147.log",
+          "hint_text": "Aralik yazdirmak icin `sed -n 'start,endp'` kullan.",
+          "hint_partial": "sed -n ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-023-r148",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `old.txt` ve `new.txt` arasindaki farkli satirlari `comm` ile goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "comm -3 old.txt new.txt",
+          "hint_text": "Ortak olmayan satirlar icin `comm -3` kullan.",
+          "hint_partial": "comm -3 ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-024-r149",
+      "type": "single",
+      "scenario": "Yeni acilan hostta null-delimited file listesi uzerinden 4 paralel is ile gzip calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "xargs -0 -n 1 -P 4 gzip < files.txt",
+          "hint_text": "Paralel xargs icin `-0 -n 1 -P 4` kullan.",
+          "hint_partial": "xargs -0 ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-025-r150",
+      "type": "single",
+      "scenario": "Runbook adiminda iNT veya TERM gelince tum child process'leri oldurecek trap tanimla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "trap 'kill 0' INT TERM",
+          "hint_text": "Signal yakalamak icin `trap` kullan.",
+          "hint_partial": "trap ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-011-r151",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `deploy.sh` script'ini trace ederek calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "bash -x deploy.sh",
+          "hint_text": "Trace execution icin `bash -x` kullan.",
+          "hint_partial": "bash -x ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-012-r152",
+      "type": "single",
+      "scenario": "Incident sonrasinda `config.tmpl` dosyasini environment variable'larla render ederek `config.yml` uret.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "envsubst < config.tmpl > config.yml",
+          "hint_text": "Template render icin `envsubst` kullan.",
+          "hint_partial": "envsubst < ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-013-r153",
+      "type": "single",
+      "scenario": "Bakim oncesi `data.json` icindeki tum item isimlerini jq ile cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "jq -r '.items[].name' data.json",
+          "hint_text": "JSON alan secimi icin `jq -r` kullan.",
+          "hint_partial": "jq -r ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-014-r154",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `deploy.yaml` icindeki replica sayisini yq ile oku.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "yq '.spec.replicas' deploy.yaml",
+          "hint_text": "YAML alan secimi icin `yq` kullan.",
+          "hint_partial": "yq ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-015-r155",
+      "type": "single",
+      "scenario": "Deploy sonrasi `hosts.txt` listesindeki host'larda 4 paralel is ile `uptime` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "parallel -a hosts.txt -j 4 'ssh {} uptime'",
+          "hint_text": "GNU parallel icin `-a` ve `-j` kullan.",
+          "hint_partial": "parallel -a ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-016-r156",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde bir curl denemesini 10 saniye sonra timeout et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "timeout 10 bash -c 'curl -fsS https://srv156.internal'",
+          "hint_text": "Sure limiti icin `timeout` kullan.",
+          "hint_partial": "timeout 10 ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-017-r157",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `hosts.txt` dosyasini `hosts` adli diziye yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mapfile -t hosts < hosts.txt",
+          "hint_text": "Diziye satir yuklemek icin `mapfile -t` kullan.",
+          "hint_partial": "mapfile -t ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-018-r158",
+      "type": "single",
+      "scenario": "Runbook adiminda `hosts` dizisindeki her host'ta `uptime` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "for host in \"${hosts[@]}\"; do ssh \"$host\" uptime; done",
+          "hint_text": "Dizi guvenli dongu icin `\"${arr[@]}\"` kullan.",
+          "hint_partial": "for host in ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-019-r159",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde 7 gunden eski tum `.log` dosyalarini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find . -name '*.log' -mtime +7 -delete",
+          "hint_text": "Yasa dayali silme icin `find ... -mtime +7 -delete` kullan.",
+          "hint_partial": "find . -name ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-020-r160",
+      "type": "single",
+      "scenario": "Incident sonrasinda `deploy.sh` script'ini kilit dosyasi ile tek instance calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "flock /tmp/job-160/deploy.lock -c './deploy.sh'",
+          "hint_text": "Single-run lock icin `flock file -c` kullan.",
+          "hint_partial": "flock ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-021-r161",
+      "type": "single",
+      "scenario": "Bakim oncesi `data.csv` dosyasinda baslik sonrasi 3. kolon toplamini hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk -F, 'NR>1 {sum+=$3} END {print sum}' data.csv",
+          "hint_text": "Kolon toplami icin `awk -F,` ile topla.",
+          "hint_partial": "awk -F, ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-022-r162",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `app-162.log` dosyasinin ilk 20 satirini yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sed -n '1,20p' app-162.log",
+          "hint_text": "Aralik yazdirmak icin `sed -n 'start,endp'` kullan.",
+          "hint_partial": "sed -n ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-023-r163",
+      "type": "single",
+      "scenario": "Deploy sonrasi `old.txt` ve `new.txt` arasindaki farkli satirlari `comm` ile goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "comm -3 old.txt new.txt",
+          "hint_text": "Ortak olmayan satirlar icin `comm -3` kullan.",
+          "hint_partial": "comm -3 ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-024-r164",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde null-delimited file listesi uzerinden 4 paralel is ile gzip calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "xargs -0 -n 1 -P 4 gzip < files.txt",
+          "hint_text": "Paralel xargs icin `-0 -n 1 -P 4` kullan.",
+          "hint_partial": "xargs -0 ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-025-r165",
+      "type": "single",
+      "scenario": "Yeni acilan hostta iNT veya TERM gelince tum child process'leri oldurecek trap tanimla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "trap 'kill 0' INT TERM",
+          "hint_text": "Signal yakalamak icin `trap` kullan.",
+          "hint_partial": "trap ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-011-r166",
+      "type": "single",
+      "scenario": "Runbook adiminda `deploy.sh` script'ini trace ederek calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "bash -x deploy.sh",
+          "hint_text": "Trace execution icin `bash -x` kullan.",
+          "hint_partial": "bash -x ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-012-r167",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `config.tmpl` dosyasini environment variable'larla render ederek `config.yml` uret.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "envsubst < config.tmpl > config.yml",
+          "hint_text": "Template render icin `envsubst` kullan.",
+          "hint_partial": "envsubst < ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-013-r168",
+      "type": "single",
+      "scenario": "Incident sonrasinda `data.json` icindeki tum item isimlerini jq ile cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "jq -r '.items[].name' data.json",
+          "hint_text": "JSON alan secimi icin `jq -r` kullan.",
+          "hint_partial": "jq -r ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-014-r169",
+      "type": "single",
+      "scenario": "Bakim oncesi `deploy.yaml` icindeki replica sayisini yq ile oku.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "yq '.spec.replicas' deploy.yaml",
+          "hint_text": "YAML alan secimi icin `yq` kullan.",
+          "hint_partial": "yq ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-015-r170",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `hosts.txt` listesindeki host'larda 4 paralel is ile `uptime` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "parallel -a hosts.txt -j 4 'ssh {} uptime'",
+          "hint_text": "GNU parallel icin `-a` ve `-j` kullan.",
+          "hint_partial": "parallel -a ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-016-r171",
+      "type": "single",
+      "scenario": "Deploy sonrasi bir curl denemesini 10 saniye sonra timeout et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "timeout 10 bash -c 'curl -fsS https://srv171.internal'",
+          "hint_text": "Sure limiti icin `timeout` kullan.",
+          "hint_partial": "timeout 10 ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-017-r172",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `hosts.txt` dosyasini `hosts` adli diziye yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mapfile -t hosts < hosts.txt",
+          "hint_text": "Diziye satir yuklemek icin `mapfile -t` kullan.",
+          "hint_partial": "mapfile -t ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-018-r173",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `hosts` dizisindeki her host'ta `uptime` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "for host in \"${hosts[@]}\"; do ssh \"$host\" uptime; done",
+          "hint_text": "Dizi guvenli dongu icin `\"${arr[@]}\"` kullan.",
+          "hint_partial": "for host in ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-019-r174",
+      "type": "single",
+      "scenario": "Runbook adiminda 7 gunden eski tum `.log` dosyalarini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find . -name '*.log' -mtime +7 -delete",
+          "hint_text": "Yasa dayali silme icin `find ... -mtime +7 -delete` kullan.",
+          "hint_partial": "find . -name ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-020-r175",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `deploy.sh` script'ini kilit dosyasi ile tek instance calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "flock /tmp/job-175/deploy.lock -c './deploy.sh'",
+          "hint_text": "Single-run lock icin `flock file -c` kullan.",
+          "hint_partial": "flock ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-021-r176",
+      "type": "single",
+      "scenario": "Incident sonrasinda `data.csv` dosyasinda baslik sonrasi 3. kolon toplamini hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk -F, 'NR>1 {sum+=$3} END {print sum}' data.csv",
+          "hint_text": "Kolon toplami icin `awk -F,` ile topla.",
+          "hint_partial": "awk -F, ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-022-r177",
+      "type": "single",
+      "scenario": "Bakim oncesi `app-177.log` dosyasinin ilk 20 satirini yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sed -n '1,20p' app-177.log",
+          "hint_text": "Aralik yazdirmak icin `sed -n 'start,endp'` kullan.",
+          "hint_partial": "sed -n ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-023-r178",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `old.txt` ve `new.txt` arasindaki farkli satirlari `comm` ile goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "comm -3 old.txt new.txt",
+          "hint_text": "Ortak olmayan satirlar icin `comm -3` kullan.",
+          "hint_partial": "comm -3 ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-024-r179",
+      "type": "single",
+      "scenario": "Deploy sonrasi null-delimited file listesi uzerinden 4 paralel is ile gzip calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "xargs -0 -n 1 -P 4 gzip < files.txt",
+          "hint_text": "Paralel xargs icin `-0 -n 1 -P 4` kullan.",
+          "hint_partial": "xargs -0 ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-025-r180",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde iNT veya TERM gelince tum child process'leri oldurecek trap tanimla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "trap 'kill 0' INT TERM",
+          "hint_text": "Signal yakalamak icin `trap` kullan.",
+          "hint_partial": "trap ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-011-r181",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `deploy.sh` script'ini trace ederek calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "bash -x deploy.sh",
+          "hint_text": "Trace execution icin `bash -x` kullan.",
+          "hint_partial": "bash -x ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-012-r182",
+      "type": "single",
+      "scenario": "Runbook adiminda `config.tmpl` dosyasini environment variable'larla render ederek `config.yml` uret.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "envsubst < config.tmpl > config.yml",
+          "hint_text": "Template render icin `envsubst` kullan.",
+          "hint_partial": "envsubst < ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-013-r183",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `data.json` icindeki tum item isimlerini jq ile cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "jq -r '.items[].name' data.json",
+          "hint_text": "JSON alan secimi icin `jq -r` kullan.",
+          "hint_partial": "jq -r ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-014-r184",
+      "type": "single",
+      "scenario": "Incident sonrasinda `deploy.yaml` icindeki replica sayisini yq ile oku.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "yq '.spec.replicas' deploy.yaml",
+          "hint_text": "YAML alan secimi icin `yq` kullan.",
+          "hint_partial": "yq ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-015-r185",
+      "type": "single",
+      "scenario": "Bakim oncesi `hosts.txt` listesindeki host'larda 4 paralel is ile `uptime` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "parallel -a hosts.txt -j 4 'ssh {} uptime'",
+          "hint_text": "GNU parallel icin `-a` ve `-j` kullan.",
+          "hint_partial": "parallel -a ..."
+        }
+      ]
+    }
+  ]
+}

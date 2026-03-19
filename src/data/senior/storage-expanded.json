@@ -1,0 +1,2606 @@
+{
+  "level": "senior",
+  "topic": "storage",
+  "questions": [
+    {
+      "id": "sstg-011",
+      "type": "single",
+      "scenario": "`/data` mount noktasinin source ve target bilgisini kisa formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "findmnt -no SOURCE,TARGET /data",
+          "hint_text": "Belirli kolonlar icin `findmnt -no` kullan.",
+          "hint_partial": "findmnt -no ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-012",
+      "type": "single",
+      "scenario": "Block device'leri boyut, filesystem ve mount point ile goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsblk -o NAME,SIZE,FSTYPE,MOUNTPOINT",
+          "hint_text": "Kolon secmek icin `lsblk -o` kullan.",
+          "hint_partial": "lsblk -o ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-013",
+      "type": "single",
+      "scenario": "`/dev/sdb1` icin UUID ve filesystem bilgilerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "blkid /dev/sdb1",
+          "hint_text": "Tek device sorgusu icin `blkid device` kullan.",
+          "hint_partial": "blkid ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-014",
+      "type": "single",
+      "scenario": "Physical volume detaylarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pvdisplay",
+          "hint_text": "LVM physical volume bilgisi icin `pvdisplay` kullan.",
+          "hint_partial": "pvdisplay"
+        }
+      ]
+    },
+    {
+      "id": "sstg-015",
+      "type": "single",
+      "scenario": "Volume group detaylarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "vgdisplay",
+          "hint_text": "LVM volume group bilgisi icin `vgdisplay` kullan.",
+          "hint_partial": "vgdisplay"
+        }
+      ]
+    },
+    {
+      "id": "sstg-016",
+      "type": "single",
+      "scenario": "Logical volume detaylarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lvdisplay",
+          "hint_text": "LVM logical volume bilgisi icin `lvdisplay` kullan.",
+          "hint_partial": "lvdisplay"
+        }
+      ]
+    },
+    {
+      "id": "sstg-017",
+      "type": "single",
+      "scenario": "Physical volume'leri ozet olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pvs",
+          "hint_text": "Kisa PV listesi icin `pvs` kullan.",
+          "hint_partial": "pvs"
+        }
+      ]
+    },
+    {
+      "id": "sstg-018",
+      "type": "single",
+      "scenario": "Volume group'leri ozet olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "vgs",
+          "hint_text": "Kisa VG listesi icin `vgs` kullan.",
+          "hint_partial": "vgs"
+        }
+      ]
+    },
+    {
+      "id": "sstg-019",
+      "type": "single",
+      "scenario": "Logical volume'leri ozet olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lvs",
+          "hint_text": "Kisa LV listesi icin `lvs` kullan.",
+          "hint_partial": "lvs"
+        }
+      ]
+    },
+    {
+      "id": "sstg-020",
+      "type": "single",
+      "scenario": "`/dev/vgdata/lvapp` logical volume'unu 10G buyut.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lvextend -L +10G /dev/vgdata/lvapp",
+          "hint_text": "LV buyutmek icin `lvextend -L +size` kullan.",
+          "hint_partial": "lvextend -L ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-021",
+      "type": "single",
+      "scenario": "ext filesystem'i buyutmek icin `lvapp` uzerinde resize yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "resize2fs /dev/vgdata/lvapp",
+          "hint_text": "ext filesystem buyutme icin `resize2fs` kullan.",
+          "hint_partial": "resize2fs ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-022",
+      "type": "single",
+      "scenario": "XFS filesystem'i `/data` mount'u uzerinden buyut.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "xfs_growfs /data",
+          "hint_text": "XFS genisletme icin `xfs_growfs mountpoint` kullan.",
+          "hint_partial": "xfs_growfs ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-023",
+      "type": "single",
+      "scenario": "`/dev/md0` RAID array detaylarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mdadm --detail /dev/md0",
+          "hint_text": "RAID detaylari icin `mdadm --detail` kullan.",
+          "hint_partial": "mdadm --detail ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-024",
+      "type": "single",
+      "scenario": "`/data` mount noktasini read-write olarak remount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount -o remount,rw /data",
+          "hint_text": "Remount secenegi icin `mount -o remount,rw` kullan.",
+          "hint_partial": "mount -o remount,..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-025",
+      "type": "single",
+      "scenario": "`/dev/sdb1` icin filesystem feature'larini filtreleyerek goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tune2fs -l /dev/sdb1 | grep 'Filesystem features'",
+          "hint_text": "Feature satiri icin `tune2fs -l | grep` kullan.",
+          "hint_partial": "tune2fs -l ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-011-r1",
+      "type": "single",
+      "scenario": "Bakim oncesi `/data-1` mount noktasinin source ve target bilgisini kisa formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "findmnt -no SOURCE,TARGET /data-1",
+          "hint_text": "Belirli kolonlar icin `findmnt -no` kullan.",
+          "hint_partial": "findmnt -no ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-012-r2",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda block device'leri boyut, filesystem ve mount point ile goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsblk -o NAME,SIZE,FSTYPE,MOUNTPOINT",
+          "hint_text": "Kolon secmek icin `lsblk -o` kullan.",
+          "hint_partial": "lsblk -o ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-013-r3",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/dev/sdb1` icin UUID ve filesystem bilgilerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "blkid /dev/sdb1",
+          "hint_text": "Tek device sorgusu icin `blkid device` kullan.",
+          "hint_partial": "blkid ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-014-r4",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde physical volume detaylarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pvdisplay",
+          "hint_text": "LVM physical volume bilgisi icin `pvdisplay` kullan.",
+          "hint_partial": "pvdisplay"
+        }
+      ]
+    },
+    {
+      "id": "sstg-015-r5",
+      "type": "single",
+      "scenario": "Yeni acilan hostta volume group detaylarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "vgdisplay",
+          "hint_text": "LVM volume group bilgisi icin `vgdisplay` kullan.",
+          "hint_partial": "vgdisplay"
+        }
+      ]
+    },
+    {
+      "id": "sstg-016-r6",
+      "type": "single",
+      "scenario": "Runbook adiminda logical volume detaylarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lvdisplay",
+          "hint_text": "LVM logical volume bilgisi icin `lvdisplay` kullan.",
+          "hint_partial": "lvdisplay"
+        }
+      ]
+    },
+    {
+      "id": "sstg-017-r7",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde physical volume'leri ozet olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pvs",
+          "hint_text": "Kisa PV listesi icin `pvs` kullan.",
+          "hint_partial": "pvs"
+        }
+      ]
+    },
+    {
+      "id": "sstg-018-r8",
+      "type": "single",
+      "scenario": "Incident sonrasinda volume group'leri ozet olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "vgs",
+          "hint_text": "Kisa VG listesi icin `vgs` kullan.",
+          "hint_partial": "vgs"
+        }
+      ]
+    },
+    {
+      "id": "sstg-019-r9",
+      "type": "single",
+      "scenario": "Bakim oncesi logical volume'leri ozet olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lvs",
+          "hint_text": "Kisa LV listesi icin `lvs` kullan.",
+          "hint_partial": "lvs"
+        }
+      ]
+    },
+    {
+      "id": "sstg-020-r10",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/dev/vgdata/lvapp` logical volume'unu 2G buyut.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lvextend -L +2G /dev/vgdata/lvapp",
+          "hint_text": "LV buyutmek icin `lvextend -L +size` kullan.",
+          "hint_partial": "lvextend -L ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-021-r11",
+      "type": "single",
+      "scenario": "Deploy sonrasi ext filesystem'i buyutmek icin `lvapp` uzerinde resize yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "resize2fs /dev/vgdata/lvapp",
+          "hint_text": "ext filesystem buyutme icin `resize2fs` kullan.",
+          "hint_partial": "resize2fs ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-022-r12",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde xFS filesystem'i `/data-12` mount'u uzerinden buyut.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "xfs_growfs /data-12",
+          "hint_text": "XFS genisletme icin `xfs_growfs mountpoint` kullan.",
+          "hint_partial": "xfs_growfs ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-023-r13",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `/dev/md0` RAID array detaylarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mdadm --detail /dev/md0",
+          "hint_text": "RAID detaylari icin `mdadm --detail` kullan.",
+          "hint_partial": "mdadm --detail ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-024-r14",
+      "type": "single",
+      "scenario": "Runbook adiminda `/data-14` mount noktasini read-write olarak remount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount -o remount,rw /data-14",
+          "hint_text": "Remount secenegi icin `mount -o remount,rw` kullan.",
+          "hint_partial": "mount -o remount,..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-025-r15",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `/dev/sdb1` icin filesystem feature'larini filtreleyerek goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tune2fs -l /dev/sdb1 | grep 'Filesystem features'",
+          "hint_text": "Feature satiri icin `tune2fs -l | grep` kullan.",
+          "hint_partial": "tune2fs -l ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-011-r16",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/data-16` mount noktasinin source ve target bilgisini kisa formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "findmnt -no SOURCE,TARGET /data-16",
+          "hint_text": "Belirli kolonlar icin `findmnt -no` kullan.",
+          "hint_partial": "findmnt -no ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-012-r17",
+      "type": "single",
+      "scenario": "Bakim oncesi block device'leri boyut, filesystem ve mount point ile goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsblk -o NAME,SIZE,FSTYPE,MOUNTPOINT",
+          "hint_text": "Kolon secmek icin `lsblk -o` kullan.",
+          "hint_partial": "lsblk -o ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-013-r18",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/dev/sdb1` icin UUID ve filesystem bilgilerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "blkid /dev/sdb1",
+          "hint_text": "Tek device sorgusu icin `blkid device` kullan.",
+          "hint_partial": "blkid ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-014-r19",
+      "type": "single",
+      "scenario": "Deploy sonrasi physical volume detaylarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pvdisplay",
+          "hint_text": "LVM physical volume bilgisi icin `pvdisplay` kullan.",
+          "hint_partial": "pvdisplay"
+        }
+      ]
+    },
+    {
+      "id": "sstg-015-r20",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde volume group detaylarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "vgdisplay",
+          "hint_text": "LVM volume group bilgisi icin `vgdisplay` kullan.",
+          "hint_partial": "vgdisplay"
+        }
+      ]
+    },
+    {
+      "id": "sstg-016-r21",
+      "type": "single",
+      "scenario": "Yeni acilan hostta logical volume detaylarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lvdisplay",
+          "hint_text": "LVM logical volume bilgisi icin `lvdisplay` kullan.",
+          "hint_partial": "lvdisplay"
+        }
+      ]
+    },
+    {
+      "id": "sstg-017-r22",
+      "type": "single",
+      "scenario": "Runbook adiminda physical volume'leri ozet olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pvs",
+          "hint_text": "Kisa PV listesi icin `pvs` kullan.",
+          "hint_partial": "pvs"
+        }
+      ]
+    },
+    {
+      "id": "sstg-018-r23",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde volume group'leri ozet olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "vgs",
+          "hint_text": "Kisa VG listesi icin `vgs` kullan.",
+          "hint_partial": "vgs"
+        }
+      ]
+    },
+    {
+      "id": "sstg-019-r24",
+      "type": "single",
+      "scenario": "Incident sonrasinda logical volume'leri ozet olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lvs",
+          "hint_text": "Kisa LV listesi icin `lvs` kullan.",
+          "hint_partial": "lvs"
+        }
+      ]
+    },
+    {
+      "id": "sstg-020-r25",
+      "type": "single",
+      "scenario": "Bakim oncesi `/dev/vgdata/lvapp` logical volume'unu 1G buyut.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lvextend -L +1G /dev/vgdata/lvapp",
+          "hint_text": "LV buyutmek icin `lvextend -L +size` kullan.",
+          "hint_partial": "lvextend -L ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-021-r26",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda ext filesystem'i buyutmek icin `lvapp` uzerinde resize yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "resize2fs /dev/vgdata/lvapp",
+          "hint_text": "ext filesystem buyutme icin `resize2fs` kullan.",
+          "hint_partial": "resize2fs ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-022-r27",
+      "type": "single",
+      "scenario": "Deploy sonrasi xFS filesystem'i `/data-27` mount'u uzerinden buyut.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "xfs_growfs /data-27",
+          "hint_text": "XFS genisletme icin `xfs_growfs mountpoint` kullan.",
+          "hint_partial": "xfs_growfs ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-023-r28",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/dev/md0` RAID array detaylarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mdadm --detail /dev/md0",
+          "hint_text": "RAID detaylari icin `mdadm --detail` kullan.",
+          "hint_partial": "mdadm --detail ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-024-r29",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `/data-29` mount noktasini read-write olarak remount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount -o remount,rw /data-29",
+          "hint_text": "Remount secenegi icin `mount -o remount,rw` kullan.",
+          "hint_partial": "mount -o remount,..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-025-r30",
+      "type": "single",
+      "scenario": "Runbook adiminda `/dev/sdb1` icin filesystem feature'larini filtreleyerek goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tune2fs -l /dev/sdb1 | grep 'Filesystem features'",
+          "hint_text": "Feature satiri icin `tune2fs -l | grep` kullan.",
+          "hint_partial": "tune2fs -l ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-011-r31",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `/data-31` mount noktasinin source ve target bilgisini kisa formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "findmnt -no SOURCE,TARGET /data-31",
+          "hint_text": "Belirli kolonlar icin `findmnt -no` kullan.",
+          "hint_partial": "findmnt -no ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-012-r32",
+      "type": "single",
+      "scenario": "Incident sonrasinda block device'leri boyut, filesystem ve mount point ile goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsblk -o NAME,SIZE,FSTYPE,MOUNTPOINT",
+          "hint_text": "Kolon secmek icin `lsblk -o` kullan.",
+          "hint_partial": "lsblk -o ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-013-r33",
+      "type": "single",
+      "scenario": "Bakim oncesi `/dev/sdb1` icin UUID ve filesystem bilgilerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "blkid /dev/sdb1",
+          "hint_text": "Tek device sorgusu icin `blkid device` kullan.",
+          "hint_partial": "blkid ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-014-r34",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda physical volume detaylarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pvdisplay",
+          "hint_text": "LVM physical volume bilgisi icin `pvdisplay` kullan.",
+          "hint_partial": "pvdisplay"
+        }
+      ]
+    },
+    {
+      "id": "sstg-015-r35",
+      "type": "single",
+      "scenario": "Deploy sonrasi volume group detaylarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "vgdisplay",
+          "hint_text": "LVM volume group bilgisi icin `vgdisplay` kullan.",
+          "hint_partial": "vgdisplay"
+        }
+      ]
+    },
+    {
+      "id": "sstg-016-r36",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde logical volume detaylarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lvdisplay",
+          "hint_text": "LVM logical volume bilgisi icin `lvdisplay` kullan.",
+          "hint_partial": "lvdisplay"
+        }
+      ]
+    },
+    {
+      "id": "sstg-017-r37",
+      "type": "single",
+      "scenario": "Yeni acilan hostta physical volume'leri ozet olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pvs",
+          "hint_text": "Kisa PV listesi icin `pvs` kullan.",
+          "hint_partial": "pvs"
+        }
+      ]
+    },
+    {
+      "id": "sstg-018-r38",
+      "type": "single",
+      "scenario": "Runbook adiminda volume group'leri ozet olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "vgs",
+          "hint_text": "Kisa VG listesi icin `vgs` kullan.",
+          "hint_partial": "vgs"
+        }
+      ]
+    },
+    {
+      "id": "sstg-019-r39",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde logical volume'leri ozet olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lvs",
+          "hint_text": "Kisa LV listesi icin `lvs` kullan.",
+          "hint_partial": "lvs"
+        }
+      ]
+    },
+    {
+      "id": "sstg-020-r40",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/dev/vgdata/lvapp` logical volume'unu 4G buyut.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lvextend -L +4G /dev/vgdata/lvapp",
+          "hint_text": "LV buyutmek icin `lvextend -L +size` kullan.",
+          "hint_partial": "lvextend -L ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-021-r41",
+      "type": "single",
+      "scenario": "Bakim oncesi ext filesystem'i buyutmek icin `lvapp` uzerinde resize yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "resize2fs /dev/vgdata/lvapp",
+          "hint_text": "ext filesystem buyutme icin `resize2fs` kullan.",
+          "hint_partial": "resize2fs ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-022-r42",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda xFS filesystem'i `/data-42` mount'u uzerinden buyut.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "xfs_growfs /data-42",
+          "hint_text": "XFS genisletme icin `xfs_growfs mountpoint` kullan.",
+          "hint_partial": "xfs_growfs ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-023-r43",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/dev/md0` RAID array detaylarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mdadm --detail /dev/md0",
+          "hint_text": "RAID detaylari icin `mdadm --detail` kullan.",
+          "hint_partial": "mdadm --detail ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-024-r44",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/data-44` mount noktasini read-write olarak remount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount -o remount,rw /data-44",
+          "hint_text": "Remount secenegi icin `mount -o remount,rw` kullan.",
+          "hint_partial": "mount -o remount,..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-025-r45",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `/dev/sdb1` icin filesystem feature'larini filtreleyerek goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tune2fs -l /dev/sdb1 | grep 'Filesystem features'",
+          "hint_text": "Feature satiri icin `tune2fs -l | grep` kullan.",
+          "hint_partial": "tune2fs -l ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-011-r46",
+      "type": "single",
+      "scenario": "Runbook adiminda `/data-46` mount noktasinin source ve target bilgisini kisa formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "findmnt -no SOURCE,TARGET /data-46",
+          "hint_text": "Belirli kolonlar icin `findmnt -no` kullan.",
+          "hint_partial": "findmnt -no ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-012-r47",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde block device'leri boyut, filesystem ve mount point ile goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsblk -o NAME,SIZE,FSTYPE,MOUNTPOINT",
+          "hint_text": "Kolon secmek icin `lsblk -o` kullan.",
+          "hint_partial": "lsblk -o ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-013-r48",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/dev/sdb1` icin UUID ve filesystem bilgilerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "blkid /dev/sdb1",
+          "hint_text": "Tek device sorgusu icin `blkid device` kullan.",
+          "hint_partial": "blkid ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-014-r49",
+      "type": "single",
+      "scenario": "Bakim oncesi physical volume detaylarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pvdisplay",
+          "hint_text": "LVM physical volume bilgisi icin `pvdisplay` kullan.",
+          "hint_partial": "pvdisplay"
+        }
+      ]
+    },
+    {
+      "id": "sstg-015-r50",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda volume group detaylarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "vgdisplay",
+          "hint_text": "LVM volume group bilgisi icin `vgdisplay` kullan.",
+          "hint_partial": "vgdisplay"
+        }
+      ]
+    },
+    {
+      "id": "sstg-016-r51",
+      "type": "single",
+      "scenario": "Deploy sonrasi logical volume detaylarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lvdisplay",
+          "hint_text": "LVM logical volume bilgisi icin `lvdisplay` kullan.",
+          "hint_partial": "lvdisplay"
+        }
+      ]
+    },
+    {
+      "id": "sstg-017-r52",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde physical volume'leri ozet olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pvs",
+          "hint_text": "Kisa PV listesi icin `pvs` kullan.",
+          "hint_partial": "pvs"
+        }
+      ]
+    },
+    {
+      "id": "sstg-018-r53",
+      "type": "single",
+      "scenario": "Yeni acilan hostta volume group'leri ozet olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "vgs",
+          "hint_text": "Kisa VG listesi icin `vgs` kullan.",
+          "hint_partial": "vgs"
+        }
+      ]
+    },
+    {
+      "id": "sstg-019-r54",
+      "type": "single",
+      "scenario": "Runbook adiminda logical volume'leri ozet olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lvs",
+          "hint_text": "Kisa LV listesi icin `lvs` kullan.",
+          "hint_partial": "lvs"
+        }
+      ]
+    },
+    {
+      "id": "sstg-020-r55",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `/dev/vgdata/lvapp` logical volume'unu 3G buyut.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lvextend -L +3G /dev/vgdata/lvapp",
+          "hint_text": "LV buyutmek icin `lvextend -L +size` kullan.",
+          "hint_partial": "lvextend -L ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-021-r56",
+      "type": "single",
+      "scenario": "Incident sonrasinda ext filesystem'i buyutmek icin `lvapp` uzerinde resize yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "resize2fs /dev/vgdata/lvapp",
+          "hint_text": "ext filesystem buyutme icin `resize2fs` kullan.",
+          "hint_partial": "resize2fs ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-022-r57",
+      "type": "single",
+      "scenario": "Bakim oncesi xFS filesystem'i `/data-57` mount'u uzerinden buyut.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "xfs_growfs /data-57",
+          "hint_text": "XFS genisletme icin `xfs_growfs mountpoint` kullan.",
+          "hint_partial": "xfs_growfs ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-023-r58",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/dev/md0` RAID array detaylarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mdadm --detail /dev/md0",
+          "hint_text": "RAID detaylari icin `mdadm --detail` kullan.",
+          "hint_partial": "mdadm --detail ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-024-r59",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/data-59` mount noktasini read-write olarak remount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount -o remount,rw /data-59",
+          "hint_text": "Remount secenegi icin `mount -o remount,rw` kullan.",
+          "hint_partial": "mount -o remount,..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-025-r60",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/dev/sdb1` icin filesystem feature'larini filtreleyerek goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tune2fs -l /dev/sdb1 | grep 'Filesystem features'",
+          "hint_text": "Feature satiri icin `tune2fs -l | grep` kullan.",
+          "hint_partial": "tune2fs -l ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-011-r61",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `/data-61` mount noktasinin source ve target bilgisini kisa formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "findmnt -no SOURCE,TARGET /data-61",
+          "hint_text": "Belirli kolonlar icin `findmnt -no` kullan.",
+          "hint_partial": "findmnt -no ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-012-r62",
+      "type": "single",
+      "scenario": "Runbook adiminda block device'leri boyut, filesystem ve mount point ile goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsblk -o NAME,SIZE,FSTYPE,MOUNTPOINT",
+          "hint_text": "Kolon secmek icin `lsblk -o` kullan.",
+          "hint_partial": "lsblk -o ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-013-r63",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `/dev/sdb1` icin UUID ve filesystem bilgilerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "blkid /dev/sdb1",
+          "hint_text": "Tek device sorgusu icin `blkid device` kullan.",
+          "hint_partial": "blkid ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-014-r64",
+      "type": "single",
+      "scenario": "Incident sonrasinda physical volume detaylarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pvdisplay",
+          "hint_text": "LVM physical volume bilgisi icin `pvdisplay` kullan.",
+          "hint_partial": "pvdisplay"
+        }
+      ]
+    },
+    {
+      "id": "sstg-015-r65",
+      "type": "single",
+      "scenario": "Bakim oncesi volume group detaylarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "vgdisplay",
+          "hint_text": "LVM volume group bilgisi icin `vgdisplay` kullan.",
+          "hint_partial": "vgdisplay"
+        }
+      ]
+    },
+    {
+      "id": "sstg-016-r66",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda logical volume detaylarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lvdisplay",
+          "hint_text": "LVM logical volume bilgisi icin `lvdisplay` kullan.",
+          "hint_partial": "lvdisplay"
+        }
+      ]
+    },
+    {
+      "id": "sstg-017-r67",
+      "type": "single",
+      "scenario": "Deploy sonrasi physical volume'leri ozet olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pvs",
+          "hint_text": "Kisa PV listesi icin `pvs` kullan.",
+          "hint_partial": "pvs"
+        }
+      ]
+    },
+    {
+      "id": "sstg-018-r68",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde volume group'leri ozet olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "vgs",
+          "hint_text": "Kisa VG listesi icin `vgs` kullan.",
+          "hint_partial": "vgs"
+        }
+      ]
+    },
+    {
+      "id": "sstg-019-r69",
+      "type": "single",
+      "scenario": "Yeni acilan hostta logical volume'leri ozet olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lvs",
+          "hint_text": "Kisa LV listesi icin `lvs` kullan.",
+          "hint_partial": "lvs"
+        }
+      ]
+    },
+    {
+      "id": "sstg-020-r70",
+      "type": "single",
+      "scenario": "Runbook adiminda `/dev/vgdata/lvapp` logical volume'unu 2G buyut.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lvextend -L +2G /dev/vgdata/lvapp",
+          "hint_text": "LV buyutmek icin `lvextend -L +size` kullan.",
+          "hint_partial": "lvextend -L ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-021-r71",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde ext filesystem'i buyutmek icin `lvapp` uzerinde resize yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "resize2fs /dev/vgdata/lvapp",
+          "hint_text": "ext filesystem buyutme icin `resize2fs` kullan.",
+          "hint_partial": "resize2fs ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-022-r72",
+      "type": "single",
+      "scenario": "Incident sonrasinda xFS filesystem'i `/data-72` mount'u uzerinden buyut.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "xfs_growfs /data-72",
+          "hint_text": "XFS genisletme icin `xfs_growfs mountpoint` kullan.",
+          "hint_partial": "xfs_growfs ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-023-r73",
+      "type": "single",
+      "scenario": "Bakim oncesi `/dev/md0` RAID array detaylarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mdadm --detail /dev/md0",
+          "hint_text": "RAID detaylari icin `mdadm --detail` kullan.",
+          "hint_partial": "mdadm --detail ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-024-r74",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/data-74` mount noktasini read-write olarak remount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount -o remount,rw /data-74",
+          "hint_text": "Remount secenegi icin `mount -o remount,rw` kullan.",
+          "hint_partial": "mount -o remount,..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-025-r75",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/dev/sdb1` icin filesystem feature'larini filtreleyerek goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tune2fs -l /dev/sdb1 | grep 'Filesystem features'",
+          "hint_text": "Feature satiri icin `tune2fs -l | grep` kullan.",
+          "hint_partial": "tune2fs -l ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-011-r76",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/data-76` mount noktasinin source ve target bilgisini kisa formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "findmnt -no SOURCE,TARGET /data-76",
+          "hint_text": "Belirli kolonlar icin `findmnt -no` kullan.",
+          "hint_partial": "findmnt -no ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-012-r77",
+      "type": "single",
+      "scenario": "Yeni acilan hostta block device'leri boyut, filesystem ve mount point ile goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsblk -o NAME,SIZE,FSTYPE,MOUNTPOINT",
+          "hint_text": "Kolon secmek icin `lsblk -o` kullan.",
+          "hint_partial": "lsblk -o ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-013-r78",
+      "type": "single",
+      "scenario": "Runbook adiminda `/dev/sdb1` icin UUID ve filesystem bilgilerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "blkid /dev/sdb1",
+          "hint_text": "Tek device sorgusu icin `blkid device` kullan.",
+          "hint_partial": "blkid ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-014-r79",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde physical volume detaylarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pvdisplay",
+          "hint_text": "LVM physical volume bilgisi icin `pvdisplay` kullan.",
+          "hint_partial": "pvdisplay"
+        }
+      ]
+    },
+    {
+      "id": "sstg-015-r80",
+      "type": "single",
+      "scenario": "Incident sonrasinda volume group detaylarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "vgdisplay",
+          "hint_text": "LVM volume group bilgisi icin `vgdisplay` kullan.",
+          "hint_partial": "vgdisplay"
+        }
+      ]
+    },
+    {
+      "id": "sstg-016-r81",
+      "type": "single",
+      "scenario": "Bakim oncesi logical volume detaylarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lvdisplay",
+          "hint_text": "LVM logical volume bilgisi icin `lvdisplay` kullan.",
+          "hint_partial": "lvdisplay"
+        }
+      ]
+    },
+    {
+      "id": "sstg-017-r82",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda physical volume'leri ozet olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pvs",
+          "hint_text": "Kisa PV listesi icin `pvs` kullan.",
+          "hint_partial": "pvs"
+        }
+      ]
+    },
+    {
+      "id": "sstg-018-r83",
+      "type": "single",
+      "scenario": "Deploy sonrasi volume group'leri ozet olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "vgs",
+          "hint_text": "Kisa VG listesi icin `vgs` kullan.",
+          "hint_partial": "vgs"
+        }
+      ]
+    },
+    {
+      "id": "sstg-019-r84",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde logical volume'leri ozet olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lvs",
+          "hint_text": "Kisa LV listesi icin `lvs` kullan.",
+          "hint_partial": "lvs"
+        }
+      ]
+    },
+    {
+      "id": "sstg-020-r85",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `/dev/vgdata/lvapp` logical volume'unu 1G buyut.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lvextend -L +1G /dev/vgdata/lvapp",
+          "hint_text": "LV buyutmek icin `lvextend -L +size` kullan.",
+          "hint_partial": "lvextend -L ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-021-r86",
+      "type": "single",
+      "scenario": "Runbook adiminda ext filesystem'i buyutmek icin `lvapp` uzerinde resize yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "resize2fs /dev/vgdata/lvapp",
+          "hint_text": "ext filesystem buyutme icin `resize2fs` kullan.",
+          "hint_partial": "resize2fs ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-022-r87",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde xFS filesystem'i `/data-87` mount'u uzerinden buyut.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "xfs_growfs /data-87",
+          "hint_text": "XFS genisletme icin `xfs_growfs mountpoint` kullan.",
+          "hint_partial": "xfs_growfs ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-023-r88",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/dev/md0` RAID array detaylarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mdadm --detail /dev/md0",
+          "hint_text": "RAID detaylari icin `mdadm --detail` kullan.",
+          "hint_partial": "mdadm --detail ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-024-r89",
+      "type": "single",
+      "scenario": "Bakim oncesi `/data-89` mount noktasini read-write olarak remount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount -o remount,rw /data-89",
+          "hint_text": "Remount secenegi icin `mount -o remount,rw` kullan.",
+          "hint_partial": "mount -o remount,..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-025-r90",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/dev/sdb1` icin filesystem feature'larini filtreleyerek goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tune2fs -l /dev/sdb1 | grep 'Filesystem features'",
+          "hint_text": "Feature satiri icin `tune2fs -l | grep` kullan.",
+          "hint_partial": "tune2fs -l ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-011-r91",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/data-91` mount noktasinin source ve target bilgisini kisa formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "findmnt -no SOURCE,TARGET /data-91",
+          "hint_text": "Belirli kolonlar icin `findmnt -no` kullan.",
+          "hint_partial": "findmnt -no ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-012-r92",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde block device'leri boyut, filesystem ve mount point ile goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsblk -o NAME,SIZE,FSTYPE,MOUNTPOINT",
+          "hint_text": "Kolon secmek icin `lsblk -o` kullan.",
+          "hint_partial": "lsblk -o ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-013-r93",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `/dev/sdb1` icin UUID ve filesystem bilgilerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "blkid /dev/sdb1",
+          "hint_text": "Tek device sorgusu icin `blkid device` kullan.",
+          "hint_partial": "blkid ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-014-r94",
+      "type": "single",
+      "scenario": "Runbook adiminda physical volume detaylarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pvdisplay",
+          "hint_text": "LVM physical volume bilgisi icin `pvdisplay` kullan.",
+          "hint_partial": "pvdisplay"
+        }
+      ]
+    },
+    {
+      "id": "sstg-015-r95",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde volume group detaylarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "vgdisplay",
+          "hint_text": "LVM volume group bilgisi icin `vgdisplay` kullan.",
+          "hint_partial": "vgdisplay"
+        }
+      ]
+    },
+    {
+      "id": "sstg-016-r96",
+      "type": "single",
+      "scenario": "Incident sonrasinda logical volume detaylarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lvdisplay",
+          "hint_text": "LVM logical volume bilgisi icin `lvdisplay` kullan.",
+          "hint_partial": "lvdisplay"
+        }
+      ]
+    },
+    {
+      "id": "sstg-017-r97",
+      "type": "single",
+      "scenario": "Bakim oncesi physical volume'leri ozet olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pvs",
+          "hint_text": "Kisa PV listesi icin `pvs` kullan.",
+          "hint_partial": "pvs"
+        }
+      ]
+    },
+    {
+      "id": "sstg-018-r98",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda volume group'leri ozet olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "vgs",
+          "hint_text": "Kisa VG listesi icin `vgs` kullan.",
+          "hint_partial": "vgs"
+        }
+      ]
+    },
+    {
+      "id": "sstg-019-r99",
+      "type": "single",
+      "scenario": "Deploy sonrasi logical volume'leri ozet olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lvs",
+          "hint_text": "Kisa LV listesi icin `lvs` kullan.",
+          "hint_partial": "lvs"
+        }
+      ]
+    },
+    {
+      "id": "sstg-020-r100",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/dev/vgdata/lvapp` logical volume'unu 4G buyut.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lvextend -L +4G /dev/vgdata/lvapp",
+          "hint_text": "LV buyutmek icin `lvextend -L +size` kullan.",
+          "hint_partial": "lvextend -L ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-021-r101",
+      "type": "single",
+      "scenario": "Yeni acilan hostta ext filesystem'i buyutmek icin `lvapp` uzerinde resize yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "resize2fs /dev/vgdata/lvapp",
+          "hint_text": "ext filesystem buyutme icin `resize2fs` kullan.",
+          "hint_partial": "resize2fs ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-022-r102",
+      "type": "single",
+      "scenario": "Runbook adiminda xFS filesystem'i `/data-102` mount'u uzerinden buyut.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "xfs_growfs /data-102",
+          "hint_text": "XFS genisletme icin `xfs_growfs mountpoint` kullan.",
+          "hint_partial": "xfs_growfs ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-023-r103",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `/dev/md0` RAID array detaylarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mdadm --detail /dev/md0",
+          "hint_text": "RAID detaylari icin `mdadm --detail` kullan.",
+          "hint_partial": "mdadm --detail ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-024-r104",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/data-104` mount noktasini read-write olarak remount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount -o remount,rw /data-104",
+          "hint_text": "Remount secenegi icin `mount -o remount,rw` kullan.",
+          "hint_partial": "mount -o remount,..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-025-r105",
+      "type": "single",
+      "scenario": "Bakim oncesi `/dev/sdb1` icin filesystem feature'larini filtreleyerek goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tune2fs -l /dev/sdb1 | grep 'Filesystem features'",
+          "hint_text": "Feature satiri icin `tune2fs -l | grep` kullan.",
+          "hint_partial": "tune2fs -l ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-011-r106",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/data-106` mount noktasinin source ve target bilgisini kisa formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "findmnt -no SOURCE,TARGET /data-106",
+          "hint_text": "Belirli kolonlar icin `findmnt -no` kullan.",
+          "hint_partial": "findmnt -no ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-012-r107",
+      "type": "single",
+      "scenario": "Deploy sonrasi block device'leri boyut, filesystem ve mount point ile goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsblk -o NAME,SIZE,FSTYPE,MOUNTPOINT",
+          "hint_text": "Kolon secmek icin `lsblk -o` kullan.",
+          "hint_partial": "lsblk -o ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-013-r108",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/dev/sdb1` icin UUID ve filesystem bilgilerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "blkid /dev/sdb1",
+          "hint_text": "Tek device sorgusu icin `blkid device` kullan.",
+          "hint_partial": "blkid ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-014-r109",
+      "type": "single",
+      "scenario": "Yeni acilan hostta physical volume detaylarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pvdisplay",
+          "hint_text": "LVM physical volume bilgisi icin `pvdisplay` kullan.",
+          "hint_partial": "pvdisplay"
+        }
+      ]
+    },
+    {
+      "id": "sstg-015-r110",
+      "type": "single",
+      "scenario": "Runbook adiminda volume group detaylarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "vgdisplay",
+          "hint_text": "LVM volume group bilgisi icin `vgdisplay` kullan.",
+          "hint_partial": "vgdisplay"
+        }
+      ]
+    },
+    {
+      "id": "sstg-016-r111",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde logical volume detaylarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lvdisplay",
+          "hint_text": "LVM logical volume bilgisi icin `lvdisplay` kullan.",
+          "hint_partial": "lvdisplay"
+        }
+      ]
+    },
+    {
+      "id": "sstg-017-r112",
+      "type": "single",
+      "scenario": "Incident sonrasinda physical volume'leri ozet olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pvs",
+          "hint_text": "Kisa PV listesi icin `pvs` kullan.",
+          "hint_partial": "pvs"
+        }
+      ]
+    },
+    {
+      "id": "sstg-018-r113",
+      "type": "single",
+      "scenario": "Bakim oncesi volume group'leri ozet olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "vgs",
+          "hint_text": "Kisa VG listesi icin `vgs` kullan.",
+          "hint_partial": "vgs"
+        }
+      ]
+    },
+    {
+      "id": "sstg-019-r114",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda logical volume'leri ozet olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lvs",
+          "hint_text": "Kisa LV listesi icin `lvs` kullan.",
+          "hint_partial": "lvs"
+        }
+      ]
+    },
+    {
+      "id": "sstg-020-r115",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/dev/vgdata/lvapp` logical volume'unu 3G buyut.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lvextend -L +3G /dev/vgdata/lvapp",
+          "hint_text": "LV buyutmek icin `lvextend -L +size` kullan.",
+          "hint_partial": "lvextend -L ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-021-r116",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde ext filesystem'i buyutmek icin `lvapp` uzerinde resize yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "resize2fs /dev/vgdata/lvapp",
+          "hint_text": "ext filesystem buyutme icin `resize2fs` kullan.",
+          "hint_partial": "resize2fs ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-022-r117",
+      "type": "single",
+      "scenario": "Yeni acilan hostta xFS filesystem'i `/data-117` mount'u uzerinden buyut.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "xfs_growfs /data-117",
+          "hint_text": "XFS genisletme icin `xfs_growfs mountpoint` kullan.",
+          "hint_partial": "xfs_growfs ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-023-r118",
+      "type": "single",
+      "scenario": "Runbook adiminda `/dev/md0` RAID array detaylarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mdadm --detail /dev/md0",
+          "hint_text": "RAID detaylari icin `mdadm --detail` kullan.",
+          "hint_partial": "mdadm --detail ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-024-r119",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `/data-119` mount noktasini read-write olarak remount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount -o remount,rw /data-119",
+          "hint_text": "Remount secenegi icin `mount -o remount,rw` kullan.",
+          "hint_partial": "mount -o remount,..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-025-r120",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/dev/sdb1` icin filesystem feature'larini filtreleyerek goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tune2fs -l /dev/sdb1 | grep 'Filesystem features'",
+          "hint_text": "Feature satiri icin `tune2fs -l | grep` kullan.",
+          "hint_partial": "tune2fs -l ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-011-r121",
+      "type": "single",
+      "scenario": "Bakim oncesi `/data-121` mount noktasinin source ve target bilgisini kisa formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "findmnt -no SOURCE,TARGET /data-121",
+          "hint_text": "Belirli kolonlar icin `findmnt -no` kullan.",
+          "hint_partial": "findmnt -no ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-012-r122",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda block device'leri boyut, filesystem ve mount point ile goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsblk -o NAME,SIZE,FSTYPE,MOUNTPOINT",
+          "hint_text": "Kolon secmek icin `lsblk -o` kullan.",
+          "hint_partial": "lsblk -o ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-013-r123",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/dev/sdb1` icin UUID ve filesystem bilgilerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "blkid /dev/sdb1",
+          "hint_text": "Tek device sorgusu icin `blkid device` kullan.",
+          "hint_partial": "blkid ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-014-r124",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde physical volume detaylarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pvdisplay",
+          "hint_text": "LVM physical volume bilgisi icin `pvdisplay` kullan.",
+          "hint_partial": "pvdisplay"
+        }
+      ]
+    },
+    {
+      "id": "sstg-015-r125",
+      "type": "single",
+      "scenario": "Yeni acilan hostta volume group detaylarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "vgdisplay",
+          "hint_text": "LVM volume group bilgisi icin `vgdisplay` kullan.",
+          "hint_partial": "vgdisplay"
+        }
+      ]
+    },
+    {
+      "id": "sstg-016-r126",
+      "type": "single",
+      "scenario": "Runbook adiminda logical volume detaylarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lvdisplay",
+          "hint_text": "LVM logical volume bilgisi icin `lvdisplay` kullan.",
+          "hint_partial": "lvdisplay"
+        }
+      ]
+    },
+    {
+      "id": "sstg-017-r127",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde physical volume'leri ozet olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pvs",
+          "hint_text": "Kisa PV listesi icin `pvs` kullan.",
+          "hint_partial": "pvs"
+        }
+      ]
+    },
+    {
+      "id": "sstg-018-r128",
+      "type": "single",
+      "scenario": "Incident sonrasinda volume group'leri ozet olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "vgs",
+          "hint_text": "Kisa VG listesi icin `vgs` kullan.",
+          "hint_partial": "vgs"
+        }
+      ]
+    },
+    {
+      "id": "sstg-019-r129",
+      "type": "single",
+      "scenario": "Bakim oncesi logical volume'leri ozet olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lvs",
+          "hint_text": "Kisa LV listesi icin `lvs` kullan.",
+          "hint_partial": "lvs"
+        }
+      ]
+    },
+    {
+      "id": "sstg-020-r130",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/dev/vgdata/lvapp` logical volume'unu 2G buyut.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lvextend -L +2G /dev/vgdata/lvapp",
+          "hint_text": "LV buyutmek icin `lvextend -L +size` kullan.",
+          "hint_partial": "lvextend -L ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-021-r131",
+      "type": "single",
+      "scenario": "Deploy sonrasi ext filesystem'i buyutmek icin `lvapp` uzerinde resize yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "resize2fs /dev/vgdata/lvapp",
+          "hint_text": "ext filesystem buyutme icin `resize2fs` kullan.",
+          "hint_partial": "resize2fs ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-022-r132",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde xFS filesystem'i `/data-132` mount'u uzerinden buyut.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "xfs_growfs /data-132",
+          "hint_text": "XFS genisletme icin `xfs_growfs mountpoint` kullan.",
+          "hint_partial": "xfs_growfs ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-023-r133",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `/dev/md0` RAID array detaylarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mdadm --detail /dev/md0",
+          "hint_text": "RAID detaylari icin `mdadm --detail` kullan.",
+          "hint_partial": "mdadm --detail ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-024-r134",
+      "type": "single",
+      "scenario": "Runbook adiminda `/data-134` mount noktasini read-write olarak remount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount -o remount,rw /data-134",
+          "hint_text": "Remount secenegi icin `mount -o remount,rw` kullan.",
+          "hint_partial": "mount -o remount,..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-025-r135",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `/dev/sdb1` icin filesystem feature'larini filtreleyerek goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tune2fs -l /dev/sdb1 | grep 'Filesystem features'",
+          "hint_text": "Feature satiri icin `tune2fs -l | grep` kullan.",
+          "hint_partial": "tune2fs -l ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-011-r136",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/data-136` mount noktasinin source ve target bilgisini kisa formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "findmnt -no SOURCE,TARGET /data-136",
+          "hint_text": "Belirli kolonlar icin `findmnt -no` kullan.",
+          "hint_partial": "findmnt -no ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-012-r137",
+      "type": "single",
+      "scenario": "Bakim oncesi block device'leri boyut, filesystem ve mount point ile goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsblk -o NAME,SIZE,FSTYPE,MOUNTPOINT",
+          "hint_text": "Kolon secmek icin `lsblk -o` kullan.",
+          "hint_partial": "lsblk -o ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-013-r138",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/dev/sdb1` icin UUID ve filesystem bilgilerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "blkid /dev/sdb1",
+          "hint_text": "Tek device sorgusu icin `blkid device` kullan.",
+          "hint_partial": "blkid ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-014-r139",
+      "type": "single",
+      "scenario": "Deploy sonrasi physical volume detaylarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pvdisplay",
+          "hint_text": "LVM physical volume bilgisi icin `pvdisplay` kullan.",
+          "hint_partial": "pvdisplay"
+        }
+      ]
+    },
+    {
+      "id": "sstg-015-r140",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde volume group detaylarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "vgdisplay",
+          "hint_text": "LVM volume group bilgisi icin `vgdisplay` kullan.",
+          "hint_partial": "vgdisplay"
+        }
+      ]
+    },
+    {
+      "id": "sstg-016-r141",
+      "type": "single",
+      "scenario": "Yeni acilan hostta logical volume detaylarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lvdisplay",
+          "hint_text": "LVM logical volume bilgisi icin `lvdisplay` kullan.",
+          "hint_partial": "lvdisplay"
+        }
+      ]
+    },
+    {
+      "id": "sstg-017-r142",
+      "type": "single",
+      "scenario": "Runbook adiminda physical volume'leri ozet olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pvs",
+          "hint_text": "Kisa PV listesi icin `pvs` kullan.",
+          "hint_partial": "pvs"
+        }
+      ]
+    },
+    {
+      "id": "sstg-018-r143",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde volume group'leri ozet olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "vgs",
+          "hint_text": "Kisa VG listesi icin `vgs` kullan.",
+          "hint_partial": "vgs"
+        }
+      ]
+    },
+    {
+      "id": "sstg-019-r144",
+      "type": "single",
+      "scenario": "Incident sonrasinda logical volume'leri ozet olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lvs",
+          "hint_text": "Kisa LV listesi icin `lvs` kullan.",
+          "hint_partial": "lvs"
+        }
+      ]
+    },
+    {
+      "id": "sstg-020-r145",
+      "type": "single",
+      "scenario": "Bakim oncesi `/dev/vgdata/lvapp` logical volume'unu 1G buyut.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lvextend -L +1G /dev/vgdata/lvapp",
+          "hint_text": "LV buyutmek icin `lvextend -L +size` kullan.",
+          "hint_partial": "lvextend -L ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-021-r146",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda ext filesystem'i buyutmek icin `lvapp` uzerinde resize yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "resize2fs /dev/vgdata/lvapp",
+          "hint_text": "ext filesystem buyutme icin `resize2fs` kullan.",
+          "hint_partial": "resize2fs ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-022-r147",
+      "type": "single",
+      "scenario": "Deploy sonrasi xFS filesystem'i `/data-147` mount'u uzerinden buyut.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "xfs_growfs /data-147",
+          "hint_text": "XFS genisletme icin `xfs_growfs mountpoint` kullan.",
+          "hint_partial": "xfs_growfs ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-023-r148",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/dev/md0` RAID array detaylarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mdadm --detail /dev/md0",
+          "hint_text": "RAID detaylari icin `mdadm --detail` kullan.",
+          "hint_partial": "mdadm --detail ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-024-r149",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `/data-149` mount noktasini read-write olarak remount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount -o remount,rw /data-149",
+          "hint_text": "Remount secenegi icin `mount -o remount,rw` kullan.",
+          "hint_partial": "mount -o remount,..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-025-r150",
+      "type": "single",
+      "scenario": "Runbook adiminda `/dev/sdb1` icin filesystem feature'larini filtreleyerek goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tune2fs -l /dev/sdb1 | grep 'Filesystem features'",
+          "hint_text": "Feature satiri icin `tune2fs -l | grep` kullan.",
+          "hint_partial": "tune2fs -l ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-011-r151",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `/data-151` mount noktasinin source ve target bilgisini kisa formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "findmnt -no SOURCE,TARGET /data-151",
+          "hint_text": "Belirli kolonlar icin `findmnt -no` kullan.",
+          "hint_partial": "findmnt -no ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-012-r152",
+      "type": "single",
+      "scenario": "Incident sonrasinda block device'leri boyut, filesystem ve mount point ile goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsblk -o NAME,SIZE,FSTYPE,MOUNTPOINT",
+          "hint_text": "Kolon secmek icin `lsblk -o` kullan.",
+          "hint_partial": "lsblk -o ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-013-r153",
+      "type": "single",
+      "scenario": "Bakim oncesi `/dev/sdb1` icin UUID ve filesystem bilgilerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "blkid /dev/sdb1",
+          "hint_text": "Tek device sorgusu icin `blkid device` kullan.",
+          "hint_partial": "blkid ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-014-r154",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda physical volume detaylarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pvdisplay",
+          "hint_text": "LVM physical volume bilgisi icin `pvdisplay` kullan.",
+          "hint_partial": "pvdisplay"
+        }
+      ]
+    },
+    {
+      "id": "sstg-015-r155",
+      "type": "single",
+      "scenario": "Deploy sonrasi volume group detaylarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "vgdisplay",
+          "hint_text": "LVM volume group bilgisi icin `vgdisplay` kullan.",
+          "hint_partial": "vgdisplay"
+        }
+      ]
+    },
+    {
+      "id": "sstg-016-r156",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde logical volume detaylarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lvdisplay",
+          "hint_text": "LVM logical volume bilgisi icin `lvdisplay` kullan.",
+          "hint_partial": "lvdisplay"
+        }
+      ]
+    },
+    {
+      "id": "sstg-017-r157",
+      "type": "single",
+      "scenario": "Yeni acilan hostta physical volume'leri ozet olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pvs",
+          "hint_text": "Kisa PV listesi icin `pvs` kullan.",
+          "hint_partial": "pvs"
+        }
+      ]
+    },
+    {
+      "id": "sstg-018-r158",
+      "type": "single",
+      "scenario": "Runbook adiminda volume group'leri ozet olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "vgs",
+          "hint_text": "Kisa VG listesi icin `vgs` kullan.",
+          "hint_partial": "vgs"
+        }
+      ]
+    },
+    {
+      "id": "sstg-019-r159",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde logical volume'leri ozet olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lvs",
+          "hint_text": "Kisa LV listesi icin `lvs` kullan.",
+          "hint_partial": "lvs"
+        }
+      ]
+    },
+    {
+      "id": "sstg-020-r160",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/dev/vgdata/lvapp` logical volume'unu 4G buyut.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lvextend -L +4G /dev/vgdata/lvapp",
+          "hint_text": "LV buyutmek icin `lvextend -L +size` kullan.",
+          "hint_partial": "lvextend -L ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-021-r161",
+      "type": "single",
+      "scenario": "Bakim oncesi ext filesystem'i buyutmek icin `lvapp` uzerinde resize yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "resize2fs /dev/vgdata/lvapp",
+          "hint_text": "ext filesystem buyutme icin `resize2fs` kullan.",
+          "hint_partial": "resize2fs ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-022-r162",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda xFS filesystem'i `/data-162` mount'u uzerinden buyut.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "xfs_growfs /data-162",
+          "hint_text": "XFS genisletme icin `xfs_growfs mountpoint` kullan.",
+          "hint_partial": "xfs_growfs ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-023-r163",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/dev/md0` RAID array detaylarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mdadm --detail /dev/md0",
+          "hint_text": "RAID detaylari icin `mdadm --detail` kullan.",
+          "hint_partial": "mdadm --detail ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-024-r164",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/data-164` mount noktasini read-write olarak remount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount -o remount,rw /data-164",
+          "hint_text": "Remount secenegi icin `mount -o remount,rw` kullan.",
+          "hint_partial": "mount -o remount,..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-025-r165",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `/dev/sdb1` icin filesystem feature'larini filtreleyerek goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tune2fs -l /dev/sdb1 | grep 'Filesystem features'",
+          "hint_text": "Feature satiri icin `tune2fs -l | grep` kullan.",
+          "hint_partial": "tune2fs -l ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-011-r166",
+      "type": "single",
+      "scenario": "Runbook adiminda `/data-166` mount noktasinin source ve target bilgisini kisa formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "findmnt -no SOURCE,TARGET /data-166",
+          "hint_text": "Belirli kolonlar icin `findmnt -no` kullan.",
+          "hint_partial": "findmnt -no ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-012-r167",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde block device'leri boyut, filesystem ve mount point ile goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsblk -o NAME,SIZE,FSTYPE,MOUNTPOINT",
+          "hint_text": "Kolon secmek icin `lsblk -o` kullan.",
+          "hint_partial": "lsblk -o ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-013-r168",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/dev/sdb1` icin UUID ve filesystem bilgilerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "blkid /dev/sdb1",
+          "hint_text": "Tek device sorgusu icin `blkid device` kullan.",
+          "hint_partial": "blkid ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-014-r169",
+      "type": "single",
+      "scenario": "Bakim oncesi physical volume detaylarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pvdisplay",
+          "hint_text": "LVM physical volume bilgisi icin `pvdisplay` kullan.",
+          "hint_partial": "pvdisplay"
+        }
+      ]
+    },
+    {
+      "id": "sstg-015-r170",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda volume group detaylarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "vgdisplay",
+          "hint_text": "LVM volume group bilgisi icin `vgdisplay` kullan.",
+          "hint_partial": "vgdisplay"
+        }
+      ]
+    },
+    {
+      "id": "sstg-016-r171",
+      "type": "single",
+      "scenario": "Deploy sonrasi logical volume detaylarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lvdisplay",
+          "hint_text": "LVM logical volume bilgisi icin `lvdisplay` kullan.",
+          "hint_partial": "lvdisplay"
+        }
+      ]
+    },
+    {
+      "id": "sstg-017-r172",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde physical volume'leri ozet olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pvs",
+          "hint_text": "Kisa PV listesi icin `pvs` kullan.",
+          "hint_partial": "pvs"
+        }
+      ]
+    },
+    {
+      "id": "sstg-018-r173",
+      "type": "single",
+      "scenario": "Yeni acilan hostta volume group'leri ozet olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "vgs",
+          "hint_text": "Kisa VG listesi icin `vgs` kullan.",
+          "hint_partial": "vgs"
+        }
+      ]
+    },
+    {
+      "id": "sstg-019-r174",
+      "type": "single",
+      "scenario": "Runbook adiminda logical volume'leri ozet olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lvs",
+          "hint_text": "Kisa LV listesi icin `lvs` kullan.",
+          "hint_partial": "lvs"
+        }
+      ]
+    },
+    {
+      "id": "sstg-020-r175",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `/dev/vgdata/lvapp` logical volume'unu 3G buyut.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lvextend -L +3G /dev/vgdata/lvapp",
+          "hint_text": "LV buyutmek icin `lvextend -L +size` kullan.",
+          "hint_partial": "lvextend -L ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-021-r176",
+      "type": "single",
+      "scenario": "Incident sonrasinda ext filesystem'i buyutmek icin `lvapp` uzerinde resize yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "resize2fs /dev/vgdata/lvapp",
+          "hint_text": "ext filesystem buyutme icin `resize2fs` kullan.",
+          "hint_partial": "resize2fs ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-022-r177",
+      "type": "single",
+      "scenario": "Bakim oncesi xFS filesystem'i `/data-177` mount'u uzerinden buyut.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "xfs_growfs /data-177",
+          "hint_text": "XFS genisletme icin `xfs_growfs mountpoint` kullan.",
+          "hint_partial": "xfs_growfs ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-023-r178",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/dev/md0` RAID array detaylarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mdadm --detail /dev/md0",
+          "hint_text": "RAID detaylari icin `mdadm --detail` kullan.",
+          "hint_partial": "mdadm --detail ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-024-r179",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/data-179` mount noktasini read-write olarak remount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount -o remount,rw /data-179",
+          "hint_text": "Remount secenegi icin `mount -o remount,rw` kullan.",
+          "hint_partial": "mount -o remount,..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-025-r180",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/dev/sdb1` icin filesystem feature'larini filtreleyerek goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tune2fs -l /dev/sdb1 | grep 'Filesystem features'",
+          "hint_text": "Feature satiri icin `tune2fs -l | grep` kullan.",
+          "hint_partial": "tune2fs -l ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-011-r181",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `/data-181` mount noktasinin source ve target bilgisini kisa formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "findmnt -no SOURCE,TARGET /data-181",
+          "hint_text": "Belirli kolonlar icin `findmnt -no` kullan.",
+          "hint_partial": "findmnt -no ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-012-r182",
+      "type": "single",
+      "scenario": "Runbook adiminda block device'leri boyut, filesystem ve mount point ile goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsblk -o NAME,SIZE,FSTYPE,MOUNTPOINT",
+          "hint_text": "Kolon secmek icin `lsblk -o` kullan.",
+          "hint_partial": "lsblk -o ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-013-r183",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `/dev/sdb1` icin UUID ve filesystem bilgilerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "blkid /dev/sdb1",
+          "hint_text": "Tek device sorgusu icin `blkid device` kullan.",
+          "hint_partial": "blkid ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-014-r184",
+      "type": "single",
+      "scenario": "Incident sonrasinda physical volume detaylarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pvdisplay",
+          "hint_text": "LVM physical volume bilgisi icin `pvdisplay` kullan.",
+          "hint_partial": "pvdisplay"
+        }
+      ]
+    },
+    {
+      "id": "sstg-015-r185",
+      "type": "single",
+      "scenario": "Bakim oncesi volume group detaylarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "vgdisplay",
+          "hint_text": "LVM volume group bilgisi icin `vgdisplay` kullan.",
+          "hint_partial": "vgdisplay"
+        }
+      ]
+    }
+  ]
+}

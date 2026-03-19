@@ -1,0 +1,199 @@
+{
+  "level": "mid",
+  "topic": "filesystem",
+  "questions": [
+    {
+      "id": "mfs-001",
+      "type": "multi-step",
+      "scenario": "Production sunucusunda /var/log directory dolmaya başladı. Önce en çok yer kaplayan 5 file'ı bul, sonra en eskisini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "du -sh /var/log/* | sort -rh | head -5",
+          "hint_text": "du ile boyut, sort -rh ile büyükten küçüğe, head ile ilk 5",
+          "hint_partial": "du -sh /var/log/* | sort -rh | ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "ls -lt /var/log/ | tail -1",
+          "hint_text": "ls -t zamana göre sıralar, tail -1 en eski",
+          "hint_partial": "ls -lt /var/log/ | ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-002",
+      "type": "single",
+      "scenario": "/app directory altında son 7 günde değiştirilmiş tüm .log file'larını bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /app -name '*.log' -mtime -7",
+          "hint_text": "find ile -name pattern, -mtime -7 son 7 gün",
+          "hint_partial": "find /app -name '*.log' ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-003",
+      "type": "single",
+      "scenario": "/tmp altındaki 100MB'dan büyük file'lari bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /tmp -size +100M",
+          "hint_text": "find -size +100M ile büyük file'lari bulur",
+          "hint_partial": "find /tmp -size ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-004",
+      "type": "multi-step",
+      "scenario": "logs/ directory'sini /backup/2024/ altına arşivle (tar.gz), sonra arşivin içini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tar -czf /backup/2024/logs.tar.gz logs/",
+          "hint_text": "tar -czf: compress, gzip, file",
+          "hint_partial": "tar -czf /backup/2024/logs.tar.gz ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "tar -tzf /backup/2024/logs.tar.gz",
+          "hint_text": "tar -t ile arşiv içeriğini listele",
+          "hint_partial": "tar -tzf ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-005",
+      "type": "single",
+      "scenario": "Bir directory'deki tüm .txt file'larını /archive/ directoryüne taşı.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find . -name '*.txt' -exec mv {} /archive/ \\;",
+          "hint_text": "find ile -exec kullanarak her file'a mv uygula",
+          "hint_partial": "find . -name '*.txt' -exec mv {} /archive/ ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-006",
+      "type": "single",
+      "scenario": "/data mount noktasının disk kullanımını ve inode doluluk oranını kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "df -ih /data",
+          "hint_text": "df -i inode bilgisi, -h human readable",
+          "hint_partial": "df -ih ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-007",
+      "type": "single",
+      "scenario": "app.log file'inin hard link sayısını ve inode numarasını gör.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls -li app.log",
+          "hint_text": "ls -li inode numarasını da gösterir",
+          "hint_partial": "ls -li ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-008",
+      "type": "multi-step",
+      "scenario": "production.conf file'inin bir symlink'ini /etc/app/current.conf olarak oluştur, sonra linkin nereye işaret ettiğini doğrula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ln -s /opt/app/production.conf /etc/app/current.conf",
+          "hint_text": "ln -s ile symbolic link oluştur",
+          "hint_partial": "ln -s /opt/app/production.conf ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "readlink /etc/app/current.conf",
+          "hint_text": "readlink symlink'in hedefini gösterir",
+          "hint_partial": "readlink ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-009",
+      "type": "single",
+      "scenario": "/var/log/ altında permission sorunu olmadan tüm file'lari bul (permission denied hatalarını gizle).",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /var/log/ -type f 2>/dev/null",
+          "hint_text": "stderr'i /dev/null'a yönlendir",
+          "hint_partial": "find /var/log/ -type f ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-010",
+      "type": "single",
+      "scenario": "Calisma dizininde hangi alt klasorlerin alani buyuttugunu anlamak icin ilk seviye boyut dagilimini buyukten kucuge sirala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "du -sh -- * | sort -hr",
+          "hint_text": "Ilk seviye girdileri boyutlariyla alip `sort -hr` ile sirala.",
+          "hint_partial": "du -sh -- * | sort -hr"
+        }
+      ]
+    },
+    {
+      "id": "mfs-011",
+      "type": "single",
+      "scenario": "archive directory'sini zip formatinda arsivle",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "zip -r archive.zip archive",
+          "hint_text": "Directoryi recursive zip'lemek icin zip kullan",
+          "hint_partial": "zip -r ... ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-012",
+      "type": "single",
+      "scenario": "archive.zip arsivinin icerigini listele",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "unzip -l archive.zip",
+          "hint_text": "Zip icerigini listelemek icin unzip kullan",
+          "hint_partial": "unzip -l ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-015",
+      "type": "multi-step",
+      "scenario": "config directory'sini config.bak olarak kopyala ve sonra iki directory farkini recursive kontrol et",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cp -r config config.bak",
+          "hint_text": "Directoryi recursive kopyala",
+          "hint_partial": "cp -r ... ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "diff -r config config.bak",
+          "hint_text": "Iki directory recursive karsilastir",
+          "hint_partial": "diff -r ... ..."
+        }
+      ]
+    }
+  ]
+}

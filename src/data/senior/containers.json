@@ -1,0 +1,142 @@
+{
+  "level": "senior",
+  "topic": "docker",
+  "questions": [
+    {
+      "id": "sctr-001",
+      "type": "single",
+      "scenario": "Running container'ların kısa ID ve image bilgisini custom format ile listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker ps --format \"{{.ID}} {{.Image}}\"",
+          "hint_text": "Custom output için `docker ps --format` kullan.",
+          "hint_partial": "docker ps --format ..."
+        }
+      ]
+    },
+    {
+      "id": "sctr-002",
+      "type": "single",
+      "scenario": "web container'ının PID bilgisini çek ki host tarafında namespace debug yapabilesin.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker inspect --format '{{.State.Pid}}' web",
+          "hint_text": "Tek field almak için `docker inspect --format` kullan.",
+          "hint_partial": "docker inspect --format ..."
+        }
+      ]
+    },
+    {
+      "id": "sctr-003",
+      "type": "single",
+      "scenario": "web container'ının network namespace'i içinde `ip addr` çalıştır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "nsenter -t $(docker inspect --format \"{{.State.Pid}}\" web) -n ip addr",
+          "hint_text": "Namespace girişi için `nsenter -t PID -n` kullan.",
+          "hint_partial": "nsenter -t $(docker inspect ... ) -n ..."
+        }
+      ]
+    },
+    {
+      "id": "sctr-004",
+      "type": "single",
+      "scenario": "web container'ının cgroup parent bilgisini format'lı output ile göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker inspect --format \"{{.HostConfig.CgroupParent}}\" web",
+          "hint_text": "Cgroup alanı için `docker inspect --format` kullan.",
+          "hint_partial": "docker inspect --format ..."
+        }
+      ]
+    },
+    {
+      "id": "sctr-005",
+      "type": "multi-step",
+      "scenario": "Bir image build cache'ini kullanmadan yeniden build al, sonra dangling image'ları temizle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker build --no-cache -t myapp:latest .",
+          "hint_text": "Cache devre dışı için `--no-cache` kullan.",
+          "hint_partial": "docker build --no-cache -t ... ."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "docker image prune",
+          "hint_text": "Dangling image cleanup için `docker image prune` kullan.",
+          "hint_partial": "docker image prune"
+        }
+      ]
+    },
+    {
+      "id": "sctr-006",
+      "type": "single",
+      "scenario": "web container'ının memory limit bilgisini inspect et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker inspect --format '{{.HostConfig.Memory}}' web",
+          "hint_text": "Resource limit alanını `docker inspect --format` ile çek.",
+          "hint_partial": "docker inspect --format ..."
+        }
+      ]
+    },
+    {
+      "id": "sctr-007",
+      "type": "single",
+      "scenario": "Sadece `exited` durumundaki container'ları listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker ps -a --filter status=exited",
+          "hint_text": "Durum filtresi için `--filter status=` kullan.",
+          "hint_partial": "docker ps -a --filter status=..."
+        }
+      ]
+    },
+    {
+      "id": "sctr-008",
+      "type": "single",
+      "scenario": "Host'ta namespace karmaşasını çözmek için container'ın açık port mapping bilgisini format'lı göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker inspect --format '{{json .NetworkSettings.Ports}}' web",
+          "hint_text": "JSON format için `{{json ...}}` kullan.",
+          "hint_partial": "docker inspect --format ..."
+        }
+      ]
+    },
+    {
+      "id": "sctr-009",
+      "type": "single",
+      "scenario": "Bir container'ı read-only root filesystem ile çalıştır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker run --read-only nginx",
+          "hint_text": "Root filesystem'i immutable yapmak için `--read-only` kullan.",
+          "hint_partial": "docker run --read-only ..."
+        }
+      ]
+    },
+    {
+      "id": "sctr-010",
+      "type": "single",
+      "scenario": "web container'ının canlı resource kullanımını tek seferlik al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stats --no-stream web",
+          "hint_text": "Tek seferlik istatistik için `--no-stream` kullan.",
+          "hint_partial": "docker stats --no-stream ..."
+        }
+      ]
+    }
+  ]
+}

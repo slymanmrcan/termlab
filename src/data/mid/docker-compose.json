@@ -1,0 +1,136 @@
+{
+  "level": "mid",
+  "topic": "docker-compose",
+  "questions": [
+    {
+      "id": "mdc-001",
+      "type": "single",
+      "scenario": "Compose stack'ini yeniden build ederek detached modda kaldir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose up -d --build",
+          "hint_text": "Build+up icin `up -d --build` kullan.",
+          "hint_partial": "docker compose up ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-002",
+      "type": "single",
+      "scenario": "`api` servisi icin son 100 log satirini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose logs --tail 100 api",
+          "hint_text": "Tail ile log sayisini sinirla.",
+          "hint_partial": "docker compose logs ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-003",
+      "type": "single",
+      "scenario": "`db` servisi icinde postgres shell ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose exec db psql -U postgres",
+          "hint_text": "Servis icinde komut icin `docker compose exec` kullan.",
+          "hint_partial": "docker compose exec ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-004",
+      "type": "single",
+      "scenario": "`app` servisi icin tek seferlik test komutu calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose run --rm app npm test",
+          "hint_text": "One-off komut icin `docker compose run --rm` kullan.",
+          "hint_partial": "docker compose run ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-005",
+      "type": "single",
+      "scenario": "Compose tarafinda kullanilan image listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose images",
+          "hint_text": "Image listesi icin `docker compose images` kullan.",
+          "hint_partial": "docker compose images"
+        }
+      ]
+    },
+    {
+      "id": "mdc-006",
+      "type": "single",
+      "scenario": "Once image'lari cek sonra stack'i detached modda kaldir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose pull && docker compose up -d",
+          "hint_text": "Pull ve up komutlarini ardarda calistir.",
+          "hint_partial": "docker compose pull ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-007",
+      "type": "single",
+      "scenario": "Sadece `api` servisini durdur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose stop api",
+          "hint_text": "Tek servis durdurmak icin `docker compose stop service` kullan.",
+          "hint_partial": "docker compose stop ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-008",
+      "type": "single",
+      "scenario": "Durdurulmus `api` container'ini force ederek kaldir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose rm -f api",
+          "hint_text": "Servis container temizligi icin `docker compose rm -f` kullan.",
+          "hint_partial": "docker compose rm ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-009",
+      "type": "single",
+      "scenario": "Compose servislerinin ic process listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose top",
+          "hint_text": "Servis process'leri icin `docker compose top` kullan.",
+          "hint_partial": "docker compose top"
+        }
+      ]
+    },
+    {
+      "id": "mdc-010",
+      "type": "single",
+      "scenario": "Config icindeki servis adlarini yalniz listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose config --services",
+          "hint_text": "Servis adlari icin `config --services` kullan.",
+          "hint_partial": "docker compose config ..."
+        }
+      ]
+    }
+  ]
+}

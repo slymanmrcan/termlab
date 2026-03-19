@@ -1,0 +1,2606 @@
+{
+  "level": "senior",
+  "topic": "terraform",
+  "questions": [
+    {
+      "id": "stf-001-exp-001",
+      "type": "single",
+      "scenario": "Gece vardiyasinda destroy plani olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform plan -destroy",
+          "hint_text": "Destroy plan icin `terraform plan -destroy` kullan.",
+          "hint_partial": "terraform plan ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-002-exp-002",
+      "type": "single",
+      "scenario": "Audit sirasinda sadece refresh-only apply yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform apply -refresh-only",
+          "hint_text": "Refresh-only icin ilgili flag'i kullan.",
+          "hint_partial": "terraform apply ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-003-exp-003",
+      "type": "single",
+      "scenario": "Bakim penceresinde remote veya local state JSON'unu stdout'a cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform state pull",
+          "hint_text": "Ham state cekmek icin `terraform state pull` kullan.",
+          "hint_partial": "terraform state ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-004-exp-004",
+      "type": "single",
+      "scenario": "Incident triajinda state icinde kaynak adresini yeniden adlandir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform state mv aws_instance.old aws_instance.new",
+          "hint_text": "State tasimasi icin `terraform state mv` kullan.",
+          "hint_partial": "terraform state ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-005-exp-005",
+      "type": "single",
+      "scenario": "Release kontrolunde bir kaynagi state'ten sil ama altyapiyi silme.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform state rm aws_instance.cache-205-205",
+          "hint_text": "State kaydini silmek icin `terraform state rm` kullan.",
+          "hint_partial": "terraform state ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-006-exp-006",
+      "type": "single",
+      "scenario": "Operasyon devrinde takili kalmis state lock'u `LOCK_ID` ile ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform force-unlock LOCK_ID",
+          "hint_text": "State lock acmak icin `terraform force-unlock` kullan.",
+          "hint_partial": "terraform force-unlock ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-007-exp-007",
+      "type": "single",
+      "scenario": "On-call gorevinde state'i JSON formatinda goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform show -json terraform.tfstate",
+          "hint_text": "JSON show icin `terraform show -json` kullan.",
+          "hint_partial": "terraform show ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-008-exp-008",
+      "type": "single",
+      "scenario": "Kesinti sonrasi output degerlerini JSON olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform output -json",
+          "hint_text": "JSON output icin `terraform output -json` kullan.",
+          "hint_partial": "terraform output ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-009-exp-009",
+      "type": "single",
+      "scenario": "Gece vardiyasinda provider plugin'lerini upgrade ederek init yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform init -upgrade",
+          "hint_text": "Provider upgrade icin `terraform init -upgrade` kullan.",
+          "hint_partial": "terraform init ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-010-exp-010",
+      "type": "single",
+      "scenario": "Audit sirasinda provider lock file olustur veya guncelle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform providers lock",
+          "hint_text": "Provider checksum lock icin `terraform providers lock` kullan.",
+          "hint_partial": "terraform providers ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-001-r1-exp-011",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi destroy plani olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform plan -destroy",
+          "hint_text": "Destroy plan icin `terraform plan -destroy` kullan.",
+          "hint_partial": "terraform plan ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-002-r2-exp-012",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda sadece refresh-only apply yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform apply -refresh-only",
+          "hint_text": "Refresh-only icin ilgili flag'i kullan.",
+          "hint_partial": "terraform apply ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-003-r3-exp-013",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi remote veya local state JSON'unu stdout'a cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform state pull",
+          "hint_text": "Ham state cekmek icin `terraform state pull` kullan.",
+          "hint_partial": "terraform state ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-004-r4-exp-014",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde state icinde kaynak adresini yeniden adlandir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform state mv aws_instance.old aws_instance.new",
+          "hint_text": "State tasimasi icin `terraform state mv` kullan.",
+          "hint_partial": "terraform state ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-005-r5-exp-015",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta bir kaynagi state'ten sil ama altyapiyi silme.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform state rm aws_instance.cache-215-5-5",
+          "hint_text": "State kaydini silmek icin `terraform state rm` kullan.",
+          "hint_partial": "terraform state ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-006-r6-exp-016",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda takili kalmis state lock'u `LOCK_ID` ile ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform force-unlock LOCK_ID",
+          "hint_text": "State lock acmak icin `terraform force-unlock` kullan.",
+          "hint_partial": "terraform force-unlock ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-007-r7-exp-017",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde state'i JSON formatinda goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform show -json terraform.tfstate",
+          "hint_text": "JSON show icin `terraform show -json` kullan.",
+          "hint_partial": "terraform show ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-008-r8-exp-018",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda output degerlerini JSON olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform output -json",
+          "hint_text": "JSON output icin `terraform output -json` kullan.",
+          "hint_partial": "terraform output ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-009-r9-exp-019",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi provider plugin'lerini upgrade ederek init yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform init -upgrade",
+          "hint_text": "Provider upgrade icin `terraform init -upgrade` kullan.",
+          "hint_partial": "terraform init ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-010-r10-exp-020",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda provider lock file olustur veya guncelle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform providers lock",
+          "hint_text": "Provider checksum lock icin `terraform providers lock` kullan.",
+          "hint_partial": "terraform providers ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-001-r11-exp-021",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi destroy plani olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform plan -destroy",
+          "hint_text": "Destroy plan icin `terraform plan -destroy` kullan.",
+          "hint_partial": "terraform plan ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-002-r12-exp-022",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde sadece refresh-only apply yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform apply -refresh-only",
+          "hint_text": "Refresh-only icin ilgili flag'i kullan.",
+          "hint_partial": "terraform apply ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-003-r13-exp-023",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta remote veya local state JSON'unu stdout'a cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform state pull",
+          "hint_text": "Ham state cekmek icin `terraform state pull` kullan.",
+          "hint_partial": "terraform state ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-004-r14-exp-024",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda state icinde kaynak adresini yeniden adlandir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform state mv aws_instance.old aws_instance.new",
+          "hint_text": "State tasimasi icin `terraform state mv` kullan.",
+          "hint_partial": "terraform state ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-005-r15-exp-025",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde bir kaynagi state'ten sil ama altyapiyi silme.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform state rm aws_instance.bastion-15",
+          "hint_text": "State kaydini silmek icin `terraform state rm` kullan.",
+          "hint_partial": "terraform state ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-006-r16-exp-026",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda takili kalmis state lock'u `LOCK_ID` ile ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform force-unlock LOCK_ID",
+          "hint_text": "State lock acmak icin `terraform force-unlock` kullan.",
+          "hint_partial": "terraform force-unlock ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-007-r17-exp-027",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi state'i JSON formatinda goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform show -json terraform.tfstate",
+          "hint_text": "JSON show icin `terraform show -json` kullan.",
+          "hint_partial": "terraform show ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-008-r18-exp-028",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda output degerlerini JSON olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform output -json",
+          "hint_text": "JSON output icin `terraform output -json` kullan.",
+          "hint_partial": "terraform output ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-009-r19-exp-029",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi provider plugin'lerini upgrade ederek init yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform init -upgrade",
+          "hint_text": "Provider upgrade icin `terraform init -upgrade` kullan.",
+          "hint_partial": "terraform init ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-010-r20-exp-030",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde provider lock file olustur veya guncelle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform providers lock",
+          "hint_text": "Provider checksum lock icin `terraform providers lock` kullan.",
+          "hint_partial": "terraform providers ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-001-r21-exp-031",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta destroy plani olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform plan -destroy",
+          "hint_text": "Destroy plan icin `terraform plan -destroy` kullan.",
+          "hint_partial": "terraform plan ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-002-r22-exp-032",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda sadece refresh-only apply yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform apply -refresh-only",
+          "hint_text": "Refresh-only icin ilgili flag'i kullan.",
+          "hint_partial": "terraform apply ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-003-r23-exp-033",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde remote veya local state JSON'unu stdout'a cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform state pull",
+          "hint_text": "Ham state cekmek icin `terraform state pull` kullan.",
+          "hint_partial": "terraform state ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-004-r24-exp-034",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda state icinde kaynak adresini yeniden adlandir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform state mv aws_instance.old aws_instance.new",
+          "hint_text": "State tasimasi icin `terraform state mv` kullan.",
+          "hint_partial": "terraform state ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-005-r25-exp-035",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi bir kaynagi state'ten sil ama altyapiyi silme.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform state rm aws_instance.queue-235-235-25",
+          "hint_text": "State kaydini silmek icin `terraform state rm` kullan.",
+          "hint_partial": "terraform state ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-006-r26-exp-036",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda takili kalmis state lock'u `LOCK_ID` ile ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform force-unlock LOCK_ID",
+          "hint_text": "State lock acmak icin `terraform force-unlock` kullan.",
+          "hint_partial": "terraform force-unlock ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-007-r27-exp-037",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi state'i JSON formatinda goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform show -json terraform.tfstate",
+          "hint_text": "JSON show icin `terraform show -json` kullan.",
+          "hint_partial": "terraform show ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-008-r28-exp-038",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde output degerlerini JSON olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform output -json",
+          "hint_text": "JSON output icin `terraform output -json` kullan.",
+          "hint_partial": "terraform output ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-009-r29-exp-039",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta provider plugin'lerini upgrade ederek init yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform init -upgrade",
+          "hint_text": "Provider upgrade icin `terraform init -upgrade` kullan.",
+          "hint_partial": "terraform init ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-010-r30-exp-040",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda provider lock file olustur veya guncelle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform providers lock",
+          "hint_text": "Provider checksum lock icin `terraform providers lock` kullan.",
+          "hint_partial": "terraform providers ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-001-r31-exp-041",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde destroy plani olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform plan -destroy",
+          "hint_text": "Destroy plan icin `terraform plan -destroy` kullan.",
+          "hint_partial": "terraform plan ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-002-r32-exp-042",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda sadece refresh-only apply yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform apply -refresh-only",
+          "hint_text": "Refresh-only icin ilgili flag'i kullan.",
+          "hint_partial": "terraform apply ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-003-r33-exp-043",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi remote veya local state JSON'unu stdout'a cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform state pull",
+          "hint_text": "Ham state cekmek icin `terraform state pull` kullan.",
+          "hint_partial": "terraform state ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-004-r34-exp-044",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda state icinde kaynak adresini yeniden adlandir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform state mv aws_instance.old aws_instance.new",
+          "hint_text": "State tasimasi icin `terraform state mv` kullan.",
+          "hint_partial": "terraform state ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-005-r35-exp-045",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi bir kaynagi state'ten sil ama altyapiyi silme.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform state rm aws_instance.bastion-245-35",
+          "hint_text": "State kaydini silmek icin `terraform state rm` kullan.",
+          "hint_partial": "terraform state ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-006-r36-exp-046",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde takili kalmis state lock'u `LOCK_ID` ile ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform force-unlock LOCK_ID",
+          "hint_text": "State lock acmak icin `terraform force-unlock` kullan.",
+          "hint_partial": "terraform force-unlock ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-007-r37-exp-047",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta state'i JSON formatinda goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform show -json terraform.tfstate",
+          "hint_text": "JSON show icin `terraform show -json` kullan.",
+          "hint_partial": "terraform show ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-008-r38-exp-048",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda output degerlerini JSON olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform output -json",
+          "hint_text": "JSON output icin `terraform output -json` kullan.",
+          "hint_partial": "terraform output ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-009-r39-exp-049",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde provider plugin'lerini upgrade ederek init yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform init -upgrade",
+          "hint_text": "Provider upgrade icin `terraform init -upgrade` kullan.",
+          "hint_partial": "terraform init ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-010-r40-exp-050",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda provider lock file olustur veya guncelle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform providers lock",
+          "hint_text": "Provider checksum lock icin `terraform providers lock` kullan.",
+          "hint_partial": "terraform providers ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-001-r41-exp-051",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi destroy plani olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform plan -destroy",
+          "hint_text": "Destroy plan icin `terraform plan -destroy` kullan.",
+          "hint_partial": "terraform plan ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-002-r42-exp-052",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda sadece refresh-only apply yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform apply -refresh-only",
+          "hint_text": "Refresh-only icin ilgili flag'i kullan.",
+          "hint_partial": "terraform apply ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-003-r43-exp-053",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi remote veya local state JSON'unu stdout'a cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform state pull",
+          "hint_text": "Ham state cekmek icin `terraform state pull` kullan.",
+          "hint_partial": "terraform state ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-004-r44-exp-054",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde state icinde kaynak adresini yeniden adlandir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform state mv aws_instance.old aws_instance.new",
+          "hint_text": "State tasimasi icin `terraform state mv` kullan.",
+          "hint_partial": "terraform state ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-005-r45-exp-055",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta bir kaynagi state'ten sil ama altyapiyi silme.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform state rm aws_instance.cache-255-45-45",
+          "hint_text": "State kaydini silmek icin `terraform state rm` kullan.",
+          "hint_partial": "terraform state ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-006-r46-exp-056",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda takili kalmis state lock'u `LOCK_ID` ile ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform force-unlock LOCK_ID",
+          "hint_text": "State lock acmak icin `terraform force-unlock` kullan.",
+          "hint_partial": "terraform force-unlock ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-007-r47-exp-057",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde state'i JSON formatinda goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform show -json terraform.tfstate",
+          "hint_text": "JSON show icin `terraform show -json` kullan.",
+          "hint_partial": "terraform show ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-008-r48-exp-058",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda output degerlerini JSON olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform output -json",
+          "hint_text": "JSON output icin `terraform output -json` kullan.",
+          "hint_partial": "terraform output ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-009-r49-exp-059",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi provider plugin'lerini upgrade ederek init yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform init -upgrade",
+          "hint_text": "Provider upgrade icin `terraform init -upgrade` kullan.",
+          "hint_partial": "terraform init ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-010-r50-exp-060",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda provider lock file olustur veya guncelle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform providers lock",
+          "hint_text": "Provider checksum lock icin `terraform providers lock` kullan.",
+          "hint_partial": "terraform providers ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-001-r51-exp-061",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi destroy plani olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform plan -destroy",
+          "hint_text": "Destroy plan icin `terraform plan -destroy` kullan.",
+          "hint_partial": "terraform plan ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-002-r52-exp-062",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde sadece refresh-only apply yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform apply -refresh-only",
+          "hint_text": "Refresh-only icin ilgili flag'i kullan.",
+          "hint_partial": "terraform apply ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-003-r53-exp-063",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta remote veya local state JSON'unu stdout'a cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform state pull",
+          "hint_text": "Ham state cekmek icin `terraform state pull` kullan.",
+          "hint_partial": "terraform state ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-004-r54-exp-064",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda state icinde kaynak adresini yeniden adlandir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform state mv aws_instance.old aws_instance.new",
+          "hint_text": "State tasimasi icin `terraform state mv` kullan.",
+          "hint_partial": "terraform state ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-005-r55-exp-065",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde bir kaynagi state'ten sil ama altyapiyi silme.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform state rm aws_instance.bastion-55",
+          "hint_text": "State kaydini silmek icin `terraform state rm` kullan.",
+          "hint_partial": "terraform state ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-006-r56-exp-066",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda takili kalmis state lock'u `LOCK_ID` ile ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform force-unlock LOCK_ID",
+          "hint_text": "State lock acmak icin `terraform force-unlock` kullan.",
+          "hint_partial": "terraform force-unlock ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-007-r57-exp-067",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi state'i JSON formatinda goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform show -json terraform.tfstate",
+          "hint_text": "JSON show icin `terraform show -json` kullan.",
+          "hint_partial": "terraform show ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-008-r58-exp-068",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda output degerlerini JSON olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform output -json",
+          "hint_text": "JSON output icin `terraform output -json` kullan.",
+          "hint_partial": "terraform output ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-009-r59-exp-069",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi provider plugin'lerini upgrade ederek init yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform init -upgrade",
+          "hint_text": "Provider upgrade icin `terraform init -upgrade` kullan.",
+          "hint_partial": "terraform init ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-010-r60-exp-070",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde provider lock file olustur veya guncelle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform providers lock",
+          "hint_text": "Provider checksum lock icin `terraform providers lock` kullan.",
+          "hint_partial": "terraform providers ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-001-r61-exp-071",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta destroy plani olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform plan -destroy",
+          "hint_text": "Destroy plan icin `terraform plan -destroy` kullan.",
+          "hint_partial": "terraform plan ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-002-r62-exp-072",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda sadece refresh-only apply yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform apply -refresh-only",
+          "hint_text": "Refresh-only icin ilgili flag'i kullan.",
+          "hint_partial": "terraform apply ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-003-r63-exp-073",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde remote veya local state JSON'unu stdout'a cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform state pull",
+          "hint_text": "Ham state cekmek icin `terraform state pull` kullan.",
+          "hint_partial": "terraform state ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-004-r64-exp-074",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda state icinde kaynak adresini yeniden adlandir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform state mv aws_instance.old aws_instance.new",
+          "hint_text": "State tasimasi icin `terraform state mv` kullan.",
+          "hint_partial": "terraform state ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-005-r65-exp-075",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi bir kaynagi state'ten sil ama altyapiyi silme.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform state rm aws_instance.queue-275-275-65",
+          "hint_text": "State kaydini silmek icin `terraform state rm` kullan.",
+          "hint_partial": "terraform state ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-006-r66-exp-076",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda takili kalmis state lock'u `LOCK_ID` ile ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform force-unlock LOCK_ID",
+          "hint_text": "State lock acmak icin `terraform force-unlock` kullan.",
+          "hint_partial": "terraform force-unlock ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-007-r67-exp-077",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi state'i JSON formatinda goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform show -json terraform.tfstate",
+          "hint_text": "JSON show icin `terraform show -json` kullan.",
+          "hint_partial": "terraform show ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-008-r68-exp-078",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde output degerlerini JSON olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform output -json",
+          "hint_text": "JSON output icin `terraform output -json` kullan.",
+          "hint_partial": "terraform output ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-009-r69-exp-079",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta provider plugin'lerini upgrade ederek init yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform init -upgrade",
+          "hint_text": "Provider upgrade icin `terraform init -upgrade` kullan.",
+          "hint_partial": "terraform init ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-010-r70-exp-080",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda provider lock file olustur veya guncelle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform providers lock",
+          "hint_text": "Provider checksum lock icin `terraform providers lock` kullan.",
+          "hint_partial": "terraform providers ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-001-r71-exp-081",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde destroy plani olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform plan -destroy",
+          "hint_text": "Destroy plan icin `terraform plan -destroy` kullan.",
+          "hint_partial": "terraform plan ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-002-r72-exp-082",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda sadece refresh-only apply yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform apply -refresh-only",
+          "hint_text": "Refresh-only icin ilgili flag'i kullan.",
+          "hint_partial": "terraform apply ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-003-r73-exp-083",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi remote veya local state JSON'unu stdout'a cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform state pull",
+          "hint_text": "Ham state cekmek icin `terraform state pull` kullan.",
+          "hint_partial": "terraform state ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-004-r74-exp-084",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda state icinde kaynak adresini yeniden adlandir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform state mv aws_instance.old aws_instance.new",
+          "hint_text": "State tasimasi icin `terraform state mv` kullan.",
+          "hint_partial": "terraform state ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-005-r75-exp-085",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi bir kaynagi state'ten sil ama altyapiyi silme.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform state rm aws_instance.bastion-285-75",
+          "hint_text": "State kaydini silmek icin `terraform state rm` kullan.",
+          "hint_partial": "terraform state ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-006-r76-exp-086",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde takili kalmis state lock'u `LOCK_ID` ile ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform force-unlock LOCK_ID",
+          "hint_text": "State lock acmak icin `terraform force-unlock` kullan.",
+          "hint_partial": "terraform force-unlock ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-007-r77-exp-087",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta state'i JSON formatinda goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform show -json terraform.tfstate",
+          "hint_text": "JSON show icin `terraform show -json` kullan.",
+          "hint_partial": "terraform show ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-008-r78-exp-088",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda output degerlerini JSON olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform output -json",
+          "hint_text": "JSON output icin `terraform output -json` kullan.",
+          "hint_partial": "terraform output ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-009-r79-exp-089",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde provider plugin'lerini upgrade ederek init yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform init -upgrade",
+          "hint_text": "Provider upgrade icin `terraform init -upgrade` kullan.",
+          "hint_partial": "terraform init ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-010-r80-exp-090",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda provider lock file olustur veya guncelle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform providers lock",
+          "hint_text": "Provider checksum lock icin `terraform providers lock` kullan.",
+          "hint_partial": "terraform providers ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-001-r81-exp-091",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi destroy plani olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform plan -destroy",
+          "hint_text": "Destroy plan icin `terraform plan -destroy` kullan.",
+          "hint_partial": "terraform plan ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-002-r82-exp-092",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda sadece refresh-only apply yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform apply -refresh-only",
+          "hint_text": "Refresh-only icin ilgili flag'i kullan.",
+          "hint_partial": "terraform apply ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-003-r83-exp-093",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi remote veya local state JSON'unu stdout'a cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform state pull",
+          "hint_text": "Ham state cekmek icin `terraform state pull` kullan.",
+          "hint_partial": "terraform state ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-004-r84-exp-094",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde state icinde kaynak adresini yeniden adlandir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform state mv aws_instance.old aws_instance.new",
+          "hint_text": "State tasimasi icin `terraform state mv` kullan.",
+          "hint_partial": "terraform state ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-005-r85-exp-095",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta bir kaynagi state'ten sil ama altyapiyi silme.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform state rm aws_instance.cache-295-85-85",
+          "hint_text": "State kaydini silmek icin `terraform state rm` kullan.",
+          "hint_partial": "terraform state ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-006-r86-exp-096",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda takili kalmis state lock'u `LOCK_ID` ile ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform force-unlock LOCK_ID",
+          "hint_text": "State lock acmak icin `terraform force-unlock` kullan.",
+          "hint_partial": "terraform force-unlock ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-007-r87-exp-097",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde state'i JSON formatinda goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform show -json terraform.tfstate",
+          "hint_text": "JSON show icin `terraform show -json` kullan.",
+          "hint_partial": "terraform show ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-008-r88-exp-098",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda output degerlerini JSON olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform output -json",
+          "hint_text": "JSON output icin `terraform output -json` kullan.",
+          "hint_partial": "terraform output ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-009-r89-exp-099",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi provider plugin'lerini upgrade ederek init yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform init -upgrade",
+          "hint_text": "Provider upgrade icin `terraform init -upgrade` kullan.",
+          "hint_partial": "terraform init ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-010-r90-exp-100",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda provider lock file olustur veya guncelle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform providers lock",
+          "hint_text": "Provider checksum lock icin `terraform providers lock` kullan.",
+          "hint_partial": "terraform providers ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-001-r91-exp-101",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi destroy plani olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform plan -destroy",
+          "hint_text": "Destroy plan icin `terraform plan -destroy` kullan.",
+          "hint_partial": "terraform plan ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-002-r92-exp-102",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde sadece refresh-only apply yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform apply -refresh-only",
+          "hint_text": "Refresh-only icin ilgili flag'i kullan.",
+          "hint_partial": "terraform apply ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-003-r93-exp-103",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta remote veya local state JSON'unu stdout'a cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform state pull",
+          "hint_text": "Ham state cekmek icin `terraform state pull` kullan.",
+          "hint_partial": "terraform state ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-004-r94-exp-104",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda state icinde kaynak adresini yeniden adlandir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform state mv aws_instance.old aws_instance.new",
+          "hint_text": "State tasimasi icin `terraform state mv` kullan.",
+          "hint_partial": "terraform state ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-005-r95-exp-105",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde bir kaynagi state'ten sil ama altyapiyi silme.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform state rm aws_instance.bastion-95",
+          "hint_text": "State kaydini silmek icin `terraform state rm` kullan.",
+          "hint_partial": "terraform state ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-006-r96-exp-106",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda takili kalmis state lock'u `LOCK_ID` ile ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform force-unlock LOCK_ID",
+          "hint_text": "State lock acmak icin `terraform force-unlock` kullan.",
+          "hint_partial": "terraform force-unlock ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-007-r97-exp-107",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi state'i JSON formatinda goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform show -json terraform.tfstate",
+          "hint_text": "JSON show icin `terraform show -json` kullan.",
+          "hint_partial": "terraform show ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-008-r98-exp-108",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda output degerlerini JSON olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform output -json",
+          "hint_text": "JSON output icin `terraform output -json` kullan.",
+          "hint_partial": "terraform output ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-009-r99-exp-109",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi provider plugin'lerini upgrade ederek init yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform init -upgrade",
+          "hint_text": "Provider upgrade icin `terraform init -upgrade` kullan.",
+          "hint_partial": "terraform init ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-010-r100-exp-110",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde provider lock file olustur veya guncelle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform providers lock",
+          "hint_text": "Provider checksum lock icin `terraform providers lock` kullan.",
+          "hint_partial": "terraform providers ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-001-r101-exp-111",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta destroy plani olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform plan -destroy",
+          "hint_text": "Destroy plan icin `terraform plan -destroy` kullan.",
+          "hint_partial": "terraform plan ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-002-r102-exp-112",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda sadece refresh-only apply yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform apply -refresh-only",
+          "hint_text": "Refresh-only icin ilgili flag'i kullan.",
+          "hint_partial": "terraform apply ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-003-r103-exp-113",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde remote veya local state JSON'unu stdout'a cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform state pull",
+          "hint_text": "Ham state cekmek icin `terraform state pull` kullan.",
+          "hint_partial": "terraform state ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-004-r104-exp-114",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda state icinde kaynak adresini yeniden adlandir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform state mv aws_instance.old aws_instance.new",
+          "hint_text": "State tasimasi icin `terraform state mv` kullan.",
+          "hint_partial": "terraform state ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-005-r105-exp-115",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi bir kaynagi state'ten sil ama altyapiyi silme.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform state rm aws_instance.queue-315-315-105",
+          "hint_text": "State kaydini silmek icin `terraform state rm` kullan.",
+          "hint_partial": "terraform state ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-006-r106-exp-116",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda takili kalmis state lock'u `LOCK_ID` ile ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform force-unlock LOCK_ID",
+          "hint_text": "State lock acmak icin `terraform force-unlock` kullan.",
+          "hint_partial": "terraform force-unlock ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-007-r107-exp-117",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi state'i JSON formatinda goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform show -json terraform.tfstate",
+          "hint_text": "JSON show icin `terraform show -json` kullan.",
+          "hint_partial": "terraform show ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-008-r108-exp-118",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde output degerlerini JSON olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform output -json",
+          "hint_text": "JSON output icin `terraform output -json` kullan.",
+          "hint_partial": "terraform output ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-009-r109-exp-119",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta provider plugin'lerini upgrade ederek init yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform init -upgrade",
+          "hint_text": "Provider upgrade icin `terraform init -upgrade` kullan.",
+          "hint_partial": "terraform init ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-010-r110-exp-120",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda provider lock file olustur veya guncelle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform providers lock",
+          "hint_text": "Provider checksum lock icin `terraform providers lock` kullan.",
+          "hint_partial": "terraform providers ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-001-r111-exp-121",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde destroy plani olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform plan -destroy",
+          "hint_text": "Destroy plan icin `terraform plan -destroy` kullan.",
+          "hint_partial": "terraform plan ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-002-r112-exp-122",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda sadece refresh-only apply yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform apply -refresh-only",
+          "hint_text": "Refresh-only icin ilgili flag'i kullan.",
+          "hint_partial": "terraform apply ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-003-r113-exp-123",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi remote veya local state JSON'unu stdout'a cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform state pull",
+          "hint_text": "Ham state cekmek icin `terraform state pull` kullan.",
+          "hint_partial": "terraform state ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-004-r114-exp-124",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda state icinde kaynak adresini yeniden adlandir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform state mv aws_instance.old aws_instance.new",
+          "hint_text": "State tasimasi icin `terraform state mv` kullan.",
+          "hint_partial": "terraform state ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-005-r115-exp-125",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi bir kaynagi state'ten sil ama altyapiyi silme.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform state rm aws_instance.bastion-325-115",
+          "hint_text": "State kaydini silmek icin `terraform state rm` kullan.",
+          "hint_partial": "terraform state ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-006-r116-exp-126",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde takili kalmis state lock'u `LOCK_ID` ile ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform force-unlock LOCK_ID",
+          "hint_text": "State lock acmak icin `terraform force-unlock` kullan.",
+          "hint_partial": "terraform force-unlock ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-007-r117-exp-127",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta state'i JSON formatinda goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform show -json terraform.tfstate",
+          "hint_text": "JSON show icin `terraform show -json` kullan.",
+          "hint_partial": "terraform show ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-008-r118-exp-128",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda output degerlerini JSON olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform output -json",
+          "hint_text": "JSON output icin `terraform output -json` kullan.",
+          "hint_partial": "terraform output ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-009-r119-exp-129",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde provider plugin'lerini upgrade ederek init yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform init -upgrade",
+          "hint_text": "Provider upgrade icin `terraform init -upgrade` kullan.",
+          "hint_partial": "terraform init ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-010-r120-exp-130",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda provider lock file olustur veya guncelle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform providers lock",
+          "hint_text": "Provider checksum lock icin `terraform providers lock` kullan.",
+          "hint_partial": "terraform providers ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-001-r121-exp-131",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi destroy plani olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform plan -destroy",
+          "hint_text": "Destroy plan icin `terraform plan -destroy` kullan.",
+          "hint_partial": "terraform plan ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-002-r122-exp-132",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda sadece refresh-only apply yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform apply -refresh-only",
+          "hint_text": "Refresh-only icin ilgili flag'i kullan.",
+          "hint_partial": "terraform apply ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-003-r123-exp-133",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi remote veya local state JSON'unu stdout'a cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform state pull",
+          "hint_text": "Ham state cekmek icin `terraform state pull` kullan.",
+          "hint_partial": "terraform state ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-004-r124-exp-134",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde state icinde kaynak adresini yeniden adlandir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform state mv aws_instance.old aws_instance.new",
+          "hint_text": "State tasimasi icin `terraform state mv` kullan.",
+          "hint_partial": "terraform state ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-005-r125-exp-135",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta bir kaynagi state'ten sil ama altyapiyi silme.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform state rm aws_instance.cache-335-125-125",
+          "hint_text": "State kaydini silmek icin `terraform state rm` kullan.",
+          "hint_partial": "terraform state ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-006-r126-exp-136",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda takili kalmis state lock'u `LOCK_ID` ile ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform force-unlock LOCK_ID",
+          "hint_text": "State lock acmak icin `terraform force-unlock` kullan.",
+          "hint_partial": "terraform force-unlock ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-007-r127-exp-137",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde state'i JSON formatinda goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform show -json terraform.tfstate",
+          "hint_text": "JSON show icin `terraform show -json` kullan.",
+          "hint_partial": "terraform show ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-008-r128-exp-138",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda output degerlerini JSON olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform output -json",
+          "hint_text": "JSON output icin `terraform output -json` kullan.",
+          "hint_partial": "terraform output ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-009-r129-exp-139",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi provider plugin'lerini upgrade ederek init yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform init -upgrade",
+          "hint_text": "Provider upgrade icin `terraform init -upgrade` kullan.",
+          "hint_partial": "terraform init ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-010-r130-exp-140",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda provider lock file olustur veya guncelle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform providers lock",
+          "hint_text": "Provider checksum lock icin `terraform providers lock` kullan.",
+          "hint_partial": "terraform providers ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-001-r131-exp-141",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi destroy plani olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform plan -destroy",
+          "hint_text": "Destroy plan icin `terraform plan -destroy` kullan.",
+          "hint_partial": "terraform plan ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-002-r132-exp-142",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde sadece refresh-only apply yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform apply -refresh-only",
+          "hint_text": "Refresh-only icin ilgili flag'i kullan.",
+          "hint_partial": "terraform apply ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-003-r133-exp-143",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta remote veya local state JSON'unu stdout'a cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform state pull",
+          "hint_text": "Ham state cekmek icin `terraform state pull` kullan.",
+          "hint_partial": "terraform state ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-004-r134-exp-144",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda state icinde kaynak adresini yeniden adlandir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform state mv aws_instance.old aws_instance.new",
+          "hint_text": "State tasimasi icin `terraform state mv` kullan.",
+          "hint_partial": "terraform state ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-005-r135-exp-145",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde bir kaynagi state'ten sil ama altyapiyi silme.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform state rm aws_instance.bastion-135",
+          "hint_text": "State kaydini silmek icin `terraform state rm` kullan.",
+          "hint_partial": "terraform state ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-006-r136-exp-146",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda takili kalmis state lock'u `LOCK_ID` ile ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform force-unlock LOCK_ID",
+          "hint_text": "State lock acmak icin `terraform force-unlock` kullan.",
+          "hint_partial": "terraform force-unlock ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-007-r137-exp-147",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi state'i JSON formatinda goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform show -json terraform.tfstate",
+          "hint_text": "JSON show icin `terraform show -json` kullan.",
+          "hint_partial": "terraform show ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-008-r138-exp-148",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda output degerlerini JSON olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform output -json",
+          "hint_text": "JSON output icin `terraform output -json` kullan.",
+          "hint_partial": "terraform output ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-009-r139-exp-149",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi provider plugin'lerini upgrade ederek init yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform init -upgrade",
+          "hint_text": "Provider upgrade icin `terraform init -upgrade` kullan.",
+          "hint_partial": "terraform init ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-010-r140-exp-150",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde provider lock file olustur veya guncelle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform providers lock",
+          "hint_text": "Provider checksum lock icin `terraform providers lock` kullan.",
+          "hint_partial": "terraform providers ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-001-r141-exp-151",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta destroy plani olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform plan -destroy",
+          "hint_text": "Destroy plan icin `terraform plan -destroy` kullan.",
+          "hint_partial": "terraform plan ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-002-r142-exp-152",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda sadece refresh-only apply yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform apply -refresh-only",
+          "hint_text": "Refresh-only icin ilgili flag'i kullan.",
+          "hint_partial": "terraform apply ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-003-r143-exp-153",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde remote veya local state JSON'unu stdout'a cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform state pull",
+          "hint_text": "Ham state cekmek icin `terraform state pull` kullan.",
+          "hint_partial": "terraform state ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-004-r144-exp-154",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda state icinde kaynak adresini yeniden adlandir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform state mv aws_instance.old aws_instance.new",
+          "hint_text": "State tasimasi icin `terraform state mv` kullan.",
+          "hint_partial": "terraform state ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-005-r145-exp-155",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi bir kaynagi state'ten sil ama altyapiyi silme.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform state rm aws_instance.queue-355-355-145",
+          "hint_text": "State kaydini silmek icin `terraform state rm` kullan.",
+          "hint_partial": "terraform state ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-006-r146-exp-156",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda takili kalmis state lock'u `LOCK_ID` ile ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform force-unlock LOCK_ID",
+          "hint_text": "State lock acmak icin `terraform force-unlock` kullan.",
+          "hint_partial": "terraform force-unlock ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-007-r147-exp-157",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi state'i JSON formatinda goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform show -json terraform.tfstate",
+          "hint_text": "JSON show icin `terraform show -json` kullan.",
+          "hint_partial": "terraform show ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-008-r148-exp-158",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde output degerlerini JSON olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform output -json",
+          "hint_text": "JSON output icin `terraform output -json` kullan.",
+          "hint_partial": "terraform output ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-009-r149-exp-159",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta provider plugin'lerini upgrade ederek init yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform init -upgrade",
+          "hint_text": "Provider upgrade icin `terraform init -upgrade` kullan.",
+          "hint_partial": "terraform init ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-010-r150-exp-160",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda provider lock file olustur veya guncelle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform providers lock",
+          "hint_text": "Provider checksum lock icin `terraform providers lock` kullan.",
+          "hint_partial": "terraform providers ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-001-r151-exp-161",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde destroy plani olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform plan -destroy",
+          "hint_text": "Destroy plan icin `terraform plan -destroy` kullan.",
+          "hint_partial": "terraform plan ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-002-r152-exp-162",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda sadece refresh-only apply yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform apply -refresh-only",
+          "hint_text": "Refresh-only icin ilgili flag'i kullan.",
+          "hint_partial": "terraform apply ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-003-r153-exp-163",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi remote veya local state JSON'unu stdout'a cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform state pull",
+          "hint_text": "Ham state cekmek icin `terraform state pull` kullan.",
+          "hint_partial": "terraform state ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-004-r154-exp-164",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda state icinde kaynak adresini yeniden adlandir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform state mv aws_instance.old aws_instance.new",
+          "hint_text": "State tasimasi icin `terraform state mv` kullan.",
+          "hint_partial": "terraform state ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-005-r155-exp-165",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi bir kaynagi state'ten sil ama altyapiyi silme.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform state rm aws_instance.bastion-365-155",
+          "hint_text": "State kaydini silmek icin `terraform state rm` kullan.",
+          "hint_partial": "terraform state ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-006-r156-exp-166",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde takili kalmis state lock'u `LOCK_ID` ile ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform force-unlock LOCK_ID",
+          "hint_text": "State lock acmak icin `terraform force-unlock` kullan.",
+          "hint_partial": "terraform force-unlock ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-007-r157-exp-167",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta state'i JSON formatinda goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform show -json terraform.tfstate",
+          "hint_text": "JSON show icin `terraform show -json` kullan.",
+          "hint_partial": "terraform show ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-008-r158-exp-168",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda output degerlerini JSON olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform output -json",
+          "hint_text": "JSON output icin `terraform output -json` kullan.",
+          "hint_partial": "terraform output ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-009-r159-exp-169",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde provider plugin'lerini upgrade ederek init yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform init -upgrade",
+          "hint_text": "Provider upgrade icin `terraform init -upgrade` kullan.",
+          "hint_partial": "terraform init ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-010-r160-exp-170",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda provider lock file olustur veya guncelle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform providers lock",
+          "hint_text": "Provider checksum lock icin `terraform providers lock` kullan.",
+          "hint_partial": "terraform providers ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-001-r161-exp-171",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi destroy plani olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform plan -destroy",
+          "hint_text": "Destroy plan icin `terraform plan -destroy` kullan.",
+          "hint_partial": "terraform plan ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-002-r162-exp-172",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda sadece refresh-only apply yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform apply -refresh-only",
+          "hint_text": "Refresh-only icin ilgili flag'i kullan.",
+          "hint_partial": "terraform apply ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-003-r163-exp-173",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi remote veya local state JSON'unu stdout'a cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform state pull",
+          "hint_text": "Ham state cekmek icin `terraform state pull` kullan.",
+          "hint_partial": "terraform state ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-004-r164-exp-174",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde state icinde kaynak adresini yeniden adlandir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform state mv aws_instance.old aws_instance.new",
+          "hint_text": "State tasimasi icin `terraform state mv` kullan.",
+          "hint_partial": "terraform state ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-005-r165-exp-175",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta bir kaynagi state'ten sil ama altyapiyi silme.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform state rm aws_instance.cache-375-165-165",
+          "hint_text": "State kaydini silmek icin `terraform state rm` kullan.",
+          "hint_partial": "terraform state ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-006-r166-exp-176",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda takili kalmis state lock'u `LOCK_ID` ile ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform force-unlock LOCK_ID",
+          "hint_text": "State lock acmak icin `terraform force-unlock` kullan.",
+          "hint_partial": "terraform force-unlock ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-007-r167-exp-177",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde state'i JSON formatinda goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform show -json terraform.tfstate",
+          "hint_text": "JSON show icin `terraform show -json` kullan.",
+          "hint_partial": "terraform show ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-008-r168-exp-178",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda output degerlerini JSON olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform output -json",
+          "hint_text": "JSON output icin `terraform output -json` kullan.",
+          "hint_partial": "terraform output ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-009-r169-exp-179",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi provider plugin'lerini upgrade ederek init yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform init -upgrade",
+          "hint_text": "Provider upgrade icin `terraform init -upgrade` kullan.",
+          "hint_partial": "terraform init ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-010-r170-exp-180",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda provider lock file olustur veya guncelle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform providers lock",
+          "hint_text": "Provider checksum lock icin `terraform providers lock` kullan.",
+          "hint_partial": "terraform providers ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-001-r171-exp-181",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi destroy plani olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform plan -destroy",
+          "hint_text": "Destroy plan icin `terraform plan -destroy` kullan.",
+          "hint_partial": "terraform plan ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-002-r172-exp-182",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde sadece refresh-only apply yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform apply -refresh-only",
+          "hint_text": "Refresh-only icin ilgili flag'i kullan.",
+          "hint_partial": "terraform apply ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-003-r173-exp-183",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta remote veya local state JSON'unu stdout'a cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform state pull",
+          "hint_text": "Ham state cekmek icin `terraform state pull` kullan.",
+          "hint_partial": "terraform state ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-004-r174-exp-184",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda state icinde kaynak adresini yeniden adlandir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform state mv aws_instance.old aws_instance.new",
+          "hint_text": "State tasimasi icin `terraform state mv` kullan.",
+          "hint_partial": "terraform state ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-005-r175-exp-185",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde bir kaynagi state'ten sil ama altyapiyi silme.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform state rm aws_instance.bastion-175",
+          "hint_text": "State kaydini silmek icin `terraform state rm` kullan.",
+          "hint_partial": "terraform state ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-006-r176-exp-186",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda takili kalmis state lock'u `LOCK_ID` ile ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform force-unlock LOCK_ID",
+          "hint_text": "State lock acmak icin `terraform force-unlock` kullan.",
+          "hint_partial": "terraform force-unlock ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-007-r177-exp-187",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi state'i JSON formatinda goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform show -json terraform.tfstate",
+          "hint_text": "JSON show icin `terraform show -json` kullan.",
+          "hint_partial": "terraform show ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-008-r178-exp-188",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda output degerlerini JSON olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform output -json",
+          "hint_text": "JSON output icin `terraform output -json` kullan.",
+          "hint_partial": "terraform output ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-009-r179-exp-189",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi provider plugin'lerini upgrade ederek init yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform init -upgrade",
+          "hint_text": "Provider upgrade icin `terraform init -upgrade` kullan.",
+          "hint_partial": "terraform init ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-010-r180-exp-190",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde provider lock file olustur veya guncelle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform providers lock",
+          "hint_text": "Provider checksum lock icin `terraform providers lock` kullan.",
+          "hint_partial": "terraform providers ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-001-r181-exp-191",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta destroy plani olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform plan -destroy",
+          "hint_text": "Destroy plan icin `terraform plan -destroy` kullan.",
+          "hint_partial": "terraform plan ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-002-r182-exp-192",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda sadece refresh-only apply yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform apply -refresh-only",
+          "hint_text": "Refresh-only icin ilgili flag'i kullan.",
+          "hint_partial": "terraform apply ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-003-r183-exp-193",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde remote veya local state JSON'unu stdout'a cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform state pull",
+          "hint_text": "Ham state cekmek icin `terraform state pull` kullan.",
+          "hint_partial": "terraform state ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-004-r184-exp-194",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda state icinde kaynak adresini yeniden adlandir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform state mv aws_instance.old aws_instance.new",
+          "hint_text": "State tasimasi icin `terraform state mv` kullan.",
+          "hint_partial": "terraform state ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-005-r185-exp-195",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi bir kaynagi state'ten sil ama altyapiyi silme.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform state rm aws_instance.queue-395-395-185",
+          "hint_text": "State kaydini silmek icin `terraform state rm` kullan.",
+          "hint_partial": "terraform state ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-006-r186-exp-196",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda takili kalmis state lock'u `LOCK_ID` ile ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform force-unlock LOCK_ID",
+          "hint_text": "State lock acmak icin `terraform force-unlock` kullan.",
+          "hint_partial": "terraform force-unlock ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-007-r187-exp-197",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi state'i JSON formatinda goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform show -json terraform.tfstate",
+          "hint_text": "JSON show icin `terraform show -json` kullan.",
+          "hint_partial": "terraform show ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-008-r188-exp-198",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde output degerlerini JSON olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform output -json",
+          "hint_text": "JSON output icin `terraform output -json` kullan.",
+          "hint_partial": "terraform output ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-009-r189-exp-199",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta provider plugin'lerini upgrade ederek init yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform init -upgrade",
+          "hint_text": "Provider upgrade icin `terraform init -upgrade` kullan.",
+          "hint_partial": "terraform init ..."
+        }
+      ]
+    },
+    {
+      "id": "stf-010-r190-exp-200",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda provider lock file olustur veya guncelle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform providers lock",
+          "hint_text": "Provider checksum lock icin `terraform providers lock` kullan.",
+          "hint_partial": "terraform providers ..."
+        }
+      ]
+    }
+  ]
+}

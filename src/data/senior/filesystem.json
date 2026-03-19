@@ -1,0 +1,249 @@
+{
+  "level": "senior",
+  "topic": "filesystem",
+  "questions": [
+    {
+      "id": "sfs-001",
+      "type": "multi-step",
+      "scenario": "Production disk dolmak üzere. /data partition'ını LVM ile genişlet: önce mevcut LV boyutunu gör, sonra 10GB ekle, sonra filesystem'i büyüt.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lvdisplay /dev/vg0/data",
+          "hint_text": "LV bilgisini lvdisplay ile gör",
+          "hint_partial": "lvdisplay /dev/vg0/..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "lvextend -L +10G /dev/vg0/data",
+          "hint_text": "lvextend -L +boyut ile LV'yi büyüt",
+          "hint_partial": "lvextend -L +10G ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "resize2fs /dev/vg0/data",
+          "hint_text": "LV büyüdü ama filesystem'i de büyütmek lazım",
+          "hint_partial": "resize2fs ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-002",
+      "type": "multi-step",
+      "scenario": "Kritik bir file yanlışlıkla silindi. ext4 partition'da inode tablosundan recovery dene.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "debugfs /dev/sda1",
+          "hint_text": "ext2/3/4 için debug filesystem aracı",
+          "hint_partial": "debugfs ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "lsdel",
+          "hint_text": "debugfs içinde silinmiş inode'ları listele",
+          "hint_partial": "lsd..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-003",
+      "type": "multi-step",
+      "scenario": "Yeni disk devreye alinacak. Once eski filesystem imzasi kalmis mi kontrol et, sonra diski ext4 olarak hazirla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "wipefs /dev/sdb",
+          "hint_text": "Diskte kalan imzalari kontrol etmek icin `wipefs` kullan.",
+          "hint_partial": "wipefs /dev/sdb"
+        },
+        {
+          "prompt": "$ ",
+          "answer": "mkfs.ext4 /dev/sdb",
+          "hint_text": "Diski ext4 olarak hazirlamak icin `mkfs.ext4` kullan.",
+          "hint_partial": "mkfs.ext4 /dev/sdb"
+        }
+      ]
+    },
+    {
+      "id": "sfs-004",
+      "type": "multi-step",
+      "scenario": "inotify ile /opt/app/config/ directory'sini izle — değişiklik olunca logla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "inotifywait -m -r -e modify,create,delete /opt/app/config/",
+          "hint_text": "inotifywait -m monitor, -r recursive, -e events",
+          "hint_partial": "inotifywait -m -r -e modify,create,delete ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-005",
+      "type": "single",
+      "scenario": "Bir directory'nin disk kullanımını derinlemesine analiz et — her alt directory ayrı ayrı gösterilsin.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "du -h --max-depth=2 /var/ | sort -rh | head -20",
+          "hint_text": "du --max-depth ile derinlik sınırla, sort -rh ile büyükten küçüğe",
+          "hint_partial": "du -h --max-depth=2 /var/ | sort -rh | ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-006",
+      "type": "multi-step",
+      "scenario": "RAID array'inin snetworklığını kontrol et, bozuk disk varsa raporla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/mdstat",
+          "hint_text": "Linux software RAID durumu burada",
+          "hint_partial": "cat /proc/..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "mdadm --detail /dev/md0",
+          "hint_text": "mdadm --detail ile RAID array detayları",
+          "hint_partial": "mdadm --detail ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-007",
+      "type": "single",
+      "scenario": "Dirty page tuning oncesi `dirty_ratio` ile `dirty_background_ratio` degerlerini birlikte gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sysctl vm.dirty_ratio vm.dirty_background_ratio",
+          "hint_text": "Iki ilgili kernel parametresini ayni anda `sysctl` ile sorgula.",
+          "hint_partial": "sysctl vm.dirty_ratio ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-008",
+      "type": "multi-step",
+      "scenario": "NFS sikayetinde once mount opsiyonlarini gor, sonra client tarafli RPC istatistiklerini incele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "nfsstat -m",
+          "hint_text": "NFS mount opsiyonlari icin `nfsstat -m` kullan.",
+          "hint_partial": "nfsstat -m"
+        },
+        {
+          "prompt": "$ ",
+          "answer": "nfsstat -c",
+          "hint_text": "Client RPC istatistikleri icin `nfsstat -c` kullan.",
+          "hint_partial": "nfsstat -c"
+        }
+      ]
+    },
+    {
+      "id": "sfs-009",
+      "type": "single",
+      "scenario": "/dev/sda diskinin I/O istatistiklerini real-time izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iostat -x 1 /dev/sda",
+          "hint_text": "iostat -x extended stats, 1 saniye interval",
+          "hint_partial": "iostat -x 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-010",
+      "type": "multi-step",
+      "scenario": "tmpfs olarak RAM'de geçici bir filesystem oluştur ve /mnt/ramdisk'e mount et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mkdir -p /mnt/ramdisk",
+          "hint_text": "once mount noktasını oluştur",
+          "hint_partial": "mkdir -p ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "mount -t tmpfs -o size=512m tmpfs /mnt/ramdisk",
+          "hint_text": "mount -t tmpfs ile RAM'de filesystem",
+          "hint_partial": "mount -t tmpfs -o size=512m tmpfs ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-011",
+      "type": "single",
+      "scenario": "Inode baskisi supesinde `/var` altindaki inode tuketimini directory bazinda buyukten kucuge sirala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "du --inodes --max-depth=2 /var | sort -nr | head -20",
+          "hint_text": "Inode sayisi icin `du --inodes`, sonra sayisal siralama kullan.",
+          "hint_partial": "du --inodes --max-depth=2 /var ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-012",
+      "type": "single",
+      "scenario": "`/var/lib` altindaki mount'lari target, source, fs tipi ve opsiyonlariyla recursive goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "findmnt -R -o TARGET,SOURCE,FSTYPE,OPTIONS /var/lib",
+          "hint_text": "Recursive mount agaci icin `findmnt -R -o ...` kullan.",
+          "hint_partial": "findmnt -R -o TARGET,SOURCE,FSTYPE,OPTIONS ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-013",
+      "type": "single",
+      "scenario": "/srv/app altindaki en derin 3 directory seviye bazli listele",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /srv/app -maxdepth 3 -type d",
+          "hint_text": "Maksimum derinlik ve directory filtresi kullan",
+          "hint_partial": "find /srv/app -maxdepth 3 ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-014",
+      "type": "single",
+      "scenario": "/data altindaki file'lari access time'a gore son 1 saatte erisilenlerle filtrele",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /data -type f -amin -60",
+          "hint_text": "Access time dakikaya gore amin ile filtrelenir",
+          "hint_partial": "find /data -type f ..."
+        }
+      ]
+    },
+    {
+      "id": "sfs-015",
+      "type": "multi-step",
+      "scenario": "/srv/app directory'sini tar ile arsivle ve sonra arsiv file'in sha256 ozetini al",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tar -cf app.tar /srv/app",
+          "hint_text": "Ilk adimda standart tar arsivi olustur",
+          "hint_partial": "tar -cf ... /srv/app"
+        },
+        {
+          "prompt": "$ ",
+          "answer": "sha256sum app.tar",
+          "hint_text": "Ikinci adimda SHA-256 ozeti al",
+          "hint_partial": "sha256sum ..."
+        }
+      ]
+    }
+  ]
+}

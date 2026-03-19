@@ -1,0 +1,2606 @@
+{
+  "level": "mid",
+  "topic": "docker-swarm",
+  "questions": [
+    {
+      "id": "mds-011",
+      "type": "single",
+      "scenario": "`web` service bilgisini okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service inspect --pretty web",
+          "hint_text": "Okunur output icin `--pretty` kullan.",
+          "hint_partial": "docker service inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-012",
+      "type": "single",
+      "scenario": "`web` service loglarini canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service logs -f web",
+          "hint_text": "Canli log takibi icin `-f` kullan.",
+          "hint_partial": "docker service logs ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-013",
+      "type": "single",
+      "scenario": "`web` service replica sayisini 2 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --replicas 2 web",
+          "hint_text": "Replica update icin `docker service update --replicas` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-014",
+      "type": "single",
+      "scenario": "`web` service'e 443 portunu publish et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --publish-add 443:443 web",
+          "hint_text": "Yeni publish icin `--publish-add` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-015",
+      "type": "single",
+      "scenario": "`web` service'e `APP_ENV=prod` environment variable'i ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --env-add APP_ENV=prod web",
+          "hint_text": "Env eklemek icin `--env-add` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-016",
+      "type": "single",
+      "scenario": "`web` service'i sadece worker node'larda kosacak sekilde constraint ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --constraint-add node.role==worker web",
+          "hint_text": "Constraint icin `--constraint-add` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-017",
+      "type": "single",
+      "scenario": "`web` service'i bir onceki versiyona rollback et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service rollback web",
+          "hint_text": "Rollback icin `docker service rollback` kullan.",
+          "hint_partial": "docker service rollback ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-018",
+      "type": "single",
+      "scenario": "Swarm stack listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack ls",
+          "hint_text": "Stack listesi icin `docker stack ls` kullan.",
+          "hint_partial": "docker stack ls"
+        }
+      ]
+    },
+    {
+      "id": "mds-019",
+      "type": "single",
+      "scenario": "`mystack` stack task dagilimini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack ps mystack",
+          "hint_text": "Stack task'leri icin `docker stack ps` kullan.",
+          "hint_partial": "docker stack ps ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-020",
+      "type": "single",
+      "scenario": "`mystack` stack'ini kaldir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack rm mystack",
+          "hint_text": "Stack silmek icin `docker stack rm` kullan.",
+          "hint_partial": "docker stack rm ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-021",
+      "type": "single",
+      "scenario": "`secret.txt` dosyasindan `app_secret` adli swarm secret olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker secret create app_secret secret.txt",
+          "hint_text": "Secret olusturmak icin `docker secret create name file` kullan.",
+          "hint_partial": "docker secret create ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-022",
+      "type": "single",
+      "scenario": "`config.yml` dosyasindan `app_cfg` adli swarm config olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker config create app_cfg config.yml",
+          "hint_text": "Config olusturmak icin `docker config create name file` kullan.",
+          "hint_partial": "docker config create ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-023",
+      "type": "single",
+      "scenario": "`app-net` overlay network detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network inspect app-net",
+          "hint_text": "Network inspect icin `docker network inspect` kullan.",
+          "hint_partial": "docker network inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-024",
+      "type": "single",
+      "scenario": "Drain edilen `worker1` node'unu tekrar aktif hale getir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node update --availability active worker1",
+          "hint_text": "Availability'i geri acmak icin `active` kullan.",
+          "hint_partial": "docker node update ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-025",
+      "type": "single",
+      "scenario": "Worker join token'ini sadece token olarak yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm join-token -q worker",
+          "hint_text": "Sadece token icin `-q` kullan.",
+          "hint_partial": "docker swarm join-token ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-011-r1",
+      "type": "single",
+      "scenario": "Bakim oncesi `web-1` service bilgisini okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service inspect --pretty web-1",
+          "hint_text": "Okunur output icin `--pretty` kullan.",
+          "hint_partial": "docker service inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-012-r2",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `cache-2-2-2` service loglarini canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service logs -f cache-2-2-2",
+          "hint_text": "Canli log takibi icin `-f` kullan.",
+          "hint_partial": "docker service logs ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-013-r3",
+      "type": "single",
+      "scenario": "Deploy sonrasi `worker-3` service replica sayisini 2 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --replicas 2 worker-3",
+          "hint_text": "Replica update icin `docker service update --replicas` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-014-r4",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `db-4-4` service'e 443 portunu publish et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --publish-add 443:8051 db-4-4",
+          "hint_text": "Yeni publish icin `--publish-add` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-015-r5",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `cache-5-5` service'e `APP_ENV=payments-5` environment variable'i ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --env-add APP_ENV=payments-5 cache-5-5",
+          "hint_text": "Env eklemek icin `--env-add` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-016-r6",
+      "type": "single",
+      "scenario": "Runbook adiminda `queue-6` service'i sadece queue-6-6 node'larda kosacak sekilde constraint ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --constraint-add node.role==queue-6-6 queue-6",
+          "hint_text": "Constraint icin `--constraint-add` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-017-r7",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `bastion-7` service'i bir onceki versiyona rollback et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service rollback bastion-7",
+          "hint_text": "Rollback icin `docker service rollback` kullan.",
+          "hint_partial": "docker service rollback ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-018-r8",
+      "type": "single",
+      "scenario": "Incident sonrasinda swarm stack listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack ls",
+          "hint_text": "Stack listesi icin `docker stack ls` kullan.",
+          "hint_partial": "docker stack ls"
+        }
+      ]
+    },
+    {
+      "id": "mds-019-r9",
+      "type": "single",
+      "scenario": "Bakim oncesi `mystack` stack task dagilimini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack ps mystack",
+          "hint_text": "Stack task'leri icin `docker stack ps` kullan.",
+          "hint_partial": "docker stack ps ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-020-r10",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `mystack` stack'ini kaldir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack rm mystack",
+          "hint_text": "Stack silmek icin `docker stack rm` kullan.",
+          "hint_partial": "docker stack rm ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-021-r11",
+      "type": "single",
+      "scenario": "Deploy sonrasi `secret.txt` dosyasindan `app_secret` adli swarm secret olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker secret create app_secret secret.txt",
+          "hint_text": "Secret olusturmak icin `docker secret create name file` kullan.",
+          "hint_partial": "docker secret create ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-022-r12",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `config.yml` dosyasindan `app_cfg` adli swarm config olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker config create app_cfg config.yml",
+          "hint_text": "Config olusturmak icin `docker config create name file` kullan.",
+          "hint_partial": "docker config create ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-023-r13",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `app-net` overlay network detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network inspect app-net",
+          "hint_text": "Network inspect icin `docker network inspect` kullan.",
+          "hint_partial": "docker network inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-024-r14",
+      "type": "single",
+      "scenario": "Runbook adiminda drain edilen `worker1` node'unu tekrar aktif hale getir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node update --availability active worker1",
+          "hint_text": "Availability'i geri acmak icin `active` kullan.",
+          "hint_partial": "docker node update ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-025-r15",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde worker join token'ini sadece token olarak yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm join-token -q api-15-15",
+          "hint_text": "Sadece token icin `-q` kullan.",
+          "hint_partial": "docker swarm join-token ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-011-r16",
+      "type": "single",
+      "scenario": "Incident sonrasinda `proxy-16` service bilgisini okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service inspect --pretty proxy-16",
+          "hint_text": "Okunur output icin `--pretty` kullan.",
+          "hint_partial": "docker service inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-012-r17",
+      "type": "single",
+      "scenario": "Bakim oncesi `web-17` service loglarini canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service logs -f web-17",
+          "hint_text": "Canli log takibi icin `-f` kullan.",
+          "hint_partial": "docker service logs ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-013-r18",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `cache-18-18-18` service replica sayisini 2 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --replicas 2 cache-18-18-18",
+          "hint_text": "Replica update icin `docker service update --replicas` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-014-r19",
+      "type": "single",
+      "scenario": "Deploy sonrasi `worker-19` service'e 443 portunu publish et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --publish-add 443:8306 worker-19",
+          "hint_text": "Yeni publish icin `--publish-add` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-015-r20",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `db-20-20` service'e `APP_ENV=stage-20-20` environment variable'i ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --env-add APP_ENV=stage-20-20 db-20-20",
+          "hint_text": "Env eklemek icin `--env-add` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-016-r21",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `cache-21-21` service'i sadece proxy-21 node'larda kosacak sekilde constraint ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --constraint-add node.role==proxy-21 cache-21-21",
+          "hint_text": "Constraint icin `--constraint-add` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-017-r22",
+      "type": "single",
+      "scenario": "Runbook adiminda `queue-22` service'i bir onceki versiyona rollback et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service rollback queue-22",
+          "hint_text": "Rollback icin `docker service rollback` kullan.",
+          "hint_partial": "docker service rollback ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-018-r23",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde swarm stack listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack ls",
+          "hint_text": "Stack listesi icin `docker stack ls` kullan.",
+          "hint_partial": "docker stack ls"
+        }
+      ]
+    },
+    {
+      "id": "mds-019-r24",
+      "type": "single",
+      "scenario": "Incident sonrasinda `mystack` stack task dagilimini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack ps mystack",
+          "hint_text": "Stack task'leri icin `docker stack ps` kullan.",
+          "hint_partial": "docker stack ps ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-020-r25",
+      "type": "single",
+      "scenario": "Bakim oncesi `mystack` stack'ini kaldir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack rm mystack",
+          "hint_text": "Stack silmek icin `docker stack rm` kullan.",
+          "hint_partial": "docker stack rm ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-021-r26",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `secret.txt` dosyasindan `app_secret` adli swarm secret olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker secret create app_secret secret.txt",
+          "hint_text": "Secret olusturmak icin `docker secret create name file` kullan.",
+          "hint_partial": "docker secret create ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-022-r27",
+      "type": "single",
+      "scenario": "Deploy sonrasi `config.yml` dosyasindan `app_cfg` adli swarm config olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker config create app_cfg config.yml",
+          "hint_text": "Config olusturmak icin `docker config create name file` kullan.",
+          "hint_partial": "docker config create ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-023-r28",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `app-net` overlay network detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network inspect app-net",
+          "hint_text": "Network inspect icin `docker network inspect` kullan.",
+          "hint_partial": "docker network inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-024-r29",
+      "type": "single",
+      "scenario": "Yeni acilan hostta drain edilen `worker1` node'unu tekrar aktif hale getir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node update --availability active worker1",
+          "hint_text": "Availability'i geri acmak icin `active` kullan.",
+          "hint_partial": "docker node update ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-025-r30",
+      "type": "single",
+      "scenario": "Runbook adiminda worker join token'ini sadece token olarak yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm join-token -q queue-30-30",
+          "hint_text": "Sadece token icin `-q` kullan.",
+          "hint_partial": "docker swarm join-token ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-011-r31",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `bastion-31` service bilgisini okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service inspect --pretty bastion-31",
+          "hint_text": "Okunur output icin `--pretty` kullan.",
+          "hint_partial": "docker service inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-012-r32",
+      "type": "single",
+      "scenario": "Incident sonrasinda `proxy-32` service loglarini canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service logs -f proxy-32",
+          "hint_text": "Canli log takibi icin `-f` kullan.",
+          "hint_partial": "docker service logs ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-013-r33",
+      "type": "single",
+      "scenario": "Bakim oncesi `web-33` service replica sayisini 2 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --replicas 2 web-33",
+          "hint_text": "Replica update icin `docker service update --replicas` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-014-r34",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `cache-34-34-34` service'e 443 portunu publish et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --publish-add 443:8561 cache-34-34-34",
+          "hint_text": "Yeni publish icin `--publish-add` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-015-r35",
+      "type": "single",
+      "scenario": "Deploy sonrasi `worker-35` service'e `APP_ENV=payments-35` environment variable'i ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --env-add APP_ENV=payments-35 worker-35",
+          "hint_text": "Env eklemek icin `--env-add` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-016-r36",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `db-36-36` service'i sadece bastion-36 node'larda kosacak sekilde constraint ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --constraint-add node.role==bastion-36 db-36-36",
+          "hint_text": "Constraint icin `--constraint-add` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-017-r37",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `cache-37-37` service'i bir onceki versiyona rollback et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service rollback cache-37-37",
+          "hint_text": "Rollback icin `docker service rollback` kullan.",
+          "hint_partial": "docker service rollback ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-018-r38",
+      "type": "single",
+      "scenario": "Runbook adiminda swarm stack listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack ls",
+          "hint_text": "Stack listesi icin `docker stack ls` kullan.",
+          "hint_partial": "docker stack ls"
+        }
+      ]
+    },
+    {
+      "id": "mds-019-r39",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `mystack` stack task dagilimini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack ps mystack",
+          "hint_text": "Stack task'leri icin `docker stack ps` kullan.",
+          "hint_partial": "docker stack ps ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-020-r40",
+      "type": "single",
+      "scenario": "Incident sonrasinda `mystack` stack'ini kaldir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack rm mystack",
+          "hint_text": "Stack silmek icin `docker stack rm` kullan.",
+          "hint_partial": "docker stack rm ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-021-r41",
+      "type": "single",
+      "scenario": "Bakim oncesi `secret.txt` dosyasindan `app_secret` adli swarm secret olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker secret create app_secret secret.txt",
+          "hint_text": "Secret olusturmak icin `docker secret create name file` kullan.",
+          "hint_partial": "docker secret create ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-022-r42",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `config.yml` dosyasindan `app_cfg` adli swarm config olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker config create app_cfg config.yml",
+          "hint_text": "Config olusturmak icin `docker config create name file` kullan.",
+          "hint_partial": "docker config create ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-023-r43",
+      "type": "single",
+      "scenario": "Deploy sonrasi `app-net` overlay network detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network inspect app-net",
+          "hint_text": "Network inspect icin `docker network inspect` kullan.",
+          "hint_partial": "docker network inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-024-r44",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde drain edilen `worker1` node'unu tekrar aktif hale getir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node update --availability active worker1",
+          "hint_text": "Availability'i geri acmak icin `active` kullan.",
+          "hint_partial": "docker node update ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-025-r45",
+      "type": "single",
+      "scenario": "Yeni acilan hostta worker join token'ini sadece token olarak yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm join-token -q proxy-45",
+          "hint_text": "Sadece token icin `-q` kullan.",
+          "hint_partial": "docker swarm join-token ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-011-r46",
+      "type": "single",
+      "scenario": "Runbook adiminda `queue-46` service bilgisini okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service inspect --pretty queue-46",
+          "hint_text": "Okunur output icin `--pretty` kullan.",
+          "hint_partial": "docker service inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-012-r47",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `bastion-47` service loglarini canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service logs -f bastion-47",
+          "hint_text": "Canli log takibi icin `-f` kullan.",
+          "hint_partial": "docker service logs ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-013-r48",
+      "type": "single",
+      "scenario": "Incident sonrasinda `proxy-48` service replica sayisini 2 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --replicas 2 proxy-48",
+          "hint_text": "Replica update icin `docker service update --replicas` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-014-r49",
+      "type": "single",
+      "scenario": "Bakim oncesi `web-49` service'e 443 portunu publish et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --publish-add 443:8816 web-49",
+          "hint_text": "Yeni publish icin `--publish-add` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-015-r50",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `cache-50-50-50` service'e `APP_ENV=stage-50-50` environment variable'i ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --env-add APP_ENV=stage-50-50 cache-50-50-50",
+          "hint_text": "Env eklemek icin `--env-add` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-016-r51",
+      "type": "single",
+      "scenario": "Deploy sonrasi `worker-51` service'i sadece queue-51 node'larda kosacak sekilde constraint ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --constraint-add node.role==queue-51 worker-51",
+          "hint_text": "Constraint icin `--constraint-add` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-017-r52",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `db-52-52` service'i bir onceki versiyona rollback et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service rollback db-52-52",
+          "hint_text": "Rollback icin `docker service rollback` kullan.",
+          "hint_partial": "docker service rollback ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-018-r53",
+      "type": "single",
+      "scenario": "Yeni acilan hostta swarm stack listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack ls",
+          "hint_text": "Stack listesi icin `docker stack ls` kullan.",
+          "hint_partial": "docker stack ls"
+        }
+      ]
+    },
+    {
+      "id": "mds-019-r54",
+      "type": "single",
+      "scenario": "Runbook adiminda `mystack` stack task dagilimini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack ps mystack",
+          "hint_text": "Stack task'leri icin `docker stack ps` kullan.",
+          "hint_partial": "docker stack ps ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-020-r55",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `mystack` stack'ini kaldir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack rm mystack",
+          "hint_text": "Stack silmek icin `docker stack rm` kullan.",
+          "hint_partial": "docker stack rm ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-021-r56",
+      "type": "single",
+      "scenario": "Incident sonrasinda `secret.txt` dosyasindan `app_secret` adli swarm secret olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker secret create app_secret secret.txt",
+          "hint_text": "Secret olusturmak icin `docker secret create name file` kullan.",
+          "hint_partial": "docker secret create ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-022-r57",
+      "type": "single",
+      "scenario": "Bakim oncesi `config.yml` dosyasindan `app_cfg` adli swarm config olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker config create app_cfg config.yml",
+          "hint_text": "Config olusturmak icin `docker config create name file` kullan.",
+          "hint_partial": "docker config create ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-023-r58",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `app-net` overlay network detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network inspect app-net",
+          "hint_text": "Network inspect icin `docker network inspect` kullan.",
+          "hint_partial": "docker network inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-024-r59",
+      "type": "single",
+      "scenario": "Deploy sonrasi drain edilen `worker1` node'unu tekrar aktif hale getir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node update --availability active worker1",
+          "hint_text": "Availability'i geri acmak icin `active` kullan.",
+          "hint_partial": "docker node update ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-025-r60",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde worker join token'ini sadece token olarak yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm join-token -q bastion-60",
+          "hint_text": "Sadece token icin `-q` kullan.",
+          "hint_partial": "docker swarm join-token ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-011-r61",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `cache-61-61` service bilgisini okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service inspect --pretty cache-61-61",
+          "hint_text": "Okunur output icin `--pretty` kullan.",
+          "hint_partial": "docker service inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-012-r62",
+      "type": "single",
+      "scenario": "Runbook adiminda `queue-62` service loglarini canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service logs -f queue-62",
+          "hint_text": "Canli log takibi icin `-f` kullan.",
+          "hint_partial": "docker service logs ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-013-r63",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `bastion-63` service replica sayisini 2 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --replicas 2 bastion-63",
+          "hint_text": "Replica update icin `docker service update --replicas` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-014-r64",
+      "type": "single",
+      "scenario": "Incident sonrasinda `proxy-64` service'e 443 portunu publish et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --publish-add 443:8071 proxy-64",
+          "hint_text": "Yeni publish icin `--publish-add` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-015-r65",
+      "type": "single",
+      "scenario": "Bakim oncesi `web-65` service'e `APP_ENV=payments-65` environment variable'i ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --env-add APP_ENV=payments-65 web-65",
+          "hint_text": "Env eklemek icin `--env-add` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-016-r66",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `cache-66-66-66` service'i sadece cache-66-66 node'larda kosacak sekilde constraint ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --constraint-add node.role==cache-66-66 cache-66-66-66",
+          "hint_text": "Constraint icin `--constraint-add` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-017-r67",
+      "type": "single",
+      "scenario": "Deploy sonrasi `worker-67` service'i bir onceki versiyona rollback et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service rollback worker-67",
+          "hint_text": "Rollback icin `docker service rollback` kullan.",
+          "hint_partial": "docker service rollback ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-018-r68",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde swarm stack listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack ls",
+          "hint_text": "Stack listesi icin `docker stack ls` kullan.",
+          "hint_partial": "docker stack ls"
+        }
+      ]
+    },
+    {
+      "id": "mds-019-r69",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `mystack` stack task dagilimini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack ps mystack",
+          "hint_text": "Stack task'leri icin `docker stack ps` kullan.",
+          "hint_partial": "docker stack ps ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-020-r70",
+      "type": "single",
+      "scenario": "Runbook adiminda `mystack` stack'ini kaldir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack rm mystack",
+          "hint_text": "Stack silmek icin `docker stack rm` kullan.",
+          "hint_partial": "docker stack rm ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-021-r71",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `secret.txt` dosyasindan `app_secret` adli swarm secret olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker secret create app_secret secret.txt",
+          "hint_text": "Secret olusturmak icin `docker secret create name file` kullan.",
+          "hint_partial": "docker secret create ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-022-r72",
+      "type": "single",
+      "scenario": "Incident sonrasinda `config.yml` dosyasindan `app_cfg` adli swarm config olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker config create app_cfg config.yml",
+          "hint_text": "Config olusturmak icin `docker config create name file` kullan.",
+          "hint_partial": "docker config create ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-023-r73",
+      "type": "single",
+      "scenario": "Bakim oncesi `app-net` overlay network detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network inspect app-net",
+          "hint_text": "Network inspect icin `docker network inspect` kullan.",
+          "hint_partial": "docker network inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-024-r74",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda drain edilen `worker1` node'unu tekrar aktif hale getir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node update --availability active worker1",
+          "hint_text": "Availability'i geri acmak icin `active` kullan.",
+          "hint_partial": "docker node update ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-025-r75",
+      "type": "single",
+      "scenario": "Deploy sonrasi worker join token'ini sadece token olarak yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm join-token -q queue-75",
+          "hint_text": "Sadece token icin `-q` kullan.",
+          "hint_partial": "docker swarm join-token ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-011-r76",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `db-76-76` service bilgisini okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service inspect --pretty db-76-76",
+          "hint_text": "Okunur output icin `--pretty` kullan.",
+          "hint_partial": "docker service inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-012-r77",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `cache-77-77` service loglarini canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service logs -f cache-77-77",
+          "hint_text": "Canli log takibi icin `-f` kullan.",
+          "hint_partial": "docker service logs ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-013-r78",
+      "type": "single",
+      "scenario": "Runbook adiminda `queue-78` service replica sayisini 2 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --replicas 2 queue-78",
+          "hint_text": "Replica update icin `docker service update --replicas` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-014-r79",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `bastion-79` service'e 443 portunu publish et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --publish-add 443:8326 bastion-79",
+          "hint_text": "Yeni publish icin `--publish-add` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-015-r80",
+      "type": "single",
+      "scenario": "Incident sonrasinda `proxy-80` service'e `APP_ENV=stage-80-80` environment variable'i ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --env-add APP_ENV=stage-80-80 proxy-80",
+          "hint_text": "Env eklemek icin `--env-add` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-016-r81",
+      "type": "single",
+      "scenario": "Bakim oncesi `web-81` service'i sadece db-81-81 node'larda kosacak sekilde constraint ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --constraint-add node.role==db-81-81 web-81",
+          "hint_text": "Constraint icin `--constraint-add` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-017-r82",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `cache-82-82-82` service'i bir onceki versiyona rollback et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service rollback cache-82-82-82",
+          "hint_text": "Rollback icin `docker service rollback` kullan.",
+          "hint_partial": "docker service rollback ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-018-r83",
+      "type": "single",
+      "scenario": "Deploy sonrasi swarm stack listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack ls",
+          "hint_text": "Stack listesi icin `docker stack ls` kullan.",
+          "hint_partial": "docker stack ls"
+        }
+      ]
+    },
+    {
+      "id": "mds-019-r84",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `mystack` stack task dagilimini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack ps mystack",
+          "hint_text": "Stack task'leri icin `docker stack ps` kullan.",
+          "hint_partial": "docker stack ps ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-020-r85",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `mystack` stack'ini kaldir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack rm mystack",
+          "hint_text": "Stack silmek icin `docker stack rm` kullan.",
+          "hint_partial": "docker stack rm ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-021-r86",
+      "type": "single",
+      "scenario": "Runbook adiminda `secret.txt` dosyasindan `app_secret` adli swarm secret olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker secret create app_secret secret.txt",
+          "hint_text": "Secret olusturmak icin `docker secret create name file` kullan.",
+          "hint_partial": "docker secret create ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-022-r87",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `config.yml` dosyasindan `app_cfg` adli swarm config olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker config create app_cfg config.yml",
+          "hint_text": "Config olusturmak icin `docker config create name file` kullan.",
+          "hint_partial": "docker config create ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-023-r88",
+      "type": "single",
+      "scenario": "Incident sonrasinda `app-net` overlay network detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network inspect app-net",
+          "hint_text": "Network inspect icin `docker network inspect` kullan.",
+          "hint_partial": "docker network inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-024-r89",
+      "type": "single",
+      "scenario": "Bakim oncesi drain edilen `worker1` node'unu tekrar aktif hale getir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node update --availability active worker1",
+          "hint_text": "Availability'i geri acmak icin `active` kullan.",
+          "hint_partial": "docker node update ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-025-r90",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda worker join token'ini sadece token olarak yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm join-token -q cache-90-90",
+          "hint_text": "Sadece token icin `-q` kullan.",
+          "hint_partial": "docker swarm join-token ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-011-r91",
+      "type": "single",
+      "scenario": "Deploy sonrasi `worker-91` service bilgisini okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service inspect --pretty worker-91",
+          "hint_text": "Okunur output icin `--pretty` kullan.",
+          "hint_partial": "docker service inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-012-r92",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `db-92-92` service loglarini canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service logs -f db-92-92",
+          "hint_text": "Canli log takibi icin `-f` kullan.",
+          "hint_partial": "docker service logs ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-013-r93",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `cache-93-93` service replica sayisini 2 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --replicas 2 cache-93-93",
+          "hint_text": "Replica update icin `docker service update --replicas` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-014-r94",
+      "type": "single",
+      "scenario": "Runbook adiminda `queue-94` service'e 443 portunu publish et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --publish-add 443:8581 queue-94",
+          "hint_text": "Yeni publish icin `--publish-add` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-015-r95",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `bastion-95` service'e `APP_ENV=payments-95` environment variable'i ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --env-add APP_ENV=payments-95 bastion-95",
+          "hint_text": "Env eklemek icin `--env-add` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-016-r96",
+      "type": "single",
+      "scenario": "Incident sonrasinda `proxy-96` service'i sadece worker-96 node'larda kosacak sekilde constraint ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --constraint-add node.role==worker-96 proxy-96",
+          "hint_text": "Constraint icin `--constraint-add` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-017-r97",
+      "type": "single",
+      "scenario": "Bakim oncesi `web-97` service'i bir onceki versiyona rollback et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service rollback web-97",
+          "hint_text": "Rollback icin `docker service rollback` kullan.",
+          "hint_partial": "docker service rollback ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-018-r98",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda swarm stack listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack ls",
+          "hint_text": "Stack listesi icin `docker stack ls` kullan.",
+          "hint_partial": "docker stack ls"
+        }
+      ]
+    },
+    {
+      "id": "mds-019-r99",
+      "type": "single",
+      "scenario": "Deploy sonrasi `mystack` stack task dagilimini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack ps mystack",
+          "hint_text": "Stack task'leri icin `docker stack ps` kullan.",
+          "hint_partial": "docker stack ps ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-020-r100",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `mystack` stack'ini kaldir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack rm mystack",
+          "hint_text": "Stack silmek icin `docker stack rm` kullan.",
+          "hint_partial": "docker stack rm ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-021-r101",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `secret.txt` dosyasindan `app_secret` adli swarm secret olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker secret create app_secret secret.txt",
+          "hint_text": "Secret olusturmak icin `docker secret create name file` kullan.",
+          "hint_partial": "docker secret create ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-022-r102",
+      "type": "single",
+      "scenario": "Runbook adiminda `config.yml` dosyasindan `app_cfg` adli swarm config olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker config create app_cfg config.yml",
+          "hint_text": "Config olusturmak icin `docker config create name file` kullan.",
+          "hint_partial": "docker config create ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-023-r103",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `app-net` overlay network detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network inspect app-net",
+          "hint_text": "Network inspect icin `docker network inspect` kullan.",
+          "hint_partial": "docker network inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-024-r104",
+      "type": "single",
+      "scenario": "Incident sonrasinda drain edilen `worker1` node'unu tekrar aktif hale getir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node update --availability active worker1",
+          "hint_text": "Availability'i geri acmak icin `active` kullan.",
+          "hint_partial": "docker node update ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-025-r105",
+      "type": "single",
+      "scenario": "Bakim oncesi worker join token'ini sadece token olarak yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm join-token -q db-105-105",
+          "hint_text": "Sadece token icin `-q` kullan.",
+          "hint_partial": "docker swarm join-token ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-011-r106",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `cache-106-106-106` service bilgisini okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service inspect --pretty cache-106-106-106",
+          "hint_text": "Okunur output icin `--pretty` kullan.",
+          "hint_partial": "docker service inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-012-r107",
+      "type": "single",
+      "scenario": "Deploy sonrasi `worker-107` service loglarini canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service logs -f worker-107",
+          "hint_text": "Canli log takibi icin `-f` kullan.",
+          "hint_partial": "docker service logs ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-013-r108",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `db-108-108` service replica sayisini 2 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --replicas 2 db-108-108",
+          "hint_text": "Replica update icin `docker service update --replicas` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-014-r109",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `cache-109-109` service'e 443 portunu publish et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --publish-add 443:8836 cache-109-109",
+          "hint_text": "Yeni publish icin `--publish-add` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-015-r110",
+      "type": "single",
+      "scenario": "Runbook adiminda `queue-110` service'e `APP_ENV=stage-110-110` environment variable'i ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --env-add APP_ENV=stage-110-110 queue-110",
+          "hint_text": "Env eklemek icin `--env-add` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-016-r111",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `bastion-111` service'i sadece api-111-111 node'larda kosacak sekilde constraint ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --constraint-add node.role==api-111-111 bastion-111",
+          "hint_text": "Constraint icin `--constraint-add` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-017-r112",
+      "type": "single",
+      "scenario": "Incident sonrasinda `proxy-112` service'i bir onceki versiyona rollback et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service rollback proxy-112",
+          "hint_text": "Rollback icin `docker service rollback` kullan.",
+          "hint_partial": "docker service rollback ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-018-r113",
+      "type": "single",
+      "scenario": "Bakim oncesi swarm stack listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack ls",
+          "hint_text": "Stack listesi icin `docker stack ls` kullan.",
+          "hint_partial": "docker stack ls"
+        }
+      ]
+    },
+    {
+      "id": "mds-019-r114",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `mystack` stack task dagilimini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack ps mystack",
+          "hint_text": "Stack task'leri icin `docker stack ps` kullan.",
+          "hint_partial": "docker stack ps ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-020-r115",
+      "type": "single",
+      "scenario": "Deploy sonrasi `mystack` stack'ini kaldir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack rm mystack",
+          "hint_text": "Stack silmek icin `docker stack rm` kullan.",
+          "hint_partial": "docker stack rm ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-021-r116",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `secret.txt` dosyasindan `app_secret` adli swarm secret olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker secret create app_secret secret.txt",
+          "hint_text": "Secret olusturmak icin `docker secret create name file` kullan.",
+          "hint_partial": "docker secret create ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-022-r117",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `config.yml` dosyasindan `app_cfg` adli swarm config olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker config create app_cfg config.yml",
+          "hint_text": "Config olusturmak icin `docker config create name file` kullan.",
+          "hint_partial": "docker config create ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-023-r118",
+      "type": "single",
+      "scenario": "Runbook adiminda `app-net` overlay network detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network inspect app-net",
+          "hint_text": "Network inspect icin `docker network inspect` kullan.",
+          "hint_partial": "docker network inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-024-r119",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde drain edilen `worker1` node'unu tekrar aktif hale getir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node update --availability active worker1",
+          "hint_text": "Availability'i geri acmak icin `active` kullan.",
+          "hint_partial": "docker node update ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-025-r120",
+      "type": "single",
+      "scenario": "Incident sonrasinda worker join token'ini sadece token olarak yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm join-token -q worker-120",
+          "hint_text": "Sadece token icin `-q` kullan.",
+          "hint_partial": "docker swarm join-token ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-011-r121",
+      "type": "single",
+      "scenario": "Bakim oncesi `web-121` service bilgisini okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service inspect --pretty web-121",
+          "hint_text": "Okunur output icin `--pretty` kullan.",
+          "hint_partial": "docker service inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-012-r122",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `cache-122-122-122` service loglarini canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service logs -f cache-122-122-122",
+          "hint_text": "Canli log takibi icin `-f` kullan.",
+          "hint_partial": "docker service logs ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-013-r123",
+      "type": "single",
+      "scenario": "Deploy sonrasi `worker-123` service replica sayisini 2 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --replicas 2 worker-123",
+          "hint_text": "Replica update icin `docker service update --replicas` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-014-r124",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `db-124-124` service'e 443 portunu publish et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --publish-add 443:8091 db-124-124",
+          "hint_text": "Yeni publish icin `--publish-add` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-015-r125",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `cache-125-125` service'e `APP_ENV=payments-125` environment variable'i ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --env-add APP_ENV=payments-125 cache-125-125",
+          "hint_text": "Env eklemek icin `--env-add` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-016-r126",
+      "type": "single",
+      "scenario": "Runbook adiminda `queue-126` service'i sadece queue-126-126 node'larda kosacak sekilde constraint ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --constraint-add node.role==queue-126-126 queue-126",
+          "hint_text": "Constraint icin `--constraint-add` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-017-r127",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `bastion-127` service'i bir onceki versiyona rollback et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service rollback bastion-127",
+          "hint_text": "Rollback icin `docker service rollback` kullan.",
+          "hint_partial": "docker service rollback ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-018-r128",
+      "type": "single",
+      "scenario": "Incident sonrasinda swarm stack listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack ls",
+          "hint_text": "Stack listesi icin `docker stack ls` kullan.",
+          "hint_partial": "docker stack ls"
+        }
+      ]
+    },
+    {
+      "id": "mds-019-r129",
+      "type": "single",
+      "scenario": "Bakim oncesi `mystack` stack task dagilimini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack ps mystack",
+          "hint_text": "Stack task'leri icin `docker stack ps` kullan.",
+          "hint_partial": "docker stack ps ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-020-r130",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `mystack` stack'ini kaldir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack rm mystack",
+          "hint_text": "Stack silmek icin `docker stack rm` kullan.",
+          "hint_partial": "docker stack rm ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-021-r131",
+      "type": "single",
+      "scenario": "Deploy sonrasi `secret.txt` dosyasindan `app_secret` adli swarm secret olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker secret create app_secret secret.txt",
+          "hint_text": "Secret olusturmak icin `docker secret create name file` kullan.",
+          "hint_partial": "docker secret create ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-022-r132",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `config.yml` dosyasindan `app_cfg` adli swarm config olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker config create app_cfg config.yml",
+          "hint_text": "Config olusturmak icin `docker config create name file` kullan.",
+          "hint_partial": "docker config create ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-023-r133",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `app-net` overlay network detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network inspect app-net",
+          "hint_text": "Network inspect icin `docker network inspect` kullan.",
+          "hint_partial": "docker network inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-024-r134",
+      "type": "single",
+      "scenario": "Runbook adiminda drain edilen `worker1` node'unu tekrar aktif hale getir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node update --availability active worker1",
+          "hint_text": "Availability'i geri acmak icin `active` kullan.",
+          "hint_partial": "docker node update ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-025-r135",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde worker join token'ini sadece token olarak yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm join-token -q api-135-135",
+          "hint_text": "Sadece token icin `-q` kullan.",
+          "hint_partial": "docker swarm join-token ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-011-r136",
+      "type": "single",
+      "scenario": "Incident sonrasinda `proxy-136` service bilgisini okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service inspect --pretty proxy-136",
+          "hint_text": "Okunur output icin `--pretty` kullan.",
+          "hint_partial": "docker service inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-012-r137",
+      "type": "single",
+      "scenario": "Bakim oncesi `web-137` service loglarini canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service logs -f web-137",
+          "hint_text": "Canli log takibi icin `-f` kullan.",
+          "hint_partial": "docker service logs ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-013-r138",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `cache-138-138-138` service replica sayisini 2 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --replicas 2 cache-138-138-138",
+          "hint_text": "Replica update icin `docker service update --replicas` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-014-r139",
+      "type": "single",
+      "scenario": "Deploy sonrasi `worker-139` service'e 443 portunu publish et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --publish-add 443:8346 worker-139",
+          "hint_text": "Yeni publish icin `--publish-add` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-015-r140",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `db-140-140` service'e `APP_ENV=stage-140-140` environment variable'i ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --env-add APP_ENV=stage-140-140 db-140-140",
+          "hint_text": "Env eklemek icin `--env-add` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-016-r141",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `cache-141-141` service'i sadece proxy-141 node'larda kosacak sekilde constraint ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --constraint-add node.role==proxy-141 cache-141-141",
+          "hint_text": "Constraint icin `--constraint-add` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-017-r142",
+      "type": "single",
+      "scenario": "Runbook adiminda `queue-142` service'i bir onceki versiyona rollback et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service rollback queue-142",
+          "hint_text": "Rollback icin `docker service rollback` kullan.",
+          "hint_partial": "docker service rollback ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-018-r143",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde swarm stack listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack ls",
+          "hint_text": "Stack listesi icin `docker stack ls` kullan.",
+          "hint_partial": "docker stack ls"
+        }
+      ]
+    },
+    {
+      "id": "mds-019-r144",
+      "type": "single",
+      "scenario": "Incident sonrasinda `mystack` stack task dagilimini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack ps mystack",
+          "hint_text": "Stack task'leri icin `docker stack ps` kullan.",
+          "hint_partial": "docker stack ps ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-020-r145",
+      "type": "single",
+      "scenario": "Bakim oncesi `mystack` stack'ini kaldir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack rm mystack",
+          "hint_text": "Stack silmek icin `docker stack rm` kullan.",
+          "hint_partial": "docker stack rm ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-021-r146",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `secret.txt` dosyasindan `app_secret` adli swarm secret olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker secret create app_secret secret.txt",
+          "hint_text": "Secret olusturmak icin `docker secret create name file` kullan.",
+          "hint_partial": "docker secret create ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-022-r147",
+      "type": "single",
+      "scenario": "Deploy sonrasi `config.yml` dosyasindan `app_cfg` adli swarm config olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker config create app_cfg config.yml",
+          "hint_text": "Config olusturmak icin `docker config create name file` kullan.",
+          "hint_partial": "docker config create ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-023-r148",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `app-net` overlay network detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network inspect app-net",
+          "hint_text": "Network inspect icin `docker network inspect` kullan.",
+          "hint_partial": "docker network inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-024-r149",
+      "type": "single",
+      "scenario": "Yeni acilan hostta drain edilen `worker1` node'unu tekrar aktif hale getir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node update --availability active worker1",
+          "hint_text": "Availability'i geri acmak icin `active` kullan.",
+          "hint_partial": "docker node update ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-025-r150",
+      "type": "single",
+      "scenario": "Runbook adiminda worker join token'ini sadece token olarak yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm join-token -q queue-150-150",
+          "hint_text": "Sadece token icin `-q` kullan.",
+          "hint_partial": "docker swarm join-token ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-011-r151",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `bastion-151` service bilgisini okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service inspect --pretty bastion-151",
+          "hint_text": "Okunur output icin `--pretty` kullan.",
+          "hint_partial": "docker service inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-012-r152",
+      "type": "single",
+      "scenario": "Incident sonrasinda `proxy-152` service loglarini canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service logs -f proxy-152",
+          "hint_text": "Canli log takibi icin `-f` kullan.",
+          "hint_partial": "docker service logs ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-013-r153",
+      "type": "single",
+      "scenario": "Bakim oncesi `web-153` service replica sayisini 2 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --replicas 2 web-153",
+          "hint_text": "Replica update icin `docker service update --replicas` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-014-r154",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `cache-154-154-154` service'e 443 portunu publish et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --publish-add 443:8601 cache-154-154-154",
+          "hint_text": "Yeni publish icin `--publish-add` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-015-r155",
+      "type": "single",
+      "scenario": "Deploy sonrasi `worker-155` service'e `APP_ENV=payments-155` environment variable'i ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --env-add APP_ENV=payments-155 worker-155",
+          "hint_text": "Env eklemek icin `--env-add` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-016-r156",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `db-156-156` service'i sadece bastion-156 node'larda kosacak sekilde constraint ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --constraint-add node.role==bastion-156 db-156-156",
+          "hint_text": "Constraint icin `--constraint-add` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-017-r157",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `cache-157-157` service'i bir onceki versiyona rollback et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service rollback cache-157-157",
+          "hint_text": "Rollback icin `docker service rollback` kullan.",
+          "hint_partial": "docker service rollback ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-018-r158",
+      "type": "single",
+      "scenario": "Runbook adiminda swarm stack listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack ls",
+          "hint_text": "Stack listesi icin `docker stack ls` kullan.",
+          "hint_partial": "docker stack ls"
+        }
+      ]
+    },
+    {
+      "id": "mds-019-r159",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `mystack` stack task dagilimini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack ps mystack",
+          "hint_text": "Stack task'leri icin `docker stack ps` kullan.",
+          "hint_partial": "docker stack ps ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-020-r160",
+      "type": "single",
+      "scenario": "Incident sonrasinda `mystack` stack'ini kaldir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack rm mystack",
+          "hint_text": "Stack silmek icin `docker stack rm` kullan.",
+          "hint_partial": "docker stack rm ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-021-r161",
+      "type": "single",
+      "scenario": "Bakim oncesi `secret.txt` dosyasindan `app_secret` adli swarm secret olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker secret create app_secret secret.txt",
+          "hint_text": "Secret olusturmak icin `docker secret create name file` kullan.",
+          "hint_partial": "docker secret create ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-022-r162",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `config.yml` dosyasindan `app_cfg` adli swarm config olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker config create app_cfg config.yml",
+          "hint_text": "Config olusturmak icin `docker config create name file` kullan.",
+          "hint_partial": "docker config create ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-023-r163",
+      "type": "single",
+      "scenario": "Deploy sonrasi `app-net` overlay network detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network inspect app-net",
+          "hint_text": "Network inspect icin `docker network inspect` kullan.",
+          "hint_partial": "docker network inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-024-r164",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde drain edilen `worker1` node'unu tekrar aktif hale getir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node update --availability active worker1",
+          "hint_text": "Availability'i geri acmak icin `active` kullan.",
+          "hint_partial": "docker node update ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-025-r165",
+      "type": "single",
+      "scenario": "Yeni acilan hostta worker join token'ini sadece token olarak yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm join-token -q proxy-165",
+          "hint_text": "Sadece token icin `-q` kullan.",
+          "hint_partial": "docker swarm join-token ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-011-r166",
+      "type": "single",
+      "scenario": "Runbook adiminda `queue-166` service bilgisini okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service inspect --pretty queue-166",
+          "hint_text": "Okunur output icin `--pretty` kullan.",
+          "hint_partial": "docker service inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-012-r167",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `bastion-167` service loglarini canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service logs -f bastion-167",
+          "hint_text": "Canli log takibi icin `-f` kullan.",
+          "hint_partial": "docker service logs ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-013-r168",
+      "type": "single",
+      "scenario": "Incident sonrasinda `proxy-168` service replica sayisini 2 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --replicas 2 proxy-168",
+          "hint_text": "Replica update icin `docker service update --replicas` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-014-r169",
+      "type": "single",
+      "scenario": "Bakim oncesi `web-169` service'e 443 portunu publish et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --publish-add 443:8856 web-169",
+          "hint_text": "Yeni publish icin `--publish-add` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-015-r170",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `cache-170-170-170` service'e `APP_ENV=stage-170-170` environment variable'i ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --env-add APP_ENV=stage-170-170 cache-170-170-170",
+          "hint_text": "Env eklemek icin `--env-add` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-016-r171",
+      "type": "single",
+      "scenario": "Deploy sonrasi `worker-171` service'i sadece queue-171 node'larda kosacak sekilde constraint ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --constraint-add node.role==queue-171 worker-171",
+          "hint_text": "Constraint icin `--constraint-add` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-017-r172",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `db-172-172` service'i bir onceki versiyona rollback et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service rollback db-172-172",
+          "hint_text": "Rollback icin `docker service rollback` kullan.",
+          "hint_partial": "docker service rollback ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-018-r173",
+      "type": "single",
+      "scenario": "Yeni acilan hostta swarm stack listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack ls",
+          "hint_text": "Stack listesi icin `docker stack ls` kullan.",
+          "hint_partial": "docker stack ls"
+        }
+      ]
+    },
+    {
+      "id": "mds-019-r174",
+      "type": "single",
+      "scenario": "Runbook adiminda `mystack` stack task dagilimini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack ps mystack",
+          "hint_text": "Stack task'leri icin `docker stack ps` kullan.",
+          "hint_partial": "docker stack ps ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-020-r175",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `mystack` stack'ini kaldir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack rm mystack",
+          "hint_text": "Stack silmek icin `docker stack rm` kullan.",
+          "hint_partial": "docker stack rm ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-021-r176",
+      "type": "single",
+      "scenario": "Incident sonrasinda `secret.txt` dosyasindan `app_secret` adli swarm secret olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker secret create app_secret secret.txt",
+          "hint_text": "Secret olusturmak icin `docker secret create name file` kullan.",
+          "hint_partial": "docker secret create ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-022-r177",
+      "type": "single",
+      "scenario": "Bakim oncesi `config.yml` dosyasindan `app_cfg` adli swarm config olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker config create app_cfg config.yml",
+          "hint_text": "Config olusturmak icin `docker config create name file` kullan.",
+          "hint_partial": "docker config create ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-023-r178",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `app-net` overlay network detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network inspect app-net",
+          "hint_text": "Network inspect icin `docker network inspect` kullan.",
+          "hint_partial": "docker network inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-024-r179",
+      "type": "single",
+      "scenario": "Deploy sonrasi drain edilen `worker1` node'unu tekrar aktif hale getir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node update --availability active worker1",
+          "hint_text": "Availability'i geri acmak icin `active` kullan.",
+          "hint_partial": "docker node update ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-025-r180",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde worker join token'ini sadece token olarak yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm join-token -q bastion-180",
+          "hint_text": "Sadece token icin `-q` kullan.",
+          "hint_partial": "docker swarm join-token ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-011-r181",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `cache-181-181` service bilgisini okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service inspect --pretty cache-181-181",
+          "hint_text": "Okunur output icin `--pretty` kullan.",
+          "hint_partial": "docker service inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-012-r182",
+      "type": "single",
+      "scenario": "Runbook adiminda `queue-182` service loglarini canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service logs -f queue-182",
+          "hint_text": "Canli log takibi icin `-f` kullan.",
+          "hint_partial": "docker service logs ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-013-r183",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `bastion-183` service replica sayisini 2 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --replicas 2 bastion-183",
+          "hint_text": "Replica update icin `docker service update --replicas` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-014-r184",
+      "type": "single",
+      "scenario": "Incident sonrasinda `proxy-184` service'e 443 portunu publish et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --publish-add 443:8111 proxy-184",
+          "hint_text": "Yeni publish icin `--publish-add` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-015-r185",
+      "type": "single",
+      "scenario": "Bakim oncesi `web-185` service'e `APP_ENV=payments-185` environment variable'i ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --env-add APP_ENV=payments-185 web-185",
+          "hint_text": "Env eklemek icin `--env-add` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2606 @@
+{
+  "level": "mid",
+  "topic": "scripting",
+  "questions": [
+    {
+      "id": "mscr-011",
+      "type": "single",
+      "scenario": "`script.sh` dosyasini bash ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "bash script.sh",
+          "hint_text": "Script'i bash ile yorumlamak icin `bash script.sh` kullan.",
+          "hint_partial": "bash ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-012",
+      "type": "single",
+      "scenario": "`deploy.sh` dosyasini executable yap ve calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod +x deploy.sh && ./deploy.sh",
+          "hint_text": "Calistirmadan once execute biti ver.",
+          "hint_partial": "chmod +x ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-013",
+      "type": "single",
+      "scenario": "`deploy.sh` icin syntax kontrolu yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "bash -n deploy.sh",
+          "hint_text": "Bash syntax check icin `bash -n` kullan.",
+          "hint_partial": "bash -n ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-014",
+      "type": "single",
+      "scenario": "`deploy.sh` script'ini ShellCheck ile lint et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "shellcheck deploy.sh",
+          "hint_text": "Shell lint icin `shellcheck` kullan.",
+          "hint_partial": "shellcheck ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-015",
+      "type": "single",
+      "scenario": "Script basina guvenli bash option'larini ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "set -euo pipefail",
+          "hint_text": "Hata yakalamayi guclendirmek icin bu seti kullan.",
+          "hint_partial": "set -..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-016",
+      "type": "single",
+      "scenario": "Current directory'deki tum `.log` dosyalarini tek tek gzip ile sikistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "for file in *.log; do gzip \"$file\"; done",
+          "hint_text": "Temel `for` dongusu ile dosyalari gez.",
+          "hint_partial": "for file in ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-017",
+      "type": "single",
+      "scenario": "`users.txt` icindeki her satiri ekrana yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "for user in $(cat users.txt); do echo \"$user\"; done",
+          "hint_text": "Kisa dongu icin `for var in $(cat file)` kullan.",
+          "hint_partial": "for user in ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-018",
+      "type": "single",
+      "scenario": "`config.yml` dosyasi varsa `ok` yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "if [ -f config.yml ]; then echo ok; fi",
+          "hint_text": "Dosya kontrolu icin `[ -f file ]` kullan.",
+          "hint_partial": "if [ -f ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-019",
+      "type": "single",
+      "scenario": "`items.txt` dosyasini satir satir oku ve her satiri yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "while read -r line; do echo \"$line\"; done < items.txt",
+          "hint_text": "Satir bazli okuma icin `while read -r` kullan.",
+          "hint_partial": "while read -r ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-020",
+      "type": "single",
+      "scenario": "`items.txt` icindeki her girdiyi `xargs` ile ekrana bas.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "xargs -n 1 echo < items.txt",
+          "hint_text": "`xargs -n 1` her satiri ayri isler.",
+          "hint_partial": "xargs -n 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-021",
+      "type": "single",
+      "scenario": "Current directory altindaki tum `.tmp` dosyalarini bul ve sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find . -name '*.tmp' -print0 | xargs -0 rm -f",
+          "hint_text": "Bosluk guvenli silme icin `-print0` ve `xargs -0` kullan.",
+          "hint_partial": "find . -name ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-022",
+      "type": "single",
+      "scenario": "Tarih formatini `YYYY-MM-DD_HH-MM-SS` olarak yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "date '+%F_%H-%M-%S'",
+          "hint_text": "Formatli tarih icin `date '+format'` kullan.",
+          "hint_partial": "date '..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-023",
+      "type": "single",
+      "scenario": "Script cikarken `cleanup` yazdiracak EXIT trap'i ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "trap 'echo cleanup' EXIT",
+          "hint_text": "EXIT aninda calisacak komut icin `trap` kullan.",
+          "hint_partial": "trap ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-024",
+      "type": "single",
+      "scenario": "Kullanicidan `name` degiskenine satir oku.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "read -r name",
+          "hint_text": "Raw input okumak icin `read -r` kullan.",
+          "hint_partial": "read -r ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-025",
+      "type": "single",
+      "scenario": "Hostname degerini newline ile guvenli sekilde yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "printf '%s ' \"$HOSTNAME\"",
+          "hint_text": "Guvenli string ciktisi icin `printf '%s\\n'` kullan.",
+          "hint_partial": "printf ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-011-r1",
+      "type": "single",
+      "scenario": "Bakim oncesi `script.sh` dosyasini bash ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "bash script.sh",
+          "hint_text": "Script'i bash ile yorumlamak icin `bash script.sh` kullan.",
+          "hint_partial": "bash ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-012-r2",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `deploy.sh` dosyasini executable yap ve calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod +x deploy.sh && ./deploy.sh",
+          "hint_text": "Calistirmadan once execute biti ver.",
+          "hint_partial": "chmod +x ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-013-r3",
+      "type": "single",
+      "scenario": "Deploy sonrasi `deploy.sh` icin syntax kontrolu yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "bash -n deploy.sh",
+          "hint_text": "Bash syntax check icin `bash -n` kullan.",
+          "hint_partial": "bash -n ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-014-r4",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `deploy.sh` script'ini ShellCheck ile lint et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "shellcheck deploy.sh",
+          "hint_text": "Shell lint icin `shellcheck` kullan.",
+          "hint_partial": "shellcheck ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-015-r5",
+      "type": "single",
+      "scenario": "Yeni acilan hostta script basina guvenli bash option'larini ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "set -euo pipefail",
+          "hint_text": "Hata yakalamayi guclendirmek icin bu seti kullan.",
+          "hint_partial": "set -..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-016-r6",
+      "type": "single",
+      "scenario": "Runbook adiminda current directory'deki tum `.log` dosyalarini tek tek gzip ile sikistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "for file in *.log; do gzip \"$file\"; done",
+          "hint_text": "Temel `for` dongusu ile dosyalari gez.",
+          "hint_partial": "for file in ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-017-r7",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `users.txt` icindeki her satiri ekrana yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "for user in $(cat users.txt); do echo \"$user\"; done",
+          "hint_text": "Kisa dongu icin `for var in $(cat file)` kullan.",
+          "hint_partial": "for user in ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-018-r8",
+      "type": "single",
+      "scenario": "Incident sonrasinda `config.yml` dosyasi varsa `ok` yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "if [ -f config.yml ]; then echo ok; fi",
+          "hint_text": "Dosya kontrolu icin `[ -f file ]` kullan.",
+          "hint_partial": "if [ -f ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-019-r9",
+      "type": "single",
+      "scenario": "Bakim oncesi `items.txt` dosyasini satir satir oku ve her satiri yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "while read -r line; do echo \"$line\"; done < items.txt",
+          "hint_text": "Satir bazli okuma icin `while read -r` kullan.",
+          "hint_partial": "while read -r ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-020-r10",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `items.txt` icindeki her girdiyi `xargs` ile ekrana bas.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "xargs -n 1 echo < items.txt",
+          "hint_text": "`xargs -n 1` her satiri ayri isler.",
+          "hint_partial": "xargs -n 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-021-r11",
+      "type": "single",
+      "scenario": "Deploy sonrasi current directory altindaki tum `.tmp` dosyalarini bul ve sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find . -name '*.tmp' -print0 | xargs -0 rm -f",
+          "hint_text": "Bosluk guvenli silme icin `-print0` ve `xargs -0` kullan.",
+          "hint_partial": "find . -name ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-022-r12",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde tarih formatini `YYYY-MM-DD_HH-MM-SS` olarak yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "date '+%F_%H-%M-%S'",
+          "hint_text": "Formatli tarih icin `date '+format'` kullan.",
+          "hint_partial": "date '..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-023-r13",
+      "type": "single",
+      "scenario": "Yeni acilan hostta script cikarken `cleanup` yazdiracak EXIT trap'i ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "trap 'echo cleanup' EXIT",
+          "hint_text": "EXIT aninda calisacak komut icin `trap` kullan.",
+          "hint_partial": "trap ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-024-r14",
+      "type": "single",
+      "scenario": "Runbook adiminda kullanicidan `name` degiskenine satir oku.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "read -r name",
+          "hint_text": "Raw input okumak icin `read -r` kullan.",
+          "hint_partial": "read -r ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-025-r15",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde hostname degerini newline ile guvenli sekilde yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "printf '%s ' \"$HOSTNAME\"",
+          "hint_text": "Guvenli string ciktisi icin `printf '%s\\n'` kullan.",
+          "hint_partial": "printf ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-011-r16",
+      "type": "single",
+      "scenario": "Incident sonrasinda `script.sh` dosyasini bash ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "bash script.sh",
+          "hint_text": "Script'i bash ile yorumlamak icin `bash script.sh` kullan.",
+          "hint_partial": "bash ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-012-r17",
+      "type": "single",
+      "scenario": "Bakim oncesi `deploy.sh` dosyasini executable yap ve calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod +x deploy.sh && ./deploy.sh",
+          "hint_text": "Calistirmadan once execute biti ver.",
+          "hint_partial": "chmod +x ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-013-r18",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `deploy.sh` icin syntax kontrolu yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "bash -n deploy.sh",
+          "hint_text": "Bash syntax check icin `bash -n` kullan.",
+          "hint_partial": "bash -n ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-014-r19",
+      "type": "single",
+      "scenario": "Deploy sonrasi `deploy.sh` script'ini ShellCheck ile lint et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "shellcheck deploy.sh",
+          "hint_text": "Shell lint icin `shellcheck` kullan.",
+          "hint_partial": "shellcheck ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-015-r20",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde script basina guvenli bash option'larini ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "set -euo pipefail",
+          "hint_text": "Hata yakalamayi guclendirmek icin bu seti kullan.",
+          "hint_partial": "set -..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-016-r21",
+      "type": "single",
+      "scenario": "Yeni acilan hostta current directory'deki tum `.log` dosyalarini tek tek gzip ile sikistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "for file in *.log; do gzip \"$file\"; done",
+          "hint_text": "Temel `for` dongusu ile dosyalari gez.",
+          "hint_partial": "for file in ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-017-r22",
+      "type": "single",
+      "scenario": "Runbook adiminda `users.txt` icindeki her satiri ekrana yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "for user in $(cat users.txt); do echo \"$user\"; done",
+          "hint_text": "Kisa dongu icin `for var in $(cat file)` kullan.",
+          "hint_partial": "for user in ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-018-r23",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `config.yml` dosyasi varsa `ok` yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "if [ -f config.yml ]; then echo ok; fi",
+          "hint_text": "Dosya kontrolu icin `[ -f file ]` kullan.",
+          "hint_partial": "if [ -f ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-019-r24",
+      "type": "single",
+      "scenario": "Incident sonrasinda `items.txt` dosyasini satir satir oku ve her satiri yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "while read -r line; do echo \"$line\"; done < items.txt",
+          "hint_text": "Satir bazli okuma icin `while read -r` kullan.",
+          "hint_partial": "while read -r ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-020-r25",
+      "type": "single",
+      "scenario": "Bakim oncesi `items.txt` icindeki her girdiyi `xargs` ile ekrana bas.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "xargs -n 1 echo < items.txt",
+          "hint_text": "`xargs -n 1` her satiri ayri isler.",
+          "hint_partial": "xargs -n 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-021-r26",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda current directory altindaki tum `.tmp` dosyalarini bul ve sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find . -name '*.tmp' -print0 | xargs -0 rm -f",
+          "hint_text": "Bosluk guvenli silme icin `-print0` ve `xargs -0` kullan.",
+          "hint_partial": "find . -name ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-022-r27",
+      "type": "single",
+      "scenario": "Deploy sonrasi tarih formatini `YYYY-MM-DD_HH-MM-SS` olarak yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "date '+%F_%H-%M-%S'",
+          "hint_text": "Formatli tarih icin `date '+format'` kullan.",
+          "hint_partial": "date '..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-023-r28",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde script cikarken `cleanup` yazdiracak EXIT trap'i ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "trap 'echo cleanup' EXIT",
+          "hint_text": "EXIT aninda calisacak komut icin `trap` kullan.",
+          "hint_partial": "trap ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-024-r29",
+      "type": "single",
+      "scenario": "Yeni acilan hostta kullanicidan `name` degiskenine satir oku.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "read -r name",
+          "hint_text": "Raw input okumak icin `read -r` kullan.",
+          "hint_partial": "read -r ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-025-r30",
+      "type": "single",
+      "scenario": "Runbook adiminda hostname degerini newline ile guvenli sekilde yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "printf '%s ' \"$HOSTNAME\"",
+          "hint_text": "Guvenli string ciktisi icin `printf '%s\\n'` kullan.",
+          "hint_partial": "printf ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-011-r31",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `script.sh` dosyasini bash ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "bash script.sh",
+          "hint_text": "Script'i bash ile yorumlamak icin `bash script.sh` kullan.",
+          "hint_partial": "bash ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-012-r32",
+      "type": "single",
+      "scenario": "Incident sonrasinda `deploy.sh` dosyasini executable yap ve calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod +x deploy.sh && ./deploy.sh",
+          "hint_text": "Calistirmadan once execute biti ver.",
+          "hint_partial": "chmod +x ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-013-r33",
+      "type": "single",
+      "scenario": "Bakim oncesi `deploy.sh` icin syntax kontrolu yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "bash -n deploy.sh",
+          "hint_text": "Bash syntax check icin `bash -n` kullan.",
+          "hint_partial": "bash -n ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-014-r34",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `deploy.sh` script'ini ShellCheck ile lint et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "shellcheck deploy.sh",
+          "hint_text": "Shell lint icin `shellcheck` kullan.",
+          "hint_partial": "shellcheck ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-015-r35",
+      "type": "single",
+      "scenario": "Deploy sonrasi script basina guvenli bash option'larini ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "set -euo pipefail",
+          "hint_text": "Hata yakalamayi guclendirmek icin bu seti kullan.",
+          "hint_partial": "set -..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-016-r36",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde current directory'deki tum `.log` dosyalarini tek tek gzip ile sikistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "for file in *.log; do gzip \"$file\"; done",
+          "hint_text": "Temel `for` dongusu ile dosyalari gez.",
+          "hint_partial": "for file in ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-017-r37",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `users.txt` icindeki her satiri ekrana yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "for user in $(cat users.txt); do echo \"$user\"; done",
+          "hint_text": "Kisa dongu icin `for var in $(cat file)` kullan.",
+          "hint_partial": "for user in ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-018-r38",
+      "type": "single",
+      "scenario": "Runbook adiminda `config.yml` dosyasi varsa `ok` yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "if [ -f config.yml ]; then echo ok; fi",
+          "hint_text": "Dosya kontrolu icin `[ -f file ]` kullan.",
+          "hint_partial": "if [ -f ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-019-r39",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `items.txt` dosyasini satir satir oku ve her satiri yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "while read -r line; do echo \"$line\"; done < items.txt",
+          "hint_text": "Satir bazli okuma icin `while read -r` kullan.",
+          "hint_partial": "while read -r ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-020-r40",
+      "type": "single",
+      "scenario": "Incident sonrasinda `items.txt` icindeki her girdiyi `xargs` ile ekrana bas.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "xargs -n 1 echo < items.txt",
+          "hint_text": "`xargs -n 1` her satiri ayri isler.",
+          "hint_partial": "xargs -n 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-021-r41",
+      "type": "single",
+      "scenario": "Bakim oncesi current directory altindaki tum `.tmp` dosyalarini bul ve sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find . -name '*.tmp' -print0 | xargs -0 rm -f",
+          "hint_text": "Bosluk guvenli silme icin `-print0` ve `xargs -0` kullan.",
+          "hint_partial": "find . -name ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-022-r42",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda tarih formatini `YYYY-MM-DD_HH-MM-SS` olarak yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "date '+%F_%H-%M-%S'",
+          "hint_text": "Formatli tarih icin `date '+format'` kullan.",
+          "hint_partial": "date '..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-023-r43",
+      "type": "single",
+      "scenario": "Deploy sonrasi script cikarken `cleanup` yazdiracak EXIT trap'i ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "trap 'echo cleanup' EXIT",
+          "hint_text": "EXIT aninda calisacak komut icin `trap` kullan.",
+          "hint_partial": "trap ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-024-r44",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde kullanicidan `name` degiskenine satir oku.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "read -r name",
+          "hint_text": "Raw input okumak icin `read -r` kullan.",
+          "hint_partial": "read -r ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-025-r45",
+      "type": "single",
+      "scenario": "Yeni acilan hostta hostname degerini newline ile guvenli sekilde yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "printf '%s ' \"$HOSTNAME\"",
+          "hint_text": "Guvenli string ciktisi icin `printf '%s\\n'` kullan.",
+          "hint_partial": "printf ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-011-r46",
+      "type": "single",
+      "scenario": "Runbook adiminda `script.sh` dosyasini bash ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "bash script.sh",
+          "hint_text": "Script'i bash ile yorumlamak icin `bash script.sh` kullan.",
+          "hint_partial": "bash ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-012-r47",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `deploy.sh` dosyasini executable yap ve calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod +x deploy.sh && ./deploy.sh",
+          "hint_text": "Calistirmadan once execute biti ver.",
+          "hint_partial": "chmod +x ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-013-r48",
+      "type": "single",
+      "scenario": "Incident sonrasinda `deploy.sh` icin syntax kontrolu yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "bash -n deploy.sh",
+          "hint_text": "Bash syntax check icin `bash -n` kullan.",
+          "hint_partial": "bash -n ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-014-r49",
+      "type": "single",
+      "scenario": "Bakim oncesi `deploy.sh` script'ini ShellCheck ile lint et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "shellcheck deploy.sh",
+          "hint_text": "Shell lint icin `shellcheck` kullan.",
+          "hint_partial": "shellcheck ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-015-r50",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda script basina guvenli bash option'larini ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "set -euo pipefail",
+          "hint_text": "Hata yakalamayi guclendirmek icin bu seti kullan.",
+          "hint_partial": "set -..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-016-r51",
+      "type": "single",
+      "scenario": "Deploy sonrasi current directory'deki tum `.log` dosyalarini tek tek gzip ile sikistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "for file in *.log; do gzip \"$file\"; done",
+          "hint_text": "Temel `for` dongusu ile dosyalari gez.",
+          "hint_partial": "for file in ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-017-r52",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `users.txt` icindeki her satiri ekrana yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "for user in $(cat users.txt); do echo \"$user\"; done",
+          "hint_text": "Kisa dongu icin `for var in $(cat file)` kullan.",
+          "hint_partial": "for user in ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-018-r53",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `config.yml` dosyasi varsa `ok` yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "if [ -f config.yml ]; then echo ok; fi",
+          "hint_text": "Dosya kontrolu icin `[ -f file ]` kullan.",
+          "hint_partial": "if [ -f ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-019-r54",
+      "type": "single",
+      "scenario": "Runbook adiminda `items.txt` dosyasini satir satir oku ve her satiri yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "while read -r line; do echo \"$line\"; done < items.txt",
+          "hint_text": "Satir bazli okuma icin `while read -r` kullan.",
+          "hint_partial": "while read -r ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-020-r55",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `items.txt` icindeki her girdiyi `xargs` ile ekrana bas.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "xargs -n 1 echo < items.txt",
+          "hint_text": "`xargs -n 1` her satiri ayri isler.",
+          "hint_partial": "xargs -n 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-021-r56",
+      "type": "single",
+      "scenario": "Incident sonrasinda current directory altindaki tum `.tmp` dosyalarini bul ve sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find . -name '*.tmp' -print0 | xargs -0 rm -f",
+          "hint_text": "Bosluk guvenli silme icin `-print0` ve `xargs -0` kullan.",
+          "hint_partial": "find . -name ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-022-r57",
+      "type": "single",
+      "scenario": "Bakim oncesi tarih formatini `YYYY-MM-DD_HH-MM-SS` olarak yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "date '+%F_%H-%M-%S'",
+          "hint_text": "Formatli tarih icin `date '+format'` kullan.",
+          "hint_partial": "date '..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-023-r58",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda script cikarken `cleanup` yazdiracak EXIT trap'i ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "trap 'echo cleanup' EXIT",
+          "hint_text": "EXIT aninda calisacak komut icin `trap` kullan.",
+          "hint_partial": "trap ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-024-r59",
+      "type": "single",
+      "scenario": "Deploy sonrasi kullanicidan `name` degiskenine satir oku.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "read -r name",
+          "hint_text": "Raw input okumak icin `read -r` kullan.",
+          "hint_partial": "read -r ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-025-r60",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde hostname degerini newline ile guvenli sekilde yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "printf '%s ' \"$HOSTNAME\"",
+          "hint_text": "Guvenli string ciktisi icin `printf '%s\\n'` kullan.",
+          "hint_partial": "printf ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-011-r61",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `script.sh` dosyasini bash ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "bash script.sh",
+          "hint_text": "Script'i bash ile yorumlamak icin `bash script.sh` kullan.",
+          "hint_partial": "bash ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-012-r62",
+      "type": "single",
+      "scenario": "Runbook adiminda `deploy.sh` dosyasini executable yap ve calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod +x deploy.sh && ./deploy.sh",
+          "hint_text": "Calistirmadan once execute biti ver.",
+          "hint_partial": "chmod +x ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-013-r63",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `deploy.sh` icin syntax kontrolu yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "bash -n deploy.sh",
+          "hint_text": "Bash syntax check icin `bash -n` kullan.",
+          "hint_partial": "bash -n ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-014-r64",
+      "type": "single",
+      "scenario": "Incident sonrasinda `deploy.sh` script'ini ShellCheck ile lint et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "shellcheck deploy.sh",
+          "hint_text": "Shell lint icin `shellcheck` kullan.",
+          "hint_partial": "shellcheck ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-015-r65",
+      "type": "single",
+      "scenario": "Bakim oncesi script basina guvenli bash option'larini ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "set -euo pipefail",
+          "hint_text": "Hata yakalamayi guclendirmek icin bu seti kullan.",
+          "hint_partial": "set -..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-016-r66",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda current directory'deki tum `.log` dosyalarini tek tek gzip ile sikistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "for file in *.log; do gzip \"$file\"; done",
+          "hint_text": "Temel `for` dongusu ile dosyalari gez.",
+          "hint_partial": "for file in ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-017-r67",
+      "type": "single",
+      "scenario": "Deploy sonrasi `users.txt` icindeki her satiri ekrana yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "for user in $(cat users.txt); do echo \"$user\"; done",
+          "hint_text": "Kisa dongu icin `for var in $(cat file)` kullan.",
+          "hint_partial": "for user in ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-018-r68",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `config.yml` dosyasi varsa `ok` yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "if [ -f config.yml ]; then echo ok; fi",
+          "hint_text": "Dosya kontrolu icin `[ -f file ]` kullan.",
+          "hint_partial": "if [ -f ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-019-r69",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `items.txt` dosyasini satir satir oku ve her satiri yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "while read -r line; do echo \"$line\"; done < items.txt",
+          "hint_text": "Satir bazli okuma icin `while read -r` kullan.",
+          "hint_partial": "while read -r ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-020-r70",
+      "type": "single",
+      "scenario": "Runbook adiminda `items.txt` icindeki her girdiyi `xargs` ile ekrana bas.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "xargs -n 1 echo < items.txt",
+          "hint_text": "`xargs -n 1` her satiri ayri isler.",
+          "hint_partial": "xargs -n 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-021-r71",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde current directory altindaki tum `.tmp` dosyalarini bul ve sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find . -name '*.tmp' -print0 | xargs -0 rm -f",
+          "hint_text": "Bosluk guvenli silme icin `-print0` ve `xargs -0` kullan.",
+          "hint_partial": "find . -name ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-022-r72",
+      "type": "single",
+      "scenario": "Incident sonrasinda tarih formatini `YYYY-MM-DD_HH-MM-SS` olarak yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "date '+%F_%H-%M-%S'",
+          "hint_text": "Formatli tarih icin `date '+format'` kullan.",
+          "hint_partial": "date '..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-023-r73",
+      "type": "single",
+      "scenario": "Bakim oncesi script cikarken `cleanup` yazdiracak EXIT trap'i ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "trap 'echo cleanup' EXIT",
+          "hint_text": "EXIT aninda calisacak komut icin `trap` kullan.",
+          "hint_partial": "trap ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-024-r74",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda kullanicidan `name` degiskenine satir oku.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "read -r name",
+          "hint_text": "Raw input okumak icin `read -r` kullan.",
+          "hint_partial": "read -r ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-025-r75",
+      "type": "single",
+      "scenario": "Deploy sonrasi hostname degerini newline ile guvenli sekilde yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "printf '%s ' \"$HOSTNAME\"",
+          "hint_text": "Guvenli string ciktisi icin `printf '%s\\n'` kullan.",
+          "hint_partial": "printf ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-011-r76",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `script.sh` dosyasini bash ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "bash script.sh",
+          "hint_text": "Script'i bash ile yorumlamak icin `bash script.sh` kullan.",
+          "hint_partial": "bash ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-012-r77",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `deploy.sh` dosyasini executable yap ve calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod +x deploy.sh && ./deploy.sh",
+          "hint_text": "Calistirmadan once execute biti ver.",
+          "hint_partial": "chmod +x ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-013-r78",
+      "type": "single",
+      "scenario": "Runbook adiminda `deploy.sh` icin syntax kontrolu yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "bash -n deploy.sh",
+          "hint_text": "Bash syntax check icin `bash -n` kullan.",
+          "hint_partial": "bash -n ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-014-r79",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `deploy.sh` script'ini ShellCheck ile lint et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "shellcheck deploy.sh",
+          "hint_text": "Shell lint icin `shellcheck` kullan.",
+          "hint_partial": "shellcheck ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-015-r80",
+      "type": "single",
+      "scenario": "Incident sonrasinda script basina guvenli bash option'larini ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "set -euo pipefail",
+          "hint_text": "Hata yakalamayi guclendirmek icin bu seti kullan.",
+          "hint_partial": "set -..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-016-r81",
+      "type": "single",
+      "scenario": "Bakim oncesi current directory'deki tum `.log` dosyalarini tek tek gzip ile sikistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "for file in *.log; do gzip \"$file\"; done",
+          "hint_text": "Temel `for` dongusu ile dosyalari gez.",
+          "hint_partial": "for file in ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-017-r82",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `users.txt` icindeki her satiri ekrana yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "for user in $(cat users.txt); do echo \"$user\"; done",
+          "hint_text": "Kisa dongu icin `for var in $(cat file)` kullan.",
+          "hint_partial": "for user in ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-018-r83",
+      "type": "single",
+      "scenario": "Deploy sonrasi `config.yml` dosyasi varsa `ok` yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "if [ -f config.yml ]; then echo ok; fi",
+          "hint_text": "Dosya kontrolu icin `[ -f file ]` kullan.",
+          "hint_partial": "if [ -f ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-019-r84",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `items.txt` dosyasini satir satir oku ve her satiri yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "while read -r line; do echo \"$line\"; done < items.txt",
+          "hint_text": "Satir bazli okuma icin `while read -r` kullan.",
+          "hint_partial": "while read -r ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-020-r85",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `items.txt` icindeki her girdiyi `xargs` ile ekrana bas.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "xargs -n 1 echo < items.txt",
+          "hint_text": "`xargs -n 1` her satiri ayri isler.",
+          "hint_partial": "xargs -n 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-021-r86",
+      "type": "single",
+      "scenario": "Runbook adiminda current directory altindaki tum `.tmp` dosyalarini bul ve sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find . -name '*.tmp' -print0 | xargs -0 rm -f",
+          "hint_text": "Bosluk guvenli silme icin `-print0` ve `xargs -0` kullan.",
+          "hint_partial": "find . -name ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-022-r87",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde tarih formatini `YYYY-MM-DD_HH-MM-SS` olarak yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "date '+%F_%H-%M-%S'",
+          "hint_text": "Formatli tarih icin `date '+format'` kullan.",
+          "hint_partial": "date '..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-023-r88",
+      "type": "single",
+      "scenario": "Incident sonrasinda script cikarken `cleanup` yazdiracak EXIT trap'i ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "trap 'echo cleanup' EXIT",
+          "hint_text": "EXIT aninda calisacak komut icin `trap` kullan.",
+          "hint_partial": "trap ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-024-r89",
+      "type": "single",
+      "scenario": "Bakim oncesi kullanicidan `name` degiskenine satir oku.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "read -r name",
+          "hint_text": "Raw input okumak icin `read -r` kullan.",
+          "hint_partial": "read -r ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-025-r90",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda hostname degerini newline ile guvenli sekilde yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "printf '%s ' \"$HOSTNAME\"",
+          "hint_text": "Guvenli string ciktisi icin `printf '%s\\n'` kullan.",
+          "hint_partial": "printf ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-011-r91",
+      "type": "single",
+      "scenario": "Deploy sonrasi `script.sh` dosyasini bash ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "bash script.sh",
+          "hint_text": "Script'i bash ile yorumlamak icin `bash script.sh` kullan.",
+          "hint_partial": "bash ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-012-r92",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `deploy.sh` dosyasini executable yap ve calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod +x deploy.sh && ./deploy.sh",
+          "hint_text": "Calistirmadan once execute biti ver.",
+          "hint_partial": "chmod +x ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-013-r93",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `deploy.sh` icin syntax kontrolu yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "bash -n deploy.sh",
+          "hint_text": "Bash syntax check icin `bash -n` kullan.",
+          "hint_partial": "bash -n ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-014-r94",
+      "type": "single",
+      "scenario": "Runbook adiminda `deploy.sh` script'ini ShellCheck ile lint et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "shellcheck deploy.sh",
+          "hint_text": "Shell lint icin `shellcheck` kullan.",
+          "hint_partial": "shellcheck ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-015-r95",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde script basina guvenli bash option'larini ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "set -euo pipefail",
+          "hint_text": "Hata yakalamayi guclendirmek icin bu seti kullan.",
+          "hint_partial": "set -..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-016-r96",
+      "type": "single",
+      "scenario": "Incident sonrasinda current directory'deki tum `.log` dosyalarini tek tek gzip ile sikistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "for file in *.log; do gzip \"$file\"; done",
+          "hint_text": "Temel `for` dongusu ile dosyalari gez.",
+          "hint_partial": "for file in ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-017-r97",
+      "type": "single",
+      "scenario": "Bakim oncesi `users.txt` icindeki her satiri ekrana yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "for user in $(cat users.txt); do echo \"$user\"; done",
+          "hint_text": "Kisa dongu icin `for var in $(cat file)` kullan.",
+          "hint_partial": "for user in ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-018-r98",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `config.yml` dosyasi varsa `ok` yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "if [ -f config.yml ]; then echo ok; fi",
+          "hint_text": "Dosya kontrolu icin `[ -f file ]` kullan.",
+          "hint_partial": "if [ -f ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-019-r99",
+      "type": "single",
+      "scenario": "Deploy sonrasi `items.txt` dosyasini satir satir oku ve her satiri yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "while read -r line; do echo \"$line\"; done < items.txt",
+          "hint_text": "Satir bazli okuma icin `while read -r` kullan.",
+          "hint_partial": "while read -r ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-020-r100",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `items.txt` icindeki her girdiyi `xargs` ile ekrana bas.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "xargs -n 1 echo < items.txt",
+          "hint_text": "`xargs -n 1` her satiri ayri isler.",
+          "hint_partial": "xargs -n 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-021-r101",
+      "type": "single",
+      "scenario": "Yeni acilan hostta current directory altindaki tum `.tmp` dosyalarini bul ve sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find . -name '*.tmp' -print0 | xargs -0 rm -f",
+          "hint_text": "Bosluk guvenli silme icin `-print0` ve `xargs -0` kullan.",
+          "hint_partial": "find . -name ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-022-r102",
+      "type": "single",
+      "scenario": "Runbook adiminda tarih formatini `YYYY-MM-DD_HH-MM-SS` olarak yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "date '+%F_%H-%M-%S'",
+          "hint_text": "Formatli tarih icin `date '+format'` kullan.",
+          "hint_partial": "date '..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-023-r103",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde script cikarken `cleanup` yazdiracak EXIT trap'i ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "trap 'echo cleanup' EXIT",
+          "hint_text": "EXIT aninda calisacak komut icin `trap` kullan.",
+          "hint_partial": "trap ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-024-r104",
+      "type": "single",
+      "scenario": "Incident sonrasinda kullanicidan `name` degiskenine satir oku.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "read -r name",
+          "hint_text": "Raw input okumak icin `read -r` kullan.",
+          "hint_partial": "read -r ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-025-r105",
+      "type": "single",
+      "scenario": "Bakim oncesi hostname degerini newline ile guvenli sekilde yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "printf '%s ' \"$HOSTNAME\"",
+          "hint_text": "Guvenli string ciktisi icin `printf '%s\\n'` kullan.",
+          "hint_partial": "printf ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-011-r106",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `script.sh` dosyasini bash ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "bash script.sh",
+          "hint_text": "Script'i bash ile yorumlamak icin `bash script.sh` kullan.",
+          "hint_partial": "bash ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-012-r107",
+      "type": "single",
+      "scenario": "Deploy sonrasi `deploy.sh` dosyasini executable yap ve calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod +x deploy.sh && ./deploy.sh",
+          "hint_text": "Calistirmadan once execute biti ver.",
+          "hint_partial": "chmod +x ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-013-r108",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `deploy.sh` icin syntax kontrolu yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "bash -n deploy.sh",
+          "hint_text": "Bash syntax check icin `bash -n` kullan.",
+          "hint_partial": "bash -n ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-014-r109",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `deploy.sh` script'ini ShellCheck ile lint et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "shellcheck deploy.sh",
+          "hint_text": "Shell lint icin `shellcheck` kullan.",
+          "hint_partial": "shellcheck ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-015-r110",
+      "type": "single",
+      "scenario": "Runbook adiminda script basina guvenli bash option'larini ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "set -euo pipefail",
+          "hint_text": "Hata yakalamayi guclendirmek icin bu seti kullan.",
+          "hint_partial": "set -..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-016-r111",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde current directory'deki tum `.log` dosyalarini tek tek gzip ile sikistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "for file in *.log; do gzip \"$file\"; done",
+          "hint_text": "Temel `for` dongusu ile dosyalari gez.",
+          "hint_partial": "for file in ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-017-r112",
+      "type": "single",
+      "scenario": "Incident sonrasinda `users.txt` icindeki her satiri ekrana yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "for user in $(cat users.txt); do echo \"$user\"; done",
+          "hint_text": "Kisa dongu icin `for var in $(cat file)` kullan.",
+          "hint_partial": "for user in ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-018-r113",
+      "type": "single",
+      "scenario": "Bakim oncesi `config.yml` dosyasi varsa `ok` yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "if [ -f config.yml ]; then echo ok; fi",
+          "hint_text": "Dosya kontrolu icin `[ -f file ]` kullan.",
+          "hint_partial": "if [ -f ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-019-r114",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `items.txt` dosyasini satir satir oku ve her satiri yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "while read -r line; do echo \"$line\"; done < items.txt",
+          "hint_text": "Satir bazli okuma icin `while read -r` kullan.",
+          "hint_partial": "while read -r ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-020-r115",
+      "type": "single",
+      "scenario": "Deploy sonrasi `items.txt` icindeki her girdiyi `xargs` ile ekrana bas.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "xargs -n 1 echo < items.txt",
+          "hint_text": "`xargs -n 1` her satiri ayri isler.",
+          "hint_partial": "xargs -n 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-021-r116",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde current directory altindaki tum `.tmp` dosyalarini bul ve sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find . -name '*.tmp' -print0 | xargs -0 rm -f",
+          "hint_text": "Bosluk guvenli silme icin `-print0` ve `xargs -0` kullan.",
+          "hint_partial": "find . -name ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-022-r117",
+      "type": "single",
+      "scenario": "Yeni acilan hostta tarih formatini `YYYY-MM-DD_HH-MM-SS` olarak yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "date '+%F_%H-%M-%S'",
+          "hint_text": "Formatli tarih icin `date '+format'` kullan.",
+          "hint_partial": "date '..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-023-r118",
+      "type": "single",
+      "scenario": "Runbook adiminda script cikarken `cleanup` yazdiracak EXIT trap'i ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "trap 'echo cleanup' EXIT",
+          "hint_text": "EXIT aninda calisacak komut icin `trap` kullan.",
+          "hint_partial": "trap ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-024-r119",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde kullanicidan `name` degiskenine satir oku.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "read -r name",
+          "hint_text": "Raw input okumak icin `read -r` kullan.",
+          "hint_partial": "read -r ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-025-r120",
+      "type": "single",
+      "scenario": "Incident sonrasinda hostname degerini newline ile guvenli sekilde yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "printf '%s ' \"$HOSTNAME\"",
+          "hint_text": "Guvenli string ciktisi icin `printf '%s\\n'` kullan.",
+          "hint_partial": "printf ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-011-r121",
+      "type": "single",
+      "scenario": "Bakim oncesi `script.sh` dosyasini bash ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "bash script.sh",
+          "hint_text": "Script'i bash ile yorumlamak icin `bash script.sh` kullan.",
+          "hint_partial": "bash ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-012-r122",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `deploy.sh` dosyasini executable yap ve calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod +x deploy.sh && ./deploy.sh",
+          "hint_text": "Calistirmadan once execute biti ver.",
+          "hint_partial": "chmod +x ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-013-r123",
+      "type": "single",
+      "scenario": "Deploy sonrasi `deploy.sh` icin syntax kontrolu yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "bash -n deploy.sh",
+          "hint_text": "Bash syntax check icin `bash -n` kullan.",
+          "hint_partial": "bash -n ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-014-r124",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `deploy.sh` script'ini ShellCheck ile lint et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "shellcheck deploy.sh",
+          "hint_text": "Shell lint icin `shellcheck` kullan.",
+          "hint_partial": "shellcheck ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-015-r125",
+      "type": "single",
+      "scenario": "Yeni acilan hostta script basina guvenli bash option'larini ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "set -euo pipefail",
+          "hint_text": "Hata yakalamayi guclendirmek icin bu seti kullan.",
+          "hint_partial": "set -..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-016-r126",
+      "type": "single",
+      "scenario": "Runbook adiminda current directory'deki tum `.log` dosyalarini tek tek gzip ile sikistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "for file in *.log; do gzip \"$file\"; done",
+          "hint_text": "Temel `for` dongusu ile dosyalari gez.",
+          "hint_partial": "for file in ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-017-r127",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `users.txt` icindeki her satiri ekrana yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "for user in $(cat users.txt); do echo \"$user\"; done",
+          "hint_text": "Kisa dongu icin `for var in $(cat file)` kullan.",
+          "hint_partial": "for user in ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-018-r128",
+      "type": "single",
+      "scenario": "Incident sonrasinda `config.yml` dosyasi varsa `ok` yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "if [ -f config.yml ]; then echo ok; fi",
+          "hint_text": "Dosya kontrolu icin `[ -f file ]` kullan.",
+          "hint_partial": "if [ -f ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-019-r129",
+      "type": "single",
+      "scenario": "Bakim oncesi `items.txt` dosyasini satir satir oku ve her satiri yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "while read -r line; do echo \"$line\"; done < items.txt",
+          "hint_text": "Satir bazli okuma icin `while read -r` kullan.",
+          "hint_partial": "while read -r ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-020-r130",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `items.txt` icindeki her girdiyi `xargs` ile ekrana bas.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "xargs -n 1 echo < items.txt",
+          "hint_text": "`xargs -n 1` her satiri ayri isler.",
+          "hint_partial": "xargs -n 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-021-r131",
+      "type": "single",
+      "scenario": "Deploy sonrasi current directory altindaki tum `.tmp` dosyalarini bul ve sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find . -name '*.tmp' -print0 | xargs -0 rm -f",
+          "hint_text": "Bosluk guvenli silme icin `-print0` ve `xargs -0` kullan.",
+          "hint_partial": "find . -name ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-022-r132",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde tarih formatini `YYYY-MM-DD_HH-MM-SS` olarak yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "date '+%F_%H-%M-%S'",
+          "hint_text": "Formatli tarih icin `date '+format'` kullan.",
+          "hint_partial": "date '..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-023-r133",
+      "type": "single",
+      "scenario": "Yeni acilan hostta script cikarken `cleanup` yazdiracak EXIT trap'i ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "trap 'echo cleanup' EXIT",
+          "hint_text": "EXIT aninda calisacak komut icin `trap` kullan.",
+          "hint_partial": "trap ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-024-r134",
+      "type": "single",
+      "scenario": "Runbook adiminda kullanicidan `name` degiskenine satir oku.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "read -r name",
+          "hint_text": "Raw input okumak icin `read -r` kullan.",
+          "hint_partial": "read -r ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-025-r135",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde hostname degerini newline ile guvenli sekilde yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "printf '%s ' \"$HOSTNAME\"",
+          "hint_text": "Guvenli string ciktisi icin `printf '%s\\n'` kullan.",
+          "hint_partial": "printf ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-011-r136",
+      "type": "single",
+      "scenario": "Incident sonrasinda `script.sh` dosyasini bash ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "bash script.sh",
+          "hint_text": "Script'i bash ile yorumlamak icin `bash script.sh` kullan.",
+          "hint_partial": "bash ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-012-r137",
+      "type": "single",
+      "scenario": "Bakim oncesi `deploy.sh` dosyasini executable yap ve calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod +x deploy.sh && ./deploy.sh",
+          "hint_text": "Calistirmadan once execute biti ver.",
+          "hint_partial": "chmod +x ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-013-r138",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `deploy.sh` icin syntax kontrolu yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "bash -n deploy.sh",
+          "hint_text": "Bash syntax check icin `bash -n` kullan.",
+          "hint_partial": "bash -n ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-014-r139",
+      "type": "single",
+      "scenario": "Deploy sonrasi `deploy.sh` script'ini ShellCheck ile lint et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "shellcheck deploy.sh",
+          "hint_text": "Shell lint icin `shellcheck` kullan.",
+          "hint_partial": "shellcheck ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-015-r140",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde script basina guvenli bash option'larini ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "set -euo pipefail",
+          "hint_text": "Hata yakalamayi guclendirmek icin bu seti kullan.",
+          "hint_partial": "set -..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-016-r141",
+      "type": "single",
+      "scenario": "Yeni acilan hostta current directory'deki tum `.log` dosyalarini tek tek gzip ile sikistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "for file in *.log; do gzip \"$file\"; done",
+          "hint_text": "Temel `for` dongusu ile dosyalari gez.",
+          "hint_partial": "for file in ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-017-r142",
+      "type": "single",
+      "scenario": "Runbook adiminda `users.txt` icindeki her satiri ekrana yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "for user in $(cat users.txt); do echo \"$user\"; done",
+          "hint_text": "Kisa dongu icin `for var in $(cat file)` kullan.",
+          "hint_partial": "for user in ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-018-r143",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `config.yml` dosyasi varsa `ok` yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "if [ -f config.yml ]; then echo ok; fi",
+          "hint_text": "Dosya kontrolu icin `[ -f file ]` kullan.",
+          "hint_partial": "if [ -f ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-019-r144",
+      "type": "single",
+      "scenario": "Incident sonrasinda `items.txt` dosyasini satir satir oku ve her satiri yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "while read -r line; do echo \"$line\"; done < items.txt",
+          "hint_text": "Satir bazli okuma icin `while read -r` kullan.",
+          "hint_partial": "while read -r ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-020-r145",
+      "type": "single",
+      "scenario": "Bakim oncesi `items.txt` icindeki her girdiyi `xargs` ile ekrana bas.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "xargs -n 1 echo < items.txt",
+          "hint_text": "`xargs -n 1` her satiri ayri isler.",
+          "hint_partial": "xargs -n 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-021-r146",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda current directory altindaki tum `.tmp` dosyalarini bul ve sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find . -name '*.tmp' -print0 | xargs -0 rm -f",
+          "hint_text": "Bosluk guvenli silme icin `-print0` ve `xargs -0` kullan.",
+          "hint_partial": "find . -name ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-022-r147",
+      "type": "single",
+      "scenario": "Deploy sonrasi tarih formatini `YYYY-MM-DD_HH-MM-SS` olarak yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "date '+%F_%H-%M-%S'",
+          "hint_text": "Formatli tarih icin `date '+format'` kullan.",
+          "hint_partial": "date '..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-023-r148",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde script cikarken `cleanup` yazdiracak EXIT trap'i ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "trap 'echo cleanup' EXIT",
+          "hint_text": "EXIT aninda calisacak komut icin `trap` kullan.",
+          "hint_partial": "trap ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-024-r149",
+      "type": "single",
+      "scenario": "Yeni acilan hostta kullanicidan `name` degiskenine satir oku.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "read -r name",
+          "hint_text": "Raw input okumak icin `read -r` kullan.",
+          "hint_partial": "read -r ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-025-r150",
+      "type": "single",
+      "scenario": "Runbook adiminda hostname degerini newline ile guvenli sekilde yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "printf '%s ' \"$HOSTNAME\"",
+          "hint_text": "Guvenli string ciktisi icin `printf '%s\\n'` kullan.",
+          "hint_partial": "printf ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-011-r151",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `script.sh` dosyasini bash ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "bash script.sh",
+          "hint_text": "Script'i bash ile yorumlamak icin `bash script.sh` kullan.",
+          "hint_partial": "bash ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-012-r152",
+      "type": "single",
+      "scenario": "Incident sonrasinda `deploy.sh` dosyasini executable yap ve calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod +x deploy.sh && ./deploy.sh",
+          "hint_text": "Calistirmadan once execute biti ver.",
+          "hint_partial": "chmod +x ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-013-r153",
+      "type": "single",
+      "scenario": "Bakim oncesi `deploy.sh` icin syntax kontrolu yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "bash -n deploy.sh",
+          "hint_text": "Bash syntax check icin `bash -n` kullan.",
+          "hint_partial": "bash -n ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-014-r154",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `deploy.sh` script'ini ShellCheck ile lint et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "shellcheck deploy.sh",
+          "hint_text": "Shell lint icin `shellcheck` kullan.",
+          "hint_partial": "shellcheck ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-015-r155",
+      "type": "single",
+      "scenario": "Deploy sonrasi script basina guvenli bash option'larini ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "set -euo pipefail",
+          "hint_text": "Hata yakalamayi guclendirmek icin bu seti kullan.",
+          "hint_partial": "set -..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-016-r156",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde current directory'deki tum `.log` dosyalarini tek tek gzip ile sikistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "for file in *.log; do gzip \"$file\"; done",
+          "hint_text": "Temel `for` dongusu ile dosyalari gez.",
+          "hint_partial": "for file in ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-017-r157",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `users.txt` icindeki her satiri ekrana yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "for user in $(cat users.txt); do echo \"$user\"; done",
+          "hint_text": "Kisa dongu icin `for var in $(cat file)` kullan.",
+          "hint_partial": "for user in ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-018-r158",
+      "type": "single",
+      "scenario": "Runbook adiminda `config.yml` dosyasi varsa `ok` yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "if [ -f config.yml ]; then echo ok; fi",
+          "hint_text": "Dosya kontrolu icin `[ -f file ]` kullan.",
+          "hint_partial": "if [ -f ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-019-r159",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `items.txt` dosyasini satir satir oku ve her satiri yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "while read -r line; do echo \"$line\"; done < items.txt",
+          "hint_text": "Satir bazli okuma icin `while read -r` kullan.",
+          "hint_partial": "while read -r ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-020-r160",
+      "type": "single",
+      "scenario": "Incident sonrasinda `items.txt` icindeki her girdiyi `xargs` ile ekrana bas.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "xargs -n 1 echo < items.txt",
+          "hint_text": "`xargs -n 1` her satiri ayri isler.",
+          "hint_partial": "xargs -n 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-021-r161",
+      "type": "single",
+      "scenario": "Bakim oncesi current directory altindaki tum `.tmp` dosyalarini bul ve sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find . -name '*.tmp' -print0 | xargs -0 rm -f",
+          "hint_text": "Bosluk guvenli silme icin `-print0` ve `xargs -0` kullan.",
+          "hint_partial": "find . -name ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-022-r162",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda tarih formatini `YYYY-MM-DD_HH-MM-SS` olarak yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "date '+%F_%H-%M-%S'",
+          "hint_text": "Formatli tarih icin `date '+format'` kullan.",
+          "hint_partial": "date '..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-023-r163",
+      "type": "single",
+      "scenario": "Deploy sonrasi script cikarken `cleanup` yazdiracak EXIT trap'i ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "trap 'echo cleanup' EXIT",
+          "hint_text": "EXIT aninda calisacak komut icin `trap` kullan.",
+          "hint_partial": "trap ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-024-r164",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde kullanicidan `name` degiskenine satir oku.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "read -r name",
+          "hint_text": "Raw input okumak icin `read -r` kullan.",
+          "hint_partial": "read -r ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-025-r165",
+      "type": "single",
+      "scenario": "Yeni acilan hostta hostname degerini newline ile guvenli sekilde yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "printf '%s ' \"$HOSTNAME\"",
+          "hint_text": "Guvenli string ciktisi icin `printf '%s\\n'` kullan.",
+          "hint_partial": "printf ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-011-r166",
+      "type": "single",
+      "scenario": "Runbook adiminda `script.sh` dosyasini bash ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "bash script.sh",
+          "hint_text": "Script'i bash ile yorumlamak icin `bash script.sh` kullan.",
+          "hint_partial": "bash ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-012-r167",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `deploy.sh` dosyasini executable yap ve calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod +x deploy.sh && ./deploy.sh",
+          "hint_text": "Calistirmadan once execute biti ver.",
+          "hint_partial": "chmod +x ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-013-r168",
+      "type": "single",
+      "scenario": "Incident sonrasinda `deploy.sh` icin syntax kontrolu yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "bash -n deploy.sh",
+          "hint_text": "Bash syntax check icin `bash -n` kullan.",
+          "hint_partial": "bash -n ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-014-r169",
+      "type": "single",
+      "scenario": "Bakim oncesi `deploy.sh` script'ini ShellCheck ile lint et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "shellcheck deploy.sh",
+          "hint_text": "Shell lint icin `shellcheck` kullan.",
+          "hint_partial": "shellcheck ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-015-r170",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda script basina guvenli bash option'larini ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "set -euo pipefail",
+          "hint_text": "Hata yakalamayi guclendirmek icin bu seti kullan.",
+          "hint_partial": "set -..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-016-r171",
+      "type": "single",
+      "scenario": "Deploy sonrasi current directory'deki tum `.log` dosyalarini tek tek gzip ile sikistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "for file in *.log; do gzip \"$file\"; done",
+          "hint_text": "Temel `for` dongusu ile dosyalari gez.",
+          "hint_partial": "for file in ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-017-r172",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `users.txt` icindeki her satiri ekrana yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "for user in $(cat users.txt); do echo \"$user\"; done",
+          "hint_text": "Kisa dongu icin `for var in $(cat file)` kullan.",
+          "hint_partial": "for user in ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-018-r173",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `config.yml` dosyasi varsa `ok` yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "if [ -f config.yml ]; then echo ok; fi",
+          "hint_text": "Dosya kontrolu icin `[ -f file ]` kullan.",
+          "hint_partial": "if [ -f ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-019-r174",
+      "type": "single",
+      "scenario": "Runbook adiminda `items.txt` dosyasini satir satir oku ve her satiri yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "while read -r line; do echo \"$line\"; done < items.txt",
+          "hint_text": "Satir bazli okuma icin `while read -r` kullan.",
+          "hint_partial": "while read -r ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-020-r175",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `items.txt` icindeki her girdiyi `xargs` ile ekrana bas.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "xargs -n 1 echo < items.txt",
+          "hint_text": "`xargs -n 1` her satiri ayri isler.",
+          "hint_partial": "xargs -n 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-021-r176",
+      "type": "single",
+      "scenario": "Incident sonrasinda current directory altindaki tum `.tmp` dosyalarini bul ve sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find . -name '*.tmp' -print0 | xargs -0 rm -f",
+          "hint_text": "Bosluk guvenli silme icin `-print0` ve `xargs -0` kullan.",
+          "hint_partial": "find . -name ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-022-r177",
+      "type": "single",
+      "scenario": "Bakim oncesi tarih formatini `YYYY-MM-DD_HH-MM-SS` olarak yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "date '+%F_%H-%M-%S'",
+          "hint_text": "Formatli tarih icin `date '+format'` kullan.",
+          "hint_partial": "date '..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-023-r178",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda script cikarken `cleanup` yazdiracak EXIT trap'i ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "trap 'echo cleanup' EXIT",
+          "hint_text": "EXIT aninda calisacak komut icin `trap` kullan.",
+          "hint_partial": "trap ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-024-r179",
+      "type": "single",
+      "scenario": "Deploy sonrasi kullanicidan `name` degiskenine satir oku.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "read -r name",
+          "hint_text": "Raw input okumak icin `read -r` kullan.",
+          "hint_partial": "read -r ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-025-r180",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde hostname degerini newline ile guvenli sekilde yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "printf '%s ' \"$HOSTNAME\"",
+          "hint_text": "Guvenli string ciktisi icin `printf '%s\\n'` kullan.",
+          "hint_partial": "printf ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-011-r181",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `script.sh` dosyasini bash ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "bash script.sh",
+          "hint_text": "Script'i bash ile yorumlamak icin `bash script.sh` kullan.",
+          "hint_partial": "bash ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-012-r182",
+      "type": "single",
+      "scenario": "Runbook adiminda `deploy.sh` dosyasini executable yap ve calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod +x deploy.sh && ./deploy.sh",
+          "hint_text": "Calistirmadan once execute biti ver.",
+          "hint_partial": "chmod +x ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-013-r183",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `deploy.sh` icin syntax kontrolu yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "bash -n deploy.sh",
+          "hint_text": "Bash syntax check icin `bash -n` kullan.",
+          "hint_partial": "bash -n ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-014-r184",
+      "type": "single",
+      "scenario": "Incident sonrasinda `deploy.sh` script'ini ShellCheck ile lint et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "shellcheck deploy.sh",
+          "hint_text": "Shell lint icin `shellcheck` kullan.",
+          "hint_partial": "shellcheck ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-015-r185",
+      "type": "single",
+      "scenario": "Bakim oncesi script basina guvenli bash option'larini ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "set -euo pipefail",
+          "hint_text": "Hata yakalamayi guclendirmek icin bu seti kullan.",
+          "hint_partial": "set -..."
+        }
+      ]
+    }
+  ]
+}

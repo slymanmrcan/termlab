@@ -1,0 +1,129 @@
+{
+  "level": "senior",
+  "topic": "monitoring",
+  "questions": [
+    {
+      "id": "smon-001",
+      "type": "single",
+      "scenario": "Tüm CPU core'ları için per-core kullanım istatistiklerini göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mpstat -P ALL 1",
+          "hint_text": "`mpstat -P ALL` her core için veri verir.",
+          "hint_partial": "mpstat -P ALL ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-002",
+      "type": "single",
+      "scenario": "Network interface istatistiklerini `sar` ile 5 örnek topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sar -n DEV 1 5",
+          "hint_text": "Network device metrikleri için `sar -n DEV` kullan.",
+          "hint_partial": "sar -n DEV ... ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-003",
+      "type": "multi-step",
+      "scenario": "Kernel seviyesinde hotspot bulmak icin 10 saniyelik perf orneklemesi al, sonra stdio raporu ozetle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "perf record -F 99 -a -g -- sleep 10",
+          "hint_text": "System-wide sample toplamak icin `perf record -F 99 -a -g -- sleep 10` kullan.",
+          "hint_partial": "perf record -F 99 -a -g -- ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "perf report --stdio | head -40",
+          "hint_text": "Interaktif ekran yerine metin raporu icin `perf report --stdio` kullan.",
+          "hint_partial": "perf report --stdio ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-004",
+      "type": "single",
+      "scenario": "PID 4242 process'i için performance counter özetini al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "perf stat -p 4242",
+          "hint_text": "`perf stat -p PID` process bazlı sayaç özetini verir.",
+          "hint_partial": "perf stat -p ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-005",
+      "type": "single",
+      "scenario": "CPU, disk, network ve system metriklerini aynı anda izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dstat -cdngy 1",
+          "hint_text": "`dstat` ile çoklu sistem metriğini tek ekranda izle.",
+          "hint_partial": "dstat -cdngy ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-006",
+      "type": "single",
+      "scenario": "Disk latency ve utilization verisini `iostat` ile extended format'ta al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iostat -xz 1",
+          "hint_text": "Extended disk metriği için `iostat -xz` kullan.",
+          "hint_partial": "iostat -xz ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-007",
+      "type": "single",
+      "scenario": "Per-process memory kullanımını `pidstat` ile izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pidstat -r 1",
+          "hint_text": "Memory odaklı `pidstat` için `-r` kullan.",
+          "hint_partial": "pidstat -r ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-008",
+      "type": "single",
+      "scenario": "Kernel scheduler event'lerini `perf` ile say.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "perf stat -e sched:sched_switch sleep 5",
+          "hint_text": "Belirli event için `perf stat -e` kullan.",
+          "hint_partial": "perf stat -e ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-010",
+      "type": "single",
+      "scenario": "Bir komut için sistem çağrılarının özet performansını `perf` ile ölç.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "perf stat ls",
+          "hint_text": "`perf stat` bir komutun sayac özetini verir.",
+          "hint_partial": "perf stat ..."
+        }
+      ]
+    }
+  ]
+}

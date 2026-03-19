@@ -1,0 +1,231 @@
+{
+  "level": "mid",
+  "topic": "text",
+  "questions": [
+    {
+      "id": "mtext-001",
+      "type": "multi-step",
+      "scenario": "500 hatasi patlamis. Once toplam 500 sayisini al, sonra en son 20 adet 500 kaydini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "grep -c ' 500 ' access.log",
+          "hint_text": "Toplam 500 sayisi icin `grep -c` kullan.",
+          "hint_partial": "grep -c ' 500 ' ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "grep ' 500 ' access.log | tail -20",
+          "hint_text": "En son 500 kayitlari icin filtreyi `tail -20` ile birlestir.",
+          "hint_partial": "grep ' 500 ' access.log | tail -20"
+        }
+      ]
+    },
+    {
+      "id": "mtext-002",
+      "type": "single",
+      "scenario": "access.log'dan sadece IP adreslerini çek, sırala ve tekrarları kaldır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk '{print $1}' access.log | sort -u",
+          "hint_text": "awk ile ilk column, sort -u unique",
+          "hint_partial": "awk '{print $1}' access.log | sort ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-003",
+      "type": "multi-step",
+      "scenario": "error.log file'indeki her line'a tarih ekleyerek yeni bir file'a kaydet.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "while IFS= read -r line; do echo \"$(date '+%Y-%m-%d') $line\"; done < error.log > error_dated.log",
+          "hint_text": "while read ile line line oku, date ile prefix ekle",
+          "hint_partial": "while IFS= read -r line; do echo \"$(date '+%Y-%m-%d') $line\"; done < error.log > ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-004",
+      "type": "single",
+      "scenario": "config.yml file'inde # ile başlayan comment line'larını göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "grep '^#' config.yml",
+          "hint_text": "^ line başını ifade eder",
+          "hint_partial": "grep '^#' ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-005",
+      "type": "single",
+      "scenario": "data.csv'nin 3. columnundaki benzersiz değerleri say.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cut -d',' -f3 data.csv | sort | uniq -c | sort -rn",
+          "hint_text": "cut ile column, sort, uniq -c ile say, sırala",
+          "hint_partial": "cut -d',' -f3 data.csv | sort | uniq -c | ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-006",
+      "type": "single",
+      "scenario": "Birden fazla log file'i birleştirip zaman sırasına göre sırala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat *.log | sort",
+          "hint_text": "cat ile tüm log'ları birleştir, sort ile sırala",
+          "hint_partial": "cat *.log | ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-007",
+      "type": "multi-step",
+      "scenario": "Uygulama logunda son 100 satirdaki WARN ve ERROR'lari ayir. Once filtrele, sonra kategoriye gore say.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tail -n 100 app.log | grep -E 'WARN|ERROR'",
+          "hint_text": "Son 100 satirda WARN ve ERROR filtrelemek icin mevcut pipe'i kullan.",
+          "hint_partial": "tail -n 100 app.log | grep -E ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "tail -n 100 app.log | grep -E 'WARN|ERROR' | cut -d' ' -f1 | sort | uniq -c",
+          "hint_text": "Seviyeleri saymak icin filtre cikisindan ilk kolonu alip grupla.",
+          "hint_partial": "tail -n 100 app.log | grep -E ... | cut ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-008",
+      "type": "single",
+      "scenario": "server.log'daki her linedaki IP adreslerini maskele (son iki okteti gizle).",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sed 's/\\([0-9]\\{1,3\\}\\.[0-9]\\{1,3\\}\\)\\.[0-9]\\{1,3\\}\\.[0-9]\\{1,3\\}/\\1.x.x/g' server.log",
+          "hint_text": "sed ile regex yakalama group ve backreference kullan",
+          "hint_partial": "sed 's/\\([0-9]\\{1,3\\}\\.[0-9]\\{1,3\\}\\)\\.[0-9]\\{1,3\\}\\.[0-9]\\{1,3\\}/\\1.x.x/g' ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-009",
+      "type": "single",
+      "scenario": "users.txt file'i alfabetik olarak ters sıraya diz.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sort -r users.txt",
+          "hint_text": "sort -r reverse order",
+          "hint_partial": "sort -r ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-010",
+      "type": "multi-step",
+      "scenario": "İki config file'inin farkını gör, sonra patch olarak kaydet.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "diff config.old config.new",
+          "hint_text": "diff ile iki file'ın farkı",
+          "hint_partial": "diff config.old ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "diff config.old config.new > config.patch",
+          "hint_text": "diff output'unu file'a yönlendir",
+          "hint_partial": "diff config.old config.new > ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-011",
+      "type": "single",
+      "scenario": "notes.txt file'indeki ilk kelimeyi her satir icin yazdir",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk '{print $1}' notes.txt",
+          "hint_text": "Ilk alan icin awk kullan",
+          "hint_partial": "awk '{print $1}' ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-012",
+      "type": "multi-step",
+      "scenario": "notes.txt icinde tekrar eden satirlari temizlemeden once hangi satirlar ne kadar tekrar ediyor gor, sonra uniq hale getir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sort notes.txt | uniq -c | sort -nr",
+          "hint_text": "Tekrar sayisini gormek icin `uniq -c` kullan.",
+          "hint_partial": "sort notes.txt | uniq -c ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "sort notes.txt | uniq",
+          "hint_text": "Tekilleştirilmis cikti icin `sort ... | uniq` kullan.",
+          "hint_partial": "sort notes.txt | uniq"
+        }
+      ]
+    },
+    {
+      "id": "mtext-013",
+      "type": "single",
+      "scenario": "notes.txt file'indeki tab karakterlerini boslukla degistirerek ekrana yazdir",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tr ' ' ' ' < notes.txt",
+          "hint_text": "Karakter donusumu icin tr kullan",
+          "hint_partial": "tr ... ... < ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-014",
+      "type": "single",
+      "scenario": "config.txt file'ın ilk 20 satirini satir numaralariyla goster",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "nl -ba config.txt | head -n 20",
+          "hint_text": "Numaralandirma icin nl, sonra head kullan",
+          "hint_partial": "nl -ba ... | head -n 20"
+        }
+      ]
+    },
+    {
+      "id": "mtext-015",
+      "type": "multi-step",
+      "scenario": "app.log icinde error kelimesini ara ve sonra toplam eslesme sayisini goster",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "grep error app.log",
+          "hint_text": "Ilk adimda error satirlarini goster",
+          "hint_partial": "grep ... ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "grep -c error app.log",
+          "hint_text": "Ikinci adimda sadece sayi istiyorsun",
+          "hint_partial": "grep -c ... ..."
+        }
+      ]
+    }
+  ]
+}

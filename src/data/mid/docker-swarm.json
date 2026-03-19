@@ -1,0 +1,136 @@
+{
+  "level": "mid",
+  "topic": "docker-swarm",
+  "questions": [
+    {
+      "id": "mds-001",
+      "type": "single",
+      "scenario": "`web` adinda 3 replica'li ve 80 portu publish edilmis nginx service olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service create --name web --replicas 3 -p 80:80 nginx",
+          "hint_text": "Replica ve port icin ilgili flag'leri birlestir.",
+          "hint_partial": "docker service create ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-002",
+      "type": "single",
+      "scenario": "`web` service image'ini `nginx:alpine` olarak guncelle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --image nginx:alpine web",
+          "hint_text": "Image degisimi icin `docker service update --image` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-003",
+      "type": "single",
+      "scenario": "`web` service replica sayisini 5'e cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service scale web=5",
+          "hint_text": "Scale icin `docker service scale service=n` kullan.",
+          "hint_partial": "docker service scale ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-004",
+      "type": "single",
+      "scenario": "`worker1` node'unu yeni task almayacak sekilde drain et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node update --availability drain worker1",
+          "hint_text": "Node availability icin `docker node update --availability` kullan.",
+          "hint_partial": "docker node update ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-005",
+      "type": "single",
+      "scenario": "`worker1` uzerindeki swarm task'lerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node ps worker1",
+          "hint_text": "Node task listesi icin `docker node ps` kullan.",
+          "hint_partial": "docker node ps ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-006",
+      "type": "single",
+      "scenario": "`app-net` adinda attachable overlay network olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network create -d overlay --attachable app-net",
+          "hint_text": "Attachable overlay icin `--attachable` ekle.",
+          "hint_partial": "docker network create ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-007",
+      "type": "single",
+      "scenario": "Swarm secret listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker secret ls",
+          "hint_text": "Secret listesi icin `docker secret ls` kullan.",
+          "hint_partial": "docker secret ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-008",
+      "type": "single",
+      "scenario": "Swarm config listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker config ls",
+          "hint_text": "Config listesi icin `docker config ls` kullan.",
+          "hint_partial": "docker config ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-009",
+      "type": "single",
+      "scenario": "`stack.yml` ile `mystack` adinda stack deploy et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack deploy -c stack.yml mystack",
+          "hint_text": "Stack deploy icin `docker stack deploy -c file stack` kullan.",
+          "hint_partial": "docker stack deploy ..."
+        }
+      ]
+    },
+    {
+      "id": "mds-010",
+      "type": "single",
+      "scenario": "`mystack` altindaki service'leri goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack services mystack",
+          "hint_text": "Stack service listesi icin `docker stack services` kullan.",
+          "hint_partial": "docker stack services ..."
+        }
+      ]
+    }
+  ]
+}

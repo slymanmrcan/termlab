@@ -1,0 +1,2606 @@
+{
+  "level": "senior",
+  "topic": "package",
+  "questions": [
+    {
+      "id": "spkg-011",
+      "type": "single",
+      "scenario": "`nginx` paketinin tum mevcut versiyonlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "apt-cache madison nginx",
+          "hint_text": "Version listesi icin `apt-cache madison` kullan.",
+          "hint_partial": "apt-cache madison ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-012",
+      "type": "single",
+      "scenario": "Belirli versiyonda `nginx` kur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "apt-get install nginx=1.24.0-1",
+          "hint_text": "Version pin icin `package=version` formatini kullan.",
+          "hint_partial": "apt-get install ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-013",
+      "type": "single",
+      "scenario": "Hold altindaki dpkg secimlerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dpkg --get-selections | grep hold",
+          "hint_text": "Secim listesini `grep hold` ile filtrele.",
+          "hint_partial": "dpkg --get-selections ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-014",
+      "type": "single",
+      "scenario": "`nginx` paketinin neden kuruldugunu aptitude ile acikla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "aptitude why nginx",
+          "hint_text": "Dependency nedeni icin `aptitude why` kullan.",
+          "hint_partial": "aptitude why ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-015",
+      "type": "single",
+      "scenario": "`nginx` paketinin gerektirdigi paketleri DNF ile listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dnf repoquery --requires nginx",
+          "hint_text": "Dependency sorgusu icin `repoquery --requires` kullan.",
+          "hint_partial": "dnf repoquery ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-016",
+      "type": "single",
+      "scenario": "DNF transaction gecmisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dnf history list",
+          "hint_text": "Transaction history icin `dnf history list` kullan.",
+          "hint_partial": "dnf history ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-017",
+      "type": "single",
+      "scenario": "YUM repository'lerini enabled/disabled detaylariyla goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "yum repolist all",
+          "hint_text": "Tum repo'lar icin `yum repolist all` kullan.",
+          "hint_partial": "yum repolist ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-018",
+      "type": "single",
+      "scenario": "RPM veritabaninda degismis dosyalari dogrula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "rpm -Va",
+          "hint_text": "RPM verify icin `rpm -Va` kullan.",
+          "hint_partial": "rpm -Va"
+        }
+      ]
+    },
+    {
+      "id": "spkg-019",
+      "type": "single",
+      "scenario": "`openssl` paketinin changelog'unun ilk satirlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "rpm -q --changelog openssl | head",
+          "hint_text": "Changelog icin `rpm -q --changelog` kullan.",
+          "hint_partial": "rpm -q --changelog ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-020",
+      "type": "single",
+      "scenario": "SUSE tarafindaki uygulanabilir patch'leri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "zypper patches",
+          "hint_text": "Patch listesi icin `zypper patches` kullan.",
+          "hint_partial": "zypper ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-021",
+      "type": "single",
+      "scenario": "Arch sistemde orphan paketleri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pacman -Qdt",
+          "hint_text": "Orphan paketler icin `pacman -Qdt` kullan.",
+          "hint_partial": "pacman -..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-022",
+      "type": "single",
+      "scenario": "Arch sistemde tam sistem guncellemesi yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pacman -Syu",
+          "hint_text": "Tam sync+upgrade icin `pacman -Syu` kullan.",
+          "hint_partial": "pacman -..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-023",
+      "type": "single",
+      "scenario": "`nginx` paketinin source metadata bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "apt-cache showsrc nginx",
+          "hint_text": "Source package bilgisi icin `apt-cache showsrc` kullan.",
+          "hint_partial": "apt-cache showsrc ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-024",
+      "type": "single",
+      "scenario": "Bookworm icin guvenlik aciklarini tarat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "debsecan --suite bookworm",
+          "hint_text": "Debian security taramasi icin `debsecan` kullan.",
+          "hint_partial": "debsecan ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-025",
+      "type": "single",
+      "scenario": "Restart gerektiren servisleri kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "needrestart",
+          "hint_text": "Restart ihtiyaci icin `needrestart` kullan.",
+          "hint_partial": "needrestart"
+        }
+      ]
+    },
+    {
+      "id": "spkg-011-r1",
+      "type": "single",
+      "scenario": "Bakim oncesi `nginx-1` paketinin tum mevcut versiyonlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "apt-cache-1 madison nginx-1",
+          "hint_text": "Version listesi icin `apt-cache-1 madison` kullan.",
+          "hint_partial": "apt-cache-1 madison ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-012-r2",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda belirli versiyonda `postgres-2-2` kur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "apt-get install postgres-2-2=4.24.0-1",
+          "hint_text": "Version pin icin `package=version` formatini kullan.",
+          "hint_partial": "apt-get install ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-013-r3",
+      "type": "single",
+      "scenario": "Deploy sonrasi hold altindaki dpkg secimlerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dpkg --get-selections | grep hold",
+          "hint_text": "Secim listesini `grep hold` ile filtrele.",
+          "hint_partial": "dpkg --get-selections ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-014-r4",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `traefik-4` paketinin neden kuruldugunu aptitude ile acikla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "aptitude why traefik-4",
+          "hint_text": "Dependency nedeni icin `aptitude why` kullan.",
+          "hint_partial": "aptitude why ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-015-r5",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `haproxy-5` paketinin gerektirdigi paketleri DNF ile listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dnf repoquery --requires haproxy-5",
+          "hint_text": "Dependency sorgusu icin `repoquery --requires` kullan.",
+          "hint_partial": "dnf repoquery ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-016-r6",
+      "type": "single",
+      "scenario": "Runbook adiminda dNF transaction gecmisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dnf history list",
+          "hint_text": "Transaction history icin `dnf history list` kullan.",
+          "hint_partial": "dnf history ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-017-r7",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde yUM repository'lerini enabled/disabled detaylariyla goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "yum repolist all",
+          "hint_text": "Tum repo'lar icin `yum repolist all` kullan.",
+          "hint_partial": "yum repolist ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-018-r8",
+      "type": "single",
+      "scenario": "Incident sonrasinda rPM veritabaninda degismis dosyalari dogrula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "rpm -Va",
+          "hint_text": "RPM verify icin `rpm -Va` kullan.",
+          "hint_partial": "rpm -Va"
+        }
+      ]
+    },
+    {
+      "id": "spkg-019-r9",
+      "type": "single",
+      "scenario": "Bakim oncesi `openssl` paketinin changelog'unun ilk satirlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "rpm -q --changelog openssl | head",
+          "hint_text": "Changelog icin `rpm -q --changelog` kullan.",
+          "hint_partial": "rpm -q --changelog ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-020-r10",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda sUSE tarafindaki uygulanabilir patch'leri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "zypper patches",
+          "hint_text": "Patch listesi icin `zypper patches` kullan.",
+          "hint_partial": "zypper ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-021-r11",
+      "type": "single",
+      "scenario": "Deploy sonrasi arch sistemde orphan paketleri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pacman -Qdt",
+          "hint_text": "Orphan paketler icin `pacman -Qdt` kullan.",
+          "hint_partial": "pacman -..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-022-r12",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde arch sistemde tam sistem guncellemesi yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pacman -Syu",
+          "hint_text": "Tam sync+upgrade icin `pacman -Syu` kullan.",
+          "hint_partial": "pacman -..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-023-r13",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `nginx-13` paketinin source metadata bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "apt-cache-13 showsrc nginx-13",
+          "hint_text": "Source package bilgisi icin `apt-cache-13 showsrc` kullan.",
+          "hint_partial": "apt-cache-13 showsrc ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-024-r14",
+      "type": "single",
+      "scenario": "Runbook adiminda bookworm icin guvenlik aciklarini tarat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "debsecan --suite bookworm",
+          "hint_text": "Debian security taramasi icin `debsecan` kullan.",
+          "hint_partial": "debsecan ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-025-r15",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde restart gerektiren servisleri kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "needrestart",
+          "hint_text": "Restart ihtiyaci icin `needrestart` kullan.",
+          "hint_partial": "needrestart"
+        }
+      ]
+    },
+    {
+      "id": "spkg-011-r16",
+      "type": "single",
+      "scenario": "Incident sonrasinda `traefik-16` paketinin tum mevcut versiyonlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "apt-cache-16 madison traefik-16",
+          "hint_text": "Version listesi icin `apt-cache-16 madison` kullan.",
+          "hint_partial": "apt-cache-16 madison ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-012-r17",
+      "type": "single",
+      "scenario": "Bakim oncesi belirli versiyonda `haproxy-17` kur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "apt-get install haproxy-17=4.24.0-1",
+          "hint_text": "Version pin icin `package=version` formatini kullan.",
+          "hint_partial": "apt-get install ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-013-r18",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda hold altindaki dpkg secimlerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dpkg --get-selections | grep hold",
+          "hint_text": "Secim listesini `grep hold` ile filtrele.",
+          "hint_partial": "dpkg --get-selections ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-014-r19",
+      "type": "single",
+      "scenario": "Deploy sonrasi `nginx-19` paketinin neden kuruldugunu aptitude ile acikla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "aptitude why nginx-19",
+          "hint_text": "Dependency nedeni icin `aptitude why` kullan.",
+          "hint_partial": "aptitude why ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-015-r20",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `postgres-20-20` paketinin gerektirdigi paketleri DNF ile listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dnf repoquery --requires postgres-20-20",
+          "hint_text": "Dependency sorgusu icin `repoquery --requires` kullan.",
+          "hint_partial": "dnf repoquery ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-016-r21",
+      "type": "single",
+      "scenario": "Yeni acilan hostta dNF transaction gecmisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dnf history list",
+          "hint_text": "Transaction history icin `dnf history list` kullan.",
+          "hint_partial": "dnf history ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-017-r22",
+      "type": "single",
+      "scenario": "Runbook adiminda yUM repository'lerini enabled/disabled detaylariyla goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "yum repolist all",
+          "hint_text": "Tum repo'lar icin `yum repolist all` kullan.",
+          "hint_partial": "yum repolist ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-018-r23",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde rPM veritabaninda degismis dosyalari dogrula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "rpm -Va",
+          "hint_text": "RPM verify icin `rpm -Va` kullan.",
+          "hint_partial": "rpm -Va"
+        }
+      ]
+    },
+    {
+      "id": "spkg-019-r24",
+      "type": "single",
+      "scenario": "Incident sonrasinda `openssl` paketinin changelog'unun ilk satirlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "rpm -q --changelog openssl | head",
+          "hint_text": "Changelog icin `rpm -q --changelog` kullan.",
+          "hint_partial": "rpm -q --changelog ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-020-r25",
+      "type": "single",
+      "scenario": "Bakim oncesi sUSE tarafindaki uygulanabilir patch'leri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "zypper patches",
+          "hint_text": "Patch listesi icin `zypper patches` kullan.",
+          "hint_partial": "zypper ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-021-r26",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda arch sistemde orphan paketleri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pacman -Qdt",
+          "hint_text": "Orphan paketler icin `pacman -Qdt` kullan.",
+          "hint_partial": "pacman -..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-022-r27",
+      "type": "single",
+      "scenario": "Deploy sonrasi arch sistemde tam sistem guncellemesi yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pacman -Syu",
+          "hint_text": "Tam sync+upgrade icin `pacman -Syu` kullan.",
+          "hint_partial": "pacman -..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-023-r28",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `traefik-28` paketinin source metadata bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "apt-cache-28 showsrc traefik-28",
+          "hint_text": "Source package bilgisi icin `apt-cache-28 showsrc` kullan.",
+          "hint_partial": "apt-cache-28 showsrc ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-024-r29",
+      "type": "single",
+      "scenario": "Yeni acilan hostta bookworm icin guvenlik aciklarini tarat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "debsecan --suite bookworm",
+          "hint_text": "Debian security taramasi icin `debsecan` kullan.",
+          "hint_partial": "debsecan ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-025-r30",
+      "type": "single",
+      "scenario": "Runbook adiminda restart gerektiren servisleri kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "needrestart",
+          "hint_text": "Restart ihtiyaci icin `needrestart` kullan.",
+          "hint_partial": "needrestart"
+        }
+      ]
+    },
+    {
+      "id": "spkg-011-r31",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `nginx-31` paketinin tum mevcut versiyonlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "apt-cache-31 madison nginx-31",
+          "hint_text": "Version listesi icin `apt-cache-31 madison` kullan.",
+          "hint_partial": "apt-cache-31 madison ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-012-r32",
+      "type": "single",
+      "scenario": "Incident sonrasinda belirli versiyonda `postgres-32-32` kur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "apt-get install postgres-32-32=4.24.0-1",
+          "hint_text": "Version pin icin `package=version` formatini kullan.",
+          "hint_partial": "apt-get install ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-013-r33",
+      "type": "single",
+      "scenario": "Bakim oncesi hold altindaki dpkg secimlerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dpkg --get-selections | grep hold",
+          "hint_text": "Secim listesini `grep hold` ile filtrele.",
+          "hint_partial": "dpkg --get-selections ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-014-r34",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `traefik-34` paketinin neden kuruldugunu aptitude ile acikla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "aptitude why traefik-34",
+          "hint_text": "Dependency nedeni icin `aptitude why` kullan.",
+          "hint_partial": "aptitude why ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-015-r35",
+      "type": "single",
+      "scenario": "Deploy sonrasi `haproxy-35` paketinin gerektirdigi paketleri DNF ile listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dnf repoquery --requires haproxy-35",
+          "hint_text": "Dependency sorgusu icin `repoquery --requires` kullan.",
+          "hint_partial": "dnf repoquery ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-016-r36",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde dNF transaction gecmisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dnf history list",
+          "hint_text": "Transaction history icin `dnf history list` kullan.",
+          "hint_partial": "dnf history ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-017-r37",
+      "type": "single",
+      "scenario": "Yeni acilan hostta yUM repository'lerini enabled/disabled detaylariyla goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "yum repolist all",
+          "hint_text": "Tum repo'lar icin `yum repolist all` kullan.",
+          "hint_partial": "yum repolist ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-018-r38",
+      "type": "single",
+      "scenario": "Runbook adiminda rPM veritabaninda degismis dosyalari dogrula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "rpm -Va",
+          "hint_text": "RPM verify icin `rpm -Va` kullan.",
+          "hint_partial": "rpm -Va"
+        }
+      ]
+    },
+    {
+      "id": "spkg-019-r39",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `openssl` paketinin changelog'unun ilk satirlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "rpm -q --changelog openssl | head",
+          "hint_text": "Changelog icin `rpm -q --changelog` kullan.",
+          "hint_partial": "rpm -q --changelog ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-020-r40",
+      "type": "single",
+      "scenario": "Incident sonrasinda sUSE tarafindaki uygulanabilir patch'leri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "zypper patches",
+          "hint_text": "Patch listesi icin `zypper patches` kullan.",
+          "hint_partial": "zypper ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-021-r41",
+      "type": "single",
+      "scenario": "Bakim oncesi arch sistemde orphan paketleri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pacman -Qdt",
+          "hint_text": "Orphan paketler icin `pacman -Qdt` kullan.",
+          "hint_partial": "pacman -..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-022-r42",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda arch sistemde tam sistem guncellemesi yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pacman -Syu",
+          "hint_text": "Tam sync+upgrade icin `pacman -Syu` kullan.",
+          "hint_partial": "pacman -..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-023-r43",
+      "type": "single",
+      "scenario": "Deploy sonrasi `nginx-43` paketinin source metadata bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "apt-cache-43 showsrc nginx-43",
+          "hint_text": "Source package bilgisi icin `apt-cache-43 showsrc` kullan.",
+          "hint_partial": "apt-cache-43 showsrc ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-024-r44",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde bookworm icin guvenlik aciklarini tarat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "debsecan --suite bookworm",
+          "hint_text": "Debian security taramasi icin `debsecan` kullan.",
+          "hint_partial": "debsecan ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-025-r45",
+      "type": "single",
+      "scenario": "Yeni acilan hostta restart gerektiren servisleri kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "needrestart",
+          "hint_text": "Restart ihtiyaci icin `needrestart` kullan.",
+          "hint_partial": "needrestart"
+        }
+      ]
+    },
+    {
+      "id": "spkg-011-r46",
+      "type": "single",
+      "scenario": "Runbook adiminda `traefik-46` paketinin tum mevcut versiyonlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "apt-cache-46 madison traefik-46",
+          "hint_text": "Version listesi icin `apt-cache-46 madison` kullan.",
+          "hint_partial": "apt-cache-46 madison ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-012-r47",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde belirli versiyonda `haproxy-47` kur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "apt-get install haproxy-47=4.24.0-1",
+          "hint_text": "Version pin icin `package=version` formatini kullan.",
+          "hint_partial": "apt-get install ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-013-r48",
+      "type": "single",
+      "scenario": "Incident sonrasinda hold altindaki dpkg secimlerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dpkg --get-selections | grep hold",
+          "hint_text": "Secim listesini `grep hold` ile filtrele.",
+          "hint_partial": "dpkg --get-selections ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-014-r49",
+      "type": "single",
+      "scenario": "Bakim oncesi `nginx-49` paketinin neden kuruldugunu aptitude ile acikla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "aptitude why nginx-49",
+          "hint_text": "Dependency nedeni icin `aptitude why` kullan.",
+          "hint_partial": "aptitude why ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-015-r50",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `postgres-50-50` paketinin gerektirdigi paketleri DNF ile listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dnf repoquery --requires postgres-50-50",
+          "hint_text": "Dependency sorgusu icin `repoquery --requires` kullan.",
+          "hint_partial": "dnf repoquery ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-016-r51",
+      "type": "single",
+      "scenario": "Deploy sonrasi dNF transaction gecmisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dnf history list",
+          "hint_text": "Transaction history icin `dnf history list` kullan.",
+          "hint_partial": "dnf history ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-017-r52",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde yUM repository'lerini enabled/disabled detaylariyla goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "yum repolist all",
+          "hint_text": "Tum repo'lar icin `yum repolist all` kullan.",
+          "hint_partial": "yum repolist ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-018-r53",
+      "type": "single",
+      "scenario": "Yeni acilan hostta rPM veritabaninda degismis dosyalari dogrula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "rpm -Va",
+          "hint_text": "RPM verify icin `rpm -Va` kullan.",
+          "hint_partial": "rpm -Va"
+        }
+      ]
+    },
+    {
+      "id": "spkg-019-r54",
+      "type": "single",
+      "scenario": "Runbook adiminda `openssl` paketinin changelog'unun ilk satirlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "rpm -q --changelog openssl | head",
+          "hint_text": "Changelog icin `rpm -q --changelog` kullan.",
+          "hint_partial": "rpm -q --changelog ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-020-r55",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde sUSE tarafindaki uygulanabilir patch'leri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "zypper patches",
+          "hint_text": "Patch listesi icin `zypper patches` kullan.",
+          "hint_partial": "zypper ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-021-r56",
+      "type": "single",
+      "scenario": "Incident sonrasinda arch sistemde orphan paketleri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pacman -Qdt",
+          "hint_text": "Orphan paketler icin `pacman -Qdt` kullan.",
+          "hint_partial": "pacman -..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-022-r57",
+      "type": "single",
+      "scenario": "Bakim oncesi arch sistemde tam sistem guncellemesi yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pacman -Syu",
+          "hint_text": "Tam sync+upgrade icin `pacman -Syu` kullan.",
+          "hint_partial": "pacman -..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-023-r58",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `traefik-58` paketinin source metadata bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "apt-cache-58 showsrc traefik-58",
+          "hint_text": "Source package bilgisi icin `apt-cache-58 showsrc` kullan.",
+          "hint_partial": "apt-cache-58 showsrc ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-024-r59",
+      "type": "single",
+      "scenario": "Deploy sonrasi bookworm icin guvenlik aciklarini tarat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "debsecan --suite bookworm",
+          "hint_text": "Debian security taramasi icin `debsecan` kullan.",
+          "hint_partial": "debsecan ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-025-r60",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde restart gerektiren servisleri kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "needrestart",
+          "hint_text": "Restart ihtiyaci icin `needrestart` kullan.",
+          "hint_partial": "needrestart"
+        }
+      ]
+    },
+    {
+      "id": "spkg-011-r61",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `nginx-61` paketinin tum mevcut versiyonlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "apt-cache-61 madison nginx-61",
+          "hint_text": "Version listesi icin `apt-cache-61 madison` kullan.",
+          "hint_partial": "apt-cache-61 madison ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-012-r62",
+      "type": "single",
+      "scenario": "Runbook adiminda belirli versiyonda `postgres-62-62` kur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "apt-get install postgres-62-62=4.24.0-1",
+          "hint_text": "Version pin icin `package=version` formatini kullan.",
+          "hint_partial": "apt-get install ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-013-r63",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde hold altindaki dpkg secimlerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dpkg --get-selections | grep hold",
+          "hint_text": "Secim listesini `grep hold` ile filtrele.",
+          "hint_partial": "dpkg --get-selections ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-014-r64",
+      "type": "single",
+      "scenario": "Incident sonrasinda `traefik-64` paketinin neden kuruldugunu aptitude ile acikla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "aptitude why traefik-64",
+          "hint_text": "Dependency nedeni icin `aptitude why` kullan.",
+          "hint_partial": "aptitude why ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-015-r65",
+      "type": "single",
+      "scenario": "Bakim oncesi `haproxy-65` paketinin gerektirdigi paketleri DNF ile listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dnf repoquery --requires haproxy-65",
+          "hint_text": "Dependency sorgusu icin `repoquery --requires` kullan.",
+          "hint_partial": "dnf repoquery ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-016-r66",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda dNF transaction gecmisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dnf history list",
+          "hint_text": "Transaction history icin `dnf history list` kullan.",
+          "hint_partial": "dnf history ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-017-r67",
+      "type": "single",
+      "scenario": "Deploy sonrasi yUM repository'lerini enabled/disabled detaylariyla goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "yum repolist all",
+          "hint_text": "Tum repo'lar icin `yum repolist all` kullan.",
+          "hint_partial": "yum repolist ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-018-r68",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde rPM veritabaninda degismis dosyalari dogrula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "rpm -Va",
+          "hint_text": "RPM verify icin `rpm -Va` kullan.",
+          "hint_partial": "rpm -Va"
+        }
+      ]
+    },
+    {
+      "id": "spkg-019-r69",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `openssl` paketinin changelog'unun ilk satirlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "rpm -q --changelog openssl | head",
+          "hint_text": "Changelog icin `rpm -q --changelog` kullan.",
+          "hint_partial": "rpm -q --changelog ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-020-r70",
+      "type": "single",
+      "scenario": "Runbook adiminda sUSE tarafindaki uygulanabilir patch'leri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "zypper patches",
+          "hint_text": "Patch listesi icin `zypper patches` kullan.",
+          "hint_partial": "zypper ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-021-r71",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde arch sistemde orphan paketleri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pacman -Qdt",
+          "hint_text": "Orphan paketler icin `pacman -Qdt` kullan.",
+          "hint_partial": "pacman -..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-022-r72",
+      "type": "single",
+      "scenario": "Incident sonrasinda arch sistemde tam sistem guncellemesi yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pacman -Syu",
+          "hint_text": "Tam sync+upgrade icin `pacman -Syu` kullan.",
+          "hint_partial": "pacman -..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-023-r73",
+      "type": "single",
+      "scenario": "Bakim oncesi `nginx-73` paketinin source metadata bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "apt-cache-73 showsrc nginx-73",
+          "hint_text": "Source package bilgisi icin `apt-cache-73 showsrc` kullan.",
+          "hint_partial": "apt-cache-73 showsrc ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-024-r74",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda bookworm icin guvenlik aciklarini tarat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "debsecan --suite bookworm",
+          "hint_text": "Debian security taramasi icin `debsecan` kullan.",
+          "hint_partial": "debsecan ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-025-r75",
+      "type": "single",
+      "scenario": "Deploy sonrasi restart gerektiren servisleri kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "needrestart",
+          "hint_text": "Restart ihtiyaci icin `needrestart` kullan.",
+          "hint_partial": "needrestart"
+        }
+      ]
+    },
+    {
+      "id": "spkg-011-r76",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `traefik-76` paketinin tum mevcut versiyonlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "apt-cache-76 madison traefik-76",
+          "hint_text": "Version listesi icin `apt-cache-76 madison` kullan.",
+          "hint_partial": "apt-cache-76 madison ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-012-r77",
+      "type": "single",
+      "scenario": "Yeni acilan hostta belirli versiyonda `haproxy-77` kur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "apt-get install haproxy-77=4.24.0-1",
+          "hint_text": "Version pin icin `package=version` formatini kullan.",
+          "hint_partial": "apt-get install ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-013-r78",
+      "type": "single",
+      "scenario": "Runbook adiminda hold altindaki dpkg secimlerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dpkg --get-selections | grep hold",
+          "hint_text": "Secim listesini `grep hold` ile filtrele.",
+          "hint_partial": "dpkg --get-selections ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-014-r79",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `nginx-79` paketinin neden kuruldugunu aptitude ile acikla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "aptitude why nginx-79",
+          "hint_text": "Dependency nedeni icin `aptitude why` kullan.",
+          "hint_partial": "aptitude why ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-015-r80",
+      "type": "single",
+      "scenario": "Incident sonrasinda `postgres-80-80` paketinin gerektirdigi paketleri DNF ile listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dnf repoquery --requires postgres-80-80",
+          "hint_text": "Dependency sorgusu icin `repoquery --requires` kullan.",
+          "hint_partial": "dnf repoquery ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-016-r81",
+      "type": "single",
+      "scenario": "Bakim oncesi dNF transaction gecmisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dnf history list",
+          "hint_text": "Transaction history icin `dnf history list` kullan.",
+          "hint_partial": "dnf history ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-017-r82",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda yUM repository'lerini enabled/disabled detaylariyla goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "yum repolist all",
+          "hint_text": "Tum repo'lar icin `yum repolist all` kullan.",
+          "hint_partial": "yum repolist ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-018-r83",
+      "type": "single",
+      "scenario": "Deploy sonrasi rPM veritabaninda degismis dosyalari dogrula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "rpm -Va",
+          "hint_text": "RPM verify icin `rpm -Va` kullan.",
+          "hint_partial": "rpm -Va"
+        }
+      ]
+    },
+    {
+      "id": "spkg-019-r84",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `openssl` paketinin changelog'unun ilk satirlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "rpm -q --changelog openssl | head",
+          "hint_text": "Changelog icin `rpm -q --changelog` kullan.",
+          "hint_partial": "rpm -q --changelog ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-020-r85",
+      "type": "single",
+      "scenario": "Yeni acilan hostta sUSE tarafindaki uygulanabilir patch'leri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "zypper patches",
+          "hint_text": "Patch listesi icin `zypper patches` kullan.",
+          "hint_partial": "zypper ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-021-r86",
+      "type": "single",
+      "scenario": "Runbook adiminda arch sistemde orphan paketleri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pacman -Qdt",
+          "hint_text": "Orphan paketler icin `pacman -Qdt` kullan.",
+          "hint_partial": "pacman -..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-022-r87",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde arch sistemde tam sistem guncellemesi yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pacman -Syu",
+          "hint_text": "Tam sync+upgrade icin `pacman -Syu` kullan.",
+          "hint_partial": "pacman -..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-023-r88",
+      "type": "single",
+      "scenario": "Incident sonrasinda `traefik-88` paketinin source metadata bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "apt-cache-88 showsrc traefik-88",
+          "hint_text": "Source package bilgisi icin `apt-cache-88 showsrc` kullan.",
+          "hint_partial": "apt-cache-88 showsrc ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-024-r89",
+      "type": "single",
+      "scenario": "Bakim oncesi bookworm icin guvenlik aciklarini tarat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "debsecan --suite bookworm",
+          "hint_text": "Debian security taramasi icin `debsecan` kullan.",
+          "hint_partial": "debsecan ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-025-r90",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda restart gerektiren servisleri kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "needrestart",
+          "hint_text": "Restart ihtiyaci icin `needrestart` kullan.",
+          "hint_partial": "needrestart"
+        }
+      ]
+    },
+    {
+      "id": "spkg-011-r91",
+      "type": "single",
+      "scenario": "Deploy sonrasi `nginx-91` paketinin tum mevcut versiyonlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "apt-cache-91 madison nginx-91",
+          "hint_text": "Version listesi icin `apt-cache-91 madison` kullan.",
+          "hint_partial": "apt-cache-91 madison ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-012-r92",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde belirli versiyonda `postgres-92-92` kur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "apt-get install postgres-92-92=4.24.0-1",
+          "hint_text": "Version pin icin `package=version` formatini kullan.",
+          "hint_partial": "apt-get install ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-013-r93",
+      "type": "single",
+      "scenario": "Yeni acilan hostta hold altindaki dpkg secimlerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dpkg --get-selections | grep hold",
+          "hint_text": "Secim listesini `grep hold` ile filtrele.",
+          "hint_partial": "dpkg --get-selections ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-014-r94",
+      "type": "single",
+      "scenario": "Runbook adiminda `traefik-94` paketinin neden kuruldugunu aptitude ile acikla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "aptitude why traefik-94",
+          "hint_text": "Dependency nedeni icin `aptitude why` kullan.",
+          "hint_partial": "aptitude why ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-015-r95",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `haproxy-95` paketinin gerektirdigi paketleri DNF ile listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dnf repoquery --requires haproxy-95",
+          "hint_text": "Dependency sorgusu icin `repoquery --requires` kullan.",
+          "hint_partial": "dnf repoquery ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-016-r96",
+      "type": "single",
+      "scenario": "Incident sonrasinda dNF transaction gecmisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dnf history list",
+          "hint_text": "Transaction history icin `dnf history list` kullan.",
+          "hint_partial": "dnf history ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-017-r97",
+      "type": "single",
+      "scenario": "Bakim oncesi yUM repository'lerini enabled/disabled detaylariyla goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "yum repolist all",
+          "hint_text": "Tum repo'lar icin `yum repolist all` kullan.",
+          "hint_partial": "yum repolist ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-018-r98",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda rPM veritabaninda degismis dosyalari dogrula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "rpm -Va",
+          "hint_text": "RPM verify icin `rpm -Va` kullan.",
+          "hint_partial": "rpm -Va"
+        }
+      ]
+    },
+    {
+      "id": "spkg-019-r99",
+      "type": "single",
+      "scenario": "Deploy sonrasi `openssl` paketinin changelog'unun ilk satirlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "rpm -q --changelog openssl | head",
+          "hint_text": "Changelog icin `rpm -q --changelog` kullan.",
+          "hint_partial": "rpm -q --changelog ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-020-r100",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde sUSE tarafindaki uygulanabilir patch'leri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "zypper patches",
+          "hint_text": "Patch listesi icin `zypper patches` kullan.",
+          "hint_partial": "zypper ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-021-r101",
+      "type": "single",
+      "scenario": "Yeni acilan hostta arch sistemde orphan paketleri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pacman -Qdt",
+          "hint_text": "Orphan paketler icin `pacman -Qdt` kullan.",
+          "hint_partial": "pacman -..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-022-r102",
+      "type": "single",
+      "scenario": "Runbook adiminda arch sistemde tam sistem guncellemesi yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pacman -Syu",
+          "hint_text": "Tam sync+upgrade icin `pacman -Syu` kullan.",
+          "hint_partial": "pacman -..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-023-r103",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `nginx-103` paketinin source metadata bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "apt-cache-103 showsrc nginx-103",
+          "hint_text": "Source package bilgisi icin `apt-cache-103 showsrc` kullan.",
+          "hint_partial": "apt-cache-103 showsrc ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-024-r104",
+      "type": "single",
+      "scenario": "Incident sonrasinda bookworm icin guvenlik aciklarini tarat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "debsecan --suite bookworm",
+          "hint_text": "Debian security taramasi icin `debsecan` kullan.",
+          "hint_partial": "debsecan ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-025-r105",
+      "type": "single",
+      "scenario": "Bakim oncesi restart gerektiren servisleri kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "needrestart",
+          "hint_text": "Restart ihtiyaci icin `needrestart` kullan.",
+          "hint_partial": "needrestart"
+        }
+      ]
+    },
+    {
+      "id": "spkg-011-r106",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `traefik-106` paketinin tum mevcut versiyonlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "apt-cache-106 madison traefik-106",
+          "hint_text": "Version listesi icin `apt-cache-106 madison` kullan.",
+          "hint_partial": "apt-cache-106 madison ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-012-r107",
+      "type": "single",
+      "scenario": "Deploy sonrasi belirli versiyonda `haproxy-107` kur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "apt-get install haproxy-107=4.24.0-1",
+          "hint_text": "Version pin icin `package=version` formatini kullan.",
+          "hint_partial": "apt-get install ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-013-r108",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde hold altindaki dpkg secimlerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dpkg --get-selections | grep hold",
+          "hint_text": "Secim listesini `grep hold` ile filtrele.",
+          "hint_partial": "dpkg --get-selections ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-014-r109",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `nginx-109` paketinin neden kuruldugunu aptitude ile acikla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "aptitude why nginx-109",
+          "hint_text": "Dependency nedeni icin `aptitude why` kullan.",
+          "hint_partial": "aptitude why ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-015-r110",
+      "type": "single",
+      "scenario": "Runbook adiminda `postgres-110-110` paketinin gerektirdigi paketleri DNF ile listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dnf repoquery --requires postgres-110-110",
+          "hint_text": "Dependency sorgusu icin `repoquery --requires` kullan.",
+          "hint_partial": "dnf repoquery ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-016-r111",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde dNF transaction gecmisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dnf history list",
+          "hint_text": "Transaction history icin `dnf history list` kullan.",
+          "hint_partial": "dnf history ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-017-r112",
+      "type": "single",
+      "scenario": "Incident sonrasinda yUM repository'lerini enabled/disabled detaylariyla goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "yum repolist all",
+          "hint_text": "Tum repo'lar icin `yum repolist all` kullan.",
+          "hint_partial": "yum repolist ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-018-r113",
+      "type": "single",
+      "scenario": "Bakim oncesi rPM veritabaninda degismis dosyalari dogrula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "rpm -Va",
+          "hint_text": "RPM verify icin `rpm -Va` kullan.",
+          "hint_partial": "rpm -Va"
+        }
+      ]
+    },
+    {
+      "id": "spkg-019-r114",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `openssl` paketinin changelog'unun ilk satirlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "rpm -q --changelog openssl | head",
+          "hint_text": "Changelog icin `rpm -q --changelog` kullan.",
+          "hint_partial": "rpm -q --changelog ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-020-r115",
+      "type": "single",
+      "scenario": "Deploy sonrasi sUSE tarafindaki uygulanabilir patch'leri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "zypper patches",
+          "hint_text": "Patch listesi icin `zypper patches` kullan.",
+          "hint_partial": "zypper ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-021-r116",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde arch sistemde orphan paketleri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pacman -Qdt",
+          "hint_text": "Orphan paketler icin `pacman -Qdt` kullan.",
+          "hint_partial": "pacman -..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-022-r117",
+      "type": "single",
+      "scenario": "Yeni acilan hostta arch sistemde tam sistem guncellemesi yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pacman -Syu",
+          "hint_text": "Tam sync+upgrade icin `pacman -Syu` kullan.",
+          "hint_partial": "pacman -..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-023-r118",
+      "type": "single",
+      "scenario": "Runbook adiminda `traefik-118` paketinin source metadata bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "apt-cache-118 showsrc traefik-118",
+          "hint_text": "Source package bilgisi icin `apt-cache-118 showsrc` kullan.",
+          "hint_partial": "apt-cache-118 showsrc ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-024-r119",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde bookworm icin guvenlik aciklarini tarat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "debsecan --suite bookworm",
+          "hint_text": "Debian security taramasi icin `debsecan` kullan.",
+          "hint_partial": "debsecan ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-025-r120",
+      "type": "single",
+      "scenario": "Incident sonrasinda restart gerektiren servisleri kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "needrestart",
+          "hint_text": "Restart ihtiyaci icin `needrestart` kullan.",
+          "hint_partial": "needrestart"
+        }
+      ]
+    },
+    {
+      "id": "spkg-011-r121",
+      "type": "single",
+      "scenario": "Bakim oncesi `nginx-121` paketinin tum mevcut versiyonlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "apt-cache-121 madison nginx-121",
+          "hint_text": "Version listesi icin `apt-cache-121 madison` kullan.",
+          "hint_partial": "apt-cache-121 madison ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-012-r122",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda belirli versiyonda `postgres-122-122` kur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "apt-get install postgres-122-122=4.24.0-1",
+          "hint_text": "Version pin icin `package=version` formatini kullan.",
+          "hint_partial": "apt-get install ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-013-r123",
+      "type": "single",
+      "scenario": "Deploy sonrasi hold altindaki dpkg secimlerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dpkg --get-selections | grep hold",
+          "hint_text": "Secim listesini `grep hold` ile filtrele.",
+          "hint_partial": "dpkg --get-selections ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-014-r124",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `traefik-124` paketinin neden kuruldugunu aptitude ile acikla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "aptitude why traefik-124",
+          "hint_text": "Dependency nedeni icin `aptitude why` kullan.",
+          "hint_partial": "aptitude why ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-015-r125",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `haproxy-125` paketinin gerektirdigi paketleri DNF ile listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dnf repoquery --requires haproxy-125",
+          "hint_text": "Dependency sorgusu icin `repoquery --requires` kullan.",
+          "hint_partial": "dnf repoquery ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-016-r126",
+      "type": "single",
+      "scenario": "Runbook adiminda dNF transaction gecmisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dnf history list",
+          "hint_text": "Transaction history icin `dnf history list` kullan.",
+          "hint_partial": "dnf history ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-017-r127",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde yUM repository'lerini enabled/disabled detaylariyla goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "yum repolist all",
+          "hint_text": "Tum repo'lar icin `yum repolist all` kullan.",
+          "hint_partial": "yum repolist ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-018-r128",
+      "type": "single",
+      "scenario": "Incident sonrasinda rPM veritabaninda degismis dosyalari dogrula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "rpm -Va",
+          "hint_text": "RPM verify icin `rpm -Va` kullan.",
+          "hint_partial": "rpm -Va"
+        }
+      ]
+    },
+    {
+      "id": "spkg-019-r129",
+      "type": "single",
+      "scenario": "Bakim oncesi `openssl` paketinin changelog'unun ilk satirlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "rpm -q --changelog openssl | head",
+          "hint_text": "Changelog icin `rpm -q --changelog` kullan.",
+          "hint_partial": "rpm -q --changelog ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-020-r130",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda sUSE tarafindaki uygulanabilir patch'leri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "zypper patches",
+          "hint_text": "Patch listesi icin `zypper patches` kullan.",
+          "hint_partial": "zypper ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-021-r131",
+      "type": "single",
+      "scenario": "Deploy sonrasi arch sistemde orphan paketleri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pacman -Qdt",
+          "hint_text": "Orphan paketler icin `pacman -Qdt` kullan.",
+          "hint_partial": "pacman -..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-022-r132",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde arch sistemde tam sistem guncellemesi yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pacman -Syu",
+          "hint_text": "Tam sync+upgrade icin `pacman -Syu` kullan.",
+          "hint_partial": "pacman -..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-023-r133",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `nginx-133` paketinin source metadata bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "apt-cache-133 showsrc nginx-133",
+          "hint_text": "Source package bilgisi icin `apt-cache-133 showsrc` kullan.",
+          "hint_partial": "apt-cache-133 showsrc ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-024-r134",
+      "type": "single",
+      "scenario": "Runbook adiminda bookworm icin guvenlik aciklarini tarat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "debsecan --suite bookworm",
+          "hint_text": "Debian security taramasi icin `debsecan` kullan.",
+          "hint_partial": "debsecan ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-025-r135",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde restart gerektiren servisleri kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "needrestart",
+          "hint_text": "Restart ihtiyaci icin `needrestart` kullan.",
+          "hint_partial": "needrestart"
+        }
+      ]
+    },
+    {
+      "id": "spkg-011-r136",
+      "type": "single",
+      "scenario": "Incident sonrasinda `traefik-136` paketinin tum mevcut versiyonlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "apt-cache-136 madison traefik-136",
+          "hint_text": "Version listesi icin `apt-cache-136 madison` kullan.",
+          "hint_partial": "apt-cache-136 madison ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-012-r137",
+      "type": "single",
+      "scenario": "Bakim oncesi belirli versiyonda `haproxy-137` kur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "apt-get install haproxy-137=4.24.0-1",
+          "hint_text": "Version pin icin `package=version` formatini kullan.",
+          "hint_partial": "apt-get install ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-013-r138",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda hold altindaki dpkg secimlerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dpkg --get-selections | grep hold",
+          "hint_text": "Secim listesini `grep hold` ile filtrele.",
+          "hint_partial": "dpkg --get-selections ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-014-r139",
+      "type": "single",
+      "scenario": "Deploy sonrasi `nginx-139` paketinin neden kuruldugunu aptitude ile acikla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "aptitude why nginx-139",
+          "hint_text": "Dependency nedeni icin `aptitude why` kullan.",
+          "hint_partial": "aptitude why ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-015-r140",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `postgres-140-140` paketinin gerektirdigi paketleri DNF ile listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dnf repoquery --requires postgres-140-140",
+          "hint_text": "Dependency sorgusu icin `repoquery --requires` kullan.",
+          "hint_partial": "dnf repoquery ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-016-r141",
+      "type": "single",
+      "scenario": "Yeni acilan hostta dNF transaction gecmisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dnf history list",
+          "hint_text": "Transaction history icin `dnf history list` kullan.",
+          "hint_partial": "dnf history ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-017-r142",
+      "type": "single",
+      "scenario": "Runbook adiminda yUM repository'lerini enabled/disabled detaylariyla goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "yum repolist all",
+          "hint_text": "Tum repo'lar icin `yum repolist all` kullan.",
+          "hint_partial": "yum repolist ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-018-r143",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde rPM veritabaninda degismis dosyalari dogrula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "rpm -Va",
+          "hint_text": "RPM verify icin `rpm -Va` kullan.",
+          "hint_partial": "rpm -Va"
+        }
+      ]
+    },
+    {
+      "id": "spkg-019-r144",
+      "type": "single",
+      "scenario": "Incident sonrasinda `openssl` paketinin changelog'unun ilk satirlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "rpm -q --changelog openssl | head",
+          "hint_text": "Changelog icin `rpm -q --changelog` kullan.",
+          "hint_partial": "rpm -q --changelog ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-020-r145",
+      "type": "single",
+      "scenario": "Bakim oncesi sUSE tarafindaki uygulanabilir patch'leri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "zypper patches",
+          "hint_text": "Patch listesi icin `zypper patches` kullan.",
+          "hint_partial": "zypper ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-021-r146",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda arch sistemde orphan paketleri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pacman -Qdt",
+          "hint_text": "Orphan paketler icin `pacman -Qdt` kullan.",
+          "hint_partial": "pacman -..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-022-r147",
+      "type": "single",
+      "scenario": "Deploy sonrasi arch sistemde tam sistem guncellemesi yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pacman -Syu",
+          "hint_text": "Tam sync+upgrade icin `pacman -Syu` kullan.",
+          "hint_partial": "pacman -..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-023-r148",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `traefik-148` paketinin source metadata bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "apt-cache-148 showsrc traefik-148",
+          "hint_text": "Source package bilgisi icin `apt-cache-148 showsrc` kullan.",
+          "hint_partial": "apt-cache-148 showsrc ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-024-r149",
+      "type": "single",
+      "scenario": "Yeni acilan hostta bookworm icin guvenlik aciklarini tarat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "debsecan --suite bookworm",
+          "hint_text": "Debian security taramasi icin `debsecan` kullan.",
+          "hint_partial": "debsecan ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-025-r150",
+      "type": "single",
+      "scenario": "Runbook adiminda restart gerektiren servisleri kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "needrestart",
+          "hint_text": "Restart ihtiyaci icin `needrestart` kullan.",
+          "hint_partial": "needrestart"
+        }
+      ]
+    },
+    {
+      "id": "spkg-011-r151",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `nginx-151` paketinin tum mevcut versiyonlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "apt-cache-151 madison nginx-151",
+          "hint_text": "Version listesi icin `apt-cache-151 madison` kullan.",
+          "hint_partial": "apt-cache-151 madison ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-012-r152",
+      "type": "single",
+      "scenario": "Incident sonrasinda belirli versiyonda `postgres-152-152` kur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "apt-get install postgres-152-152=4.24.0-1",
+          "hint_text": "Version pin icin `package=version` formatini kullan.",
+          "hint_partial": "apt-get install ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-013-r153",
+      "type": "single",
+      "scenario": "Bakim oncesi hold altindaki dpkg secimlerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dpkg --get-selections | grep hold",
+          "hint_text": "Secim listesini `grep hold` ile filtrele.",
+          "hint_partial": "dpkg --get-selections ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-014-r154",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `traefik-154` paketinin neden kuruldugunu aptitude ile acikla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "aptitude why traefik-154",
+          "hint_text": "Dependency nedeni icin `aptitude why` kullan.",
+          "hint_partial": "aptitude why ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-015-r155",
+      "type": "single",
+      "scenario": "Deploy sonrasi `haproxy-155` paketinin gerektirdigi paketleri DNF ile listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dnf repoquery --requires haproxy-155",
+          "hint_text": "Dependency sorgusu icin `repoquery --requires` kullan.",
+          "hint_partial": "dnf repoquery ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-016-r156",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde dNF transaction gecmisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dnf history list",
+          "hint_text": "Transaction history icin `dnf history list` kullan.",
+          "hint_partial": "dnf history ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-017-r157",
+      "type": "single",
+      "scenario": "Yeni acilan hostta yUM repository'lerini enabled/disabled detaylariyla goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "yum repolist all",
+          "hint_text": "Tum repo'lar icin `yum repolist all` kullan.",
+          "hint_partial": "yum repolist ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-018-r158",
+      "type": "single",
+      "scenario": "Runbook adiminda rPM veritabaninda degismis dosyalari dogrula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "rpm -Va",
+          "hint_text": "RPM verify icin `rpm -Va` kullan.",
+          "hint_partial": "rpm -Va"
+        }
+      ]
+    },
+    {
+      "id": "spkg-019-r159",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `openssl` paketinin changelog'unun ilk satirlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "rpm -q --changelog openssl | head",
+          "hint_text": "Changelog icin `rpm -q --changelog` kullan.",
+          "hint_partial": "rpm -q --changelog ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-020-r160",
+      "type": "single",
+      "scenario": "Incident sonrasinda sUSE tarafindaki uygulanabilir patch'leri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "zypper patches",
+          "hint_text": "Patch listesi icin `zypper patches` kullan.",
+          "hint_partial": "zypper ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-021-r161",
+      "type": "single",
+      "scenario": "Bakim oncesi arch sistemde orphan paketleri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pacman -Qdt",
+          "hint_text": "Orphan paketler icin `pacman -Qdt` kullan.",
+          "hint_partial": "pacman -..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-022-r162",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda arch sistemde tam sistem guncellemesi yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pacman -Syu",
+          "hint_text": "Tam sync+upgrade icin `pacman -Syu` kullan.",
+          "hint_partial": "pacman -..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-023-r163",
+      "type": "single",
+      "scenario": "Deploy sonrasi `nginx-163` paketinin source metadata bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "apt-cache-163 showsrc nginx-163",
+          "hint_text": "Source package bilgisi icin `apt-cache-163 showsrc` kullan.",
+          "hint_partial": "apt-cache-163 showsrc ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-024-r164",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde bookworm icin guvenlik aciklarini tarat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "debsecan --suite bookworm",
+          "hint_text": "Debian security taramasi icin `debsecan` kullan.",
+          "hint_partial": "debsecan ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-025-r165",
+      "type": "single",
+      "scenario": "Yeni acilan hostta restart gerektiren servisleri kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "needrestart",
+          "hint_text": "Restart ihtiyaci icin `needrestart` kullan.",
+          "hint_partial": "needrestart"
+        }
+      ]
+    },
+    {
+      "id": "spkg-011-r166",
+      "type": "single",
+      "scenario": "Runbook adiminda `traefik-166` paketinin tum mevcut versiyonlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "apt-cache-166 madison traefik-166",
+          "hint_text": "Version listesi icin `apt-cache-166 madison` kullan.",
+          "hint_partial": "apt-cache-166 madison ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-012-r167",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde belirli versiyonda `haproxy-167` kur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "apt-get install haproxy-167=4.24.0-1",
+          "hint_text": "Version pin icin `package=version` formatini kullan.",
+          "hint_partial": "apt-get install ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-013-r168",
+      "type": "single",
+      "scenario": "Incident sonrasinda hold altindaki dpkg secimlerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dpkg --get-selections | grep hold",
+          "hint_text": "Secim listesini `grep hold` ile filtrele.",
+          "hint_partial": "dpkg --get-selections ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-014-r169",
+      "type": "single",
+      "scenario": "Bakim oncesi `nginx-169` paketinin neden kuruldugunu aptitude ile acikla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "aptitude why nginx-169",
+          "hint_text": "Dependency nedeni icin `aptitude why` kullan.",
+          "hint_partial": "aptitude why ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-015-r170",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `postgres-170-170` paketinin gerektirdigi paketleri DNF ile listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dnf repoquery --requires postgres-170-170",
+          "hint_text": "Dependency sorgusu icin `repoquery --requires` kullan.",
+          "hint_partial": "dnf repoquery ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-016-r171",
+      "type": "single",
+      "scenario": "Deploy sonrasi dNF transaction gecmisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dnf history list",
+          "hint_text": "Transaction history icin `dnf history list` kullan.",
+          "hint_partial": "dnf history ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-017-r172",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde yUM repository'lerini enabled/disabled detaylariyla goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "yum repolist all",
+          "hint_text": "Tum repo'lar icin `yum repolist all` kullan.",
+          "hint_partial": "yum repolist ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-018-r173",
+      "type": "single",
+      "scenario": "Yeni acilan hostta rPM veritabaninda degismis dosyalari dogrula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "rpm -Va",
+          "hint_text": "RPM verify icin `rpm -Va` kullan.",
+          "hint_partial": "rpm -Va"
+        }
+      ]
+    },
+    {
+      "id": "spkg-019-r174",
+      "type": "single",
+      "scenario": "Runbook adiminda `openssl` paketinin changelog'unun ilk satirlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "rpm -q --changelog openssl | head",
+          "hint_text": "Changelog icin `rpm -q --changelog` kullan.",
+          "hint_partial": "rpm -q --changelog ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-020-r175",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde sUSE tarafindaki uygulanabilir patch'leri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "zypper patches",
+          "hint_text": "Patch listesi icin `zypper patches` kullan.",
+          "hint_partial": "zypper ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-021-r176",
+      "type": "single",
+      "scenario": "Incident sonrasinda arch sistemde orphan paketleri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pacman -Qdt",
+          "hint_text": "Orphan paketler icin `pacman -Qdt` kullan.",
+          "hint_partial": "pacman -..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-022-r177",
+      "type": "single",
+      "scenario": "Bakim oncesi arch sistemde tam sistem guncellemesi yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pacman -Syu",
+          "hint_text": "Tam sync+upgrade icin `pacman -Syu` kullan.",
+          "hint_partial": "pacman -..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-023-r178",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `traefik-178` paketinin source metadata bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "apt-cache-178 showsrc traefik-178",
+          "hint_text": "Source package bilgisi icin `apt-cache-178 showsrc` kullan.",
+          "hint_partial": "apt-cache-178 showsrc ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-024-r179",
+      "type": "single",
+      "scenario": "Deploy sonrasi bookworm icin guvenlik aciklarini tarat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "debsecan --suite bookworm",
+          "hint_text": "Debian security taramasi icin `debsecan` kullan.",
+          "hint_partial": "debsecan ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-025-r180",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde restart gerektiren servisleri kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "needrestart",
+          "hint_text": "Restart ihtiyaci icin `needrestart` kullan.",
+          "hint_partial": "needrestart"
+        }
+      ]
+    },
+    {
+      "id": "spkg-011-r181",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `nginx-181` paketinin tum mevcut versiyonlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "apt-cache-181 madison nginx-181",
+          "hint_text": "Version listesi icin `apt-cache-181 madison` kullan.",
+          "hint_partial": "apt-cache-181 madison ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-012-r182",
+      "type": "single",
+      "scenario": "Runbook adiminda belirli versiyonda `postgres-182-182` kur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "apt-get install postgres-182-182=4.24.0-1",
+          "hint_text": "Version pin icin `package=version` formatini kullan.",
+          "hint_partial": "apt-get install ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-013-r183",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde hold altindaki dpkg secimlerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dpkg --get-selections | grep hold",
+          "hint_text": "Secim listesini `grep hold` ile filtrele.",
+          "hint_partial": "dpkg --get-selections ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-014-r184",
+      "type": "single",
+      "scenario": "Incident sonrasinda `traefik-184` paketinin neden kuruldugunu aptitude ile acikla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "aptitude why traefik-184",
+          "hint_text": "Dependency nedeni icin `aptitude why` kullan.",
+          "hint_partial": "aptitude why ..."
+        }
+      ]
+    },
+    {
+      "id": "spkg-015-r185",
+      "type": "single",
+      "scenario": "Bakim oncesi `haproxy-185` paketinin gerektirdigi paketleri DNF ile listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dnf repoquery --requires haproxy-185",
+          "hint_text": "Dependency sorgusu icin `repoquery --requires` kullan.",
+          "hint_partial": "dnf repoquery ..."
+        }
+      ]
+    }
+  ]
+}

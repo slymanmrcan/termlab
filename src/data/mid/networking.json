@@ -1,0 +1,199 @@
+{
+  "level": "mid",
+  "topic": "networking",
+  "questions": [
+    {
+      "id": "mnet-001",
+      "type": "multi-step",
+      "scenario": "API sunucusuna (api.internal:8080) bağlanamıyorsun. Önce portu test et, sonra routing'i kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "nc -zv api.internal 8080",
+          "hint_text": "netcat ile port erişilebilirlik testi",
+          "hint_partial": "nc -zv api.internal ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "traceroute api.internal",
+          "hint_text": "paketin hangi hop'lardan geçtiğini göster",
+          "hint_partial": "traceroute ..."
+        }
+      ]
+    },
+    {
+      "id": "mnet-002",
+      "type": "single",
+      "scenario": "Tüm ESTABLISHED TCP bağlantılarını listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ss -tnp state established",
+          "hint_text": "ss komutu ile state filtresi",
+          "hint_partial": "ss -tnp state ..."
+        }
+      ]
+    },
+    {
+      "id": "mnet-003",
+      "type": "multi-step",
+      "scenario": "eth0 interface'ine geçici olarak 192.168.10.50/24 IP'sini ata, sonra doğrula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip addr add 192.168.10.50/24 dev eth0",
+          "hint_text": "ip addr add ile interface'e IP ata",
+          "hint_partial": "ip addr add 192.168.10.50/24 dev ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "ip addr show eth0",
+          "hint_text": "ip addr show ile interface'i kontrol et",
+          "hint_partial": "ip addr show ..."
+        }
+      ]
+    },
+    {
+      "id": "mnet-004",
+      "type": "single",
+      "scenario": "api.example.com'un sadece A kaydını sorgula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dig api.example.com A",
+          "hint_text": "dig ile belirli record tipi sorgulanır",
+          "hint_partial": "dig api.example.com ..."
+        }
+      ]
+    },
+    {
+      "id": "mnet-005",
+      "type": "single",
+      "scenario": "443 portunu hangi process'in dinledigini PID ve program adi ile goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ss -tlnp '( sport = :443 )'",
+          "hint_text": "Belirli portu filtrelemek icin `ss -tlnp '( sport = :443 )'` kullan.",
+          "hint_partial": "ss -tlnp '( sport = :443 )'"
+        }
+      ]
+    },
+    {
+      "id": "mnet-006",
+      "type": "multi-step",
+      "scenario": "Remote sunucuya (user@10.0.0.5) SSH bağlan, bağlandıktan sonra orada hangi service'lerin çalıştığını kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh user@10.0.0.5",
+          "hint_text": "ssh user@host formatı",
+          "hint_partial": "ssh user@..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "systemctl list-units --type=service --state=running",
+          "hint_text": "systemctl ile çalışan service'leri filtrele",
+          "hint_partial": "systemctl list-units --type=service ..."
+        }
+      ]
+    },
+    {
+      "id": "mnet-007",
+      "type": "single",
+      "scenario": "curl ile POST isteği gönder: localhost:3000/api/data endpoint'ine JSON body ile.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "curl -X POST -H 'Content-Type: application/json' -d '{\"key\":\"value\"}' localhost:3000/api/data",
+          "hint_text": "-X POST, -H header, -d data",
+          "hint_partial": "curl -X POST -H 'Content-Type: application/json' -d '{\"key\":\"value\"}' ..."
+        }
+      ]
+    },
+    {
+      "id": "mnet-008",
+      "type": "single",
+      "scenario": "eth0 interface'indeki network trafigini yakala, sadece port 80'i izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tcpdump -i eth0 port 80",
+          "hint_text": "tcpdump ile interface ve port filtresi",
+          "hint_partial": "tcpdump -i eth0 ..."
+        }
+      ]
+    },
+    {
+      "id": "mnet-009",
+      "type": "single",
+      "scenario": "10.0.0.0/24 subnet'indeki aktif host'ları tara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "nmap -sn 10.0.0.0/24",
+          "hint_text": "nmap -sn ping scan, port taramadan sadece host discovery",
+          "hint_partial": "nmap -sn ..."
+        }
+      ]
+    },
+    {
+      "id": "mnet-010",
+      "type": "single",
+      "scenario": "DNS önbelleğini temizlemek için systemd-resolved service'i yeniden start et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "systemctl restart systemd-resolved",
+          "hint_text": "systemctl restart ile DNS service'i restart et",
+          "hint_partial": "systemctl restart ..."
+        }
+      ]
+    },
+    {
+      "id": "mnet-011",
+      "type": "single",
+      "scenario": "example.com icin IPv6 AAAA kayitlarini kisaca goster",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dig +short aaaa example.com",
+          "hint_text": "AAAA kaydi icin dig +short kullan",
+          "hint_partial": "dig +short aaaa ..."
+        }
+      ]
+    },
+    {
+      "id": "mnet-012",
+      "type": "single",
+      "scenario": "example.com'a yonelik HTTP redirect zincirini takip et",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "curl -IL https://example.com",
+          "hint_text": "Header ve redirect takibi icin curl seceneklerini birlestir",
+          "hint_partial": "curl -IL ..."
+        }
+      ]
+    },
+    {
+      "id": "mnet-015",
+      "type": "multi-step",
+      "scenario": "Önce host adini goster sonra mevcut interface'lerin IPv4 adreslerini listele",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "hostname",
+          "hint_text": "Ilk adimda host adini goster",
+          "hint_partial": "h..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "ip -4 a",
+          "hint_text": "Ikinci adimda IPv4 adreslerini listele",
+          "hint_partial": "ip -4 ..."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2726 @@
+{
+  "level": "junior",
+  "topic": "ssh",
+  "questions": [
+    {
+      "id": "jssh-001",
+      "type": "single",
+      "scenario": "user@192.168.1.10 host'una SSH ile bağlan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh user@192.168.1.10",
+          "hint_text": "`ssh user@host` formatını kullan.",
+          "hint_partial": "ssh user@..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-002",
+      "type": "single",
+      "scenario": "Yeni bir ed25519 SSH key oluştur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-keygen -t ed25519",
+          "hint_text": "`ssh-keygen` ile key type belirt.",
+          "hint_partial": "ssh-keygen -t ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-003",
+      "type": "single",
+      "scenario": "Public key'ini remote host'a kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-copy-id user@192.168.1.10",
+          "hint_text": "`ssh-copy-id` public key'i remote authorized_keys'e ekler.",
+          "hint_partial": "ssh-copy-id ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-004",
+      "type": "single",
+      "scenario": "config.yml file'ını remote host üzerindeki /tmp/ directory'sine `scp` ile kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp config.yml user@192.168.1.10:/tmp/",
+          "hint_text": "`scp source user@host:target` formatını kullan.",
+          "hint_partial": "scp config.yml ...:/tmp/"
+        }
+      ]
+    },
+    {
+      "id": "jssh-005",
+      "type": "multi-step",
+      "scenario": "`~/.ssh/config` file'ını oluştur, sonra permission'ını 600 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "touch ~/.ssh/config",
+          "hint_text": "Boş bir config file'ı oluştur.",
+          "hint_partial": "touch ~/.ssh/..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "chmod 600 ~/.ssh/config",
+          "hint_text": "SSH config file'ı için sıkı permission ver.",
+          "hint_partial": "chmod 600 ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-006",
+      "type": "single",
+      "scenario": "Remote host üzerinde `hostname` komutunu çalıştır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh user@192.168.1.10 hostname",
+          "hint_text": "SSH ile remote command verebilirsin.",
+          "hint_partial": "ssh user@... ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-007",
+      "type": "single",
+      "scenario": "Private key file'larının listesini `~/.ssh/` altında göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls ~/.ssh/",
+          "hint_text": "SSH key file'ları genelde `~/.ssh/` altındadır.",
+          "hint_partial": "ls ~/.ssh/..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-008",
+      "type": "single",
+      "scenario": "Public key içeriğini ekrana yazdır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat ~/.ssh/id_ed25519.pub",
+          "hint_text": "Public key file'ını `cat` ile göster.",
+          "hint_partial": "cat ~/.ssh/..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-009",
+      "type": "single",
+      "scenario": "Remote `notes.txt` file'ını local current directory'ye `scp` ile indir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp user@192.168.1.10:notes.txt .",
+          "hint_text": "`scp user@host:file target` formatını kullan.",
+          "hint_partial": "scp user@...:... ."
+        }
+      ]
+    },
+    {
+      "id": "jssh-010",
+      "type": "single",
+      "scenario": "SSH client config file'ını görüntüle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat ~/.ssh/config",
+          "hint_text": "Client config içeriği için `cat` kullan.",
+          "hint_partial": "cat ~/.ssh/..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-001-r1",
+      "type": "single",
+      "scenario": "Bakim oncesi user@192.168.1.10 host'una SSH ile bağlan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh user@192.168.1.10",
+          "hint_text": "`ssh user@host` formatını kullan.",
+          "hint_partial": "ssh user@..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-002-r2",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda yeni bir ed25519 SSH key oluştur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-keygen -t ed25519",
+          "hint_text": "`ssh-keygen` ile key type belirt.",
+          "hint_partial": "ssh-keygen -t ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-003-r3",
+      "type": "single",
+      "scenario": "Deploy sonrasi public key'ini remote host'a kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-copy-id user@192.168.1.10",
+          "hint_text": "`ssh-copy-id` public key'i remote authorized_keys'e ekler.",
+          "hint_partial": "ssh-copy-id ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-004-r4",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde config.yml file'ını remote host üzerindeki /tmp/job-4/ directory'sine `scp` ile kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp config.yml user@192.168.1.10:/tmp/job-4/",
+          "hint_text": "`scp source user@host:target` formatını kullan.",
+          "hint_partial": "scp config.yml ...:/tmp/job-4/"
+        }
+      ]
+    },
+    {
+      "id": "jssh-005-r5",
+      "type": "multi-step",
+      "scenario": "Yeni acilan hostta `~/.ssh/config` file'ını oluştur, sonra permission'ını 600 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "touch ~/.ssh/config",
+          "hint_text": "Boş bir config file'ı oluştur.",
+          "hint_partial": "touch ~/.ssh/..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "chmod 600 ~/.ssh/config",
+          "hint_text": "SSH config file'ı için sıkı permission ver.",
+          "hint_partial": "chmod 600 ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-006-r6",
+      "type": "single",
+      "scenario": "Runbook adiminda remote host üzerinde `hostname` komutunu çalıştır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh user@192.168.1.10 hostname",
+          "hint_text": "SSH ile remote command verebilirsin.",
+          "hint_partial": "ssh user@... ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-007-r7",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde private key file'larının listesini `~/.ssh/` altında göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls ~/.ssh/",
+          "hint_text": "SSH key file'ları genelde `~/.ssh/` altındadır.",
+          "hint_partial": "ls ~/.ssh/..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-008-r8",
+      "type": "single",
+      "scenario": "Incident sonrasinda public key içeriğini ekrana yazdır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat ~/.ssh/id_ed25519.pub",
+          "hint_text": "Public key file'ını `cat` ile göster.",
+          "hint_partial": "cat ~/.ssh/..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-009-r9",
+      "type": "single",
+      "scenario": "Bakim oncesi remote `notes.txt` file'ını local current directory'ye `scp` ile indir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp user@192.168.1.10:notes.txt .",
+          "hint_text": "`scp user@host:file target` formatını kullan.",
+          "hint_partial": "scp user@...:... ."
+        }
+      ]
+    },
+    {
+      "id": "jssh-010-r10",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda sSH client config file'ını görüntüle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat ~/.ssh/config",
+          "hint_text": "Client config içeriği için `cat` kullan.",
+          "hint_partial": "cat ~/.ssh/..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-001-r11",
+      "type": "single",
+      "scenario": "Deploy sonrasi user@192.168.1.10 host'una SSH ile bağlan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh user@192.168.1.10",
+          "hint_text": "`ssh user@host` formatını kullan.",
+          "hint_partial": "ssh user@..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-002-r12",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde yeni bir ed25519 SSH key oluştur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-keygen -t ed25519",
+          "hint_text": "`ssh-keygen` ile key type belirt.",
+          "hint_partial": "ssh-keygen -t ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-003-r13",
+      "type": "single",
+      "scenario": "Yeni acilan hostta public key'ini remote host'a kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-copy-id user@192.168.1.10",
+          "hint_text": "`ssh-copy-id` public key'i remote authorized_keys'e ekler.",
+          "hint_partial": "ssh-copy-id ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-004-r14",
+      "type": "single",
+      "scenario": "Runbook adiminda config.yml file'ını remote host üzerindeki /tmp/job-14/ directory'sine `scp` ile kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp config.yml user@192.168.1.10:/tmp/job-14/",
+          "hint_text": "`scp source user@host:target` formatını kullan.",
+          "hint_partial": "scp config.yml ...:/tmp/job-14/"
+        }
+      ]
+    },
+    {
+      "id": "jssh-005-r15",
+      "type": "multi-step",
+      "scenario": "Operasyon kontrolunde `~/.ssh/config` file'ını oluştur, sonra permission'ını 600 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "touch ~/.ssh/config",
+          "hint_text": "Boş bir config file'ı oluştur.",
+          "hint_partial": "touch ~/.ssh/..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "chmod 600 ~/.ssh/config",
+          "hint_text": "SSH config file'ı için sıkı permission ver.",
+          "hint_partial": "chmod 600 ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-006-r16",
+      "type": "single",
+      "scenario": "Incident sonrasinda remote host üzerinde `hostname` komutunu çalıştır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh user@192.168.1.10 hostname",
+          "hint_text": "SSH ile remote command verebilirsin.",
+          "hint_partial": "ssh user@... ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-007-r17",
+      "type": "single",
+      "scenario": "Bakim oncesi private key file'larının listesini `~/.ssh/` altında göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls ~/.ssh/",
+          "hint_text": "SSH key file'ları genelde `~/.ssh/` altındadır.",
+          "hint_partial": "ls ~/.ssh/..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-008-r18",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda public key içeriğini ekrana yazdır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat ~/.ssh/id_ed25519.pub",
+          "hint_text": "Public key file'ını `cat` ile göster.",
+          "hint_partial": "cat ~/.ssh/..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-009-r19",
+      "type": "single",
+      "scenario": "Deploy sonrasi remote `notes.txt` file'ını local current directory'ye `scp` ile indir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp user@192.168.1.10:notes.txt .",
+          "hint_text": "`scp user@host:file target` formatını kullan.",
+          "hint_partial": "scp user@...:... ."
+        }
+      ]
+    },
+    {
+      "id": "jssh-010-r20",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde sSH client config file'ını görüntüle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat ~/.ssh/config",
+          "hint_text": "Client config içeriği için `cat` kullan.",
+          "hint_partial": "cat ~/.ssh/..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-001-r21",
+      "type": "single",
+      "scenario": "Yeni acilan hostta user@192.168.1.10 host'una SSH ile bağlan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh user@192.168.1.10",
+          "hint_text": "`ssh user@host` formatını kullan.",
+          "hint_partial": "ssh user@..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-002-r22",
+      "type": "single",
+      "scenario": "Runbook adiminda yeni bir ed25519 SSH key oluştur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-keygen -t ed25519",
+          "hint_text": "`ssh-keygen` ile key type belirt.",
+          "hint_partial": "ssh-keygen -t ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-003-r23",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde public key'ini remote host'a kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-copy-id user@192.168.1.10",
+          "hint_text": "`ssh-copy-id` public key'i remote authorized_keys'e ekler.",
+          "hint_partial": "ssh-copy-id ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-004-r24",
+      "type": "single",
+      "scenario": "Incident sonrasinda config.yml file'ını remote host üzerindeki /tmp/job-24/ directory'sine `scp` ile kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp config.yml user@192.168.1.10:/tmp/job-24/",
+          "hint_text": "`scp source user@host:target` formatını kullan.",
+          "hint_partial": "scp config.yml ...:/tmp/job-24/"
+        }
+      ]
+    },
+    {
+      "id": "jssh-005-r25",
+      "type": "multi-step",
+      "scenario": "Bakim oncesi `~/.ssh/config` file'ını oluştur, sonra permission'ını 600 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "touch ~/.ssh/config",
+          "hint_text": "Boş bir config file'ı oluştur.",
+          "hint_partial": "touch ~/.ssh/..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "chmod 600 ~/.ssh/config",
+          "hint_text": "SSH config file'ı için sıkı permission ver.",
+          "hint_partial": "chmod 600 ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-006-r26",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda remote host üzerinde `hostname` komutunu çalıştır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh user@192.168.1.10 hostname",
+          "hint_text": "SSH ile remote command verebilirsin.",
+          "hint_partial": "ssh user@... ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-007-r27",
+      "type": "single",
+      "scenario": "Deploy sonrasi private key file'larının listesini `~/.ssh/` altında göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls ~/.ssh/",
+          "hint_text": "SSH key file'ları genelde `~/.ssh/` altındadır.",
+          "hint_partial": "ls ~/.ssh/..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-008-r28",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde public key içeriğini ekrana yazdır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat ~/.ssh/id_ed25519.pub",
+          "hint_text": "Public key file'ını `cat` ile göster.",
+          "hint_partial": "cat ~/.ssh/..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-009-r29",
+      "type": "single",
+      "scenario": "Yeni acilan hostta remote `notes.txt` file'ını local current directory'ye `scp` ile indir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp user@192.168.1.10:notes.txt .",
+          "hint_text": "`scp user@host:file target` formatını kullan.",
+          "hint_partial": "scp user@...:... ."
+        }
+      ]
+    },
+    {
+      "id": "jssh-010-r30",
+      "type": "single",
+      "scenario": "Runbook adiminda sSH client config file'ını görüntüle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat ~/.ssh/config",
+          "hint_text": "Client config içeriği için `cat` kullan.",
+          "hint_partial": "cat ~/.ssh/..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-001-r31",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde user@192.168.1.10 host'una SSH ile bağlan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh user@192.168.1.10",
+          "hint_text": "`ssh user@host` formatını kullan.",
+          "hint_partial": "ssh user@..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-002-r32",
+      "type": "single",
+      "scenario": "Incident sonrasinda yeni bir ed25519 SSH key oluştur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-keygen -t ed25519",
+          "hint_text": "`ssh-keygen` ile key type belirt.",
+          "hint_partial": "ssh-keygen -t ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-003-r33",
+      "type": "single",
+      "scenario": "Bakim oncesi public key'ini remote host'a kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-copy-id user@192.168.1.10",
+          "hint_text": "`ssh-copy-id` public key'i remote authorized_keys'e ekler.",
+          "hint_partial": "ssh-copy-id ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-004-r34",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda config.yml file'ını remote host üzerindeki /tmp/job-34/ directory'sine `scp` ile kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp config.yml user@192.168.1.10:/tmp/job-34/",
+          "hint_text": "`scp source user@host:target` formatını kullan.",
+          "hint_partial": "scp config.yml ...:/tmp/job-34/"
+        }
+      ]
+    },
+    {
+      "id": "jssh-005-r35",
+      "type": "multi-step",
+      "scenario": "Deploy sonrasi `~/.ssh/config` file'ını oluştur, sonra permission'ını 600 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "touch ~/.ssh/config",
+          "hint_text": "Boş bir config file'ı oluştur.",
+          "hint_partial": "touch ~/.ssh/..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "chmod 600 ~/.ssh/config",
+          "hint_text": "SSH config file'ı için sıkı permission ver.",
+          "hint_partial": "chmod 600 ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-006-r36",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde remote host üzerinde `hostname` komutunu çalıştır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh user@192.168.1.10 hostname",
+          "hint_text": "SSH ile remote command verebilirsin.",
+          "hint_partial": "ssh user@... ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-007-r37",
+      "type": "single",
+      "scenario": "Yeni acilan hostta private key file'larının listesini `~/.ssh/` altında göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls ~/.ssh/",
+          "hint_text": "SSH key file'ları genelde `~/.ssh/` altındadır.",
+          "hint_partial": "ls ~/.ssh/..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-008-r38",
+      "type": "single",
+      "scenario": "Runbook adiminda public key içeriğini ekrana yazdır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat ~/.ssh/id_ed25519.pub",
+          "hint_text": "Public key file'ını `cat` ile göster.",
+          "hint_partial": "cat ~/.ssh/..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-009-r39",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde remote `notes.txt` file'ını local current directory'ye `scp` ile indir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp user@192.168.1.10:notes.txt .",
+          "hint_text": "`scp user@host:file target` formatını kullan.",
+          "hint_partial": "scp user@...:... ."
+        }
+      ]
+    },
+    {
+      "id": "jssh-010-r40",
+      "type": "single",
+      "scenario": "Incident sonrasinda sSH client config file'ını görüntüle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat ~/.ssh/config",
+          "hint_text": "Client config içeriği için `cat` kullan.",
+          "hint_partial": "cat ~/.ssh/..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-001-r41",
+      "type": "single",
+      "scenario": "Bakim oncesi user@192.168.1.10 host'una SSH ile bağlan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh user@192.168.1.10",
+          "hint_text": "`ssh user@host` formatını kullan.",
+          "hint_partial": "ssh user@..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-002-r42",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda yeni bir ed25519 SSH key oluştur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-keygen -t ed25519",
+          "hint_text": "`ssh-keygen` ile key type belirt.",
+          "hint_partial": "ssh-keygen -t ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-003-r43",
+      "type": "single",
+      "scenario": "Deploy sonrasi public key'ini remote host'a kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-copy-id user@192.168.1.10",
+          "hint_text": "`ssh-copy-id` public key'i remote authorized_keys'e ekler.",
+          "hint_partial": "ssh-copy-id ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-004-r44",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde config.yml file'ını remote host üzerindeki /tmp/job-44/ directory'sine `scp` ile kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp config.yml user@192.168.1.10:/tmp/job-44/",
+          "hint_text": "`scp source user@host:target` formatını kullan.",
+          "hint_partial": "scp config.yml ...:/tmp/job-44/"
+        }
+      ]
+    },
+    {
+      "id": "jssh-005-r45",
+      "type": "multi-step",
+      "scenario": "Yeni acilan hostta `~/.ssh/config` file'ını oluştur, sonra permission'ını 600 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "touch ~/.ssh/config",
+          "hint_text": "Boş bir config file'ı oluştur.",
+          "hint_partial": "touch ~/.ssh/..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "chmod 600 ~/.ssh/config",
+          "hint_text": "SSH config file'ı için sıkı permission ver.",
+          "hint_partial": "chmod 600 ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-006-r46",
+      "type": "single",
+      "scenario": "Runbook adiminda remote host üzerinde `hostname` komutunu çalıştır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh user@192.168.1.10 hostname",
+          "hint_text": "SSH ile remote command verebilirsin.",
+          "hint_partial": "ssh user@... ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-007-r47",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde private key file'larının listesini `~/.ssh/` altında göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls ~/.ssh/",
+          "hint_text": "SSH key file'ları genelde `~/.ssh/` altındadır.",
+          "hint_partial": "ls ~/.ssh/..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-008-r48",
+      "type": "single",
+      "scenario": "Incident sonrasinda public key içeriğini ekrana yazdır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat ~/.ssh/id_ed25519.pub",
+          "hint_text": "Public key file'ını `cat` ile göster.",
+          "hint_partial": "cat ~/.ssh/..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-009-r49",
+      "type": "single",
+      "scenario": "Bakim oncesi remote `notes.txt` file'ını local current directory'ye `scp` ile indir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp user@192.168.1.10:notes.txt .",
+          "hint_text": "`scp user@host:file target` formatını kullan.",
+          "hint_partial": "scp user@...:... ."
+        }
+      ]
+    },
+    {
+      "id": "jssh-010-r50",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda sSH client config file'ını görüntüle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat ~/.ssh/config",
+          "hint_text": "Client config içeriği için `cat` kullan.",
+          "hint_partial": "cat ~/.ssh/..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-001-r51",
+      "type": "single",
+      "scenario": "Deploy sonrasi user@192.168.1.10 host'una SSH ile bağlan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh user@192.168.1.10",
+          "hint_text": "`ssh user@host` formatını kullan.",
+          "hint_partial": "ssh user@..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-002-r52",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde yeni bir ed25519 SSH key oluştur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-keygen -t ed25519",
+          "hint_text": "`ssh-keygen` ile key type belirt.",
+          "hint_partial": "ssh-keygen -t ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-003-r53",
+      "type": "single",
+      "scenario": "Yeni acilan hostta public key'ini remote host'a kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-copy-id user@192.168.1.10",
+          "hint_text": "`ssh-copy-id` public key'i remote authorized_keys'e ekler.",
+          "hint_partial": "ssh-copy-id ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-004-r54",
+      "type": "single",
+      "scenario": "Runbook adiminda config.yml file'ını remote host üzerindeki /tmp/job-54/ directory'sine `scp` ile kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp config.yml user@192.168.1.10:/tmp/job-54/",
+          "hint_text": "`scp source user@host:target` formatını kullan.",
+          "hint_partial": "scp config.yml ...:/tmp/job-54/"
+        }
+      ]
+    },
+    {
+      "id": "jssh-005-r55",
+      "type": "multi-step",
+      "scenario": "Operasyon kontrolunde `~/.ssh/config` file'ını oluştur, sonra permission'ını 600 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "touch ~/.ssh/config",
+          "hint_text": "Boş bir config file'ı oluştur.",
+          "hint_partial": "touch ~/.ssh/..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "chmod 600 ~/.ssh/config",
+          "hint_text": "SSH config file'ı için sıkı permission ver.",
+          "hint_partial": "chmod 600 ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-006-r56",
+      "type": "single",
+      "scenario": "Incident sonrasinda remote host üzerinde `hostname` komutunu çalıştır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh user@192.168.1.10 hostname",
+          "hint_text": "SSH ile remote command verebilirsin.",
+          "hint_partial": "ssh user@... ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-007-r57",
+      "type": "single",
+      "scenario": "Bakim oncesi private key file'larının listesini `~/.ssh/` altında göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls ~/.ssh/",
+          "hint_text": "SSH key file'ları genelde `~/.ssh/` altındadır.",
+          "hint_partial": "ls ~/.ssh/..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-008-r58",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda public key içeriğini ekrana yazdır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat ~/.ssh/id_ed25519.pub",
+          "hint_text": "Public key file'ını `cat` ile göster.",
+          "hint_partial": "cat ~/.ssh/..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-009-r59",
+      "type": "single",
+      "scenario": "Deploy sonrasi remote `notes.txt` file'ını local current directory'ye `scp` ile indir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp user@192.168.1.10:notes.txt .",
+          "hint_text": "`scp user@host:file target` formatını kullan.",
+          "hint_partial": "scp user@...:... ."
+        }
+      ]
+    },
+    {
+      "id": "jssh-010-r60",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde sSH client config file'ını görüntüle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat ~/.ssh/config",
+          "hint_text": "Client config içeriği için `cat` kullan.",
+          "hint_partial": "cat ~/.ssh/..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-001-r61",
+      "type": "single",
+      "scenario": "Yeni acilan hostta user@192.168.1.10 host'una SSH ile bağlan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh user@192.168.1.10",
+          "hint_text": "`ssh user@host` formatını kullan.",
+          "hint_partial": "ssh user@..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-002-r62",
+      "type": "single",
+      "scenario": "Runbook adiminda yeni bir ed25519 SSH key oluştur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-keygen -t ed25519",
+          "hint_text": "`ssh-keygen` ile key type belirt.",
+          "hint_partial": "ssh-keygen -t ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-003-r63",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde public key'ini remote host'a kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-copy-id user@192.168.1.10",
+          "hint_text": "`ssh-copy-id` public key'i remote authorized_keys'e ekler.",
+          "hint_partial": "ssh-copy-id ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-004-r64",
+      "type": "single",
+      "scenario": "Incident sonrasinda config.yml file'ını remote host üzerindeki /tmp/job-64/ directory'sine `scp` ile kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp config.yml user@192.168.1.10:/tmp/job-64/",
+          "hint_text": "`scp source user@host:target` formatını kullan.",
+          "hint_partial": "scp config.yml ...:/tmp/job-64/"
+        }
+      ]
+    },
+    {
+      "id": "jssh-005-r65",
+      "type": "multi-step",
+      "scenario": "Bakim oncesi `~/.ssh/config` file'ını oluştur, sonra permission'ını 600 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "touch ~/.ssh/config",
+          "hint_text": "Boş bir config file'ı oluştur.",
+          "hint_partial": "touch ~/.ssh/..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "chmod 600 ~/.ssh/config",
+          "hint_text": "SSH config file'ı için sıkı permission ver.",
+          "hint_partial": "chmod 600 ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-006-r66",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda remote host üzerinde `hostname` komutunu çalıştır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh user@192.168.1.10 hostname",
+          "hint_text": "SSH ile remote command verebilirsin.",
+          "hint_partial": "ssh user@... ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-007-r67",
+      "type": "single",
+      "scenario": "Deploy sonrasi private key file'larının listesini `~/.ssh/` altında göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls ~/.ssh/",
+          "hint_text": "SSH key file'ları genelde `~/.ssh/` altındadır.",
+          "hint_partial": "ls ~/.ssh/..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-008-r68",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde public key içeriğini ekrana yazdır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat ~/.ssh/id_ed25519.pub",
+          "hint_text": "Public key file'ını `cat` ile göster.",
+          "hint_partial": "cat ~/.ssh/..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-009-r69",
+      "type": "single",
+      "scenario": "Yeni acilan hostta remote `notes.txt` file'ını local current directory'ye `scp` ile indir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp user@192.168.1.10:notes.txt .",
+          "hint_text": "`scp user@host:file target` formatını kullan.",
+          "hint_partial": "scp user@...:... ."
+        }
+      ]
+    },
+    {
+      "id": "jssh-010-r70",
+      "type": "single",
+      "scenario": "Runbook adiminda sSH client config file'ını görüntüle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat ~/.ssh/config",
+          "hint_text": "Client config içeriği için `cat` kullan.",
+          "hint_partial": "cat ~/.ssh/..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-001-r71",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde user@192.168.1.10 host'una SSH ile bağlan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh user@192.168.1.10",
+          "hint_text": "`ssh user@host` formatını kullan.",
+          "hint_partial": "ssh user@..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-002-r72",
+      "type": "single",
+      "scenario": "Incident sonrasinda yeni bir ed25519 SSH key oluştur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-keygen -t ed25519",
+          "hint_text": "`ssh-keygen` ile key type belirt.",
+          "hint_partial": "ssh-keygen -t ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-003-r73",
+      "type": "single",
+      "scenario": "Bakim oncesi public key'ini remote host'a kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-copy-id user@192.168.1.10",
+          "hint_text": "`ssh-copy-id` public key'i remote authorized_keys'e ekler.",
+          "hint_partial": "ssh-copy-id ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-004-r74",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda config.yml file'ını remote host üzerindeki /tmp/job-74/ directory'sine `scp` ile kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp config.yml user@192.168.1.10:/tmp/job-74/",
+          "hint_text": "`scp source user@host:target` formatını kullan.",
+          "hint_partial": "scp config.yml ...:/tmp/job-74/"
+        }
+      ]
+    },
+    {
+      "id": "jssh-005-r75",
+      "type": "multi-step",
+      "scenario": "Deploy sonrasi `~/.ssh/config` file'ını oluştur, sonra permission'ını 600 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "touch ~/.ssh/config",
+          "hint_text": "Boş bir config file'ı oluştur.",
+          "hint_partial": "touch ~/.ssh/..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "chmod 600 ~/.ssh/config",
+          "hint_text": "SSH config file'ı için sıkı permission ver.",
+          "hint_partial": "chmod 600 ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-006-r76",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde remote host üzerinde `hostname` komutunu çalıştır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh user@192.168.1.10 hostname",
+          "hint_text": "SSH ile remote command verebilirsin.",
+          "hint_partial": "ssh user@... ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-007-r77",
+      "type": "single",
+      "scenario": "Yeni acilan hostta private key file'larının listesini `~/.ssh/` altında göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls ~/.ssh/",
+          "hint_text": "SSH key file'ları genelde `~/.ssh/` altındadır.",
+          "hint_partial": "ls ~/.ssh/..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-008-r78",
+      "type": "single",
+      "scenario": "Runbook adiminda public key içeriğini ekrana yazdır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat ~/.ssh/id_ed25519.pub",
+          "hint_text": "Public key file'ını `cat` ile göster.",
+          "hint_partial": "cat ~/.ssh/..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-009-r79",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde remote `notes.txt` file'ını local current directory'ye `scp` ile indir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp user@192.168.1.10:notes.txt .",
+          "hint_text": "`scp user@host:file target` formatını kullan.",
+          "hint_partial": "scp user@...:... ."
+        }
+      ]
+    },
+    {
+      "id": "jssh-010-r80",
+      "type": "single",
+      "scenario": "Incident sonrasinda sSH client config file'ını görüntüle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat ~/.ssh/config",
+          "hint_text": "Client config içeriği için `cat` kullan.",
+          "hint_partial": "cat ~/.ssh/..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-001-r81",
+      "type": "single",
+      "scenario": "Bakim oncesi user@192.168.1.10 host'una SSH ile bağlan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh user@192.168.1.10",
+          "hint_text": "`ssh user@host` formatını kullan.",
+          "hint_partial": "ssh user@..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-002-r82",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda yeni bir ed25519 SSH key oluştur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-keygen -t ed25519",
+          "hint_text": "`ssh-keygen` ile key type belirt.",
+          "hint_partial": "ssh-keygen -t ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-003-r83",
+      "type": "single",
+      "scenario": "Deploy sonrasi public key'ini remote host'a kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-copy-id user@192.168.1.10",
+          "hint_text": "`ssh-copy-id` public key'i remote authorized_keys'e ekler.",
+          "hint_partial": "ssh-copy-id ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-004-r84",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde config.yml file'ını remote host üzerindeki /tmp/job-84/ directory'sine `scp` ile kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp config.yml user@192.168.1.10:/tmp/job-84/",
+          "hint_text": "`scp source user@host:target` formatını kullan.",
+          "hint_partial": "scp config.yml ...:/tmp/job-84/"
+        }
+      ]
+    },
+    {
+      "id": "jssh-005-r85",
+      "type": "multi-step",
+      "scenario": "Yeni acilan hostta `~/.ssh/config` file'ını oluştur, sonra permission'ını 600 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "touch ~/.ssh/config",
+          "hint_text": "Boş bir config file'ı oluştur.",
+          "hint_partial": "touch ~/.ssh/..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "chmod 600 ~/.ssh/config",
+          "hint_text": "SSH config file'ı için sıkı permission ver.",
+          "hint_partial": "chmod 600 ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-006-r86",
+      "type": "single",
+      "scenario": "Runbook adiminda remote host üzerinde `hostname` komutunu çalıştır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh user@192.168.1.10 hostname",
+          "hint_text": "SSH ile remote command verebilirsin.",
+          "hint_partial": "ssh user@... ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-007-r87",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde private key file'larının listesini `~/.ssh/` altında göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls ~/.ssh/",
+          "hint_text": "SSH key file'ları genelde `~/.ssh/` altındadır.",
+          "hint_partial": "ls ~/.ssh/..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-008-r88",
+      "type": "single",
+      "scenario": "Incident sonrasinda public key içeriğini ekrana yazdır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat ~/.ssh/id_ed25519.pub",
+          "hint_text": "Public key file'ını `cat` ile göster.",
+          "hint_partial": "cat ~/.ssh/..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-009-r89",
+      "type": "single",
+      "scenario": "Bakim oncesi remote `notes.txt` file'ını local current directory'ye `scp` ile indir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp user@192.168.1.10:notes.txt .",
+          "hint_text": "`scp user@host:file target` formatını kullan.",
+          "hint_partial": "scp user@...:... ."
+        }
+      ]
+    },
+    {
+      "id": "jssh-010-r90",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda sSH client config file'ını görüntüle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat ~/.ssh/config",
+          "hint_text": "Client config içeriği için `cat` kullan.",
+          "hint_partial": "cat ~/.ssh/..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-001-r91",
+      "type": "single",
+      "scenario": "Deploy sonrasi user@192.168.1.10 host'una SSH ile bağlan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh user@192.168.1.10",
+          "hint_text": "`ssh user@host` formatını kullan.",
+          "hint_partial": "ssh user@..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-002-r92",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde yeni bir ed25519 SSH key oluştur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-keygen -t ed25519",
+          "hint_text": "`ssh-keygen` ile key type belirt.",
+          "hint_partial": "ssh-keygen -t ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-003-r93",
+      "type": "single",
+      "scenario": "Yeni acilan hostta public key'ini remote host'a kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-copy-id user@192.168.1.10",
+          "hint_text": "`ssh-copy-id` public key'i remote authorized_keys'e ekler.",
+          "hint_partial": "ssh-copy-id ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-004-r94",
+      "type": "single",
+      "scenario": "Runbook adiminda config.yml file'ını remote host üzerindeki /tmp/job-94/ directory'sine `scp` ile kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp config.yml user@192.168.1.10:/tmp/job-94/",
+          "hint_text": "`scp source user@host:target` formatını kullan.",
+          "hint_partial": "scp config.yml ...:/tmp/job-94/"
+        }
+      ]
+    },
+    {
+      "id": "jssh-005-r95",
+      "type": "multi-step",
+      "scenario": "Operasyon kontrolunde `~/.ssh/config` file'ını oluştur, sonra permission'ını 600 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "touch ~/.ssh/config",
+          "hint_text": "Boş bir config file'ı oluştur.",
+          "hint_partial": "touch ~/.ssh/..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "chmod 600 ~/.ssh/config",
+          "hint_text": "SSH config file'ı için sıkı permission ver.",
+          "hint_partial": "chmod 600 ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-006-r96",
+      "type": "single",
+      "scenario": "Incident sonrasinda remote host üzerinde `hostname` komutunu çalıştır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh user@192.168.1.10 hostname",
+          "hint_text": "SSH ile remote command verebilirsin.",
+          "hint_partial": "ssh user@... ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-007-r97",
+      "type": "single",
+      "scenario": "Bakim oncesi private key file'larının listesini `~/.ssh/` altında göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls ~/.ssh/",
+          "hint_text": "SSH key file'ları genelde `~/.ssh/` altındadır.",
+          "hint_partial": "ls ~/.ssh/..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-008-r98",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda public key içeriğini ekrana yazdır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat ~/.ssh/id_ed25519.pub",
+          "hint_text": "Public key file'ını `cat` ile göster.",
+          "hint_partial": "cat ~/.ssh/..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-009-r99",
+      "type": "single",
+      "scenario": "Deploy sonrasi remote `notes.txt` file'ını local current directory'ye `scp` ile indir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp user@192.168.1.10:notes.txt .",
+          "hint_text": "`scp user@host:file target` formatını kullan.",
+          "hint_partial": "scp user@...:... ."
+        }
+      ]
+    },
+    {
+      "id": "jssh-010-r100",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde sSH client config file'ını görüntüle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat ~/.ssh/config",
+          "hint_text": "Client config içeriği için `cat` kullan.",
+          "hint_partial": "cat ~/.ssh/..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-001-r101",
+      "type": "single",
+      "scenario": "Yeni acilan hostta user@192.168.1.10 host'una SSH ile bağlan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh user@192.168.1.10",
+          "hint_text": "`ssh user@host` formatını kullan.",
+          "hint_partial": "ssh user@..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-002-r102",
+      "type": "single",
+      "scenario": "Runbook adiminda yeni bir ed25519 SSH key oluştur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-keygen -t ed25519",
+          "hint_text": "`ssh-keygen` ile key type belirt.",
+          "hint_partial": "ssh-keygen -t ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-003-r103",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde public key'ini remote host'a kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-copy-id user@192.168.1.10",
+          "hint_text": "`ssh-copy-id` public key'i remote authorized_keys'e ekler.",
+          "hint_partial": "ssh-copy-id ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-004-r104",
+      "type": "single",
+      "scenario": "Incident sonrasinda config.yml file'ını remote host üzerindeki /tmp/job-104/ directory'sine `scp` ile kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp config.yml user@192.168.1.10:/tmp/job-104/",
+          "hint_text": "`scp source user@host:target` formatını kullan.",
+          "hint_partial": "scp config.yml ...:/tmp/job-104/"
+        }
+      ]
+    },
+    {
+      "id": "jssh-005-r105",
+      "type": "multi-step",
+      "scenario": "Bakim oncesi `~/.ssh/config` file'ını oluştur, sonra permission'ını 600 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "touch ~/.ssh/config",
+          "hint_text": "Boş bir config file'ı oluştur.",
+          "hint_partial": "touch ~/.ssh/..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "chmod 600 ~/.ssh/config",
+          "hint_text": "SSH config file'ı için sıkı permission ver.",
+          "hint_partial": "chmod 600 ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-006-r106",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda remote host üzerinde `hostname` komutunu çalıştır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh user@192.168.1.10 hostname",
+          "hint_text": "SSH ile remote command verebilirsin.",
+          "hint_partial": "ssh user@... ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-007-r107",
+      "type": "single",
+      "scenario": "Deploy sonrasi private key file'larının listesini `~/.ssh/` altında göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls ~/.ssh/",
+          "hint_text": "SSH key file'ları genelde `~/.ssh/` altındadır.",
+          "hint_partial": "ls ~/.ssh/..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-008-r108",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde public key içeriğini ekrana yazdır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat ~/.ssh/id_ed25519.pub",
+          "hint_text": "Public key file'ını `cat` ile göster.",
+          "hint_partial": "cat ~/.ssh/..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-009-r109",
+      "type": "single",
+      "scenario": "Yeni acilan hostta remote `notes.txt` file'ını local current directory'ye `scp` ile indir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp user@192.168.1.10:notes.txt .",
+          "hint_text": "`scp user@host:file target` formatını kullan.",
+          "hint_partial": "scp user@...:... ."
+        }
+      ]
+    },
+    {
+      "id": "jssh-010-r110",
+      "type": "single",
+      "scenario": "Runbook adiminda sSH client config file'ını görüntüle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat ~/.ssh/config",
+          "hint_text": "Client config içeriği için `cat` kullan.",
+          "hint_partial": "cat ~/.ssh/..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-001-r111",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde user@192.168.1.10 host'una SSH ile bağlan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh user@192.168.1.10",
+          "hint_text": "`ssh user@host` formatını kullan.",
+          "hint_partial": "ssh user@..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-002-r112",
+      "type": "single",
+      "scenario": "Incident sonrasinda yeni bir ed25519 SSH key oluştur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-keygen -t ed25519",
+          "hint_text": "`ssh-keygen` ile key type belirt.",
+          "hint_partial": "ssh-keygen -t ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-003-r113",
+      "type": "single",
+      "scenario": "Bakim oncesi public key'ini remote host'a kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-copy-id user@192.168.1.10",
+          "hint_text": "`ssh-copy-id` public key'i remote authorized_keys'e ekler.",
+          "hint_partial": "ssh-copy-id ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-004-r114",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda config.yml file'ını remote host üzerindeki /tmp/job-114/ directory'sine `scp` ile kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp config.yml user@192.168.1.10:/tmp/job-114/",
+          "hint_text": "`scp source user@host:target` formatını kullan.",
+          "hint_partial": "scp config.yml ...:/tmp/job-114/"
+        }
+      ]
+    },
+    {
+      "id": "jssh-005-r115",
+      "type": "multi-step",
+      "scenario": "Deploy sonrasi `~/.ssh/config` file'ını oluştur, sonra permission'ını 600 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "touch ~/.ssh/config",
+          "hint_text": "Boş bir config file'ı oluştur.",
+          "hint_partial": "touch ~/.ssh/..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "chmod 600 ~/.ssh/config",
+          "hint_text": "SSH config file'ı için sıkı permission ver.",
+          "hint_partial": "chmod 600 ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-006-r116",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde remote host üzerinde `hostname` komutunu çalıştır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh user@192.168.1.10 hostname",
+          "hint_text": "SSH ile remote command verebilirsin.",
+          "hint_partial": "ssh user@... ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-007-r117",
+      "type": "single",
+      "scenario": "Yeni acilan hostta private key file'larının listesini `~/.ssh/` altında göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls ~/.ssh/",
+          "hint_text": "SSH key file'ları genelde `~/.ssh/` altındadır.",
+          "hint_partial": "ls ~/.ssh/..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-008-r118",
+      "type": "single",
+      "scenario": "Runbook adiminda public key içeriğini ekrana yazdır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat ~/.ssh/id_ed25519.pub",
+          "hint_text": "Public key file'ını `cat` ile göster.",
+          "hint_partial": "cat ~/.ssh/..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-009-r119",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde remote `notes.txt` file'ını local current directory'ye `scp` ile indir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp user@192.168.1.10:notes.txt .",
+          "hint_text": "`scp user@host:file target` formatını kullan.",
+          "hint_partial": "scp user@...:... ."
+        }
+      ]
+    },
+    {
+      "id": "jssh-010-r120",
+      "type": "single",
+      "scenario": "Incident sonrasinda sSH client config file'ını görüntüle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat ~/.ssh/config",
+          "hint_text": "Client config içeriği için `cat` kullan.",
+          "hint_partial": "cat ~/.ssh/..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-001-r121",
+      "type": "single",
+      "scenario": "Bakim oncesi user@192.168.1.10 host'una SSH ile bağlan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh user@192.168.1.10",
+          "hint_text": "`ssh user@host` formatını kullan.",
+          "hint_partial": "ssh user@..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-002-r122",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda yeni bir ed25519 SSH key oluştur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-keygen -t ed25519",
+          "hint_text": "`ssh-keygen` ile key type belirt.",
+          "hint_partial": "ssh-keygen -t ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-003-r123",
+      "type": "single",
+      "scenario": "Deploy sonrasi public key'ini remote host'a kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-copy-id user@192.168.1.10",
+          "hint_text": "`ssh-copy-id` public key'i remote authorized_keys'e ekler.",
+          "hint_partial": "ssh-copy-id ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-004-r124",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde config.yml file'ını remote host üzerindeki /tmp/job-124/ directory'sine `scp` ile kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp config.yml user@192.168.1.10:/tmp/job-124/",
+          "hint_text": "`scp source user@host:target` formatını kullan.",
+          "hint_partial": "scp config.yml ...:/tmp/job-124/"
+        }
+      ]
+    },
+    {
+      "id": "jssh-005-r125",
+      "type": "multi-step",
+      "scenario": "Yeni acilan hostta `~/.ssh/config` file'ını oluştur, sonra permission'ını 600 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "touch ~/.ssh/config",
+          "hint_text": "Boş bir config file'ı oluştur.",
+          "hint_partial": "touch ~/.ssh/..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "chmod 600 ~/.ssh/config",
+          "hint_text": "SSH config file'ı için sıkı permission ver.",
+          "hint_partial": "chmod 600 ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-006-r126",
+      "type": "single",
+      "scenario": "Runbook adiminda remote host üzerinde `hostname` komutunu çalıştır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh user@192.168.1.10 hostname",
+          "hint_text": "SSH ile remote command verebilirsin.",
+          "hint_partial": "ssh user@... ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-007-r127",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde private key file'larının listesini `~/.ssh/` altında göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls ~/.ssh/",
+          "hint_text": "SSH key file'ları genelde `~/.ssh/` altındadır.",
+          "hint_partial": "ls ~/.ssh/..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-008-r128",
+      "type": "single",
+      "scenario": "Incident sonrasinda public key içeriğini ekrana yazdır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat ~/.ssh/id_ed25519.pub",
+          "hint_text": "Public key file'ını `cat` ile göster.",
+          "hint_partial": "cat ~/.ssh/..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-009-r129",
+      "type": "single",
+      "scenario": "Bakim oncesi remote `notes.txt` file'ını local current directory'ye `scp` ile indir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp user@192.168.1.10:notes.txt .",
+          "hint_text": "`scp user@host:file target` formatını kullan.",
+          "hint_partial": "scp user@...:... ."
+        }
+      ]
+    },
+    {
+      "id": "jssh-010-r130",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda sSH client config file'ını görüntüle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat ~/.ssh/config",
+          "hint_text": "Client config içeriği için `cat` kullan.",
+          "hint_partial": "cat ~/.ssh/..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-001-r131",
+      "type": "single",
+      "scenario": "Deploy sonrasi user@192.168.1.10 host'una SSH ile bağlan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh user@192.168.1.10",
+          "hint_text": "`ssh user@host` formatını kullan.",
+          "hint_partial": "ssh user@..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-002-r132",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde yeni bir ed25519 SSH key oluştur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-keygen -t ed25519",
+          "hint_text": "`ssh-keygen` ile key type belirt.",
+          "hint_partial": "ssh-keygen -t ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-003-r133",
+      "type": "single",
+      "scenario": "Yeni acilan hostta public key'ini remote host'a kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-copy-id user@192.168.1.10",
+          "hint_text": "`ssh-copy-id` public key'i remote authorized_keys'e ekler.",
+          "hint_partial": "ssh-copy-id ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-004-r134",
+      "type": "single",
+      "scenario": "Runbook adiminda config.yml file'ını remote host üzerindeki /tmp/job-134/ directory'sine `scp` ile kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp config.yml user@192.168.1.10:/tmp/job-134/",
+          "hint_text": "`scp source user@host:target` formatını kullan.",
+          "hint_partial": "scp config.yml ...:/tmp/job-134/"
+        }
+      ]
+    },
+    {
+      "id": "jssh-005-r135",
+      "type": "multi-step",
+      "scenario": "Operasyon kontrolunde `~/.ssh/config` file'ını oluştur, sonra permission'ını 600 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "touch ~/.ssh/config",
+          "hint_text": "Boş bir config file'ı oluştur.",
+          "hint_partial": "touch ~/.ssh/..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "chmod 600 ~/.ssh/config",
+          "hint_text": "SSH config file'ı için sıkı permission ver.",
+          "hint_partial": "chmod 600 ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-006-r136",
+      "type": "single",
+      "scenario": "Incident sonrasinda remote host üzerinde `hostname` komutunu çalıştır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh user@192.168.1.10 hostname",
+          "hint_text": "SSH ile remote command verebilirsin.",
+          "hint_partial": "ssh user@... ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-007-r137",
+      "type": "single",
+      "scenario": "Bakim oncesi private key file'larının listesini `~/.ssh/` altında göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls ~/.ssh/",
+          "hint_text": "SSH key file'ları genelde `~/.ssh/` altındadır.",
+          "hint_partial": "ls ~/.ssh/..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-008-r138",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda public key içeriğini ekrana yazdır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat ~/.ssh/id_ed25519.pub",
+          "hint_text": "Public key file'ını `cat` ile göster.",
+          "hint_partial": "cat ~/.ssh/..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-009-r139",
+      "type": "single",
+      "scenario": "Deploy sonrasi remote `notes.txt` file'ını local current directory'ye `scp` ile indir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp user@192.168.1.10:notes.txt .",
+          "hint_text": "`scp user@host:file target` formatını kullan.",
+          "hint_partial": "scp user@...:... ."
+        }
+      ]
+    },
+    {
+      "id": "jssh-010-r140",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde sSH client config file'ını görüntüle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat ~/.ssh/config",
+          "hint_text": "Client config içeriği için `cat` kullan.",
+          "hint_partial": "cat ~/.ssh/..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-001-r141",
+      "type": "single",
+      "scenario": "Yeni acilan hostta user@192.168.1.10 host'una SSH ile bağlan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh user@192.168.1.10",
+          "hint_text": "`ssh user@host` formatını kullan.",
+          "hint_partial": "ssh user@..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-002-r142",
+      "type": "single",
+      "scenario": "Runbook adiminda yeni bir ed25519 SSH key oluştur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-keygen -t ed25519",
+          "hint_text": "`ssh-keygen` ile key type belirt.",
+          "hint_partial": "ssh-keygen -t ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-003-r143",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde public key'ini remote host'a kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-copy-id user@192.168.1.10",
+          "hint_text": "`ssh-copy-id` public key'i remote authorized_keys'e ekler.",
+          "hint_partial": "ssh-copy-id ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-004-r144",
+      "type": "single",
+      "scenario": "Incident sonrasinda config.yml file'ını remote host üzerindeki /tmp/job-144/ directory'sine `scp` ile kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp config.yml user@192.168.1.10:/tmp/job-144/",
+          "hint_text": "`scp source user@host:target` formatını kullan.",
+          "hint_partial": "scp config.yml ...:/tmp/job-144/"
+        }
+      ]
+    },
+    {
+      "id": "jssh-005-r145",
+      "type": "multi-step",
+      "scenario": "Bakim oncesi `~/.ssh/config` file'ını oluştur, sonra permission'ını 600 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "touch ~/.ssh/config",
+          "hint_text": "Boş bir config file'ı oluştur.",
+          "hint_partial": "touch ~/.ssh/..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "chmod 600 ~/.ssh/config",
+          "hint_text": "SSH config file'ı için sıkı permission ver.",
+          "hint_partial": "chmod 600 ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-006-r146",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda remote host üzerinde `hostname` komutunu çalıştır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh user@192.168.1.10 hostname",
+          "hint_text": "SSH ile remote command verebilirsin.",
+          "hint_partial": "ssh user@... ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-007-r147",
+      "type": "single",
+      "scenario": "Deploy sonrasi private key file'larının listesini `~/.ssh/` altında göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls ~/.ssh/",
+          "hint_text": "SSH key file'ları genelde `~/.ssh/` altındadır.",
+          "hint_partial": "ls ~/.ssh/..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-008-r148",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde public key içeriğini ekrana yazdır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat ~/.ssh/id_ed25519.pub",
+          "hint_text": "Public key file'ını `cat` ile göster.",
+          "hint_partial": "cat ~/.ssh/..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-009-r149",
+      "type": "single",
+      "scenario": "Yeni acilan hostta remote `notes.txt` file'ını local current directory'ye `scp` ile indir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp user@192.168.1.10:notes.txt .",
+          "hint_text": "`scp user@host:file target` formatını kullan.",
+          "hint_partial": "scp user@...:... ."
+        }
+      ]
+    },
+    {
+      "id": "jssh-010-r150",
+      "type": "single",
+      "scenario": "Runbook adiminda sSH client config file'ını görüntüle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat ~/.ssh/config",
+          "hint_text": "Client config içeriği için `cat` kullan.",
+          "hint_partial": "cat ~/.ssh/..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-001-r151",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde user@192.168.1.10 host'una SSH ile bağlan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh user@192.168.1.10",
+          "hint_text": "`ssh user@host` formatını kullan.",
+          "hint_partial": "ssh user@..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-002-r152",
+      "type": "single",
+      "scenario": "Incident sonrasinda yeni bir ed25519 SSH key oluştur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-keygen -t ed25519",
+          "hint_text": "`ssh-keygen` ile key type belirt.",
+          "hint_partial": "ssh-keygen -t ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-003-r153",
+      "type": "single",
+      "scenario": "Bakim oncesi public key'ini remote host'a kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-copy-id user@192.168.1.10",
+          "hint_text": "`ssh-copy-id` public key'i remote authorized_keys'e ekler.",
+          "hint_partial": "ssh-copy-id ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-004-r154",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda config.yml file'ını remote host üzerindeki /tmp/job-154/ directory'sine `scp` ile kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp config.yml user@192.168.1.10:/tmp/job-154/",
+          "hint_text": "`scp source user@host:target` formatını kullan.",
+          "hint_partial": "scp config.yml ...:/tmp/job-154/"
+        }
+      ]
+    },
+    {
+      "id": "jssh-005-r155",
+      "type": "multi-step",
+      "scenario": "Deploy sonrasi `~/.ssh/config` file'ını oluştur, sonra permission'ını 600 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "touch ~/.ssh/config",
+          "hint_text": "Boş bir config file'ı oluştur.",
+          "hint_partial": "touch ~/.ssh/..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "chmod 600 ~/.ssh/config",
+          "hint_text": "SSH config file'ı için sıkı permission ver.",
+          "hint_partial": "chmod 600 ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-006-r156",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde remote host üzerinde `hostname` komutunu çalıştır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh user@192.168.1.10 hostname",
+          "hint_text": "SSH ile remote command verebilirsin.",
+          "hint_partial": "ssh user@... ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-007-r157",
+      "type": "single",
+      "scenario": "Yeni acilan hostta private key file'larının listesini `~/.ssh/` altında göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls ~/.ssh/",
+          "hint_text": "SSH key file'ları genelde `~/.ssh/` altındadır.",
+          "hint_partial": "ls ~/.ssh/..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-008-r158",
+      "type": "single",
+      "scenario": "Runbook adiminda public key içeriğini ekrana yazdır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat ~/.ssh/id_ed25519.pub",
+          "hint_text": "Public key file'ını `cat` ile göster.",
+          "hint_partial": "cat ~/.ssh/..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-009-r159",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde remote `notes.txt` file'ını local current directory'ye `scp` ile indir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp user@192.168.1.10:notes.txt .",
+          "hint_text": "`scp user@host:file target` formatını kullan.",
+          "hint_partial": "scp user@...:... ."
+        }
+      ]
+    },
+    {
+      "id": "jssh-010-r160",
+      "type": "single",
+      "scenario": "Incident sonrasinda sSH client config file'ını görüntüle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat ~/.ssh/config",
+          "hint_text": "Client config içeriği için `cat` kullan.",
+          "hint_partial": "cat ~/.ssh/..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-001-r161",
+      "type": "single",
+      "scenario": "Bakim oncesi user@192.168.1.10 host'una SSH ile bağlan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh user@192.168.1.10",
+          "hint_text": "`ssh user@host` formatını kullan.",
+          "hint_partial": "ssh user@..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-002-r162",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda yeni bir ed25519 SSH key oluştur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-keygen -t ed25519",
+          "hint_text": "`ssh-keygen` ile key type belirt.",
+          "hint_partial": "ssh-keygen -t ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-003-r163",
+      "type": "single",
+      "scenario": "Deploy sonrasi public key'ini remote host'a kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-copy-id user@192.168.1.10",
+          "hint_text": "`ssh-copy-id` public key'i remote authorized_keys'e ekler.",
+          "hint_partial": "ssh-copy-id ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-004-r164",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde config.yml file'ını remote host üzerindeki /tmp/job-164/ directory'sine `scp` ile kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp config.yml user@192.168.1.10:/tmp/job-164/",
+          "hint_text": "`scp source user@host:target` formatını kullan.",
+          "hint_partial": "scp config.yml ...:/tmp/job-164/"
+        }
+      ]
+    },
+    {
+      "id": "jssh-005-r165",
+      "type": "multi-step",
+      "scenario": "Yeni acilan hostta `~/.ssh/config` file'ını oluştur, sonra permission'ını 600 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "touch ~/.ssh/config",
+          "hint_text": "Boş bir config file'ı oluştur.",
+          "hint_partial": "touch ~/.ssh/..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "chmod 600 ~/.ssh/config",
+          "hint_text": "SSH config file'ı için sıkı permission ver.",
+          "hint_partial": "chmod 600 ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-006-r166",
+      "type": "single",
+      "scenario": "Runbook adiminda remote host üzerinde `hostname` komutunu çalıştır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh user@192.168.1.10 hostname",
+          "hint_text": "SSH ile remote command verebilirsin.",
+          "hint_partial": "ssh user@... ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-007-r167",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde private key file'larının listesini `~/.ssh/` altında göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls ~/.ssh/",
+          "hint_text": "SSH key file'ları genelde `~/.ssh/` altındadır.",
+          "hint_partial": "ls ~/.ssh/..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-008-r168",
+      "type": "single",
+      "scenario": "Incident sonrasinda public key içeriğini ekrana yazdır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat ~/.ssh/id_ed25519.pub",
+          "hint_text": "Public key file'ını `cat` ile göster.",
+          "hint_partial": "cat ~/.ssh/..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-009-r169",
+      "type": "single",
+      "scenario": "Bakim oncesi remote `notes.txt` file'ını local current directory'ye `scp` ile indir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp user@192.168.1.10:notes.txt .",
+          "hint_text": "`scp user@host:file target` formatını kullan.",
+          "hint_partial": "scp user@...:... ."
+        }
+      ]
+    },
+    {
+      "id": "jssh-010-r170",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda sSH client config file'ını görüntüle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat ~/.ssh/config",
+          "hint_text": "Client config içeriği için `cat` kullan.",
+          "hint_partial": "cat ~/.ssh/..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-001-r171",
+      "type": "single",
+      "scenario": "Deploy sonrasi user@192.168.1.10 host'una SSH ile bağlan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh user@192.168.1.10",
+          "hint_text": "`ssh user@host` formatını kullan.",
+          "hint_partial": "ssh user@..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-002-r172",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde yeni bir ed25519 SSH key oluştur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-keygen -t ed25519",
+          "hint_text": "`ssh-keygen` ile key type belirt.",
+          "hint_partial": "ssh-keygen -t ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-003-r173",
+      "type": "single",
+      "scenario": "Yeni acilan hostta public key'ini remote host'a kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-copy-id user@192.168.1.10",
+          "hint_text": "`ssh-copy-id` public key'i remote authorized_keys'e ekler.",
+          "hint_partial": "ssh-copy-id ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-004-r174",
+      "type": "single",
+      "scenario": "Runbook adiminda config.yml file'ını remote host üzerindeki /tmp/job-174/ directory'sine `scp` ile kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp config.yml user@192.168.1.10:/tmp/job-174/",
+          "hint_text": "`scp source user@host:target` formatını kullan.",
+          "hint_partial": "scp config.yml ...:/tmp/job-174/"
+        }
+      ]
+    },
+    {
+      "id": "jssh-005-r175",
+      "type": "multi-step",
+      "scenario": "Operasyon kontrolunde `~/.ssh/config` file'ını oluştur, sonra permission'ını 600 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "touch ~/.ssh/config",
+          "hint_text": "Boş bir config file'ı oluştur.",
+          "hint_partial": "touch ~/.ssh/..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "chmod 600 ~/.ssh/config",
+          "hint_text": "SSH config file'ı için sıkı permission ver.",
+          "hint_partial": "chmod 600 ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-006-r176",
+      "type": "single",
+      "scenario": "Incident sonrasinda remote host üzerinde `hostname` komutunu çalıştır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh user@192.168.1.10 hostname",
+          "hint_text": "SSH ile remote command verebilirsin.",
+          "hint_partial": "ssh user@... ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-007-r177",
+      "type": "single",
+      "scenario": "Bakim oncesi private key file'larının listesini `~/.ssh/` altında göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls ~/.ssh/",
+          "hint_text": "SSH key file'ları genelde `~/.ssh/` altındadır.",
+          "hint_partial": "ls ~/.ssh/..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-008-r178",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda public key içeriğini ekrana yazdır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat ~/.ssh/id_ed25519.pub",
+          "hint_text": "Public key file'ını `cat` ile göster.",
+          "hint_partial": "cat ~/.ssh/..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-009-r179",
+      "type": "single",
+      "scenario": "Deploy sonrasi remote `notes.txt` file'ını local current directory'ye `scp` ile indir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp user@192.168.1.10:notes.txt .",
+          "hint_text": "`scp user@host:file target` formatını kullan.",
+          "hint_partial": "scp user@...:... ."
+        }
+      ]
+    },
+    {
+      "id": "jssh-010-r180",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde sSH client config file'ını görüntüle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat ~/.ssh/config",
+          "hint_text": "Client config içeriği için `cat` kullan.",
+          "hint_partial": "cat ~/.ssh/..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-001-r181",
+      "type": "single",
+      "scenario": "Yeni acilan hostta user@192.168.1.10 host'una SSH ile bağlan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh user@192.168.1.10",
+          "hint_text": "`ssh user@host` formatını kullan.",
+          "hint_partial": "ssh user@..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-002-r182",
+      "type": "single",
+      "scenario": "Runbook adiminda yeni bir ed25519 SSH key oluştur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-keygen -t ed25519",
+          "hint_text": "`ssh-keygen` ile key type belirt.",
+          "hint_partial": "ssh-keygen -t ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-003-r183",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde public key'ini remote host'a kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-copy-id user@192.168.1.10",
+          "hint_text": "`ssh-copy-id` public key'i remote authorized_keys'e ekler.",
+          "hint_partial": "ssh-copy-id ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-004-r184",
+      "type": "single",
+      "scenario": "Incident sonrasinda config.yml file'ını remote host üzerindeki /tmp/job-184/ directory'sine `scp` ile kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp config.yml user@192.168.1.10:/tmp/job-184/",
+          "hint_text": "`scp source user@host:target` formatını kullan.",
+          "hint_partial": "scp config.yml ...:/tmp/job-184/"
+        }
+      ]
+    },
+    {
+      "id": "jssh-005-r185",
+      "type": "multi-step",
+      "scenario": "Bakim oncesi `~/.ssh/config` file'ını oluştur, sonra permission'ını 600 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "touch ~/.ssh/config",
+          "hint_text": "Boş bir config file'ı oluştur.",
+          "hint_partial": "touch ~/.ssh/..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "chmod 600 ~/.ssh/config",
+          "hint_text": "SSH config file'ı için sıkı permission ver.",
+          "hint_partial": "chmod 600 ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-006-r186",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda remote host üzerinde `hostname` komutunu çalıştır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh user@192.168.1.10 hostname",
+          "hint_text": "SSH ile remote command verebilirsin.",
+          "hint_partial": "ssh user@... ..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-007-r187",
+      "type": "single",
+      "scenario": "Deploy sonrasi private key file'larının listesini `~/.ssh/` altında göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls ~/.ssh/",
+          "hint_text": "SSH key file'ları genelde `~/.ssh/` altındadır.",
+          "hint_partial": "ls ~/.ssh/..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-008-r188",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde public key içeriğini ekrana yazdır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat ~/.ssh/id_ed25519.pub",
+          "hint_text": "Public key file'ını `cat` ile göster.",
+          "hint_partial": "cat ~/.ssh/..."
+        }
+      ]
+    },
+    {
+      "id": "jssh-009-r189",
+      "type": "single",
+      "scenario": "Yeni acilan hostta remote `notes.txt` file'ını local current directory'ye `scp` ile indir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp user@192.168.1.10:notes.txt .",
+          "hint_text": "`scp user@host:file target` formatını kullan.",
+          "hint_partial": "scp user@...:... ."
+        }
+      ]
+    },
+    {
+      "id": "jssh-010-r190",
+      "type": "single",
+      "scenario": "Runbook adiminda sSH client config file'ını görüntüle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat ~/.ssh/config",
+          "hint_text": "Client config içeriği için `cat` kullan.",
+          "hint_partial": "cat ~/.ssh/..."
+        }
+      ]
+    }
+  ]
+}

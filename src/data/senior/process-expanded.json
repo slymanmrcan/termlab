@@ -1,0 +1,2606 @@
+{
+  "level": "senior",
+  "topic": "process",
+  "questions": [
+    {
+      "id": "sproc-016",
+      "type": "single",
+      "scenario": "PID 4242 process'i icin core dump uret.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gcore 4242",
+          "hint_text": "Canli process dump'u icin `gcore` kullan.",
+          "hint_partial": "gcore ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-017",
+      "type": "single",
+      "scenario": "PID 4242 process'inin durum bilgisini `/proc` altindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/4242/status",
+          "hint_text": "Process status icin `/proc/PID/status` kullan.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-018",
+      "type": "single",
+      "scenario": "`stress --cpu 2` komutunu gecici bir systemd scope icinde baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "systemd-run --scope stress --cpu 2",
+          "hint_text": "Gecici scope icin `systemd-run --scope` kullan.",
+          "hint_partial": "systemd-run --scope ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-019",
+      "type": "single",
+      "scenario": "PID 4242 process'inin cgroup uyeligi bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/4242/cgroup",
+          "hint_text": "Cgroup bilgisi `/proc/PID/cgroup` icindedir.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-020",
+      "type": "single",
+      "scenario": "`./myapp` komutunun kaynak kullanimini ayrintili sure istatistigiyle olc.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "time -v ./myapp",
+          "hint_text": "Ayrintili time ciktisi icin `time -v` kullan.",
+          "hint_partial": "time -v ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-021",
+      "type": "single",
+      "scenario": "PID 4242 process'ine `gdb` ile attach ol.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gdb -p 4242",
+          "hint_text": "Canli process debug icin `gdb -p PID` kullan.",
+          "hint_partial": "gdb -p ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-022",
+      "type": "single",
+      "scenario": "PID 4242 process'inin scheduler policy ve priority bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chrt -p 4242",
+          "hint_text": "Realtime scheduler bilgisi icin `chrt -p` kullan.",
+          "hint_partial": "chrt -p ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-023",
+      "type": "single",
+      "scenario": "PID 4242 process'ini FIFO realtime scheduler ve priority 50 ile ayarla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chrt -f -p 50 4242",
+          "hint_text": "FIFO realtime icin `chrt -f -p prio pid` kullan.",
+          "hint_partial": "chrt -f ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-024",
+      "type": "single",
+      "scenario": "PID 4242 process'inin acik UNIX socket'lerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof -U -a -p 4242",
+          "hint_text": "UNIX socket filtrelemesi icin `lsof -U -a -p` kullan.",
+          "hint_partial": "lsof -U ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-025",
+      "type": "single",
+      "scenario": "PID 4242 process'ine `SIGUSR1` sinyali gonder.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill -USR1 4242",
+          "hint_text": "Adli signal icin `kill -USR1` kullan.",
+          "hint_partial": "kill -USR1 ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-016-r1",
+      "type": "single",
+      "scenario": "Bakim oncesi pID 4242 process'i icin core dump uret.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gcore 4242",
+          "hint_text": "Canli process dump'u icin `gcore` kullan.",
+          "hint_partial": "gcore ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-017-r2",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda pID 4242 process'inin durum bilgisini `/proc` altindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/4242/status",
+          "hint_text": "Process status icin `/proc/PID/status` kullan.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-018-r3",
+      "type": "single",
+      "scenario": "Deploy sonrasi `stress --cpu 2` komutunu gecici bir systemd scope icinde baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "systemd-run --scope stress --cpu 2",
+          "hint_text": "Gecici scope icin `systemd-run --scope` kullan.",
+          "hint_partial": "systemd-run --scope ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-019-r4",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde pID 4242 process'inin cgroup uyeligi bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/4242/cgroup",
+          "hint_text": "Cgroup bilgisi `/proc/PID/cgroup` icindedir.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-020-r5",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `./myapp` komutunun kaynak kullanimini ayrintili sure istatistigiyle olc.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "time -v ./myapp",
+          "hint_text": "Ayrintili time ciktisi icin `time -v` kullan.",
+          "hint_partial": "time -v ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-021-r6",
+      "type": "single",
+      "scenario": "Runbook adiminda pID 4242 process'ine `gdb` ile attach ol.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gdb -p 4242",
+          "hint_text": "Canli process debug icin `gdb -p PID` kullan.",
+          "hint_partial": "gdb -p ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-022-r7",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde pID 4242 process'inin scheduler policy ve priority bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chrt -p 4242",
+          "hint_text": "Realtime scheduler bilgisi icin `chrt -p` kullan.",
+          "hint_partial": "chrt -p ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-023-r8",
+      "type": "single",
+      "scenario": "Incident sonrasinda pID 4242 process'ini FIFO realtime scheduler ve priority 50 ile ayarla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chrt -f -p 50 4242",
+          "hint_text": "FIFO realtime icin `chrt -f -p prio pid` kullan.",
+          "hint_partial": "chrt -f ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-024-r9",
+      "type": "single",
+      "scenario": "Bakim oncesi pID 4242 process'inin acik UNIX socket'lerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof -U -a -p 4242",
+          "hint_text": "UNIX socket filtrelemesi icin `lsof -U -a -p` kullan.",
+          "hint_partial": "lsof -U ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-025-r10",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda pID 4242 process'ine `SIGUSR1` sinyali gonder.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill -USR1 4242",
+          "hint_text": "Adli signal icin `kill -USR1` kullan.",
+          "hint_partial": "kill -USR1 ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-016-r11",
+      "type": "single",
+      "scenario": "Deploy sonrasi pID 4242 process'i icin core dump uret.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gcore 4242",
+          "hint_text": "Canli process dump'u icin `gcore` kullan.",
+          "hint_partial": "gcore ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-017-r12",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde pID 4242 process'inin durum bilgisini `/proc` altindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/4242/status",
+          "hint_text": "Process status icin `/proc/PID/status` kullan.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-018-r13",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `stress --cpu 2` komutunu gecici bir systemd scope icinde baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "systemd-run --scope stress --cpu 2",
+          "hint_text": "Gecici scope icin `systemd-run --scope` kullan.",
+          "hint_partial": "systemd-run --scope ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-019-r14",
+      "type": "single",
+      "scenario": "Runbook adiminda pID 4242 process'inin cgroup uyeligi bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/4242/cgroup",
+          "hint_text": "Cgroup bilgisi `/proc/PID/cgroup` icindedir.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-020-r15",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `./myapp` komutunun kaynak kullanimini ayrintili sure istatistigiyle olc.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "time -v ./myapp",
+          "hint_text": "Ayrintili time ciktisi icin `time -v` kullan.",
+          "hint_partial": "time -v ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-021-r16",
+      "type": "single",
+      "scenario": "Incident sonrasinda pID 4242 process'ine `gdb` ile attach ol.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gdb -p 4242",
+          "hint_text": "Canli process debug icin `gdb -p PID` kullan.",
+          "hint_partial": "gdb -p ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-022-r17",
+      "type": "single",
+      "scenario": "Bakim oncesi pID 4242 process'inin scheduler policy ve priority bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chrt -p 4242",
+          "hint_text": "Realtime scheduler bilgisi icin `chrt -p` kullan.",
+          "hint_partial": "chrt -p ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-023-r18",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda pID 4242 process'ini FIFO realtime scheduler ve priority 50 ile ayarla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chrt -f -p 50 4242",
+          "hint_text": "FIFO realtime icin `chrt -f -p prio pid` kullan.",
+          "hint_partial": "chrt -f ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-024-r19",
+      "type": "single",
+      "scenario": "Deploy sonrasi pID 4242 process'inin acik UNIX socket'lerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof -U -a -p 4242",
+          "hint_text": "UNIX socket filtrelemesi icin `lsof -U -a -p` kullan.",
+          "hint_partial": "lsof -U ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-025-r20",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde pID 4242 process'ine `SIGUSR1` sinyali gonder.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill -USR1 4242",
+          "hint_text": "Adli signal icin `kill -USR1` kullan.",
+          "hint_partial": "kill -USR1 ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-016-r21",
+      "type": "single",
+      "scenario": "Yeni acilan hostta pID 4242 process'i icin core dump uret.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gcore 4242",
+          "hint_text": "Canli process dump'u icin `gcore` kullan.",
+          "hint_partial": "gcore ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-017-r22",
+      "type": "single",
+      "scenario": "Runbook adiminda pID 4242 process'inin durum bilgisini `/proc` altindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/4242/status",
+          "hint_text": "Process status icin `/proc/PID/status` kullan.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-018-r23",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `stress --cpu 2` komutunu gecici bir systemd scope icinde baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "systemd-run --scope stress --cpu 2",
+          "hint_text": "Gecici scope icin `systemd-run --scope` kullan.",
+          "hint_partial": "systemd-run --scope ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-019-r24",
+      "type": "single",
+      "scenario": "Incident sonrasinda pID 4242 process'inin cgroup uyeligi bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/4242/cgroup",
+          "hint_text": "Cgroup bilgisi `/proc/PID/cgroup` icindedir.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-020-r25",
+      "type": "single",
+      "scenario": "Bakim oncesi `./myapp` komutunun kaynak kullanimini ayrintili sure istatistigiyle olc.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "time -v ./myapp",
+          "hint_text": "Ayrintili time ciktisi icin `time -v` kullan.",
+          "hint_partial": "time -v ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-021-r26",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda pID 4242 process'ine `gdb` ile attach ol.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gdb -p 4242",
+          "hint_text": "Canli process debug icin `gdb -p PID` kullan.",
+          "hint_partial": "gdb -p ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-022-r27",
+      "type": "single",
+      "scenario": "Deploy sonrasi pID 4242 process'inin scheduler policy ve priority bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chrt -p 4242",
+          "hint_text": "Realtime scheduler bilgisi icin `chrt -p` kullan.",
+          "hint_partial": "chrt -p ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-023-r28",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde pID 4242 process'ini FIFO realtime scheduler ve priority 50 ile ayarla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chrt -f -p 50 4242",
+          "hint_text": "FIFO realtime icin `chrt -f -p prio pid` kullan.",
+          "hint_partial": "chrt -f ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-024-r29",
+      "type": "single",
+      "scenario": "Yeni acilan hostta pID 4242 process'inin acik UNIX socket'lerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof -U -a -p 4242",
+          "hint_text": "UNIX socket filtrelemesi icin `lsof -U -a -p` kullan.",
+          "hint_partial": "lsof -U ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-025-r30",
+      "type": "single",
+      "scenario": "Runbook adiminda pID 4242 process'ine `SIGUSR1` sinyali gonder.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill -USR1 4242",
+          "hint_text": "Adli signal icin `kill -USR1` kullan.",
+          "hint_partial": "kill -USR1 ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-016-r31",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde pID 4242 process'i icin core dump uret.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gcore 4242",
+          "hint_text": "Canli process dump'u icin `gcore` kullan.",
+          "hint_partial": "gcore ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-017-r32",
+      "type": "single",
+      "scenario": "Incident sonrasinda pID 4242 process'inin durum bilgisini `/proc` altindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/4242/status",
+          "hint_text": "Process status icin `/proc/PID/status` kullan.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-018-r33",
+      "type": "single",
+      "scenario": "Bakim oncesi `stress --cpu 2` komutunu gecici bir systemd scope icinde baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "systemd-run --scope stress --cpu 2",
+          "hint_text": "Gecici scope icin `systemd-run --scope` kullan.",
+          "hint_partial": "systemd-run --scope ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-019-r34",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda pID 4242 process'inin cgroup uyeligi bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/4242/cgroup",
+          "hint_text": "Cgroup bilgisi `/proc/PID/cgroup` icindedir.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-020-r35",
+      "type": "single",
+      "scenario": "Deploy sonrasi `./myapp` komutunun kaynak kullanimini ayrintili sure istatistigiyle olc.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "time -v ./myapp",
+          "hint_text": "Ayrintili time ciktisi icin `time -v` kullan.",
+          "hint_partial": "time -v ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-021-r36",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde pID 4242 process'ine `gdb` ile attach ol.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gdb -p 4242",
+          "hint_text": "Canli process debug icin `gdb -p PID` kullan.",
+          "hint_partial": "gdb -p ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-022-r37",
+      "type": "single",
+      "scenario": "Yeni acilan hostta pID 4242 process'inin scheduler policy ve priority bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chrt -p 4242",
+          "hint_text": "Realtime scheduler bilgisi icin `chrt -p` kullan.",
+          "hint_partial": "chrt -p ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-023-r38",
+      "type": "single",
+      "scenario": "Runbook adiminda pID 4242 process'ini FIFO realtime scheduler ve priority 50 ile ayarla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chrt -f -p 50 4242",
+          "hint_text": "FIFO realtime icin `chrt -f -p prio pid` kullan.",
+          "hint_partial": "chrt -f ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-024-r39",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde pID 4242 process'inin acik UNIX socket'lerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof -U -a -p 4242",
+          "hint_text": "UNIX socket filtrelemesi icin `lsof -U -a -p` kullan.",
+          "hint_partial": "lsof -U ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-025-r40",
+      "type": "single",
+      "scenario": "Incident sonrasinda pID 4242 process'ine `SIGUSR1` sinyali gonder.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill -USR1 4242",
+          "hint_text": "Adli signal icin `kill -USR1` kullan.",
+          "hint_partial": "kill -USR1 ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-016-r41",
+      "type": "single",
+      "scenario": "Bakim oncesi pID 4242 process'i icin core dump uret.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gcore 4242",
+          "hint_text": "Canli process dump'u icin `gcore` kullan.",
+          "hint_partial": "gcore ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-017-r42",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda pID 4242 process'inin durum bilgisini `/proc` altindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/4242/status",
+          "hint_text": "Process status icin `/proc/PID/status` kullan.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-018-r43",
+      "type": "single",
+      "scenario": "Deploy sonrasi `stress --cpu 2` komutunu gecici bir systemd scope icinde baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "systemd-run --scope stress --cpu 2",
+          "hint_text": "Gecici scope icin `systemd-run --scope` kullan.",
+          "hint_partial": "systemd-run --scope ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-019-r44",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde pID 4242 process'inin cgroup uyeligi bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/4242/cgroup",
+          "hint_text": "Cgroup bilgisi `/proc/PID/cgroup` icindedir.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-020-r45",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `./myapp` komutunun kaynak kullanimini ayrintili sure istatistigiyle olc.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "time -v ./myapp",
+          "hint_text": "Ayrintili time ciktisi icin `time -v` kullan.",
+          "hint_partial": "time -v ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-021-r46",
+      "type": "single",
+      "scenario": "Runbook adiminda pID 4242 process'ine `gdb` ile attach ol.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gdb -p 4242",
+          "hint_text": "Canli process debug icin `gdb -p PID` kullan.",
+          "hint_partial": "gdb -p ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-022-r47",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde pID 4242 process'inin scheduler policy ve priority bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chrt -p 4242",
+          "hint_text": "Realtime scheduler bilgisi icin `chrt -p` kullan.",
+          "hint_partial": "chrt -p ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-023-r48",
+      "type": "single",
+      "scenario": "Incident sonrasinda pID 4242 process'ini FIFO realtime scheduler ve priority 50 ile ayarla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chrt -f -p 50 4242",
+          "hint_text": "FIFO realtime icin `chrt -f -p prio pid` kullan.",
+          "hint_partial": "chrt -f ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-024-r49",
+      "type": "single",
+      "scenario": "Bakim oncesi pID 4242 process'inin acik UNIX socket'lerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof -U -a -p 4242",
+          "hint_text": "UNIX socket filtrelemesi icin `lsof -U -a -p` kullan.",
+          "hint_partial": "lsof -U ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-025-r50",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda pID 4242 process'ine `SIGUSR1` sinyali gonder.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill -USR1 4242",
+          "hint_text": "Adli signal icin `kill -USR1` kullan.",
+          "hint_partial": "kill -USR1 ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-016-r51",
+      "type": "single",
+      "scenario": "Deploy sonrasi pID 4242 process'i icin core dump uret.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gcore 4242",
+          "hint_text": "Canli process dump'u icin `gcore` kullan.",
+          "hint_partial": "gcore ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-017-r52",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde pID 4242 process'inin durum bilgisini `/proc` altindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/4242/status",
+          "hint_text": "Process status icin `/proc/PID/status` kullan.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-018-r53",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `stress --cpu 2` komutunu gecici bir systemd scope icinde baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "systemd-run --scope stress --cpu 2",
+          "hint_text": "Gecici scope icin `systemd-run --scope` kullan.",
+          "hint_partial": "systemd-run --scope ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-019-r54",
+      "type": "single",
+      "scenario": "Runbook adiminda pID 4242 process'inin cgroup uyeligi bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/4242/cgroup",
+          "hint_text": "Cgroup bilgisi `/proc/PID/cgroup` icindedir.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-020-r55",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `./myapp` komutunun kaynak kullanimini ayrintili sure istatistigiyle olc.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "time -v ./myapp",
+          "hint_text": "Ayrintili time ciktisi icin `time -v` kullan.",
+          "hint_partial": "time -v ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-021-r56",
+      "type": "single",
+      "scenario": "Incident sonrasinda pID 4242 process'ine `gdb` ile attach ol.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gdb -p 4242",
+          "hint_text": "Canli process debug icin `gdb -p PID` kullan.",
+          "hint_partial": "gdb -p ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-022-r57",
+      "type": "single",
+      "scenario": "Bakim oncesi pID 4242 process'inin scheduler policy ve priority bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chrt -p 4242",
+          "hint_text": "Realtime scheduler bilgisi icin `chrt -p` kullan.",
+          "hint_partial": "chrt -p ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-023-r58",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda pID 4242 process'ini FIFO realtime scheduler ve priority 50 ile ayarla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chrt -f -p 50 4242",
+          "hint_text": "FIFO realtime icin `chrt -f -p prio pid` kullan.",
+          "hint_partial": "chrt -f ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-024-r59",
+      "type": "single",
+      "scenario": "Deploy sonrasi pID 4242 process'inin acik UNIX socket'lerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof -U -a -p 4242",
+          "hint_text": "UNIX socket filtrelemesi icin `lsof -U -a -p` kullan.",
+          "hint_partial": "lsof -U ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-025-r60",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde pID 4242 process'ine `SIGUSR1` sinyali gonder.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill -USR1 4242",
+          "hint_text": "Adli signal icin `kill -USR1` kullan.",
+          "hint_partial": "kill -USR1 ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-016-r61",
+      "type": "single",
+      "scenario": "Yeni acilan hostta pID 4242 process'i icin core dump uret.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gcore 4242",
+          "hint_text": "Canli process dump'u icin `gcore` kullan.",
+          "hint_partial": "gcore ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-017-r62",
+      "type": "single",
+      "scenario": "Runbook adiminda pID 4242 process'inin durum bilgisini `/proc` altindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/4242/status",
+          "hint_text": "Process status icin `/proc/PID/status` kullan.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-018-r63",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `stress --cpu 2` komutunu gecici bir systemd scope icinde baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "systemd-run --scope stress --cpu 2",
+          "hint_text": "Gecici scope icin `systemd-run --scope` kullan.",
+          "hint_partial": "systemd-run --scope ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-019-r64",
+      "type": "single",
+      "scenario": "Incident sonrasinda pID 4242 process'inin cgroup uyeligi bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/4242/cgroup",
+          "hint_text": "Cgroup bilgisi `/proc/PID/cgroup` icindedir.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-020-r65",
+      "type": "single",
+      "scenario": "Bakim oncesi `./myapp` komutunun kaynak kullanimini ayrintili sure istatistigiyle olc.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "time -v ./myapp",
+          "hint_text": "Ayrintili time ciktisi icin `time -v` kullan.",
+          "hint_partial": "time -v ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-021-r66",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda pID 4242 process'ine `gdb` ile attach ol.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gdb -p 4242",
+          "hint_text": "Canli process debug icin `gdb -p PID` kullan.",
+          "hint_partial": "gdb -p ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-022-r67",
+      "type": "single",
+      "scenario": "Deploy sonrasi pID 4242 process'inin scheduler policy ve priority bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chrt -p 4242",
+          "hint_text": "Realtime scheduler bilgisi icin `chrt -p` kullan.",
+          "hint_partial": "chrt -p ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-023-r68",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde pID 4242 process'ini FIFO realtime scheduler ve priority 50 ile ayarla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chrt -f -p 50 4242",
+          "hint_text": "FIFO realtime icin `chrt -f -p prio pid` kullan.",
+          "hint_partial": "chrt -f ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-024-r69",
+      "type": "single",
+      "scenario": "Yeni acilan hostta pID 4242 process'inin acik UNIX socket'lerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof -U -a -p 4242",
+          "hint_text": "UNIX socket filtrelemesi icin `lsof -U -a -p` kullan.",
+          "hint_partial": "lsof -U ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-025-r70",
+      "type": "single",
+      "scenario": "Runbook adiminda pID 4242 process'ine `SIGUSR1` sinyali gonder.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill -USR1 4242",
+          "hint_text": "Adli signal icin `kill -USR1` kullan.",
+          "hint_partial": "kill -USR1 ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-016-r71",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde pID 4242 process'i icin core dump uret.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gcore 4242",
+          "hint_text": "Canli process dump'u icin `gcore` kullan.",
+          "hint_partial": "gcore ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-017-r72",
+      "type": "single",
+      "scenario": "Incident sonrasinda pID 4242 process'inin durum bilgisini `/proc` altindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/4242/status",
+          "hint_text": "Process status icin `/proc/PID/status` kullan.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-018-r73",
+      "type": "single",
+      "scenario": "Bakim oncesi `stress --cpu 2` komutunu gecici bir systemd scope icinde baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "systemd-run --scope stress --cpu 2",
+          "hint_text": "Gecici scope icin `systemd-run --scope` kullan.",
+          "hint_partial": "systemd-run --scope ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-019-r74",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda pID 4242 process'inin cgroup uyeligi bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/4242/cgroup",
+          "hint_text": "Cgroup bilgisi `/proc/PID/cgroup` icindedir.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-020-r75",
+      "type": "single",
+      "scenario": "Deploy sonrasi `./myapp` komutunun kaynak kullanimini ayrintili sure istatistigiyle olc.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "time -v ./myapp",
+          "hint_text": "Ayrintili time ciktisi icin `time -v` kullan.",
+          "hint_partial": "time -v ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-021-r76",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde pID 4242 process'ine `gdb` ile attach ol.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gdb -p 4242",
+          "hint_text": "Canli process debug icin `gdb -p PID` kullan.",
+          "hint_partial": "gdb -p ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-022-r77",
+      "type": "single",
+      "scenario": "Yeni acilan hostta pID 4242 process'inin scheduler policy ve priority bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chrt -p 4242",
+          "hint_text": "Realtime scheduler bilgisi icin `chrt -p` kullan.",
+          "hint_partial": "chrt -p ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-023-r78",
+      "type": "single",
+      "scenario": "Runbook adiminda pID 4242 process'ini FIFO realtime scheduler ve priority 50 ile ayarla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chrt -f -p 50 4242",
+          "hint_text": "FIFO realtime icin `chrt -f -p prio pid` kullan.",
+          "hint_partial": "chrt -f ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-024-r79",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde pID 4242 process'inin acik UNIX socket'lerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof -U -a -p 4242",
+          "hint_text": "UNIX socket filtrelemesi icin `lsof -U -a -p` kullan.",
+          "hint_partial": "lsof -U ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-025-r80",
+      "type": "single",
+      "scenario": "Incident sonrasinda pID 4242 process'ine `SIGUSR1` sinyali gonder.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill -USR1 4242",
+          "hint_text": "Adli signal icin `kill -USR1` kullan.",
+          "hint_partial": "kill -USR1 ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-016-r81",
+      "type": "single",
+      "scenario": "Bakim oncesi pID 4242 process'i icin core dump uret.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gcore 4242",
+          "hint_text": "Canli process dump'u icin `gcore` kullan.",
+          "hint_partial": "gcore ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-017-r82",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda pID 4242 process'inin durum bilgisini `/proc` altindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/4242/status",
+          "hint_text": "Process status icin `/proc/PID/status` kullan.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-018-r83",
+      "type": "single",
+      "scenario": "Deploy sonrasi `stress --cpu 2` komutunu gecici bir systemd scope icinde baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "systemd-run --scope stress --cpu 2",
+          "hint_text": "Gecici scope icin `systemd-run --scope` kullan.",
+          "hint_partial": "systemd-run --scope ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-019-r84",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde pID 4242 process'inin cgroup uyeligi bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/4242/cgroup",
+          "hint_text": "Cgroup bilgisi `/proc/PID/cgroup` icindedir.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-020-r85",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `./myapp` komutunun kaynak kullanimini ayrintili sure istatistigiyle olc.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "time -v ./myapp",
+          "hint_text": "Ayrintili time ciktisi icin `time -v` kullan.",
+          "hint_partial": "time -v ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-021-r86",
+      "type": "single",
+      "scenario": "Runbook adiminda pID 4242 process'ine `gdb` ile attach ol.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gdb -p 4242",
+          "hint_text": "Canli process debug icin `gdb -p PID` kullan.",
+          "hint_partial": "gdb -p ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-022-r87",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde pID 4242 process'inin scheduler policy ve priority bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chrt -p 4242",
+          "hint_text": "Realtime scheduler bilgisi icin `chrt -p` kullan.",
+          "hint_partial": "chrt -p ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-023-r88",
+      "type": "single",
+      "scenario": "Incident sonrasinda pID 4242 process'ini FIFO realtime scheduler ve priority 50 ile ayarla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chrt -f -p 50 4242",
+          "hint_text": "FIFO realtime icin `chrt -f -p prio pid` kullan.",
+          "hint_partial": "chrt -f ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-024-r89",
+      "type": "single",
+      "scenario": "Bakim oncesi pID 4242 process'inin acik UNIX socket'lerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof -U -a -p 4242",
+          "hint_text": "UNIX socket filtrelemesi icin `lsof -U -a -p` kullan.",
+          "hint_partial": "lsof -U ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-025-r90",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda pID 4242 process'ine `SIGUSR1` sinyali gonder.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill -USR1 4242",
+          "hint_text": "Adli signal icin `kill -USR1` kullan.",
+          "hint_partial": "kill -USR1 ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-016-r91",
+      "type": "single",
+      "scenario": "Deploy sonrasi pID 4242 process'i icin core dump uret.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gcore 4242",
+          "hint_text": "Canli process dump'u icin `gcore` kullan.",
+          "hint_partial": "gcore ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-017-r92",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde pID 4242 process'inin durum bilgisini `/proc` altindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/4242/status",
+          "hint_text": "Process status icin `/proc/PID/status` kullan.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-018-r93",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `stress --cpu 2` komutunu gecici bir systemd scope icinde baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "systemd-run --scope stress --cpu 2",
+          "hint_text": "Gecici scope icin `systemd-run --scope` kullan.",
+          "hint_partial": "systemd-run --scope ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-019-r94",
+      "type": "single",
+      "scenario": "Runbook adiminda pID 4242 process'inin cgroup uyeligi bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/4242/cgroup",
+          "hint_text": "Cgroup bilgisi `/proc/PID/cgroup` icindedir.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-020-r95",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `./myapp` komutunun kaynak kullanimini ayrintili sure istatistigiyle olc.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "time -v ./myapp",
+          "hint_text": "Ayrintili time ciktisi icin `time -v` kullan.",
+          "hint_partial": "time -v ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-021-r96",
+      "type": "single",
+      "scenario": "Incident sonrasinda pID 4242 process'ine `gdb` ile attach ol.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gdb -p 4242",
+          "hint_text": "Canli process debug icin `gdb -p PID` kullan.",
+          "hint_partial": "gdb -p ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-022-r97",
+      "type": "single",
+      "scenario": "Bakim oncesi pID 4242 process'inin scheduler policy ve priority bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chrt -p 4242",
+          "hint_text": "Realtime scheduler bilgisi icin `chrt -p` kullan.",
+          "hint_partial": "chrt -p ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-023-r98",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda pID 4242 process'ini FIFO realtime scheduler ve priority 50 ile ayarla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chrt -f -p 50 4242",
+          "hint_text": "FIFO realtime icin `chrt -f -p prio pid` kullan.",
+          "hint_partial": "chrt -f ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-024-r99",
+      "type": "single",
+      "scenario": "Deploy sonrasi pID 4242 process'inin acik UNIX socket'lerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof -U -a -p 4242",
+          "hint_text": "UNIX socket filtrelemesi icin `lsof -U -a -p` kullan.",
+          "hint_partial": "lsof -U ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-025-r100",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde pID 4242 process'ine `SIGUSR1` sinyali gonder.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill -USR1 4242",
+          "hint_text": "Adli signal icin `kill -USR1` kullan.",
+          "hint_partial": "kill -USR1 ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-016-r101",
+      "type": "single",
+      "scenario": "Yeni acilan hostta pID 4242 process'i icin core dump uret.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gcore 4242",
+          "hint_text": "Canli process dump'u icin `gcore` kullan.",
+          "hint_partial": "gcore ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-017-r102",
+      "type": "single",
+      "scenario": "Runbook adiminda pID 4242 process'inin durum bilgisini `/proc` altindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/4242/status",
+          "hint_text": "Process status icin `/proc/PID/status` kullan.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-018-r103",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `stress --cpu 2` komutunu gecici bir systemd scope icinde baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "systemd-run --scope stress --cpu 2",
+          "hint_text": "Gecici scope icin `systemd-run --scope` kullan.",
+          "hint_partial": "systemd-run --scope ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-019-r104",
+      "type": "single",
+      "scenario": "Incident sonrasinda pID 4242 process'inin cgroup uyeligi bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/4242/cgroup",
+          "hint_text": "Cgroup bilgisi `/proc/PID/cgroup` icindedir.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-020-r105",
+      "type": "single",
+      "scenario": "Bakim oncesi `./myapp` komutunun kaynak kullanimini ayrintili sure istatistigiyle olc.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "time -v ./myapp",
+          "hint_text": "Ayrintili time ciktisi icin `time -v` kullan.",
+          "hint_partial": "time -v ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-021-r106",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda pID 4242 process'ine `gdb` ile attach ol.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gdb -p 4242",
+          "hint_text": "Canli process debug icin `gdb -p PID` kullan.",
+          "hint_partial": "gdb -p ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-022-r107",
+      "type": "single",
+      "scenario": "Deploy sonrasi pID 4242 process'inin scheduler policy ve priority bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chrt -p 4242",
+          "hint_text": "Realtime scheduler bilgisi icin `chrt -p` kullan.",
+          "hint_partial": "chrt -p ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-023-r108",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde pID 4242 process'ini FIFO realtime scheduler ve priority 50 ile ayarla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chrt -f -p 50 4242",
+          "hint_text": "FIFO realtime icin `chrt -f -p prio pid` kullan.",
+          "hint_partial": "chrt -f ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-024-r109",
+      "type": "single",
+      "scenario": "Yeni acilan hostta pID 4242 process'inin acik UNIX socket'lerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof -U -a -p 4242",
+          "hint_text": "UNIX socket filtrelemesi icin `lsof -U -a -p` kullan.",
+          "hint_partial": "lsof -U ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-025-r110",
+      "type": "single",
+      "scenario": "Runbook adiminda pID 4242 process'ine `SIGUSR1` sinyali gonder.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill -USR1 4242",
+          "hint_text": "Adli signal icin `kill -USR1` kullan.",
+          "hint_partial": "kill -USR1 ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-016-r111",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde pID 4242 process'i icin core dump uret.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gcore 4242",
+          "hint_text": "Canli process dump'u icin `gcore` kullan.",
+          "hint_partial": "gcore ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-017-r112",
+      "type": "single",
+      "scenario": "Incident sonrasinda pID 4242 process'inin durum bilgisini `/proc` altindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/4242/status",
+          "hint_text": "Process status icin `/proc/PID/status` kullan.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-018-r113",
+      "type": "single",
+      "scenario": "Bakim oncesi `stress --cpu 2` komutunu gecici bir systemd scope icinde baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "systemd-run --scope stress --cpu 2",
+          "hint_text": "Gecici scope icin `systemd-run --scope` kullan.",
+          "hint_partial": "systemd-run --scope ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-019-r114",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda pID 4242 process'inin cgroup uyeligi bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/4242/cgroup",
+          "hint_text": "Cgroup bilgisi `/proc/PID/cgroup` icindedir.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-020-r115",
+      "type": "single",
+      "scenario": "Deploy sonrasi `./myapp` komutunun kaynak kullanimini ayrintili sure istatistigiyle olc.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "time -v ./myapp",
+          "hint_text": "Ayrintili time ciktisi icin `time -v` kullan.",
+          "hint_partial": "time -v ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-021-r116",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde pID 4242 process'ine `gdb` ile attach ol.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gdb -p 4242",
+          "hint_text": "Canli process debug icin `gdb -p PID` kullan.",
+          "hint_partial": "gdb -p ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-022-r117",
+      "type": "single",
+      "scenario": "Yeni acilan hostta pID 4242 process'inin scheduler policy ve priority bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chrt -p 4242",
+          "hint_text": "Realtime scheduler bilgisi icin `chrt -p` kullan.",
+          "hint_partial": "chrt -p ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-023-r118",
+      "type": "single",
+      "scenario": "Runbook adiminda pID 4242 process'ini FIFO realtime scheduler ve priority 50 ile ayarla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chrt -f -p 50 4242",
+          "hint_text": "FIFO realtime icin `chrt -f -p prio pid` kullan.",
+          "hint_partial": "chrt -f ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-024-r119",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde pID 4242 process'inin acik UNIX socket'lerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof -U -a -p 4242",
+          "hint_text": "UNIX socket filtrelemesi icin `lsof -U -a -p` kullan.",
+          "hint_partial": "lsof -U ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-025-r120",
+      "type": "single",
+      "scenario": "Incident sonrasinda pID 4242 process'ine `SIGUSR1` sinyali gonder.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill -USR1 4242",
+          "hint_text": "Adli signal icin `kill -USR1` kullan.",
+          "hint_partial": "kill -USR1 ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-016-r121",
+      "type": "single",
+      "scenario": "Bakim oncesi pID 4242 process'i icin core dump uret.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gcore 4242",
+          "hint_text": "Canli process dump'u icin `gcore` kullan.",
+          "hint_partial": "gcore ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-017-r122",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda pID 4242 process'inin durum bilgisini `/proc` altindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/4242/status",
+          "hint_text": "Process status icin `/proc/PID/status` kullan.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-018-r123",
+      "type": "single",
+      "scenario": "Deploy sonrasi `stress --cpu 2` komutunu gecici bir systemd scope icinde baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "systemd-run --scope stress --cpu 2",
+          "hint_text": "Gecici scope icin `systemd-run --scope` kullan.",
+          "hint_partial": "systemd-run --scope ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-019-r124",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde pID 4242 process'inin cgroup uyeligi bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/4242/cgroup",
+          "hint_text": "Cgroup bilgisi `/proc/PID/cgroup` icindedir.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-020-r125",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `./myapp` komutunun kaynak kullanimini ayrintili sure istatistigiyle olc.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "time -v ./myapp",
+          "hint_text": "Ayrintili time ciktisi icin `time -v` kullan.",
+          "hint_partial": "time -v ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-021-r126",
+      "type": "single",
+      "scenario": "Runbook adiminda pID 4242 process'ine `gdb` ile attach ol.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gdb -p 4242",
+          "hint_text": "Canli process debug icin `gdb -p PID` kullan.",
+          "hint_partial": "gdb -p ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-022-r127",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde pID 4242 process'inin scheduler policy ve priority bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chrt -p 4242",
+          "hint_text": "Realtime scheduler bilgisi icin `chrt -p` kullan.",
+          "hint_partial": "chrt -p ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-023-r128",
+      "type": "single",
+      "scenario": "Incident sonrasinda pID 4242 process'ini FIFO realtime scheduler ve priority 50 ile ayarla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chrt -f -p 50 4242",
+          "hint_text": "FIFO realtime icin `chrt -f -p prio pid` kullan.",
+          "hint_partial": "chrt -f ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-024-r129",
+      "type": "single",
+      "scenario": "Bakim oncesi pID 4242 process'inin acik UNIX socket'lerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof -U -a -p 4242",
+          "hint_text": "UNIX socket filtrelemesi icin `lsof -U -a -p` kullan.",
+          "hint_partial": "lsof -U ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-025-r130",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda pID 4242 process'ine `SIGUSR1` sinyali gonder.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill -USR1 4242",
+          "hint_text": "Adli signal icin `kill -USR1` kullan.",
+          "hint_partial": "kill -USR1 ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-016-r131",
+      "type": "single",
+      "scenario": "Deploy sonrasi pID 4242 process'i icin core dump uret.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gcore 4242",
+          "hint_text": "Canli process dump'u icin `gcore` kullan.",
+          "hint_partial": "gcore ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-017-r132",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde pID 4242 process'inin durum bilgisini `/proc` altindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/4242/status",
+          "hint_text": "Process status icin `/proc/PID/status` kullan.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-018-r133",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `stress --cpu 2` komutunu gecici bir systemd scope icinde baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "systemd-run --scope stress --cpu 2",
+          "hint_text": "Gecici scope icin `systemd-run --scope` kullan.",
+          "hint_partial": "systemd-run --scope ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-019-r134",
+      "type": "single",
+      "scenario": "Runbook adiminda pID 4242 process'inin cgroup uyeligi bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/4242/cgroup",
+          "hint_text": "Cgroup bilgisi `/proc/PID/cgroup` icindedir.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-020-r135",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `./myapp` komutunun kaynak kullanimini ayrintili sure istatistigiyle olc.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "time -v ./myapp",
+          "hint_text": "Ayrintili time ciktisi icin `time -v` kullan.",
+          "hint_partial": "time -v ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-021-r136",
+      "type": "single",
+      "scenario": "Incident sonrasinda pID 4242 process'ine `gdb` ile attach ol.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gdb -p 4242",
+          "hint_text": "Canli process debug icin `gdb -p PID` kullan.",
+          "hint_partial": "gdb -p ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-022-r137",
+      "type": "single",
+      "scenario": "Bakim oncesi pID 4242 process'inin scheduler policy ve priority bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chrt -p 4242",
+          "hint_text": "Realtime scheduler bilgisi icin `chrt -p` kullan.",
+          "hint_partial": "chrt -p ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-023-r138",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda pID 4242 process'ini FIFO realtime scheduler ve priority 50 ile ayarla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chrt -f -p 50 4242",
+          "hint_text": "FIFO realtime icin `chrt -f -p prio pid` kullan.",
+          "hint_partial": "chrt -f ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-024-r139",
+      "type": "single",
+      "scenario": "Deploy sonrasi pID 4242 process'inin acik UNIX socket'lerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof -U -a -p 4242",
+          "hint_text": "UNIX socket filtrelemesi icin `lsof -U -a -p` kullan.",
+          "hint_partial": "lsof -U ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-025-r140",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde pID 4242 process'ine `SIGUSR1` sinyali gonder.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill -USR1 4242",
+          "hint_text": "Adli signal icin `kill -USR1` kullan.",
+          "hint_partial": "kill -USR1 ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-016-r141",
+      "type": "single",
+      "scenario": "Yeni acilan hostta pID 4242 process'i icin core dump uret.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gcore 4242",
+          "hint_text": "Canli process dump'u icin `gcore` kullan.",
+          "hint_partial": "gcore ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-017-r142",
+      "type": "single",
+      "scenario": "Runbook adiminda pID 4242 process'inin durum bilgisini `/proc` altindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/4242/status",
+          "hint_text": "Process status icin `/proc/PID/status` kullan.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-018-r143",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `stress --cpu 2` komutunu gecici bir systemd scope icinde baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "systemd-run --scope stress --cpu 2",
+          "hint_text": "Gecici scope icin `systemd-run --scope` kullan.",
+          "hint_partial": "systemd-run --scope ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-019-r144",
+      "type": "single",
+      "scenario": "Incident sonrasinda pID 4242 process'inin cgroup uyeligi bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/4242/cgroup",
+          "hint_text": "Cgroup bilgisi `/proc/PID/cgroup` icindedir.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-020-r145",
+      "type": "single",
+      "scenario": "Bakim oncesi `./myapp` komutunun kaynak kullanimini ayrintili sure istatistigiyle olc.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "time -v ./myapp",
+          "hint_text": "Ayrintili time ciktisi icin `time -v` kullan.",
+          "hint_partial": "time -v ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-021-r146",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda pID 4242 process'ine `gdb` ile attach ol.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gdb -p 4242",
+          "hint_text": "Canli process debug icin `gdb -p PID` kullan.",
+          "hint_partial": "gdb -p ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-022-r147",
+      "type": "single",
+      "scenario": "Deploy sonrasi pID 4242 process'inin scheduler policy ve priority bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chrt -p 4242",
+          "hint_text": "Realtime scheduler bilgisi icin `chrt -p` kullan.",
+          "hint_partial": "chrt -p ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-023-r148",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde pID 4242 process'ini FIFO realtime scheduler ve priority 50 ile ayarla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chrt -f -p 50 4242",
+          "hint_text": "FIFO realtime icin `chrt -f -p prio pid` kullan.",
+          "hint_partial": "chrt -f ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-024-r149",
+      "type": "single",
+      "scenario": "Yeni acilan hostta pID 4242 process'inin acik UNIX socket'lerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof -U -a -p 4242",
+          "hint_text": "UNIX socket filtrelemesi icin `lsof -U -a -p` kullan.",
+          "hint_partial": "lsof -U ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-025-r150",
+      "type": "single",
+      "scenario": "Runbook adiminda pID 4242 process'ine `SIGUSR1` sinyali gonder.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill -USR1 4242",
+          "hint_text": "Adli signal icin `kill -USR1` kullan.",
+          "hint_partial": "kill -USR1 ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-016-r151",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde pID 4242 process'i icin core dump uret.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gcore 4242",
+          "hint_text": "Canli process dump'u icin `gcore` kullan.",
+          "hint_partial": "gcore ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-017-r152",
+      "type": "single",
+      "scenario": "Incident sonrasinda pID 4242 process'inin durum bilgisini `/proc` altindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/4242/status",
+          "hint_text": "Process status icin `/proc/PID/status` kullan.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-018-r153",
+      "type": "single",
+      "scenario": "Bakim oncesi `stress --cpu 2` komutunu gecici bir systemd scope icinde baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "systemd-run --scope stress --cpu 2",
+          "hint_text": "Gecici scope icin `systemd-run --scope` kullan.",
+          "hint_partial": "systemd-run --scope ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-019-r154",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda pID 4242 process'inin cgroup uyeligi bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/4242/cgroup",
+          "hint_text": "Cgroup bilgisi `/proc/PID/cgroup` icindedir.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-020-r155",
+      "type": "single",
+      "scenario": "Deploy sonrasi `./myapp` komutunun kaynak kullanimini ayrintili sure istatistigiyle olc.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "time -v ./myapp",
+          "hint_text": "Ayrintili time ciktisi icin `time -v` kullan.",
+          "hint_partial": "time -v ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-021-r156",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde pID 4242 process'ine `gdb` ile attach ol.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gdb -p 4242",
+          "hint_text": "Canli process debug icin `gdb -p PID` kullan.",
+          "hint_partial": "gdb -p ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-022-r157",
+      "type": "single",
+      "scenario": "Yeni acilan hostta pID 4242 process'inin scheduler policy ve priority bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chrt -p 4242",
+          "hint_text": "Realtime scheduler bilgisi icin `chrt -p` kullan.",
+          "hint_partial": "chrt -p ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-023-r158",
+      "type": "single",
+      "scenario": "Runbook adiminda pID 4242 process'ini FIFO realtime scheduler ve priority 50 ile ayarla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chrt -f -p 50 4242",
+          "hint_text": "FIFO realtime icin `chrt -f -p prio pid` kullan.",
+          "hint_partial": "chrt -f ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-024-r159",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde pID 4242 process'inin acik UNIX socket'lerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof -U -a -p 4242",
+          "hint_text": "UNIX socket filtrelemesi icin `lsof -U -a -p` kullan.",
+          "hint_partial": "lsof -U ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-025-r160",
+      "type": "single",
+      "scenario": "Incident sonrasinda pID 4242 process'ine `SIGUSR1` sinyali gonder.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill -USR1 4242",
+          "hint_text": "Adli signal icin `kill -USR1` kullan.",
+          "hint_partial": "kill -USR1 ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-016-r161",
+      "type": "single",
+      "scenario": "Bakim oncesi pID 4242 process'i icin core dump uret.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gcore 4242",
+          "hint_text": "Canli process dump'u icin `gcore` kullan.",
+          "hint_partial": "gcore ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-017-r162",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda pID 4242 process'inin durum bilgisini `/proc` altindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/4242/status",
+          "hint_text": "Process status icin `/proc/PID/status` kullan.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-018-r163",
+      "type": "single",
+      "scenario": "Deploy sonrasi `stress --cpu 2` komutunu gecici bir systemd scope icinde baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "systemd-run --scope stress --cpu 2",
+          "hint_text": "Gecici scope icin `systemd-run --scope` kullan.",
+          "hint_partial": "systemd-run --scope ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-019-r164",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde pID 4242 process'inin cgroup uyeligi bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/4242/cgroup",
+          "hint_text": "Cgroup bilgisi `/proc/PID/cgroup` icindedir.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-020-r165",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `./myapp` komutunun kaynak kullanimini ayrintili sure istatistigiyle olc.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "time -v ./myapp",
+          "hint_text": "Ayrintili time ciktisi icin `time -v` kullan.",
+          "hint_partial": "time -v ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-021-r166",
+      "type": "single",
+      "scenario": "Runbook adiminda pID 4242 process'ine `gdb` ile attach ol.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gdb -p 4242",
+          "hint_text": "Canli process debug icin `gdb -p PID` kullan.",
+          "hint_partial": "gdb -p ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-022-r167",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde pID 4242 process'inin scheduler policy ve priority bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chrt -p 4242",
+          "hint_text": "Realtime scheduler bilgisi icin `chrt -p` kullan.",
+          "hint_partial": "chrt -p ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-023-r168",
+      "type": "single",
+      "scenario": "Incident sonrasinda pID 4242 process'ini FIFO realtime scheduler ve priority 50 ile ayarla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chrt -f -p 50 4242",
+          "hint_text": "FIFO realtime icin `chrt -f -p prio pid` kullan.",
+          "hint_partial": "chrt -f ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-024-r169",
+      "type": "single",
+      "scenario": "Bakim oncesi pID 4242 process'inin acik UNIX socket'lerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof -U -a -p 4242",
+          "hint_text": "UNIX socket filtrelemesi icin `lsof -U -a -p` kullan.",
+          "hint_partial": "lsof -U ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-025-r170",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda pID 4242 process'ine `SIGUSR1` sinyali gonder.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill -USR1 4242",
+          "hint_text": "Adli signal icin `kill -USR1` kullan.",
+          "hint_partial": "kill -USR1 ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-016-r171",
+      "type": "single",
+      "scenario": "Deploy sonrasi pID 4242 process'i icin core dump uret.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gcore 4242",
+          "hint_text": "Canli process dump'u icin `gcore` kullan.",
+          "hint_partial": "gcore ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-017-r172",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde pID 4242 process'inin durum bilgisini `/proc` altindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/4242/status",
+          "hint_text": "Process status icin `/proc/PID/status` kullan.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-018-r173",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `stress --cpu 2` komutunu gecici bir systemd scope icinde baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "systemd-run --scope stress --cpu 2",
+          "hint_text": "Gecici scope icin `systemd-run --scope` kullan.",
+          "hint_partial": "systemd-run --scope ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-019-r174",
+      "type": "single",
+      "scenario": "Runbook adiminda pID 4242 process'inin cgroup uyeligi bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/4242/cgroup",
+          "hint_text": "Cgroup bilgisi `/proc/PID/cgroup` icindedir.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-020-r175",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `./myapp` komutunun kaynak kullanimini ayrintili sure istatistigiyle olc.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "time -v ./myapp",
+          "hint_text": "Ayrintili time ciktisi icin `time -v` kullan.",
+          "hint_partial": "time -v ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-021-r176",
+      "type": "single",
+      "scenario": "Incident sonrasinda pID 4242 process'ine `gdb` ile attach ol.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gdb -p 4242",
+          "hint_text": "Canli process debug icin `gdb -p PID` kullan.",
+          "hint_partial": "gdb -p ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-022-r177",
+      "type": "single",
+      "scenario": "Bakim oncesi pID 4242 process'inin scheduler policy ve priority bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chrt -p 4242",
+          "hint_text": "Realtime scheduler bilgisi icin `chrt -p` kullan.",
+          "hint_partial": "chrt -p ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-023-r178",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda pID 4242 process'ini FIFO realtime scheduler ve priority 50 ile ayarla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chrt -f -p 50 4242",
+          "hint_text": "FIFO realtime icin `chrt -f -p prio pid` kullan.",
+          "hint_partial": "chrt -f ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-024-r179",
+      "type": "single",
+      "scenario": "Deploy sonrasi pID 4242 process'inin acik UNIX socket'lerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof -U -a -p 4242",
+          "hint_text": "UNIX socket filtrelemesi icin `lsof -U -a -p` kullan.",
+          "hint_partial": "lsof -U ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-025-r180",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde pID 4242 process'ine `SIGUSR1` sinyali gonder.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill -USR1 4242",
+          "hint_text": "Adli signal icin `kill -USR1` kullan.",
+          "hint_partial": "kill -USR1 ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-016-r181",
+      "type": "single",
+      "scenario": "Yeni acilan hostta pID 4242 process'i icin core dump uret.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gcore 4242",
+          "hint_text": "Canli process dump'u icin `gcore` kullan.",
+          "hint_partial": "gcore ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-017-r182",
+      "type": "single",
+      "scenario": "Runbook adiminda pID 4242 process'inin durum bilgisini `/proc` altindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/4242/status",
+          "hint_text": "Process status icin `/proc/PID/status` kullan.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-018-r183",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `stress --cpu 2` komutunu gecici bir systemd scope icinde baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "systemd-run --scope stress --cpu 2",
+          "hint_text": "Gecici scope icin `systemd-run --scope` kullan.",
+          "hint_partial": "systemd-run --scope ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-019-r184",
+      "type": "single",
+      "scenario": "Incident sonrasinda pID 4242 process'inin cgroup uyeligi bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/4242/cgroup",
+          "hint_text": "Cgroup bilgisi `/proc/PID/cgroup` icindedir.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-020-r185",
+      "type": "single",
+      "scenario": "Bakim oncesi `./myapp` komutunun kaynak kullanimini ayrintili sure istatistigiyle olc.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "time -v ./myapp",
+          "hint_text": "Ayrintili time ciktisi icin `time -v` kullan.",
+          "hint_partial": "time -v ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-021-r186",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda pID 4242 process'ine `gdb` ile attach ol.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gdb -p 4242",
+          "hint_text": "Canli process debug icin `gdb -p PID` kullan.",
+          "hint_partial": "gdb -p ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-022-r187",
+      "type": "single",
+      "scenario": "Deploy sonrasi pID 4242 process'inin scheduler policy ve priority bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chrt -p 4242",
+          "hint_text": "Realtime scheduler bilgisi icin `chrt -p` kullan.",
+          "hint_partial": "chrt -p ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-023-r188",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde pID 4242 process'ini FIFO realtime scheduler ve priority 50 ile ayarla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chrt -f -p 50 4242",
+          "hint_text": "FIFO realtime icin `chrt -f -p prio pid` kullan.",
+          "hint_partial": "chrt -f ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-024-r189",
+      "type": "single",
+      "scenario": "Yeni acilan hostta pID 4242 process'inin acik UNIX socket'lerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof -U -a -p 4242",
+          "hint_text": "UNIX socket filtrelemesi icin `lsof -U -a -p` kullan.",
+          "hint_partial": "lsof -U ..."
+        }
+      ]
+    },
+    {
+      "id": "sproc-025-r190",
+      "type": "single",
+      "scenario": "Runbook adiminda pID 4242 process'ine `SIGUSR1` sinyali gonder.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill -USR1 4242",
+          "hint_text": "Adli signal icin `kill -USR1` kullan.",
+          "hint_partial": "kill -USR1 ..."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2606 @@
+{
+  "level": "senior",
+  "topic": "networking",
+  "questions": [
+    {
+      "id": "snet-016",
+      "type": "single",
+      "scenario": "Tum network namespace'leri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip netns list",
+          "hint_text": "Namespace listesi icin `ip netns list` kullan.",
+          "hint_partial": "ip netns ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-017",
+      "type": "single",
+      "scenario": "`testns` namespace'i icinde 8.8.8.8'e 3 paket ping gonder.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip netns exec testns ping -c 3 8.8.8.8",
+          "hint_text": "Namespace icinde komut icin `ip netns exec` kullan.",
+          "hint_partial": "ip netns exec ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-018",
+      "type": "single",
+      "scenario": "`10.0.0.0/24` kaynakli trafik icin policy route ekle: table 100.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip rule add from 10.0.0.0/24 table 100",
+          "hint_text": "Policy route icin `ip rule add from subnet table N` kullan.",
+          "hint_partial": "ip rule add ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-019",
+      "type": "single",
+      "scenario": "Route table 100 kayitlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip route show table 100",
+          "hint_text": "Ozel route tablosu icin `ip route show table` kullan.",
+          "hint_partial": "ip route show ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-020",
+      "type": "single",
+      "scenario": "eth0 icin 100MB'lik 5 dosyalik rolling tcpdump capture baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tcpdump -i eth0 -C 100 -W 5 -w capture.pcap",
+          "hint_text": "Rolling capture icin `-C size -W count` kullan.",
+          "hint_partial": "tcpdump -i eth0 ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-021",
+      "type": "single",
+      "scenario": "Conntrack tablo istatistiklerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "conntrack -S",
+          "hint_text": "Conntrack stats icin `conntrack -S` kullan.",
+          "hint_partial": "conntrack ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-022",
+      "type": "single",
+      "scenario": "Mevcut nftables ruleset'ini tamamen temizle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "nft flush ruleset",
+          "hint_text": "Tum ruleset'i bosaltmak icin `nft flush ruleset` kullan.",
+          "hint_partial": "nft flush ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-023",
+      "type": "single",
+      "scenario": "eth0 uzerine `fq_codel` qdisc ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tc qdisc add dev eth0 root fq_codel",
+          "hint_text": "Traffic control qdisc icin `tc qdisc add dev ... root fq_codel` kullan.",
+          "hint_partial": "tc qdisc add ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-024",
+      "type": "single",
+      "scenario": "eth0 qdisc istatistiklerini detayli goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tc -s qdisc show dev eth0",
+          "hint_text": "Qdisc stats icin `tc -s qdisc show` kullan.",
+          "hint_partial": "tc -s ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-025",
+      "type": "single",
+      "scenario": "`example.com` icin report modunda `mtr` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mtr -rw example.com",
+          "hint_text": "Report+wide mod icin `mtr -rw` kullan.",
+          "hint_partial": "mtr -rw ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-016-r1",
+      "type": "single",
+      "scenario": "Bakim oncesi tum network namespace'leri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip netns list",
+          "hint_text": "Namespace listesi icin `ip netns list` kullan.",
+          "hint_partial": "ip netns ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-017-r2",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `testns` namespace'i icinde 10.11.21.31'e 4 paket ping gonder.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip netns exec testns ping -c 4 10.11.21.31",
+          "hint_text": "Namespace icinde komut icin `ip netns exec` kullan.",
+          "hint_partial": "ip netns exec ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-018-r3",
+      "type": "single",
+      "scenario": "Deploy sonrasi `10.0.0.0/24` kaynakli trafik icin policy route ekle: table 100.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip rule add from 10.0.0.0/24 table 100",
+          "hint_text": "Policy route icin `ip rule add from subnet table N` kullan.",
+          "hint_partial": "ip rule add ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-019-r4",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde route table 100 kayitlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip route show table 100",
+          "hint_text": "Ozel route tablosu icin `ip route show table` kullan.",
+          "hint_partial": "ip route show ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-020-r5",
+      "type": "single",
+      "scenario": "Yeni acilan hostta eth0 icin 300MB'lik 5 dosyalik rolling tcpdump capture baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tcpdump -i eth0 -C 100 -W 5 -w capture.pcap",
+          "hint_text": "Rolling capture icin `-C size -W count` kullan.",
+          "hint_partial": "tcpdump -i eth0 ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-021-r6",
+      "type": "single",
+      "scenario": "Runbook adiminda conntrack tablo istatistiklerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "conntrack -S",
+          "hint_text": "Conntrack stats icin `conntrack -S` kullan.",
+          "hint_partial": "conntrack ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-022-r7",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde mevcut nftables ruleset'ini tamamen temizle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "nft flush ruleset",
+          "hint_text": "Tum ruleset'i bosaltmak icin `nft flush ruleset` kullan.",
+          "hint_partial": "nft flush ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-023-r8",
+      "type": "single",
+      "scenario": "Incident sonrasinda eth0 uzerine `fq_codel` qdisc ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tc qdisc add dev eth0 root fq_codel",
+          "hint_text": "Traffic control qdisc icin `tc qdisc add dev ... root fq_codel` kullan.",
+          "hint_partial": "tc qdisc add ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-024-r9",
+      "type": "single",
+      "scenario": "Bakim oncesi eth0 qdisc istatistiklerini detayli goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tc -s qdisc show dev eth0",
+          "hint_text": "Qdisc stats icin `tc -s qdisc show` kullan.",
+          "hint_partial": "tc -s ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-025-r10",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `srv10.internal` icin report modunda `mtr` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mtr -rw srv10.internal",
+          "hint_text": "Report+wide mod icin `mtr -rw` kullan.",
+          "hint_partial": "mtr -rw ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-016-r11",
+      "type": "single",
+      "scenario": "Deploy sonrasi tum network namespace'leri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip netns list",
+          "hint_text": "Namespace listesi icin `ip netns list` kullan.",
+          "hint_partial": "ip netns ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-017-r12",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `testns` namespace'i icinde 10.21.31.41'e 4 paket ping gonder.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip netns exec testns ping -c 4 10.21.31.41",
+          "hint_text": "Namespace icinde komut icin `ip netns exec` kullan.",
+          "hint_partial": "ip netns exec ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-018-r13",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `10.0.0.0/24` kaynakli trafik icin policy route ekle: table 100.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip rule add from 10.0.0.0/24 table 100",
+          "hint_text": "Policy route icin `ip rule add from subnet table N` kullan.",
+          "hint_partial": "ip rule add ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-019-r14",
+      "type": "single",
+      "scenario": "Runbook adiminda route table 100 kayitlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip route show table 100",
+          "hint_text": "Ozel route tablosu icin `ip route show table` kullan.",
+          "hint_partial": "ip route show ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-020-r15",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde eth0 icin 400MB'lik 5 dosyalik rolling tcpdump capture baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tcpdump -i eth0 -C 100 -W 5 -w capture.pcap",
+          "hint_text": "Rolling capture icin `-C size -W count` kullan.",
+          "hint_partial": "tcpdump -i eth0 ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-021-r16",
+      "type": "single",
+      "scenario": "Incident sonrasinda conntrack tablo istatistiklerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "conntrack -S",
+          "hint_text": "Conntrack stats icin `conntrack -S` kullan.",
+          "hint_partial": "conntrack ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-022-r17",
+      "type": "single",
+      "scenario": "Bakim oncesi mevcut nftables ruleset'ini tamamen temizle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "nft flush ruleset",
+          "hint_text": "Tum ruleset'i bosaltmak icin `nft flush ruleset` kullan.",
+          "hint_partial": "nft flush ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-023-r18",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda eth0 uzerine `fq_codel` qdisc ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tc qdisc add dev eth0 root fq_codel",
+          "hint_text": "Traffic control qdisc icin `tc qdisc add dev ... root fq_codel` kullan.",
+          "hint_partial": "tc qdisc add ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-024-r19",
+      "type": "single",
+      "scenario": "Deploy sonrasi eth0 qdisc istatistiklerini detayli goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tc -s qdisc show dev eth0",
+          "hint_text": "Qdisc stats icin `tc -s qdisc show` kullan.",
+          "hint_partial": "tc -s ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-025-r20",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `srv20.internal` icin report modunda `mtr` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mtr -rw srv20.internal",
+          "hint_text": "Report+wide mod icin `mtr -rw` kullan.",
+          "hint_partial": "mtr -rw ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-016-r21",
+      "type": "single",
+      "scenario": "Yeni acilan hostta tum network namespace'leri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip netns list",
+          "hint_text": "Namespace listesi icin `ip netns list` kullan.",
+          "hint_partial": "ip netns ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-017-r22",
+      "type": "single",
+      "scenario": "Runbook adiminda `testns` namespace'i icinde 10.11.21.31'e 4 paket ping gonder.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip netns exec testns ping -c 4 10.11.21.31",
+          "hint_text": "Namespace icinde komut icin `ip netns exec` kullan.",
+          "hint_partial": "ip netns exec ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-018-r23",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `10.0.0.0/24` kaynakli trafik icin policy route ekle: table 100.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip rule add from 10.0.0.0/24 table 100",
+          "hint_text": "Policy route icin `ip rule add from subnet table N` kullan.",
+          "hint_partial": "ip rule add ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-019-r24",
+      "type": "single",
+      "scenario": "Incident sonrasinda route table 100 kayitlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip route show table 100",
+          "hint_text": "Ozel route tablosu icin `ip route show table` kullan.",
+          "hint_partial": "ip route show ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-020-r25",
+      "type": "single",
+      "scenario": "Bakim oncesi eth0 icin 100MB'lik 5 dosyalik rolling tcpdump capture baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tcpdump -i eth0 -C 100 -W 5 -w capture.pcap",
+          "hint_text": "Rolling capture icin `-C size -W count` kullan.",
+          "hint_partial": "tcpdump -i eth0 ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-021-r26",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda conntrack tablo istatistiklerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "conntrack -S",
+          "hint_text": "Conntrack stats icin `conntrack -S` kullan.",
+          "hint_partial": "conntrack ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-022-r27",
+      "type": "single",
+      "scenario": "Deploy sonrasi mevcut nftables ruleset'ini tamamen temizle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "nft flush ruleset",
+          "hint_text": "Tum ruleset'i bosaltmak icin `nft flush ruleset` kullan.",
+          "hint_partial": "nft flush ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-023-r28",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde eth0 uzerine `fq_codel` qdisc ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tc qdisc add dev eth0 root fq_codel",
+          "hint_text": "Traffic control qdisc icin `tc qdisc add dev ... root fq_codel` kullan.",
+          "hint_partial": "tc qdisc add ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-024-r29",
+      "type": "single",
+      "scenario": "Yeni acilan hostta eth0 qdisc istatistiklerini detayli goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tc -s qdisc show dev eth0",
+          "hint_text": "Qdisc stats icin `tc -s qdisc show` kullan.",
+          "hint_partial": "tc -s ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-025-r30",
+      "type": "single",
+      "scenario": "Runbook adiminda `srv30.internal` icin report modunda `mtr` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mtr -rw srv30.internal",
+          "hint_text": "Report+wide mod icin `mtr -rw` kullan.",
+          "hint_partial": "mtr -rw ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-016-r31",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde tum network namespace'leri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip netns list",
+          "hint_text": "Namespace listesi icin `ip netns list` kullan.",
+          "hint_partial": "ip netns ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-017-r32",
+      "type": "single",
+      "scenario": "Incident sonrasinda `testns` namespace'i icinde 10.21.31.41'e 4 paket ping gonder.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip netns exec testns ping -c 4 10.21.31.41",
+          "hint_text": "Namespace icinde komut icin `ip netns exec` kullan.",
+          "hint_partial": "ip netns exec ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-018-r33",
+      "type": "single",
+      "scenario": "Bakim oncesi `10.0.0.0/24` kaynakli trafik icin policy route ekle: table 100.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip rule add from 10.0.0.0/24 table 100",
+          "hint_text": "Policy route icin `ip rule add from subnet table N` kullan.",
+          "hint_partial": "ip rule add ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-019-r34",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda route table 100 kayitlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip route show table 100",
+          "hint_text": "Ozel route tablosu icin `ip route show table` kullan.",
+          "hint_partial": "ip route show ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-020-r35",
+      "type": "single",
+      "scenario": "Deploy sonrasi eth0 icin 200MB'lik 5 dosyalik rolling tcpdump capture baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tcpdump -i eth0 -C 100 -W 5 -w capture.pcap",
+          "hint_text": "Rolling capture icin `-C size -W count` kullan.",
+          "hint_partial": "tcpdump -i eth0 ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-021-r36",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde conntrack tablo istatistiklerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "conntrack -S",
+          "hint_text": "Conntrack stats icin `conntrack -S` kullan.",
+          "hint_partial": "conntrack ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-022-r37",
+      "type": "single",
+      "scenario": "Yeni acilan hostta mevcut nftables ruleset'ini tamamen temizle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "nft flush ruleset",
+          "hint_text": "Tum ruleset'i bosaltmak icin `nft flush ruleset` kullan.",
+          "hint_partial": "nft flush ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-023-r38",
+      "type": "single",
+      "scenario": "Runbook adiminda eth0 uzerine `fq_codel` qdisc ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tc qdisc add dev eth0 root fq_codel",
+          "hint_text": "Traffic control qdisc icin `tc qdisc add dev ... root fq_codel` kullan.",
+          "hint_partial": "tc qdisc add ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-024-r39",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde eth0 qdisc istatistiklerini detayli goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tc -s qdisc show dev eth0",
+          "hint_text": "Qdisc stats icin `tc -s qdisc show` kullan.",
+          "hint_partial": "tc -s ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-025-r40",
+      "type": "single",
+      "scenario": "Incident sonrasinda `srv40.internal` icin report modunda `mtr` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mtr -rw srv40.internal",
+          "hint_text": "Report+wide mod icin `mtr -rw` kullan.",
+          "hint_partial": "mtr -rw ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-016-r41",
+      "type": "single",
+      "scenario": "Bakim oncesi tum network namespace'leri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip netns list",
+          "hint_text": "Namespace listesi icin `ip netns list` kullan.",
+          "hint_partial": "ip netns ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-017-r42",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `testns` namespace'i icinde 10.11.21.31'e 4 paket ping gonder.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip netns exec testns ping -c 4 10.11.21.31",
+          "hint_text": "Namespace icinde komut icin `ip netns exec` kullan.",
+          "hint_partial": "ip netns exec ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-018-r43",
+      "type": "single",
+      "scenario": "Deploy sonrasi `10.0.0.0/24` kaynakli trafik icin policy route ekle: table 100.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip rule add from 10.0.0.0/24 table 100",
+          "hint_text": "Policy route icin `ip rule add from subnet table N` kullan.",
+          "hint_partial": "ip rule add ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-019-r44",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde route table 100 kayitlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip route show table 100",
+          "hint_text": "Ozel route tablosu icin `ip route show table` kullan.",
+          "hint_partial": "ip route show ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-020-r45",
+      "type": "single",
+      "scenario": "Yeni acilan hostta eth0 icin 300MB'lik 5 dosyalik rolling tcpdump capture baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tcpdump -i eth0 -C 100 -W 5 -w capture.pcap",
+          "hint_text": "Rolling capture icin `-C size -W count` kullan.",
+          "hint_partial": "tcpdump -i eth0 ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-021-r46",
+      "type": "single",
+      "scenario": "Runbook adiminda conntrack tablo istatistiklerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "conntrack -S",
+          "hint_text": "Conntrack stats icin `conntrack -S` kullan.",
+          "hint_partial": "conntrack ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-022-r47",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde mevcut nftables ruleset'ini tamamen temizle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "nft flush ruleset",
+          "hint_text": "Tum ruleset'i bosaltmak icin `nft flush ruleset` kullan.",
+          "hint_partial": "nft flush ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-023-r48",
+      "type": "single",
+      "scenario": "Incident sonrasinda eth0 uzerine `fq_codel` qdisc ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tc qdisc add dev eth0 root fq_codel",
+          "hint_text": "Traffic control qdisc icin `tc qdisc add dev ... root fq_codel` kullan.",
+          "hint_partial": "tc qdisc add ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-024-r49",
+      "type": "single",
+      "scenario": "Bakim oncesi eth0 qdisc istatistiklerini detayli goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tc -s qdisc show dev eth0",
+          "hint_text": "Qdisc stats icin `tc -s qdisc show` kullan.",
+          "hint_partial": "tc -s ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-025-r50",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `srv50.internal` icin report modunda `mtr` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mtr -rw srv50.internal",
+          "hint_text": "Report+wide mod icin `mtr -rw` kullan.",
+          "hint_partial": "mtr -rw ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-016-r51",
+      "type": "single",
+      "scenario": "Deploy sonrasi tum network namespace'leri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip netns list",
+          "hint_text": "Namespace listesi icin `ip netns list` kullan.",
+          "hint_partial": "ip netns ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-017-r52",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `testns` namespace'i icinde 10.21.31.41'e 4 paket ping gonder.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip netns exec testns ping -c 4 10.21.31.41",
+          "hint_text": "Namespace icinde komut icin `ip netns exec` kullan.",
+          "hint_partial": "ip netns exec ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-018-r53",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `10.0.0.0/24` kaynakli trafik icin policy route ekle: table 100.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip rule add from 10.0.0.0/24 table 100",
+          "hint_text": "Policy route icin `ip rule add from subnet table N` kullan.",
+          "hint_partial": "ip rule add ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-019-r54",
+      "type": "single",
+      "scenario": "Runbook adiminda route table 100 kayitlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip route show table 100",
+          "hint_text": "Ozel route tablosu icin `ip route show table` kullan.",
+          "hint_partial": "ip route show ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-020-r55",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde eth0 icin 400MB'lik 5 dosyalik rolling tcpdump capture baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tcpdump -i eth0 -C 100 -W 5 -w capture.pcap",
+          "hint_text": "Rolling capture icin `-C size -W count` kullan.",
+          "hint_partial": "tcpdump -i eth0 ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-021-r56",
+      "type": "single",
+      "scenario": "Incident sonrasinda conntrack tablo istatistiklerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "conntrack -S",
+          "hint_text": "Conntrack stats icin `conntrack -S` kullan.",
+          "hint_partial": "conntrack ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-022-r57",
+      "type": "single",
+      "scenario": "Bakim oncesi mevcut nftables ruleset'ini tamamen temizle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "nft flush ruleset",
+          "hint_text": "Tum ruleset'i bosaltmak icin `nft flush ruleset` kullan.",
+          "hint_partial": "nft flush ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-023-r58",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda eth0 uzerine `fq_codel` qdisc ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tc qdisc add dev eth0 root fq_codel",
+          "hint_text": "Traffic control qdisc icin `tc qdisc add dev ... root fq_codel` kullan.",
+          "hint_partial": "tc qdisc add ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-024-r59",
+      "type": "single",
+      "scenario": "Deploy sonrasi eth0 qdisc istatistiklerini detayli goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tc -s qdisc show dev eth0",
+          "hint_text": "Qdisc stats icin `tc -s qdisc show` kullan.",
+          "hint_partial": "tc -s ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-025-r60",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `srv60.internal` icin report modunda `mtr` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mtr -rw srv60.internal",
+          "hint_text": "Report+wide mod icin `mtr -rw` kullan.",
+          "hint_partial": "mtr -rw ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-016-r61",
+      "type": "single",
+      "scenario": "Yeni acilan hostta tum network namespace'leri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip netns list",
+          "hint_text": "Namespace listesi icin `ip netns list` kullan.",
+          "hint_partial": "ip netns ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-017-r62",
+      "type": "single",
+      "scenario": "Runbook adiminda `testns` namespace'i icinde 10.11.21.31'e 4 paket ping gonder.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip netns exec testns ping -c 4 10.11.21.31",
+          "hint_text": "Namespace icinde komut icin `ip netns exec` kullan.",
+          "hint_partial": "ip netns exec ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-018-r63",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `10.0.0.0/24` kaynakli trafik icin policy route ekle: table 100.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip rule add from 10.0.0.0/24 table 100",
+          "hint_text": "Policy route icin `ip rule add from subnet table N` kullan.",
+          "hint_partial": "ip rule add ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-019-r64",
+      "type": "single",
+      "scenario": "Incident sonrasinda route table 100 kayitlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip route show table 100",
+          "hint_text": "Ozel route tablosu icin `ip route show table` kullan.",
+          "hint_partial": "ip route show ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-020-r65",
+      "type": "single",
+      "scenario": "Bakim oncesi eth0 icin 100MB'lik 5 dosyalik rolling tcpdump capture baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tcpdump -i eth0 -C 100 -W 5 -w capture.pcap",
+          "hint_text": "Rolling capture icin `-C size -W count` kullan.",
+          "hint_partial": "tcpdump -i eth0 ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-021-r66",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda conntrack tablo istatistiklerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "conntrack -S",
+          "hint_text": "Conntrack stats icin `conntrack -S` kullan.",
+          "hint_partial": "conntrack ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-022-r67",
+      "type": "single",
+      "scenario": "Deploy sonrasi mevcut nftables ruleset'ini tamamen temizle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "nft flush ruleset",
+          "hint_text": "Tum ruleset'i bosaltmak icin `nft flush ruleset` kullan.",
+          "hint_partial": "nft flush ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-023-r68",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde eth0 uzerine `fq_codel` qdisc ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tc qdisc add dev eth0 root fq_codel",
+          "hint_text": "Traffic control qdisc icin `tc qdisc add dev ... root fq_codel` kullan.",
+          "hint_partial": "tc qdisc add ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-024-r69",
+      "type": "single",
+      "scenario": "Yeni acilan hostta eth0 qdisc istatistiklerini detayli goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tc -s qdisc show dev eth0",
+          "hint_text": "Qdisc stats icin `tc -s qdisc show` kullan.",
+          "hint_partial": "tc -s ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-025-r70",
+      "type": "single",
+      "scenario": "Runbook adiminda `srv70.internal` icin report modunda `mtr` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mtr -rw srv70.internal",
+          "hint_text": "Report+wide mod icin `mtr -rw` kullan.",
+          "hint_partial": "mtr -rw ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-016-r71",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde tum network namespace'leri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip netns list",
+          "hint_text": "Namespace listesi icin `ip netns list` kullan.",
+          "hint_partial": "ip netns ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-017-r72",
+      "type": "single",
+      "scenario": "Incident sonrasinda `testns` namespace'i icinde 10.21.31.41'e 4 paket ping gonder.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip netns exec testns ping -c 4 10.21.31.41",
+          "hint_text": "Namespace icinde komut icin `ip netns exec` kullan.",
+          "hint_partial": "ip netns exec ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-018-r73",
+      "type": "single",
+      "scenario": "Bakim oncesi `10.0.0.0/24` kaynakli trafik icin policy route ekle: table 100.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip rule add from 10.0.0.0/24 table 100",
+          "hint_text": "Policy route icin `ip rule add from subnet table N` kullan.",
+          "hint_partial": "ip rule add ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-019-r74",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda route table 100 kayitlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip route show table 100",
+          "hint_text": "Ozel route tablosu icin `ip route show table` kullan.",
+          "hint_partial": "ip route show ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-020-r75",
+      "type": "single",
+      "scenario": "Deploy sonrasi eth0 icin 200MB'lik 5 dosyalik rolling tcpdump capture baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tcpdump -i eth0 -C 100 -W 5 -w capture.pcap",
+          "hint_text": "Rolling capture icin `-C size -W count` kullan.",
+          "hint_partial": "tcpdump -i eth0 ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-021-r76",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde conntrack tablo istatistiklerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "conntrack -S",
+          "hint_text": "Conntrack stats icin `conntrack -S` kullan.",
+          "hint_partial": "conntrack ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-022-r77",
+      "type": "single",
+      "scenario": "Yeni acilan hostta mevcut nftables ruleset'ini tamamen temizle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "nft flush ruleset",
+          "hint_text": "Tum ruleset'i bosaltmak icin `nft flush ruleset` kullan.",
+          "hint_partial": "nft flush ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-023-r78",
+      "type": "single",
+      "scenario": "Runbook adiminda eth0 uzerine `fq_codel` qdisc ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tc qdisc add dev eth0 root fq_codel",
+          "hint_text": "Traffic control qdisc icin `tc qdisc add dev ... root fq_codel` kullan.",
+          "hint_partial": "tc qdisc add ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-024-r79",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde eth0 qdisc istatistiklerini detayli goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tc -s qdisc show dev eth0",
+          "hint_text": "Qdisc stats icin `tc -s qdisc show` kullan.",
+          "hint_partial": "tc -s ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-025-r80",
+      "type": "single",
+      "scenario": "Incident sonrasinda `srv80.internal` icin report modunda `mtr` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mtr -rw srv80.internal",
+          "hint_text": "Report+wide mod icin `mtr -rw` kullan.",
+          "hint_partial": "mtr -rw ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-016-r81",
+      "type": "single",
+      "scenario": "Bakim oncesi tum network namespace'leri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip netns list",
+          "hint_text": "Namespace listesi icin `ip netns list` kullan.",
+          "hint_partial": "ip netns ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-017-r82",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `testns` namespace'i icinde 10.11.21.31'e 4 paket ping gonder.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip netns exec testns ping -c 4 10.11.21.31",
+          "hint_text": "Namespace icinde komut icin `ip netns exec` kullan.",
+          "hint_partial": "ip netns exec ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-018-r83",
+      "type": "single",
+      "scenario": "Deploy sonrasi `10.0.0.0/24` kaynakli trafik icin policy route ekle: table 100.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip rule add from 10.0.0.0/24 table 100",
+          "hint_text": "Policy route icin `ip rule add from subnet table N` kullan.",
+          "hint_partial": "ip rule add ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-019-r84",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde route table 100 kayitlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip route show table 100",
+          "hint_text": "Ozel route tablosu icin `ip route show table` kullan.",
+          "hint_partial": "ip route show ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-020-r85",
+      "type": "single",
+      "scenario": "Yeni acilan hostta eth0 icin 300MB'lik 5 dosyalik rolling tcpdump capture baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tcpdump -i eth0 -C 100 -W 5 -w capture.pcap",
+          "hint_text": "Rolling capture icin `-C size -W count` kullan.",
+          "hint_partial": "tcpdump -i eth0 ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-021-r86",
+      "type": "single",
+      "scenario": "Runbook adiminda conntrack tablo istatistiklerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "conntrack -S",
+          "hint_text": "Conntrack stats icin `conntrack -S` kullan.",
+          "hint_partial": "conntrack ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-022-r87",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde mevcut nftables ruleset'ini tamamen temizle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "nft flush ruleset",
+          "hint_text": "Tum ruleset'i bosaltmak icin `nft flush ruleset` kullan.",
+          "hint_partial": "nft flush ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-023-r88",
+      "type": "single",
+      "scenario": "Incident sonrasinda eth0 uzerine `fq_codel` qdisc ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tc qdisc add dev eth0 root fq_codel",
+          "hint_text": "Traffic control qdisc icin `tc qdisc add dev ... root fq_codel` kullan.",
+          "hint_partial": "tc qdisc add ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-024-r89",
+      "type": "single",
+      "scenario": "Bakim oncesi eth0 qdisc istatistiklerini detayli goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tc -s qdisc show dev eth0",
+          "hint_text": "Qdisc stats icin `tc -s qdisc show` kullan.",
+          "hint_partial": "tc -s ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-025-r90",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `srv90.internal` icin report modunda `mtr` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mtr -rw srv90.internal",
+          "hint_text": "Report+wide mod icin `mtr -rw` kullan.",
+          "hint_partial": "mtr -rw ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-016-r91",
+      "type": "single",
+      "scenario": "Deploy sonrasi tum network namespace'leri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip netns list",
+          "hint_text": "Namespace listesi icin `ip netns list` kullan.",
+          "hint_partial": "ip netns ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-017-r92",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `testns` namespace'i icinde 10.21.31.41'e 4 paket ping gonder.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip netns exec testns ping -c 4 10.21.31.41",
+          "hint_text": "Namespace icinde komut icin `ip netns exec` kullan.",
+          "hint_partial": "ip netns exec ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-018-r93",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `10.0.0.0/24` kaynakli trafik icin policy route ekle: table 100.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip rule add from 10.0.0.0/24 table 100",
+          "hint_text": "Policy route icin `ip rule add from subnet table N` kullan.",
+          "hint_partial": "ip rule add ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-019-r94",
+      "type": "single",
+      "scenario": "Runbook adiminda route table 100 kayitlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip route show table 100",
+          "hint_text": "Ozel route tablosu icin `ip route show table` kullan.",
+          "hint_partial": "ip route show ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-020-r95",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde eth0 icin 400MB'lik 5 dosyalik rolling tcpdump capture baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tcpdump -i eth0 -C 100 -W 5 -w capture.pcap",
+          "hint_text": "Rolling capture icin `-C size -W count` kullan.",
+          "hint_partial": "tcpdump -i eth0 ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-021-r96",
+      "type": "single",
+      "scenario": "Incident sonrasinda conntrack tablo istatistiklerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "conntrack -S",
+          "hint_text": "Conntrack stats icin `conntrack -S` kullan.",
+          "hint_partial": "conntrack ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-022-r97",
+      "type": "single",
+      "scenario": "Bakim oncesi mevcut nftables ruleset'ini tamamen temizle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "nft flush ruleset",
+          "hint_text": "Tum ruleset'i bosaltmak icin `nft flush ruleset` kullan.",
+          "hint_partial": "nft flush ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-023-r98",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda eth0 uzerine `fq_codel` qdisc ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tc qdisc add dev eth0 root fq_codel",
+          "hint_text": "Traffic control qdisc icin `tc qdisc add dev ... root fq_codel` kullan.",
+          "hint_partial": "tc qdisc add ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-024-r99",
+      "type": "single",
+      "scenario": "Deploy sonrasi eth0 qdisc istatistiklerini detayli goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tc -s qdisc show dev eth0",
+          "hint_text": "Qdisc stats icin `tc -s qdisc show` kullan.",
+          "hint_partial": "tc -s ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-025-r100",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `srv100.internal` icin report modunda `mtr` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mtr -rw srv100.internal",
+          "hint_text": "Report+wide mod icin `mtr -rw` kullan.",
+          "hint_partial": "mtr -rw ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-016-r101",
+      "type": "single",
+      "scenario": "Yeni acilan hostta tum network namespace'leri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip netns list",
+          "hint_text": "Namespace listesi icin `ip netns list` kullan.",
+          "hint_partial": "ip netns ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-017-r102",
+      "type": "single",
+      "scenario": "Runbook adiminda `testns` namespace'i icinde 10.11.21.31'e 4 paket ping gonder.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip netns exec testns ping -c 4 10.11.21.31",
+          "hint_text": "Namespace icinde komut icin `ip netns exec` kullan.",
+          "hint_partial": "ip netns exec ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-018-r103",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `10.0.0.0/24` kaynakli trafik icin policy route ekle: table 100.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip rule add from 10.0.0.0/24 table 100",
+          "hint_text": "Policy route icin `ip rule add from subnet table N` kullan.",
+          "hint_partial": "ip rule add ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-019-r104",
+      "type": "single",
+      "scenario": "Incident sonrasinda route table 100 kayitlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip route show table 100",
+          "hint_text": "Ozel route tablosu icin `ip route show table` kullan.",
+          "hint_partial": "ip route show ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-020-r105",
+      "type": "single",
+      "scenario": "Bakim oncesi eth0 icin 100MB'lik 5 dosyalik rolling tcpdump capture baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tcpdump -i eth0 -C 100 -W 5 -w capture.pcap",
+          "hint_text": "Rolling capture icin `-C size -W count` kullan.",
+          "hint_partial": "tcpdump -i eth0 ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-021-r106",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda conntrack tablo istatistiklerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "conntrack -S",
+          "hint_text": "Conntrack stats icin `conntrack -S` kullan.",
+          "hint_partial": "conntrack ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-022-r107",
+      "type": "single",
+      "scenario": "Deploy sonrasi mevcut nftables ruleset'ini tamamen temizle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "nft flush ruleset",
+          "hint_text": "Tum ruleset'i bosaltmak icin `nft flush ruleset` kullan.",
+          "hint_partial": "nft flush ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-023-r108",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde eth0 uzerine `fq_codel` qdisc ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tc qdisc add dev eth0 root fq_codel",
+          "hint_text": "Traffic control qdisc icin `tc qdisc add dev ... root fq_codel` kullan.",
+          "hint_partial": "tc qdisc add ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-024-r109",
+      "type": "single",
+      "scenario": "Yeni acilan hostta eth0 qdisc istatistiklerini detayli goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tc -s qdisc show dev eth0",
+          "hint_text": "Qdisc stats icin `tc -s qdisc show` kullan.",
+          "hint_partial": "tc -s ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-025-r110",
+      "type": "single",
+      "scenario": "Runbook adiminda `srv110.internal` icin report modunda `mtr` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mtr -rw srv110.internal",
+          "hint_text": "Report+wide mod icin `mtr -rw` kullan.",
+          "hint_partial": "mtr -rw ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-016-r111",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde tum network namespace'leri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip netns list",
+          "hint_text": "Namespace listesi icin `ip netns list` kullan.",
+          "hint_partial": "ip netns ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-017-r112",
+      "type": "single",
+      "scenario": "Incident sonrasinda `testns` namespace'i icinde 10.21.31.41'e 4 paket ping gonder.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip netns exec testns ping -c 4 10.21.31.41",
+          "hint_text": "Namespace icinde komut icin `ip netns exec` kullan.",
+          "hint_partial": "ip netns exec ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-018-r113",
+      "type": "single",
+      "scenario": "Bakim oncesi `10.0.0.0/24` kaynakli trafik icin policy route ekle: table 100.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip rule add from 10.0.0.0/24 table 100",
+          "hint_text": "Policy route icin `ip rule add from subnet table N` kullan.",
+          "hint_partial": "ip rule add ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-019-r114",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda route table 100 kayitlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip route show table 100",
+          "hint_text": "Ozel route tablosu icin `ip route show table` kullan.",
+          "hint_partial": "ip route show ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-020-r115",
+      "type": "single",
+      "scenario": "Deploy sonrasi eth0 icin 200MB'lik 5 dosyalik rolling tcpdump capture baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tcpdump -i eth0 -C 100 -W 5 -w capture.pcap",
+          "hint_text": "Rolling capture icin `-C size -W count` kullan.",
+          "hint_partial": "tcpdump -i eth0 ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-021-r116",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde conntrack tablo istatistiklerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "conntrack -S",
+          "hint_text": "Conntrack stats icin `conntrack -S` kullan.",
+          "hint_partial": "conntrack ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-022-r117",
+      "type": "single",
+      "scenario": "Yeni acilan hostta mevcut nftables ruleset'ini tamamen temizle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "nft flush ruleset",
+          "hint_text": "Tum ruleset'i bosaltmak icin `nft flush ruleset` kullan.",
+          "hint_partial": "nft flush ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-023-r118",
+      "type": "single",
+      "scenario": "Runbook adiminda eth0 uzerine `fq_codel` qdisc ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tc qdisc add dev eth0 root fq_codel",
+          "hint_text": "Traffic control qdisc icin `tc qdisc add dev ... root fq_codel` kullan.",
+          "hint_partial": "tc qdisc add ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-024-r119",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde eth0 qdisc istatistiklerini detayli goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tc -s qdisc show dev eth0",
+          "hint_text": "Qdisc stats icin `tc -s qdisc show` kullan.",
+          "hint_partial": "tc -s ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-025-r120",
+      "type": "single",
+      "scenario": "Incident sonrasinda `srv120.internal` icin report modunda `mtr` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mtr -rw srv120.internal",
+          "hint_text": "Report+wide mod icin `mtr -rw` kullan.",
+          "hint_partial": "mtr -rw ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-016-r121",
+      "type": "single",
+      "scenario": "Bakim oncesi tum network namespace'leri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip netns list",
+          "hint_text": "Namespace listesi icin `ip netns list` kullan.",
+          "hint_partial": "ip netns ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-017-r122",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `testns` namespace'i icinde 10.11.21.31'e 4 paket ping gonder.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip netns exec testns ping -c 4 10.11.21.31",
+          "hint_text": "Namespace icinde komut icin `ip netns exec` kullan.",
+          "hint_partial": "ip netns exec ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-018-r123",
+      "type": "single",
+      "scenario": "Deploy sonrasi `10.0.0.0/24` kaynakli trafik icin policy route ekle: table 100.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip rule add from 10.0.0.0/24 table 100",
+          "hint_text": "Policy route icin `ip rule add from subnet table N` kullan.",
+          "hint_partial": "ip rule add ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-019-r124",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde route table 100 kayitlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip route show table 100",
+          "hint_text": "Ozel route tablosu icin `ip route show table` kullan.",
+          "hint_partial": "ip route show ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-020-r125",
+      "type": "single",
+      "scenario": "Yeni acilan hostta eth0 icin 300MB'lik 5 dosyalik rolling tcpdump capture baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tcpdump -i eth0 -C 100 -W 5 -w capture.pcap",
+          "hint_text": "Rolling capture icin `-C size -W count` kullan.",
+          "hint_partial": "tcpdump -i eth0 ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-021-r126",
+      "type": "single",
+      "scenario": "Runbook adiminda conntrack tablo istatistiklerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "conntrack -S",
+          "hint_text": "Conntrack stats icin `conntrack -S` kullan.",
+          "hint_partial": "conntrack ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-022-r127",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde mevcut nftables ruleset'ini tamamen temizle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "nft flush ruleset",
+          "hint_text": "Tum ruleset'i bosaltmak icin `nft flush ruleset` kullan.",
+          "hint_partial": "nft flush ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-023-r128",
+      "type": "single",
+      "scenario": "Incident sonrasinda eth0 uzerine `fq_codel` qdisc ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tc qdisc add dev eth0 root fq_codel",
+          "hint_text": "Traffic control qdisc icin `tc qdisc add dev ... root fq_codel` kullan.",
+          "hint_partial": "tc qdisc add ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-024-r129",
+      "type": "single",
+      "scenario": "Bakim oncesi eth0 qdisc istatistiklerini detayli goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tc -s qdisc show dev eth0",
+          "hint_text": "Qdisc stats icin `tc -s qdisc show` kullan.",
+          "hint_partial": "tc -s ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-025-r130",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `srv130.internal` icin report modunda `mtr` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mtr -rw srv130.internal",
+          "hint_text": "Report+wide mod icin `mtr -rw` kullan.",
+          "hint_partial": "mtr -rw ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-016-r131",
+      "type": "single",
+      "scenario": "Deploy sonrasi tum network namespace'leri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip netns list",
+          "hint_text": "Namespace listesi icin `ip netns list` kullan.",
+          "hint_partial": "ip netns ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-017-r132",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `testns` namespace'i icinde 10.21.31.41'e 4 paket ping gonder.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip netns exec testns ping -c 4 10.21.31.41",
+          "hint_text": "Namespace icinde komut icin `ip netns exec` kullan.",
+          "hint_partial": "ip netns exec ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-018-r133",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `10.0.0.0/24` kaynakli trafik icin policy route ekle: table 100.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip rule add from 10.0.0.0/24 table 100",
+          "hint_text": "Policy route icin `ip rule add from subnet table N` kullan.",
+          "hint_partial": "ip rule add ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-019-r134",
+      "type": "single",
+      "scenario": "Runbook adiminda route table 100 kayitlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip route show table 100",
+          "hint_text": "Ozel route tablosu icin `ip route show table` kullan.",
+          "hint_partial": "ip route show ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-020-r135",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde eth0 icin 400MB'lik 5 dosyalik rolling tcpdump capture baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tcpdump -i eth0 -C 100 -W 5 -w capture.pcap",
+          "hint_text": "Rolling capture icin `-C size -W count` kullan.",
+          "hint_partial": "tcpdump -i eth0 ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-021-r136",
+      "type": "single",
+      "scenario": "Incident sonrasinda conntrack tablo istatistiklerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "conntrack -S",
+          "hint_text": "Conntrack stats icin `conntrack -S` kullan.",
+          "hint_partial": "conntrack ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-022-r137",
+      "type": "single",
+      "scenario": "Bakim oncesi mevcut nftables ruleset'ini tamamen temizle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "nft flush ruleset",
+          "hint_text": "Tum ruleset'i bosaltmak icin `nft flush ruleset` kullan.",
+          "hint_partial": "nft flush ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-023-r138",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda eth0 uzerine `fq_codel` qdisc ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tc qdisc add dev eth0 root fq_codel",
+          "hint_text": "Traffic control qdisc icin `tc qdisc add dev ... root fq_codel` kullan.",
+          "hint_partial": "tc qdisc add ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-024-r139",
+      "type": "single",
+      "scenario": "Deploy sonrasi eth0 qdisc istatistiklerini detayli goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tc -s qdisc show dev eth0",
+          "hint_text": "Qdisc stats icin `tc -s qdisc show` kullan.",
+          "hint_partial": "tc -s ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-025-r140",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `srv140.internal` icin report modunda `mtr` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mtr -rw srv140.internal",
+          "hint_text": "Report+wide mod icin `mtr -rw` kullan.",
+          "hint_partial": "mtr -rw ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-016-r141",
+      "type": "single",
+      "scenario": "Yeni acilan hostta tum network namespace'leri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip netns list",
+          "hint_text": "Namespace listesi icin `ip netns list` kullan.",
+          "hint_partial": "ip netns ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-017-r142",
+      "type": "single",
+      "scenario": "Runbook adiminda `testns` namespace'i icinde 10.11.21.31'e 4 paket ping gonder.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip netns exec testns ping -c 4 10.11.21.31",
+          "hint_text": "Namespace icinde komut icin `ip netns exec` kullan.",
+          "hint_partial": "ip netns exec ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-018-r143",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `10.0.0.0/24` kaynakli trafik icin policy route ekle: table 100.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip rule add from 10.0.0.0/24 table 100",
+          "hint_text": "Policy route icin `ip rule add from subnet table N` kullan.",
+          "hint_partial": "ip rule add ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-019-r144",
+      "type": "single",
+      "scenario": "Incident sonrasinda route table 100 kayitlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip route show table 100",
+          "hint_text": "Ozel route tablosu icin `ip route show table` kullan.",
+          "hint_partial": "ip route show ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-020-r145",
+      "type": "single",
+      "scenario": "Bakim oncesi eth0 icin 100MB'lik 5 dosyalik rolling tcpdump capture baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tcpdump -i eth0 -C 100 -W 5 -w capture.pcap",
+          "hint_text": "Rolling capture icin `-C size -W count` kullan.",
+          "hint_partial": "tcpdump -i eth0 ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-021-r146",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda conntrack tablo istatistiklerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "conntrack -S",
+          "hint_text": "Conntrack stats icin `conntrack -S` kullan.",
+          "hint_partial": "conntrack ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-022-r147",
+      "type": "single",
+      "scenario": "Deploy sonrasi mevcut nftables ruleset'ini tamamen temizle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "nft flush ruleset",
+          "hint_text": "Tum ruleset'i bosaltmak icin `nft flush ruleset` kullan.",
+          "hint_partial": "nft flush ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-023-r148",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde eth0 uzerine `fq_codel` qdisc ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tc qdisc add dev eth0 root fq_codel",
+          "hint_text": "Traffic control qdisc icin `tc qdisc add dev ... root fq_codel` kullan.",
+          "hint_partial": "tc qdisc add ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-024-r149",
+      "type": "single",
+      "scenario": "Yeni acilan hostta eth0 qdisc istatistiklerini detayli goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tc -s qdisc show dev eth0",
+          "hint_text": "Qdisc stats icin `tc -s qdisc show` kullan.",
+          "hint_partial": "tc -s ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-025-r150",
+      "type": "single",
+      "scenario": "Runbook adiminda `srv150.internal` icin report modunda `mtr` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mtr -rw srv150.internal",
+          "hint_text": "Report+wide mod icin `mtr -rw` kullan.",
+          "hint_partial": "mtr -rw ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-016-r151",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde tum network namespace'leri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip netns list",
+          "hint_text": "Namespace listesi icin `ip netns list` kullan.",
+          "hint_partial": "ip netns ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-017-r152",
+      "type": "single",
+      "scenario": "Incident sonrasinda `testns` namespace'i icinde 10.21.31.41'e 4 paket ping gonder.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip netns exec testns ping -c 4 10.21.31.41",
+          "hint_text": "Namespace icinde komut icin `ip netns exec` kullan.",
+          "hint_partial": "ip netns exec ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-018-r153",
+      "type": "single",
+      "scenario": "Bakim oncesi `10.0.0.0/24` kaynakli trafik icin policy route ekle: table 100.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip rule add from 10.0.0.0/24 table 100",
+          "hint_text": "Policy route icin `ip rule add from subnet table N` kullan.",
+          "hint_partial": "ip rule add ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-019-r154",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda route table 100 kayitlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip route show table 100",
+          "hint_text": "Ozel route tablosu icin `ip route show table` kullan.",
+          "hint_partial": "ip route show ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-020-r155",
+      "type": "single",
+      "scenario": "Deploy sonrasi eth0 icin 200MB'lik 5 dosyalik rolling tcpdump capture baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tcpdump -i eth0 -C 100 -W 5 -w capture.pcap",
+          "hint_text": "Rolling capture icin `-C size -W count` kullan.",
+          "hint_partial": "tcpdump -i eth0 ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-021-r156",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde conntrack tablo istatistiklerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "conntrack -S",
+          "hint_text": "Conntrack stats icin `conntrack -S` kullan.",
+          "hint_partial": "conntrack ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-022-r157",
+      "type": "single",
+      "scenario": "Yeni acilan hostta mevcut nftables ruleset'ini tamamen temizle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "nft flush ruleset",
+          "hint_text": "Tum ruleset'i bosaltmak icin `nft flush ruleset` kullan.",
+          "hint_partial": "nft flush ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-023-r158",
+      "type": "single",
+      "scenario": "Runbook adiminda eth0 uzerine `fq_codel` qdisc ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tc qdisc add dev eth0 root fq_codel",
+          "hint_text": "Traffic control qdisc icin `tc qdisc add dev ... root fq_codel` kullan.",
+          "hint_partial": "tc qdisc add ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-024-r159",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde eth0 qdisc istatistiklerini detayli goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tc -s qdisc show dev eth0",
+          "hint_text": "Qdisc stats icin `tc -s qdisc show` kullan.",
+          "hint_partial": "tc -s ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-025-r160",
+      "type": "single",
+      "scenario": "Incident sonrasinda `srv160.internal` icin report modunda `mtr` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mtr -rw srv160.internal",
+          "hint_text": "Report+wide mod icin `mtr -rw` kullan.",
+          "hint_partial": "mtr -rw ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-016-r161",
+      "type": "single",
+      "scenario": "Bakim oncesi tum network namespace'leri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip netns list",
+          "hint_text": "Namespace listesi icin `ip netns list` kullan.",
+          "hint_partial": "ip netns ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-017-r162",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `testns` namespace'i icinde 10.11.21.31'e 4 paket ping gonder.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip netns exec testns ping -c 4 10.11.21.31",
+          "hint_text": "Namespace icinde komut icin `ip netns exec` kullan.",
+          "hint_partial": "ip netns exec ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-018-r163",
+      "type": "single",
+      "scenario": "Deploy sonrasi `10.0.0.0/24` kaynakli trafik icin policy route ekle: table 100.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip rule add from 10.0.0.0/24 table 100",
+          "hint_text": "Policy route icin `ip rule add from subnet table N` kullan.",
+          "hint_partial": "ip rule add ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-019-r164",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde route table 100 kayitlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip route show table 100",
+          "hint_text": "Ozel route tablosu icin `ip route show table` kullan.",
+          "hint_partial": "ip route show ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-020-r165",
+      "type": "single",
+      "scenario": "Yeni acilan hostta eth0 icin 300MB'lik 5 dosyalik rolling tcpdump capture baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tcpdump -i eth0 -C 100 -W 5 -w capture.pcap",
+          "hint_text": "Rolling capture icin `-C size -W count` kullan.",
+          "hint_partial": "tcpdump -i eth0 ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-021-r166",
+      "type": "single",
+      "scenario": "Runbook adiminda conntrack tablo istatistiklerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "conntrack -S",
+          "hint_text": "Conntrack stats icin `conntrack -S` kullan.",
+          "hint_partial": "conntrack ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-022-r167",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde mevcut nftables ruleset'ini tamamen temizle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "nft flush ruleset",
+          "hint_text": "Tum ruleset'i bosaltmak icin `nft flush ruleset` kullan.",
+          "hint_partial": "nft flush ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-023-r168",
+      "type": "single",
+      "scenario": "Incident sonrasinda eth0 uzerine `fq_codel` qdisc ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tc qdisc add dev eth0 root fq_codel",
+          "hint_text": "Traffic control qdisc icin `tc qdisc add dev ... root fq_codel` kullan.",
+          "hint_partial": "tc qdisc add ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-024-r169",
+      "type": "single",
+      "scenario": "Bakim oncesi eth0 qdisc istatistiklerini detayli goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tc -s qdisc show dev eth0",
+          "hint_text": "Qdisc stats icin `tc -s qdisc show` kullan.",
+          "hint_partial": "tc -s ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-025-r170",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `srv170.internal` icin report modunda `mtr` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mtr -rw srv170.internal",
+          "hint_text": "Report+wide mod icin `mtr -rw` kullan.",
+          "hint_partial": "mtr -rw ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-016-r171",
+      "type": "single",
+      "scenario": "Deploy sonrasi tum network namespace'leri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip netns list",
+          "hint_text": "Namespace listesi icin `ip netns list` kullan.",
+          "hint_partial": "ip netns ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-017-r172",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `testns` namespace'i icinde 10.21.31.41'e 4 paket ping gonder.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip netns exec testns ping -c 4 10.21.31.41",
+          "hint_text": "Namespace icinde komut icin `ip netns exec` kullan.",
+          "hint_partial": "ip netns exec ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-018-r173",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `10.0.0.0/24` kaynakli trafik icin policy route ekle: table 100.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip rule add from 10.0.0.0/24 table 100",
+          "hint_text": "Policy route icin `ip rule add from subnet table N` kullan.",
+          "hint_partial": "ip rule add ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-019-r174",
+      "type": "single",
+      "scenario": "Runbook adiminda route table 100 kayitlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip route show table 100",
+          "hint_text": "Ozel route tablosu icin `ip route show table` kullan.",
+          "hint_partial": "ip route show ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-020-r175",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde eth0 icin 400MB'lik 5 dosyalik rolling tcpdump capture baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tcpdump -i eth0 -C 100 -W 5 -w capture.pcap",
+          "hint_text": "Rolling capture icin `-C size -W count` kullan.",
+          "hint_partial": "tcpdump -i eth0 ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-021-r176",
+      "type": "single",
+      "scenario": "Incident sonrasinda conntrack tablo istatistiklerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "conntrack -S",
+          "hint_text": "Conntrack stats icin `conntrack -S` kullan.",
+          "hint_partial": "conntrack ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-022-r177",
+      "type": "single",
+      "scenario": "Bakim oncesi mevcut nftables ruleset'ini tamamen temizle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "nft flush ruleset",
+          "hint_text": "Tum ruleset'i bosaltmak icin `nft flush ruleset` kullan.",
+          "hint_partial": "nft flush ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-023-r178",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda eth0 uzerine `fq_codel` qdisc ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tc qdisc add dev eth0 root fq_codel",
+          "hint_text": "Traffic control qdisc icin `tc qdisc add dev ... root fq_codel` kullan.",
+          "hint_partial": "tc qdisc add ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-024-r179",
+      "type": "single",
+      "scenario": "Deploy sonrasi eth0 qdisc istatistiklerini detayli goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tc -s qdisc show dev eth0",
+          "hint_text": "Qdisc stats icin `tc -s qdisc show` kullan.",
+          "hint_partial": "tc -s ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-025-r180",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `srv180.internal` icin report modunda `mtr` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mtr -rw srv180.internal",
+          "hint_text": "Report+wide mod icin `mtr -rw` kullan.",
+          "hint_partial": "mtr -rw ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-016-r181",
+      "type": "single",
+      "scenario": "Yeni acilan hostta tum network namespace'leri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip netns list",
+          "hint_text": "Namespace listesi icin `ip netns list` kullan.",
+          "hint_partial": "ip netns ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-017-r182",
+      "type": "single",
+      "scenario": "Runbook adiminda `testns` namespace'i icinde 10.11.21.31'e 4 paket ping gonder.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip netns exec testns ping -c 4 10.11.21.31",
+          "hint_text": "Namespace icinde komut icin `ip netns exec` kullan.",
+          "hint_partial": "ip netns exec ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-018-r183",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `10.0.0.0/24` kaynakli trafik icin policy route ekle: table 100.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip rule add from 10.0.0.0/24 table 100",
+          "hint_text": "Policy route icin `ip rule add from subnet table N` kullan.",
+          "hint_partial": "ip rule add ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-019-r184",
+      "type": "single",
+      "scenario": "Incident sonrasinda route table 100 kayitlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip route show table 100",
+          "hint_text": "Ozel route tablosu icin `ip route show table` kullan.",
+          "hint_partial": "ip route show ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-020-r185",
+      "type": "single",
+      "scenario": "Bakim oncesi eth0 icin 100MB'lik 5 dosyalik rolling tcpdump capture baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tcpdump -i eth0 -C 100 -W 5 -w capture.pcap",
+          "hint_text": "Rolling capture icin `-C size -W count` kullan.",
+          "hint_partial": "tcpdump -i eth0 ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-021-r186",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda conntrack tablo istatistiklerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "conntrack -S",
+          "hint_text": "Conntrack stats icin `conntrack -S` kullan.",
+          "hint_partial": "conntrack ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-022-r187",
+      "type": "single",
+      "scenario": "Deploy sonrasi mevcut nftables ruleset'ini tamamen temizle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "nft flush ruleset",
+          "hint_text": "Tum ruleset'i bosaltmak icin `nft flush ruleset` kullan.",
+          "hint_partial": "nft flush ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-023-r188",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde eth0 uzerine `fq_codel` qdisc ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tc qdisc add dev eth0 root fq_codel",
+          "hint_text": "Traffic control qdisc icin `tc qdisc add dev ... root fq_codel` kullan.",
+          "hint_partial": "tc qdisc add ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-024-r189",
+      "type": "single",
+      "scenario": "Yeni acilan hostta eth0 qdisc istatistiklerini detayli goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tc -s qdisc show dev eth0",
+          "hint_text": "Qdisc stats icin `tc -s qdisc show` kullan.",
+          "hint_partial": "tc -s ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-025-r190",
+      "type": "single",
+      "scenario": "Runbook adiminda `srv190.internal` icin report modunda `mtr` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mtr -rw srv190.internal",
+          "hint_text": "Report+wide mod icin `mtr -rw` kullan.",
+          "hint_partial": "mtr -rw ..."
+        }
+      ]
+    }
+  ]
+}

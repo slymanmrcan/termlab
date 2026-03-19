@@ -1,0 +1,2606 @@
+{
+  "level": "junior",
+  "topic": "monitoring",
+  "questions": [
+    {
+      "id": "jmon-011",
+      "type": "single",
+      "scenario": "Tum process listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps aux",
+          "hint_text": "Genis process listesi icin `ps aux` kullan.",
+          "hint_partial": "ps ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-012",
+      "type": "single",
+      "scenario": "Process listesini tree benzeri gorunumle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps auxf",
+          "hint_text": "Parent-child iliskisini gormek icin `ps auxf` kullan.",
+          "hint_partial": "ps aux..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-013",
+      "type": "single",
+      "scenario": "Disk kullanimini human-readable formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "df -h",
+          "hint_text": "Disk ozetini okunur formatta almak icin `df -h` kullan.",
+          "hint_partial": "df -..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-014",
+      "type": "single",
+      "scenario": "`/var/log` klasorunun toplam boyutunu ozet olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "du -sh /var/log",
+          "hint_text": "Klasor boyutu ozeti icin `du -sh` kullan.",
+          "hint_partial": "du -sh ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-015",
+      "type": "single",
+      "scenario": "Dinleyen TCP ve UDP portlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ss -tuln",
+          "hint_text": "Dinleyen soketler icin `ss -tuln` kullan.",
+          "hint_partial": "ss -..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-016",
+      "type": "single",
+      "scenario": "Kernel loglarinin son satirlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dmesg | tail",
+          "hint_text": "Son kernel mesajlari icin `dmesg | tail` kullan.",
+          "hint_partial": "dmesg | ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-017",
+      "type": "single",
+      "scenario": "systemd journal'dan son 20 satiri goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "journalctl -n 20",
+          "hint_text": "Kisa journal ozeti icin `journalctl -n` kullan.",
+          "hint_partial": "journalctl -n ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-018",
+      "type": "single",
+      "scenario": "CPU bilgilerini ozet olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lscpu",
+          "hint_text": "CPU ozeti icin `lscpu` kullan.",
+          "hint_partial": "lscpu"
+        }
+      ]
+    },
+    {
+      "id": "jmon-019",
+      "type": "single",
+      "scenario": "Block device listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsblk",
+          "hint_text": "Disk ve partition listesi icin `lsblk` kullan.",
+          "hint_partial": "lsblk"
+        }
+      ]
+    },
+    {
+      "id": "jmon-020",
+      "type": "single",
+      "scenario": "Sistemde aktif oturum acmis kullanicilari goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "who",
+          "hint_text": "Login olmus kullanicilar icin `who` kullan.",
+          "hint_partial": "w..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-021",
+      "type": "single",
+      "scenario": "Kullanicilarin ne yaptigini daha detayli goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "w",
+          "hint_text": "`w` kullanicilar ve aktif komutlari gosterir.",
+          "hint_partial": "w"
+        }
+      ]
+    },
+    {
+      "id": "jmon-022",
+      "type": "single",
+      "scenario": "Son 5 login kaydini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "last -n 5",
+          "hint_text": "Login gecmisi icin `last -n` kullan.",
+          "hint_partial": "last -n ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-023",
+      "type": "single",
+      "scenario": "nginx process'inin PID bilgisini bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pidof nginx",
+          "hint_text": "Bir process'in PID'si icin `pidof` kullan.",
+          "hint_partial": "pidof ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-024",
+      "type": "single",
+      "scenario": "Her 2 saniyede bir disk kullanimini yenileyerek goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "watch -n 2 df -h",
+          "hint_text": "Periyodik disk izleme icin `watch -n 2` kullan.",
+          "hint_partial": "watch -n 2 ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-025",
+      "type": "single",
+      "scenario": "Detayli memory bilgisini `/proc` altindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/meminfo",
+          "hint_text": "Detayli memory bilgisi icin `/proc/meminfo` kullan.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-011-r1",
+      "type": "single",
+      "scenario": "Bakim oncesi tum process listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps aux",
+          "hint_text": "Genis process listesi icin `ps aux` kullan.",
+          "hint_partial": "ps ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-012-r2",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda process listesini tree benzeri gorunumle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps auxf",
+          "hint_text": "Parent-child iliskisini gormek icin `ps auxf` kullan.",
+          "hint_partial": "ps aux..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-013-r3",
+      "type": "single",
+      "scenario": "Deploy sonrasi disk kullanimini human-readable formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "df -h",
+          "hint_text": "Disk ozetini okunur formatta almak icin `df -h` kullan.",
+          "hint_partial": "df -..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-014-r4",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/var/db-4-4/log/db-4-4` klasorunun toplam boyutunu ozet olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "du -sh /var/db-4-4/log/db-4-4",
+          "hint_text": "Klasor boyutu ozeti icin `du -sh` kullan.",
+          "hint_partial": "du -sh ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-015-r5",
+      "type": "single",
+      "scenario": "Yeni acilan hostta dinleyen TCP ve UDP portlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ss -tuln",
+          "hint_text": "Dinleyen soketler icin `ss -tuln` kullan.",
+          "hint_partial": "ss -..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-016-r6",
+      "type": "single",
+      "scenario": "Runbook adiminda kernel loglarinin son satirlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dmesg | tail",
+          "hint_text": "Son kernel mesajlari icin `dmesg | tail` kullan.",
+          "hint_partial": "dmesg | ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-017-r7",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde systemd journal'dan son 20 satiri goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "journalctl -n 20",
+          "hint_text": "Kisa journal ozeti icin `journalctl -n` kullan.",
+          "hint_partial": "journalctl -n ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-018-r8",
+      "type": "single",
+      "scenario": "Incident sonrasinda cPU bilgilerini ozet olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lscpu",
+          "hint_text": "CPU ozeti icin `lscpu` kullan.",
+          "hint_partial": "lscpu"
+        }
+      ]
+    },
+    {
+      "id": "jmon-019-r9",
+      "type": "single",
+      "scenario": "Bakim oncesi block device listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsblk",
+          "hint_text": "Disk ve partition listesi icin `lsblk` kullan.",
+          "hint_partial": "lsblk"
+        }
+      ]
+    },
+    {
+      "id": "jmon-020-r10",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda sistemde aktif oturum acmis kullanicilari goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "who",
+          "hint_text": "Login olmus kullanicilar icin `who` kullan.",
+          "hint_partial": "w..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-021-r11",
+      "type": "single",
+      "scenario": "Deploy sonrasi kullanicilarin ne yaptigini daha detayli goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "w",
+          "hint_text": "`w` kullanicilar ve aktif komutlari gosterir.",
+          "hint_partial": "w"
+        }
+      ]
+    },
+    {
+      "id": "jmon-022-r12",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde son 5 login kaydini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "last -n 5",
+          "hint_text": "Login gecmisi icin `last -n` kullan.",
+          "hint_partial": "last -n ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-023-r13",
+      "type": "single",
+      "scenario": "Yeni acilan hostta nginx-13 process'inin PID bilgisini bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pidof nginx-13",
+          "hint_text": "Bir process'in PID'si icin `pidof` kullan.",
+          "hint_partial": "pidof ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-024-r14",
+      "type": "single",
+      "scenario": "Runbook adiminda her 2 saniyede bir disk kullanimini yenileyerek goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "watch -n 2 df -h",
+          "hint_text": "Periyodik disk izleme icin `watch -n 2` kullan.",
+          "hint_partial": "watch -n 2 ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-025-r15",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde detayli memory bilgisini `/proc` altindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/meminfo",
+          "hint_text": "Detayli memory bilgisi icin `/proc/meminfo` kullan.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-011-r16",
+      "type": "single",
+      "scenario": "Incident sonrasinda tum process listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps aux",
+          "hint_text": "Genis process listesi icin `ps aux` kullan.",
+          "hint_partial": "ps ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-012-r17",
+      "type": "single",
+      "scenario": "Bakim oncesi process listesini tree benzeri gorunumle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps auxf",
+          "hint_text": "Parent-child iliskisini gormek icin `ps auxf` kullan.",
+          "hint_partial": "ps aux..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-013-r18",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda disk kullanimini human-readable formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "df -h",
+          "hint_text": "Disk ozetini okunur formatta almak icin `df -h` kullan.",
+          "hint_partial": "df -..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-014-r19",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/var/queue-19-19/log/queue-19-19` klasorunun toplam boyutunu ozet olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "du -sh /var/queue-19-19/log/queue-19-19",
+          "hint_text": "Klasor boyutu ozeti icin `du -sh` kullan.",
+          "hint_partial": "du -sh ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-015-r20",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde dinleyen TCP ve UDP portlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ss -tuln",
+          "hint_text": "Dinleyen soketler icin `ss -tuln` kullan.",
+          "hint_partial": "ss -..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-016-r21",
+      "type": "single",
+      "scenario": "Yeni acilan hostta kernel loglarinin son satirlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dmesg | tail",
+          "hint_text": "Son kernel mesajlari icin `dmesg | tail` kullan.",
+          "hint_partial": "dmesg | ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-017-r22",
+      "type": "single",
+      "scenario": "Runbook adiminda systemd journal'dan son 20 satiri goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "journalctl -n 20",
+          "hint_text": "Kisa journal ozeti icin `journalctl -n` kullan.",
+          "hint_partial": "journalctl -n ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-018-r23",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde cPU bilgilerini ozet olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lscpu",
+          "hint_text": "CPU ozeti icin `lscpu` kullan.",
+          "hint_partial": "lscpu"
+        }
+      ]
+    },
+    {
+      "id": "jmon-019-r24",
+      "type": "single",
+      "scenario": "Incident sonrasinda block device listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsblk",
+          "hint_text": "Disk ve partition listesi icin `lsblk` kullan.",
+          "hint_partial": "lsblk"
+        }
+      ]
+    },
+    {
+      "id": "jmon-020-r25",
+      "type": "single",
+      "scenario": "Bakim oncesi sistemde aktif oturum acmis kullanicilari goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "who",
+          "hint_text": "Login olmus kullanicilar icin `who` kullan.",
+          "hint_partial": "w..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-021-r26",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda kullanicilarin ne yaptigini daha detayli goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "w",
+          "hint_text": "`w` kullanicilar ve aktif komutlari gosterir.",
+          "hint_partial": "w"
+        }
+      ]
+    },
+    {
+      "id": "jmon-022-r27",
+      "type": "single",
+      "scenario": "Deploy sonrasi son 5 login kaydini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "last -n 5",
+          "hint_text": "Login gecmisi icin `last -n` kullan.",
+          "hint_partial": "last -n ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-023-r28",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde traefik-28 process'inin PID bilgisini bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pidof traefik-28",
+          "hint_text": "Bir process'in PID'si icin `pidof` kullan.",
+          "hint_partial": "pidof ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-024-r29",
+      "type": "single",
+      "scenario": "Yeni acilan hostta her 2 saniyede bir disk kullanimini yenileyerek goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "watch -n 2 df -h",
+          "hint_text": "Periyodik disk izleme icin `watch -n 2` kullan.",
+          "hint_partial": "watch -n 2 ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-025-r30",
+      "type": "single",
+      "scenario": "Runbook adiminda detayli memory bilgisini `/proc` altindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/meminfo",
+          "hint_text": "Detayli memory bilgisi icin `/proc/meminfo` kullan.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-011-r31",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde tum process listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps aux",
+          "hint_text": "Genis process listesi icin `ps aux` kullan.",
+          "hint_partial": "ps ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-012-r32",
+      "type": "single",
+      "scenario": "Incident sonrasinda process listesini tree benzeri gorunumle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps auxf",
+          "hint_text": "Parent-child iliskisini gormek icin `ps auxf` kullan.",
+          "hint_partial": "ps aux..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-013-r33",
+      "type": "single",
+      "scenario": "Bakim oncesi disk kullanimini human-readable formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "df -h",
+          "hint_text": "Disk ozetini okunur formatta almak icin `df -h` kullan.",
+          "hint_partial": "df -..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-014-r34",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/var/cache-34-34-34/log/cache-34-34-34` klasorunun toplam boyutunu ozet olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "du -sh /var/cache-34-34-34/log/cache-34-34-34",
+          "hint_text": "Klasor boyutu ozeti icin `du -sh` kullan.",
+          "hint_partial": "du -sh ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-015-r35",
+      "type": "single",
+      "scenario": "Deploy sonrasi dinleyen TCP ve UDP portlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ss -tuln",
+          "hint_text": "Dinleyen soketler icin `ss -tuln` kullan.",
+          "hint_partial": "ss -..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-016-r36",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde kernel loglarinin son satirlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dmesg | tail",
+          "hint_text": "Son kernel mesajlari icin `dmesg | tail` kullan.",
+          "hint_partial": "dmesg | ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-017-r37",
+      "type": "single",
+      "scenario": "Yeni acilan hostta systemd journal'dan son 20 satiri goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "journalctl -n 20",
+          "hint_text": "Kisa journal ozeti icin `journalctl -n` kullan.",
+          "hint_partial": "journalctl -n ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-018-r38",
+      "type": "single",
+      "scenario": "Runbook adiminda cPU bilgilerini ozet olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lscpu",
+          "hint_text": "CPU ozeti icin `lscpu` kullan.",
+          "hint_partial": "lscpu"
+        }
+      ]
+    },
+    {
+      "id": "jmon-019-r39",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde block device listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsblk",
+          "hint_text": "Disk ve partition listesi icin `lsblk` kullan.",
+          "hint_partial": "lsblk"
+        }
+      ]
+    },
+    {
+      "id": "jmon-020-r40",
+      "type": "single",
+      "scenario": "Incident sonrasinda sistemde aktif oturum acmis kullanicilari goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "who",
+          "hint_text": "Login olmus kullanicilar icin `who` kullan.",
+          "hint_partial": "w..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-021-r41",
+      "type": "single",
+      "scenario": "Bakim oncesi kullanicilarin ne yaptigini daha detayli goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "w",
+          "hint_text": "`w` kullanicilar ve aktif komutlari gosterir.",
+          "hint_partial": "w"
+        }
+      ]
+    },
+    {
+      "id": "jmon-022-r42",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda son 5 login kaydini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "last -n 5",
+          "hint_text": "Login gecmisi icin `last -n` kullan.",
+          "hint_partial": "last -n ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-023-r43",
+      "type": "single",
+      "scenario": "Deploy sonrasi nginx-43 process'inin PID bilgisini bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pidof nginx-43",
+          "hint_text": "Bir process'in PID'si icin `pidof` kullan.",
+          "hint_partial": "pidof ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-024-r44",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde her 2 saniyede bir disk kullanimini yenileyerek goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "watch -n 2 df -h",
+          "hint_text": "Periyodik disk izleme icin `watch -n 2` kullan.",
+          "hint_partial": "watch -n 2 ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-025-r45",
+      "type": "single",
+      "scenario": "Yeni acilan hostta detayli memory bilgisini `/proc` altindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/meminfo",
+          "hint_text": "Detayli memory bilgisi icin `/proc/meminfo` kullan.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-011-r46",
+      "type": "single",
+      "scenario": "Runbook adiminda tum process listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps aux",
+          "hint_text": "Genis process listesi icin `ps aux` kullan.",
+          "hint_partial": "ps ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-012-r47",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde process listesini tree benzeri gorunumle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps auxf",
+          "hint_text": "Parent-child iliskisini gormek icin `ps auxf` kullan.",
+          "hint_partial": "ps aux..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-013-r48",
+      "type": "single",
+      "scenario": "Incident sonrasinda disk kullanimini human-readable formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "df -h",
+          "hint_text": "Disk ozetini okunur formatta almak icin `df -h` kullan.",
+          "hint_partial": "df -..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-014-r49",
+      "type": "single",
+      "scenario": "Bakim oncesi `/var/web-49-49/log/web-49-49` klasorunun toplam boyutunu ozet olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "du -sh /var/web-49-49/log/web-49-49",
+          "hint_text": "Klasor boyutu ozeti icin `du -sh` kullan.",
+          "hint_partial": "du -sh ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-015-r50",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda dinleyen TCP ve UDP portlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ss -tuln",
+          "hint_text": "Dinleyen soketler icin `ss -tuln` kullan.",
+          "hint_partial": "ss -..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-016-r51",
+      "type": "single",
+      "scenario": "Deploy sonrasi kernel loglarinin son satirlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dmesg | tail",
+          "hint_text": "Son kernel mesajlari icin `dmesg | tail` kullan.",
+          "hint_partial": "dmesg | ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-017-r52",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde systemd journal'dan son 20 satiri goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "journalctl -n 20",
+          "hint_text": "Kisa journal ozeti icin `journalctl -n` kullan.",
+          "hint_partial": "journalctl -n ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-018-r53",
+      "type": "single",
+      "scenario": "Yeni acilan hostta cPU bilgilerini ozet olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lscpu",
+          "hint_text": "CPU ozeti icin `lscpu` kullan.",
+          "hint_partial": "lscpu"
+        }
+      ]
+    },
+    {
+      "id": "jmon-019-r54",
+      "type": "single",
+      "scenario": "Runbook adiminda block device listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsblk",
+          "hint_text": "Disk ve partition listesi icin `lsblk` kullan.",
+          "hint_partial": "lsblk"
+        }
+      ]
+    },
+    {
+      "id": "jmon-020-r55",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde sistemde aktif oturum acmis kullanicilari goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "who",
+          "hint_text": "Login olmus kullanicilar icin `who` kullan.",
+          "hint_partial": "w..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-021-r56",
+      "type": "single",
+      "scenario": "Incident sonrasinda kullanicilarin ne yaptigini daha detayli goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "w",
+          "hint_text": "`w` kullanicilar ve aktif komutlari gosterir.",
+          "hint_partial": "w"
+        }
+      ]
+    },
+    {
+      "id": "jmon-022-r57",
+      "type": "single",
+      "scenario": "Bakim oncesi son 5 login kaydini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "last -n 5",
+          "hint_text": "Login gecmisi icin `last -n` kullan.",
+          "hint_partial": "last -n ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-023-r58",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda traefik-58 process'inin PID bilgisini bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pidof traefik-58",
+          "hint_text": "Bir process'in PID'si icin `pidof` kullan.",
+          "hint_partial": "pidof ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-024-r59",
+      "type": "single",
+      "scenario": "Deploy sonrasi her 2 saniyede bir disk kullanimini yenileyerek goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "watch -n 2 df -h",
+          "hint_text": "Periyodik disk izleme icin `watch -n 2` kullan.",
+          "hint_partial": "watch -n 2 ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-025-r60",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde detayli memory bilgisini `/proc` altindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/meminfo",
+          "hint_text": "Detayli memory bilgisi icin `/proc/meminfo` kullan.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-011-r61",
+      "type": "single",
+      "scenario": "Yeni acilan hostta tum process listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps aux",
+          "hint_text": "Genis process listesi icin `ps aux` kullan.",
+          "hint_partial": "ps ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-012-r62",
+      "type": "single",
+      "scenario": "Runbook adiminda process listesini tree benzeri gorunumle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps auxf",
+          "hint_text": "Parent-child iliskisini gormek icin `ps auxf` kullan.",
+          "hint_partial": "ps aux..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-013-r63",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde disk kullanimini human-readable formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "df -h",
+          "hint_text": "Disk ozetini okunur formatta almak icin `df -h` kullan.",
+          "hint_partial": "df -..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-014-r64",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/var/proxy-64/log/proxy-64` klasorunun toplam boyutunu ozet olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "du -sh /var/proxy-64/log/proxy-64",
+          "hint_text": "Klasor boyutu ozeti icin `du -sh` kullan.",
+          "hint_partial": "du -sh ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-015-r65",
+      "type": "single",
+      "scenario": "Bakim oncesi dinleyen TCP ve UDP portlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ss -tuln",
+          "hint_text": "Dinleyen soketler icin `ss -tuln` kullan.",
+          "hint_partial": "ss -..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-016-r66",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda kernel loglarinin son satirlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dmesg | tail",
+          "hint_text": "Son kernel mesajlari icin `dmesg | tail` kullan.",
+          "hint_partial": "dmesg | ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-017-r67",
+      "type": "single",
+      "scenario": "Deploy sonrasi systemd journal'dan son 20 satiri goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "journalctl -n 20",
+          "hint_text": "Kisa journal ozeti icin `journalctl -n` kullan.",
+          "hint_partial": "journalctl -n ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-018-r68",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde cPU bilgilerini ozet olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lscpu",
+          "hint_text": "CPU ozeti icin `lscpu` kullan.",
+          "hint_partial": "lscpu"
+        }
+      ]
+    },
+    {
+      "id": "jmon-019-r69",
+      "type": "single",
+      "scenario": "Yeni acilan hostta block device listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsblk",
+          "hint_text": "Disk ve partition listesi icin `lsblk` kullan.",
+          "hint_partial": "lsblk"
+        }
+      ]
+    },
+    {
+      "id": "jmon-020-r70",
+      "type": "single",
+      "scenario": "Runbook adiminda sistemde aktif oturum acmis kullanicilari goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "who",
+          "hint_text": "Login olmus kullanicilar icin `who` kullan.",
+          "hint_partial": "w..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-021-r71",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde kullanicilarin ne yaptigini daha detayli goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "w",
+          "hint_text": "`w` kullanicilar ve aktif komutlari gosterir.",
+          "hint_partial": "w"
+        }
+      ]
+    },
+    {
+      "id": "jmon-022-r72",
+      "type": "single",
+      "scenario": "Incident sonrasinda son 5 login kaydini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "last -n 5",
+          "hint_text": "Login gecmisi icin `last -n` kullan.",
+          "hint_partial": "last -n ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-023-r73",
+      "type": "single",
+      "scenario": "Bakim oncesi nginx-73 process'inin PID bilgisini bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pidof nginx-73",
+          "hint_text": "Bir process'in PID'si icin `pidof` kullan.",
+          "hint_partial": "pidof ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-024-r74",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda her 2 saniyede bir disk kullanimini yenileyerek goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "watch -n 2 df -h",
+          "hint_text": "Periyodik disk izleme icin `watch -n 2` kullan.",
+          "hint_partial": "watch -n 2 ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-025-r75",
+      "type": "single",
+      "scenario": "Deploy sonrasi detayli memory bilgisini `/proc` altindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/meminfo",
+          "hint_text": "Detayli memory bilgisi icin `/proc/meminfo` kullan.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-011-r76",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde tum process listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps aux",
+          "hint_text": "Genis process listesi icin `ps aux` kullan.",
+          "hint_partial": "ps ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-012-r77",
+      "type": "single",
+      "scenario": "Yeni acilan hostta process listesini tree benzeri gorunumle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps auxf",
+          "hint_text": "Parent-child iliskisini gormek icin `ps auxf` kullan.",
+          "hint_partial": "ps aux..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-013-r78",
+      "type": "single",
+      "scenario": "Runbook adiminda disk kullanimini human-readable formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "df -h",
+          "hint_text": "Disk ozetini okunur formatta almak icin `df -h` kullan.",
+          "hint_partial": "df -..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-014-r79",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `/var/bastion-79/log/bastion-79` klasorunun toplam boyutunu ozet olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "du -sh /var/bastion-79/log/bastion-79",
+          "hint_text": "Klasor boyutu ozeti icin `du -sh` kullan.",
+          "hint_partial": "du -sh ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-015-r80",
+      "type": "single",
+      "scenario": "Incident sonrasinda dinleyen TCP ve UDP portlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ss -tuln",
+          "hint_text": "Dinleyen soketler icin `ss -tuln` kullan.",
+          "hint_partial": "ss -..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-016-r81",
+      "type": "single",
+      "scenario": "Bakim oncesi kernel loglarinin son satirlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dmesg | tail",
+          "hint_text": "Son kernel mesajlari icin `dmesg | tail` kullan.",
+          "hint_partial": "dmesg | ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-017-r82",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda systemd journal'dan son 20 satiri goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "journalctl -n 20",
+          "hint_text": "Kisa journal ozeti icin `journalctl -n` kullan.",
+          "hint_partial": "journalctl -n ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-018-r83",
+      "type": "single",
+      "scenario": "Deploy sonrasi cPU bilgilerini ozet olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lscpu",
+          "hint_text": "CPU ozeti icin `lscpu` kullan.",
+          "hint_partial": "lscpu"
+        }
+      ]
+    },
+    {
+      "id": "jmon-019-r84",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde block device listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsblk",
+          "hint_text": "Disk ve partition listesi icin `lsblk` kullan.",
+          "hint_partial": "lsblk"
+        }
+      ]
+    },
+    {
+      "id": "jmon-020-r85",
+      "type": "single",
+      "scenario": "Yeni acilan hostta sistemde aktif oturum acmis kullanicilari goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "who",
+          "hint_text": "Login olmus kullanicilar icin `who` kullan.",
+          "hint_partial": "w..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-021-r86",
+      "type": "single",
+      "scenario": "Runbook adiminda kullanicilarin ne yaptigini daha detayli goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "w",
+          "hint_text": "`w` kullanicilar ve aktif komutlari gosterir.",
+          "hint_partial": "w"
+        }
+      ]
+    },
+    {
+      "id": "jmon-022-r87",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde son 5 login kaydini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "last -n 5",
+          "hint_text": "Login gecmisi icin `last -n` kullan.",
+          "hint_partial": "last -n ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-023-r88",
+      "type": "single",
+      "scenario": "Incident sonrasinda traefik-88 process'inin PID bilgisini bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pidof traefik-88",
+          "hint_text": "Bir process'in PID'si icin `pidof` kullan.",
+          "hint_partial": "pidof ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-024-r89",
+      "type": "single",
+      "scenario": "Bakim oncesi her 2 saniyede bir disk kullanimini yenileyerek goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "watch -n 2 df -h",
+          "hint_text": "Periyodik disk izleme icin `watch -n 2` kullan.",
+          "hint_partial": "watch -n 2 ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-025-r90",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda detayli memory bilgisini `/proc` altindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/meminfo",
+          "hint_text": "Detayli memory bilgisi icin `/proc/meminfo` kullan.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-011-r91",
+      "type": "single",
+      "scenario": "Deploy sonrasi tum process listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps aux",
+          "hint_text": "Genis process listesi icin `ps aux` kullan.",
+          "hint_partial": "ps ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-012-r92",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde process listesini tree benzeri gorunumle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps auxf",
+          "hint_text": "Parent-child iliskisini gormek icin `ps auxf` kullan.",
+          "hint_partial": "ps aux..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-013-r93",
+      "type": "single",
+      "scenario": "Yeni acilan hostta disk kullanimini human-readable formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "df -h",
+          "hint_text": "Disk ozetini okunur formatta almak icin `df -h` kullan.",
+          "hint_partial": "df -..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-014-r94",
+      "type": "single",
+      "scenario": "Runbook adiminda `/var/queue-94/log/queue-94` klasorunun toplam boyutunu ozet olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "du -sh /var/queue-94/log/queue-94",
+          "hint_text": "Klasor boyutu ozeti icin `du -sh` kullan.",
+          "hint_partial": "du -sh ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-015-r95",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde dinleyen TCP ve UDP portlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ss -tuln",
+          "hint_text": "Dinleyen soketler icin `ss -tuln` kullan.",
+          "hint_partial": "ss -..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-016-r96",
+      "type": "single",
+      "scenario": "Incident sonrasinda kernel loglarinin son satirlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dmesg | tail",
+          "hint_text": "Son kernel mesajlari icin `dmesg | tail` kullan.",
+          "hint_partial": "dmesg | ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-017-r97",
+      "type": "single",
+      "scenario": "Bakim oncesi systemd journal'dan son 20 satiri goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "journalctl -n 20",
+          "hint_text": "Kisa journal ozeti icin `journalctl -n` kullan.",
+          "hint_partial": "journalctl -n ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-018-r98",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda cPU bilgilerini ozet olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lscpu",
+          "hint_text": "CPU ozeti icin `lscpu` kullan.",
+          "hint_partial": "lscpu"
+        }
+      ]
+    },
+    {
+      "id": "jmon-019-r99",
+      "type": "single",
+      "scenario": "Deploy sonrasi block device listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsblk",
+          "hint_text": "Disk ve partition listesi icin `lsblk` kullan.",
+          "hint_partial": "lsblk"
+        }
+      ]
+    },
+    {
+      "id": "jmon-020-r100",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde sistemde aktif oturum acmis kullanicilari goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "who",
+          "hint_text": "Login olmus kullanicilar icin `who` kullan.",
+          "hint_partial": "w..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-021-r101",
+      "type": "single",
+      "scenario": "Yeni acilan hostta kullanicilarin ne yaptigini daha detayli goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "w",
+          "hint_text": "`w` kullanicilar ve aktif komutlari gosterir.",
+          "hint_partial": "w"
+        }
+      ]
+    },
+    {
+      "id": "jmon-022-r102",
+      "type": "single",
+      "scenario": "Runbook adiminda son 5 login kaydini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "last -n 5",
+          "hint_text": "Login gecmisi icin `last -n` kullan.",
+          "hint_partial": "last -n ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-023-r103",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde nginx-103 process'inin PID bilgisini bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pidof nginx-103",
+          "hint_text": "Bir process'in PID'si icin `pidof` kullan.",
+          "hint_partial": "pidof ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-024-r104",
+      "type": "single",
+      "scenario": "Incident sonrasinda her 2 saniyede bir disk kullanimini yenileyerek goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "watch -n 2 df -h",
+          "hint_text": "Periyodik disk izleme icin `watch -n 2` kullan.",
+          "hint_partial": "watch -n 2 ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-025-r105",
+      "type": "single",
+      "scenario": "Bakim oncesi detayli memory bilgisini `/proc` altindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/meminfo",
+          "hint_text": "Detayli memory bilgisi icin `/proc/meminfo` kullan.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-011-r106",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda tum process listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps aux",
+          "hint_text": "Genis process listesi icin `ps aux` kullan.",
+          "hint_partial": "ps ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-012-r107",
+      "type": "single",
+      "scenario": "Deploy sonrasi process listesini tree benzeri gorunumle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps auxf",
+          "hint_text": "Parent-child iliskisini gormek icin `ps auxf` kullan.",
+          "hint_partial": "ps aux..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-013-r108",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde disk kullanimini human-readable formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "df -h",
+          "hint_text": "Disk ozetini okunur formatta almak icin `df -h` kullan.",
+          "hint_partial": "df -..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-014-r109",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `/var/cache-109-109/log/cache-109-109` klasorunun toplam boyutunu ozet olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "du -sh /var/cache-109-109/log/cache-109-109",
+          "hint_text": "Klasor boyutu ozeti icin `du -sh` kullan.",
+          "hint_partial": "du -sh ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-015-r110",
+      "type": "single",
+      "scenario": "Runbook adiminda dinleyen TCP ve UDP portlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ss -tuln",
+          "hint_text": "Dinleyen soketler icin `ss -tuln` kullan.",
+          "hint_partial": "ss -..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-016-r111",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde kernel loglarinin son satirlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dmesg | tail",
+          "hint_text": "Son kernel mesajlari icin `dmesg | tail` kullan.",
+          "hint_partial": "dmesg | ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-017-r112",
+      "type": "single",
+      "scenario": "Incident sonrasinda systemd journal'dan son 20 satiri goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "journalctl -n 20",
+          "hint_text": "Kisa journal ozeti icin `journalctl -n` kullan.",
+          "hint_partial": "journalctl -n ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-018-r113",
+      "type": "single",
+      "scenario": "Bakim oncesi cPU bilgilerini ozet olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lscpu",
+          "hint_text": "CPU ozeti icin `lscpu` kullan.",
+          "hint_partial": "lscpu"
+        }
+      ]
+    },
+    {
+      "id": "jmon-019-r114",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda block device listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsblk",
+          "hint_text": "Disk ve partition listesi icin `lsblk` kullan.",
+          "hint_partial": "lsblk"
+        }
+      ]
+    },
+    {
+      "id": "jmon-020-r115",
+      "type": "single",
+      "scenario": "Deploy sonrasi sistemde aktif oturum acmis kullanicilari goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "who",
+          "hint_text": "Login olmus kullanicilar icin `who` kullan.",
+          "hint_partial": "w..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-021-r116",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde kullanicilarin ne yaptigini daha detayli goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "w",
+          "hint_text": "`w` kullanicilar ve aktif komutlari gosterir.",
+          "hint_partial": "w"
+        }
+      ]
+    },
+    {
+      "id": "jmon-022-r117",
+      "type": "single",
+      "scenario": "Yeni acilan hostta son 5 login kaydini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "last -n 5",
+          "hint_text": "Login gecmisi icin `last -n` kullan.",
+          "hint_partial": "last -n ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-023-r118",
+      "type": "single",
+      "scenario": "Runbook adiminda traefik-118 process'inin PID bilgisini bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pidof traefik-118",
+          "hint_text": "Bir process'in PID'si icin `pidof` kullan.",
+          "hint_partial": "pidof ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-024-r119",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde her 2 saniyede bir disk kullanimini yenileyerek goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "watch -n 2 df -h",
+          "hint_text": "Periyodik disk izleme icin `watch -n 2` kullan.",
+          "hint_partial": "watch -n 2 ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-025-r120",
+      "type": "single",
+      "scenario": "Incident sonrasinda detayli memory bilgisini `/proc` altindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/meminfo",
+          "hint_text": "Detayli memory bilgisi icin `/proc/meminfo` kullan.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-011-r121",
+      "type": "single",
+      "scenario": "Bakim oncesi tum process listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps aux",
+          "hint_text": "Genis process listesi icin `ps aux` kullan.",
+          "hint_partial": "ps ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-012-r122",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda process listesini tree benzeri gorunumle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps auxf",
+          "hint_text": "Parent-child iliskisini gormek icin `ps auxf` kullan.",
+          "hint_partial": "ps aux..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-013-r123",
+      "type": "single",
+      "scenario": "Deploy sonrasi disk kullanimini human-readable formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "df -h",
+          "hint_text": "Disk ozetini okunur formatta almak icin `df -h` kullan.",
+          "hint_partial": "df -..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-014-r124",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/var/db-124-124/log/db-124-124` klasorunun toplam boyutunu ozet olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "du -sh /var/db-124-124/log/db-124-124",
+          "hint_text": "Klasor boyutu ozeti icin `du -sh` kullan.",
+          "hint_partial": "du -sh ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-015-r125",
+      "type": "single",
+      "scenario": "Yeni acilan hostta dinleyen TCP ve UDP portlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ss -tuln",
+          "hint_text": "Dinleyen soketler icin `ss -tuln` kullan.",
+          "hint_partial": "ss -..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-016-r126",
+      "type": "single",
+      "scenario": "Runbook adiminda kernel loglarinin son satirlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dmesg | tail",
+          "hint_text": "Son kernel mesajlari icin `dmesg | tail` kullan.",
+          "hint_partial": "dmesg | ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-017-r127",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde systemd journal'dan son 20 satiri goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "journalctl -n 20",
+          "hint_text": "Kisa journal ozeti icin `journalctl -n` kullan.",
+          "hint_partial": "journalctl -n ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-018-r128",
+      "type": "single",
+      "scenario": "Incident sonrasinda cPU bilgilerini ozet olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lscpu",
+          "hint_text": "CPU ozeti icin `lscpu` kullan.",
+          "hint_partial": "lscpu"
+        }
+      ]
+    },
+    {
+      "id": "jmon-019-r129",
+      "type": "single",
+      "scenario": "Bakim oncesi block device listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsblk",
+          "hint_text": "Disk ve partition listesi icin `lsblk` kullan.",
+          "hint_partial": "lsblk"
+        }
+      ]
+    },
+    {
+      "id": "jmon-020-r130",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda sistemde aktif oturum acmis kullanicilari goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "who",
+          "hint_text": "Login olmus kullanicilar icin `who` kullan.",
+          "hint_partial": "w..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-021-r131",
+      "type": "single",
+      "scenario": "Deploy sonrasi kullanicilarin ne yaptigini daha detayli goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "w",
+          "hint_text": "`w` kullanicilar ve aktif komutlari gosterir.",
+          "hint_partial": "w"
+        }
+      ]
+    },
+    {
+      "id": "jmon-022-r132",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde son 5 login kaydini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "last -n 5",
+          "hint_text": "Login gecmisi icin `last -n` kullan.",
+          "hint_partial": "last -n ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-023-r133",
+      "type": "single",
+      "scenario": "Yeni acilan hostta nginx-133 process'inin PID bilgisini bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pidof nginx-133",
+          "hint_text": "Bir process'in PID'si icin `pidof` kullan.",
+          "hint_partial": "pidof ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-024-r134",
+      "type": "single",
+      "scenario": "Runbook adiminda her 2 saniyede bir disk kullanimini yenileyerek goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "watch -n 2 df -h",
+          "hint_text": "Periyodik disk izleme icin `watch -n 2` kullan.",
+          "hint_partial": "watch -n 2 ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-025-r135",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde detayli memory bilgisini `/proc` altindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/meminfo",
+          "hint_text": "Detayli memory bilgisi icin `/proc/meminfo` kullan.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-011-r136",
+      "type": "single",
+      "scenario": "Incident sonrasinda tum process listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps aux",
+          "hint_text": "Genis process listesi icin `ps aux` kullan.",
+          "hint_partial": "ps ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-012-r137",
+      "type": "single",
+      "scenario": "Bakim oncesi process listesini tree benzeri gorunumle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps auxf",
+          "hint_text": "Parent-child iliskisini gormek icin `ps auxf` kullan.",
+          "hint_partial": "ps aux..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-013-r138",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda disk kullanimini human-readable formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "df -h",
+          "hint_text": "Disk ozetini okunur formatta almak icin `df -h` kullan.",
+          "hint_partial": "df -..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-014-r139",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/var/queue-139-139/log/queue-139-139` klasorunun toplam boyutunu ozet olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "du -sh /var/queue-139-139/log/queue-139-139",
+          "hint_text": "Klasor boyutu ozeti icin `du -sh` kullan.",
+          "hint_partial": "du -sh ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-015-r140",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde dinleyen TCP ve UDP portlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ss -tuln",
+          "hint_text": "Dinleyen soketler icin `ss -tuln` kullan.",
+          "hint_partial": "ss -..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-016-r141",
+      "type": "single",
+      "scenario": "Yeni acilan hostta kernel loglarinin son satirlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dmesg | tail",
+          "hint_text": "Son kernel mesajlari icin `dmesg | tail` kullan.",
+          "hint_partial": "dmesg | ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-017-r142",
+      "type": "single",
+      "scenario": "Runbook adiminda systemd journal'dan son 20 satiri goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "journalctl -n 20",
+          "hint_text": "Kisa journal ozeti icin `journalctl -n` kullan.",
+          "hint_partial": "journalctl -n ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-018-r143",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde cPU bilgilerini ozet olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lscpu",
+          "hint_text": "CPU ozeti icin `lscpu` kullan.",
+          "hint_partial": "lscpu"
+        }
+      ]
+    },
+    {
+      "id": "jmon-019-r144",
+      "type": "single",
+      "scenario": "Incident sonrasinda block device listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsblk",
+          "hint_text": "Disk ve partition listesi icin `lsblk` kullan.",
+          "hint_partial": "lsblk"
+        }
+      ]
+    },
+    {
+      "id": "jmon-020-r145",
+      "type": "single",
+      "scenario": "Bakim oncesi sistemde aktif oturum acmis kullanicilari goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "who",
+          "hint_text": "Login olmus kullanicilar icin `who` kullan.",
+          "hint_partial": "w..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-021-r146",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda kullanicilarin ne yaptigini daha detayli goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "w",
+          "hint_text": "`w` kullanicilar ve aktif komutlari gosterir.",
+          "hint_partial": "w"
+        }
+      ]
+    },
+    {
+      "id": "jmon-022-r147",
+      "type": "single",
+      "scenario": "Deploy sonrasi son 5 login kaydini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "last -n 5",
+          "hint_text": "Login gecmisi icin `last -n` kullan.",
+          "hint_partial": "last -n ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-023-r148",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde traefik-148 process'inin PID bilgisini bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pidof traefik-148",
+          "hint_text": "Bir process'in PID'si icin `pidof` kullan.",
+          "hint_partial": "pidof ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-024-r149",
+      "type": "single",
+      "scenario": "Yeni acilan hostta her 2 saniyede bir disk kullanimini yenileyerek goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "watch -n 2 df -h",
+          "hint_text": "Periyodik disk izleme icin `watch -n 2` kullan.",
+          "hint_partial": "watch -n 2 ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-025-r150",
+      "type": "single",
+      "scenario": "Runbook adiminda detayli memory bilgisini `/proc` altindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/meminfo",
+          "hint_text": "Detayli memory bilgisi icin `/proc/meminfo` kullan.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-011-r151",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde tum process listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps aux",
+          "hint_text": "Genis process listesi icin `ps aux` kullan.",
+          "hint_partial": "ps ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-012-r152",
+      "type": "single",
+      "scenario": "Incident sonrasinda process listesini tree benzeri gorunumle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps auxf",
+          "hint_text": "Parent-child iliskisini gormek icin `ps auxf` kullan.",
+          "hint_partial": "ps aux..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-013-r153",
+      "type": "single",
+      "scenario": "Bakim oncesi disk kullanimini human-readable formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "df -h",
+          "hint_text": "Disk ozetini okunur formatta almak icin `df -h` kullan.",
+          "hint_partial": "df -..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-014-r154",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/var/cache-154-154-154/log/cache-154-154-154` klasorunun toplam boyutunu ozet olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "du -sh /var/cache-154-154-154/log/cache-154-154-154",
+          "hint_text": "Klasor boyutu ozeti icin `du -sh` kullan.",
+          "hint_partial": "du -sh ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-015-r155",
+      "type": "single",
+      "scenario": "Deploy sonrasi dinleyen TCP ve UDP portlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ss -tuln",
+          "hint_text": "Dinleyen soketler icin `ss -tuln` kullan.",
+          "hint_partial": "ss -..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-016-r156",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde kernel loglarinin son satirlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dmesg | tail",
+          "hint_text": "Son kernel mesajlari icin `dmesg | tail` kullan.",
+          "hint_partial": "dmesg | ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-017-r157",
+      "type": "single",
+      "scenario": "Yeni acilan hostta systemd journal'dan son 20 satiri goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "journalctl -n 20",
+          "hint_text": "Kisa journal ozeti icin `journalctl -n` kullan.",
+          "hint_partial": "journalctl -n ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-018-r158",
+      "type": "single",
+      "scenario": "Runbook adiminda cPU bilgilerini ozet olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lscpu",
+          "hint_text": "CPU ozeti icin `lscpu` kullan.",
+          "hint_partial": "lscpu"
+        }
+      ]
+    },
+    {
+      "id": "jmon-019-r159",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde block device listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsblk",
+          "hint_text": "Disk ve partition listesi icin `lsblk` kullan.",
+          "hint_partial": "lsblk"
+        }
+      ]
+    },
+    {
+      "id": "jmon-020-r160",
+      "type": "single",
+      "scenario": "Incident sonrasinda sistemde aktif oturum acmis kullanicilari goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "who",
+          "hint_text": "Login olmus kullanicilar icin `who` kullan.",
+          "hint_partial": "w..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-021-r161",
+      "type": "single",
+      "scenario": "Bakim oncesi kullanicilarin ne yaptigini daha detayli goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "w",
+          "hint_text": "`w` kullanicilar ve aktif komutlari gosterir.",
+          "hint_partial": "w"
+        }
+      ]
+    },
+    {
+      "id": "jmon-022-r162",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda son 5 login kaydini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "last -n 5",
+          "hint_text": "Login gecmisi icin `last -n` kullan.",
+          "hint_partial": "last -n ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-023-r163",
+      "type": "single",
+      "scenario": "Deploy sonrasi nginx-163 process'inin PID bilgisini bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pidof nginx-163",
+          "hint_text": "Bir process'in PID'si icin `pidof` kullan.",
+          "hint_partial": "pidof ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-024-r164",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde her 2 saniyede bir disk kullanimini yenileyerek goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "watch -n 2 df -h",
+          "hint_text": "Periyodik disk izleme icin `watch -n 2` kullan.",
+          "hint_partial": "watch -n 2 ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-025-r165",
+      "type": "single",
+      "scenario": "Yeni acilan hostta detayli memory bilgisini `/proc` altindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/meminfo",
+          "hint_text": "Detayli memory bilgisi icin `/proc/meminfo` kullan.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-011-r166",
+      "type": "single",
+      "scenario": "Runbook adiminda tum process listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps aux",
+          "hint_text": "Genis process listesi icin `ps aux` kullan.",
+          "hint_partial": "ps ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-012-r167",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde process listesini tree benzeri gorunumle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps auxf",
+          "hint_text": "Parent-child iliskisini gormek icin `ps auxf` kullan.",
+          "hint_partial": "ps aux..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-013-r168",
+      "type": "single",
+      "scenario": "Incident sonrasinda disk kullanimini human-readable formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "df -h",
+          "hint_text": "Disk ozetini okunur formatta almak icin `df -h` kullan.",
+          "hint_partial": "df -..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-014-r169",
+      "type": "single",
+      "scenario": "Bakim oncesi `/var/web-169-169/log/web-169-169` klasorunun toplam boyutunu ozet olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "du -sh /var/web-169-169/log/web-169-169",
+          "hint_text": "Klasor boyutu ozeti icin `du -sh` kullan.",
+          "hint_partial": "du -sh ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-015-r170",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda dinleyen TCP ve UDP portlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ss -tuln",
+          "hint_text": "Dinleyen soketler icin `ss -tuln` kullan.",
+          "hint_partial": "ss -..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-016-r171",
+      "type": "single",
+      "scenario": "Deploy sonrasi kernel loglarinin son satirlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dmesg | tail",
+          "hint_text": "Son kernel mesajlari icin `dmesg | tail` kullan.",
+          "hint_partial": "dmesg | ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-017-r172",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde systemd journal'dan son 20 satiri goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "journalctl -n 20",
+          "hint_text": "Kisa journal ozeti icin `journalctl -n` kullan.",
+          "hint_partial": "journalctl -n ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-018-r173",
+      "type": "single",
+      "scenario": "Yeni acilan hostta cPU bilgilerini ozet olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lscpu",
+          "hint_text": "CPU ozeti icin `lscpu` kullan.",
+          "hint_partial": "lscpu"
+        }
+      ]
+    },
+    {
+      "id": "jmon-019-r174",
+      "type": "single",
+      "scenario": "Runbook adiminda block device listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsblk",
+          "hint_text": "Disk ve partition listesi icin `lsblk` kullan.",
+          "hint_partial": "lsblk"
+        }
+      ]
+    },
+    {
+      "id": "jmon-020-r175",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde sistemde aktif oturum acmis kullanicilari goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "who",
+          "hint_text": "Login olmus kullanicilar icin `who` kullan.",
+          "hint_partial": "w..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-021-r176",
+      "type": "single",
+      "scenario": "Incident sonrasinda kullanicilarin ne yaptigini daha detayli goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "w",
+          "hint_text": "`w` kullanicilar ve aktif komutlari gosterir.",
+          "hint_partial": "w"
+        }
+      ]
+    },
+    {
+      "id": "jmon-022-r177",
+      "type": "single",
+      "scenario": "Bakim oncesi son 5 login kaydini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "last -n 5",
+          "hint_text": "Login gecmisi icin `last -n` kullan.",
+          "hint_partial": "last -n ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-023-r178",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda traefik-178 process'inin PID bilgisini bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pidof traefik-178",
+          "hint_text": "Bir process'in PID'si icin `pidof` kullan.",
+          "hint_partial": "pidof ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-024-r179",
+      "type": "single",
+      "scenario": "Deploy sonrasi her 2 saniyede bir disk kullanimini yenileyerek goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "watch -n 2 df -h",
+          "hint_text": "Periyodik disk izleme icin `watch -n 2` kullan.",
+          "hint_partial": "watch -n 2 ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-025-r180",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde detayli memory bilgisini `/proc` altindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/meminfo",
+          "hint_text": "Detayli memory bilgisi icin `/proc/meminfo` kullan.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-011-r181",
+      "type": "single",
+      "scenario": "Yeni acilan hostta tum process listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps aux",
+          "hint_text": "Genis process listesi icin `ps aux` kullan.",
+          "hint_partial": "ps ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-012-r182",
+      "type": "single",
+      "scenario": "Runbook adiminda process listesini tree benzeri gorunumle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps auxf",
+          "hint_text": "Parent-child iliskisini gormek icin `ps auxf` kullan.",
+          "hint_partial": "ps aux..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-013-r183",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde disk kullanimini human-readable formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "df -h",
+          "hint_text": "Disk ozetini okunur formatta almak icin `df -h` kullan.",
+          "hint_partial": "df -..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-014-r184",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/var/proxy-184/log/proxy-184` klasorunun toplam boyutunu ozet olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "du -sh /var/proxy-184/log/proxy-184",
+          "hint_text": "Klasor boyutu ozeti icin `du -sh` kullan.",
+          "hint_partial": "du -sh ..."
+        }
+      ]
+    },
+    {
+      "id": "jmon-015-r185",
+      "type": "single",
+      "scenario": "Bakim oncesi dinleyen TCP ve UDP portlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ss -tuln",
+          "hint_text": "Dinleyen soketler icin `ss -tuln` kullan.",
+          "hint_partial": "ss -..."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2606 @@
+{
+  "level": "mid",
+  "topic": "text",
+  "questions": [
+    {
+      "id": "mtext-016",
+      "type": "single",
+      "scenario": "`words.txt` icindeki kelimeleri tek tek satira indirip unique olarak sirala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tr ' ' '\\n' < words.txt | sort -u",
+          "hint_text": "Bosluklari satira cevirip `sort -u` kullan.",
+          "hint_partial": "tr ' ' ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-017",
+      "type": "single",
+      "scenario": "`app.conf` icinde `foo` gecen yerleri inplace `bar` ile degistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sed -i 's/foo/bar/g' app.conf",
+          "hint_text": "Yerinde degisim icin `sed -i` kullan.",
+          "hint_partial": "sed -i ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-018",
+      "type": "single",
+      "scenario": "`app.log` dosyasinin 50 ile 80 arasindaki satirlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sed -n '50,80p' app.log",
+          "hint_text": "Satir araligi icin `sed -n 'start,endp'` kullan.",
+          "hint_partial": "sed -n ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-019",
+      "type": "single",
+      "scenario": "`names.txt` ve `ids.txt` dosyalarini satir satir yanyana birlestir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "paste names.txt ids.txt",
+          "hint_text": "Satir bazli birlestirme icin `paste` kullan.",
+          "hint_partial": "paste ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-020",
+      "type": "single",
+      "scenario": "`notes.txt` icindeki bos olmayan satirlari satir numaralariyla goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "grep -n . notes.txt",
+          "hint_text": "Bos olmayan satirlari `grep -n .` ile filtrele.",
+          "hint_partial": "grep -n ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-021",
+      "type": "single",
+      "scenario": "`/etc/passwd` dosyasindan kullanici adi ve UID alanlarini cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk -F: '{print $1,$3}' /etc/passwd",
+          "hint_text": "Kolon ayirici icin `-F:` kullan.",
+          "hint_partial": "awk -F: ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-022",
+      "type": "single",
+      "scenario": "`data.csv` dosyasini ikinci kolona gore sayisal ve azalan sirada duzenle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sort -t',' -k2,2nr data.csv",
+          "hint_text": "CSV kolon siralama icin `sort -t',' -k2,2nr` kullan.",
+          "hint_partial": "sort -t',' ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-023",
+      "type": "single",
+      "scenario": "`a.txt` ve `b.txt` dosyalarindaki ortak satirlari goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "comm -12 <(sort a.txt) <(sort b.txt)",
+          "hint_text": "Iki dosyayi siralayip `comm -12` ile ortak satirlari bul.",
+          "hint_partial": "comm -12 ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-024",
+      "type": "single",
+      "scenario": "`bigfile.txt` dosyasini 1000 satirlik parcara bol.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "split -l 1000 bigfile.txt chunk_",
+          "hint_text": "Satir bazli bolme icin `split -l 1000` kullan.",
+          "hint_partial": "split -l ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-025",
+      "type": "single",
+      "scenario": "`README.txt` icindeki uzun satirlari 80 karakterde kir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fold -s -w 80 README.txt",
+          "hint_text": "Satir kirma icin `fold -s -w 80` kullan.",
+          "hint_partial": "fold -s ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-016-r1",
+      "type": "single",
+      "scenario": "Bakim oncesi `words.txt` icindeki kelimeleri tek tek satira indirip unique olarak sirala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tr ' ' '\\n' < words.txt | sort -u",
+          "hint_text": "Bosluklari satira cevirip `sort -u` kullan.",
+          "hint_partial": "tr ' ' ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-017-r2",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `app-2.conf` icinde `foo` gecen yerleri inplace `bar` ile degistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sed -i 's/foo/bar/g' app-2.conf",
+          "hint_text": "Yerinde degisim icin `sed -i` kullan.",
+          "hint_partial": "sed -i ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-018-r3",
+      "type": "single",
+      "scenario": "Deploy sonrasi `app-3.log` dosyasinin 50 ile 80 arasindaki satirlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sed -n '50,80p' app-3.log",
+          "hint_text": "Satir araligi icin `sed -n 'start,endp'` kullan.",
+          "hint_partial": "sed -n ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-019-r4",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `names.txt` ve `ids.txt` dosyalarini satir satir yanyana birlestir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "paste names.txt ids.txt",
+          "hint_text": "Satir bazli birlestirme icin `paste` kullan.",
+          "hint_partial": "paste ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-020-r5",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `notes.txt` icindeki bos olmayan satirlari satir numaralariyla goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "grep -n . notes.txt",
+          "hint_text": "Bos olmayan satirlari `grep -n .` ile filtrele.",
+          "hint_partial": "grep -n ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-021-r6",
+      "type": "single",
+      "scenario": "Runbook adiminda `/etc/passwd` dosyasindan kullanici adi ve UID alanlarini cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk -F: '{print $1,$3}' /etc/passwd",
+          "hint_text": "Kolon ayirici icin `-F:` kullan.",
+          "hint_partial": "awk -F: ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-022-r7",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `data.csv` dosyasini ikinci kolona gore sayisal ve azalan sirada duzenle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sort -t',' -k2,2nr data.csv",
+          "hint_text": "CSV kolon siralama icin `sort -t',' -k2,2nr` kullan.",
+          "hint_partial": "sort -t',' ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-023-r8",
+      "type": "single",
+      "scenario": "Incident sonrasinda `a.txt` ve `b.txt` dosyalarindaki ortak satirlari goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "comm -12 <(sort a.txt) <(sort b.txt)",
+          "hint_text": "Iki dosyayi siralayip `comm -12` ile ortak satirlari bul.",
+          "hint_partial": "comm -12 ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-024-r9",
+      "type": "single",
+      "scenario": "Bakim oncesi `bigfile.txt` dosyasini 1000 satirlik parcara bol.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "split -l 1000 bigfile.txt chunk_",
+          "hint_text": "Satir bazli bolme icin `split -l 1000` kullan.",
+          "hint_partial": "split -l ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-025-r10",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `README.txt` icindeki uzun satirlari 80 karakterde kir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fold -s -w 80 README.txt",
+          "hint_text": "Satir kirma icin `fold -s -w 80` kullan.",
+          "hint_partial": "fold -s ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-016-r11",
+      "type": "single",
+      "scenario": "Deploy sonrasi `words.txt` icindeki kelimeleri tek tek satira indirip unique olarak sirala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tr ' ' '\\n' < words.txt | sort -u",
+          "hint_text": "Bosluklari satira cevirip `sort -u` kullan.",
+          "hint_partial": "tr ' ' ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-017-r12",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `app-12.conf` icinde `foo` gecen yerleri inplace `bar` ile degistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sed -i 's/foo/bar/g' app-12.conf",
+          "hint_text": "Yerinde degisim icin `sed -i` kullan.",
+          "hint_partial": "sed -i ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-018-r13",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `app-13.log` dosyasinin 50 ile 80 arasindaki satirlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sed -n '50,80p' app-13.log",
+          "hint_text": "Satir araligi icin `sed -n 'start,endp'` kullan.",
+          "hint_partial": "sed -n ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-019-r14",
+      "type": "single",
+      "scenario": "Runbook adiminda `names.txt` ve `ids.txt` dosyalarini satir satir yanyana birlestir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "paste names.txt ids.txt",
+          "hint_text": "Satir bazli birlestirme icin `paste` kullan.",
+          "hint_partial": "paste ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-020-r15",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `notes.txt` icindeki bos olmayan satirlari satir numaralariyla goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "grep -n . notes.txt",
+          "hint_text": "Bos olmayan satirlari `grep -n .` ile filtrele.",
+          "hint_partial": "grep -n ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-021-r16",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/etc/passwd` dosyasindan kullanici adi ve UID alanlarini cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk -F: '{print $1,$3}' /etc/passwd",
+          "hint_text": "Kolon ayirici icin `-F:` kullan.",
+          "hint_partial": "awk -F: ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-022-r17",
+      "type": "single",
+      "scenario": "Bakim oncesi `data.csv` dosyasini ikinci kolona gore sayisal ve azalan sirada duzenle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sort -t',' -k2,2nr data.csv",
+          "hint_text": "CSV kolon siralama icin `sort -t',' -k2,2nr` kullan.",
+          "hint_partial": "sort -t',' ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-023-r18",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `a.txt` ve `b.txt` dosyalarindaki ortak satirlari goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "comm -12 <(sort a.txt) <(sort b.txt)",
+          "hint_text": "Iki dosyayi siralayip `comm -12` ile ortak satirlari bul.",
+          "hint_partial": "comm -12 ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-024-r19",
+      "type": "single",
+      "scenario": "Deploy sonrasi `bigfile.txt` dosyasini 1000 satirlik parcara bol.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "split -l 1000 bigfile.txt chunk_",
+          "hint_text": "Satir bazli bolme icin `split -l 1000` kullan.",
+          "hint_partial": "split -l ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-025-r20",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `README.txt` icindeki uzun satirlari 80 karakterde kir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fold -s -w 80 README.txt",
+          "hint_text": "Satir kirma icin `fold -s -w 80` kullan.",
+          "hint_partial": "fold -s ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-016-r21",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `words.txt` icindeki kelimeleri tek tek satira indirip unique olarak sirala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tr ' ' '\\n' < words.txt | sort -u",
+          "hint_text": "Bosluklari satira cevirip `sort -u` kullan.",
+          "hint_partial": "tr ' ' ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-017-r22",
+      "type": "single",
+      "scenario": "Runbook adiminda `app-22.conf` icinde `foo` gecen yerleri inplace `bar` ile degistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sed -i 's/foo/bar/g' app-22.conf",
+          "hint_text": "Yerinde degisim icin `sed -i` kullan.",
+          "hint_partial": "sed -i ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-018-r23",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `app-23.log` dosyasinin 50 ile 80 arasindaki satirlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sed -n '50,80p' app-23.log",
+          "hint_text": "Satir araligi icin `sed -n 'start,endp'` kullan.",
+          "hint_partial": "sed -n ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-019-r24",
+      "type": "single",
+      "scenario": "Incident sonrasinda `names.txt` ve `ids.txt` dosyalarini satir satir yanyana birlestir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "paste names.txt ids.txt",
+          "hint_text": "Satir bazli birlestirme icin `paste` kullan.",
+          "hint_partial": "paste ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-020-r25",
+      "type": "single",
+      "scenario": "Bakim oncesi `notes.txt` icindeki bos olmayan satirlari satir numaralariyla goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "grep -n . notes.txt",
+          "hint_text": "Bos olmayan satirlari `grep -n .` ile filtrele.",
+          "hint_partial": "grep -n ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-021-r26",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/etc/passwd` dosyasindan kullanici adi ve UID alanlarini cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk -F: '{print $1,$3}' /etc/passwd",
+          "hint_text": "Kolon ayirici icin `-F:` kullan.",
+          "hint_partial": "awk -F: ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-022-r27",
+      "type": "single",
+      "scenario": "Deploy sonrasi `data.csv` dosyasini ikinci kolona gore sayisal ve azalan sirada duzenle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sort -t',' -k2,2nr data.csv",
+          "hint_text": "CSV kolon siralama icin `sort -t',' -k2,2nr` kullan.",
+          "hint_partial": "sort -t',' ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-023-r28",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `a.txt` ve `b.txt` dosyalarindaki ortak satirlari goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "comm -12 <(sort a.txt) <(sort b.txt)",
+          "hint_text": "Iki dosyayi siralayip `comm -12` ile ortak satirlari bul.",
+          "hint_partial": "comm -12 ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-024-r29",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `bigfile.txt` dosyasini 1000 satirlik parcara bol.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "split -l 1000 bigfile.txt chunk_",
+          "hint_text": "Satir bazli bolme icin `split -l 1000` kullan.",
+          "hint_partial": "split -l ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-025-r30",
+      "type": "single",
+      "scenario": "Runbook adiminda `README.txt` icindeki uzun satirlari 80 karakterde kir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fold -s -w 80 README.txt",
+          "hint_text": "Satir kirma icin `fold -s -w 80` kullan.",
+          "hint_partial": "fold -s ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-016-r31",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `words.txt` icindeki kelimeleri tek tek satira indirip unique olarak sirala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tr ' ' '\\n' < words.txt | sort -u",
+          "hint_text": "Bosluklari satira cevirip `sort -u` kullan.",
+          "hint_partial": "tr ' ' ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-017-r32",
+      "type": "single",
+      "scenario": "Incident sonrasinda `app-32.conf` icinde `foo` gecen yerleri inplace `bar` ile degistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sed -i 's/foo/bar/g' app-32.conf",
+          "hint_text": "Yerinde degisim icin `sed -i` kullan.",
+          "hint_partial": "sed -i ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-018-r33",
+      "type": "single",
+      "scenario": "Bakim oncesi `app-33.log` dosyasinin 50 ile 80 arasindaki satirlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sed -n '50,80p' app-33.log",
+          "hint_text": "Satir araligi icin `sed -n 'start,endp'` kullan.",
+          "hint_partial": "sed -n ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-019-r34",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `names.txt` ve `ids.txt` dosyalarini satir satir yanyana birlestir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "paste names.txt ids.txt",
+          "hint_text": "Satir bazli birlestirme icin `paste` kullan.",
+          "hint_partial": "paste ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-020-r35",
+      "type": "single",
+      "scenario": "Deploy sonrasi `notes.txt` icindeki bos olmayan satirlari satir numaralariyla goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "grep -n . notes.txt",
+          "hint_text": "Bos olmayan satirlari `grep -n .` ile filtrele.",
+          "hint_partial": "grep -n ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-021-r36",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/etc/passwd` dosyasindan kullanici adi ve UID alanlarini cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk -F: '{print $1,$3}' /etc/passwd",
+          "hint_text": "Kolon ayirici icin `-F:` kullan.",
+          "hint_partial": "awk -F: ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-022-r37",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `data.csv` dosyasini ikinci kolona gore sayisal ve azalan sirada duzenle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sort -t',' -k2,2nr data.csv",
+          "hint_text": "CSV kolon siralama icin `sort -t',' -k2,2nr` kullan.",
+          "hint_partial": "sort -t',' ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-023-r38",
+      "type": "single",
+      "scenario": "Runbook adiminda `a.txt` ve `b.txt` dosyalarindaki ortak satirlari goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "comm -12 <(sort a.txt) <(sort b.txt)",
+          "hint_text": "Iki dosyayi siralayip `comm -12` ile ortak satirlari bul.",
+          "hint_partial": "comm -12 ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-024-r39",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `bigfile.txt` dosyasini 1000 satirlik parcara bol.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "split -l 1000 bigfile.txt chunk_",
+          "hint_text": "Satir bazli bolme icin `split -l 1000` kullan.",
+          "hint_partial": "split -l ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-025-r40",
+      "type": "single",
+      "scenario": "Incident sonrasinda `README.txt` icindeki uzun satirlari 80 karakterde kir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fold -s -w 80 README.txt",
+          "hint_text": "Satir kirma icin `fold -s -w 80` kullan.",
+          "hint_partial": "fold -s ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-016-r41",
+      "type": "single",
+      "scenario": "Bakim oncesi `words.txt` icindeki kelimeleri tek tek satira indirip unique olarak sirala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tr ' ' '\\n' < words.txt | sort -u",
+          "hint_text": "Bosluklari satira cevirip `sort -u` kullan.",
+          "hint_partial": "tr ' ' ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-017-r42",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `app-42.conf` icinde `foo` gecen yerleri inplace `bar` ile degistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sed -i 's/foo/bar/g' app-42.conf",
+          "hint_text": "Yerinde degisim icin `sed -i` kullan.",
+          "hint_partial": "sed -i ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-018-r43",
+      "type": "single",
+      "scenario": "Deploy sonrasi `app-43.log` dosyasinin 50 ile 80 arasindaki satirlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sed -n '50,80p' app-43.log",
+          "hint_text": "Satir araligi icin `sed -n 'start,endp'` kullan.",
+          "hint_partial": "sed -n ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-019-r44",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `names.txt` ve `ids.txt` dosyalarini satir satir yanyana birlestir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "paste names.txt ids.txt",
+          "hint_text": "Satir bazli birlestirme icin `paste` kullan.",
+          "hint_partial": "paste ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-020-r45",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `notes.txt` icindeki bos olmayan satirlari satir numaralariyla goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "grep -n . notes.txt",
+          "hint_text": "Bos olmayan satirlari `grep -n .` ile filtrele.",
+          "hint_partial": "grep -n ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-021-r46",
+      "type": "single",
+      "scenario": "Runbook adiminda `/etc/passwd` dosyasindan kullanici adi ve UID alanlarini cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk -F: '{print $1,$3}' /etc/passwd",
+          "hint_text": "Kolon ayirici icin `-F:` kullan.",
+          "hint_partial": "awk -F: ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-022-r47",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `data.csv` dosyasini ikinci kolona gore sayisal ve azalan sirada duzenle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sort -t',' -k2,2nr data.csv",
+          "hint_text": "CSV kolon siralama icin `sort -t',' -k2,2nr` kullan.",
+          "hint_partial": "sort -t',' ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-023-r48",
+      "type": "single",
+      "scenario": "Incident sonrasinda `a.txt` ve `b.txt` dosyalarindaki ortak satirlari goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "comm -12 <(sort a.txt) <(sort b.txt)",
+          "hint_text": "Iki dosyayi siralayip `comm -12` ile ortak satirlari bul.",
+          "hint_partial": "comm -12 ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-024-r49",
+      "type": "single",
+      "scenario": "Bakim oncesi `bigfile.txt` dosyasini 1000 satirlik parcara bol.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "split -l 1000 bigfile.txt chunk_",
+          "hint_text": "Satir bazli bolme icin `split -l 1000` kullan.",
+          "hint_partial": "split -l ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-025-r50",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `README.txt` icindeki uzun satirlari 80 karakterde kir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fold -s -w 80 README.txt",
+          "hint_text": "Satir kirma icin `fold -s -w 80` kullan.",
+          "hint_partial": "fold -s ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-016-r51",
+      "type": "single",
+      "scenario": "Deploy sonrasi `words.txt` icindeki kelimeleri tek tek satira indirip unique olarak sirala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tr ' ' '\\n' < words.txt | sort -u",
+          "hint_text": "Bosluklari satira cevirip `sort -u` kullan.",
+          "hint_partial": "tr ' ' ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-017-r52",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `app-52.conf` icinde `foo` gecen yerleri inplace `bar` ile degistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sed -i 's/foo/bar/g' app-52.conf",
+          "hint_text": "Yerinde degisim icin `sed -i` kullan.",
+          "hint_partial": "sed -i ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-018-r53",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `app-53.log` dosyasinin 50 ile 80 arasindaki satirlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sed -n '50,80p' app-53.log",
+          "hint_text": "Satir araligi icin `sed -n 'start,endp'` kullan.",
+          "hint_partial": "sed -n ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-019-r54",
+      "type": "single",
+      "scenario": "Runbook adiminda `names.txt` ve `ids.txt` dosyalarini satir satir yanyana birlestir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "paste names.txt ids.txt",
+          "hint_text": "Satir bazli birlestirme icin `paste` kullan.",
+          "hint_partial": "paste ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-020-r55",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `notes.txt` icindeki bos olmayan satirlari satir numaralariyla goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "grep -n . notes.txt",
+          "hint_text": "Bos olmayan satirlari `grep -n .` ile filtrele.",
+          "hint_partial": "grep -n ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-021-r56",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/etc/passwd` dosyasindan kullanici adi ve UID alanlarini cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk -F: '{print $1,$3}' /etc/passwd",
+          "hint_text": "Kolon ayirici icin `-F:` kullan.",
+          "hint_partial": "awk -F: ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-022-r57",
+      "type": "single",
+      "scenario": "Bakim oncesi `data.csv` dosyasini ikinci kolona gore sayisal ve azalan sirada duzenle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sort -t',' -k2,2nr data.csv",
+          "hint_text": "CSV kolon siralama icin `sort -t',' -k2,2nr` kullan.",
+          "hint_partial": "sort -t',' ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-023-r58",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `a.txt` ve `b.txt` dosyalarindaki ortak satirlari goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "comm -12 <(sort a.txt) <(sort b.txt)",
+          "hint_text": "Iki dosyayi siralayip `comm -12` ile ortak satirlari bul.",
+          "hint_partial": "comm -12 ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-024-r59",
+      "type": "single",
+      "scenario": "Deploy sonrasi `bigfile.txt` dosyasini 1000 satirlik parcara bol.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "split -l 1000 bigfile.txt chunk_",
+          "hint_text": "Satir bazli bolme icin `split -l 1000` kullan.",
+          "hint_partial": "split -l ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-025-r60",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `README.txt` icindeki uzun satirlari 80 karakterde kir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fold -s -w 80 README.txt",
+          "hint_text": "Satir kirma icin `fold -s -w 80` kullan.",
+          "hint_partial": "fold -s ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-016-r61",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `words.txt` icindeki kelimeleri tek tek satira indirip unique olarak sirala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tr ' ' '\\n' < words.txt | sort -u",
+          "hint_text": "Bosluklari satira cevirip `sort -u` kullan.",
+          "hint_partial": "tr ' ' ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-017-r62",
+      "type": "single",
+      "scenario": "Runbook adiminda `app-62.conf` icinde `foo` gecen yerleri inplace `bar` ile degistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sed -i 's/foo/bar/g' app-62.conf",
+          "hint_text": "Yerinde degisim icin `sed -i` kullan.",
+          "hint_partial": "sed -i ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-018-r63",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `app-63.log` dosyasinin 50 ile 80 arasindaki satirlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sed -n '50,80p' app-63.log",
+          "hint_text": "Satir araligi icin `sed -n 'start,endp'` kullan.",
+          "hint_partial": "sed -n ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-019-r64",
+      "type": "single",
+      "scenario": "Incident sonrasinda `names.txt` ve `ids.txt` dosyalarini satir satir yanyana birlestir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "paste names.txt ids.txt",
+          "hint_text": "Satir bazli birlestirme icin `paste` kullan.",
+          "hint_partial": "paste ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-020-r65",
+      "type": "single",
+      "scenario": "Bakim oncesi `notes.txt` icindeki bos olmayan satirlari satir numaralariyla goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "grep -n . notes.txt",
+          "hint_text": "Bos olmayan satirlari `grep -n .` ile filtrele.",
+          "hint_partial": "grep -n ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-021-r66",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/etc/passwd` dosyasindan kullanici adi ve UID alanlarini cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk -F: '{print $1,$3}' /etc/passwd",
+          "hint_text": "Kolon ayirici icin `-F:` kullan.",
+          "hint_partial": "awk -F: ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-022-r67",
+      "type": "single",
+      "scenario": "Deploy sonrasi `data.csv` dosyasini ikinci kolona gore sayisal ve azalan sirada duzenle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sort -t',' -k2,2nr data.csv",
+          "hint_text": "CSV kolon siralama icin `sort -t',' -k2,2nr` kullan.",
+          "hint_partial": "sort -t',' ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-023-r68",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `a.txt` ve `b.txt` dosyalarindaki ortak satirlari goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "comm -12 <(sort a.txt) <(sort b.txt)",
+          "hint_text": "Iki dosyayi siralayip `comm -12` ile ortak satirlari bul.",
+          "hint_partial": "comm -12 ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-024-r69",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `bigfile.txt` dosyasini 1000 satirlik parcara bol.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "split -l 1000 bigfile.txt chunk_",
+          "hint_text": "Satir bazli bolme icin `split -l 1000` kullan.",
+          "hint_partial": "split -l ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-025-r70",
+      "type": "single",
+      "scenario": "Runbook adiminda `README.txt` icindeki uzun satirlari 80 karakterde kir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fold -s -w 80 README.txt",
+          "hint_text": "Satir kirma icin `fold -s -w 80` kullan.",
+          "hint_partial": "fold -s ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-016-r71",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `words.txt` icindeki kelimeleri tek tek satira indirip unique olarak sirala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tr ' ' '\\n' < words.txt | sort -u",
+          "hint_text": "Bosluklari satira cevirip `sort -u` kullan.",
+          "hint_partial": "tr ' ' ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-017-r72",
+      "type": "single",
+      "scenario": "Incident sonrasinda `app-72.conf` icinde `foo` gecen yerleri inplace `bar` ile degistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sed -i 's/foo/bar/g' app-72.conf",
+          "hint_text": "Yerinde degisim icin `sed -i` kullan.",
+          "hint_partial": "sed -i ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-018-r73",
+      "type": "single",
+      "scenario": "Bakim oncesi `app-73.log` dosyasinin 50 ile 80 arasindaki satirlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sed -n '50,80p' app-73.log",
+          "hint_text": "Satir araligi icin `sed -n 'start,endp'` kullan.",
+          "hint_partial": "sed -n ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-019-r74",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `names.txt` ve `ids.txt` dosyalarini satir satir yanyana birlestir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "paste names.txt ids.txt",
+          "hint_text": "Satir bazli birlestirme icin `paste` kullan.",
+          "hint_partial": "paste ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-020-r75",
+      "type": "single",
+      "scenario": "Deploy sonrasi `notes.txt` icindeki bos olmayan satirlari satir numaralariyla goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "grep -n . notes.txt",
+          "hint_text": "Bos olmayan satirlari `grep -n .` ile filtrele.",
+          "hint_partial": "grep -n ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-021-r76",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/etc/passwd` dosyasindan kullanici adi ve UID alanlarini cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk -F: '{print $1,$3}' /etc/passwd",
+          "hint_text": "Kolon ayirici icin `-F:` kullan.",
+          "hint_partial": "awk -F: ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-022-r77",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `data.csv` dosyasini ikinci kolona gore sayisal ve azalan sirada duzenle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sort -t',' -k2,2nr data.csv",
+          "hint_text": "CSV kolon siralama icin `sort -t',' -k2,2nr` kullan.",
+          "hint_partial": "sort -t',' ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-023-r78",
+      "type": "single",
+      "scenario": "Runbook adiminda `a.txt` ve `b.txt` dosyalarindaki ortak satirlari goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "comm -12 <(sort a.txt) <(sort b.txt)",
+          "hint_text": "Iki dosyayi siralayip `comm -12` ile ortak satirlari bul.",
+          "hint_partial": "comm -12 ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-024-r79",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `bigfile.txt` dosyasini 1000 satirlik parcara bol.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "split -l 1000 bigfile.txt chunk_",
+          "hint_text": "Satir bazli bolme icin `split -l 1000` kullan.",
+          "hint_partial": "split -l ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-025-r80",
+      "type": "single",
+      "scenario": "Incident sonrasinda `README.txt` icindeki uzun satirlari 80 karakterde kir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fold -s -w 80 README.txt",
+          "hint_text": "Satir kirma icin `fold -s -w 80` kullan.",
+          "hint_partial": "fold -s ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-016-r81",
+      "type": "single",
+      "scenario": "Bakim oncesi `words.txt` icindeki kelimeleri tek tek satira indirip unique olarak sirala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tr ' ' '\\n' < words.txt | sort -u",
+          "hint_text": "Bosluklari satira cevirip `sort -u` kullan.",
+          "hint_partial": "tr ' ' ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-017-r82",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `app-82.conf` icinde `foo` gecen yerleri inplace `bar` ile degistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sed -i 's/foo/bar/g' app-82.conf",
+          "hint_text": "Yerinde degisim icin `sed -i` kullan.",
+          "hint_partial": "sed -i ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-018-r83",
+      "type": "single",
+      "scenario": "Deploy sonrasi `app-83.log` dosyasinin 50 ile 80 arasindaki satirlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sed -n '50,80p' app-83.log",
+          "hint_text": "Satir araligi icin `sed -n 'start,endp'` kullan.",
+          "hint_partial": "sed -n ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-019-r84",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `names.txt` ve `ids.txt` dosyalarini satir satir yanyana birlestir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "paste names.txt ids.txt",
+          "hint_text": "Satir bazli birlestirme icin `paste` kullan.",
+          "hint_partial": "paste ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-020-r85",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `notes.txt` icindeki bos olmayan satirlari satir numaralariyla goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "grep -n . notes.txt",
+          "hint_text": "Bos olmayan satirlari `grep -n .` ile filtrele.",
+          "hint_partial": "grep -n ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-021-r86",
+      "type": "single",
+      "scenario": "Runbook adiminda `/etc/passwd` dosyasindan kullanici adi ve UID alanlarini cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk -F: '{print $1,$3}' /etc/passwd",
+          "hint_text": "Kolon ayirici icin `-F:` kullan.",
+          "hint_partial": "awk -F: ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-022-r87",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `data.csv` dosyasini ikinci kolona gore sayisal ve azalan sirada duzenle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sort -t',' -k2,2nr data.csv",
+          "hint_text": "CSV kolon siralama icin `sort -t',' -k2,2nr` kullan.",
+          "hint_partial": "sort -t',' ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-023-r88",
+      "type": "single",
+      "scenario": "Incident sonrasinda `a.txt` ve `b.txt` dosyalarindaki ortak satirlari goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "comm -12 <(sort a.txt) <(sort b.txt)",
+          "hint_text": "Iki dosyayi siralayip `comm -12` ile ortak satirlari bul.",
+          "hint_partial": "comm -12 ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-024-r89",
+      "type": "single",
+      "scenario": "Bakim oncesi `bigfile.txt` dosyasini 1000 satirlik parcara bol.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "split -l 1000 bigfile.txt chunk_",
+          "hint_text": "Satir bazli bolme icin `split -l 1000` kullan.",
+          "hint_partial": "split -l ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-025-r90",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `README.txt` icindeki uzun satirlari 80 karakterde kir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fold -s -w 80 README.txt",
+          "hint_text": "Satir kirma icin `fold -s -w 80` kullan.",
+          "hint_partial": "fold -s ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-016-r91",
+      "type": "single",
+      "scenario": "Deploy sonrasi `words.txt` icindeki kelimeleri tek tek satira indirip unique olarak sirala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tr ' ' '\\n' < words.txt | sort -u",
+          "hint_text": "Bosluklari satira cevirip `sort -u` kullan.",
+          "hint_partial": "tr ' ' ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-017-r92",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `app-92.conf` icinde `foo` gecen yerleri inplace `bar` ile degistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sed -i 's/foo/bar/g' app-92.conf",
+          "hint_text": "Yerinde degisim icin `sed -i` kullan.",
+          "hint_partial": "sed -i ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-018-r93",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `app-93.log` dosyasinin 50 ile 80 arasindaki satirlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sed -n '50,80p' app-93.log",
+          "hint_text": "Satir araligi icin `sed -n 'start,endp'` kullan.",
+          "hint_partial": "sed -n ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-019-r94",
+      "type": "single",
+      "scenario": "Runbook adiminda `names.txt` ve `ids.txt` dosyalarini satir satir yanyana birlestir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "paste names.txt ids.txt",
+          "hint_text": "Satir bazli birlestirme icin `paste` kullan.",
+          "hint_partial": "paste ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-020-r95",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `notes.txt` icindeki bos olmayan satirlari satir numaralariyla goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "grep -n . notes.txt",
+          "hint_text": "Bos olmayan satirlari `grep -n .` ile filtrele.",
+          "hint_partial": "grep -n ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-021-r96",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/etc/passwd` dosyasindan kullanici adi ve UID alanlarini cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk -F: '{print $1,$3}' /etc/passwd",
+          "hint_text": "Kolon ayirici icin `-F:` kullan.",
+          "hint_partial": "awk -F: ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-022-r97",
+      "type": "single",
+      "scenario": "Bakim oncesi `data.csv` dosyasini ikinci kolona gore sayisal ve azalan sirada duzenle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sort -t',' -k2,2nr data.csv",
+          "hint_text": "CSV kolon siralama icin `sort -t',' -k2,2nr` kullan.",
+          "hint_partial": "sort -t',' ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-023-r98",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `a.txt` ve `b.txt` dosyalarindaki ortak satirlari goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "comm -12 <(sort a.txt) <(sort b.txt)",
+          "hint_text": "Iki dosyayi siralayip `comm -12` ile ortak satirlari bul.",
+          "hint_partial": "comm -12 ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-024-r99",
+      "type": "single",
+      "scenario": "Deploy sonrasi `bigfile.txt` dosyasini 1000 satirlik parcara bol.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "split -l 1000 bigfile.txt chunk_",
+          "hint_text": "Satir bazli bolme icin `split -l 1000` kullan.",
+          "hint_partial": "split -l ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-025-r100",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `README.txt` icindeki uzun satirlari 80 karakterde kir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fold -s -w 80 README.txt",
+          "hint_text": "Satir kirma icin `fold -s -w 80` kullan.",
+          "hint_partial": "fold -s ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-016-r101",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `words.txt` icindeki kelimeleri tek tek satira indirip unique olarak sirala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tr ' ' '\\n' < words.txt | sort -u",
+          "hint_text": "Bosluklari satira cevirip `sort -u` kullan.",
+          "hint_partial": "tr ' ' ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-017-r102",
+      "type": "single",
+      "scenario": "Runbook adiminda `app-102.conf` icinde `foo` gecen yerleri inplace `bar` ile degistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sed -i 's/foo/bar/g' app-102.conf",
+          "hint_text": "Yerinde degisim icin `sed -i` kullan.",
+          "hint_partial": "sed -i ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-018-r103",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `app-103.log` dosyasinin 50 ile 80 arasindaki satirlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sed -n '50,80p' app-103.log",
+          "hint_text": "Satir araligi icin `sed -n 'start,endp'` kullan.",
+          "hint_partial": "sed -n ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-019-r104",
+      "type": "single",
+      "scenario": "Incident sonrasinda `names.txt` ve `ids.txt` dosyalarini satir satir yanyana birlestir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "paste names.txt ids.txt",
+          "hint_text": "Satir bazli birlestirme icin `paste` kullan.",
+          "hint_partial": "paste ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-020-r105",
+      "type": "single",
+      "scenario": "Bakim oncesi `notes.txt` icindeki bos olmayan satirlari satir numaralariyla goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "grep -n . notes.txt",
+          "hint_text": "Bos olmayan satirlari `grep -n .` ile filtrele.",
+          "hint_partial": "grep -n ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-021-r106",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/etc/passwd` dosyasindan kullanici adi ve UID alanlarini cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk -F: '{print $1,$3}' /etc/passwd",
+          "hint_text": "Kolon ayirici icin `-F:` kullan.",
+          "hint_partial": "awk -F: ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-022-r107",
+      "type": "single",
+      "scenario": "Deploy sonrasi `data.csv` dosyasini ikinci kolona gore sayisal ve azalan sirada duzenle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sort -t',' -k2,2nr data.csv",
+          "hint_text": "CSV kolon siralama icin `sort -t',' -k2,2nr` kullan.",
+          "hint_partial": "sort -t',' ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-023-r108",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `a.txt` ve `b.txt` dosyalarindaki ortak satirlari goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "comm -12 <(sort a.txt) <(sort b.txt)",
+          "hint_text": "Iki dosyayi siralayip `comm -12` ile ortak satirlari bul.",
+          "hint_partial": "comm -12 ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-024-r109",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `bigfile.txt` dosyasini 1000 satirlik parcara bol.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "split -l 1000 bigfile.txt chunk_",
+          "hint_text": "Satir bazli bolme icin `split -l 1000` kullan.",
+          "hint_partial": "split -l ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-025-r110",
+      "type": "single",
+      "scenario": "Runbook adiminda `README.txt` icindeki uzun satirlari 80 karakterde kir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fold -s -w 80 README.txt",
+          "hint_text": "Satir kirma icin `fold -s -w 80` kullan.",
+          "hint_partial": "fold -s ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-016-r111",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `words.txt` icindeki kelimeleri tek tek satira indirip unique olarak sirala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tr ' ' '\\n' < words.txt | sort -u",
+          "hint_text": "Bosluklari satira cevirip `sort -u` kullan.",
+          "hint_partial": "tr ' ' ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-017-r112",
+      "type": "single",
+      "scenario": "Incident sonrasinda `app-112.conf` icinde `foo` gecen yerleri inplace `bar` ile degistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sed -i 's/foo/bar/g' app-112.conf",
+          "hint_text": "Yerinde degisim icin `sed -i` kullan.",
+          "hint_partial": "sed -i ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-018-r113",
+      "type": "single",
+      "scenario": "Bakim oncesi `app-113.log` dosyasinin 50 ile 80 arasindaki satirlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sed -n '50,80p' app-113.log",
+          "hint_text": "Satir araligi icin `sed -n 'start,endp'` kullan.",
+          "hint_partial": "sed -n ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-019-r114",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `names.txt` ve `ids.txt` dosyalarini satir satir yanyana birlestir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "paste names.txt ids.txt",
+          "hint_text": "Satir bazli birlestirme icin `paste` kullan.",
+          "hint_partial": "paste ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-020-r115",
+      "type": "single",
+      "scenario": "Deploy sonrasi `notes.txt` icindeki bos olmayan satirlari satir numaralariyla goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "grep -n . notes.txt",
+          "hint_text": "Bos olmayan satirlari `grep -n .` ile filtrele.",
+          "hint_partial": "grep -n ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-021-r116",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/etc/passwd` dosyasindan kullanici adi ve UID alanlarini cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk -F: '{print $1,$3}' /etc/passwd",
+          "hint_text": "Kolon ayirici icin `-F:` kullan.",
+          "hint_partial": "awk -F: ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-022-r117",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `data.csv` dosyasini ikinci kolona gore sayisal ve azalan sirada duzenle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sort -t',' -k2,2nr data.csv",
+          "hint_text": "CSV kolon siralama icin `sort -t',' -k2,2nr` kullan.",
+          "hint_partial": "sort -t',' ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-023-r118",
+      "type": "single",
+      "scenario": "Runbook adiminda `a.txt` ve `b.txt` dosyalarindaki ortak satirlari goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "comm -12 <(sort a.txt) <(sort b.txt)",
+          "hint_text": "Iki dosyayi siralayip `comm -12` ile ortak satirlari bul.",
+          "hint_partial": "comm -12 ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-024-r119",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `bigfile.txt` dosyasini 1000 satirlik parcara bol.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "split -l 1000 bigfile.txt chunk_",
+          "hint_text": "Satir bazli bolme icin `split -l 1000` kullan.",
+          "hint_partial": "split -l ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-025-r120",
+      "type": "single",
+      "scenario": "Incident sonrasinda `README.txt` icindeki uzun satirlari 80 karakterde kir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fold -s -w 80 README.txt",
+          "hint_text": "Satir kirma icin `fold -s -w 80` kullan.",
+          "hint_partial": "fold -s ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-016-r121",
+      "type": "single",
+      "scenario": "Bakim oncesi `words.txt` icindeki kelimeleri tek tek satira indirip unique olarak sirala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tr ' ' '\\n' < words.txt | sort -u",
+          "hint_text": "Bosluklari satira cevirip `sort -u` kullan.",
+          "hint_partial": "tr ' ' ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-017-r122",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `app-122.conf` icinde `foo` gecen yerleri inplace `bar` ile degistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sed -i 's/foo/bar/g' app-122.conf",
+          "hint_text": "Yerinde degisim icin `sed -i` kullan.",
+          "hint_partial": "sed -i ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-018-r123",
+      "type": "single",
+      "scenario": "Deploy sonrasi `app-123.log` dosyasinin 50 ile 80 arasindaki satirlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sed -n '50,80p' app-123.log",
+          "hint_text": "Satir araligi icin `sed -n 'start,endp'` kullan.",
+          "hint_partial": "sed -n ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-019-r124",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `names.txt` ve `ids.txt` dosyalarini satir satir yanyana birlestir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "paste names.txt ids.txt",
+          "hint_text": "Satir bazli birlestirme icin `paste` kullan.",
+          "hint_partial": "paste ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-020-r125",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `notes.txt` icindeki bos olmayan satirlari satir numaralariyla goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "grep -n . notes.txt",
+          "hint_text": "Bos olmayan satirlari `grep -n .` ile filtrele.",
+          "hint_partial": "grep -n ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-021-r126",
+      "type": "single",
+      "scenario": "Runbook adiminda `/etc/passwd` dosyasindan kullanici adi ve UID alanlarini cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk -F: '{print $1,$3}' /etc/passwd",
+          "hint_text": "Kolon ayirici icin `-F:` kullan.",
+          "hint_partial": "awk -F: ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-022-r127",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `data.csv` dosyasini ikinci kolona gore sayisal ve azalan sirada duzenle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sort -t',' -k2,2nr data.csv",
+          "hint_text": "CSV kolon siralama icin `sort -t',' -k2,2nr` kullan.",
+          "hint_partial": "sort -t',' ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-023-r128",
+      "type": "single",
+      "scenario": "Incident sonrasinda `a.txt` ve `b.txt` dosyalarindaki ortak satirlari goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "comm -12 <(sort a.txt) <(sort b.txt)",
+          "hint_text": "Iki dosyayi siralayip `comm -12` ile ortak satirlari bul.",
+          "hint_partial": "comm -12 ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-024-r129",
+      "type": "single",
+      "scenario": "Bakim oncesi `bigfile.txt` dosyasini 1000 satirlik parcara bol.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "split -l 1000 bigfile.txt chunk_",
+          "hint_text": "Satir bazli bolme icin `split -l 1000` kullan.",
+          "hint_partial": "split -l ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-025-r130",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `README.txt` icindeki uzun satirlari 80 karakterde kir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fold -s -w 80 README.txt",
+          "hint_text": "Satir kirma icin `fold -s -w 80` kullan.",
+          "hint_partial": "fold -s ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-016-r131",
+      "type": "single",
+      "scenario": "Deploy sonrasi `words.txt` icindeki kelimeleri tek tek satira indirip unique olarak sirala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tr ' ' '\\n' < words.txt | sort -u",
+          "hint_text": "Bosluklari satira cevirip `sort -u` kullan.",
+          "hint_partial": "tr ' ' ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-017-r132",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `app-132.conf` icinde `foo` gecen yerleri inplace `bar` ile degistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sed -i 's/foo/bar/g' app-132.conf",
+          "hint_text": "Yerinde degisim icin `sed -i` kullan.",
+          "hint_partial": "sed -i ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-018-r133",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `app-133.log` dosyasinin 50 ile 80 arasindaki satirlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sed -n '50,80p' app-133.log",
+          "hint_text": "Satir araligi icin `sed -n 'start,endp'` kullan.",
+          "hint_partial": "sed -n ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-019-r134",
+      "type": "single",
+      "scenario": "Runbook adiminda `names.txt` ve `ids.txt` dosyalarini satir satir yanyana birlestir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "paste names.txt ids.txt",
+          "hint_text": "Satir bazli birlestirme icin `paste` kullan.",
+          "hint_partial": "paste ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-020-r135",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `notes.txt` icindeki bos olmayan satirlari satir numaralariyla goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "grep -n . notes.txt",
+          "hint_text": "Bos olmayan satirlari `grep -n .` ile filtrele.",
+          "hint_partial": "grep -n ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-021-r136",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/etc/passwd` dosyasindan kullanici adi ve UID alanlarini cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk -F: '{print $1,$3}' /etc/passwd",
+          "hint_text": "Kolon ayirici icin `-F:` kullan.",
+          "hint_partial": "awk -F: ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-022-r137",
+      "type": "single",
+      "scenario": "Bakim oncesi `data.csv` dosyasini ikinci kolona gore sayisal ve azalan sirada duzenle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sort -t',' -k2,2nr data.csv",
+          "hint_text": "CSV kolon siralama icin `sort -t',' -k2,2nr` kullan.",
+          "hint_partial": "sort -t',' ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-023-r138",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `a.txt` ve `b.txt` dosyalarindaki ortak satirlari goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "comm -12 <(sort a.txt) <(sort b.txt)",
+          "hint_text": "Iki dosyayi siralayip `comm -12` ile ortak satirlari bul.",
+          "hint_partial": "comm -12 ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-024-r139",
+      "type": "single",
+      "scenario": "Deploy sonrasi `bigfile.txt` dosyasini 1000 satirlik parcara bol.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "split -l 1000 bigfile.txt chunk_",
+          "hint_text": "Satir bazli bolme icin `split -l 1000` kullan.",
+          "hint_partial": "split -l ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-025-r140",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `README.txt` icindeki uzun satirlari 80 karakterde kir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fold -s -w 80 README.txt",
+          "hint_text": "Satir kirma icin `fold -s -w 80` kullan.",
+          "hint_partial": "fold -s ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-016-r141",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `words.txt` icindeki kelimeleri tek tek satira indirip unique olarak sirala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tr ' ' '\\n' < words.txt | sort -u",
+          "hint_text": "Bosluklari satira cevirip `sort -u` kullan.",
+          "hint_partial": "tr ' ' ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-017-r142",
+      "type": "single",
+      "scenario": "Runbook adiminda `app-142.conf` icinde `foo` gecen yerleri inplace `bar` ile degistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sed -i 's/foo/bar/g' app-142.conf",
+          "hint_text": "Yerinde degisim icin `sed -i` kullan.",
+          "hint_partial": "sed -i ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-018-r143",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `app-143.log` dosyasinin 50 ile 80 arasindaki satirlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sed -n '50,80p' app-143.log",
+          "hint_text": "Satir araligi icin `sed -n 'start,endp'` kullan.",
+          "hint_partial": "sed -n ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-019-r144",
+      "type": "single",
+      "scenario": "Incident sonrasinda `names.txt` ve `ids.txt` dosyalarini satir satir yanyana birlestir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "paste names.txt ids.txt",
+          "hint_text": "Satir bazli birlestirme icin `paste` kullan.",
+          "hint_partial": "paste ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-020-r145",
+      "type": "single",
+      "scenario": "Bakim oncesi `notes.txt` icindeki bos olmayan satirlari satir numaralariyla goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "grep -n . notes.txt",
+          "hint_text": "Bos olmayan satirlari `grep -n .` ile filtrele.",
+          "hint_partial": "grep -n ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-021-r146",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/etc/passwd` dosyasindan kullanici adi ve UID alanlarini cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk -F: '{print $1,$3}' /etc/passwd",
+          "hint_text": "Kolon ayirici icin `-F:` kullan.",
+          "hint_partial": "awk -F: ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-022-r147",
+      "type": "single",
+      "scenario": "Deploy sonrasi `data.csv` dosyasini ikinci kolona gore sayisal ve azalan sirada duzenle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sort -t',' -k2,2nr data.csv",
+          "hint_text": "CSV kolon siralama icin `sort -t',' -k2,2nr` kullan.",
+          "hint_partial": "sort -t',' ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-023-r148",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `a.txt` ve `b.txt` dosyalarindaki ortak satirlari goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "comm -12 <(sort a.txt) <(sort b.txt)",
+          "hint_text": "Iki dosyayi siralayip `comm -12` ile ortak satirlari bul.",
+          "hint_partial": "comm -12 ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-024-r149",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `bigfile.txt` dosyasini 1000 satirlik parcara bol.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "split -l 1000 bigfile.txt chunk_",
+          "hint_text": "Satir bazli bolme icin `split -l 1000` kullan.",
+          "hint_partial": "split -l ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-025-r150",
+      "type": "single",
+      "scenario": "Runbook adiminda `README.txt` icindeki uzun satirlari 80 karakterde kir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fold -s -w 80 README.txt",
+          "hint_text": "Satir kirma icin `fold -s -w 80` kullan.",
+          "hint_partial": "fold -s ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-016-r151",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `words.txt` icindeki kelimeleri tek tek satira indirip unique olarak sirala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tr ' ' '\\n' < words.txt | sort -u",
+          "hint_text": "Bosluklari satira cevirip `sort -u` kullan.",
+          "hint_partial": "tr ' ' ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-017-r152",
+      "type": "single",
+      "scenario": "Incident sonrasinda `app-152.conf` icinde `foo` gecen yerleri inplace `bar` ile degistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sed -i 's/foo/bar/g' app-152.conf",
+          "hint_text": "Yerinde degisim icin `sed -i` kullan.",
+          "hint_partial": "sed -i ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-018-r153",
+      "type": "single",
+      "scenario": "Bakim oncesi `app-153.log` dosyasinin 50 ile 80 arasindaki satirlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sed -n '50,80p' app-153.log",
+          "hint_text": "Satir araligi icin `sed -n 'start,endp'` kullan.",
+          "hint_partial": "sed -n ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-019-r154",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `names.txt` ve `ids.txt` dosyalarini satir satir yanyana birlestir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "paste names.txt ids.txt",
+          "hint_text": "Satir bazli birlestirme icin `paste` kullan.",
+          "hint_partial": "paste ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-020-r155",
+      "type": "single",
+      "scenario": "Deploy sonrasi `notes.txt` icindeki bos olmayan satirlari satir numaralariyla goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "grep -n . notes.txt",
+          "hint_text": "Bos olmayan satirlari `grep -n .` ile filtrele.",
+          "hint_partial": "grep -n ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-021-r156",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/etc/passwd` dosyasindan kullanici adi ve UID alanlarini cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk -F: '{print $1,$3}' /etc/passwd",
+          "hint_text": "Kolon ayirici icin `-F:` kullan.",
+          "hint_partial": "awk -F: ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-022-r157",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `data.csv` dosyasini ikinci kolona gore sayisal ve azalan sirada duzenle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sort -t',' -k2,2nr data.csv",
+          "hint_text": "CSV kolon siralama icin `sort -t',' -k2,2nr` kullan.",
+          "hint_partial": "sort -t',' ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-023-r158",
+      "type": "single",
+      "scenario": "Runbook adiminda `a.txt` ve `b.txt` dosyalarindaki ortak satirlari goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "comm -12 <(sort a.txt) <(sort b.txt)",
+          "hint_text": "Iki dosyayi siralayip `comm -12` ile ortak satirlari bul.",
+          "hint_partial": "comm -12 ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-024-r159",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `bigfile.txt` dosyasini 1000 satirlik parcara bol.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "split -l 1000 bigfile.txt chunk_",
+          "hint_text": "Satir bazli bolme icin `split -l 1000` kullan.",
+          "hint_partial": "split -l ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-025-r160",
+      "type": "single",
+      "scenario": "Incident sonrasinda `README.txt` icindeki uzun satirlari 80 karakterde kir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fold -s -w 80 README.txt",
+          "hint_text": "Satir kirma icin `fold -s -w 80` kullan.",
+          "hint_partial": "fold -s ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-016-r161",
+      "type": "single",
+      "scenario": "Bakim oncesi `words.txt` icindeki kelimeleri tek tek satira indirip unique olarak sirala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tr ' ' '\\n' < words.txt | sort -u",
+          "hint_text": "Bosluklari satira cevirip `sort -u` kullan.",
+          "hint_partial": "tr ' ' ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-017-r162",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `app-162.conf` icinde `foo` gecen yerleri inplace `bar` ile degistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sed -i 's/foo/bar/g' app-162.conf",
+          "hint_text": "Yerinde degisim icin `sed -i` kullan.",
+          "hint_partial": "sed -i ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-018-r163",
+      "type": "single",
+      "scenario": "Deploy sonrasi `app-163.log` dosyasinin 50 ile 80 arasindaki satirlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sed -n '50,80p' app-163.log",
+          "hint_text": "Satir araligi icin `sed -n 'start,endp'` kullan.",
+          "hint_partial": "sed -n ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-019-r164",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `names.txt` ve `ids.txt` dosyalarini satir satir yanyana birlestir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "paste names.txt ids.txt",
+          "hint_text": "Satir bazli birlestirme icin `paste` kullan.",
+          "hint_partial": "paste ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-020-r165",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `notes.txt` icindeki bos olmayan satirlari satir numaralariyla goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "grep -n . notes.txt",
+          "hint_text": "Bos olmayan satirlari `grep -n .` ile filtrele.",
+          "hint_partial": "grep -n ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-021-r166",
+      "type": "single",
+      "scenario": "Runbook adiminda `/etc/passwd` dosyasindan kullanici adi ve UID alanlarini cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk -F: '{print $1,$3}' /etc/passwd",
+          "hint_text": "Kolon ayirici icin `-F:` kullan.",
+          "hint_partial": "awk -F: ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-022-r167",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `data.csv` dosyasini ikinci kolona gore sayisal ve azalan sirada duzenle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sort -t',' -k2,2nr data.csv",
+          "hint_text": "CSV kolon siralama icin `sort -t',' -k2,2nr` kullan.",
+          "hint_partial": "sort -t',' ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-023-r168",
+      "type": "single",
+      "scenario": "Incident sonrasinda `a.txt` ve `b.txt` dosyalarindaki ortak satirlari goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "comm -12 <(sort a.txt) <(sort b.txt)",
+          "hint_text": "Iki dosyayi siralayip `comm -12` ile ortak satirlari bul.",
+          "hint_partial": "comm -12 ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-024-r169",
+      "type": "single",
+      "scenario": "Bakim oncesi `bigfile.txt` dosyasini 1000 satirlik parcara bol.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "split -l 1000 bigfile.txt chunk_",
+          "hint_text": "Satir bazli bolme icin `split -l 1000` kullan.",
+          "hint_partial": "split -l ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-025-r170",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `README.txt` icindeki uzun satirlari 80 karakterde kir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fold -s -w 80 README.txt",
+          "hint_text": "Satir kirma icin `fold -s -w 80` kullan.",
+          "hint_partial": "fold -s ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-016-r171",
+      "type": "single",
+      "scenario": "Deploy sonrasi `words.txt` icindeki kelimeleri tek tek satira indirip unique olarak sirala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tr ' ' '\\n' < words.txt | sort -u",
+          "hint_text": "Bosluklari satira cevirip `sort -u` kullan.",
+          "hint_partial": "tr ' ' ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-017-r172",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `app-172.conf` icinde `foo` gecen yerleri inplace `bar` ile degistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sed -i 's/foo/bar/g' app-172.conf",
+          "hint_text": "Yerinde degisim icin `sed -i` kullan.",
+          "hint_partial": "sed -i ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-018-r173",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `app-173.log` dosyasinin 50 ile 80 arasindaki satirlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sed -n '50,80p' app-173.log",
+          "hint_text": "Satir araligi icin `sed -n 'start,endp'` kullan.",
+          "hint_partial": "sed -n ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-019-r174",
+      "type": "single",
+      "scenario": "Runbook adiminda `names.txt` ve `ids.txt` dosyalarini satir satir yanyana birlestir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "paste names.txt ids.txt",
+          "hint_text": "Satir bazli birlestirme icin `paste` kullan.",
+          "hint_partial": "paste ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-020-r175",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `notes.txt` icindeki bos olmayan satirlari satir numaralariyla goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "grep -n . notes.txt",
+          "hint_text": "Bos olmayan satirlari `grep -n .` ile filtrele.",
+          "hint_partial": "grep -n ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-021-r176",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/etc/passwd` dosyasindan kullanici adi ve UID alanlarini cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk -F: '{print $1,$3}' /etc/passwd",
+          "hint_text": "Kolon ayirici icin `-F:` kullan.",
+          "hint_partial": "awk -F: ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-022-r177",
+      "type": "single",
+      "scenario": "Bakim oncesi `data.csv` dosyasini ikinci kolona gore sayisal ve azalan sirada duzenle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sort -t',' -k2,2nr data.csv",
+          "hint_text": "CSV kolon siralama icin `sort -t',' -k2,2nr` kullan.",
+          "hint_partial": "sort -t',' ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-023-r178",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `a.txt` ve `b.txt` dosyalarindaki ortak satirlari goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "comm -12 <(sort a.txt) <(sort b.txt)",
+          "hint_text": "Iki dosyayi siralayip `comm -12` ile ortak satirlari bul.",
+          "hint_partial": "comm -12 ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-024-r179",
+      "type": "single",
+      "scenario": "Deploy sonrasi `bigfile.txt` dosyasini 1000 satirlik parcara bol.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "split -l 1000 bigfile.txt chunk_",
+          "hint_text": "Satir bazli bolme icin `split -l 1000` kullan.",
+          "hint_partial": "split -l ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-025-r180",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `README.txt` icindeki uzun satirlari 80 karakterde kir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fold -s -w 80 README.txt",
+          "hint_text": "Satir kirma icin `fold -s -w 80` kullan.",
+          "hint_partial": "fold -s ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-016-r181",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `words.txt` icindeki kelimeleri tek tek satira indirip unique olarak sirala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tr ' ' '\\n' < words.txt | sort -u",
+          "hint_text": "Bosluklari satira cevirip `sort -u` kullan.",
+          "hint_partial": "tr ' ' ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-017-r182",
+      "type": "single",
+      "scenario": "Runbook adiminda `app-182.conf` icinde `foo` gecen yerleri inplace `bar` ile degistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sed -i 's/foo/bar/g' app-182.conf",
+          "hint_text": "Yerinde degisim icin `sed -i` kullan.",
+          "hint_partial": "sed -i ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-018-r183",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `app-183.log` dosyasinin 50 ile 80 arasindaki satirlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sed -n '50,80p' app-183.log",
+          "hint_text": "Satir araligi icin `sed -n 'start,endp'` kullan.",
+          "hint_partial": "sed -n ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-019-r184",
+      "type": "single",
+      "scenario": "Incident sonrasinda `names.txt` ve `ids.txt` dosyalarini satir satir yanyana birlestir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "paste names.txt ids.txt",
+          "hint_text": "Satir bazli birlestirme icin `paste` kullan.",
+          "hint_partial": "paste ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-020-r185",
+      "type": "single",
+      "scenario": "Bakim oncesi `notes.txt` icindeki bos olmayan satirlari satir numaralariyla goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "grep -n . notes.txt",
+          "hint_text": "Bos olmayan satirlari `grep -n .` ile filtrele.",
+          "hint_partial": "grep -n ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-021-r186",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/etc/passwd` dosyasindan kullanici adi ve UID alanlarini cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk -F: '{print $1,$3}' /etc/passwd",
+          "hint_text": "Kolon ayirici icin `-F:` kullan.",
+          "hint_partial": "awk -F: ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-022-r187",
+      "type": "single",
+      "scenario": "Deploy sonrasi `data.csv` dosyasini ikinci kolona gore sayisal ve azalan sirada duzenle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sort -t',' -k2,2nr data.csv",
+          "hint_text": "CSV kolon siralama icin `sort -t',' -k2,2nr` kullan.",
+          "hint_partial": "sort -t',' ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-023-r188",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `a.txt` ve `b.txt` dosyalarindaki ortak satirlari goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "comm -12 <(sort a.txt) <(sort b.txt)",
+          "hint_text": "Iki dosyayi siralayip `comm -12` ile ortak satirlari bul.",
+          "hint_partial": "comm -12 ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-024-r189",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `bigfile.txt` dosyasini 1000 satirlik parcara bol.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "split -l 1000 bigfile.txt chunk_",
+          "hint_text": "Satir bazli bolme icin `split -l 1000` kullan.",
+          "hint_partial": "split -l ..."
+        }
+      ]
+    },
+    {
+      "id": "mtext-025-r190",
+      "type": "single",
+      "scenario": "Runbook adiminda `README.txt` icindeki uzun satirlari 80 karakterde kir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fold -s -w 80 README.txt",
+          "hint_text": "Satir kirma icin `fold -s -w 80` kullan.",
+          "hint_partial": "fold -s ..."
+        }
+      ]
+    }
+  ]
+}

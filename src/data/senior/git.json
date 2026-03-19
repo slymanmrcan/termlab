@@ -1,0 +1,142 @@
+{
+  "level": "senior",
+  "topic": "git",
+  "questions": [
+    {
+      "id": "sgit-001",
+      "type": "single",
+      "scenario": "Yakindaki HEAD hareketlerini zaman damgasi ile ozetlemek icin son 10 reflog kaydini getir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git reflog --date=iso -10",
+          "hint_text": "Reflog'u zaman bilgisiyla kisa almak icin `git reflog --date=iso -10` kullan.",
+          "hint_partial": "git reflog --date=iso -10"
+        }
+      ]
+    },
+    {
+      "id": "sgit-002",
+      "type": "multi-step",
+      "scenario": "Hotfix commit'ini ana branch'e almadan once etkisini incele. Once commit'in dosya ozetini gor, sonra commit'i working tree'ye no-commit olarak uygula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git show --stat --name-only abc1234",
+          "hint_text": "Commit'in hangi dosyalari etkiledigini gormek icin `git show --stat --name-only` kullan.",
+          "hint_partial": "git show --stat --name-only ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "git cherry-pick --no-commit abc1234",
+          "hint_text": "Commit'i hemen commit etmeden uygulamak icin `git cherry-pick --no-commit` kullan.",
+          "hint_partial": "git cherry-pick --no-commit ..."
+        }
+      ]
+    },
+    {
+      "id": "sgit-003",
+      "type": "single",
+      "scenario": "Mevcut branch'i origin/main üzerine rebase et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git rebase origin/main",
+          "hint_text": "Güncel main üzerine taşımak için `git rebase` kullan.",
+          "hint_partial": "git rebase ..."
+        }
+      ]
+    },
+    {
+      "id": "sgit-004",
+      "type": "single",
+      "scenario": "hotfix/login branch'i için ayrı bir worktree oluştur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git worktree add ../repo-hotfix hotfix/login",
+          "hint_text": "`git worktree add path branch` formatını kullan.",
+          "hint_partial": "git worktree add ... ..."
+        }
+      ]
+    },
+    {
+      "id": "sgit-005",
+      "type": "single",
+      "scenario": "src/app.tsx file'ında 10 ile 20 arasındaki satırların blame bilgisini göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git blame -L 10,20 src/app.tsx",
+          "hint_text": "Belirli line aralığı için `git blame -L` kullan.",
+          "hint_partial": "git blame -L ..."
+        }
+      ]
+    },
+    {
+      "id": "sgit-006",
+      "type": "single",
+      "scenario": "Main ile current branch arasındaki commit farkını soldan sağa log formatında göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git log --oneline --left-right origin/main...HEAD",
+          "hint_text": "Karşılaştırmalı log için üç nokta ve `--left-right` kullan.",
+          "hint_partial": "git log --oneline --left-right ..."
+        }
+      ]
+    },
+    {
+      "id": "sgit-007",
+      "type": "single",
+      "scenario": "Merge base commit'ini bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git merge-base HEAD origin/main",
+          "hint_text": "İki referansın ortak atasını bulmak için `git merge-base` kullan.",
+          "hint_partial": "git merge-base ... ..."
+        }
+      ]
+    },
+    {
+      "id": "sgit-008",
+      "type": "single",
+      "scenario": "Son 20 commit'i yazar adıyla kısa formatta listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git log --oneline --format=\"%h %an %s\" -20",
+          "hint_text": "Custom log format için `--format` kullan.",
+          "hint_partial": "git log --oneline --format=..."
+        }
+      ]
+    },
+    {
+      "id": "sgit-009",
+      "type": "single",
+      "scenario": "Current branch için takip edilen upstream branch'i göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git rev-parse --abbrev-ref --symbolic-full-name @{u}",
+          "hint_text": "Upstream ref için `git rev-parse` kullan.",
+          "hint_partial": "git rev-parse ..."
+        }
+      ]
+    },
+    {
+      "id": "sgit-010",
+      "type": "single",
+      "scenario": "Bir commit'te değişen file adlarını listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git diff-tree --no-commit-id --name-only -r abc1234",
+          "hint_text": "Commit file listesi için `git diff-tree` kullan.",
+          "hint_partial": "git diff-tree ..."
+        }
+      ]
+    }
+  ]
+}

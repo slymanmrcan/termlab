@@ -1,0 +1,154 @@
+{
+  "level": "mid",
+  "topic": "git",
+  "questions": [
+    {
+      "id": "mgit-001",
+      "type": "multi-step",
+      "scenario": "Release oncesi hangi dosyalar degismis ve hangileri stage'e alinmis, ikisini de kisa ozetle kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git status --short",
+          "hint_text": "Degisen dosyalari kisa formatta gormek icin `git status --short` kullan.",
+          "hint_partial": "git status --short"
+        },
+        {
+          "prompt": "$ ",
+          "answer": "git diff --cached --stat",
+          "hint_text": "Stage'e alinmis degisiklikleri ozetlemek icin `git diff --cached --stat` kullan.",
+          "hint_partial": "git diff --cached ..."
+        }
+      ]
+    },
+    {
+      "id": "mgit-002",
+      "type": "multi-step",
+      "scenario": "PR oncesi unstaged degisikliklerle staged patch'i ayri ayri incele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git diff",
+          "hint_text": "Calisma agacindaki unstaged degisiklikleri `git diff` ile gor.",
+          "hint_partial": "git diff"
+        },
+        {
+          "prompt": "$ ",
+          "answer": "git diff --cached",
+          "hint_text": "Stage'e alinmis degisiklikleri ayri gormek icin `git diff --cached` kullan.",
+          "hint_partial": "git diff --cached"
+        }
+      ]
+    },
+    {
+      "id": "mgit-003",
+      "type": "single",
+      "scenario": "Son 10 commit'i graph görünümüyle özetle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git log --oneline --graph -10",
+          "hint_text": "`git log` için kısa ve graph görünümünü birleştir.",
+          "hint_partial": "git log --oneline ..."
+        }
+      ]
+    },
+    {
+      "id": "mgit-004",
+      "type": "single",
+      "scenario": "feature/login adında yeni bir branch oluşturup ona geç.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git switch -c feature/login",
+          "hint_text": "Yeni branch ve switch için `git switch -c` kullan.",
+          "hint_partial": "git switch -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mgit-005",
+      "type": "single",
+      "scenario": "Mevcut değişiklikleri açıklamalı bir stash olarak kaydet.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git stash push -m \"wip\"",
+          "hint_text": "Mesajlı stash için `git stash push -m` kullan.",
+          "hint_partial": "git stash push -m ..."
+        }
+      ]
+    },
+    {
+      "id": "mgit-006",
+      "type": "single",
+      "scenario": "Tum local branch'lerin hangi upstream'i track ettigini ve one/behind bilgisini cikar.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git for-each-ref --format='%(refname:short) %(upstream:short) %(upstream:track)' refs/heads",
+          "hint_text": "Branch ve upstream ozetini `git for-each-ref` ile formatli yazdir.",
+          "hint_partial": "git for-each-ref --format='...'"
+        }
+      ]
+    },
+    {
+      "id": "mgit-007",
+      "type": "multi-step",
+      "scenario": "En son stash'in hangi dosyalari etkiledigini gormek icin once listeyi al, sonra son stash'in ozetini ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git stash list",
+          "hint_text": "Stash kayitlarini gormek icin `git stash list` kullan.",
+          "hint_partial": "git stash list"
+        },
+        {
+          "prompt": "$ ",
+          "answer": "git stash show --stat stash@{0}",
+          "hint_text": "En son stash'in dosya etkisini gormek icin `git stash show --stat stash@{0}` kullan.",
+          "hint_partial": "git stash show --stat ..."
+        }
+      ]
+    },
+    {
+      "id": "mgit-008",
+      "type": "single",
+      "scenario": "Bir önceki commit ile current working tree arasındaki diff'i göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git diff HEAD~1",
+          "hint_text": "Belirli referansa karşı diff için `git diff <ref>` kullan.",
+          "hint_partial": "git diff ..."
+        }
+      ]
+    },
+    {
+      "id": "mgit-009",
+      "type": "single",
+      "scenario": "Remote'lardan en güncel referansları çek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git fetch --all --prune",
+          "hint_text": "Tüm remote'lar için `git fetch --all --prune` kullan.",
+          "hint_partial": "git fetch --all --prune"
+        }
+      ]
+    },
+    {
+      "id": "mgit-010",
+      "type": "single",
+      "scenario": "Son commit'e dokunmadan staged değişiklikleri geri al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git restore --staged .",
+          "hint_text": "Stage geri almak için `git restore --staged` kullan.",
+          "hint_partial": "git restore --staged ..."
+        }
+      ]
+    }
+  ]
+}

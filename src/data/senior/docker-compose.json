@@ -1,0 +1,136 @@
+{
+  "level": "senior",
+  "topic": "docker-compose",
+  "questions": [
+    {
+      "id": "sdc-001",
+      "type": "single",
+      "scenario": "Compose profile bilgilerini de acarak config'i goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose config --profiles",
+          "hint_text": "Profile detaylari icin `config --profiles` kullan.",
+          "hint_partial": "docker compose config ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-002",
+      "type": "single",
+      "scenario": "Compose event stream'ini JSON formatinda izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose events --json",
+          "hint_text": "Event JSON cikisi icin `events --json` kullan.",
+          "hint_partial": "docker compose events ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-003",
+      "type": "single",
+      "scenario": "`worker` servisini 3 replica ile detached kaldir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose up -d --scale worker=3",
+          "hint_text": "Replica sayisi icin `--scale service=n` kullan.",
+          "hint_partial": "docker compose up ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-004",
+      "type": "single",
+      "scenario": "`api` icin son 10 dakikanin loglarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose logs --since 10m api",
+          "hint_text": "Zaman filtresi icin `--since` kullan.",
+          "hint_partial": "docker compose logs ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-005",
+      "type": "single",
+      "scenario": "Sadece `api` servisi icin process listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose top api",
+          "hint_text": "Tek servis top icin `docker compose top service` kullan.",
+          "hint_partial": "docker compose top ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-006",
+      "type": "single",
+      "scenario": "`db` servisi icinde TTY olmadan `pg_dump` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose exec -T db pg_dump -U postgres app",
+          "hint_text": "TTY'siz exec icin `-T` kullan.",
+          "hint_partial": "docker compose exec -T ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-007",
+      "type": "single",
+      "scenario": "Local `nginx.conf` dosyasini `web` servisine kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose cp nginx.conf web:/etc/nginx/nginx.conf",
+          "hint_text": "Compose tarafinda copy icin `docker compose cp` kullan.",
+          "hint_partial": "docker compose cp ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-008",
+      "type": "single",
+      "scenario": "Image'lari hatali pull'lari yok sayarak cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose pull --ignore-pull-failures",
+          "hint_text": "Pull hatalarini ignore etmek icin ilgili flag'i kullan.",
+          "hint_partial": "docker compose pull ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-009",
+      "type": "single",
+      "scenario": "Compose stack'ini volume'ler ve orphan container'larla birlikte kaldir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose down --volumes --remove-orphans",
+          "hint_text": "Volume ve orphan temizligi icin ilgili flag'leri ekle.",
+          "hint_partial": "docker compose down ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-010",
+      "type": "single",
+      "scenario": "`api` ve `db` servislerini ayni anda restart et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose restart api db",
+          "hint_text": "Birden fazla servis ismi ekleyebilirsin.",
+          "hint_partial": "docker compose restart ..."
+        }
+      ]
+    }
+  ]
+}

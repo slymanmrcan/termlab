@@ -1,0 +1,2606 @@
+{
+  "level": "senior",
+  "topic": "docker-swarm",
+  "questions": [
+    {
+      "id": "sds-011",
+      "type": "single",
+      "scenario": "`worker1` node bilgisini okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node inspect --pretty worker1",
+          "hint_text": "Node icin okunur output `--pretty` ile gelir.",
+          "hint_partial": "docker node inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-012",
+      "type": "single",
+      "scenario": "`web` service icin rolling update'i paralellik 2 ve gecikme 10s ile ayarla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --update-parallelism 2 --update-delay 10s web",
+          "hint_text": "Rolling update davranisi icin update flag'lerini kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-013",
+      "type": "single",
+      "scenario": "`web` service rollback davranisini paralellik 2 ve gecikme 5s yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --rollback-parallelism 2 --rollback-delay 5s web",
+          "hint_text": "Rollback parametreleri icin ilgili flag'leri kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-014",
+      "type": "single",
+      "scenario": "`worker1` node'a `zone=eu1` label'i ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node update --label-add zone=eu1 worker1",
+          "hint_text": "Node label eklemek icin `--label-add` kullan.",
+          "hint_partial": "docker node update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-015",
+      "type": "single",
+      "scenario": "`web` service'i sadece `zone=eu1` label'li node'larda kosacak sekilde guncelle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --constraint-add node.labels.zone==eu1 web",
+          "hint_text": "Node label constraint'i icin `node.labels.*` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-016",
+      "type": "single",
+      "scenario": "`db_pass` secret'ini `web` service'e ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --secret-add source=db_pass,target=db_pass web",
+          "hint_text": "Secret mount icin `--secret-add source=...,target=...` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-017",
+      "type": "single",
+      "scenario": "`nginx_cfg` config'ini `web` service icinde `/etc/nginx/nginx.conf` hedefiyle ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --config-add source=nginx_cfg,target=/etc/nginx/nginx.conf web",
+          "hint_text": "Config mount icin `--config-add` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-018",
+      "type": "single",
+      "scenario": "`stack.yml` ile `mystack` stack'ini prune ederek deploy et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack deploy -c stack.yml --prune mystack",
+          "hint_text": "Eski service'leri temizlemek icin `--prune` kullan.",
+          "hint_partial": "docker stack deploy ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-019",
+      "type": "single",
+      "scenario": "`db_pass` secret metadata'sini inspect et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker secret inspect db_pass",
+          "hint_text": "Secret metadata icin `docker secret inspect` kullan.",
+          "hint_partial": "docker secret inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-020",
+      "type": "single",
+      "scenario": "`nginx_cfg` config metadata'sini inspect et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker config inspect nginx_cfg",
+          "hint_text": "Config inspect icin `docker config inspect` kullan.",
+          "hint_partial": "docker config inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-021",
+      "type": "single",
+      "scenario": "Encrypted overlay network olustur: `secure-net`.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network create -d overlay --opt encrypted secure-net",
+          "hint_text": "Sifreli overlay icin `--opt encrypted` kullan.",
+          "hint_partial": "docker network create ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-022",
+      "type": "single",
+      "scenario": "Swarm unlock key bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm unlock-key",
+          "hint_text": "Unlock key icin `docker swarm unlock-key` kullan.",
+          "hint_partial": "docker swarm unlock-key"
+        }
+      ]
+    },
+    {
+      "id": "sds-023",
+      "type": "single",
+      "scenario": "Swarm task history limit'ini 5 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm update --task-history-limit 5",
+          "hint_text": "Task history limiti icin `docker swarm update` kullan.",
+          "hint_partial": "docker swarm update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-024",
+      "type": "single",
+      "scenario": "`web` service loglarini raw formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service logs --raw web",
+          "hint_text": "Ham log icin `--raw` kullan.",
+          "hint_partial": "docker service logs ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-025",
+      "type": "single",
+      "scenario": "`web` service icin spread placement preference ekle: `node.labels.zone`.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --placement-pref-add 'spread=node.labels.zone' web",
+          "hint_text": "Placement preference icin `--placement-pref-add` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-011-r1",
+      "type": "single",
+      "scenario": "Bakim oncesi `worker1` node bilgisini okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node inspect --pretty worker1",
+          "hint_text": "Node icin okunur output `--pretty` ile gelir.",
+          "hint_partial": "docker node inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-012-r2",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `cache-2-2-2` service icin rolling update'i paralellik 2 ve gecikme 10s ile ayarla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --update-parallelism 2 --update-delay 10s cache-2-2-2",
+          "hint_text": "Rolling update davranisi icin update flag'lerini kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-013-r3",
+      "type": "single",
+      "scenario": "Deploy sonrasi `worker-3` service rollback davranisini paralellik 2 ve gecikme 5s yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --rollback-parallelism 2 --rollback-delay 5s worker-3",
+          "hint_text": "Rollback parametreleri icin ilgili flag'leri kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-014-r4",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `worker1` node'a `zone=eu1` label'i ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node update --label-add zone=eu1 worker1",
+          "hint_text": "Node label eklemek icin `--label-add` kullan.",
+          "hint_partial": "docker node update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-015-r5",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `cache-5-5` service'i sadece `zone=eu1` label'li node'larda kosacak sekilde guncelle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --constraint-add node.labels.zone==eu1 cache-5-5",
+          "hint_text": "Node label constraint'i icin `node.labels.*` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-016-r6",
+      "type": "single",
+      "scenario": "Runbook adiminda `db_pass` secret'ini `queue-6` service'e ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --secret-add source=db_pass,target=db_pass queue-6",
+          "hint_text": "Secret mount icin `--secret-add source=...,target=...` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-017-r7",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `nginx_cfg` config'ini `bastion-7` service icinde `/etc/nginx-7/nginx-7-7.conf` hedefiyle ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --config-add source=nginx_cfg,target=/etc/nginx-7/nginx-7-7.conf bastion-7",
+          "hint_text": "Config mount icin `--config-add` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-018-r8",
+      "type": "single",
+      "scenario": "Incident sonrasinda `stack.yml` ile `mystack` stack'ini prune ederek deploy et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack deploy -c stack.yml --prune mystack",
+          "hint_text": "Eski service'leri temizlemek icin `--prune` kullan.",
+          "hint_partial": "docker stack deploy ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-019-r9",
+      "type": "single",
+      "scenario": "Bakim oncesi `db_pass` secret metadata'sini inspect et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker secret inspect db_pass",
+          "hint_text": "Secret metadata icin `docker secret inspect` kullan.",
+          "hint_partial": "docker secret inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-020-r10",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `nginx_cfg` config metadata'sini inspect et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker config inspect nginx_cfg",
+          "hint_text": "Config inspect icin `docker config inspect` kullan.",
+          "hint_partial": "docker config inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-021-r11",
+      "type": "single",
+      "scenario": "Deploy sonrasi encrypted overlay network olustur: `secure-net`.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network create -d overlay --opt encrypted secure-net",
+          "hint_text": "Sifreli overlay icin `--opt encrypted` kullan.",
+          "hint_partial": "docker network create ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-022-r12",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde swarm unlock key bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm unlock-key",
+          "hint_text": "Unlock key icin `docker swarm unlock-key` kullan.",
+          "hint_partial": "docker swarm unlock-key"
+        }
+      ]
+    },
+    {
+      "id": "sds-023-r13",
+      "type": "single",
+      "scenario": "Yeni acilan hostta swarm task history limit'ini 5 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm update --task-history-limit 5",
+          "hint_text": "Task history limiti icin `docker swarm update` kullan.",
+          "hint_partial": "docker swarm update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-024-r14",
+      "type": "single",
+      "scenario": "Runbook adiminda `queue-14` service loglarini raw formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service logs --raw queue-14",
+          "hint_text": "Ham log icin `--raw` kullan.",
+          "hint_partial": "docker service logs ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-025-r15",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `bastion-15` service icin spread placement preference ekle: `node.labels.zone`.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --placement-pref-add 'spread=node.labels.zone' bastion-15",
+          "hint_text": "Placement preference icin `--placement-pref-add` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-011-r16",
+      "type": "single",
+      "scenario": "Incident sonrasinda `worker1` node bilgisini okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node inspect --pretty worker1",
+          "hint_text": "Node icin okunur output `--pretty` ile gelir.",
+          "hint_partial": "docker node inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-012-r17",
+      "type": "single",
+      "scenario": "Bakim oncesi `web-17` service icin rolling update'i paralellik 2 ve gecikme 10s ile ayarla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --update-parallelism 2 --update-delay 10s web-17",
+          "hint_text": "Rolling update davranisi icin update flag'lerini kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-013-r18",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `cache-18-18-18` service rollback davranisini paralellik 2 ve gecikme 5s yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --rollback-parallelism 2 --rollback-delay 5s cache-18-18-18",
+          "hint_text": "Rollback parametreleri icin ilgili flag'leri kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-014-r19",
+      "type": "single",
+      "scenario": "Deploy sonrasi `worker1` node'a `zone=eu1` label'i ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node update --label-add zone=eu1 worker1",
+          "hint_text": "Node label eklemek icin `--label-add` kullan.",
+          "hint_partial": "docker node update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-015-r20",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `db-20-20` service'i sadece `zone=eu1` label'li node'larda kosacak sekilde guncelle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --constraint-add node.labels.zone==eu1 db-20-20",
+          "hint_text": "Node label constraint'i icin `node.labels.*` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-016-r21",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `db_pass` secret'ini `cache-21-21` service'e ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --secret-add source=db_pass,target=db_pass cache-21-21",
+          "hint_text": "Secret mount icin `--secret-add source=...,target=...` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-017-r22",
+      "type": "single",
+      "scenario": "Runbook adiminda `nginx_cfg` config'ini `queue-22` service icinde `/etc/traefik-22/traefik-22-22.conf` hedefiyle ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --config-add source=nginx_cfg,target=/etc/traefik-22/traefik-22-22.conf queue-22",
+          "hint_text": "Config mount icin `--config-add` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-018-r23",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `stack.yml` ile `mystack` stack'ini prune ederek deploy et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack deploy -c stack.yml --prune mystack",
+          "hint_text": "Eski service'leri temizlemek icin `--prune` kullan.",
+          "hint_partial": "docker stack deploy ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-019-r24",
+      "type": "single",
+      "scenario": "Incident sonrasinda `db_pass` secret metadata'sini inspect et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker secret inspect db_pass",
+          "hint_text": "Secret metadata icin `docker secret inspect` kullan.",
+          "hint_partial": "docker secret inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-020-r25",
+      "type": "single",
+      "scenario": "Bakim oncesi `nginx_cfg` config metadata'sini inspect et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker config inspect nginx_cfg",
+          "hint_text": "Config inspect icin `docker config inspect` kullan.",
+          "hint_partial": "docker config inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-021-r26",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda encrypted overlay network olustur: `secure-net`.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network create -d overlay --opt encrypted secure-net",
+          "hint_text": "Sifreli overlay icin `--opt encrypted` kullan.",
+          "hint_partial": "docker network create ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-022-r27",
+      "type": "single",
+      "scenario": "Deploy sonrasi swarm unlock key bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm unlock-key",
+          "hint_text": "Unlock key icin `docker swarm unlock-key` kullan.",
+          "hint_partial": "docker swarm unlock-key"
+        }
+      ]
+    },
+    {
+      "id": "sds-023-r28",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde swarm task history limit'ini 5 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm update --task-history-limit 5",
+          "hint_text": "Task history limiti icin `docker swarm update` kullan.",
+          "hint_partial": "docker swarm update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-024-r29",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `cache-29-29` service loglarini raw formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service logs --raw cache-29-29",
+          "hint_text": "Ham log icin `--raw` kullan.",
+          "hint_partial": "docker service logs ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-025-r30",
+      "type": "single",
+      "scenario": "Runbook adiminda `queue-30` service icin spread placement preference ekle: `node.labels.zone`.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --placement-pref-add 'spread=node.labels.zone' queue-30",
+          "hint_text": "Placement preference icin `--placement-pref-add` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-011-r31",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `worker1` node bilgisini okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node inspect --pretty worker1",
+          "hint_text": "Node icin okunur output `--pretty` ile gelir.",
+          "hint_partial": "docker node inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-012-r32",
+      "type": "single",
+      "scenario": "Incident sonrasinda `proxy-32` service icin rolling update'i paralellik 2 ve gecikme 10s ile ayarla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --update-parallelism 2 --update-delay 10s proxy-32",
+          "hint_text": "Rolling update davranisi icin update flag'lerini kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-013-r33",
+      "type": "single",
+      "scenario": "Bakim oncesi `web-33` service rollback davranisini paralellik 2 ve gecikme 5s yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --rollback-parallelism 2 --rollback-delay 5s web-33",
+          "hint_text": "Rollback parametreleri icin ilgili flag'leri kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-014-r34",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `worker1` node'a `zone=eu1` label'i ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node update --label-add zone=eu1 worker1",
+          "hint_text": "Node label eklemek icin `--label-add` kullan.",
+          "hint_partial": "docker node update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-015-r35",
+      "type": "single",
+      "scenario": "Deploy sonrasi `worker-35` service'i sadece `zone=eu1` label'li node'larda kosacak sekilde guncelle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --constraint-add node.labels.zone==eu1 worker-35",
+          "hint_text": "Node label constraint'i icin `node.labels.*` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-016-r36",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `db_pass` secret'ini `db-36-36` service'e ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --secret-add source=db_pass,target=db_pass db-36-36",
+          "hint_text": "Secret mount icin `--secret-add source=...,target=...` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-017-r37",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `nginx_cfg` config'ini `cache-37-37` service icinde `/etc/nginx-37/nginx-37-37.conf` hedefiyle ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --config-add source=nginx_cfg,target=/etc/nginx-37/nginx-37-37.conf cache-37-37",
+          "hint_text": "Config mount icin `--config-add` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-018-r38",
+      "type": "single",
+      "scenario": "Runbook adiminda `stack.yml` ile `mystack` stack'ini prune ederek deploy et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack deploy -c stack.yml --prune mystack",
+          "hint_text": "Eski service'leri temizlemek icin `--prune` kullan.",
+          "hint_partial": "docker stack deploy ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-019-r39",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `db_pass` secret metadata'sini inspect et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker secret inspect db_pass",
+          "hint_text": "Secret metadata icin `docker secret inspect` kullan.",
+          "hint_partial": "docker secret inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-020-r40",
+      "type": "single",
+      "scenario": "Incident sonrasinda `nginx_cfg` config metadata'sini inspect et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker config inspect nginx_cfg",
+          "hint_text": "Config inspect icin `docker config inspect` kullan.",
+          "hint_partial": "docker config inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-021-r41",
+      "type": "single",
+      "scenario": "Bakim oncesi encrypted overlay network olustur: `secure-net`.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network create -d overlay --opt encrypted secure-net",
+          "hint_text": "Sifreli overlay icin `--opt encrypted` kullan.",
+          "hint_partial": "docker network create ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-022-r42",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda swarm unlock key bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm unlock-key",
+          "hint_text": "Unlock key icin `docker swarm unlock-key` kullan.",
+          "hint_partial": "docker swarm unlock-key"
+        }
+      ]
+    },
+    {
+      "id": "sds-023-r43",
+      "type": "single",
+      "scenario": "Deploy sonrasi swarm task history limit'ini 5 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm update --task-history-limit 5",
+          "hint_text": "Task history limiti icin `docker swarm update` kullan.",
+          "hint_partial": "docker swarm update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-024-r44",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `db-44-44` service loglarini raw formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service logs --raw db-44-44",
+          "hint_text": "Ham log icin `--raw` kullan.",
+          "hint_partial": "docker service logs ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-025-r45",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `cache-45-45` service icin spread placement preference ekle: `node.labels.zone`.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --placement-pref-add 'spread=node.labels.zone' cache-45-45",
+          "hint_text": "Placement preference icin `--placement-pref-add` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-011-r46",
+      "type": "single",
+      "scenario": "Runbook adiminda `worker1` node bilgisini okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node inspect --pretty worker1",
+          "hint_text": "Node icin okunur output `--pretty` ile gelir.",
+          "hint_partial": "docker node inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-012-r47",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `bastion-47` service icin rolling update'i paralellik 2 ve gecikme 10s ile ayarla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --update-parallelism 2 --update-delay 10s bastion-47",
+          "hint_text": "Rolling update davranisi icin update flag'lerini kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-013-r48",
+      "type": "single",
+      "scenario": "Incident sonrasinda `proxy-48` service rollback davranisini paralellik 2 ve gecikme 5s yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --rollback-parallelism 2 --rollback-delay 5s proxy-48",
+          "hint_text": "Rollback parametreleri icin ilgili flag'leri kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-014-r49",
+      "type": "single",
+      "scenario": "Bakim oncesi `worker1` node'a `zone=eu1` label'i ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node update --label-add zone=eu1 worker1",
+          "hint_text": "Node label eklemek icin `--label-add` kullan.",
+          "hint_partial": "docker node update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-015-r50",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `cache-50-50-50` service'i sadece `zone=eu1` label'li node'larda kosacak sekilde guncelle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --constraint-add node.labels.zone==eu1 cache-50-50-50",
+          "hint_text": "Node label constraint'i icin `node.labels.*` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-016-r51",
+      "type": "single",
+      "scenario": "Deploy sonrasi `db_pass` secret'ini `worker-51` service'e ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --secret-add source=db_pass,target=db_pass worker-51",
+          "hint_text": "Secret mount icin `--secret-add source=...,target=...` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-017-r52",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `nginx_cfg` config'ini `db-52-52` service icinde `/etc/traefik-52/traefik-52-52.conf` hedefiyle ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --config-add source=nginx_cfg,target=/etc/traefik-52/traefik-52-52.conf db-52-52",
+          "hint_text": "Config mount icin `--config-add` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-018-r53",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `stack.yml` ile `mystack` stack'ini prune ederek deploy et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack deploy -c stack.yml --prune mystack",
+          "hint_text": "Eski service'leri temizlemek icin `--prune` kullan.",
+          "hint_partial": "docker stack deploy ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-019-r54",
+      "type": "single",
+      "scenario": "Runbook adiminda `db_pass` secret metadata'sini inspect et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker secret inspect db_pass",
+          "hint_text": "Secret metadata icin `docker secret inspect` kullan.",
+          "hint_partial": "docker secret inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-020-r55",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `nginx_cfg` config metadata'sini inspect et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker config inspect nginx_cfg",
+          "hint_text": "Config inspect icin `docker config inspect` kullan.",
+          "hint_partial": "docker config inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-021-r56",
+      "type": "single",
+      "scenario": "Incident sonrasinda encrypted overlay network olustur: `secure-net`.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network create -d overlay --opt encrypted secure-net",
+          "hint_text": "Sifreli overlay icin `--opt encrypted` kullan.",
+          "hint_partial": "docker network create ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-022-r57",
+      "type": "single",
+      "scenario": "Bakim oncesi swarm unlock key bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm unlock-key",
+          "hint_text": "Unlock key icin `docker swarm unlock-key` kullan.",
+          "hint_partial": "docker swarm unlock-key"
+        }
+      ]
+    },
+    {
+      "id": "sds-023-r58",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda swarm task history limit'ini 5 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm update --task-history-limit 5",
+          "hint_text": "Task history limiti icin `docker swarm update` kullan.",
+          "hint_partial": "docker swarm update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-024-r59",
+      "type": "single",
+      "scenario": "Deploy sonrasi `worker-59` service loglarini raw formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service logs --raw worker-59",
+          "hint_text": "Ham log icin `--raw` kullan.",
+          "hint_partial": "docker service logs ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-025-r60",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `db-60-60` service icin spread placement preference ekle: `node.labels.zone`.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --placement-pref-add 'spread=node.labels.zone' db-60-60",
+          "hint_text": "Placement preference icin `--placement-pref-add` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-011-r61",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `worker1` node bilgisini okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node inspect --pretty worker1",
+          "hint_text": "Node icin okunur output `--pretty` ile gelir.",
+          "hint_partial": "docker node inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-012-r62",
+      "type": "single",
+      "scenario": "Runbook adiminda `queue-62` service icin rolling update'i paralellik 2 ve gecikme 10s ile ayarla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --update-parallelism 2 --update-delay 10s queue-62",
+          "hint_text": "Rolling update davranisi icin update flag'lerini kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-013-r63",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `bastion-63` service rollback davranisini paralellik 2 ve gecikme 5s yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --rollback-parallelism 2 --rollback-delay 5s bastion-63",
+          "hint_text": "Rollback parametreleri icin ilgili flag'leri kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-014-r64",
+      "type": "single",
+      "scenario": "Incident sonrasinda `worker1` node'a `zone=eu1` label'i ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node update --label-add zone=eu1 worker1",
+          "hint_text": "Node label eklemek icin `--label-add` kullan.",
+          "hint_partial": "docker node update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-015-r65",
+      "type": "single",
+      "scenario": "Bakim oncesi `web-65` service'i sadece `zone=eu1` label'li node'larda kosacak sekilde guncelle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --constraint-add node.labels.zone==eu1 web-65",
+          "hint_text": "Node label constraint'i icin `node.labels.*` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-016-r66",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `db_pass` secret'ini `cache-66-66-66` service'e ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --secret-add source=db_pass,target=db_pass cache-66-66-66",
+          "hint_text": "Secret mount icin `--secret-add source=...,target=...` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-017-r67",
+      "type": "single",
+      "scenario": "Deploy sonrasi `nginx_cfg` config'ini `worker-67` service icinde `/etc/nginx-67/nginx-67-67.conf` hedefiyle ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --config-add source=nginx_cfg,target=/etc/nginx-67/nginx-67-67.conf worker-67",
+          "hint_text": "Config mount icin `--config-add` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-018-r68",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `stack.yml` ile `mystack` stack'ini prune ederek deploy et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack deploy -c stack.yml --prune mystack",
+          "hint_text": "Eski service'leri temizlemek icin `--prune` kullan.",
+          "hint_partial": "docker stack deploy ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-019-r69",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `db_pass` secret metadata'sini inspect et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker secret inspect db_pass",
+          "hint_text": "Secret metadata icin `docker secret inspect` kullan.",
+          "hint_partial": "docker secret inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-020-r70",
+      "type": "single",
+      "scenario": "Runbook adiminda `nginx_cfg` config metadata'sini inspect et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker config inspect nginx_cfg",
+          "hint_text": "Config inspect icin `docker config inspect` kullan.",
+          "hint_partial": "docker config inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-021-r71",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde encrypted overlay network olustur: `secure-net`.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network create -d overlay --opt encrypted secure-net",
+          "hint_text": "Sifreli overlay icin `--opt encrypted` kullan.",
+          "hint_partial": "docker network create ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-022-r72",
+      "type": "single",
+      "scenario": "Incident sonrasinda swarm unlock key bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm unlock-key",
+          "hint_text": "Unlock key icin `docker swarm unlock-key` kullan.",
+          "hint_partial": "docker swarm unlock-key"
+        }
+      ]
+    },
+    {
+      "id": "sds-023-r73",
+      "type": "single",
+      "scenario": "Bakim oncesi swarm task history limit'ini 5 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm update --task-history-limit 5",
+          "hint_text": "Task history limiti icin `docker swarm update` kullan.",
+          "hint_partial": "docker swarm update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-024-r74",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `cache-74-74-74` service loglarini raw formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service logs --raw cache-74-74-74",
+          "hint_text": "Ham log icin `--raw` kullan.",
+          "hint_partial": "docker service logs ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-025-r75",
+      "type": "single",
+      "scenario": "Deploy sonrasi `worker-75` service icin spread placement preference ekle: `node.labels.zone`.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --placement-pref-add 'spread=node.labels.zone' worker-75",
+          "hint_text": "Placement preference icin `--placement-pref-add` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-011-r76",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `worker1` node bilgisini okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node inspect --pretty worker1",
+          "hint_text": "Node icin okunur output `--pretty` ile gelir.",
+          "hint_partial": "docker node inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-012-r77",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `cache-77-77` service icin rolling update'i paralellik 2 ve gecikme 10s ile ayarla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --update-parallelism 2 --update-delay 10s cache-77-77",
+          "hint_text": "Rolling update davranisi icin update flag'lerini kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-013-r78",
+      "type": "single",
+      "scenario": "Runbook adiminda `queue-78` service rollback davranisini paralellik 2 ve gecikme 5s yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --rollback-parallelism 2 --rollback-delay 5s queue-78",
+          "hint_text": "Rollback parametreleri icin ilgili flag'leri kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-014-r79",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `worker1` node'a `zone=eu1` label'i ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node update --label-add zone=eu1 worker1",
+          "hint_text": "Node label eklemek icin `--label-add` kullan.",
+          "hint_partial": "docker node update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-015-r80",
+      "type": "single",
+      "scenario": "Incident sonrasinda `proxy-80` service'i sadece `zone=eu1` label'li node'larda kosacak sekilde guncelle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --constraint-add node.labels.zone==eu1 proxy-80",
+          "hint_text": "Node label constraint'i icin `node.labels.*` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-016-r81",
+      "type": "single",
+      "scenario": "Bakim oncesi `db_pass` secret'ini `web-81` service'e ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --secret-add source=db_pass,target=db_pass web-81",
+          "hint_text": "Secret mount icin `--secret-add source=...,target=...` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-017-r82",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `nginx_cfg` config'ini `cache-82-82-82` service icinde `/etc/traefik-82/traefik-82-82.conf` hedefiyle ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --config-add source=nginx_cfg,target=/etc/traefik-82/traefik-82-82.conf cache-82-82-82",
+          "hint_text": "Config mount icin `--config-add` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-018-r83",
+      "type": "single",
+      "scenario": "Deploy sonrasi `stack.yml` ile `mystack` stack'ini prune ederek deploy et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack deploy -c stack.yml --prune mystack",
+          "hint_text": "Eski service'leri temizlemek icin `--prune` kullan.",
+          "hint_partial": "docker stack deploy ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-019-r84",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `db_pass` secret metadata'sini inspect et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker secret inspect db_pass",
+          "hint_text": "Secret metadata icin `docker secret inspect` kullan.",
+          "hint_partial": "docker secret inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-020-r85",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `nginx_cfg` config metadata'sini inspect et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker config inspect nginx_cfg",
+          "hint_text": "Config inspect icin `docker config inspect` kullan.",
+          "hint_partial": "docker config inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-021-r86",
+      "type": "single",
+      "scenario": "Runbook adiminda encrypted overlay network olustur: `secure-net`.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network create -d overlay --opt encrypted secure-net",
+          "hint_text": "Sifreli overlay icin `--opt encrypted` kullan.",
+          "hint_partial": "docker network create ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-022-r87",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde swarm unlock key bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm unlock-key",
+          "hint_text": "Unlock key icin `docker swarm unlock-key` kullan.",
+          "hint_partial": "docker swarm unlock-key"
+        }
+      ]
+    },
+    {
+      "id": "sds-023-r88",
+      "type": "single",
+      "scenario": "Incident sonrasinda swarm task history limit'ini 5 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm update --task-history-limit 5",
+          "hint_text": "Task history limiti icin `docker swarm update` kullan.",
+          "hint_partial": "docker swarm update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-024-r89",
+      "type": "single",
+      "scenario": "Bakim oncesi `web-89` service loglarini raw formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service logs --raw web-89",
+          "hint_text": "Ham log icin `--raw` kullan.",
+          "hint_partial": "docker service logs ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-025-r90",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `cache-90-90-90` service icin spread placement preference ekle: `node.labels.zone`.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --placement-pref-add 'spread=node.labels.zone' cache-90-90-90",
+          "hint_text": "Placement preference icin `--placement-pref-add` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-011-r91",
+      "type": "single",
+      "scenario": "Deploy sonrasi `worker1` node bilgisini okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node inspect --pretty worker1",
+          "hint_text": "Node icin okunur output `--pretty` ile gelir.",
+          "hint_partial": "docker node inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-012-r92",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `db-92-92` service icin rolling update'i paralellik 2 ve gecikme 10s ile ayarla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --update-parallelism 2 --update-delay 10s db-92-92",
+          "hint_text": "Rolling update davranisi icin update flag'lerini kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-013-r93",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `cache-93-93` service rollback davranisini paralellik 2 ve gecikme 5s yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --rollback-parallelism 2 --rollback-delay 5s cache-93-93",
+          "hint_text": "Rollback parametreleri icin ilgili flag'leri kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-014-r94",
+      "type": "single",
+      "scenario": "Runbook adiminda `worker1` node'a `zone=eu1` label'i ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node update --label-add zone=eu1 worker1",
+          "hint_text": "Node label eklemek icin `--label-add` kullan.",
+          "hint_partial": "docker node update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-015-r95",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `bastion-95` service'i sadece `zone=eu1` label'li node'larda kosacak sekilde guncelle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --constraint-add node.labels.zone==eu1 bastion-95",
+          "hint_text": "Node label constraint'i icin `node.labels.*` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-016-r96",
+      "type": "single",
+      "scenario": "Incident sonrasinda `db_pass` secret'ini `proxy-96` service'e ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --secret-add source=db_pass,target=db_pass proxy-96",
+          "hint_text": "Secret mount icin `--secret-add source=...,target=...` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-017-r97",
+      "type": "single",
+      "scenario": "Bakim oncesi `nginx_cfg` config'ini `web-97` service icinde `/etc/nginx-97/nginx-97-97.conf` hedefiyle ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --config-add source=nginx_cfg,target=/etc/nginx-97/nginx-97-97.conf web-97",
+          "hint_text": "Config mount icin `--config-add` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-018-r98",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `stack.yml` ile `mystack` stack'ini prune ederek deploy et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack deploy -c stack.yml --prune mystack",
+          "hint_text": "Eski service'leri temizlemek icin `--prune` kullan.",
+          "hint_partial": "docker stack deploy ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-019-r99",
+      "type": "single",
+      "scenario": "Deploy sonrasi `db_pass` secret metadata'sini inspect et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker secret inspect db_pass",
+          "hint_text": "Secret metadata icin `docker secret inspect` kullan.",
+          "hint_partial": "docker secret inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-020-r100",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `nginx_cfg` config metadata'sini inspect et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker config inspect nginx_cfg",
+          "hint_text": "Config inspect icin `docker config inspect` kullan.",
+          "hint_partial": "docker config inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-021-r101",
+      "type": "single",
+      "scenario": "Yeni acilan hostta encrypted overlay network olustur: `secure-net`.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network create -d overlay --opt encrypted secure-net",
+          "hint_text": "Sifreli overlay icin `--opt encrypted` kullan.",
+          "hint_partial": "docker network create ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-022-r102",
+      "type": "single",
+      "scenario": "Runbook adiminda swarm unlock key bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm unlock-key",
+          "hint_text": "Unlock key icin `docker swarm unlock-key` kullan.",
+          "hint_partial": "docker swarm unlock-key"
+        }
+      ]
+    },
+    {
+      "id": "sds-023-r103",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde swarm task history limit'ini 5 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm update --task-history-limit 5",
+          "hint_text": "Task history limiti icin `docker swarm update` kullan.",
+          "hint_partial": "docker swarm update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-024-r104",
+      "type": "single",
+      "scenario": "Incident sonrasinda `proxy-104` service loglarini raw formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service logs --raw proxy-104",
+          "hint_text": "Ham log icin `--raw` kullan.",
+          "hint_partial": "docker service logs ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-025-r105",
+      "type": "single",
+      "scenario": "Bakim oncesi `web-105` service icin spread placement preference ekle: `node.labels.zone`.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --placement-pref-add 'spread=node.labels.zone' web-105",
+          "hint_text": "Placement preference icin `--placement-pref-add` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-011-r106",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `worker1` node bilgisini okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node inspect --pretty worker1",
+          "hint_text": "Node icin okunur output `--pretty` ile gelir.",
+          "hint_partial": "docker node inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-012-r107",
+      "type": "single",
+      "scenario": "Deploy sonrasi `worker-107` service icin rolling update'i paralellik 2 ve gecikme 10s ile ayarla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --update-parallelism 2 --update-delay 10s worker-107",
+          "hint_text": "Rolling update davranisi icin update flag'lerini kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-013-r108",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `db-108-108` service rollback davranisini paralellik 2 ve gecikme 5s yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --rollback-parallelism 2 --rollback-delay 5s db-108-108",
+          "hint_text": "Rollback parametreleri icin ilgili flag'leri kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-014-r109",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `worker1` node'a `zone=eu1` label'i ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node update --label-add zone=eu1 worker1",
+          "hint_text": "Node label eklemek icin `--label-add` kullan.",
+          "hint_partial": "docker node update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-015-r110",
+      "type": "single",
+      "scenario": "Runbook adiminda `queue-110` service'i sadece `zone=eu1` label'li node'larda kosacak sekilde guncelle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --constraint-add node.labels.zone==eu1 queue-110",
+          "hint_text": "Node label constraint'i icin `node.labels.*` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-016-r111",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `db_pass` secret'ini `bastion-111` service'e ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --secret-add source=db_pass,target=db_pass bastion-111",
+          "hint_text": "Secret mount icin `--secret-add source=...,target=...` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-017-r112",
+      "type": "single",
+      "scenario": "Incident sonrasinda `nginx_cfg` config'ini `proxy-112` service icinde `/etc/traefik-112/traefik-112-112.conf` hedefiyle ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --config-add source=nginx_cfg,target=/etc/traefik-112/traefik-112-112.conf proxy-112",
+          "hint_text": "Config mount icin `--config-add` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-018-r113",
+      "type": "single",
+      "scenario": "Bakim oncesi `stack.yml` ile `mystack` stack'ini prune ederek deploy et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack deploy -c stack.yml --prune mystack",
+          "hint_text": "Eski service'leri temizlemek icin `--prune` kullan.",
+          "hint_partial": "docker stack deploy ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-019-r114",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `db_pass` secret metadata'sini inspect et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker secret inspect db_pass",
+          "hint_text": "Secret metadata icin `docker secret inspect` kullan.",
+          "hint_partial": "docker secret inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-020-r115",
+      "type": "single",
+      "scenario": "Deploy sonrasi `nginx_cfg` config metadata'sini inspect et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker config inspect nginx_cfg",
+          "hint_text": "Config inspect icin `docker config inspect` kullan.",
+          "hint_partial": "docker config inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-021-r116",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde encrypted overlay network olustur: `secure-net`.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network create -d overlay --opt encrypted secure-net",
+          "hint_text": "Sifreli overlay icin `--opt encrypted` kullan.",
+          "hint_partial": "docker network create ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-022-r117",
+      "type": "single",
+      "scenario": "Yeni acilan hostta swarm unlock key bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm unlock-key",
+          "hint_text": "Unlock key icin `docker swarm unlock-key` kullan.",
+          "hint_partial": "docker swarm unlock-key"
+        }
+      ]
+    },
+    {
+      "id": "sds-023-r118",
+      "type": "single",
+      "scenario": "Runbook adiminda swarm task history limit'ini 5 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm update --task-history-limit 5",
+          "hint_text": "Task history limiti icin `docker swarm update` kullan.",
+          "hint_partial": "docker swarm update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-024-r119",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `bastion-119` service loglarini raw formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service logs --raw bastion-119",
+          "hint_text": "Ham log icin `--raw` kullan.",
+          "hint_partial": "docker service logs ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-025-r120",
+      "type": "single",
+      "scenario": "Incident sonrasinda `proxy-120` service icin spread placement preference ekle: `node.labels.zone`.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --placement-pref-add 'spread=node.labels.zone' proxy-120",
+          "hint_text": "Placement preference icin `--placement-pref-add` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-011-r121",
+      "type": "single",
+      "scenario": "Bakim oncesi `worker1` node bilgisini okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node inspect --pretty worker1",
+          "hint_text": "Node icin okunur output `--pretty` ile gelir.",
+          "hint_partial": "docker node inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-012-r122",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `cache-122-122-122` service icin rolling update'i paralellik 2 ve gecikme 10s ile ayarla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --update-parallelism 2 --update-delay 10s cache-122-122-122",
+          "hint_text": "Rolling update davranisi icin update flag'lerini kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-013-r123",
+      "type": "single",
+      "scenario": "Deploy sonrasi `worker-123` service rollback davranisini paralellik 2 ve gecikme 5s yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --rollback-parallelism 2 --rollback-delay 5s worker-123",
+          "hint_text": "Rollback parametreleri icin ilgili flag'leri kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-014-r124",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `worker1` node'a `zone=eu1` label'i ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node update --label-add zone=eu1 worker1",
+          "hint_text": "Node label eklemek icin `--label-add` kullan.",
+          "hint_partial": "docker node update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-015-r125",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `cache-125-125` service'i sadece `zone=eu1` label'li node'larda kosacak sekilde guncelle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --constraint-add node.labels.zone==eu1 cache-125-125",
+          "hint_text": "Node label constraint'i icin `node.labels.*` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-016-r126",
+      "type": "single",
+      "scenario": "Runbook adiminda `db_pass` secret'ini `queue-126` service'e ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --secret-add source=db_pass,target=db_pass queue-126",
+          "hint_text": "Secret mount icin `--secret-add source=...,target=...` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-017-r127",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `nginx_cfg` config'ini `bastion-127` service icinde `/etc/nginx-127/nginx-127-127.conf` hedefiyle ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --config-add source=nginx_cfg,target=/etc/nginx-127/nginx-127-127.conf bastion-127",
+          "hint_text": "Config mount icin `--config-add` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-018-r128",
+      "type": "single",
+      "scenario": "Incident sonrasinda `stack.yml` ile `mystack` stack'ini prune ederek deploy et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack deploy -c stack.yml --prune mystack",
+          "hint_text": "Eski service'leri temizlemek icin `--prune` kullan.",
+          "hint_partial": "docker stack deploy ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-019-r129",
+      "type": "single",
+      "scenario": "Bakim oncesi `db_pass` secret metadata'sini inspect et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker secret inspect db_pass",
+          "hint_text": "Secret metadata icin `docker secret inspect` kullan.",
+          "hint_partial": "docker secret inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-020-r130",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `nginx_cfg` config metadata'sini inspect et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker config inspect nginx_cfg",
+          "hint_text": "Config inspect icin `docker config inspect` kullan.",
+          "hint_partial": "docker config inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-021-r131",
+      "type": "single",
+      "scenario": "Deploy sonrasi encrypted overlay network olustur: `secure-net`.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network create -d overlay --opt encrypted secure-net",
+          "hint_text": "Sifreli overlay icin `--opt encrypted` kullan.",
+          "hint_partial": "docker network create ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-022-r132",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde swarm unlock key bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm unlock-key",
+          "hint_text": "Unlock key icin `docker swarm unlock-key` kullan.",
+          "hint_partial": "docker swarm unlock-key"
+        }
+      ]
+    },
+    {
+      "id": "sds-023-r133",
+      "type": "single",
+      "scenario": "Yeni acilan hostta swarm task history limit'ini 5 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm update --task-history-limit 5",
+          "hint_text": "Task history limiti icin `docker swarm update` kullan.",
+          "hint_partial": "docker swarm update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-024-r134",
+      "type": "single",
+      "scenario": "Runbook adiminda `queue-134` service loglarini raw formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service logs --raw queue-134",
+          "hint_text": "Ham log icin `--raw` kullan.",
+          "hint_partial": "docker service logs ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-025-r135",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `bastion-135` service icin spread placement preference ekle: `node.labels.zone`.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --placement-pref-add 'spread=node.labels.zone' bastion-135",
+          "hint_text": "Placement preference icin `--placement-pref-add` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-011-r136",
+      "type": "single",
+      "scenario": "Incident sonrasinda `worker1` node bilgisini okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node inspect --pretty worker1",
+          "hint_text": "Node icin okunur output `--pretty` ile gelir.",
+          "hint_partial": "docker node inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-012-r137",
+      "type": "single",
+      "scenario": "Bakim oncesi `web-137` service icin rolling update'i paralellik 2 ve gecikme 10s ile ayarla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --update-parallelism 2 --update-delay 10s web-137",
+          "hint_text": "Rolling update davranisi icin update flag'lerini kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-013-r138",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `cache-138-138-138` service rollback davranisini paralellik 2 ve gecikme 5s yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --rollback-parallelism 2 --rollback-delay 5s cache-138-138-138",
+          "hint_text": "Rollback parametreleri icin ilgili flag'leri kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-014-r139",
+      "type": "single",
+      "scenario": "Deploy sonrasi `worker1` node'a `zone=eu1` label'i ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node update --label-add zone=eu1 worker1",
+          "hint_text": "Node label eklemek icin `--label-add` kullan.",
+          "hint_partial": "docker node update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-015-r140",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `db-140-140` service'i sadece `zone=eu1` label'li node'larda kosacak sekilde guncelle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --constraint-add node.labels.zone==eu1 db-140-140",
+          "hint_text": "Node label constraint'i icin `node.labels.*` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-016-r141",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `db_pass` secret'ini `cache-141-141` service'e ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --secret-add source=db_pass,target=db_pass cache-141-141",
+          "hint_text": "Secret mount icin `--secret-add source=...,target=...` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-017-r142",
+      "type": "single",
+      "scenario": "Runbook adiminda `nginx_cfg` config'ini `queue-142` service icinde `/etc/traefik-142/traefik-142-142.conf` hedefiyle ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --config-add source=nginx_cfg,target=/etc/traefik-142/traefik-142-142.conf queue-142",
+          "hint_text": "Config mount icin `--config-add` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-018-r143",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `stack.yml` ile `mystack` stack'ini prune ederek deploy et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack deploy -c stack.yml --prune mystack",
+          "hint_text": "Eski service'leri temizlemek icin `--prune` kullan.",
+          "hint_partial": "docker stack deploy ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-019-r144",
+      "type": "single",
+      "scenario": "Incident sonrasinda `db_pass` secret metadata'sini inspect et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker secret inspect db_pass",
+          "hint_text": "Secret metadata icin `docker secret inspect` kullan.",
+          "hint_partial": "docker secret inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-020-r145",
+      "type": "single",
+      "scenario": "Bakim oncesi `nginx_cfg` config metadata'sini inspect et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker config inspect nginx_cfg",
+          "hint_text": "Config inspect icin `docker config inspect` kullan.",
+          "hint_partial": "docker config inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-021-r146",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda encrypted overlay network olustur: `secure-net`.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network create -d overlay --opt encrypted secure-net",
+          "hint_text": "Sifreli overlay icin `--opt encrypted` kullan.",
+          "hint_partial": "docker network create ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-022-r147",
+      "type": "single",
+      "scenario": "Deploy sonrasi swarm unlock key bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm unlock-key",
+          "hint_text": "Unlock key icin `docker swarm unlock-key` kullan.",
+          "hint_partial": "docker swarm unlock-key"
+        }
+      ]
+    },
+    {
+      "id": "sds-023-r148",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde swarm task history limit'ini 5 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm update --task-history-limit 5",
+          "hint_text": "Task history limiti icin `docker swarm update` kullan.",
+          "hint_partial": "docker swarm update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-024-r149",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `cache-149-149` service loglarini raw formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service logs --raw cache-149-149",
+          "hint_text": "Ham log icin `--raw` kullan.",
+          "hint_partial": "docker service logs ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-025-r150",
+      "type": "single",
+      "scenario": "Runbook adiminda `queue-150` service icin spread placement preference ekle: `node.labels.zone`.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --placement-pref-add 'spread=node.labels.zone' queue-150",
+          "hint_text": "Placement preference icin `--placement-pref-add` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-011-r151",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `worker1` node bilgisini okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node inspect --pretty worker1",
+          "hint_text": "Node icin okunur output `--pretty` ile gelir.",
+          "hint_partial": "docker node inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-012-r152",
+      "type": "single",
+      "scenario": "Incident sonrasinda `proxy-152` service icin rolling update'i paralellik 2 ve gecikme 10s ile ayarla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --update-parallelism 2 --update-delay 10s proxy-152",
+          "hint_text": "Rolling update davranisi icin update flag'lerini kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-013-r153",
+      "type": "single",
+      "scenario": "Bakim oncesi `web-153` service rollback davranisini paralellik 2 ve gecikme 5s yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --rollback-parallelism 2 --rollback-delay 5s web-153",
+          "hint_text": "Rollback parametreleri icin ilgili flag'leri kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-014-r154",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `worker1` node'a `zone=eu1` label'i ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node update --label-add zone=eu1 worker1",
+          "hint_text": "Node label eklemek icin `--label-add` kullan.",
+          "hint_partial": "docker node update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-015-r155",
+      "type": "single",
+      "scenario": "Deploy sonrasi `worker-155` service'i sadece `zone=eu1` label'li node'larda kosacak sekilde guncelle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --constraint-add node.labels.zone==eu1 worker-155",
+          "hint_text": "Node label constraint'i icin `node.labels.*` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-016-r156",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `db_pass` secret'ini `db-156-156` service'e ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --secret-add source=db_pass,target=db_pass db-156-156",
+          "hint_text": "Secret mount icin `--secret-add source=...,target=...` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-017-r157",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `nginx_cfg` config'ini `cache-157-157` service icinde `/etc/nginx-157/nginx-157-157.conf` hedefiyle ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --config-add source=nginx_cfg,target=/etc/nginx-157/nginx-157-157.conf cache-157-157",
+          "hint_text": "Config mount icin `--config-add` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-018-r158",
+      "type": "single",
+      "scenario": "Runbook adiminda `stack.yml` ile `mystack` stack'ini prune ederek deploy et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack deploy -c stack.yml --prune mystack",
+          "hint_text": "Eski service'leri temizlemek icin `--prune` kullan.",
+          "hint_partial": "docker stack deploy ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-019-r159",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `db_pass` secret metadata'sini inspect et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker secret inspect db_pass",
+          "hint_text": "Secret metadata icin `docker secret inspect` kullan.",
+          "hint_partial": "docker secret inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-020-r160",
+      "type": "single",
+      "scenario": "Incident sonrasinda `nginx_cfg` config metadata'sini inspect et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker config inspect nginx_cfg",
+          "hint_text": "Config inspect icin `docker config inspect` kullan.",
+          "hint_partial": "docker config inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-021-r161",
+      "type": "single",
+      "scenario": "Bakim oncesi encrypted overlay network olustur: `secure-net`.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network create -d overlay --opt encrypted secure-net",
+          "hint_text": "Sifreli overlay icin `--opt encrypted` kullan.",
+          "hint_partial": "docker network create ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-022-r162",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda swarm unlock key bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm unlock-key",
+          "hint_text": "Unlock key icin `docker swarm unlock-key` kullan.",
+          "hint_partial": "docker swarm unlock-key"
+        }
+      ]
+    },
+    {
+      "id": "sds-023-r163",
+      "type": "single",
+      "scenario": "Deploy sonrasi swarm task history limit'ini 5 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm update --task-history-limit 5",
+          "hint_text": "Task history limiti icin `docker swarm update` kullan.",
+          "hint_partial": "docker swarm update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-024-r164",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `db-164-164` service loglarini raw formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service logs --raw db-164-164",
+          "hint_text": "Ham log icin `--raw` kullan.",
+          "hint_partial": "docker service logs ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-025-r165",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `cache-165-165` service icin spread placement preference ekle: `node.labels.zone`.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --placement-pref-add 'spread=node.labels.zone' cache-165-165",
+          "hint_text": "Placement preference icin `--placement-pref-add` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-011-r166",
+      "type": "single",
+      "scenario": "Runbook adiminda `worker1` node bilgisini okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node inspect --pretty worker1",
+          "hint_text": "Node icin okunur output `--pretty` ile gelir.",
+          "hint_partial": "docker node inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-012-r167",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `bastion-167` service icin rolling update'i paralellik 2 ve gecikme 10s ile ayarla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --update-parallelism 2 --update-delay 10s bastion-167",
+          "hint_text": "Rolling update davranisi icin update flag'lerini kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-013-r168",
+      "type": "single",
+      "scenario": "Incident sonrasinda `proxy-168` service rollback davranisini paralellik 2 ve gecikme 5s yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --rollback-parallelism 2 --rollback-delay 5s proxy-168",
+          "hint_text": "Rollback parametreleri icin ilgili flag'leri kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-014-r169",
+      "type": "single",
+      "scenario": "Bakim oncesi `worker1` node'a `zone=eu1` label'i ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node update --label-add zone=eu1 worker1",
+          "hint_text": "Node label eklemek icin `--label-add` kullan.",
+          "hint_partial": "docker node update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-015-r170",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `cache-170-170-170` service'i sadece `zone=eu1` label'li node'larda kosacak sekilde guncelle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --constraint-add node.labels.zone==eu1 cache-170-170-170",
+          "hint_text": "Node label constraint'i icin `node.labels.*` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-016-r171",
+      "type": "single",
+      "scenario": "Deploy sonrasi `db_pass` secret'ini `worker-171` service'e ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --secret-add source=db_pass,target=db_pass worker-171",
+          "hint_text": "Secret mount icin `--secret-add source=...,target=...` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-017-r172",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `nginx_cfg` config'ini `db-172-172` service icinde `/etc/traefik-172/traefik-172-172.conf` hedefiyle ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --config-add source=nginx_cfg,target=/etc/traefik-172/traefik-172-172.conf db-172-172",
+          "hint_text": "Config mount icin `--config-add` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-018-r173",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `stack.yml` ile `mystack` stack'ini prune ederek deploy et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack deploy -c stack.yml --prune mystack",
+          "hint_text": "Eski service'leri temizlemek icin `--prune` kullan.",
+          "hint_partial": "docker stack deploy ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-019-r174",
+      "type": "single",
+      "scenario": "Runbook adiminda `db_pass` secret metadata'sini inspect et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker secret inspect db_pass",
+          "hint_text": "Secret metadata icin `docker secret inspect` kullan.",
+          "hint_partial": "docker secret inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-020-r175",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `nginx_cfg` config metadata'sini inspect et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker config inspect nginx_cfg",
+          "hint_text": "Config inspect icin `docker config inspect` kullan.",
+          "hint_partial": "docker config inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-021-r176",
+      "type": "single",
+      "scenario": "Incident sonrasinda encrypted overlay network olustur: `secure-net`.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network create -d overlay --opt encrypted secure-net",
+          "hint_text": "Sifreli overlay icin `--opt encrypted` kullan.",
+          "hint_partial": "docker network create ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-022-r177",
+      "type": "single",
+      "scenario": "Bakim oncesi swarm unlock key bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm unlock-key",
+          "hint_text": "Unlock key icin `docker swarm unlock-key` kullan.",
+          "hint_partial": "docker swarm unlock-key"
+        }
+      ]
+    },
+    {
+      "id": "sds-023-r178",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda swarm task history limit'ini 5 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm update --task-history-limit 5",
+          "hint_text": "Task history limiti icin `docker swarm update` kullan.",
+          "hint_partial": "docker swarm update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-024-r179",
+      "type": "single",
+      "scenario": "Deploy sonrasi `worker-179` service loglarini raw formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service logs --raw worker-179",
+          "hint_text": "Ham log icin `--raw` kullan.",
+          "hint_partial": "docker service logs ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-025-r180",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `db-180-180` service icin spread placement preference ekle: `node.labels.zone`.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --placement-pref-add 'spread=node.labels.zone' db-180-180",
+          "hint_text": "Placement preference icin `--placement-pref-add` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-011-r181",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `worker1` node bilgisini okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node inspect --pretty worker1",
+          "hint_text": "Node icin okunur output `--pretty` ile gelir.",
+          "hint_partial": "docker node inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-012-r182",
+      "type": "single",
+      "scenario": "Runbook adiminda `queue-182` service icin rolling update'i paralellik 2 ve gecikme 10s ile ayarla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --update-parallelism 2 --update-delay 10s queue-182",
+          "hint_text": "Rolling update davranisi icin update flag'lerini kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-013-r183",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `bastion-183` service rollback davranisini paralellik 2 ve gecikme 5s yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --rollback-parallelism 2 --rollback-delay 5s bastion-183",
+          "hint_text": "Rollback parametreleri icin ilgili flag'leri kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-014-r184",
+      "type": "single",
+      "scenario": "Incident sonrasinda `worker1` node'a `zone=eu1` label'i ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node update --label-add zone=eu1 worker1",
+          "hint_text": "Node label eklemek icin `--label-add` kullan.",
+          "hint_partial": "docker node update ..."
+        }
+      ]
+    },
+    {
+      "id": "sds-015-r185",
+      "type": "single",
+      "scenario": "Bakim oncesi `web-185` service'i sadece `zone=eu1` label'li node'larda kosacak sekilde guncelle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --constraint-add node.labels.zone==eu1 web-185",
+          "hint_text": "Node label constraint'i icin `node.labels.*` kullan.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    }
+  ]
+}

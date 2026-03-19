@@ -1,0 +1,212 @@
+{
+  "level": "mid",
+  "topic": "process",
+  "questions": [
+    {
+      "id": "mproc-001",
+      "type": "multi-step",
+      "scenario": "Service çökmüş, hangi process en fazla CPU yiyor bul ve sonlandır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps aux --sort=-%cpu | head -5",
+          "hint_text": "ps aux'u CPU'ya göre sırala, ilk 5",
+          "hint_partial": "ps aux --sort=-%cpu | ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "kill -9 $(pgrep -f runaway_process)",
+          "hint_text": "pgrep -f ile PID bul, kill -9 ile sonlandır",
+          "hint_partial": "kill -9 $(pgrep -f ...)"
+        }
+      ]
+    },
+    {
+      "id": "mproc-002",
+      "type": "single",
+      "scenario": "Node.js uygulamanı background'da çalıştır, terminali kapattığında da devam etsin.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "nohup node app.js &",
+          "hint_text": "nohup ile SIGHUP'tan koru, & ile arka plana at",
+          "hint_partial": "nohup node app.js ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-003",
+      "type": "single",
+      "scenario": "PID 5678'in açık tuttuğu file'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof -p 5678",
+          "hint_text": "lsof -p PID ile o processe ait open file'lar",
+          "hint_partial": "lsof -p ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-004",
+      "type": "multi-step",
+      "scenario": "myapp process'ini daha düşük oncelikte start et (nice 10), sonra çalışırken onceliğini değiştir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "nice -n 10 ./myapp",
+          "hint_text": "nice -n ile başlangıç onceliği ayarla",
+          "hint_partial": "nice -n 10 ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "renice -n 5 -p $(pgrep myapp)",
+          "hint_text": "renice ile çalışan processe yeni nice değeri ver",
+          "hint_partial": "renice -n 5 -p ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-005",
+      "type": "single",
+      "scenario": "Tüm zombie process'leri bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps aux | grep 'Z'",
+          "hint_text": "ps output'unda zombie'ler STAT columnunda Z olarak görünür",
+          "hint_partial": "ps aux | grep ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-006",
+      "type": "single",
+      "scenario": "3000 portunu kullanan process'in tam komut line'ını öğren.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof -i :3000",
+          "hint_text": "lsof -i :port ile portu kullanan process",
+          "hint_partial": "lsof -i ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-007",
+      "type": "multi-step",
+      "scenario": "worker.sh script'ini cron ile her gece yarısı çalışacak şekilde ayarla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "crontab -e",
+          "hint_text": "crontab -e ile cron tabloyu düzenle",
+          "hint_partial": "crontab ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "0 0 * * * /opt/scripts/worker.sh",
+          "hint_text": "minute hour day month weekday — gece yarısı için 0 0 * * *",
+          "hint_partial": "0 0 * * * ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-009",
+      "type": "single",
+      "scenario": "myapp'in parent-child zincirini PID'lerle process tree olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pstree -ap $(pgrep -o myapp)",
+          "hint_text": "En eski myapp PID'sini alip `pstree -ap` ile agaci goster.",
+          "hint_partial": "pstree -ap $(pgrep -o ...)"
+        }
+      ]
+    },
+    {
+      "id": "mproc-010",
+      "type": "single",
+      "scenario": "myapp service'in gercek unit icerigini ve varsa override'larini birlikte gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "systemctl cat myapp",
+          "hint_text": "Systemd unit icerigini ve drop-in'leri gormek icin `systemctl cat` kullan.",
+          "hint_partial": "systemctl cat ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-011",
+      "type": "single",
+      "scenario": "Shell'de sadece running background job'lari PID ile listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "jobs -lr",
+          "hint_text": "Running job'lari PID ile gormek icin `jobs -lr` kullan.",
+          "hint_partial": "jobs -lr"
+        }
+      ]
+    },
+    {
+      "id": "mproc-012",
+      "type": "single",
+      "scenario": "python process'ini ada gore zorla sonlandir",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pkill -9 python",
+          "hint_text": "Ada gore toplu sonlandirma icin pkill kullan",
+          "hint_partial": "pkill -9 ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-013",
+      "type": "single",
+      "scenario": "Tum process'leri user, pid ve komut alanlariyla goster",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps -eo user,pid,cmd",
+          "hint_text": "Belirli kolonlar icin ps -eo kullan",
+          "hint_partial": "ps -eo ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-014",
+      "type": "single",
+      "scenario": "Bu shell altinda acilan alt process'leri PID'leriyle agac halinde goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pstree -ap bash",
+          "hint_text": "Belirli kok process icin `pstree -ap` kullan.",
+          "hint_partial": "pstree -ap ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-015",
+      "type": "multi-step",
+      "scenario": "yes komutunu background'da baslat ve sonra ada gore sonlandir",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "yes > /dev/null &",
+          "hint_text": "Ilk adimda surekli ciktiyi /dev/null'a yonlendirip background'da baslat",
+          "hint_partial": "yes > /dev/null &"
+        },
+        {
+          "prompt": "$ ",
+          "answer": "pkill yes",
+          "hint_text": "Sonraki adimda ada gore kapat",
+          "hint_partial": "pkill ..."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2606 @@
+{
+  "level": "senior",
+  "topic": "permissions",
+  "questions": [
+    {
+      "id": "sperm-016",
+      "type": "single",
+      "scenario": "`/srv/app` altindaki SELinux context'leri recursive restore et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "restorecon -Rv /srv/app",
+          "hint_text": "SELinux context duzeltmek icin `restorecon -Rv` kullan.",
+          "hint_partial": "restorecon -Rv ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-017",
+      "type": "single",
+      "scenario": "`/srv/app` altindaki SELinux label'larini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls -Z /srv/app",
+          "hint_text": "SELinux context gormek icin `ls -Z` kullan.",
+          "hint_partial": "ls -Z ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-018",
+      "type": "single",
+      "scenario": "8443/tcp portunu SELinux'te `http_port_t` tipine ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "semanage port -a -t http_port_t -p tcp 8443",
+          "hint_text": "SELinux port eklemek icin `semanage port -a` kullan.",
+          "hint_partial": "semanage port ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-019",
+      "type": "single",
+      "scenario": "`/srv/app` agacina `httpd_sys_content_t` tipi uygula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chcon -R -t httpd_sys_content_t /srv/app",
+          "hint_text": "Gecici SELinux type degisikligi icin `chcon -R -t` kullan.",
+          "hint_partial": "chcon -R ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-020",
+      "type": "single",
+      "scenario": "Sudoers syntax dogrulamasini calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "visudo -c",
+          "hint_text": "Syntax check icin `visudo -c` kullan.",
+          "hint_partial": "visudo -c"
+        }
+      ]
+    },
+    {
+      "id": "sperm-021",
+      "type": "single",
+      "scenario": "`/usr/bin/myapp` binary'sinden capability'leri temizle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setcap -r /usr/bin/myapp",
+          "hint_text": "Capability silmek icin `setcap -r` kullan.",
+          "hint_partial": "setcap -r ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-022",
+      "type": "single",
+      "scenario": "`/usr/local/bin` altindaki tum file capability'lerini recursive tara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getcap -r /usr/local/bin 2>/dev/null",
+          "hint_text": "Recursive capability taramasi icin `getcap -r` kullan.",
+          "hint_partial": "getcap -r ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-023",
+      "type": "single",
+      "scenario": "`/srv/releases` icin `ops` group'una default read+execute ACL ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setfacl -m d:g:ops:rx /srv/releases",
+          "hint_text": "Default ACL icin `d:g:group:perms` kullan.",
+          "hint_partial": "setfacl -m ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-024",
+      "type": "single",
+      "scenario": "Owner veya group'u olmayan file'lari tum sistemde bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find / -nouser -o -nogroup 2>/dev/null",
+          "hint_text": "Sahipsiz file taramasi icin `find -nouser -o -nogroup` kullan.",
+          "hint_partial": "find / -nouser ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-025",
+      "type": "single",
+      "scenario": "Kalici SELinux mod ayarini config dosyasindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "grep '^SELINUX=' /etc/selinux/config",
+          "hint_text": "Kalici SELinux mode config'de tutulur.",
+          "hint_partial": "grep '^SELINUX=' ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-016-r1",
+      "type": "single",
+      "scenario": "Bakim oncesi `/srv/app/web-1-1-1/app/web-1-1` altindaki SELinux context'leri recursive restore et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "restorecon -Rv /srv/app/web-1-1-1/app/web-1-1",
+          "hint_text": "SELinux context duzeltmek icin `restorecon -Rv` kullan.",
+          "hint_partial": "restorecon -Rv ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-017-r2",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/srv/app/cache-2-2-2-2/app/cache-2-2-2` altindaki SELinux label'larini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls -Z /srv/app/cache-2-2-2-2/app/cache-2-2-2",
+          "hint_text": "SELinux context gormek icin `ls -Z` kullan.",
+          "hint_partial": "ls -Z ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-018-r3",
+      "type": "single",
+      "scenario": "Deploy sonrasi 8443/tcp portunu SELinux'te `http_port_t` tipine ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "semanage port -a -t http_port_t -p tcp 8443",
+          "hint_text": "SELinux port eklemek icin `semanage port -a` kullan.",
+          "hint_partial": "semanage port ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-019-r4",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/srv/app/db-4-4-4/app/db-4-4` agacina `httpd_sys_content_t` tipi uygula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chcon -R -t httpd_sys_content_t /srv/app/db-4-4-4/app/db-4-4",
+          "hint_text": "Gecici SELinux type degisikligi icin `chcon -R -t` kullan.",
+          "hint_partial": "chcon -R ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-020-r5",
+      "type": "single",
+      "scenario": "Yeni acilan hostta sudoers syntax dogrulamasini calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "visudo -c",
+          "hint_text": "Syntax check icin `visudo -c` kullan.",
+          "hint_partial": "visudo -c"
+        }
+      ]
+    },
+    {
+      "id": "sperm-021-r6",
+      "type": "single",
+      "scenario": "Runbook adiminda `/usr/bin/myapp` binary'sinden capability'leri temizle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setcap -r /usr/bin/myapp",
+          "hint_text": "Capability silmek icin `setcap -r` kullan.",
+          "hint_partial": "setcap -r ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-022-r7",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `/usr/local/bin` altindaki tum file capability'lerini recursive tara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getcap -r /usr/local/bin 2>/dev/null",
+          "hint_text": "Recursive capability taramasi icin `getcap -r` kullan.",
+          "hint_partial": "getcap -r ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-023-r8",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/srv/app/proxy-8-8/releases` icin `ops` group'una stage-8-8 read+execute ACL ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setfacl -m d:g:ops:rx /srv/app/proxy-8-8/releases",
+          "hint_text": "Default ACL icin `d:g:group:perms` kullan.",
+          "hint_partial": "setfacl -m ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-024-r9",
+      "type": "single",
+      "scenario": "Bakim oncesi owner veya group'u olmayan file'lari tum sistemde bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find / -nouser -o -nogroup 2>/dev/null",
+          "hint_text": "Sahipsiz file taramasi icin `find -nouser -o -nogroup` kullan.",
+          "hint_partial": "find / -nouser ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-025-r10",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda kalici SELinux mod ayarini config dosyasindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "grep '^SELINUX=' /etc/selinux/config",
+          "hint_text": "Kalici SELinux mode config'de tutulur.",
+          "hint_partial": "grep '^SELINUX=' ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-016-r11",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/srv/app/queue-11-11-11/app/queue-11-11` altindaki SELinux context'leri recursive restore et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "restorecon -Rv /srv/app/queue-11-11-11/app/queue-11-11",
+          "hint_text": "SELinux context duzeltmek icin `restorecon -Rv` kullan.",
+          "hint_partial": "restorecon -Rv ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-017-r12",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/srv/app/db-12-12-12/app/db-12-12` altindaki SELinux label'larini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls -Z /srv/app/db-12-12-12/app/db-12-12",
+          "hint_text": "SELinux context gormek icin `ls -Z` kullan.",
+          "hint_partial": "ls -Z ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-018-r13",
+      "type": "single",
+      "scenario": "Yeni acilan hostta 8443/tcp portunu SELinux'te `http_port_t` tipine ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "semanage port -a -t http_port_t -p tcp 8443",
+          "hint_text": "SELinux port eklemek icin `semanage port -a` kullan.",
+          "hint_partial": "semanage port ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-019-r14",
+      "type": "single",
+      "scenario": "Runbook adiminda `/srv/app/queue-14-14/app/queue-14` agacina `httpd_sys_content_t` tipi uygula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chcon -R -t httpd_sys_content_t /srv/app/queue-14-14/app/queue-14",
+          "hint_text": "Gecici SELinux type degisikligi icin `chcon -R -t` kullan.",
+          "hint_partial": "chcon -R ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-020-r15",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde sudoers syntax dogrulamasini calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "visudo -c",
+          "hint_text": "Syntax check icin `visudo -c` kullan.",
+          "hint_partial": "visudo -c"
+        }
+      ]
+    },
+    {
+      "id": "sperm-021-r16",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/usr/bin/myapp` binary'sinden capability'leri temizle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setcap -r /usr/bin/myapp",
+          "hint_text": "Capability silmek icin `setcap -r` kullan.",
+          "hint_partial": "setcap -r ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-022-r17",
+      "type": "single",
+      "scenario": "Bakim oncesi `/usr/local/bin` altindaki tum file capability'lerini recursive tara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getcap -r /usr/local/bin 2>/dev/null",
+          "hint_text": "Recursive capability taramasi icin `getcap -r` kullan.",
+          "hint_partial": "getcap -r ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-023-r18",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/srv/app/cache-18-18-18-18/releases` icin `ops` group'una ops-18 read+execute ACL ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setfacl -m d:g:ops:rx /srv/app/cache-18-18-18-18/releases",
+          "hint_text": "Default ACL icin `d:g:group:perms` kullan.",
+          "hint_partial": "setfacl -m ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-024-r19",
+      "type": "single",
+      "scenario": "Deploy sonrasi owner veya group'u olmayan file'lari tum sistemde bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find / -nouser -o -nogroup 2>/dev/null",
+          "hint_text": "Sahipsiz file taramasi icin `find -nouser -o -nogroup` kullan.",
+          "hint_partial": "find / -nouser ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-025-r20",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde kalici SELinux mod ayarini config dosyasindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "grep '^SELINUX=' /etc/selinux/config",
+          "hint_text": "Kalici SELinux mode config'de tutulur.",
+          "hint_partial": "grep '^SELINUX=' ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-016-r21",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `/srv/app/cache-21-21-21/app/cache-21-21` altindaki SELinux context'leri recursive restore et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "restorecon -Rv /srv/app/cache-21-21-21/app/cache-21-21",
+          "hint_text": "SELinux context duzeltmek icin `restorecon -Rv` kullan.",
+          "hint_partial": "restorecon -Rv ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-017-r22",
+      "type": "single",
+      "scenario": "Runbook adiminda `/srv/app/queue-22-22/app/queue-22` altindaki SELinux label'larini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls -Z /srv/app/queue-22-22/app/queue-22",
+          "hint_text": "SELinux context gormek icin `ls -Z` kullan.",
+          "hint_partial": "ls -Z ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-018-r23",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde 8443/tcp portunu SELinux'te `http_port_t` tipine ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "semanage port -a -t http_port_t -p tcp 8443",
+          "hint_text": "SELinux port eklemek icin `semanage port -a` kullan.",
+          "hint_partial": "semanage port ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-019-r24",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/srv/app/proxy-24-24/app/proxy-24` agacina `httpd_sys_content_t` tipi uygula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chcon -R -t httpd_sys_content_t /srv/app/proxy-24-24/app/proxy-24",
+          "hint_text": "Gecici SELinux type degisikligi icin `chcon -R -t` kullan.",
+          "hint_partial": "chcon -R ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-020-r25",
+      "type": "single",
+      "scenario": "Bakim oncesi sudoers syntax dogrulamasini calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "visudo -c",
+          "hint_text": "Syntax check icin `visudo -c` kullan.",
+          "hint_partial": "visudo -c"
+        }
+      ]
+    },
+    {
+      "id": "sperm-021-r26",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/usr/bin/myapp` binary'sinden capability'leri temizle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setcap -r /usr/bin/myapp",
+          "hint_text": "Capability silmek icin `setcap -r` kullan.",
+          "hint_partial": "setcap -r ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-022-r27",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/usr/local/bin` altindaki tum file capability'lerini recursive tara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getcap -r /usr/local/bin 2>/dev/null",
+          "hint_text": "Recursive capability taramasi icin `getcap -r` kullan.",
+          "hint_partial": "getcap -r ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-023-r28",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/srv/app/db-28-28-28/releases` icin `ops` group'una monitoring-28 read+execute ACL ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setfacl -m d:g:ops:rx /srv/app/db-28-28-28/releases",
+          "hint_text": "Default ACL icin `d:g:group:perms` kullan.",
+          "hint_partial": "setfacl -m ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-024-r29",
+      "type": "single",
+      "scenario": "Yeni acilan hostta owner veya group'u olmayan file'lari tum sistemde bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find / -nouser -o -nogroup 2>/dev/null",
+          "hint_text": "Sahipsiz file taramasi icin `find -nouser -o -nogroup` kullan.",
+          "hint_partial": "find / -nouser ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-025-r30",
+      "type": "single",
+      "scenario": "Runbook adiminda kalici SELinux mod ayarini config dosyasindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "grep '^SELINUX=' /etc/selinux/config",
+          "hint_text": "Kalici SELinux mode config'de tutulur.",
+          "hint_partial": "grep '^SELINUX=' ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-016-r31",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `/srv/app/bastion-31-31/app/bastion-31` altindaki SELinux context'leri recursive restore et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "restorecon -Rv /srv/app/bastion-31-31/app/bastion-31",
+          "hint_text": "SELinux context duzeltmek icin `restorecon -Rv` kullan.",
+          "hint_partial": "restorecon -Rv ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-017-r32",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/srv/app/proxy-32-32/app/proxy-32` altindaki SELinux label'larini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls -Z /srv/app/proxy-32-32/app/proxy-32",
+          "hint_text": "SELinux context gormek icin `ls -Z` kullan.",
+          "hint_partial": "ls -Z ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-018-r33",
+      "type": "single",
+      "scenario": "Bakim oncesi 8443/tcp portunu SELinux'te `http_port_t` tipine ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "semanage port -a -t http_port_t -p tcp 8443",
+          "hint_text": "SELinux port eklemek icin `semanage port -a` kullan.",
+          "hint_partial": "semanage port ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-019-r34",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/srv/app/cache-34-34-34-34/app/cache-34-34-34` agacina `httpd_sys_content_t` tipi uygula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chcon -R -t httpd_sys_content_t /srv/app/cache-34-34-34-34/app/cache-34-34-34",
+          "hint_text": "Gecici SELinux type degisikligi icin `chcon -R -t` kullan.",
+          "hint_partial": "chcon -R ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-020-r35",
+      "type": "single",
+      "scenario": "Deploy sonrasi sudoers syntax dogrulamasini calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "visudo -c",
+          "hint_text": "Syntax check icin `visudo -c` kullan.",
+          "hint_partial": "visudo -c"
+        }
+      ]
+    },
+    {
+      "id": "sperm-021-r36",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/usr/bin/myapp` binary'sinden capability'leri temizle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setcap -r /usr/bin/myapp",
+          "hint_text": "Capability silmek icin `setcap -r` kullan.",
+          "hint_partial": "setcap -r ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-022-r37",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `/usr/local/bin` altindaki tum file capability'lerini recursive tara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getcap -r /usr/local/bin 2>/dev/null",
+          "hint_text": "Recursive capability taramasi icin `getcap -r` kullan.",
+          "hint_partial": "getcap -r ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-023-r38",
+      "type": "single",
+      "scenario": "Runbook adiminda `/srv/app/queue-38-38/releases` icin `ops` group'una stage-38-38 read+execute ACL ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setfacl -m d:g:ops:rx /srv/app/queue-38-38/releases",
+          "hint_text": "Default ACL icin `d:g:group:perms` kullan.",
+          "hint_partial": "setfacl -m ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-024-r39",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde owner veya group'u olmayan file'lari tum sistemde bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find / -nouser -o -nogroup 2>/dev/null",
+          "hint_text": "Sahipsiz file taramasi icin `find -nouser -o -nogroup` kullan.",
+          "hint_partial": "find / -nouser ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-025-r40",
+      "type": "single",
+      "scenario": "Incident sonrasinda kalici SELinux mod ayarini config dosyasindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "grep '^SELINUX=' /etc/selinux/config",
+          "hint_text": "Kalici SELinux mode config'de tutulur.",
+          "hint_partial": "grep '^SELINUX=' ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-016-r41",
+      "type": "single",
+      "scenario": "Bakim oncesi `/srv/app/web-41-41-41/app/web-41-41` altindaki SELinux context'leri recursive restore et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "restorecon -Rv /srv/app/web-41-41-41/app/web-41-41",
+          "hint_text": "SELinux context duzeltmek icin `restorecon -Rv` kullan.",
+          "hint_partial": "restorecon -Rv ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-017-r42",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/srv/app/cache-42-42-42-42/app/cache-42-42-42` altindaki SELinux label'larini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls -Z /srv/app/cache-42-42-42-42/app/cache-42-42-42",
+          "hint_text": "SELinux context gormek icin `ls -Z` kullan.",
+          "hint_partial": "ls -Z ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-018-r43",
+      "type": "single",
+      "scenario": "Deploy sonrasi 8443/tcp portunu SELinux'te `http_port_t` tipine ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "semanage port -a -t http_port_t -p tcp 8443",
+          "hint_text": "SELinux port eklemek icin `semanage port -a` kullan.",
+          "hint_partial": "semanage port ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-019-r44",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/srv/app/db-44-44-44/app/db-44-44` agacina `httpd_sys_content_t` tipi uygula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chcon -R -t httpd_sys_content_t /srv/app/db-44-44-44/app/db-44-44",
+          "hint_text": "Gecici SELinux type degisikligi icin `chcon -R -t` kullan.",
+          "hint_partial": "chcon -R ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-020-r45",
+      "type": "single",
+      "scenario": "Yeni acilan hostta sudoers syntax dogrulamasini calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "visudo -c",
+          "hint_text": "Syntax check icin `visudo -c` kullan.",
+          "hint_partial": "visudo -c"
+        }
+      ]
+    },
+    {
+      "id": "sperm-021-r46",
+      "type": "single",
+      "scenario": "Runbook adiminda `/usr/bin/myapp` binary'sinden capability'leri temizle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setcap -r /usr/bin/myapp",
+          "hint_text": "Capability silmek icin `setcap -r` kullan.",
+          "hint_partial": "setcap -r ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-022-r47",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `/usr/local/bin` altindaki tum file capability'lerini recursive tara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getcap -r /usr/local/bin 2>/dev/null",
+          "hint_text": "Recursive capability taramasi icin `getcap -r` kullan.",
+          "hint_partial": "getcap -r ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-023-r48",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/srv/app/proxy-48-48/releases` icin `ops` group'una ops-48 read+execute ACL ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setfacl -m d:g:ops:rx /srv/app/proxy-48-48/releases",
+          "hint_text": "Default ACL icin `d:g:group:perms` kullan.",
+          "hint_partial": "setfacl -m ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-024-r49",
+      "type": "single",
+      "scenario": "Bakim oncesi owner veya group'u olmayan file'lari tum sistemde bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find / -nouser -o -nogroup 2>/dev/null",
+          "hint_text": "Sahipsiz file taramasi icin `find -nouser -o -nogroup` kullan.",
+          "hint_partial": "find / -nouser ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-025-r50",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda kalici SELinux mod ayarini config dosyasindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "grep '^SELINUX=' /etc/selinux/config",
+          "hint_text": "Kalici SELinux mode config'de tutulur.",
+          "hint_partial": "grep '^SELINUX=' ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-016-r51",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/srv/app/queue-51-51-51/app/queue-51-51` altindaki SELinux context'leri recursive restore et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "restorecon -Rv /srv/app/queue-51-51-51/app/queue-51-51",
+          "hint_text": "SELinux context duzeltmek icin `restorecon -Rv` kullan.",
+          "hint_partial": "restorecon -Rv ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-017-r52",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/srv/app/db-52-52-52/app/db-52-52` altindaki SELinux label'larini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls -Z /srv/app/db-52-52-52/app/db-52-52",
+          "hint_text": "SELinux context gormek icin `ls -Z` kullan.",
+          "hint_partial": "ls -Z ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-018-r53",
+      "type": "single",
+      "scenario": "Yeni acilan hostta 8443/tcp portunu SELinux'te `http_port_t` tipine ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "semanage port -a -t http_port_t -p tcp 8443",
+          "hint_text": "SELinux port eklemek icin `semanage port -a` kullan.",
+          "hint_partial": "semanage port ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-019-r54",
+      "type": "single",
+      "scenario": "Runbook adiminda `/srv/app/queue-54-54/app/queue-54` agacina `httpd_sys_content_t` tipi uygula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chcon -R -t httpd_sys_content_t /srv/app/queue-54-54/app/queue-54",
+          "hint_text": "Gecici SELinux type degisikligi icin `chcon -R -t` kullan.",
+          "hint_partial": "chcon -R ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-020-r55",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde sudoers syntax dogrulamasini calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "visudo -c",
+          "hint_text": "Syntax check icin `visudo -c` kullan.",
+          "hint_partial": "visudo -c"
+        }
+      ]
+    },
+    {
+      "id": "sperm-021-r56",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/usr/bin/myapp` binary'sinden capability'leri temizle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setcap -r /usr/bin/myapp",
+          "hint_text": "Capability silmek icin `setcap -r` kullan.",
+          "hint_partial": "setcap -r ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-022-r57",
+      "type": "single",
+      "scenario": "Bakim oncesi `/usr/local/bin` altindaki tum file capability'lerini recursive tara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getcap -r /usr/local/bin 2>/dev/null",
+          "hint_text": "Recursive capability taramasi icin `getcap -r` kullan.",
+          "hint_partial": "getcap -r ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-023-r58",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/srv/app/cache-58-58-58-58/releases` icin `ops` group'una monitoring-58 read+execute ACL ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setfacl -m d:g:ops:rx /srv/app/cache-58-58-58-58/releases",
+          "hint_text": "Default ACL icin `d:g:group:perms` kullan.",
+          "hint_partial": "setfacl -m ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-024-r59",
+      "type": "single",
+      "scenario": "Deploy sonrasi owner veya group'u olmayan file'lari tum sistemde bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find / -nouser -o -nogroup 2>/dev/null",
+          "hint_text": "Sahipsiz file taramasi icin `find -nouser -o -nogroup` kullan.",
+          "hint_partial": "find / -nouser ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-025-r60",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde kalici SELinux mod ayarini config dosyasindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "grep '^SELINUX=' /etc/selinux/config",
+          "hint_text": "Kalici SELinux mode config'de tutulur.",
+          "hint_partial": "grep '^SELINUX=' ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-016-r61",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `/srv/app/cache-61-61-61/app/cache-61-61` altindaki SELinux context'leri recursive restore et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "restorecon -Rv /srv/app/cache-61-61-61/app/cache-61-61",
+          "hint_text": "SELinux context duzeltmek icin `restorecon -Rv` kullan.",
+          "hint_partial": "restorecon -Rv ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-017-r62",
+      "type": "single",
+      "scenario": "Runbook adiminda `/srv/app/queue-62-62/app/queue-62` altindaki SELinux label'larini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls -Z /srv/app/queue-62-62/app/queue-62",
+          "hint_text": "SELinux context gormek icin `ls -Z` kullan.",
+          "hint_partial": "ls -Z ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-018-r63",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde 8443/tcp portunu SELinux'te `http_port_t` tipine ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "semanage port -a -t http_port_t -p tcp 8443",
+          "hint_text": "SELinux port eklemek icin `semanage port -a` kullan.",
+          "hint_partial": "semanage port ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-019-r64",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/srv/app/proxy-64-64/app/proxy-64` agacina `httpd_sys_content_t` tipi uygula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chcon -R -t httpd_sys_content_t /srv/app/proxy-64-64/app/proxy-64",
+          "hint_text": "Gecici SELinux type degisikligi icin `chcon -R -t` kullan.",
+          "hint_partial": "chcon -R ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-020-r65",
+      "type": "single",
+      "scenario": "Bakim oncesi sudoers syntax dogrulamasini calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "visudo -c",
+          "hint_text": "Syntax check icin `visudo -c` kullan.",
+          "hint_partial": "visudo -c"
+        }
+      ]
+    },
+    {
+      "id": "sperm-021-r66",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/usr/bin/myapp` binary'sinden capability'leri temizle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setcap -r /usr/bin/myapp",
+          "hint_text": "Capability silmek icin `setcap -r` kullan.",
+          "hint_partial": "setcap -r ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-022-r67",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/usr/local/bin` altindaki tum file capability'lerini recursive tara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getcap -r /usr/local/bin 2>/dev/null",
+          "hint_text": "Recursive capability taramasi icin `getcap -r` kullan.",
+          "hint_partial": "getcap -r ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-023-r68",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/srv/app/db-68-68-68/releases` icin `ops` group'una stage-68-68 read+execute ACL ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setfacl -m d:g:ops:rx /srv/app/db-68-68-68/releases",
+          "hint_text": "Default ACL icin `d:g:group:perms` kullan.",
+          "hint_partial": "setfacl -m ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-024-r69",
+      "type": "single",
+      "scenario": "Yeni acilan hostta owner veya group'u olmayan file'lari tum sistemde bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find / -nouser -o -nogroup 2>/dev/null",
+          "hint_text": "Sahipsiz file taramasi icin `find -nouser -o -nogroup` kullan.",
+          "hint_partial": "find / -nouser ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-025-r70",
+      "type": "single",
+      "scenario": "Runbook adiminda kalici SELinux mod ayarini config dosyasindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "grep '^SELINUX=' /etc/selinux/config",
+          "hint_text": "Kalici SELinux mode config'de tutulur.",
+          "hint_partial": "grep '^SELINUX=' ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-016-r71",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `/srv/app/bastion-71-71/app/bastion-71` altindaki SELinux context'leri recursive restore et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "restorecon -Rv /srv/app/bastion-71-71/app/bastion-71",
+          "hint_text": "SELinux context duzeltmek icin `restorecon -Rv` kullan.",
+          "hint_partial": "restorecon -Rv ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-017-r72",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/srv/app/proxy-72-72/app/proxy-72` altindaki SELinux label'larini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls -Z /srv/app/proxy-72-72/app/proxy-72",
+          "hint_text": "SELinux context gormek icin `ls -Z` kullan.",
+          "hint_partial": "ls -Z ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-018-r73",
+      "type": "single",
+      "scenario": "Bakim oncesi 8443/tcp portunu SELinux'te `http_port_t` tipine ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "semanage port -a -t http_port_t -p tcp 8443",
+          "hint_text": "SELinux port eklemek icin `semanage port -a` kullan.",
+          "hint_partial": "semanage port ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-019-r74",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/srv/app/cache-74-74-74-74/app/cache-74-74-74` agacina `httpd_sys_content_t` tipi uygula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chcon -R -t httpd_sys_content_t /srv/app/cache-74-74-74-74/app/cache-74-74-74",
+          "hint_text": "Gecici SELinux type degisikligi icin `chcon -R -t` kullan.",
+          "hint_partial": "chcon -R ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-020-r75",
+      "type": "single",
+      "scenario": "Deploy sonrasi sudoers syntax dogrulamasini calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "visudo -c",
+          "hint_text": "Syntax check icin `visudo -c` kullan.",
+          "hint_partial": "visudo -c"
+        }
+      ]
+    },
+    {
+      "id": "sperm-021-r76",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/usr/bin/myapp` binary'sinden capability'leri temizle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setcap -r /usr/bin/myapp",
+          "hint_text": "Capability silmek icin `setcap -r` kullan.",
+          "hint_partial": "setcap -r ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-022-r77",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `/usr/local/bin` altindaki tum file capability'lerini recursive tara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getcap -r /usr/local/bin 2>/dev/null",
+          "hint_text": "Recursive capability taramasi icin `getcap -r` kullan.",
+          "hint_partial": "getcap -r ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-023-r78",
+      "type": "single",
+      "scenario": "Runbook adiminda `/srv/app/queue-78-78/releases` icin `ops` group'una ops-78 read+execute ACL ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setfacl -m d:g:ops:rx /srv/app/queue-78-78/releases",
+          "hint_text": "Default ACL icin `d:g:group:perms` kullan.",
+          "hint_partial": "setfacl -m ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-024-r79",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde owner veya group'u olmayan file'lari tum sistemde bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find / -nouser -o -nogroup 2>/dev/null",
+          "hint_text": "Sahipsiz file taramasi icin `find -nouser -o -nogroup` kullan.",
+          "hint_partial": "find / -nouser ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-025-r80",
+      "type": "single",
+      "scenario": "Incident sonrasinda kalici SELinux mod ayarini config dosyasindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "grep '^SELINUX=' /etc/selinux/config",
+          "hint_text": "Kalici SELinux mode config'de tutulur.",
+          "hint_partial": "grep '^SELINUX=' ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-016-r81",
+      "type": "single",
+      "scenario": "Bakim oncesi `/srv/app/web-81-81-81/app/web-81-81` altindaki SELinux context'leri recursive restore et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "restorecon -Rv /srv/app/web-81-81-81/app/web-81-81",
+          "hint_text": "SELinux context duzeltmek icin `restorecon -Rv` kullan.",
+          "hint_partial": "restorecon -Rv ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-017-r82",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/srv/app/cache-82-82-82-82/app/cache-82-82-82` altindaki SELinux label'larini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls -Z /srv/app/cache-82-82-82-82/app/cache-82-82-82",
+          "hint_text": "SELinux context gormek icin `ls -Z` kullan.",
+          "hint_partial": "ls -Z ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-018-r83",
+      "type": "single",
+      "scenario": "Deploy sonrasi 8443/tcp portunu SELinux'te `http_port_t` tipine ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "semanage port -a -t http_port_t -p tcp 8443",
+          "hint_text": "SELinux port eklemek icin `semanage port -a` kullan.",
+          "hint_partial": "semanage port ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-019-r84",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/srv/app/db-84-84-84/app/db-84-84` agacina `httpd_sys_content_t` tipi uygula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chcon -R -t httpd_sys_content_t /srv/app/db-84-84-84/app/db-84-84",
+          "hint_text": "Gecici SELinux type degisikligi icin `chcon -R -t` kullan.",
+          "hint_partial": "chcon -R ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-020-r85",
+      "type": "single",
+      "scenario": "Yeni acilan hostta sudoers syntax dogrulamasini calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "visudo -c",
+          "hint_text": "Syntax check icin `visudo -c` kullan.",
+          "hint_partial": "visudo -c"
+        }
+      ]
+    },
+    {
+      "id": "sperm-021-r86",
+      "type": "single",
+      "scenario": "Runbook adiminda `/usr/bin/myapp` binary'sinden capability'leri temizle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setcap -r /usr/bin/myapp",
+          "hint_text": "Capability silmek icin `setcap -r` kullan.",
+          "hint_partial": "setcap -r ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-022-r87",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `/usr/local/bin` altindaki tum file capability'lerini recursive tara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getcap -r /usr/local/bin 2>/dev/null",
+          "hint_text": "Recursive capability taramasi icin `getcap -r` kullan.",
+          "hint_partial": "getcap -r ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-023-r88",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/srv/app/proxy-88-88/releases` icin `ops` group'una monitoring-88 read+execute ACL ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setfacl -m d:g:ops:rx /srv/app/proxy-88-88/releases",
+          "hint_text": "Default ACL icin `d:g:group:perms` kullan.",
+          "hint_partial": "setfacl -m ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-024-r89",
+      "type": "single",
+      "scenario": "Bakim oncesi owner veya group'u olmayan file'lari tum sistemde bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find / -nouser -o -nogroup 2>/dev/null",
+          "hint_text": "Sahipsiz file taramasi icin `find -nouser -o -nogroup` kullan.",
+          "hint_partial": "find / -nouser ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-025-r90",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda kalici SELinux mod ayarini config dosyasindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "grep '^SELINUX=' /etc/selinux/config",
+          "hint_text": "Kalici SELinux mode config'de tutulur.",
+          "hint_partial": "grep '^SELINUX=' ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-016-r91",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/srv/app/queue-91-91-91/app/queue-91-91` altindaki SELinux context'leri recursive restore et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "restorecon -Rv /srv/app/queue-91-91-91/app/queue-91-91",
+          "hint_text": "SELinux context duzeltmek icin `restorecon -Rv` kullan.",
+          "hint_partial": "restorecon -Rv ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-017-r92",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/srv/app/db-92-92-92/app/db-92-92` altindaki SELinux label'larini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls -Z /srv/app/db-92-92-92/app/db-92-92",
+          "hint_text": "SELinux context gormek icin `ls -Z` kullan.",
+          "hint_partial": "ls -Z ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-018-r93",
+      "type": "single",
+      "scenario": "Yeni acilan hostta 8443/tcp portunu SELinux'te `http_port_t` tipine ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "semanage port -a -t http_port_t -p tcp 8443",
+          "hint_text": "SELinux port eklemek icin `semanage port -a` kullan.",
+          "hint_partial": "semanage port ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-019-r94",
+      "type": "single",
+      "scenario": "Runbook adiminda `/srv/app/queue-94-94/app/queue-94` agacina `httpd_sys_content_t` tipi uygula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chcon -R -t httpd_sys_content_t /srv/app/queue-94-94/app/queue-94",
+          "hint_text": "Gecici SELinux type degisikligi icin `chcon -R -t` kullan.",
+          "hint_partial": "chcon -R ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-020-r95",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde sudoers syntax dogrulamasini calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "visudo -c",
+          "hint_text": "Syntax check icin `visudo -c` kullan.",
+          "hint_partial": "visudo -c"
+        }
+      ]
+    },
+    {
+      "id": "sperm-021-r96",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/usr/bin/myapp` binary'sinden capability'leri temizle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setcap -r /usr/bin/myapp",
+          "hint_text": "Capability silmek icin `setcap -r` kullan.",
+          "hint_partial": "setcap -r ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-022-r97",
+      "type": "single",
+      "scenario": "Bakim oncesi `/usr/local/bin` altindaki tum file capability'lerini recursive tara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getcap -r /usr/local/bin 2>/dev/null",
+          "hint_text": "Recursive capability taramasi icin `getcap -r` kullan.",
+          "hint_partial": "getcap -r ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-023-r98",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/srv/app/cache-98-98-98-98/releases` icin `ops` group'una stage-98-98 read+execute ACL ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setfacl -m d:g:ops:rx /srv/app/cache-98-98-98-98/releases",
+          "hint_text": "Default ACL icin `d:g:group:perms` kullan.",
+          "hint_partial": "setfacl -m ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-024-r99",
+      "type": "single",
+      "scenario": "Deploy sonrasi owner veya group'u olmayan file'lari tum sistemde bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find / -nouser -o -nogroup 2>/dev/null",
+          "hint_text": "Sahipsiz file taramasi icin `find -nouser -o -nogroup` kullan.",
+          "hint_partial": "find / -nouser ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-025-r100",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde kalici SELinux mod ayarini config dosyasindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "grep '^SELINUX=' /etc/selinux/config",
+          "hint_text": "Kalici SELinux mode config'de tutulur.",
+          "hint_partial": "grep '^SELINUX=' ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-016-r101",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `/srv/app/cache-101-101-101/app/cache-101-101` altindaki SELinux context'leri recursive restore et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "restorecon -Rv /srv/app/cache-101-101-101/app/cache-101-101",
+          "hint_text": "SELinux context duzeltmek icin `restorecon -Rv` kullan.",
+          "hint_partial": "restorecon -Rv ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-017-r102",
+      "type": "single",
+      "scenario": "Runbook adiminda `/srv/app/queue-102-102/app/queue-102` altindaki SELinux label'larini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls -Z /srv/app/queue-102-102/app/queue-102",
+          "hint_text": "SELinux context gormek icin `ls -Z` kullan.",
+          "hint_partial": "ls -Z ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-018-r103",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde 8443/tcp portunu SELinux'te `http_port_t` tipine ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "semanage port -a -t http_port_t -p tcp 8443",
+          "hint_text": "SELinux port eklemek icin `semanage port -a` kullan.",
+          "hint_partial": "semanage port ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-019-r104",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/srv/app/proxy-104-104/app/proxy-104` agacina `httpd_sys_content_t` tipi uygula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chcon -R -t httpd_sys_content_t /srv/app/proxy-104-104/app/proxy-104",
+          "hint_text": "Gecici SELinux type degisikligi icin `chcon -R -t` kullan.",
+          "hint_partial": "chcon -R ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-020-r105",
+      "type": "single",
+      "scenario": "Bakim oncesi sudoers syntax dogrulamasini calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "visudo -c",
+          "hint_text": "Syntax check icin `visudo -c` kullan.",
+          "hint_partial": "visudo -c"
+        }
+      ]
+    },
+    {
+      "id": "sperm-021-r106",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/usr/bin/myapp` binary'sinden capability'leri temizle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setcap -r /usr/bin/myapp",
+          "hint_text": "Capability silmek icin `setcap -r` kullan.",
+          "hint_partial": "setcap -r ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-022-r107",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/usr/local/bin` altindaki tum file capability'lerini recursive tara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getcap -r /usr/local/bin 2>/dev/null",
+          "hint_text": "Recursive capability taramasi icin `getcap -r` kullan.",
+          "hint_partial": "getcap -r ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-023-r108",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/srv/app/db-108-108-108/releases` icin `ops` group'una ops-108 read+execute ACL ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setfacl -m d:g:ops:rx /srv/app/db-108-108-108/releases",
+          "hint_text": "Default ACL icin `d:g:group:perms` kullan.",
+          "hint_partial": "setfacl -m ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-024-r109",
+      "type": "single",
+      "scenario": "Yeni acilan hostta owner veya group'u olmayan file'lari tum sistemde bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find / -nouser -o -nogroup 2>/dev/null",
+          "hint_text": "Sahipsiz file taramasi icin `find -nouser -o -nogroup` kullan.",
+          "hint_partial": "find / -nouser ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-025-r110",
+      "type": "single",
+      "scenario": "Runbook adiminda kalici SELinux mod ayarini config dosyasindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "grep '^SELINUX=' /etc/selinux/config",
+          "hint_text": "Kalici SELinux mode config'de tutulur.",
+          "hint_partial": "grep '^SELINUX=' ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-016-r111",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `/srv/app/bastion-111-111/app/bastion-111` altindaki SELinux context'leri recursive restore et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "restorecon -Rv /srv/app/bastion-111-111/app/bastion-111",
+          "hint_text": "SELinux context duzeltmek icin `restorecon -Rv` kullan.",
+          "hint_partial": "restorecon -Rv ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-017-r112",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/srv/app/proxy-112-112/app/proxy-112` altindaki SELinux label'larini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls -Z /srv/app/proxy-112-112/app/proxy-112",
+          "hint_text": "SELinux context gormek icin `ls -Z` kullan.",
+          "hint_partial": "ls -Z ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-018-r113",
+      "type": "single",
+      "scenario": "Bakim oncesi 8443/tcp portunu SELinux'te `http_port_t` tipine ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "semanage port -a -t http_port_t -p tcp 8443",
+          "hint_text": "SELinux port eklemek icin `semanage port -a` kullan.",
+          "hint_partial": "semanage port ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-019-r114",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/srv/app/cache-114-114-114-114/app/cache-114-114-114` agacina `httpd_sys_content_t` tipi uygula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chcon -R -t httpd_sys_content_t /srv/app/cache-114-114-114-114/app/cache-114-114-114",
+          "hint_text": "Gecici SELinux type degisikligi icin `chcon -R -t` kullan.",
+          "hint_partial": "chcon -R ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-020-r115",
+      "type": "single",
+      "scenario": "Deploy sonrasi sudoers syntax dogrulamasini calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "visudo -c",
+          "hint_text": "Syntax check icin `visudo -c` kullan.",
+          "hint_partial": "visudo -c"
+        }
+      ]
+    },
+    {
+      "id": "sperm-021-r116",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/usr/bin/myapp` binary'sinden capability'leri temizle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setcap -r /usr/bin/myapp",
+          "hint_text": "Capability silmek icin `setcap -r` kullan.",
+          "hint_partial": "setcap -r ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-022-r117",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `/usr/local/bin` altindaki tum file capability'lerini recursive tara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getcap -r /usr/local/bin 2>/dev/null",
+          "hint_text": "Recursive capability taramasi icin `getcap -r` kullan.",
+          "hint_partial": "getcap -r ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-023-r118",
+      "type": "single",
+      "scenario": "Runbook adiminda `/srv/app/queue-118-118/releases` icin `ops` group'una monitoring-118 read+execute ACL ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setfacl -m d:g:ops:rx /srv/app/queue-118-118/releases",
+          "hint_text": "Default ACL icin `d:g:group:perms` kullan.",
+          "hint_partial": "setfacl -m ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-024-r119",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde owner veya group'u olmayan file'lari tum sistemde bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find / -nouser -o -nogroup 2>/dev/null",
+          "hint_text": "Sahipsiz file taramasi icin `find -nouser -o -nogroup` kullan.",
+          "hint_partial": "find / -nouser ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-025-r120",
+      "type": "single",
+      "scenario": "Incident sonrasinda kalici SELinux mod ayarini config dosyasindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "grep '^SELINUX=' /etc/selinux/config",
+          "hint_text": "Kalici SELinux mode config'de tutulur.",
+          "hint_partial": "grep '^SELINUX=' ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-016-r121",
+      "type": "single",
+      "scenario": "Bakim oncesi `/srv/app/web-121-121-121/app/web-121-121` altindaki SELinux context'leri recursive restore et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "restorecon -Rv /srv/app/web-121-121-121/app/web-121-121",
+          "hint_text": "SELinux context duzeltmek icin `restorecon -Rv` kullan.",
+          "hint_partial": "restorecon -Rv ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-017-r122",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/srv/app/cache-122-122-122-122/app/cache-122-122-122` altindaki SELinux label'larini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls -Z /srv/app/cache-122-122-122-122/app/cache-122-122-122",
+          "hint_text": "SELinux context gormek icin `ls -Z` kullan.",
+          "hint_partial": "ls -Z ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-018-r123",
+      "type": "single",
+      "scenario": "Deploy sonrasi 8443/tcp portunu SELinux'te `http_port_t` tipine ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "semanage port -a -t http_port_t -p tcp 8443",
+          "hint_text": "SELinux port eklemek icin `semanage port -a` kullan.",
+          "hint_partial": "semanage port ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-019-r124",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/srv/app/db-124-124-124/app/db-124-124` agacina `httpd_sys_content_t` tipi uygula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chcon -R -t httpd_sys_content_t /srv/app/db-124-124-124/app/db-124-124",
+          "hint_text": "Gecici SELinux type degisikligi icin `chcon -R -t` kullan.",
+          "hint_partial": "chcon -R ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-020-r125",
+      "type": "single",
+      "scenario": "Yeni acilan hostta sudoers syntax dogrulamasini calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "visudo -c",
+          "hint_text": "Syntax check icin `visudo -c` kullan.",
+          "hint_partial": "visudo -c"
+        }
+      ]
+    },
+    {
+      "id": "sperm-021-r126",
+      "type": "single",
+      "scenario": "Runbook adiminda `/usr/bin/myapp` binary'sinden capability'leri temizle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setcap -r /usr/bin/myapp",
+          "hint_text": "Capability silmek icin `setcap -r` kullan.",
+          "hint_partial": "setcap -r ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-022-r127",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `/usr/local/bin` altindaki tum file capability'lerini recursive tara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getcap -r /usr/local/bin 2>/dev/null",
+          "hint_text": "Recursive capability taramasi icin `getcap -r` kullan.",
+          "hint_partial": "getcap -r ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-023-r128",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/srv/app/proxy-128-128/releases` icin `ops` group'una stage-128-128 read+execute ACL ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setfacl -m d:g:ops:rx /srv/app/proxy-128-128/releases",
+          "hint_text": "Default ACL icin `d:g:group:perms` kullan.",
+          "hint_partial": "setfacl -m ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-024-r129",
+      "type": "single",
+      "scenario": "Bakim oncesi owner veya group'u olmayan file'lari tum sistemde bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find / -nouser -o -nogroup 2>/dev/null",
+          "hint_text": "Sahipsiz file taramasi icin `find -nouser -o -nogroup` kullan.",
+          "hint_partial": "find / -nouser ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-025-r130",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda kalici SELinux mod ayarini config dosyasindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "grep '^SELINUX=' /etc/selinux/config",
+          "hint_text": "Kalici SELinux mode config'de tutulur.",
+          "hint_partial": "grep '^SELINUX=' ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-016-r131",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/srv/app/queue-131-131-131/app/queue-131-131` altindaki SELinux context'leri recursive restore et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "restorecon -Rv /srv/app/queue-131-131-131/app/queue-131-131",
+          "hint_text": "SELinux context duzeltmek icin `restorecon -Rv` kullan.",
+          "hint_partial": "restorecon -Rv ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-017-r132",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/srv/app/db-132-132-132/app/db-132-132` altindaki SELinux label'larini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls -Z /srv/app/db-132-132-132/app/db-132-132",
+          "hint_text": "SELinux context gormek icin `ls -Z` kullan.",
+          "hint_partial": "ls -Z ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-018-r133",
+      "type": "single",
+      "scenario": "Yeni acilan hostta 8443/tcp portunu SELinux'te `http_port_t` tipine ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "semanage port -a -t http_port_t -p tcp 8443",
+          "hint_text": "SELinux port eklemek icin `semanage port -a` kullan.",
+          "hint_partial": "semanage port ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-019-r134",
+      "type": "single",
+      "scenario": "Runbook adiminda `/srv/app/queue-134-134/app/queue-134` agacina `httpd_sys_content_t` tipi uygula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chcon -R -t httpd_sys_content_t /srv/app/queue-134-134/app/queue-134",
+          "hint_text": "Gecici SELinux type degisikligi icin `chcon -R -t` kullan.",
+          "hint_partial": "chcon -R ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-020-r135",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde sudoers syntax dogrulamasini calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "visudo -c",
+          "hint_text": "Syntax check icin `visudo -c` kullan.",
+          "hint_partial": "visudo -c"
+        }
+      ]
+    },
+    {
+      "id": "sperm-021-r136",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/usr/bin/myapp` binary'sinden capability'leri temizle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setcap -r /usr/bin/myapp",
+          "hint_text": "Capability silmek icin `setcap -r` kullan.",
+          "hint_partial": "setcap -r ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-022-r137",
+      "type": "single",
+      "scenario": "Bakim oncesi `/usr/local/bin` altindaki tum file capability'lerini recursive tara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getcap -r /usr/local/bin 2>/dev/null",
+          "hint_text": "Recursive capability taramasi icin `getcap -r` kullan.",
+          "hint_partial": "getcap -r ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-023-r138",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/srv/app/cache-138-138-138-138/releases` icin `ops` group'una ops-138 read+execute ACL ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setfacl -m d:g:ops:rx /srv/app/cache-138-138-138-138/releases",
+          "hint_text": "Default ACL icin `d:g:group:perms` kullan.",
+          "hint_partial": "setfacl -m ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-024-r139",
+      "type": "single",
+      "scenario": "Deploy sonrasi owner veya group'u olmayan file'lari tum sistemde bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find / -nouser -o -nogroup 2>/dev/null",
+          "hint_text": "Sahipsiz file taramasi icin `find -nouser -o -nogroup` kullan.",
+          "hint_partial": "find / -nouser ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-025-r140",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde kalici SELinux mod ayarini config dosyasindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "grep '^SELINUX=' /etc/selinux/config",
+          "hint_text": "Kalici SELinux mode config'de tutulur.",
+          "hint_partial": "grep '^SELINUX=' ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-016-r141",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `/srv/app/cache-141-141-141/app/cache-141-141` altindaki SELinux context'leri recursive restore et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "restorecon -Rv /srv/app/cache-141-141-141/app/cache-141-141",
+          "hint_text": "SELinux context duzeltmek icin `restorecon -Rv` kullan.",
+          "hint_partial": "restorecon -Rv ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-017-r142",
+      "type": "single",
+      "scenario": "Runbook adiminda `/srv/app/queue-142-142/app/queue-142` altindaki SELinux label'larini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls -Z /srv/app/queue-142-142/app/queue-142",
+          "hint_text": "SELinux context gormek icin `ls -Z` kullan.",
+          "hint_partial": "ls -Z ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-018-r143",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde 8443/tcp portunu SELinux'te `http_port_t` tipine ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "semanage port -a -t http_port_t -p tcp 8443",
+          "hint_text": "SELinux port eklemek icin `semanage port -a` kullan.",
+          "hint_partial": "semanage port ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-019-r144",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/srv/app/proxy-144-144/app/proxy-144` agacina `httpd_sys_content_t` tipi uygula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chcon -R -t httpd_sys_content_t /srv/app/proxy-144-144/app/proxy-144",
+          "hint_text": "Gecici SELinux type degisikligi icin `chcon -R -t` kullan.",
+          "hint_partial": "chcon -R ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-020-r145",
+      "type": "single",
+      "scenario": "Bakim oncesi sudoers syntax dogrulamasini calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "visudo -c",
+          "hint_text": "Syntax check icin `visudo -c` kullan.",
+          "hint_partial": "visudo -c"
+        }
+      ]
+    },
+    {
+      "id": "sperm-021-r146",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/usr/bin/myapp` binary'sinden capability'leri temizle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setcap -r /usr/bin/myapp",
+          "hint_text": "Capability silmek icin `setcap -r` kullan.",
+          "hint_partial": "setcap -r ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-022-r147",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/usr/local/bin` altindaki tum file capability'lerini recursive tara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getcap -r /usr/local/bin 2>/dev/null",
+          "hint_text": "Recursive capability taramasi icin `getcap -r` kullan.",
+          "hint_partial": "getcap -r ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-023-r148",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/srv/app/db-148-148-148/releases` icin `ops` group'una monitoring-148 read+execute ACL ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setfacl -m d:g:ops:rx /srv/app/db-148-148-148/releases",
+          "hint_text": "Default ACL icin `d:g:group:perms` kullan.",
+          "hint_partial": "setfacl -m ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-024-r149",
+      "type": "single",
+      "scenario": "Yeni acilan hostta owner veya group'u olmayan file'lari tum sistemde bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find / -nouser -o -nogroup 2>/dev/null",
+          "hint_text": "Sahipsiz file taramasi icin `find -nouser -o -nogroup` kullan.",
+          "hint_partial": "find / -nouser ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-025-r150",
+      "type": "single",
+      "scenario": "Runbook adiminda kalici SELinux mod ayarini config dosyasindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "grep '^SELINUX=' /etc/selinux/config",
+          "hint_text": "Kalici SELinux mode config'de tutulur.",
+          "hint_partial": "grep '^SELINUX=' ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-016-r151",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `/srv/app/bastion-151-151/app/bastion-151` altindaki SELinux context'leri recursive restore et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "restorecon -Rv /srv/app/bastion-151-151/app/bastion-151",
+          "hint_text": "SELinux context duzeltmek icin `restorecon -Rv` kullan.",
+          "hint_partial": "restorecon -Rv ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-017-r152",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/srv/app/proxy-152-152/app/proxy-152` altindaki SELinux label'larini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls -Z /srv/app/proxy-152-152/app/proxy-152",
+          "hint_text": "SELinux context gormek icin `ls -Z` kullan.",
+          "hint_partial": "ls -Z ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-018-r153",
+      "type": "single",
+      "scenario": "Bakim oncesi 8443/tcp portunu SELinux'te `http_port_t` tipine ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "semanage port -a -t http_port_t -p tcp 8443",
+          "hint_text": "SELinux port eklemek icin `semanage port -a` kullan.",
+          "hint_partial": "semanage port ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-019-r154",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/srv/app/cache-154-154-154-154/app/cache-154-154-154` agacina `httpd_sys_content_t` tipi uygula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chcon -R -t httpd_sys_content_t /srv/app/cache-154-154-154-154/app/cache-154-154-154",
+          "hint_text": "Gecici SELinux type degisikligi icin `chcon -R -t` kullan.",
+          "hint_partial": "chcon -R ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-020-r155",
+      "type": "single",
+      "scenario": "Deploy sonrasi sudoers syntax dogrulamasini calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "visudo -c",
+          "hint_text": "Syntax check icin `visudo -c` kullan.",
+          "hint_partial": "visudo -c"
+        }
+      ]
+    },
+    {
+      "id": "sperm-021-r156",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/usr/bin/myapp` binary'sinden capability'leri temizle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setcap -r /usr/bin/myapp",
+          "hint_text": "Capability silmek icin `setcap -r` kullan.",
+          "hint_partial": "setcap -r ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-022-r157",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `/usr/local/bin` altindaki tum file capability'lerini recursive tara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getcap -r /usr/local/bin 2>/dev/null",
+          "hint_text": "Recursive capability taramasi icin `getcap -r` kullan.",
+          "hint_partial": "getcap -r ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-023-r158",
+      "type": "single",
+      "scenario": "Runbook adiminda `/srv/app/queue-158-158/releases` icin `ops` group'una stage-158-158 read+execute ACL ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setfacl -m d:g:ops:rx /srv/app/queue-158-158/releases",
+          "hint_text": "Default ACL icin `d:g:group:perms` kullan.",
+          "hint_partial": "setfacl -m ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-024-r159",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde owner veya group'u olmayan file'lari tum sistemde bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find / -nouser -o -nogroup 2>/dev/null",
+          "hint_text": "Sahipsiz file taramasi icin `find -nouser -o -nogroup` kullan.",
+          "hint_partial": "find / -nouser ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-025-r160",
+      "type": "single",
+      "scenario": "Incident sonrasinda kalici SELinux mod ayarini config dosyasindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "grep '^SELINUX=' /etc/selinux/config",
+          "hint_text": "Kalici SELinux mode config'de tutulur.",
+          "hint_partial": "grep '^SELINUX=' ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-016-r161",
+      "type": "single",
+      "scenario": "Bakim oncesi `/srv/app/web-161-161-161/app/web-161-161` altindaki SELinux context'leri recursive restore et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "restorecon -Rv /srv/app/web-161-161-161/app/web-161-161",
+          "hint_text": "SELinux context duzeltmek icin `restorecon -Rv` kullan.",
+          "hint_partial": "restorecon -Rv ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-017-r162",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/srv/app/cache-162-162-162-162/app/cache-162-162-162` altindaki SELinux label'larini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls -Z /srv/app/cache-162-162-162-162/app/cache-162-162-162",
+          "hint_text": "SELinux context gormek icin `ls -Z` kullan.",
+          "hint_partial": "ls -Z ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-018-r163",
+      "type": "single",
+      "scenario": "Deploy sonrasi 8443/tcp portunu SELinux'te `http_port_t` tipine ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "semanage port -a -t http_port_t -p tcp 8443",
+          "hint_text": "SELinux port eklemek icin `semanage port -a` kullan.",
+          "hint_partial": "semanage port ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-019-r164",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/srv/app/db-164-164-164/app/db-164-164` agacina `httpd_sys_content_t` tipi uygula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chcon -R -t httpd_sys_content_t /srv/app/db-164-164-164/app/db-164-164",
+          "hint_text": "Gecici SELinux type degisikligi icin `chcon -R -t` kullan.",
+          "hint_partial": "chcon -R ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-020-r165",
+      "type": "single",
+      "scenario": "Yeni acilan hostta sudoers syntax dogrulamasini calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "visudo -c",
+          "hint_text": "Syntax check icin `visudo -c` kullan.",
+          "hint_partial": "visudo -c"
+        }
+      ]
+    },
+    {
+      "id": "sperm-021-r166",
+      "type": "single",
+      "scenario": "Runbook adiminda `/usr/bin/myapp` binary'sinden capability'leri temizle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setcap -r /usr/bin/myapp",
+          "hint_text": "Capability silmek icin `setcap -r` kullan.",
+          "hint_partial": "setcap -r ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-022-r167",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `/usr/local/bin` altindaki tum file capability'lerini recursive tara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getcap -r /usr/local/bin 2>/dev/null",
+          "hint_text": "Recursive capability taramasi icin `getcap -r` kullan.",
+          "hint_partial": "getcap -r ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-023-r168",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/srv/app/proxy-168-168/releases` icin `ops` group'una ops-168 read+execute ACL ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setfacl -m d:g:ops:rx /srv/app/proxy-168-168/releases",
+          "hint_text": "Default ACL icin `d:g:group:perms` kullan.",
+          "hint_partial": "setfacl -m ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-024-r169",
+      "type": "single",
+      "scenario": "Bakim oncesi owner veya group'u olmayan file'lari tum sistemde bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find / -nouser -o -nogroup 2>/dev/null",
+          "hint_text": "Sahipsiz file taramasi icin `find -nouser -o -nogroup` kullan.",
+          "hint_partial": "find / -nouser ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-025-r170",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda kalici SELinux mod ayarini config dosyasindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "grep '^SELINUX=' /etc/selinux/config",
+          "hint_text": "Kalici SELinux mode config'de tutulur.",
+          "hint_partial": "grep '^SELINUX=' ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-016-r171",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/srv/app/queue-171-171-171/app/queue-171-171` altindaki SELinux context'leri recursive restore et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "restorecon -Rv /srv/app/queue-171-171-171/app/queue-171-171",
+          "hint_text": "SELinux context duzeltmek icin `restorecon -Rv` kullan.",
+          "hint_partial": "restorecon -Rv ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-017-r172",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/srv/app/db-172-172-172/app/db-172-172` altindaki SELinux label'larini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls -Z /srv/app/db-172-172-172/app/db-172-172",
+          "hint_text": "SELinux context gormek icin `ls -Z` kullan.",
+          "hint_partial": "ls -Z ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-018-r173",
+      "type": "single",
+      "scenario": "Yeni acilan hostta 8443/tcp portunu SELinux'te `http_port_t` tipine ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "semanage port -a -t http_port_t -p tcp 8443",
+          "hint_text": "SELinux port eklemek icin `semanage port -a` kullan.",
+          "hint_partial": "semanage port ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-019-r174",
+      "type": "single",
+      "scenario": "Runbook adiminda `/srv/app/queue-174-174/app/queue-174` agacina `httpd_sys_content_t` tipi uygula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chcon -R -t httpd_sys_content_t /srv/app/queue-174-174/app/queue-174",
+          "hint_text": "Gecici SELinux type degisikligi icin `chcon -R -t` kullan.",
+          "hint_partial": "chcon -R ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-020-r175",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde sudoers syntax dogrulamasini calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "visudo -c",
+          "hint_text": "Syntax check icin `visudo -c` kullan.",
+          "hint_partial": "visudo -c"
+        }
+      ]
+    },
+    {
+      "id": "sperm-021-r176",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/usr/bin/myapp` binary'sinden capability'leri temizle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setcap -r /usr/bin/myapp",
+          "hint_text": "Capability silmek icin `setcap -r` kullan.",
+          "hint_partial": "setcap -r ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-022-r177",
+      "type": "single",
+      "scenario": "Bakim oncesi `/usr/local/bin` altindaki tum file capability'lerini recursive tara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getcap -r /usr/local/bin 2>/dev/null",
+          "hint_text": "Recursive capability taramasi icin `getcap -r` kullan.",
+          "hint_partial": "getcap -r ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-023-r178",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/srv/app/cache-178-178-178-178/releases` icin `ops` group'una monitoring-178 read+execute ACL ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setfacl -m d:g:ops:rx /srv/app/cache-178-178-178-178/releases",
+          "hint_text": "Default ACL icin `d:g:group:perms` kullan.",
+          "hint_partial": "setfacl -m ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-024-r179",
+      "type": "single",
+      "scenario": "Deploy sonrasi owner veya group'u olmayan file'lari tum sistemde bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find / -nouser -o -nogroup 2>/dev/null",
+          "hint_text": "Sahipsiz file taramasi icin `find -nouser -o -nogroup` kullan.",
+          "hint_partial": "find / -nouser ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-025-r180",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde kalici SELinux mod ayarini config dosyasindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "grep '^SELINUX=' /etc/selinux/config",
+          "hint_text": "Kalici SELinux mode config'de tutulur.",
+          "hint_partial": "grep '^SELINUX=' ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-016-r181",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `/srv/app/cache-181-181-181/app/cache-181-181` altindaki SELinux context'leri recursive restore et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "restorecon -Rv /srv/app/cache-181-181-181/app/cache-181-181",
+          "hint_text": "SELinux context duzeltmek icin `restorecon -Rv` kullan.",
+          "hint_partial": "restorecon -Rv ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-017-r182",
+      "type": "single",
+      "scenario": "Runbook adiminda `/srv/app/queue-182-182/app/queue-182` altindaki SELinux label'larini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls -Z /srv/app/queue-182-182/app/queue-182",
+          "hint_text": "SELinux context gormek icin `ls -Z` kullan.",
+          "hint_partial": "ls -Z ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-018-r183",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde 8443/tcp portunu SELinux'te `http_port_t` tipine ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "semanage port -a -t http_port_t -p tcp 8443",
+          "hint_text": "SELinux port eklemek icin `semanage port -a` kullan.",
+          "hint_partial": "semanage port ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-019-r184",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/srv/app/proxy-184-184/app/proxy-184` agacina `httpd_sys_content_t` tipi uygula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chcon -R -t httpd_sys_content_t /srv/app/proxy-184-184/app/proxy-184",
+          "hint_text": "Gecici SELinux type degisikligi icin `chcon -R -t` kullan.",
+          "hint_partial": "chcon -R ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-020-r185",
+      "type": "single",
+      "scenario": "Bakim oncesi sudoers syntax dogrulamasini calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "visudo -c",
+          "hint_text": "Syntax check icin `visudo -c` kullan.",
+          "hint_partial": "visudo -c"
+        }
+      ]
+    },
+    {
+      "id": "sperm-021-r186",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/usr/bin/myapp` binary'sinden capability'leri temizle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setcap -r /usr/bin/myapp",
+          "hint_text": "Capability silmek icin `setcap -r` kullan.",
+          "hint_partial": "setcap -r ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-022-r187",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/usr/local/bin` altindaki tum file capability'lerini recursive tara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getcap -r /usr/local/bin 2>/dev/null",
+          "hint_text": "Recursive capability taramasi icin `getcap -r` kullan.",
+          "hint_partial": "getcap -r ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-023-r188",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/srv/app/db-188-188-188/releases` icin `ops` group'una stage-188-188 read+execute ACL ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setfacl -m d:g:ops:rx /srv/app/db-188-188-188/releases",
+          "hint_text": "Default ACL icin `d:g:group:perms` kullan.",
+          "hint_partial": "setfacl -m ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-024-r189",
+      "type": "single",
+      "scenario": "Yeni acilan hostta owner veya group'u olmayan file'lari tum sistemde bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find / -nouser -o -nogroup 2>/dev/null",
+          "hint_text": "Sahipsiz file taramasi icin `find -nouser -o -nogroup` kullan.",
+          "hint_partial": "find / -nouser ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-025-r190",
+      "type": "single",
+      "scenario": "Runbook adiminda kalici SELinux mod ayarini config dosyasindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "grep '^SELINUX=' /etc/selinux/config",
+          "hint_text": "Kalici SELinux mode config'de tutulur.",
+          "hint_partial": "grep '^SELINUX=' ..."
+        }
+      ]
+    }
+  ]
+}

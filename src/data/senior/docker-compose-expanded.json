@@ -1,0 +1,2606 @@
+{
+  "level": "senior",
+  "topic": "docker-compose",
+  "questions": [
+    {
+      "id": "sdc-011",
+      "type": "single",
+      "scenario": "Config'te kullanilan image isimlerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose config --images",
+          "hint_text": "Image listesi icin `config --images` kullan.",
+          "hint_partial": "docker compose config ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-012",
+      "type": "single",
+      "scenario": "Config'te tanimli volume isimlerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose config --volumes",
+          "hint_text": "Volume listesi icin `config --volumes` kullan.",
+          "hint_partial": "docker compose config ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-013",
+      "type": "single",
+      "scenario": "Duranlar dahil tum compose container'larini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose ps -a",
+          "hint_text": "Tum container'lar icin `ps -a` kullan.",
+          "hint_partial": "docker compose ps ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-014",
+      "type": "single",
+      "scenario": "`api` servisini dependency'leri etkilemeden detached olarak recreate et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose up -d --no-deps api",
+          "hint_text": "Bagimliliklari atlamak icin `--no-deps` kullan.",
+          "hint_partial": "docker compose up ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-015",
+      "type": "single",
+      "scenario": "`api` image'ini cache kullanmadan ve base image'i tekrar cekerek build et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose build --pull --no-cache api",
+          "hint_text": "Base image refresh ve cache'siz build icin ilgili flag'leri kullan.",
+          "hint_partial": "docker compose build ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-016",
+      "type": "single",
+      "scenario": "`api` icin one-off healthcheck script'ini dependency baslatmadan calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose run --rm --no-deps api ./healthcheck.sh",
+          "hint_text": "Dependency'siz run icin `--no-deps` kullan.",
+          "hint_partial": "docker compose run ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-017",
+      "type": "single",
+      "scenario": "`api` container'i icinde `APP_ENV=prod` env'iyle komut calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose exec -e APP_ENV=prod api env",
+          "hint_text": "Exec environment eklemek icin `-e` kullan.",
+          "hint_partial": "docker compose exec ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-018",
+      "type": "single",
+      "scenario": "`web` servisinin 80 portunun host mapping'ini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose port web 80",
+          "hint_text": "Port mapping icin `docker compose port` kullan.",
+          "hint_partial": "docker compose port ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-019",
+      "type": "single",
+      "scenario": "`web` servisi icindeki `nginx.conf` dosyasini `./nginx.conf` olarak cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose cp web:/etc/nginx/nginx.conf ./nginx.conf",
+          "hint_text": "Compose copy ile host'a dosya cek.",
+          "hint_partial": "docker compose cp ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-020",
+      "type": "single",
+      "scenario": "Container'lari olustur ama baslatma, `worker` icin 3 scale uygula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose create --scale worker=3",
+          "hint_text": "Create asamasinda scale vermek icin `--scale` kullan.",
+          "hint_partial": "docker compose create ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-021",
+      "type": "single",
+      "scenario": "`api` container'ini stop edip force ederek sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose rm -s -f api",
+          "hint_text": "Stop+remove icin `rm -s -f` kullan.",
+          "hint_partial": "docker compose rm ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-022",
+      "type": "single",
+      "scenario": "`api` ve `worker` servislerini kill et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose kill api worker",
+          "hint_text": "Birden fazla servisi ayni komutta verebilirsin.",
+          "hint_partial": "docker compose kill ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-023",
+      "type": "single",
+      "scenario": "Compose stack'ini local image'lari da temizleyerek kapat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose down --rmi local",
+          "hint_text": "Local image temizligi icin `--rmi local` kullan.",
+          "hint_partial": "docker compose down ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-024",
+      "type": "single",
+      "scenario": "Compose stack'ini healthy olana kadar bekleyerek detached modda kaldir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose up -d --wait",
+          "hint_text": "Healthcheck beklemek icin `--wait` kullan.",
+          "hint_partial": "docker compose up ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-025",
+      "type": "single",
+      "scenario": "Compose project listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose ls",
+          "hint_text": "Project listesi icin `docker compose ls` kullan.",
+          "hint_partial": "docker compose ls"
+        }
+      ]
+    },
+    {
+      "id": "sdc-011-r1",
+      "type": "single",
+      "scenario": "Bakim oncesi config'te kullanilan image isimlerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose config --images",
+          "hint_text": "Image listesi icin `config --images` kullan.",
+          "hint_partial": "docker compose config ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-012-r2",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda config'te tanimli volume isimlerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose config --volumes",
+          "hint_text": "Volume listesi icin `config --volumes` kullan.",
+          "hint_partial": "docker compose config ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-013-r3",
+      "type": "single",
+      "scenario": "Deploy sonrasi duranlar dahil tum compose container'larini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose ps -a",
+          "hint_text": "Tum container'lar icin `ps -a` kullan.",
+          "hint_partial": "docker compose ps ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-014-r4",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `bastion-4` servisini dependency'leri etkilemeden detached olarak recreate et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose up -d --no-deps bastion-4",
+          "hint_text": "Bagimliliklari atlamak icin `--no-deps` kullan.",
+          "hint_partial": "docker compose up ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-015-r5",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `proxy-5` image'ini cache-5 kullanmadan ve base image'i tekrar cekerek build et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose build --pull --no-cache-5 proxy-5",
+          "hint_text": "Base image refresh ve cache-5'siz build icin ilgili flag'leri kullan.",
+          "hint_partial": "docker compose build ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-016-r6",
+      "type": "single",
+      "scenario": "Runbook adiminda `web-6` icin one-off healthcheck script'ini dependency baslatmadan calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose run --rm --no-deps web-6 ./healthcheck.sh",
+          "hint_text": "Dependency'siz run icin `--no-deps` kullan.",
+          "hint_partial": "docker compose run ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-017-r7",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `api-7` container'i icinde `APP_ENV=prod-7` env'iyle komut calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose exec -e APP_ENV=prod-7 api-7 env",
+          "hint_text": "Exec environment eklemek icin `-e` kullan.",
+          "hint_partial": "docker compose exec ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-018-r8",
+      "type": "single",
+      "scenario": "Incident sonrasinda `proxy-8` servisinin 80 portunun host mapping'ini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose port proxy-8 80",
+          "hint_text": "Port mapping icin `docker compose port` kullan.",
+          "hint_partial": "docker compose port ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-019-r9",
+      "type": "single",
+      "scenario": "Bakim oncesi `web-9` servisi icindeki `redis-9-9.conf` dosyasini `./redis-9-9.conf` olarak cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose cp web-9:/etc/redis-9/redis-9-9.conf ./redis-9-9.conf",
+          "hint_text": "Compose copy ile host'a dosya cek.",
+          "hint_partial": "docker compose cp ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-020-r10",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda container'lari olustur ama baslatma, `cache-10-10` icin 3 scale uygula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose create --scale cache-10-10=7",
+          "hint_text": "Create asamasinda scale vermek icin `--scale` kullan.",
+          "hint_partial": "docker compose create ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-021-r11",
+      "type": "single",
+      "scenario": "Deploy sonrasi `queue-11` container'ini stop edip force ederek sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose rm -s -f queue-11",
+          "hint_text": "Stop+remove icin `rm -s -f` kullan.",
+          "hint_partial": "docker compose rm ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-022-r12",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `bastion-12` ve `bastion-12` servislerini kill et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose kill bastion-12 bastion-12",
+          "hint_text": "Birden fazla servisi ayni komutta verebilirsin.",
+          "hint_partial": "docker compose kill ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-023-r13",
+      "type": "single",
+      "scenario": "Yeni acilan hostta compose stack'ini local image'lari da temizleyerek kapat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose down --rmi local",
+          "hint_text": "Local image temizligi icin `--rmi local` kullan.",
+          "hint_partial": "docker compose down ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-024-r14",
+      "type": "single",
+      "scenario": "Runbook adiminda compose stack'ini healthy olana kadar bekleyerek detached modda kaldir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose up -d --wait",
+          "hint_text": "Healthcheck beklemek icin `--wait` kullan.",
+          "hint_partial": "docker compose up ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-025-r15",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde compose project listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose ls",
+          "hint_text": "Project listesi icin `docker compose ls` kullan.",
+          "hint_partial": "docker compose ls"
+        }
+      ]
+    },
+    {
+      "id": "sdc-011-r16",
+      "type": "single",
+      "scenario": "Incident sonrasinda config'te kullanilan image isimlerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose config --images",
+          "hint_text": "Image listesi icin `config --images` kullan.",
+          "hint_partial": "docker compose config ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-012-r17",
+      "type": "single",
+      "scenario": "Bakim oncesi config'te tanimli volume isimlerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose config --volumes",
+          "hint_text": "Volume listesi icin `config --volumes` kullan.",
+          "hint_partial": "docker compose config ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-013-r18",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda duranlar dahil tum compose container'larini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose ps -a",
+          "hint_text": "Tum container'lar icin `ps -a` kullan.",
+          "hint_partial": "docker compose ps ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-014-r19",
+      "type": "single",
+      "scenario": "Deploy sonrasi `queue-19` servisini dependency'leri etkilemeden detached olarak recreate et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose up -d --no-deps queue-19",
+          "hint_text": "Bagimliliklari atlamak icin `--no-deps` kullan.",
+          "hint_partial": "docker compose up ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-015-r20",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `bastion-20` image'ini cache-20 kullanmadan ve base image'i tekrar cekerek build et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose build --pull --no-cache-20 bastion-20",
+          "hint_text": "Base image refresh ve cache-20'siz build icin ilgili flag'leri kullan.",
+          "hint_partial": "docker compose build ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-016-r21",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `proxy-21` icin one-off healthcheck script'ini dependency baslatmadan calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose run --rm --no-deps proxy-21 ./healthcheck.sh",
+          "hint_text": "Dependency'siz run icin `--no-deps` kullan.",
+          "hint_partial": "docker compose run ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-017-r22",
+      "type": "single",
+      "scenario": "Runbook adiminda `web-22` container'i icinde `APP_ENV=monitoring-22` env'iyle komut calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose exec -e APP_ENV=monitoring-22 web-22 env",
+          "hint_text": "Exec environment eklemek icin `-e` kullan.",
+          "hint_partial": "docker compose exec ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-018-r23",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `bastion-23` servisinin 80 portunun host mapping'ini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose port bastion-23 80",
+          "hint_text": "Port mapping icin `docker compose port` kullan.",
+          "hint_partial": "docker compose port ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-019-r24",
+      "type": "single",
+      "scenario": "Incident sonrasinda `proxy-24` servisi icindeki `vault-24-24.conf` dosyasini `./vault-24-24.conf` olarak cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose cp proxy-24:/etc/vault-24/vault-24-24.conf ./vault-24-24.conf",
+          "hint_text": "Compose copy ile host'a dosya cek.",
+          "hint_partial": "docker compose cp ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-020-r25",
+      "type": "single",
+      "scenario": "Bakim oncesi container'lari olustur ama baslatma, `db-25-25` icin 3 scale uygula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose create --scale db-25-25=7",
+          "hint_text": "Create asamasinda scale vermek icin `--scale` kullan.",
+          "hint_partial": "docker compose create ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-021-r26",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `cache-26-26` container'ini stop edip force ederek sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose rm -s -f cache-26-26",
+          "hint_text": "Stop+remove icin `rm -s -f` kullan.",
+          "hint_partial": "docker compose rm ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-022-r27",
+      "type": "single",
+      "scenario": "Deploy sonrasi `queue-27` ve `queue-27` servislerini kill et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose kill queue-27 queue-27",
+          "hint_text": "Birden fazla servisi ayni komutta verebilirsin.",
+          "hint_partial": "docker compose kill ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-023-r28",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde compose stack'ini local image'lari da temizleyerek kapat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose down --rmi local",
+          "hint_text": "Local image temizligi icin `--rmi local` kullan.",
+          "hint_partial": "docker compose down ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-024-r29",
+      "type": "single",
+      "scenario": "Yeni acilan hostta compose stack'ini healthy olana kadar bekleyerek detached modda kaldir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose up -d --wait",
+          "hint_text": "Healthcheck beklemek icin `--wait` kullan.",
+          "hint_partial": "docker compose up ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-025-r30",
+      "type": "single",
+      "scenario": "Runbook adiminda compose project listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose ls",
+          "hint_text": "Project listesi icin `docker compose ls` kullan.",
+          "hint_partial": "docker compose ls"
+        }
+      ]
+    },
+    {
+      "id": "sdc-011-r31",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde config'te kullanilan image isimlerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose config --images",
+          "hint_text": "Image listesi icin `config --images` kullan.",
+          "hint_partial": "docker compose config ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-012-r32",
+      "type": "single",
+      "scenario": "Incident sonrasinda config'te tanimli volume isimlerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose config --volumes",
+          "hint_text": "Volume listesi icin `config --volumes` kullan.",
+          "hint_partial": "docker compose config ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-013-r33",
+      "type": "single",
+      "scenario": "Bakim oncesi duranlar dahil tum compose container'larini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose ps -a",
+          "hint_text": "Tum container'lar icin `ps -a` kullan.",
+          "hint_partial": "docker compose ps ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-014-r34",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `cache-34-34` servisini dependency'leri etkilemeden detached olarak recreate et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose up -d --no-deps cache-34-34",
+          "hint_text": "Bagimliliklari atlamak icin `--no-deps` kullan.",
+          "hint_partial": "docker compose up ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-015-r35",
+      "type": "single",
+      "scenario": "Deploy sonrasi `queue-35` image'ini cache-35 kullanmadan ve base image'i tekrar cekerek build et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose build --pull --no-cache-35 queue-35",
+          "hint_text": "Base image refresh ve cache-35'siz build icin ilgili flag'leri kullan.",
+          "hint_partial": "docker compose build ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-016-r36",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `bastion-36` icin one-off healthcheck script'ini dependency baslatmadan calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose run --rm --no-deps bastion-36 ./healthcheck.sh",
+          "hint_text": "Dependency'siz run icin `--no-deps` kullan.",
+          "hint_partial": "docker compose run ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-017-r37",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `proxy-37` container'i icinde `APP_ENV=prod-37` env'iyle komut calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose exec -e APP_ENV=prod-37 proxy-37 env",
+          "hint_text": "Exec environment eklemek icin `-e` kullan.",
+          "hint_partial": "docker compose exec ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-018-r38",
+      "type": "single",
+      "scenario": "Runbook adiminda `queue-38` servisinin 80 portunun host mapping'ini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose port queue-38 80",
+          "hint_text": "Port mapping icin `docker compose port` kullan.",
+          "hint_partial": "docker compose port ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-019-r39",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `bastion-39` servisi icindeki `redis-39-39.conf` dosyasini `./redis-39-39.conf` olarak cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose cp bastion-39:/etc/redis-39/redis-39-39.conf ./redis-39-39.conf",
+          "hint_text": "Compose copy ile host'a dosya cek.",
+          "hint_partial": "docker compose cp ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-020-r40",
+      "type": "single",
+      "scenario": "Incident sonrasinda container'lari olustur ama baslatma, `worker-40` icin 3 scale uygula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose create --scale worker-40=7",
+          "hint_text": "Create asamasinda scale vermek icin `--scale` kullan.",
+          "hint_partial": "docker compose create ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-021-r41",
+      "type": "single",
+      "scenario": "Bakim oncesi `db-41-41` container'ini stop edip force ederek sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose rm -s -f db-41-41",
+          "hint_text": "Stop+remove icin `rm -s -f` kullan.",
+          "hint_partial": "docker compose rm ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-022-r42",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `cache-42-42` ve `cache-42-42` servislerini kill et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose kill cache-42-42 cache-42-42",
+          "hint_text": "Birden fazla servisi ayni komutta verebilirsin.",
+          "hint_partial": "docker compose kill ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-023-r43",
+      "type": "single",
+      "scenario": "Deploy sonrasi compose stack'ini local image'lari da temizleyerek kapat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose down --rmi local",
+          "hint_text": "Local image temizligi icin `--rmi local` kullan.",
+          "hint_partial": "docker compose down ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-024-r44",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde compose stack'ini healthy olana kadar bekleyerek detached modda kaldir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose up -d --wait",
+          "hint_text": "Healthcheck beklemek icin `--wait` kullan.",
+          "hint_partial": "docker compose up ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-025-r45",
+      "type": "single",
+      "scenario": "Yeni acilan hostta compose project listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose ls",
+          "hint_text": "Project listesi icin `docker compose ls` kullan.",
+          "hint_partial": "docker compose ls"
+        }
+      ]
+    },
+    {
+      "id": "sdc-011-r46",
+      "type": "single",
+      "scenario": "Runbook adiminda config'te kullanilan image isimlerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose config --images",
+          "hint_text": "Image listesi icin `config --images` kullan.",
+          "hint_partial": "docker compose config ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-012-r47",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde config'te tanimli volume isimlerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose config --volumes",
+          "hint_text": "Volume listesi icin `config --volumes` kullan.",
+          "hint_partial": "docker compose config ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-013-r48",
+      "type": "single",
+      "scenario": "Incident sonrasinda duranlar dahil tum compose container'larini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose ps -a",
+          "hint_text": "Tum container'lar icin `ps -a` kullan.",
+          "hint_partial": "docker compose ps ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-014-r49",
+      "type": "single",
+      "scenario": "Bakim oncesi `db-49-49` servisini dependency'leri etkilemeden detached olarak recreate et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose up -d --no-deps db-49-49",
+          "hint_text": "Bagimliliklari atlamak icin `--no-deps` kullan.",
+          "hint_partial": "docker compose up ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-015-r50",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `cache-50-50` image'ini cache-50 kullanmadan ve base image'i tekrar cekerek build et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose build --pull --no-cache-50 cache-50-50",
+          "hint_text": "Base image refresh ve cache-50'siz build icin ilgili flag'leri kullan.",
+          "hint_partial": "docker compose build ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-016-r51",
+      "type": "single",
+      "scenario": "Deploy sonrasi `queue-51` icin one-off healthcheck script'ini dependency baslatmadan calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose run --rm --no-deps queue-51 ./healthcheck.sh",
+          "hint_text": "Dependency'siz run icin `--no-deps` kullan.",
+          "hint_partial": "docker compose run ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-017-r52",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `bastion-52` container'i icinde `APP_ENV=monitoring-52` env'iyle komut calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose exec -e APP_ENV=monitoring-52 bastion-52 env",
+          "hint_text": "Exec environment eklemek icin `-e` kullan.",
+          "hint_partial": "docker compose exec ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-018-r53",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `cache-53-53` servisinin 80 portunun host mapping'ini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose port cache-53-53 80",
+          "hint_text": "Port mapping icin `docker compose port` kullan.",
+          "hint_partial": "docker compose port ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-019-r54",
+      "type": "single",
+      "scenario": "Runbook adiminda `queue-54` servisi icindeki `vault-54-54.conf` dosyasini `./vault-54-54.conf` olarak cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose cp queue-54:/etc/vault-54/vault-54-54.conf ./vault-54-54.conf",
+          "hint_text": "Compose copy ile host'a dosya cek.",
+          "hint_partial": "docker compose cp ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-020-r55",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde container'lari olustur ama baslatma, `api-55-55` icin 3 scale uygula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose create --scale api-55-55=7",
+          "hint_text": "Create asamasinda scale vermek icin `--scale` kullan.",
+          "hint_partial": "docker compose create ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-021-r56",
+      "type": "single",
+      "scenario": "Incident sonrasinda `worker-56` container'ini stop edip force ederek sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose rm -s -f worker-56",
+          "hint_text": "Stop+remove icin `rm -s -f` kullan.",
+          "hint_partial": "docker compose rm ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-022-r57",
+      "type": "single",
+      "scenario": "Bakim oncesi `db-57-57` ve `db-57-57` servislerini kill et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose kill db-57-57 db-57-57",
+          "hint_text": "Birden fazla servisi ayni komutta verebilirsin.",
+          "hint_partial": "docker compose kill ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-023-r58",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda compose stack'ini local image'lari da temizleyerek kapat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose down --rmi local",
+          "hint_text": "Local image temizligi icin `--rmi local` kullan.",
+          "hint_partial": "docker compose down ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-024-r59",
+      "type": "single",
+      "scenario": "Deploy sonrasi compose stack'ini healthy olana kadar bekleyerek detached modda kaldir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose up -d --wait",
+          "hint_text": "Healthcheck beklemek icin `--wait` kullan.",
+          "hint_partial": "docker compose up ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-025-r60",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde compose project listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose ls",
+          "hint_text": "Project listesi icin `docker compose ls` kullan.",
+          "hint_partial": "docker compose ls"
+        }
+      ]
+    },
+    {
+      "id": "sdc-011-r61",
+      "type": "single",
+      "scenario": "Yeni acilan hostta config'te kullanilan image isimlerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose config --images",
+          "hint_text": "Image listesi icin `config --images` kullan.",
+          "hint_partial": "docker compose config ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-012-r62",
+      "type": "single",
+      "scenario": "Runbook adiminda config'te tanimli volume isimlerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose config --volumes",
+          "hint_text": "Volume listesi icin `config --volumes` kullan.",
+          "hint_partial": "docker compose config ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-013-r63",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde duranlar dahil tum compose container'larini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose ps -a",
+          "hint_text": "Tum container'lar icin `ps -a` kullan.",
+          "hint_partial": "docker compose ps ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-014-r64",
+      "type": "single",
+      "scenario": "Incident sonrasinda `worker-64` servisini dependency'leri etkilemeden detached olarak recreate et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose up -d --no-deps worker-64",
+          "hint_text": "Bagimliliklari atlamak icin `--no-deps` kullan.",
+          "hint_partial": "docker compose up ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-015-r65",
+      "type": "single",
+      "scenario": "Bakim oncesi `db-65-65` image'ini cache-65 kullanmadan ve base image'i tekrar cekerek build et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose build --pull --no-cache-65 db-65-65",
+          "hint_text": "Base image refresh ve cache-65'siz build icin ilgili flag'leri kullan.",
+          "hint_partial": "docker compose build ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-016-r66",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `cache-66-66` icin one-off healthcheck script'ini dependency baslatmadan calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose run --rm --no-deps cache-66-66 ./healthcheck.sh",
+          "hint_text": "Dependency'siz run icin `--no-deps` kullan.",
+          "hint_partial": "docker compose run ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-017-r67",
+      "type": "single",
+      "scenario": "Deploy sonrasi `queue-67` container'i icinde `APP_ENV=prod-67` env'iyle komut calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose exec -e APP_ENV=prod-67 queue-67 env",
+          "hint_text": "Exec environment eklemek icin `-e` kullan.",
+          "hint_partial": "docker compose exec ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-018-r68",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `db-68-68` servisinin 80 portunun host mapping'ini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose port db-68-68 80",
+          "hint_text": "Port mapping icin `docker compose port` kullan.",
+          "hint_partial": "docker compose port ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-019-r69",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `cache-69-69` servisi icindeki `redis-69-69.conf` dosyasini `./redis-69-69.conf` olarak cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose cp cache-69-69:/etc/redis-69/redis-69-69.conf ./redis-69-69.conf",
+          "hint_text": "Compose copy ile host'a dosya cek.",
+          "hint_partial": "docker compose cp ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-020-r70",
+      "type": "single",
+      "scenario": "Runbook adiminda container'lari olustur ama baslatma, `queue-70-70` icin 3 scale uygula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose create --scale queue-70-70=7",
+          "hint_text": "Create asamasinda scale vermek icin `--scale` kullan.",
+          "hint_partial": "docker compose create ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-021-r71",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `api-71` container'ini stop edip force ederek sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose rm -s -f api-71",
+          "hint_text": "Stop+remove icin `rm -s -f` kullan.",
+          "hint_partial": "docker compose rm ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-022-r72",
+      "type": "single",
+      "scenario": "Incident sonrasinda `worker-72` ve `worker-72` servislerini kill et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose kill worker-72 worker-72",
+          "hint_text": "Birden fazla servisi ayni komutta verebilirsin.",
+          "hint_partial": "docker compose kill ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-023-r73",
+      "type": "single",
+      "scenario": "Bakim oncesi compose stack'ini local image'lari da temizleyerek kapat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose down --rmi local",
+          "hint_text": "Local image temizligi icin `--rmi local` kullan.",
+          "hint_partial": "docker compose down ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-024-r74",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda compose stack'ini healthy olana kadar bekleyerek detached modda kaldir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose up -d --wait",
+          "hint_text": "Healthcheck beklemek icin `--wait` kullan.",
+          "hint_partial": "docker compose up ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-025-r75",
+      "type": "single",
+      "scenario": "Deploy sonrasi compose project listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose ls",
+          "hint_text": "Project listesi icin `docker compose ls` kullan.",
+          "hint_partial": "docker compose ls"
+        }
+      ]
+    },
+    {
+      "id": "sdc-011-r76",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde config'te kullanilan image isimlerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose config --images",
+          "hint_text": "Image listesi icin `config --images` kullan.",
+          "hint_partial": "docker compose config ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-012-r77",
+      "type": "single",
+      "scenario": "Yeni acilan hostta config'te tanimli volume isimlerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose config --volumes",
+          "hint_text": "Volume listesi icin `config --volumes` kullan.",
+          "hint_partial": "docker compose config ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-013-r78",
+      "type": "single",
+      "scenario": "Runbook adiminda duranlar dahil tum compose container'larini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose ps -a",
+          "hint_text": "Tum container'lar icin `ps -a` kullan.",
+          "hint_partial": "docker compose ps ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-014-r79",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `api-79` servisini dependency'leri etkilemeden detached olarak recreate et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose up -d --no-deps api-79",
+          "hint_text": "Bagimliliklari atlamak icin `--no-deps` kullan.",
+          "hint_partial": "docker compose up ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-015-r80",
+      "type": "single",
+      "scenario": "Incident sonrasinda `worker-80` image'ini cache-80 kullanmadan ve base image'i tekrar cekerek build et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose build --pull --no-cache-80 worker-80",
+          "hint_text": "Base image refresh ve cache-80'siz build icin ilgili flag'leri kullan.",
+          "hint_partial": "docker compose build ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-016-r81",
+      "type": "single",
+      "scenario": "Bakim oncesi `db-81-81` icin one-off healthcheck script'ini dependency baslatmadan calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose run --rm --no-deps db-81-81 ./healthcheck.sh",
+          "hint_text": "Dependency'siz run icin `--no-deps` kullan.",
+          "hint_partial": "docker compose run ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-017-r82",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `cache-82-82` container'i icinde `APP_ENV=monitoring-82` env'iyle komut calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose exec -e APP_ENV=monitoring-82 cache-82-82 env",
+          "hint_text": "Exec environment eklemek icin `-e` kullan.",
+          "hint_partial": "docker compose exec ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-018-r83",
+      "type": "single",
+      "scenario": "Deploy sonrasi `worker-83` servisinin 80 portunun host mapping'ini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose port worker-83 80",
+          "hint_text": "Port mapping icin `docker compose port` kullan.",
+          "hint_partial": "docker compose port ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-019-r84",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `db-84-84` servisi icindeki `vault-84-84.conf` dosyasini `./vault-84-84.conf` olarak cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose cp db-84-84:/etc/vault-84/vault-84-84.conf ./vault-84-84.conf",
+          "hint_text": "Compose copy ile host'a dosya cek.",
+          "hint_partial": "docker compose cp ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-020-r85",
+      "type": "single",
+      "scenario": "Yeni acilan hostta container'lari olustur ama baslatma, `proxy-85` icin 3 scale uygula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose create --scale proxy-85=7",
+          "hint_text": "Create asamasinda scale vermek icin `--scale` kullan.",
+          "hint_partial": "docker compose create ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-021-r86",
+      "type": "single",
+      "scenario": "Runbook adiminda `web-86` container'ini stop edip force ederek sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose rm -s -f web-86",
+          "hint_text": "Stop+remove icin `rm -s -f` kullan.",
+          "hint_partial": "docker compose rm ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-022-r87",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `api-87` ve `api-87-87` servislerini kill et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose kill api-87 api-87-87",
+          "hint_text": "Birden fazla servisi ayni komutta verebilirsin.",
+          "hint_partial": "docker compose kill ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-023-r88",
+      "type": "single",
+      "scenario": "Incident sonrasinda compose stack'ini local image'lari da temizleyerek kapat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose down --rmi local",
+          "hint_text": "Local image temizligi icin `--rmi local` kullan.",
+          "hint_partial": "docker compose down ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-024-r89",
+      "type": "single",
+      "scenario": "Bakim oncesi compose stack'ini healthy olana kadar bekleyerek detached modda kaldir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose up -d --wait",
+          "hint_text": "Healthcheck beklemek icin `--wait` kullan.",
+          "hint_partial": "docker compose up ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-025-r90",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda compose project listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose ls",
+          "hint_text": "Project listesi icin `docker compose ls` kullan.",
+          "hint_partial": "docker compose ls"
+        }
+      ]
+    },
+    {
+      "id": "sdc-011-r91",
+      "type": "single",
+      "scenario": "Deploy sonrasi config'te kullanilan image isimlerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose config --images",
+          "hint_text": "Image listesi icin `config --images` kullan.",
+          "hint_partial": "docker compose config ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-012-r92",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde config'te tanimli volume isimlerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose config --volumes",
+          "hint_text": "Volume listesi icin `config --volumes` kullan.",
+          "hint_partial": "docker compose config ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-013-r93",
+      "type": "single",
+      "scenario": "Yeni acilan hostta duranlar dahil tum compose container'larini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose ps -a",
+          "hint_text": "Tum container'lar icin `ps -a` kullan.",
+          "hint_partial": "docker compose ps ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-014-r94",
+      "type": "single",
+      "scenario": "Runbook adiminda `web-94` servisini dependency'leri etkilemeden detached olarak recreate et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose up -d --no-deps web-94",
+          "hint_text": "Bagimliliklari atlamak icin `--no-deps` kullan.",
+          "hint_partial": "docker compose up ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-015-r95",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `api-95` image'ini cache-95 kullanmadan ve base image'i tekrar cekerek build et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose build --pull --no-cache-95 api-95",
+          "hint_text": "Base image refresh ve cache-95'siz build icin ilgili flag'leri kullan.",
+          "hint_partial": "docker compose build ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-016-r96",
+      "type": "single",
+      "scenario": "Incident sonrasinda `worker-96` icin one-off healthcheck script'ini dependency baslatmadan calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose run --rm --no-deps worker-96 ./healthcheck.sh",
+          "hint_text": "Dependency'siz run icin `--no-deps` kullan.",
+          "hint_partial": "docker compose run ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-017-r97",
+      "type": "single",
+      "scenario": "Bakim oncesi `db-97-97` container'i icinde `APP_ENV=prod-97` env'iyle komut calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose exec -e APP_ENV=prod-97 db-97-97 env",
+          "hint_text": "Exec environment eklemek icin `-e` kullan.",
+          "hint_partial": "docker compose exec ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-018-r98",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `cache-98-98-98` servisinin 80 portunun host mapping'ini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose port cache-98-98-98 80",
+          "hint_text": "Port mapping icin `docker compose port` kullan.",
+          "hint_partial": "docker compose port ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-019-r99",
+      "type": "single",
+      "scenario": "Deploy sonrasi `worker-99` servisi icindeki `redis-99-99.conf` dosyasini `./redis-99-99.conf` olarak cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose cp worker-99:/etc/redis-99/redis-99-99.conf ./redis-99-99.conf",
+          "hint_text": "Compose copy ile host'a dosya cek.",
+          "hint_partial": "docker compose cp ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-020-r100",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde container'lari olustur ama baslatma, `bastion-100` icin 3 scale uygula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose create --scale bastion-100=7",
+          "hint_text": "Create asamasinda scale vermek icin `--scale` kullan.",
+          "hint_partial": "docker compose create ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-021-r101",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `proxy-101` container'ini stop edip force ederek sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose rm -s -f proxy-101",
+          "hint_text": "Stop+remove icin `rm -s -f` kullan.",
+          "hint_partial": "docker compose rm ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-022-r102",
+      "type": "single",
+      "scenario": "Runbook adiminda `web-102` ve `queue-102-102` servislerini kill et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose kill web-102 queue-102-102",
+          "hint_text": "Birden fazla servisi ayni komutta verebilirsin.",
+          "hint_partial": "docker compose kill ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-023-r103",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde compose stack'ini local image'lari da temizleyerek kapat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose down --rmi local",
+          "hint_text": "Local image temizligi icin `--rmi local` kullan.",
+          "hint_partial": "docker compose down ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-024-r104",
+      "type": "single",
+      "scenario": "Incident sonrasinda compose stack'ini healthy olana kadar bekleyerek detached modda kaldir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose up -d --wait",
+          "hint_text": "Healthcheck beklemek icin `--wait` kullan.",
+          "hint_partial": "docker compose up ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-025-r105",
+      "type": "single",
+      "scenario": "Bakim oncesi compose project listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose ls",
+          "hint_text": "Project listesi icin `docker compose ls` kullan.",
+          "hint_partial": "docker compose ls"
+        }
+      ]
+    },
+    {
+      "id": "sdc-011-r106",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda config'te kullanilan image isimlerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose config --images",
+          "hint_text": "Image listesi icin `config --images` kullan.",
+          "hint_partial": "docker compose config ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-012-r107",
+      "type": "single",
+      "scenario": "Deploy sonrasi config'te tanimli volume isimlerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose config --volumes",
+          "hint_text": "Volume listesi icin `config --volumes` kullan.",
+          "hint_partial": "docker compose config ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-013-r108",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde duranlar dahil tum compose container'larini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose ps -a",
+          "hint_text": "Tum container'lar icin `ps -a` kullan.",
+          "hint_partial": "docker compose ps ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-014-r109",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `proxy-109` servisini dependency'leri etkilemeden detached olarak recreate et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose up -d --no-deps proxy-109",
+          "hint_text": "Bagimliliklari atlamak icin `--no-deps` kullan.",
+          "hint_partial": "docker compose up ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-015-r110",
+      "type": "single",
+      "scenario": "Runbook adiminda `web-110` image'ini cache-110 kullanmadan ve base image'i tekrar cekerek build et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose build --pull --no-cache-110 web-110",
+          "hint_text": "Base image refresh ve cache-110'siz build icin ilgili flag'leri kullan.",
+          "hint_partial": "docker compose build ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-016-r111",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `api-111` icin one-off healthcheck script'ini dependency baslatmadan calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose run --rm --no-deps api-111 ./healthcheck.sh",
+          "hint_text": "Dependency'siz run icin `--no-deps` kullan.",
+          "hint_partial": "docker compose run ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-017-r112",
+      "type": "single",
+      "scenario": "Incident sonrasinda `worker-112` container'i icinde `APP_ENV=monitoring-112` env'iyle komut calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose exec -e APP_ENV=monitoring-112 worker-112 env",
+          "hint_text": "Exec environment eklemek icin `-e` kullan.",
+          "hint_partial": "docker compose exec ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-018-r113",
+      "type": "single",
+      "scenario": "Bakim oncesi `web-113` servisinin 80 portunun host mapping'ini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose port web-113 80",
+          "hint_text": "Port mapping icin `docker compose port` kullan.",
+          "hint_partial": "docker compose port ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-019-r114",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `cache-114-114-114` servisi icindeki `vault-114-114.conf` dosyasini `./vault-114-114.conf` olarak cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose cp cache-114-114-114:/etc/vault-114/vault-114-114.conf ./vault-114-114.conf",
+          "hint_text": "Compose copy ile host'a dosya cek.",
+          "hint_partial": "docker compose cp ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-020-r115",
+      "type": "single",
+      "scenario": "Deploy sonrasi container'lari olustur ama baslatma, `queue-115` icin 3 scale uygula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose create --scale queue-115=7",
+          "hint_text": "Create asamasinda scale vermek icin `--scale` kullan.",
+          "hint_partial": "docker compose create ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-021-r116",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `bastion-116` container'ini stop edip force ederek sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose rm -s -f bastion-116",
+          "hint_text": "Stop+remove icin `rm -s -f` kullan.",
+          "hint_partial": "docker compose rm ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-022-r117",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `proxy-117` ve `proxy-117` servislerini kill et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose kill proxy-117 proxy-117",
+          "hint_text": "Birden fazla servisi ayni komutta verebilirsin.",
+          "hint_partial": "docker compose kill ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-023-r118",
+      "type": "single",
+      "scenario": "Runbook adiminda compose stack'ini local image'lari da temizleyerek kapat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose down --rmi local",
+          "hint_text": "Local image temizligi icin `--rmi local` kullan.",
+          "hint_partial": "docker compose down ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-024-r119",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde compose stack'ini healthy olana kadar bekleyerek detached modda kaldir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose up -d --wait",
+          "hint_text": "Healthcheck beklemek icin `--wait` kullan.",
+          "hint_partial": "docker compose up ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-025-r120",
+      "type": "single",
+      "scenario": "Incident sonrasinda compose project listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose ls",
+          "hint_text": "Project listesi icin `docker compose ls` kullan.",
+          "hint_partial": "docker compose ls"
+        }
+      ]
+    },
+    {
+      "id": "sdc-011-r121",
+      "type": "single",
+      "scenario": "Bakim oncesi config'te kullanilan image isimlerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose config --images",
+          "hint_text": "Image listesi icin `config --images` kullan.",
+          "hint_partial": "docker compose config ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-012-r122",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda config'te tanimli volume isimlerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose config --volumes",
+          "hint_text": "Volume listesi icin `config --volumes` kullan.",
+          "hint_partial": "docker compose config ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-013-r123",
+      "type": "single",
+      "scenario": "Deploy sonrasi duranlar dahil tum compose container'larini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose ps -a",
+          "hint_text": "Tum container'lar icin `ps -a` kullan.",
+          "hint_partial": "docker compose ps ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-014-r124",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `bastion-124` servisini dependency'leri etkilemeden detached olarak recreate et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose up -d --no-deps bastion-124",
+          "hint_text": "Bagimliliklari atlamak icin `--no-deps` kullan.",
+          "hint_partial": "docker compose up ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-015-r125",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `proxy-125` image'ini cache-125 kullanmadan ve base image'i tekrar cekerek build et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose build --pull --no-cache-125 proxy-125",
+          "hint_text": "Base image refresh ve cache-125'siz build icin ilgili flag'leri kullan.",
+          "hint_partial": "docker compose build ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-016-r126",
+      "type": "single",
+      "scenario": "Runbook adiminda `web-126` icin one-off healthcheck script'ini dependency baslatmadan calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose run --rm --no-deps web-126 ./healthcheck.sh",
+          "hint_text": "Dependency'siz run icin `--no-deps` kullan.",
+          "hint_partial": "docker compose run ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-017-r127",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `api-127` container'i icinde `APP_ENV=prod-127` env'iyle komut calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose exec -e APP_ENV=prod-127 api-127 env",
+          "hint_text": "Exec environment eklemek icin `-e` kullan.",
+          "hint_partial": "docker compose exec ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-018-r128",
+      "type": "single",
+      "scenario": "Incident sonrasinda `proxy-128` servisinin 80 portunun host mapping'ini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose port proxy-128 80",
+          "hint_text": "Port mapping icin `docker compose port` kullan.",
+          "hint_partial": "docker compose port ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-019-r129",
+      "type": "single",
+      "scenario": "Bakim oncesi `web-129` servisi icindeki `redis-129-129.conf` dosyasini `./redis-129-129.conf` olarak cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose cp web-129:/etc/redis-129/redis-129-129.conf ./redis-129-129.conf",
+          "hint_text": "Compose copy ile host'a dosya cek.",
+          "hint_partial": "docker compose cp ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-020-r130",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda container'lari olustur ama baslatma, `cache-130-130` icin 3 scale uygula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose create --scale cache-130-130=7",
+          "hint_text": "Create asamasinda scale vermek icin `--scale` kullan.",
+          "hint_partial": "docker compose create ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-021-r131",
+      "type": "single",
+      "scenario": "Deploy sonrasi `queue-131` container'ini stop edip force ederek sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose rm -s -f queue-131",
+          "hint_text": "Stop+remove icin `rm -s -f` kullan.",
+          "hint_partial": "docker compose rm ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-022-r132",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `bastion-132` ve `bastion-132` servislerini kill et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose kill bastion-132 bastion-132",
+          "hint_text": "Birden fazla servisi ayni komutta verebilirsin.",
+          "hint_partial": "docker compose kill ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-023-r133",
+      "type": "single",
+      "scenario": "Yeni acilan hostta compose stack'ini local image'lari da temizleyerek kapat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose down --rmi local",
+          "hint_text": "Local image temizligi icin `--rmi local` kullan.",
+          "hint_partial": "docker compose down ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-024-r134",
+      "type": "single",
+      "scenario": "Runbook adiminda compose stack'ini healthy olana kadar bekleyerek detached modda kaldir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose up -d --wait",
+          "hint_text": "Healthcheck beklemek icin `--wait` kullan.",
+          "hint_partial": "docker compose up ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-025-r135",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde compose project listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose ls",
+          "hint_text": "Project listesi icin `docker compose ls` kullan.",
+          "hint_partial": "docker compose ls"
+        }
+      ]
+    },
+    {
+      "id": "sdc-011-r136",
+      "type": "single",
+      "scenario": "Incident sonrasinda config'te kullanilan image isimlerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose config --images",
+          "hint_text": "Image listesi icin `config --images` kullan.",
+          "hint_partial": "docker compose config ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-012-r137",
+      "type": "single",
+      "scenario": "Bakim oncesi config'te tanimli volume isimlerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose config --volumes",
+          "hint_text": "Volume listesi icin `config --volumes` kullan.",
+          "hint_partial": "docker compose config ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-013-r138",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda duranlar dahil tum compose container'larini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose ps -a",
+          "hint_text": "Tum container'lar icin `ps -a` kullan.",
+          "hint_partial": "docker compose ps ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-014-r139",
+      "type": "single",
+      "scenario": "Deploy sonrasi `queue-139` servisini dependency'leri etkilemeden detached olarak recreate et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose up -d --no-deps queue-139",
+          "hint_text": "Bagimliliklari atlamak icin `--no-deps` kullan.",
+          "hint_partial": "docker compose up ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-015-r140",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `bastion-140` image'ini cache-140 kullanmadan ve base image'i tekrar cekerek build et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose build --pull --no-cache-140 bastion-140",
+          "hint_text": "Base image refresh ve cache-140'siz build icin ilgili flag'leri kullan.",
+          "hint_partial": "docker compose build ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-016-r141",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `proxy-141` icin one-off healthcheck script'ini dependency baslatmadan calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose run --rm --no-deps proxy-141 ./healthcheck.sh",
+          "hint_text": "Dependency'siz run icin `--no-deps` kullan.",
+          "hint_partial": "docker compose run ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-017-r142",
+      "type": "single",
+      "scenario": "Runbook adiminda `web-142` container'i icinde `APP_ENV=monitoring-142` env'iyle komut calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose exec -e APP_ENV=monitoring-142 web-142 env",
+          "hint_text": "Exec environment eklemek icin `-e` kullan.",
+          "hint_partial": "docker compose exec ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-018-r143",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `bastion-143` servisinin 80 portunun host mapping'ini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose port bastion-143 80",
+          "hint_text": "Port mapping icin `docker compose port` kullan.",
+          "hint_partial": "docker compose port ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-019-r144",
+      "type": "single",
+      "scenario": "Incident sonrasinda `proxy-144` servisi icindeki `vault-144-144.conf` dosyasini `./vault-144-144.conf` olarak cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose cp proxy-144:/etc/vault-144/vault-144-144.conf ./vault-144-144.conf",
+          "hint_text": "Compose copy ile host'a dosya cek.",
+          "hint_partial": "docker compose cp ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-020-r145",
+      "type": "single",
+      "scenario": "Bakim oncesi container'lari olustur ama baslatma, `db-145-145` icin 3 scale uygula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose create --scale db-145-145=7",
+          "hint_text": "Create asamasinda scale vermek icin `--scale` kullan.",
+          "hint_partial": "docker compose create ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-021-r146",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `cache-146-146` container'ini stop edip force ederek sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose rm -s -f cache-146-146",
+          "hint_text": "Stop+remove icin `rm -s -f` kullan.",
+          "hint_partial": "docker compose rm ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-022-r147",
+      "type": "single",
+      "scenario": "Deploy sonrasi `queue-147` ve `queue-147` servislerini kill et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose kill queue-147 queue-147",
+          "hint_text": "Birden fazla servisi ayni komutta verebilirsin.",
+          "hint_partial": "docker compose kill ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-023-r148",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde compose stack'ini local image'lari da temizleyerek kapat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose down --rmi local",
+          "hint_text": "Local image temizligi icin `--rmi local` kullan.",
+          "hint_partial": "docker compose down ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-024-r149",
+      "type": "single",
+      "scenario": "Yeni acilan hostta compose stack'ini healthy olana kadar bekleyerek detached modda kaldir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose up -d --wait",
+          "hint_text": "Healthcheck beklemek icin `--wait` kullan.",
+          "hint_partial": "docker compose up ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-025-r150",
+      "type": "single",
+      "scenario": "Runbook adiminda compose project listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose ls",
+          "hint_text": "Project listesi icin `docker compose ls` kullan.",
+          "hint_partial": "docker compose ls"
+        }
+      ]
+    },
+    {
+      "id": "sdc-011-r151",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde config'te kullanilan image isimlerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose config --images",
+          "hint_text": "Image listesi icin `config --images` kullan.",
+          "hint_partial": "docker compose config ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-012-r152",
+      "type": "single",
+      "scenario": "Incident sonrasinda config'te tanimli volume isimlerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose config --volumes",
+          "hint_text": "Volume listesi icin `config --volumes` kullan.",
+          "hint_partial": "docker compose config ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-013-r153",
+      "type": "single",
+      "scenario": "Bakim oncesi duranlar dahil tum compose container'larini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose ps -a",
+          "hint_text": "Tum container'lar icin `ps -a` kullan.",
+          "hint_partial": "docker compose ps ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-014-r154",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `cache-154-154` servisini dependency'leri etkilemeden detached olarak recreate et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose up -d --no-deps cache-154-154",
+          "hint_text": "Bagimliliklari atlamak icin `--no-deps` kullan.",
+          "hint_partial": "docker compose up ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-015-r155",
+      "type": "single",
+      "scenario": "Deploy sonrasi `queue-155` image'ini cache-155 kullanmadan ve base image'i tekrar cekerek build et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose build --pull --no-cache-155 queue-155",
+          "hint_text": "Base image refresh ve cache-155'siz build icin ilgili flag'leri kullan.",
+          "hint_partial": "docker compose build ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-016-r156",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `bastion-156` icin one-off healthcheck script'ini dependency baslatmadan calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose run --rm --no-deps bastion-156 ./healthcheck.sh",
+          "hint_text": "Dependency'siz run icin `--no-deps` kullan.",
+          "hint_partial": "docker compose run ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-017-r157",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `proxy-157` container'i icinde `APP_ENV=prod-157` env'iyle komut calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose exec -e APP_ENV=prod-157 proxy-157 env",
+          "hint_text": "Exec environment eklemek icin `-e` kullan.",
+          "hint_partial": "docker compose exec ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-018-r158",
+      "type": "single",
+      "scenario": "Runbook adiminda `queue-158` servisinin 80 portunun host mapping'ini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose port queue-158 80",
+          "hint_text": "Port mapping icin `docker compose port` kullan.",
+          "hint_partial": "docker compose port ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-019-r159",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `bastion-159` servisi icindeki `redis-159-159.conf` dosyasini `./redis-159-159.conf` olarak cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose cp bastion-159:/etc/redis-159/redis-159-159.conf ./redis-159-159.conf",
+          "hint_text": "Compose copy ile host'a dosya cek.",
+          "hint_partial": "docker compose cp ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-020-r160",
+      "type": "single",
+      "scenario": "Incident sonrasinda container'lari olustur ama baslatma, `worker-160` icin 3 scale uygula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose create --scale worker-160=7",
+          "hint_text": "Create asamasinda scale vermek icin `--scale` kullan.",
+          "hint_partial": "docker compose create ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-021-r161",
+      "type": "single",
+      "scenario": "Bakim oncesi `db-161-161` container'ini stop edip force ederek sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose rm -s -f db-161-161",
+          "hint_text": "Stop+remove icin `rm -s -f` kullan.",
+          "hint_partial": "docker compose rm ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-022-r162",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `cache-162-162` ve `cache-162-162` servislerini kill et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose kill cache-162-162 cache-162-162",
+          "hint_text": "Birden fazla servisi ayni komutta verebilirsin.",
+          "hint_partial": "docker compose kill ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-023-r163",
+      "type": "single",
+      "scenario": "Deploy sonrasi compose stack'ini local image'lari da temizleyerek kapat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose down --rmi local",
+          "hint_text": "Local image temizligi icin `--rmi local` kullan.",
+          "hint_partial": "docker compose down ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-024-r164",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde compose stack'ini healthy olana kadar bekleyerek detached modda kaldir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose up -d --wait",
+          "hint_text": "Healthcheck beklemek icin `--wait` kullan.",
+          "hint_partial": "docker compose up ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-025-r165",
+      "type": "single",
+      "scenario": "Yeni acilan hostta compose project listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose ls",
+          "hint_text": "Project listesi icin `docker compose ls` kullan.",
+          "hint_partial": "docker compose ls"
+        }
+      ]
+    },
+    {
+      "id": "sdc-011-r166",
+      "type": "single",
+      "scenario": "Runbook adiminda config'te kullanilan image isimlerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose config --images",
+          "hint_text": "Image listesi icin `config --images` kullan.",
+          "hint_partial": "docker compose config ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-012-r167",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde config'te tanimli volume isimlerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose config --volumes",
+          "hint_text": "Volume listesi icin `config --volumes` kullan.",
+          "hint_partial": "docker compose config ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-013-r168",
+      "type": "single",
+      "scenario": "Incident sonrasinda duranlar dahil tum compose container'larini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose ps -a",
+          "hint_text": "Tum container'lar icin `ps -a` kullan.",
+          "hint_partial": "docker compose ps ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-014-r169",
+      "type": "single",
+      "scenario": "Bakim oncesi `db-169-169` servisini dependency'leri etkilemeden detached olarak recreate et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose up -d --no-deps db-169-169",
+          "hint_text": "Bagimliliklari atlamak icin `--no-deps` kullan.",
+          "hint_partial": "docker compose up ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-015-r170",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `cache-170-170` image'ini cache-170 kullanmadan ve base image'i tekrar cekerek build et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose build --pull --no-cache-170 cache-170-170",
+          "hint_text": "Base image refresh ve cache-170'siz build icin ilgili flag'leri kullan.",
+          "hint_partial": "docker compose build ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-016-r171",
+      "type": "single",
+      "scenario": "Deploy sonrasi `queue-171` icin one-off healthcheck script'ini dependency baslatmadan calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose run --rm --no-deps queue-171 ./healthcheck.sh",
+          "hint_text": "Dependency'siz run icin `--no-deps` kullan.",
+          "hint_partial": "docker compose run ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-017-r172",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `bastion-172` container'i icinde `APP_ENV=monitoring-172` env'iyle komut calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose exec -e APP_ENV=monitoring-172 bastion-172 env",
+          "hint_text": "Exec environment eklemek icin `-e` kullan.",
+          "hint_partial": "docker compose exec ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-018-r173",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `cache-173-173` servisinin 80 portunun host mapping'ini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose port cache-173-173 80",
+          "hint_text": "Port mapping icin `docker compose port` kullan.",
+          "hint_partial": "docker compose port ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-019-r174",
+      "type": "single",
+      "scenario": "Runbook adiminda `queue-174` servisi icindeki `vault-174-174.conf` dosyasini `./vault-174-174.conf` olarak cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose cp queue-174:/etc/vault-174/vault-174-174.conf ./vault-174-174.conf",
+          "hint_text": "Compose copy ile host'a dosya cek.",
+          "hint_partial": "docker compose cp ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-020-r175",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde container'lari olustur ama baslatma, `api-175-175` icin 3 scale uygula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose create --scale api-175-175=7",
+          "hint_text": "Create asamasinda scale vermek icin `--scale` kullan.",
+          "hint_partial": "docker compose create ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-021-r176",
+      "type": "single",
+      "scenario": "Incident sonrasinda `worker-176` container'ini stop edip force ederek sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose rm -s -f worker-176",
+          "hint_text": "Stop+remove icin `rm -s -f` kullan.",
+          "hint_partial": "docker compose rm ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-022-r177",
+      "type": "single",
+      "scenario": "Bakim oncesi `db-177-177` ve `db-177-177` servislerini kill et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose kill db-177-177 db-177-177",
+          "hint_text": "Birden fazla servisi ayni komutta verebilirsin.",
+          "hint_partial": "docker compose kill ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-023-r178",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda compose stack'ini local image'lari da temizleyerek kapat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose down --rmi local",
+          "hint_text": "Local image temizligi icin `--rmi local` kullan.",
+          "hint_partial": "docker compose down ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-024-r179",
+      "type": "single",
+      "scenario": "Deploy sonrasi compose stack'ini healthy olana kadar bekleyerek detached modda kaldir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose up -d --wait",
+          "hint_text": "Healthcheck beklemek icin `--wait` kullan.",
+          "hint_partial": "docker compose up ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-025-r180",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde compose project listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose ls",
+          "hint_text": "Project listesi icin `docker compose ls` kullan.",
+          "hint_partial": "docker compose ls"
+        }
+      ]
+    },
+    {
+      "id": "sdc-011-r181",
+      "type": "single",
+      "scenario": "Yeni acilan hostta config'te kullanilan image isimlerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose config --images",
+          "hint_text": "Image listesi icin `config --images` kullan.",
+          "hint_partial": "docker compose config ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-012-r182",
+      "type": "single",
+      "scenario": "Runbook adiminda config'te tanimli volume isimlerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose config --volumes",
+          "hint_text": "Volume listesi icin `config --volumes` kullan.",
+          "hint_partial": "docker compose config ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-013-r183",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde duranlar dahil tum compose container'larini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose ps -a",
+          "hint_text": "Tum container'lar icin `ps -a` kullan.",
+          "hint_partial": "docker compose ps ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-014-r184",
+      "type": "single",
+      "scenario": "Incident sonrasinda `worker-184` servisini dependency'leri etkilemeden detached olarak recreate et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose up -d --no-deps worker-184",
+          "hint_text": "Bagimliliklari atlamak icin `--no-deps` kullan.",
+          "hint_partial": "docker compose up ..."
+        }
+      ]
+    },
+    {
+      "id": "sdc-015-r185",
+      "type": "single",
+      "scenario": "Bakim oncesi `db-185-185` image'ini cache-185 kullanmadan ve base image'i tekrar cekerek build et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose build --pull --no-cache-185 db-185-185",
+          "hint_text": "Base image refresh ve cache-185'siz build icin ilgili flag'leri kullan.",
+          "hint_partial": "docker compose build ..."
+        }
+      ]
+    }
+  ]
+}

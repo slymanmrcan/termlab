@@ -1,0 +1,2606 @@
+{
+  "level": "mid",
+  "topic": "security",
+  "questions": [
+    {
+      "id": "msec-011",
+      "type": "single",
+      "scenario": "Kendi sudo yetkilerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sudo -l",
+          "hint_text": "Sudo yetki listesi icin `sudo -l` kullan.",
+          "hint_partial": "sudo -l"
+        }
+      ]
+    },
+    {
+      "id": "msec-012",
+      "type": "single",
+      "scenario": "SELinux modunu kisa olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getenforce",
+          "hint_text": "SELinux mode'u icin `getenforce` kullan.",
+          "hint_partial": "getenforce"
+        }
+      ]
+    },
+    {
+      "id": "msec-013",
+      "type": "single",
+      "scenario": "SELinux durum raporunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sestatus",
+          "hint_text": "Detayli SELinux bilgisi icin `sestatus` kullan.",
+          "hint_partial": "sestatus"
+        }
+      ]
+    },
+    {
+      "id": "msec-014",
+      "type": "single",
+      "scenario": "UFW firewall durumunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ufw status",
+          "hint_text": "UFW durumu icin `ufw status` kullan.",
+          "hint_partial": "ufw ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-015",
+      "type": "single",
+      "scenario": "iptables kurallarini numeric ve verbose modda goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iptables -L -n -v",
+          "hint_text": "Kural listesi icin `iptables -L -n -v` kullan.",
+          "hint_partial": "iptables -L ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-016",
+      "type": "single",
+      "scenario": "Dinleyen portlari process isimleriyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ss -tulpn",
+          "hint_text": "Port + process icin `ss -tulpn` kullan.",
+          "hint_partial": "ss -..."
+        }
+      ]
+    },
+    {
+      "id": "msec-017",
+      "type": "single",
+      "scenario": "Fail2ban servis durumunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fail2ban-client status",
+          "hint_text": "Fail2ban ozet durumu icin ilgili client komutunu kullan.",
+          "hint_partial": "fail2ban-client ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-018",
+      "type": "single",
+      "scenario": "GPG public key listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gpg --list-keys",
+          "hint_text": "GPG key listesi icin `gpg --list-keys` kullan.",
+          "hint_partial": "gpg --..."
+        }
+      ]
+    },
+    {
+      "id": "msec-019",
+      "type": "single",
+      "scenario": "`cert.pem` dosyasinin gecerlilik tarihlerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "openssl x509 -in cert.pem -noout -dates",
+          "hint_text": "Sertifika tarihleri icin `openssl x509 ... -dates` kullan.",
+          "hint_partial": "openssl x509 ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-020",
+      "type": "single",
+      "scenario": "`~/.ssh/id_ed25519` dosyasina sadece owner okuyup yazabilecek sekilde izin ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod 600 ~/.ssh/id_ed25519",
+          "hint_text": "Private key icin `600` kullan.",
+          "hint_partial": "chmod 600 ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-021",
+      "type": "single",
+      "scenario": "`alice` kullanicisinin password aging bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -l alice",
+          "hint_text": "Password aging icin `chage -l` kullan.",
+          "hint_partial": "chage -l ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-022",
+      "type": "single",
+      "scenario": "Basarisiz login kayitlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lastb | head",
+          "hint_text": "Basarisiz login'ler icin `lastb` kullan.",
+          "hint_partial": "lastb | ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-023",
+      "type": "single",
+      "scenario": "Bugune ait SELinux AVC event'lerini ara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ausearch -m avc -ts today",
+          "hint_text": "Audit log aramasi icin `ausearch` kullan.",
+          "hint_partial": "ausearch -m ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-024",
+      "type": "single",
+      "scenario": "`file.iso` dosyasinin SHA256 ozetini hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sha256sum file.iso",
+          "hint_text": "Dosya butunluk kontrolu icin `sha256sum` kullan.",
+          "hint_partial": "sha256sum ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-025",
+      "type": "single",
+      "scenario": "`alice` kullanicisinin hesabini lock et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -l alice",
+          "hint_text": "Hesap kilitlemek icin `passwd -l` kullan.",
+          "hint_partial": "passwd -l ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-011-r1",
+      "type": "single",
+      "scenario": "Bakim oncesi kendi sudo yetkilerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sudo -l",
+          "hint_text": "Sudo yetki listesi icin `sudo -l` kullan.",
+          "hint_partial": "sudo -l"
+        }
+      ]
+    },
+    {
+      "id": "msec-012-r2",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda sELinux modunu kisa olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getenforce",
+          "hint_text": "SELinux mode'u icin `getenforce` kullan.",
+          "hint_partial": "getenforce"
+        }
+      ]
+    },
+    {
+      "id": "msec-013-r3",
+      "type": "single",
+      "scenario": "Deploy sonrasi sELinux durum raporunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sestatus",
+          "hint_text": "Detayli SELinux bilgisi icin `sestatus` kullan.",
+          "hint_partial": "sestatus"
+        }
+      ]
+    },
+    {
+      "id": "msec-014-r4",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde uFW firewall durumunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ufw status",
+          "hint_text": "UFW durumu icin `ufw status` kullan.",
+          "hint_partial": "ufw ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-015-r5",
+      "type": "single",
+      "scenario": "Yeni acilan hostta iptables kurallarini numeric ve verbose modda goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iptables -L -n -v",
+          "hint_text": "Kural listesi icin `iptables -L -n -v` kullan.",
+          "hint_partial": "iptables -L ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-016-r6",
+      "type": "single",
+      "scenario": "Runbook adiminda dinleyen portlari process isimleriyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ss -tulpn",
+          "hint_text": "Port + process icin `ss -tulpn` kullan.",
+          "hint_partial": "ss -..."
+        }
+      ]
+    },
+    {
+      "id": "msec-017-r7",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde fail2ban servis durumunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fail2ban-client status",
+          "hint_text": "Fail2ban ozet durumu icin ilgili client komutunu kullan.",
+          "hint_partial": "fail2ban-client ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-018-r8",
+      "type": "single",
+      "scenario": "Incident sonrasinda gPG public key listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gpg --list-keys",
+          "hint_text": "GPG key listesi icin `gpg --list-keys` kullan.",
+          "hint_partial": "gpg --..."
+        }
+      ]
+    },
+    {
+      "id": "msec-019-r9",
+      "type": "single",
+      "scenario": "Bakim oncesi `cert.pem` dosyasinin gecerlilik tarihlerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "openssl x509 -in cert.pem -noout -dates",
+          "hint_text": "Sertifika tarihleri icin `openssl x509 ... -dates` kullan.",
+          "hint_partial": "openssl x509 ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-020-r10",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `~/.ssh/id_ed25519` dosyasina sadece owner okuyup yazabilecek sekilde izin ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod 600 ~/.ssh/id_ed25519",
+          "hint_text": "Private key icin `600` kullan.",
+          "hint_partial": "chmod 600 ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-021-r11",
+      "type": "single",
+      "scenario": "Deploy sonrasi `alice` kullanicisinin password aging bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -l alice",
+          "hint_text": "Password aging icin `chage -l` kullan.",
+          "hint_partial": "chage -l ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-022-r12",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde basarisiz login kayitlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lastb | head",
+          "hint_text": "Basarisiz login'ler icin `lastb` kullan.",
+          "hint_partial": "lastb | ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-023-r13",
+      "type": "single",
+      "scenario": "Yeni acilan hostta bugune ait SELinux AVC event'lerini ara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ausearch -m avc -ts today",
+          "hint_text": "Audit log aramasi icin `ausearch` kullan.",
+          "hint_partial": "ausearch -m ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-024-r14",
+      "type": "single",
+      "scenario": "Runbook adiminda `file.iso` dosyasinin SHA256 ozetini hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sha256sum file.iso",
+          "hint_text": "Dosya butunluk kontrolu icin `sha256sum` kullan.",
+          "hint_partial": "sha256sum ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-025-r15",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `alice` kullanicisinin hesabini lock et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -l alice",
+          "hint_text": "Hesap kilitlemek icin `passwd -l` kullan.",
+          "hint_partial": "passwd -l ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-011-r16",
+      "type": "single",
+      "scenario": "Incident sonrasinda kendi sudo yetkilerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sudo -l",
+          "hint_text": "Sudo yetki listesi icin `sudo -l` kullan.",
+          "hint_partial": "sudo -l"
+        }
+      ]
+    },
+    {
+      "id": "msec-012-r17",
+      "type": "single",
+      "scenario": "Bakim oncesi sELinux modunu kisa olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getenforce",
+          "hint_text": "SELinux mode'u icin `getenforce` kullan.",
+          "hint_partial": "getenforce"
+        }
+      ]
+    },
+    {
+      "id": "msec-013-r18",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda sELinux durum raporunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sestatus",
+          "hint_text": "Detayli SELinux bilgisi icin `sestatus` kullan.",
+          "hint_partial": "sestatus"
+        }
+      ]
+    },
+    {
+      "id": "msec-014-r19",
+      "type": "single",
+      "scenario": "Deploy sonrasi uFW firewall durumunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ufw status",
+          "hint_text": "UFW durumu icin `ufw status` kullan.",
+          "hint_partial": "ufw ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-015-r20",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde iptables kurallarini numeric ve verbose modda goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iptables -L -n -v",
+          "hint_text": "Kural listesi icin `iptables -L -n -v` kullan.",
+          "hint_partial": "iptables -L ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-016-r21",
+      "type": "single",
+      "scenario": "Yeni acilan hostta dinleyen portlari process isimleriyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ss -tulpn",
+          "hint_text": "Port + process icin `ss -tulpn` kullan.",
+          "hint_partial": "ss -..."
+        }
+      ]
+    },
+    {
+      "id": "msec-017-r22",
+      "type": "single",
+      "scenario": "Runbook adiminda fail2ban servis durumunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fail2ban-client status",
+          "hint_text": "Fail2ban ozet durumu icin ilgili client komutunu kullan.",
+          "hint_partial": "fail2ban-client ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-018-r23",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde gPG public key listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gpg --list-keys",
+          "hint_text": "GPG key listesi icin `gpg --list-keys` kullan.",
+          "hint_partial": "gpg --..."
+        }
+      ]
+    },
+    {
+      "id": "msec-019-r24",
+      "type": "single",
+      "scenario": "Incident sonrasinda `cert.pem` dosyasinin gecerlilik tarihlerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "openssl x509 -in cert.pem -noout -dates",
+          "hint_text": "Sertifika tarihleri icin `openssl x509 ... -dates` kullan.",
+          "hint_partial": "openssl x509 ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-020-r25",
+      "type": "single",
+      "scenario": "Bakim oncesi `~/.ssh/id_ed25519` dosyasina sadece owner okuyup yazabilecek sekilde izin ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod 600 ~/.ssh/id_ed25519",
+          "hint_text": "Private key icin `600` kullan.",
+          "hint_partial": "chmod 600 ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-021-r26",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `alice` kullanicisinin password aging bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -l alice",
+          "hint_text": "Password aging icin `chage -l` kullan.",
+          "hint_partial": "chage -l ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-022-r27",
+      "type": "single",
+      "scenario": "Deploy sonrasi basarisiz login kayitlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lastb | head",
+          "hint_text": "Basarisiz login'ler icin `lastb` kullan.",
+          "hint_partial": "lastb | ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-023-r28",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde bugune ait SELinux AVC event'lerini ara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ausearch -m avc -ts today",
+          "hint_text": "Audit log aramasi icin `ausearch` kullan.",
+          "hint_partial": "ausearch -m ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-024-r29",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `file.iso` dosyasinin SHA256 ozetini hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sha256sum file.iso",
+          "hint_text": "Dosya butunluk kontrolu icin `sha256sum` kullan.",
+          "hint_partial": "sha256sum ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-025-r30",
+      "type": "single",
+      "scenario": "Runbook adiminda `alice` kullanicisinin hesabini lock et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -l alice",
+          "hint_text": "Hesap kilitlemek icin `passwd -l` kullan.",
+          "hint_partial": "passwd -l ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-011-r31",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde kendi sudo yetkilerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sudo -l",
+          "hint_text": "Sudo yetki listesi icin `sudo -l` kullan.",
+          "hint_partial": "sudo -l"
+        }
+      ]
+    },
+    {
+      "id": "msec-012-r32",
+      "type": "single",
+      "scenario": "Incident sonrasinda sELinux modunu kisa olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getenforce",
+          "hint_text": "SELinux mode'u icin `getenforce` kullan.",
+          "hint_partial": "getenforce"
+        }
+      ]
+    },
+    {
+      "id": "msec-013-r33",
+      "type": "single",
+      "scenario": "Bakim oncesi sELinux durum raporunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sestatus",
+          "hint_text": "Detayli SELinux bilgisi icin `sestatus` kullan.",
+          "hint_partial": "sestatus"
+        }
+      ]
+    },
+    {
+      "id": "msec-014-r34",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda uFW firewall durumunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ufw status",
+          "hint_text": "UFW durumu icin `ufw status` kullan.",
+          "hint_partial": "ufw ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-015-r35",
+      "type": "single",
+      "scenario": "Deploy sonrasi iptables kurallarini numeric ve verbose modda goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iptables -L -n -v",
+          "hint_text": "Kural listesi icin `iptables -L -n -v` kullan.",
+          "hint_partial": "iptables -L ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-016-r36",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde dinleyen portlari process isimleriyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ss -tulpn",
+          "hint_text": "Port + process icin `ss -tulpn` kullan.",
+          "hint_partial": "ss -..."
+        }
+      ]
+    },
+    {
+      "id": "msec-017-r37",
+      "type": "single",
+      "scenario": "Yeni acilan hostta fail2ban servis durumunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fail2ban-client status",
+          "hint_text": "Fail2ban ozet durumu icin ilgili client komutunu kullan.",
+          "hint_partial": "fail2ban-client ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-018-r38",
+      "type": "single",
+      "scenario": "Runbook adiminda gPG public key listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gpg --list-keys",
+          "hint_text": "GPG key listesi icin `gpg --list-keys` kullan.",
+          "hint_partial": "gpg --..."
+        }
+      ]
+    },
+    {
+      "id": "msec-019-r39",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `cert.pem` dosyasinin gecerlilik tarihlerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "openssl x509 -in cert.pem -noout -dates",
+          "hint_text": "Sertifika tarihleri icin `openssl x509 ... -dates` kullan.",
+          "hint_partial": "openssl x509 ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-020-r40",
+      "type": "single",
+      "scenario": "Incident sonrasinda `~/.ssh/id_ed25519` dosyasina sadece owner okuyup yazabilecek sekilde izin ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod 600 ~/.ssh/id_ed25519",
+          "hint_text": "Private key icin `600` kullan.",
+          "hint_partial": "chmod 600 ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-021-r41",
+      "type": "single",
+      "scenario": "Bakim oncesi `alice` kullanicisinin password aging bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -l alice",
+          "hint_text": "Password aging icin `chage -l` kullan.",
+          "hint_partial": "chage -l ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-022-r42",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda basarisiz login kayitlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lastb | head",
+          "hint_text": "Basarisiz login'ler icin `lastb` kullan.",
+          "hint_partial": "lastb | ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-023-r43",
+      "type": "single",
+      "scenario": "Deploy sonrasi bugune ait SELinux AVC event'lerini ara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ausearch -m avc -ts today",
+          "hint_text": "Audit log aramasi icin `ausearch` kullan.",
+          "hint_partial": "ausearch -m ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-024-r44",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `file.iso` dosyasinin SHA256 ozetini hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sha256sum file.iso",
+          "hint_text": "Dosya butunluk kontrolu icin `sha256sum` kullan.",
+          "hint_partial": "sha256sum ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-025-r45",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `alice` kullanicisinin hesabini lock et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -l alice",
+          "hint_text": "Hesap kilitlemek icin `passwd -l` kullan.",
+          "hint_partial": "passwd -l ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-011-r46",
+      "type": "single",
+      "scenario": "Runbook adiminda kendi sudo yetkilerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sudo -l",
+          "hint_text": "Sudo yetki listesi icin `sudo -l` kullan.",
+          "hint_partial": "sudo -l"
+        }
+      ]
+    },
+    {
+      "id": "msec-012-r47",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde sELinux modunu kisa olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getenforce",
+          "hint_text": "SELinux mode'u icin `getenforce` kullan.",
+          "hint_partial": "getenforce"
+        }
+      ]
+    },
+    {
+      "id": "msec-013-r48",
+      "type": "single",
+      "scenario": "Incident sonrasinda sELinux durum raporunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sestatus",
+          "hint_text": "Detayli SELinux bilgisi icin `sestatus` kullan.",
+          "hint_partial": "sestatus"
+        }
+      ]
+    },
+    {
+      "id": "msec-014-r49",
+      "type": "single",
+      "scenario": "Bakim oncesi uFW firewall durumunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ufw status",
+          "hint_text": "UFW durumu icin `ufw status` kullan.",
+          "hint_partial": "ufw ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-015-r50",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda iptables kurallarini numeric ve verbose modda goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iptables -L -n -v",
+          "hint_text": "Kural listesi icin `iptables -L -n -v` kullan.",
+          "hint_partial": "iptables -L ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-016-r51",
+      "type": "single",
+      "scenario": "Deploy sonrasi dinleyen portlari process isimleriyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ss -tulpn",
+          "hint_text": "Port + process icin `ss -tulpn` kullan.",
+          "hint_partial": "ss -..."
+        }
+      ]
+    },
+    {
+      "id": "msec-017-r52",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde fail2ban servis durumunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fail2ban-client status",
+          "hint_text": "Fail2ban ozet durumu icin ilgili client komutunu kullan.",
+          "hint_partial": "fail2ban-client ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-018-r53",
+      "type": "single",
+      "scenario": "Yeni acilan hostta gPG public key listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gpg --list-keys",
+          "hint_text": "GPG key listesi icin `gpg --list-keys` kullan.",
+          "hint_partial": "gpg --..."
+        }
+      ]
+    },
+    {
+      "id": "msec-019-r54",
+      "type": "single",
+      "scenario": "Runbook adiminda `cert.pem` dosyasinin gecerlilik tarihlerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "openssl x509 -in cert.pem -noout -dates",
+          "hint_text": "Sertifika tarihleri icin `openssl x509 ... -dates` kullan.",
+          "hint_partial": "openssl x509 ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-020-r55",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `~/.ssh/id_ed25519` dosyasina sadece owner okuyup yazabilecek sekilde izin ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod 600 ~/.ssh/id_ed25519",
+          "hint_text": "Private key icin `600` kullan.",
+          "hint_partial": "chmod 600 ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-021-r56",
+      "type": "single",
+      "scenario": "Incident sonrasinda `alice` kullanicisinin password aging bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -l alice",
+          "hint_text": "Password aging icin `chage -l` kullan.",
+          "hint_partial": "chage -l ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-022-r57",
+      "type": "single",
+      "scenario": "Bakim oncesi basarisiz login kayitlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lastb | head",
+          "hint_text": "Basarisiz login'ler icin `lastb` kullan.",
+          "hint_partial": "lastb | ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-023-r58",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda bugune ait SELinux AVC event'lerini ara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ausearch -m avc -ts today",
+          "hint_text": "Audit log aramasi icin `ausearch` kullan.",
+          "hint_partial": "ausearch -m ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-024-r59",
+      "type": "single",
+      "scenario": "Deploy sonrasi `file.iso` dosyasinin SHA256 ozetini hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sha256sum file.iso",
+          "hint_text": "Dosya butunluk kontrolu icin `sha256sum` kullan.",
+          "hint_partial": "sha256sum ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-025-r60",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `alice` kullanicisinin hesabini lock et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -l alice",
+          "hint_text": "Hesap kilitlemek icin `passwd -l` kullan.",
+          "hint_partial": "passwd -l ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-011-r61",
+      "type": "single",
+      "scenario": "Yeni acilan hostta kendi sudo yetkilerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sudo -l",
+          "hint_text": "Sudo yetki listesi icin `sudo -l` kullan.",
+          "hint_partial": "sudo -l"
+        }
+      ]
+    },
+    {
+      "id": "msec-012-r62",
+      "type": "single",
+      "scenario": "Runbook adiminda sELinux modunu kisa olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getenforce",
+          "hint_text": "SELinux mode'u icin `getenforce` kullan.",
+          "hint_partial": "getenforce"
+        }
+      ]
+    },
+    {
+      "id": "msec-013-r63",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde sELinux durum raporunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sestatus",
+          "hint_text": "Detayli SELinux bilgisi icin `sestatus` kullan.",
+          "hint_partial": "sestatus"
+        }
+      ]
+    },
+    {
+      "id": "msec-014-r64",
+      "type": "single",
+      "scenario": "Incident sonrasinda uFW firewall durumunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ufw status",
+          "hint_text": "UFW durumu icin `ufw status` kullan.",
+          "hint_partial": "ufw ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-015-r65",
+      "type": "single",
+      "scenario": "Bakim oncesi iptables kurallarini numeric ve verbose modda goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iptables -L -n -v",
+          "hint_text": "Kural listesi icin `iptables -L -n -v` kullan.",
+          "hint_partial": "iptables -L ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-016-r66",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda dinleyen portlari process isimleriyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ss -tulpn",
+          "hint_text": "Port + process icin `ss -tulpn` kullan.",
+          "hint_partial": "ss -..."
+        }
+      ]
+    },
+    {
+      "id": "msec-017-r67",
+      "type": "single",
+      "scenario": "Deploy sonrasi fail2ban servis durumunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fail2ban-client status",
+          "hint_text": "Fail2ban ozet durumu icin ilgili client komutunu kullan.",
+          "hint_partial": "fail2ban-client ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-018-r68",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde gPG public key listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gpg --list-keys",
+          "hint_text": "GPG key listesi icin `gpg --list-keys` kullan.",
+          "hint_partial": "gpg --..."
+        }
+      ]
+    },
+    {
+      "id": "msec-019-r69",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `cert.pem` dosyasinin gecerlilik tarihlerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "openssl x509 -in cert.pem -noout -dates",
+          "hint_text": "Sertifika tarihleri icin `openssl x509 ... -dates` kullan.",
+          "hint_partial": "openssl x509 ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-020-r70",
+      "type": "single",
+      "scenario": "Runbook adiminda `~/.ssh/id_ed25519` dosyasina sadece owner okuyup yazabilecek sekilde izin ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod 600 ~/.ssh/id_ed25519",
+          "hint_text": "Private key icin `600` kullan.",
+          "hint_partial": "chmod 600 ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-021-r71",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `alice` kullanicisinin password aging bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -l alice",
+          "hint_text": "Password aging icin `chage -l` kullan.",
+          "hint_partial": "chage -l ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-022-r72",
+      "type": "single",
+      "scenario": "Incident sonrasinda basarisiz login kayitlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lastb | head",
+          "hint_text": "Basarisiz login'ler icin `lastb` kullan.",
+          "hint_partial": "lastb | ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-023-r73",
+      "type": "single",
+      "scenario": "Bakim oncesi bugune ait SELinux AVC event'lerini ara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ausearch -m avc -ts today",
+          "hint_text": "Audit log aramasi icin `ausearch` kullan.",
+          "hint_partial": "ausearch -m ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-024-r74",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `file.iso` dosyasinin SHA256 ozetini hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sha256sum file.iso",
+          "hint_text": "Dosya butunluk kontrolu icin `sha256sum` kullan.",
+          "hint_partial": "sha256sum ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-025-r75",
+      "type": "single",
+      "scenario": "Deploy sonrasi `alice` kullanicisinin hesabini lock et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -l alice",
+          "hint_text": "Hesap kilitlemek icin `passwd -l` kullan.",
+          "hint_partial": "passwd -l ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-011-r76",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde kendi sudo yetkilerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sudo -l",
+          "hint_text": "Sudo yetki listesi icin `sudo -l` kullan.",
+          "hint_partial": "sudo -l"
+        }
+      ]
+    },
+    {
+      "id": "msec-012-r77",
+      "type": "single",
+      "scenario": "Yeni acilan hostta sELinux modunu kisa olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getenforce",
+          "hint_text": "SELinux mode'u icin `getenforce` kullan.",
+          "hint_partial": "getenforce"
+        }
+      ]
+    },
+    {
+      "id": "msec-013-r78",
+      "type": "single",
+      "scenario": "Runbook adiminda sELinux durum raporunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sestatus",
+          "hint_text": "Detayli SELinux bilgisi icin `sestatus` kullan.",
+          "hint_partial": "sestatus"
+        }
+      ]
+    },
+    {
+      "id": "msec-014-r79",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde uFW firewall durumunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ufw status",
+          "hint_text": "UFW durumu icin `ufw status` kullan.",
+          "hint_partial": "ufw ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-015-r80",
+      "type": "single",
+      "scenario": "Incident sonrasinda iptables kurallarini numeric ve verbose modda goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iptables -L -n -v",
+          "hint_text": "Kural listesi icin `iptables -L -n -v` kullan.",
+          "hint_partial": "iptables -L ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-016-r81",
+      "type": "single",
+      "scenario": "Bakim oncesi dinleyen portlari process isimleriyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ss -tulpn",
+          "hint_text": "Port + process icin `ss -tulpn` kullan.",
+          "hint_partial": "ss -..."
+        }
+      ]
+    },
+    {
+      "id": "msec-017-r82",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda fail2ban servis durumunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fail2ban-client status",
+          "hint_text": "Fail2ban ozet durumu icin ilgili client komutunu kullan.",
+          "hint_partial": "fail2ban-client ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-018-r83",
+      "type": "single",
+      "scenario": "Deploy sonrasi gPG public key listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gpg --list-keys",
+          "hint_text": "GPG key listesi icin `gpg --list-keys` kullan.",
+          "hint_partial": "gpg --..."
+        }
+      ]
+    },
+    {
+      "id": "msec-019-r84",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `cert.pem` dosyasinin gecerlilik tarihlerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "openssl x509 -in cert.pem -noout -dates",
+          "hint_text": "Sertifika tarihleri icin `openssl x509 ... -dates` kullan.",
+          "hint_partial": "openssl x509 ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-020-r85",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `~/.ssh/id_ed25519` dosyasina sadece owner okuyup yazabilecek sekilde izin ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod 600 ~/.ssh/id_ed25519",
+          "hint_text": "Private key icin `600` kullan.",
+          "hint_partial": "chmod 600 ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-021-r86",
+      "type": "single",
+      "scenario": "Runbook adiminda `alice` kullanicisinin password aging bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -l alice",
+          "hint_text": "Password aging icin `chage -l` kullan.",
+          "hint_partial": "chage -l ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-022-r87",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde basarisiz login kayitlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lastb | head",
+          "hint_text": "Basarisiz login'ler icin `lastb` kullan.",
+          "hint_partial": "lastb | ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-023-r88",
+      "type": "single",
+      "scenario": "Incident sonrasinda bugune ait SELinux AVC event'lerini ara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ausearch -m avc -ts today",
+          "hint_text": "Audit log aramasi icin `ausearch` kullan.",
+          "hint_partial": "ausearch -m ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-024-r89",
+      "type": "single",
+      "scenario": "Bakim oncesi `file.iso` dosyasinin SHA256 ozetini hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sha256sum file.iso",
+          "hint_text": "Dosya butunluk kontrolu icin `sha256sum` kullan.",
+          "hint_partial": "sha256sum ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-025-r90",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `alice` kullanicisinin hesabini lock et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -l alice",
+          "hint_text": "Hesap kilitlemek icin `passwd -l` kullan.",
+          "hint_partial": "passwd -l ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-011-r91",
+      "type": "single",
+      "scenario": "Deploy sonrasi kendi sudo yetkilerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sudo -l",
+          "hint_text": "Sudo yetki listesi icin `sudo -l` kullan.",
+          "hint_partial": "sudo -l"
+        }
+      ]
+    },
+    {
+      "id": "msec-012-r92",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde sELinux modunu kisa olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getenforce",
+          "hint_text": "SELinux mode'u icin `getenforce` kullan.",
+          "hint_partial": "getenforce"
+        }
+      ]
+    },
+    {
+      "id": "msec-013-r93",
+      "type": "single",
+      "scenario": "Yeni acilan hostta sELinux durum raporunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sestatus",
+          "hint_text": "Detayli SELinux bilgisi icin `sestatus` kullan.",
+          "hint_partial": "sestatus"
+        }
+      ]
+    },
+    {
+      "id": "msec-014-r94",
+      "type": "single",
+      "scenario": "Runbook adiminda uFW firewall durumunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ufw status",
+          "hint_text": "UFW durumu icin `ufw status` kullan.",
+          "hint_partial": "ufw ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-015-r95",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde iptables kurallarini numeric ve verbose modda goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iptables -L -n -v",
+          "hint_text": "Kural listesi icin `iptables -L -n -v` kullan.",
+          "hint_partial": "iptables -L ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-016-r96",
+      "type": "single",
+      "scenario": "Incident sonrasinda dinleyen portlari process isimleriyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ss -tulpn",
+          "hint_text": "Port + process icin `ss -tulpn` kullan.",
+          "hint_partial": "ss -..."
+        }
+      ]
+    },
+    {
+      "id": "msec-017-r97",
+      "type": "single",
+      "scenario": "Bakim oncesi fail2ban servis durumunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fail2ban-client status",
+          "hint_text": "Fail2ban ozet durumu icin ilgili client komutunu kullan.",
+          "hint_partial": "fail2ban-client ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-018-r98",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda gPG public key listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gpg --list-keys",
+          "hint_text": "GPG key listesi icin `gpg --list-keys` kullan.",
+          "hint_partial": "gpg --..."
+        }
+      ]
+    },
+    {
+      "id": "msec-019-r99",
+      "type": "single",
+      "scenario": "Deploy sonrasi `cert.pem` dosyasinin gecerlilik tarihlerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "openssl x509 -in cert.pem -noout -dates",
+          "hint_text": "Sertifika tarihleri icin `openssl x509 ... -dates` kullan.",
+          "hint_partial": "openssl x509 ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-020-r100",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `~/.ssh/id_ed25519` dosyasina sadece owner okuyup yazabilecek sekilde izin ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod 600 ~/.ssh/id_ed25519",
+          "hint_text": "Private key icin `600` kullan.",
+          "hint_partial": "chmod 600 ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-021-r101",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `alice` kullanicisinin password aging bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -l alice",
+          "hint_text": "Password aging icin `chage -l` kullan.",
+          "hint_partial": "chage -l ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-022-r102",
+      "type": "single",
+      "scenario": "Runbook adiminda basarisiz login kayitlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lastb | head",
+          "hint_text": "Basarisiz login'ler icin `lastb` kullan.",
+          "hint_partial": "lastb | ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-023-r103",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde bugune ait SELinux AVC event'lerini ara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ausearch -m avc -ts today",
+          "hint_text": "Audit log aramasi icin `ausearch` kullan.",
+          "hint_partial": "ausearch -m ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-024-r104",
+      "type": "single",
+      "scenario": "Incident sonrasinda `file.iso` dosyasinin SHA256 ozetini hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sha256sum file.iso",
+          "hint_text": "Dosya butunluk kontrolu icin `sha256sum` kullan.",
+          "hint_partial": "sha256sum ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-025-r105",
+      "type": "single",
+      "scenario": "Bakim oncesi `alice` kullanicisinin hesabini lock et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -l alice",
+          "hint_text": "Hesap kilitlemek icin `passwd -l` kullan.",
+          "hint_partial": "passwd -l ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-011-r106",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda kendi sudo yetkilerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sudo -l",
+          "hint_text": "Sudo yetki listesi icin `sudo -l` kullan.",
+          "hint_partial": "sudo -l"
+        }
+      ]
+    },
+    {
+      "id": "msec-012-r107",
+      "type": "single",
+      "scenario": "Deploy sonrasi sELinux modunu kisa olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getenforce",
+          "hint_text": "SELinux mode'u icin `getenforce` kullan.",
+          "hint_partial": "getenforce"
+        }
+      ]
+    },
+    {
+      "id": "msec-013-r108",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde sELinux durum raporunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sestatus",
+          "hint_text": "Detayli SELinux bilgisi icin `sestatus` kullan.",
+          "hint_partial": "sestatus"
+        }
+      ]
+    },
+    {
+      "id": "msec-014-r109",
+      "type": "single",
+      "scenario": "Yeni acilan hostta uFW firewall durumunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ufw status",
+          "hint_text": "UFW durumu icin `ufw status` kullan.",
+          "hint_partial": "ufw ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-015-r110",
+      "type": "single",
+      "scenario": "Runbook adiminda iptables kurallarini numeric ve verbose modda goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iptables -L -n -v",
+          "hint_text": "Kural listesi icin `iptables -L -n -v` kullan.",
+          "hint_partial": "iptables -L ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-016-r111",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde dinleyen portlari process isimleriyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ss -tulpn",
+          "hint_text": "Port + process icin `ss -tulpn` kullan.",
+          "hint_partial": "ss -..."
+        }
+      ]
+    },
+    {
+      "id": "msec-017-r112",
+      "type": "single",
+      "scenario": "Incident sonrasinda fail2ban servis durumunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fail2ban-client status",
+          "hint_text": "Fail2ban ozet durumu icin ilgili client komutunu kullan.",
+          "hint_partial": "fail2ban-client ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-018-r113",
+      "type": "single",
+      "scenario": "Bakim oncesi gPG public key listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gpg --list-keys",
+          "hint_text": "GPG key listesi icin `gpg --list-keys` kullan.",
+          "hint_partial": "gpg --..."
+        }
+      ]
+    },
+    {
+      "id": "msec-019-r114",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `cert.pem` dosyasinin gecerlilik tarihlerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "openssl x509 -in cert.pem -noout -dates",
+          "hint_text": "Sertifika tarihleri icin `openssl x509 ... -dates` kullan.",
+          "hint_partial": "openssl x509 ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-020-r115",
+      "type": "single",
+      "scenario": "Deploy sonrasi `~/.ssh/id_ed25519` dosyasina sadece owner okuyup yazabilecek sekilde izin ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod 600 ~/.ssh/id_ed25519",
+          "hint_text": "Private key icin `600` kullan.",
+          "hint_partial": "chmod 600 ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-021-r116",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `alice` kullanicisinin password aging bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -l alice",
+          "hint_text": "Password aging icin `chage -l` kullan.",
+          "hint_partial": "chage -l ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-022-r117",
+      "type": "single",
+      "scenario": "Yeni acilan hostta basarisiz login kayitlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lastb | head",
+          "hint_text": "Basarisiz login'ler icin `lastb` kullan.",
+          "hint_partial": "lastb | ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-023-r118",
+      "type": "single",
+      "scenario": "Runbook adiminda bugune ait SELinux AVC event'lerini ara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ausearch -m avc -ts today",
+          "hint_text": "Audit log aramasi icin `ausearch` kullan.",
+          "hint_partial": "ausearch -m ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-024-r119",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `file.iso` dosyasinin SHA256 ozetini hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sha256sum file.iso",
+          "hint_text": "Dosya butunluk kontrolu icin `sha256sum` kullan.",
+          "hint_partial": "sha256sum ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-025-r120",
+      "type": "single",
+      "scenario": "Incident sonrasinda `alice` kullanicisinin hesabini lock et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -l alice",
+          "hint_text": "Hesap kilitlemek icin `passwd -l` kullan.",
+          "hint_partial": "passwd -l ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-011-r121",
+      "type": "single",
+      "scenario": "Bakim oncesi kendi sudo yetkilerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sudo -l",
+          "hint_text": "Sudo yetki listesi icin `sudo -l` kullan.",
+          "hint_partial": "sudo -l"
+        }
+      ]
+    },
+    {
+      "id": "msec-012-r122",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda sELinux modunu kisa olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getenforce",
+          "hint_text": "SELinux mode'u icin `getenforce` kullan.",
+          "hint_partial": "getenforce"
+        }
+      ]
+    },
+    {
+      "id": "msec-013-r123",
+      "type": "single",
+      "scenario": "Deploy sonrasi sELinux durum raporunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sestatus",
+          "hint_text": "Detayli SELinux bilgisi icin `sestatus` kullan.",
+          "hint_partial": "sestatus"
+        }
+      ]
+    },
+    {
+      "id": "msec-014-r124",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde uFW firewall durumunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ufw status",
+          "hint_text": "UFW durumu icin `ufw status` kullan.",
+          "hint_partial": "ufw ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-015-r125",
+      "type": "single",
+      "scenario": "Yeni acilan hostta iptables kurallarini numeric ve verbose modda goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iptables -L -n -v",
+          "hint_text": "Kural listesi icin `iptables -L -n -v` kullan.",
+          "hint_partial": "iptables -L ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-016-r126",
+      "type": "single",
+      "scenario": "Runbook adiminda dinleyen portlari process isimleriyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ss -tulpn",
+          "hint_text": "Port + process icin `ss -tulpn` kullan.",
+          "hint_partial": "ss -..."
+        }
+      ]
+    },
+    {
+      "id": "msec-017-r127",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde fail2ban servis durumunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fail2ban-client status",
+          "hint_text": "Fail2ban ozet durumu icin ilgili client komutunu kullan.",
+          "hint_partial": "fail2ban-client ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-018-r128",
+      "type": "single",
+      "scenario": "Incident sonrasinda gPG public key listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gpg --list-keys",
+          "hint_text": "GPG key listesi icin `gpg --list-keys` kullan.",
+          "hint_partial": "gpg --..."
+        }
+      ]
+    },
+    {
+      "id": "msec-019-r129",
+      "type": "single",
+      "scenario": "Bakim oncesi `cert.pem` dosyasinin gecerlilik tarihlerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "openssl x509 -in cert.pem -noout -dates",
+          "hint_text": "Sertifika tarihleri icin `openssl x509 ... -dates` kullan.",
+          "hint_partial": "openssl x509 ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-020-r130",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `~/.ssh/id_ed25519` dosyasina sadece owner okuyup yazabilecek sekilde izin ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod 600 ~/.ssh/id_ed25519",
+          "hint_text": "Private key icin `600` kullan.",
+          "hint_partial": "chmod 600 ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-021-r131",
+      "type": "single",
+      "scenario": "Deploy sonrasi `alice` kullanicisinin password aging bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -l alice",
+          "hint_text": "Password aging icin `chage -l` kullan.",
+          "hint_partial": "chage -l ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-022-r132",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde basarisiz login kayitlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lastb | head",
+          "hint_text": "Basarisiz login'ler icin `lastb` kullan.",
+          "hint_partial": "lastb | ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-023-r133",
+      "type": "single",
+      "scenario": "Yeni acilan hostta bugune ait SELinux AVC event'lerini ara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ausearch -m avc -ts today",
+          "hint_text": "Audit log aramasi icin `ausearch` kullan.",
+          "hint_partial": "ausearch -m ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-024-r134",
+      "type": "single",
+      "scenario": "Runbook adiminda `file.iso` dosyasinin SHA256 ozetini hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sha256sum file.iso",
+          "hint_text": "Dosya butunluk kontrolu icin `sha256sum` kullan.",
+          "hint_partial": "sha256sum ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-025-r135",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `alice` kullanicisinin hesabini lock et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -l alice",
+          "hint_text": "Hesap kilitlemek icin `passwd -l` kullan.",
+          "hint_partial": "passwd -l ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-011-r136",
+      "type": "single",
+      "scenario": "Incident sonrasinda kendi sudo yetkilerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sudo -l",
+          "hint_text": "Sudo yetki listesi icin `sudo -l` kullan.",
+          "hint_partial": "sudo -l"
+        }
+      ]
+    },
+    {
+      "id": "msec-012-r137",
+      "type": "single",
+      "scenario": "Bakim oncesi sELinux modunu kisa olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getenforce",
+          "hint_text": "SELinux mode'u icin `getenforce` kullan.",
+          "hint_partial": "getenforce"
+        }
+      ]
+    },
+    {
+      "id": "msec-013-r138",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda sELinux durum raporunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sestatus",
+          "hint_text": "Detayli SELinux bilgisi icin `sestatus` kullan.",
+          "hint_partial": "sestatus"
+        }
+      ]
+    },
+    {
+      "id": "msec-014-r139",
+      "type": "single",
+      "scenario": "Deploy sonrasi uFW firewall durumunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ufw status",
+          "hint_text": "UFW durumu icin `ufw status` kullan.",
+          "hint_partial": "ufw ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-015-r140",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde iptables kurallarini numeric ve verbose modda goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iptables -L -n -v",
+          "hint_text": "Kural listesi icin `iptables -L -n -v` kullan.",
+          "hint_partial": "iptables -L ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-016-r141",
+      "type": "single",
+      "scenario": "Yeni acilan hostta dinleyen portlari process isimleriyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ss -tulpn",
+          "hint_text": "Port + process icin `ss -tulpn` kullan.",
+          "hint_partial": "ss -..."
+        }
+      ]
+    },
+    {
+      "id": "msec-017-r142",
+      "type": "single",
+      "scenario": "Runbook adiminda fail2ban servis durumunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fail2ban-client status",
+          "hint_text": "Fail2ban ozet durumu icin ilgili client komutunu kullan.",
+          "hint_partial": "fail2ban-client ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-018-r143",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde gPG public key listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gpg --list-keys",
+          "hint_text": "GPG key listesi icin `gpg --list-keys` kullan.",
+          "hint_partial": "gpg --..."
+        }
+      ]
+    },
+    {
+      "id": "msec-019-r144",
+      "type": "single",
+      "scenario": "Incident sonrasinda `cert.pem` dosyasinin gecerlilik tarihlerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "openssl x509 -in cert.pem -noout -dates",
+          "hint_text": "Sertifika tarihleri icin `openssl x509 ... -dates` kullan.",
+          "hint_partial": "openssl x509 ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-020-r145",
+      "type": "single",
+      "scenario": "Bakim oncesi `~/.ssh/id_ed25519` dosyasina sadece owner okuyup yazabilecek sekilde izin ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod 600 ~/.ssh/id_ed25519",
+          "hint_text": "Private key icin `600` kullan.",
+          "hint_partial": "chmod 600 ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-021-r146",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `alice` kullanicisinin password aging bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -l alice",
+          "hint_text": "Password aging icin `chage -l` kullan.",
+          "hint_partial": "chage -l ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-022-r147",
+      "type": "single",
+      "scenario": "Deploy sonrasi basarisiz login kayitlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lastb | head",
+          "hint_text": "Basarisiz login'ler icin `lastb` kullan.",
+          "hint_partial": "lastb | ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-023-r148",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde bugune ait SELinux AVC event'lerini ara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ausearch -m avc -ts today",
+          "hint_text": "Audit log aramasi icin `ausearch` kullan.",
+          "hint_partial": "ausearch -m ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-024-r149",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `file.iso` dosyasinin SHA256 ozetini hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sha256sum file.iso",
+          "hint_text": "Dosya butunluk kontrolu icin `sha256sum` kullan.",
+          "hint_partial": "sha256sum ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-025-r150",
+      "type": "single",
+      "scenario": "Runbook adiminda `alice` kullanicisinin hesabini lock et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -l alice",
+          "hint_text": "Hesap kilitlemek icin `passwd -l` kullan.",
+          "hint_partial": "passwd -l ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-011-r151",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde kendi sudo yetkilerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sudo -l",
+          "hint_text": "Sudo yetki listesi icin `sudo -l` kullan.",
+          "hint_partial": "sudo -l"
+        }
+      ]
+    },
+    {
+      "id": "msec-012-r152",
+      "type": "single",
+      "scenario": "Incident sonrasinda sELinux modunu kisa olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getenforce",
+          "hint_text": "SELinux mode'u icin `getenforce` kullan.",
+          "hint_partial": "getenforce"
+        }
+      ]
+    },
+    {
+      "id": "msec-013-r153",
+      "type": "single",
+      "scenario": "Bakim oncesi sELinux durum raporunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sestatus",
+          "hint_text": "Detayli SELinux bilgisi icin `sestatus` kullan.",
+          "hint_partial": "sestatus"
+        }
+      ]
+    },
+    {
+      "id": "msec-014-r154",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda uFW firewall durumunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ufw status",
+          "hint_text": "UFW durumu icin `ufw status` kullan.",
+          "hint_partial": "ufw ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-015-r155",
+      "type": "single",
+      "scenario": "Deploy sonrasi iptables kurallarini numeric ve verbose modda goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iptables -L -n -v",
+          "hint_text": "Kural listesi icin `iptables -L -n -v` kullan.",
+          "hint_partial": "iptables -L ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-016-r156",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde dinleyen portlari process isimleriyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ss -tulpn",
+          "hint_text": "Port + process icin `ss -tulpn` kullan.",
+          "hint_partial": "ss -..."
+        }
+      ]
+    },
+    {
+      "id": "msec-017-r157",
+      "type": "single",
+      "scenario": "Yeni acilan hostta fail2ban servis durumunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fail2ban-client status",
+          "hint_text": "Fail2ban ozet durumu icin ilgili client komutunu kullan.",
+          "hint_partial": "fail2ban-client ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-018-r158",
+      "type": "single",
+      "scenario": "Runbook adiminda gPG public key listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gpg --list-keys",
+          "hint_text": "GPG key listesi icin `gpg --list-keys` kullan.",
+          "hint_partial": "gpg --..."
+        }
+      ]
+    },
+    {
+      "id": "msec-019-r159",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `cert.pem` dosyasinin gecerlilik tarihlerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "openssl x509 -in cert.pem -noout -dates",
+          "hint_text": "Sertifika tarihleri icin `openssl x509 ... -dates` kullan.",
+          "hint_partial": "openssl x509 ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-020-r160",
+      "type": "single",
+      "scenario": "Incident sonrasinda `~/.ssh/id_ed25519` dosyasina sadece owner okuyup yazabilecek sekilde izin ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod 600 ~/.ssh/id_ed25519",
+          "hint_text": "Private key icin `600` kullan.",
+          "hint_partial": "chmod 600 ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-021-r161",
+      "type": "single",
+      "scenario": "Bakim oncesi `alice` kullanicisinin password aging bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -l alice",
+          "hint_text": "Password aging icin `chage -l` kullan.",
+          "hint_partial": "chage -l ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-022-r162",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda basarisiz login kayitlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lastb | head",
+          "hint_text": "Basarisiz login'ler icin `lastb` kullan.",
+          "hint_partial": "lastb | ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-023-r163",
+      "type": "single",
+      "scenario": "Deploy sonrasi bugune ait SELinux AVC event'lerini ara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ausearch -m avc -ts today",
+          "hint_text": "Audit log aramasi icin `ausearch` kullan.",
+          "hint_partial": "ausearch -m ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-024-r164",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `file.iso` dosyasinin SHA256 ozetini hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sha256sum file.iso",
+          "hint_text": "Dosya butunluk kontrolu icin `sha256sum` kullan.",
+          "hint_partial": "sha256sum ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-025-r165",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `alice` kullanicisinin hesabini lock et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -l alice",
+          "hint_text": "Hesap kilitlemek icin `passwd -l` kullan.",
+          "hint_partial": "passwd -l ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-011-r166",
+      "type": "single",
+      "scenario": "Runbook adiminda kendi sudo yetkilerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sudo -l",
+          "hint_text": "Sudo yetki listesi icin `sudo -l` kullan.",
+          "hint_partial": "sudo -l"
+        }
+      ]
+    },
+    {
+      "id": "msec-012-r167",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde sELinux modunu kisa olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getenforce",
+          "hint_text": "SELinux mode'u icin `getenforce` kullan.",
+          "hint_partial": "getenforce"
+        }
+      ]
+    },
+    {
+      "id": "msec-013-r168",
+      "type": "single",
+      "scenario": "Incident sonrasinda sELinux durum raporunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sestatus",
+          "hint_text": "Detayli SELinux bilgisi icin `sestatus` kullan.",
+          "hint_partial": "sestatus"
+        }
+      ]
+    },
+    {
+      "id": "msec-014-r169",
+      "type": "single",
+      "scenario": "Bakim oncesi uFW firewall durumunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ufw status",
+          "hint_text": "UFW durumu icin `ufw status` kullan.",
+          "hint_partial": "ufw ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-015-r170",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda iptables kurallarini numeric ve verbose modda goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iptables -L -n -v",
+          "hint_text": "Kural listesi icin `iptables -L -n -v` kullan.",
+          "hint_partial": "iptables -L ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-016-r171",
+      "type": "single",
+      "scenario": "Deploy sonrasi dinleyen portlari process isimleriyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ss -tulpn",
+          "hint_text": "Port + process icin `ss -tulpn` kullan.",
+          "hint_partial": "ss -..."
+        }
+      ]
+    },
+    {
+      "id": "msec-017-r172",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde fail2ban servis durumunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fail2ban-client status",
+          "hint_text": "Fail2ban ozet durumu icin ilgili client komutunu kullan.",
+          "hint_partial": "fail2ban-client ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-018-r173",
+      "type": "single",
+      "scenario": "Yeni acilan hostta gPG public key listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gpg --list-keys",
+          "hint_text": "GPG key listesi icin `gpg --list-keys` kullan.",
+          "hint_partial": "gpg --..."
+        }
+      ]
+    },
+    {
+      "id": "msec-019-r174",
+      "type": "single",
+      "scenario": "Runbook adiminda `cert.pem` dosyasinin gecerlilik tarihlerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "openssl x509 -in cert.pem -noout -dates",
+          "hint_text": "Sertifika tarihleri icin `openssl x509 ... -dates` kullan.",
+          "hint_partial": "openssl x509 ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-020-r175",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `~/.ssh/id_ed25519` dosyasina sadece owner okuyup yazabilecek sekilde izin ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod 600 ~/.ssh/id_ed25519",
+          "hint_text": "Private key icin `600` kullan.",
+          "hint_partial": "chmod 600 ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-021-r176",
+      "type": "single",
+      "scenario": "Incident sonrasinda `alice` kullanicisinin password aging bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -l alice",
+          "hint_text": "Password aging icin `chage -l` kullan.",
+          "hint_partial": "chage -l ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-022-r177",
+      "type": "single",
+      "scenario": "Bakim oncesi basarisiz login kayitlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lastb | head",
+          "hint_text": "Basarisiz login'ler icin `lastb` kullan.",
+          "hint_partial": "lastb | ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-023-r178",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda bugune ait SELinux AVC event'lerini ara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ausearch -m avc -ts today",
+          "hint_text": "Audit log aramasi icin `ausearch` kullan.",
+          "hint_partial": "ausearch -m ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-024-r179",
+      "type": "single",
+      "scenario": "Deploy sonrasi `file.iso` dosyasinin SHA256 ozetini hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sha256sum file.iso",
+          "hint_text": "Dosya butunluk kontrolu icin `sha256sum` kullan.",
+          "hint_partial": "sha256sum ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-025-r180",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `alice` kullanicisinin hesabini lock et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -l alice",
+          "hint_text": "Hesap kilitlemek icin `passwd -l` kullan.",
+          "hint_partial": "passwd -l ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-011-r181",
+      "type": "single",
+      "scenario": "Yeni acilan hostta kendi sudo yetkilerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sudo -l",
+          "hint_text": "Sudo yetki listesi icin `sudo -l` kullan.",
+          "hint_partial": "sudo -l"
+        }
+      ]
+    },
+    {
+      "id": "msec-012-r182",
+      "type": "single",
+      "scenario": "Runbook adiminda sELinux modunu kisa olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getenforce",
+          "hint_text": "SELinux mode'u icin `getenforce` kullan.",
+          "hint_partial": "getenforce"
+        }
+      ]
+    },
+    {
+      "id": "msec-013-r183",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde sELinux durum raporunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sestatus",
+          "hint_text": "Detayli SELinux bilgisi icin `sestatus` kullan.",
+          "hint_partial": "sestatus"
+        }
+      ]
+    },
+    {
+      "id": "msec-014-r184",
+      "type": "single",
+      "scenario": "Incident sonrasinda uFW firewall durumunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ufw status",
+          "hint_text": "UFW durumu icin `ufw status` kullan.",
+          "hint_partial": "ufw ..."
+        }
+      ]
+    },
+    {
+      "id": "msec-015-r185",
+      "type": "single",
+      "scenario": "Bakim oncesi iptables kurallarini numeric ve verbose modda goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iptables -L -n -v",
+          "hint_text": "Kural listesi icin `iptables -L -n -v` kullan.",
+          "hint_partial": "iptables -L ..."
+        }
+      ]
+    }
+  ]
+}

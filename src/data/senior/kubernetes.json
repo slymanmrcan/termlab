@@ -1,0 +1,136 @@
+{
+  "level": "senior",
+  "topic": "kubernetes",
+  "questions": [
+    {
+      "id": "sk8s-001",
+      "type": "single",
+      "scenario": "`web` deployment'i bir onceki rollout'a geri al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl rollout undo deployment/web",
+          "hint_text": "Rollback icin `kubectl rollout undo` kullan.",
+          "hint_partial": "kubectl rollout ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-002",
+      "type": "single",
+      "scenario": "`web` deployment loglarini canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl logs -f deployment/web",
+          "hint_text": "Deployment log takibi icin `kubectl logs -f deployment/name` kullan.",
+          "hint_partial": "kubectl logs ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-003",
+      "type": "single",
+      "scenario": "Event'leri olusma zamanina gore sirala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get events --sort-by=.metadata.creationTimestamp",
+          "hint_text": "Siralama icin `--sort-by` kullan.",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-004",
+      "type": "single",
+      "scenario": "`manifests/` altindaki degisiklikleri apply etmeden diff olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl diff -f manifests/",
+          "hint_text": "Dry diff icin `kubectl diff -f` kullan.",
+          "hint_partial": "kubectl diff ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-005",
+      "type": "single",
+      "scenario": "Cluster'da pod olusturma yetkin var mi kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl auth can-i create pods",
+          "hint_text": "RBAC kontrolu icin `kubectl auth can-i` kullan.",
+          "hint_partial": "kubectl auth ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-006",
+      "type": "single",
+      "scenario": "`worker1` node'unu drain et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl drain worker1 --ignore-daemonsets",
+          "hint_text": "Drain icin `kubectl drain` kullan.",
+          "hint_partial": "kubectl drain ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-007",
+      "type": "single",
+      "scenario": "`worker1` node'unu schedulable olmaktan cikar.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl cordon worker1",
+          "hint_text": "Yeni pod alinmasin diye `kubectl cordon` kullan.",
+          "hint_partial": "kubectl cordon ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-008",
+      "type": "single",
+      "scenario": "`worker1` node'unu tekrar schedulable yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl uncordon worker1",
+          "hint_text": "Node'u geri acmak icin `kubectl uncordon` kullan.",
+          "hint_partial": "kubectl uncordon ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-009",
+      "type": "single",
+      "scenario": "Tum namespace'lerde calisan pod'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get pods -A --field-selector status.phase=Running",
+          "hint_text": "Field selector ile phase filtrele.",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-010",
+      "type": "single",
+      "scenario": "CRD yuklemesinden sonra kullanilabilir API kaynaklarini grup ve isim detaylariyla listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl api-resources -o wide",
+          "hint_text": "Kaynak detaylari icin `kubectl api-resources -o wide` kullan.",
+          "hint_partial": "kubectl api-resources -o wide"
+        }
+      ]
+    }
+  ]
+}

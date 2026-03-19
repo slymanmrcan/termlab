@@ -1,0 +1,148 @@
+{
+  "level": "mid",
+  "topic": "monitoring",
+  "questions": [
+    {
+      "id": "mmon-001",
+      "type": "multi-step",
+      "scenario": "CPU spike incelemesinde once load'i gor, sonra en cok CPU tuketen ilk 10 process'i cikar.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "uptime",
+          "hint_text": "Load average'i hizli gormek icin `uptime` kullan.",
+          "hint_partial": "uptime"
+        },
+        {
+          "prompt": "$ ",
+          "answer": "ps -eo pid,cmd,%cpu,%mem --sort=-%cpu | head -10",
+          "hint_text": "CPU tuketimine gore process siralamasi icin `ps -eo ... --sort=-%cpu` kullan.",
+          "hint_partial": "ps -eo pid,cmd,%cpu,%mem ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-002",
+      "type": "single",
+      "scenario": "CPU saturation var mi anlamak icin run queue ve context switch'i 1 saniyelik 5 ornekle topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "vmstat 1 5",
+          "hint_text": "`vmstat interval count` formati ile birkac ornek topla.",
+          "hint_partial": "vmstat 1 5"
+        }
+      ]
+    },
+    {
+      "id": "mmon-003",
+      "type": "single",
+      "scenario": "Disk I/O metriklerini extended format'ta sürekli izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iostat -xz 1",
+          "hint_text": "`iostat -xz 1` disk performansını ayrıntılı gösterir.",
+          "hint_partial": "iostat -xz ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-004",
+      "type": "single",
+      "scenario": "CPU kullanımını 5 örnek boyunca `sar` ile topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sar -u 1 5",
+          "hint_text": "`sar -u interval count` formatını kullan.",
+          "hint_partial": "sar -u ... ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-005",
+      "type": "single",
+      "scenario": "Process bazında CPU kullanımını 1 saniyelik örneklerle izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pidstat -u 1",
+          "hint_text": "`pidstat -u` process CPU kullanımını gösterir.",
+          "hint_partial": "pidstat -u ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-006",
+      "type": "single",
+      "scenario": "Memory swap aktivitelerini `sar` ile 5 örnek topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sar -W 1 5",
+          "hint_text": "Swap istatistiği için `sar -W` kullan.",
+          "hint_partial": "sar -W ... ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-007",
+      "type": "single",
+      "scenario": "Block device bazında anlık I/O metriğini göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iostat -dx 1",
+          "hint_text": "Device detayları için `iostat -dx` kullan.",
+          "hint_partial": "iostat -dx ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-008",
+      "type": "multi-step",
+      "scenario": "Connection patlamasinda once socket ozetini al, sonra en cok baglanti kuran remote endpoint'leri sirala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ss -s",
+          "hint_text": "Socket ozetini almak icin `ss -s` kullan.",
+          "hint_partial": "ss -s"
+        },
+        {
+          "prompt": "$ ",
+          "answer": "ss -tan | awk 'NR>1 {print $5}' | sort | uniq -c | sort -nr | head -10",
+          "hint_text": "Remote endpoint'leri saymak icin `ss -tan` cikisini besinci kolon uzerinden grupla.",
+          "hint_partial": "ss -tan | awk 'NR>1 {print $5}' ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-009",
+      "type": "single",
+      "scenario": "Her saniye top 10 CPU process'ini yenileyerek göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "watch -n 1 \"ps aux --sort=-%cpu | head -10\"",
+          "hint_text": "`watch` ile komutu periyodik çalıştır.",
+          "hint_partial": "watch -n 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-010",
+      "type": "single",
+      "scenario": "Memory pressure bakarken sadece kullanilabilir RAM ve swap basliklarini hizli filtrele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "grep -E 'MemAvailable|SwapTotal|SwapFree' /proc/meminfo",
+          "hint_text": "Sadece kritik memory satirlarini gormek icin `grep -E` kullan.",
+          "hint_partial": "grep -E 'MemAvailable|SwapTotal|SwapFree' ..."
+        }
+      ]
+    }
+  ]
+}

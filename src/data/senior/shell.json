@@ -1,0 +1,142 @@
+{
+  "level": "senior",
+  "topic": "shell",
+  "questions": [
+    {
+      "id": "sshl-001",
+      "type": "single",
+      "scenario": "Bir pipeline içinde herhangi bir komut fail olursa shell'in fail etmesini sağlayan option'ı aç.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "set -o pipefail",
+          "hint_text": "Pipeline hata davranışı için `pipefail` kullan.",
+          "hint_partial": "set -o ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-002",
+      "type": "single",
+      "scenario": "Space içeren file adlarını güvenli işlemek için `find` output'unu null-delimited olarak `xargs` ile kullan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find . -type f -print0 | xargs -0 ls -l",
+          "hint_text": "`-print0` ve `xargs -0` kombinasyonunu kullan.",
+          "hint_partial": "find . -type f -print0 | ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-003",
+      "type": "single",
+      "scenario": "İki sıralı file'ı process substitution ile karşılaştır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "diff <(sort a.txt) <(sort b.txt)",
+          "hint_text": "Process substitution için `<(...)` yapısını kullan.",
+          "hint_partial": "diff <(... ) <(... )"
+        }
+      ]
+    },
+    {
+      "id": "sshl-004",
+      "type": "single",
+      "scenario": "`./deploy.sh` komutunun stdout ve stderr output'unu ayrı process'lere yönlendirmek için Bash process substitution kullan: stdout `tee out.log`'a, stderr `tee err.log`'a gitsin.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "./deploy.sh > >(tee out.log) 2> >(tee err.log >&2)",
+          "hint_text": "Process substitution için `>(...)` yapısını kullan.",
+          "hint_partial": "./deploy.sh > >(tee ...) 2> >(tee ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-005",
+      "type": "multi-step",
+      "scenario": "`./backup.sh` komutunun yalnızca stderr output'unu file'a kaydet, stdout ekranda kalsın.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "./backup.sh 2> error.log",
+          "hint_text": "Sadece stderr yönlendirmesi için `2>` kullan.",
+          "hint_partial": "./backup.sh 2> ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "cat error.log",
+          "hint_text": "File'a yazılan stderr içeriğini doğrulamak için `cat` kullan.",
+          "hint_partial": "cat ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-006",
+      "type": "single",
+      "scenario": "Sadece environment'ı temiz bir shell içinde `HOME` ve `PATH` set ederek `env` çalıştır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "env -i HOME=$HOME PATH=$PATH env",
+          "hint_text": "Temiz environment için `env -i` kullan.",
+          "hint_partial": "env -i HOME=... PATH=... env"
+        }
+      ]
+    },
+    {
+      "id": "sshl-007",
+      "type": "single",
+      "scenario": "Subshell yerine mevcut shell'de `cd /tmp && pwd` zincirini çalıştır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cd /tmp && pwd",
+          "hint_text": "Aynı shell context'inde kalmak için düz komut zinciri kullan.",
+          "hint_partial": "cd /tmp && pwd"
+        }
+      ]
+    },
+    {
+      "id": "sshl-008",
+      "type": "single",
+      "scenario": "`app.log` içinde `timeout` veya `connection reset` geçen line'ları case-insensitive filtrele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "grep -Ei 'timeout|connection reset' app.log",
+          "hint_text": "Birden fazla desen için `grep -Ei` kullan.",
+          "hint_partial": "grep -Ei '...|...' ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-009",
+      "type": "single",
+      "scenario": "`cat app.log` output'unu hem SHA256 hesaplayıp hem gzip file'ına yazacak pipeline kur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat app.log | tee >(sha256sum >&2) | gzip > archive.gz",
+          "hint_text": "Aynı stream'i iki yere bölmek için `tee >(...)` kullan.",
+          "hint_partial": "cat app.log | tee >(...) | gzip > ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-010",
+      "type": "single",
+      "scenario": "`./deploy.sh` komutunu CPU süresi ve real time ölçümüyle çalıştırıp özet formatta göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "/usr/bin/time -f \"%E %P\" ./deploy.sh",
+          "hint_text": "Özel format için `/usr/bin/time -f` kullan.",
+          "hint_partial": "/usr/bin/time -f ... ./deploy.sh"
+        }
+      ]
+    }
+  ]
+}

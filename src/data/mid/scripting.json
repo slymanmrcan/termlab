@@ -1,0 +1,122 @@
+{
+  "level": "mid",
+  "topic": "scripting",
+  "questions": [
+    {
+      "id": "mscr-001",
+      "type": "single",
+      "scenario": "Deployment script'inde hata, undefined variable ve pipe hatasinda hemen kirilacak strict mode'u ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "set -euo pipefail",
+          "hint_text": "Bash strict mode icin `set -euo pipefail` kullan.",
+          "hint_partial": "set -euo pipefail"
+        }
+      ]
+    },
+    {
+      "id": "mscr-002",
+      "type": "single",
+      "scenario": "Script biterken cleanup çalıştırmak için EXIT trap tanımla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "trap 'rm -f /tmp/lockfile' EXIT",
+          "hint_text": "EXIT anında komut çalıştırmak için `trap` kullan.",
+          "hint_partial": "trap '..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-004",
+      "type": "single",
+      "scenario": "`for` loop ile tüm `.log` file'larını gzip ile sıkıştır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "for file in *.log; do gzip \"$file\"; done",
+          "hint_text": "Tek satır `for` loop içinde `gzip` çalıştır.",
+          "hint_partial": "for file in ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-005",
+      "type": "single",
+      "scenario": "`getopts` ile `-p` option'ını parse eden tek satırlık loop yaz.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "while getopts 'p:' opt; do case $opt in p) port=$OPTARG ;; esac; done",
+          "hint_text": "`getopts` ile option parse etmek için `while` ve `case` kullan.",
+          "hint_partial": "while getopts ..."
+        }
+      ]
+    },
+    {
+      "id": "mscr-006",
+      "type": "multi-step",
+      "scenario": "Deploy script'i fail ediyorsa once syntax'i kontrol et, sonra shellcheck yoksa xtrace ile problemli satiri gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "bash -n deploy.sh",
+          "hint_text": "Syntax kontrolu icin `bash -n` kullan.",
+          "hint_partial": "bash -n deploy.sh"
+        },
+        {
+          "prompt": "$ ",
+          "answer": "bash -x deploy.sh",
+          "hint_text": "Calisma akisini acmak icin `bash -x` ile script'i trace et.",
+          "hint_partial": "bash -x deploy.sh"
+        }
+      ]
+    },
+    {
+      "id": "mscr-007",
+      "type": "multi-step",
+      "scenario": "Script'in hangi komutta bozuldugunu anlamak icin xtrace ile calistir, sonra exit code'u hemen ekrana bas.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "bash -x deploy.sh",
+          "hint_text": "Komut akislarini gormek icin `bash -x` kullan.",
+          "hint_partial": "bash -x deploy.sh"
+        },
+        {
+          "prompt": "$ ",
+          "answer": "echo $?",
+          "hint_text": "Son komutun donus kodu icin `echo $?` kullan.",
+          "hint_partial": "echo $?"
+        }
+      ]
+    },
+    {
+      "id": "mscr-008",
+      "type": "single",
+      "scenario": "Bir function tanımlayıp `ok` yazdır: name `healthcheck` olsun.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "healthcheck(){ echo ok; }",
+          "hint_text": "Tek satır function tanımı yap.",
+          "hint_partial": "healthcheck(){ ...; }"
+        }
+      ]
+    },
+    {
+      "id": "mscr-010",
+      "type": "single",
+      "scenario": "`logs/*.log` file'larını tek tek gezmek için Bash glob loop yaz.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "for file in logs/*.log; do echo \"$file\"; done",
+          "hint_text": "Glob ile `for` loop kur.",
+          "hint_partial": "for file in ..."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2606 @@
+{
+  "level": "senior",
+  "topic": "security",
+  "questions": [
+    {
+      "id": "ssec-011",
+      "type": "single",
+      "scenario": "Aktif audit kurallarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "auditctl -l",
+          "hint_text": "Audit kurallari icin `auditctl -l` kullan.",
+          "hint_partial": "auditctl ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-012",
+      "type": "single",
+      "scenario": "`sshd` anahtarli audit kayitlarini ara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ausearch -k sshd",
+          "hint_text": "Audit aramasi icin `ausearch -k` kullan.",
+          "hint_partial": "ausearch -k ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-013",
+      "type": "single",
+      "scenario": "SELinux'te HTTP ile iliskili port tanimlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "semanage port -l | grep http",
+          "hint_text": "SELinux port map icin `semanage port -l` kullan.",
+          "hint_partial": "semanage port ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-014",
+      "type": "single",
+      "scenario": "`/srv/app` ACL bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getfacl /srv/app",
+          "hint_text": "ACL incelemek icin `getfacl` kullan.",
+          "hint_partial": "getfacl ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-015",
+      "type": "single",
+      "scenario": "`deploy` kullanicisine `/srv/app` uzerinde rwx ACL ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setfacl -m u:deploy:rwx /srv/app",
+          "hint_text": "Kullanici ACL eklemek icin `setfacl -m` kullan.",
+          "hint_partial": "setfacl -m ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-016",
+      "type": "single",
+      "scenario": "example.com:443 icin TLS handshake detayini al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "openssl s_client -connect example.com:443 </dev/null",
+          "hint_text": "TLS inspect icin `openssl s_client` kullan.",
+          "hint_partial": "openssl s_client ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-017",
+      "type": "single",
+      "scenario": "`cert.pem` sertifikasini tam metin olarak ozetle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "openssl x509 -in cert.pem -noout -text",
+          "hint_text": "Sertifika detaylari icin `-text` kullan.",
+          "hint_partial": "openssl x509 ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-018",
+      "type": "single",
+      "scenario": "`release.tar.gz` dosyasinin imzasini `release.sig` ile dogrula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gpg --verify release.sig release.tar.gz",
+          "hint_text": "Imza dogrulamasi icin `gpg --verify sig file` kullan.",
+          "hint_partial": "gpg --verify ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-019",
+      "type": "single",
+      "scenario": "localhost uzerinde servis versiyon taramasi yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "nmap -sV localhost",
+          "hint_text": "Version detection icin `nmap -sV` kullan.",
+          "hint_partial": "nmap -sV ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-020",
+      "type": "single",
+      "scenario": "Sadece 10.0.0.0/24 subnet'ine 22 portundan izin veren UFW kuralini ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ufw allow from 10.0.0.0/24 to any port 22",
+          "hint_text": "Kaynak subnet bazli UFW kuralini ilgili formatla yaz.",
+          "hint_partial": "ufw allow from ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-021",
+      "type": "single",
+      "scenario": "iptables kurallarini `-S` formatinda goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iptables -S",
+          "hint_text": "Kural tanimlari icin `iptables -S` kullan.",
+          "hint_partial": "iptables -S"
+        }
+      ]
+    },
+    {
+      "id": "ssec-022",
+      "type": "single",
+      "scenario": "Firewalld mevcut zone bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "firewall-cmd --list-all",
+          "hint_text": "Firewalld durum ozeti icin `firewall-cmd --list-all` kullan.",
+          "hint_partial": "firewall-cmd ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-023",
+      "type": "single",
+      "scenario": "`/etc/passwd` dosyasini immutable yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chattr +i /etc/passwd",
+          "hint_text": "Immutable bit icin `chattr +i` kullan.",
+          "hint_partial": "chattr +..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-024",
+      "type": "single",
+      "scenario": "Tum filesystem altinda capability atanmis dosyalari tara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getcap -r / 2>/dev/null",
+          "hint_text": "Recursive capability taramasi icin `getcap -r /` kullan.",
+          "hint_partial": "getcap -r ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-025",
+      "type": "single",
+      "scenario": "Son login bilgilerini `lastlog` ile goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lastlog | head",
+          "hint_text": "Login ozetleri icin `lastlog` kullan.",
+          "hint_partial": "lastlog | ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-011-r1",
+      "type": "single",
+      "scenario": "Bakim oncesi aktif audit kurallarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "auditctl -l",
+          "hint_text": "Audit kurallari icin `auditctl -l` kullan.",
+          "hint_partial": "auditctl ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-012-r2",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `sshd` anahtarli audit kayitlarini ara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ausearch -k sshd",
+          "hint_text": "Audit aramasi icin `ausearch -k` kullan.",
+          "hint_partial": "ausearch -k ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-013-r3",
+      "type": "single",
+      "scenario": "Deploy sonrasi sELinux'te HTTP ile iliskili port tanimlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "semanage port -l | grep http",
+          "hint_text": "SELinux port map icin `semanage port -l` kullan.",
+          "hint_partial": "semanage port ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-014-r4",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/srv/app/db-4-4-4/app/db-4-4` ACL bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getfacl /srv/app/db-4-4-4/app/db-4-4",
+          "hint_text": "ACL incelemek icin `getfacl` kullan.",
+          "hint_partial": "getfacl ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-015-r5",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `deploy` kullanicisine `/srv/app/cache-5-5-5/app/cache-5-5` uzerinde rwx ACL ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setfacl -m u:deploy:rwx /srv/app/cache-5-5-5/app/cache-5-5",
+          "hint_text": "Kullanici ACL eklemek icin `setfacl -m` kullan.",
+          "hint_partial": "setfacl -m ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-016-r6",
+      "type": "single",
+      "scenario": "Runbook adiminda srv6.internal:8085 icin TLS handshake detayini al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "openssl s_client -connect srv6.internal:8085 </dev/null",
+          "hint_text": "TLS inspect icin `openssl s_client` kullan.",
+          "hint_partial": "openssl s_client ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-017-r7",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `cert.pem` sertifikasini tam metin olarak ozetle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "openssl x509 -in cert.pem -noout -text",
+          "hint_text": "Sertifika detaylari icin `-text` kullan.",
+          "hint_partial": "openssl x509 ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-018-r8",
+      "type": "single",
+      "scenario": "Incident sonrasinda `release.tar.gz` dosyasinin imzasini `release.sig` ile dogrula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gpg --verify release.sig release.tar.gz",
+          "hint_text": "Imza dogrulamasi icin `gpg --verify sig file` kullan.",
+          "hint_partial": "gpg --verify ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-019-r9",
+      "type": "single",
+      "scenario": "Bakim oncesi localhost uzerinde servis versiyon taramasi yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "nmap -sV localhost",
+          "hint_text": "Version detection icin `nmap -sV` kullan.",
+          "hint_partial": "nmap -sV ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-020-r10",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda sadece 10.0.0.0/24 subnet'ine 22 portundan izin veren UFW kuralini ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ufw allow from 10.0.0.0/24 to any port 22",
+          "hint_text": "Kaynak subnet bazli UFW kuralini ilgili formatla yaz.",
+          "hint_partial": "ufw allow from ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-021-r11",
+      "type": "single",
+      "scenario": "Deploy sonrasi iptables kurallarini `-S` formatinda goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iptables -S",
+          "hint_text": "Kural tanimlari icin `iptables -S` kullan.",
+          "hint_partial": "iptables -S"
+        }
+      ]
+    },
+    {
+      "id": "ssec-022-r12",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde firewalld mevcut zone bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "firewall-cmd --list-all",
+          "hint_text": "Firewalld durum ozeti icin `firewall-cmd --list-all` kullan.",
+          "hint_partial": "firewall-cmd ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-023-r13",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `/etc/passwd` dosyasini immutable yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chattr +i /etc/passwd",
+          "hint_text": "Immutable bit icin `chattr +i` kullan.",
+          "hint_partial": "chattr +..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-024-r14",
+      "type": "single",
+      "scenario": "Runbook adiminda tum filesystem altinda capability atanmis dosyalari tara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getcap -r / 2>/dev/null",
+          "hint_text": "Recursive capability taramasi icin `getcap -r /` kullan.",
+          "hint_partial": "getcap -r ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-025-r15",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde son login bilgilerini `lastlog` ile goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lastlog | head",
+          "hint_text": "Login ozetleri icin `lastlog` kullan.",
+          "hint_partial": "lastlog | ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-011-r16",
+      "type": "single",
+      "scenario": "Incident sonrasinda aktif audit kurallarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "auditctl -l",
+          "hint_text": "Audit kurallari icin `auditctl -l` kullan.",
+          "hint_partial": "auditctl ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-012-r17",
+      "type": "single",
+      "scenario": "Bakim oncesi `sshd` anahtarli audit kayitlarini ara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ausearch -k sshd",
+          "hint_text": "Audit aramasi icin `ausearch -k` kullan.",
+          "hint_partial": "ausearch -k ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-013-r18",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda sELinux'te HTTP ile iliskili port tanimlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "semanage port -l | grep http",
+          "hint_text": "SELinux port map icin `semanage port -l` kullan.",
+          "hint_partial": "semanage port ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-014-r19",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/srv/app/queue-19-19-19/app/queue-19-19` ACL bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getfacl /srv/app/queue-19-19-19/app/queue-19-19",
+          "hint_text": "ACL incelemek icin `getfacl` kullan.",
+          "hint_partial": "getfacl ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-015-r20",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `deploy` kullanicisine `/srv/app/db-20-20-20/app/db-20-20` uzerinde rwx ACL ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setfacl -m u:deploy:rwx /srv/app/db-20-20-20/app/db-20-20",
+          "hint_text": "Kullanici ACL eklemek icin `setfacl -m` kullan.",
+          "hint_partial": "setfacl -m ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-016-r21",
+      "type": "single",
+      "scenario": "Yeni acilan hostta srv21.internal:8340 icin TLS handshake detayini al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "openssl s_client -connect srv21.internal:8340 </dev/null",
+          "hint_text": "TLS inspect icin `openssl s_client` kullan.",
+          "hint_partial": "openssl s_client ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-017-r22",
+      "type": "single",
+      "scenario": "Runbook adiminda `cert.pem` sertifikasini tam metin olarak ozetle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "openssl x509 -in cert.pem -noout -text",
+          "hint_text": "Sertifika detaylari icin `-text` kullan.",
+          "hint_partial": "openssl x509 ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-018-r23",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `release.tar.gz` dosyasinin imzasini `release.sig` ile dogrula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gpg --verify release.sig release.tar.gz",
+          "hint_text": "Imza dogrulamasi icin `gpg --verify sig file` kullan.",
+          "hint_partial": "gpg --verify ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-019-r24",
+      "type": "single",
+      "scenario": "Incident sonrasinda localhost uzerinde servis versiyon taramasi yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "nmap -sV localhost",
+          "hint_text": "Version detection icin `nmap -sV` kullan.",
+          "hint_partial": "nmap -sV ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-020-r25",
+      "type": "single",
+      "scenario": "Bakim oncesi sadece 10.0.0.0/24 subnet'ine 22 portundan izin veren UFW kuralini ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ufw allow from 10.0.0.0/24 to any port 22",
+          "hint_text": "Kaynak subnet bazli UFW kuralini ilgili formatla yaz.",
+          "hint_partial": "ufw allow from ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-021-r26",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda iptables kurallarini `-S` formatinda goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iptables -S",
+          "hint_text": "Kural tanimlari icin `iptables -S` kullan.",
+          "hint_partial": "iptables -S"
+        }
+      ]
+    },
+    {
+      "id": "ssec-022-r27",
+      "type": "single",
+      "scenario": "Deploy sonrasi firewalld mevcut zone bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "firewall-cmd --list-all",
+          "hint_text": "Firewalld durum ozeti icin `firewall-cmd --list-all` kullan.",
+          "hint_partial": "firewall-cmd ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-023-r28",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/etc/passwd` dosyasini immutable yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chattr +i /etc/passwd",
+          "hint_text": "Immutable bit icin `chattr +i` kullan.",
+          "hint_partial": "chattr +..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-024-r29",
+      "type": "single",
+      "scenario": "Yeni acilan hostta tum filesystem altinda capability atanmis dosyalari tara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getcap -r / 2>/dev/null",
+          "hint_text": "Recursive capability taramasi icin `getcap -r /` kullan.",
+          "hint_partial": "getcap -r ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-025-r30",
+      "type": "single",
+      "scenario": "Runbook adiminda son login bilgilerini `lastlog` ile goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lastlog | head",
+          "hint_text": "Login ozetleri icin `lastlog` kullan.",
+          "hint_partial": "lastlog | ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-011-r31",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde aktif audit kurallarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "auditctl -l",
+          "hint_text": "Audit kurallari icin `auditctl -l` kullan.",
+          "hint_partial": "auditctl ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-012-r32",
+      "type": "single",
+      "scenario": "Incident sonrasinda `sshd` anahtarli audit kayitlarini ara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ausearch -k sshd",
+          "hint_text": "Audit aramasi icin `ausearch -k` kullan.",
+          "hint_partial": "ausearch -k ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-013-r33",
+      "type": "single",
+      "scenario": "Bakim oncesi sELinux'te HTTP ile iliskili port tanimlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "semanage port -l | grep http",
+          "hint_text": "SELinux port map icin `semanage port -l` kullan.",
+          "hint_partial": "semanage port ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-014-r34",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/srv/app/cache-34-34-34-34/app/cache-34-34-34` ACL bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getfacl /srv/app/cache-34-34-34-34/app/cache-34-34-34",
+          "hint_text": "ACL incelemek icin `getfacl` kullan.",
+          "hint_partial": "getfacl ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-015-r35",
+      "type": "single",
+      "scenario": "Deploy sonrasi `deploy` kullanicisine `/srv/app/queue-35-35-35/app/queue-35-35` uzerinde rwx ACL ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setfacl -m u:deploy:rwx /srv/app/queue-35-35-35/app/queue-35-35",
+          "hint_text": "Kullanici ACL eklemek icin `setfacl -m` kullan.",
+          "hint_partial": "setfacl -m ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-016-r36",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde srv36.internal:8595 icin TLS handshake detayini al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "openssl s_client -connect srv36.internal:8595 </dev/null",
+          "hint_text": "TLS inspect icin `openssl s_client` kullan.",
+          "hint_partial": "openssl s_client ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-017-r37",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `cert.pem` sertifikasini tam metin olarak ozetle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "openssl x509 -in cert.pem -noout -text",
+          "hint_text": "Sertifika detaylari icin `-text` kullan.",
+          "hint_partial": "openssl x509 ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-018-r38",
+      "type": "single",
+      "scenario": "Runbook adiminda `release.tar.gz` dosyasinin imzasini `release.sig` ile dogrula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gpg --verify release.sig release.tar.gz",
+          "hint_text": "Imza dogrulamasi icin `gpg --verify sig file` kullan.",
+          "hint_partial": "gpg --verify ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-019-r39",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde localhost uzerinde servis versiyon taramasi yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "nmap -sV localhost",
+          "hint_text": "Version detection icin `nmap -sV` kullan.",
+          "hint_partial": "nmap -sV ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-020-r40",
+      "type": "single",
+      "scenario": "Incident sonrasinda sadece 10.0.0.0/24 subnet'ine 22 portundan izin veren UFW kuralini ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ufw allow from 10.0.0.0/24 to any port 22",
+          "hint_text": "Kaynak subnet bazli UFW kuralini ilgili formatla yaz.",
+          "hint_partial": "ufw allow from ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-021-r41",
+      "type": "single",
+      "scenario": "Bakim oncesi iptables kurallarini `-S` formatinda goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iptables -S",
+          "hint_text": "Kural tanimlari icin `iptables -S` kullan.",
+          "hint_partial": "iptables -S"
+        }
+      ]
+    },
+    {
+      "id": "ssec-022-r42",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda firewalld mevcut zone bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "firewall-cmd --list-all",
+          "hint_text": "Firewalld durum ozeti icin `firewall-cmd --list-all` kullan.",
+          "hint_partial": "firewall-cmd ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-023-r43",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/etc/passwd` dosyasini immutable yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chattr +i /etc/passwd",
+          "hint_text": "Immutable bit icin `chattr +i` kullan.",
+          "hint_partial": "chattr +..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-024-r44",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde tum filesystem altinda capability atanmis dosyalari tara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getcap -r / 2>/dev/null",
+          "hint_text": "Recursive capability taramasi icin `getcap -r /` kullan.",
+          "hint_partial": "getcap -r ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-025-r45",
+      "type": "single",
+      "scenario": "Yeni acilan hostta son login bilgilerini `lastlog` ile goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lastlog | head",
+          "hint_text": "Login ozetleri icin `lastlog` kullan.",
+          "hint_partial": "lastlog | ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-011-r46",
+      "type": "single",
+      "scenario": "Runbook adiminda aktif audit kurallarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "auditctl -l",
+          "hint_text": "Audit kurallari icin `auditctl -l` kullan.",
+          "hint_partial": "auditctl ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-012-r47",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `sshd` anahtarli audit kayitlarini ara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ausearch -k sshd",
+          "hint_text": "Audit aramasi icin `ausearch -k` kullan.",
+          "hint_partial": "ausearch -k ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-013-r48",
+      "type": "single",
+      "scenario": "Incident sonrasinda sELinux'te HTTP ile iliskili port tanimlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "semanage port -l | grep http",
+          "hint_text": "SELinux port map icin `semanage port -l` kullan.",
+          "hint_partial": "semanage port ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-014-r49",
+      "type": "single",
+      "scenario": "Bakim oncesi `/srv/app/web-49-49-49/app/web-49-49` ACL bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getfacl /srv/app/web-49-49-49/app/web-49-49",
+          "hint_text": "ACL incelemek icin `getfacl` kullan.",
+          "hint_partial": "getfacl ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-015-r50",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `deploy` kullanicisine `/srv/app/cache-50-50-50-50/app/cache-50-50-50` uzerinde rwx ACL ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setfacl -m u:deploy:rwx /srv/app/cache-50-50-50-50/app/cache-50-50-50",
+          "hint_text": "Kullanici ACL eklemek icin `setfacl -m` kullan.",
+          "hint_partial": "setfacl -m ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-016-r51",
+      "type": "single",
+      "scenario": "Deploy sonrasi srv51.internal:8850 icin TLS handshake detayini al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "openssl s_client -connect srv51.internal:8850 </dev/null",
+          "hint_text": "TLS inspect icin `openssl s_client` kullan.",
+          "hint_partial": "openssl s_client ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-017-r52",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `cert.pem` sertifikasini tam metin olarak ozetle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "openssl x509 -in cert.pem -noout -text",
+          "hint_text": "Sertifika detaylari icin `-text` kullan.",
+          "hint_partial": "openssl x509 ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-018-r53",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `release.tar.gz` dosyasinin imzasini `release.sig` ile dogrula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gpg --verify release.sig release.tar.gz",
+          "hint_text": "Imza dogrulamasi icin `gpg --verify sig file` kullan.",
+          "hint_partial": "gpg --verify ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-019-r54",
+      "type": "single",
+      "scenario": "Runbook adiminda localhost uzerinde servis versiyon taramasi yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "nmap -sV localhost",
+          "hint_text": "Version detection icin `nmap -sV` kullan.",
+          "hint_partial": "nmap -sV ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-020-r55",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde sadece 10.0.0.0/24 subnet'ine 22 portundan izin veren UFW kuralini ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ufw allow from 10.0.0.0/24 to any port 22",
+          "hint_text": "Kaynak subnet bazli UFW kuralini ilgili formatla yaz.",
+          "hint_partial": "ufw allow from ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-021-r56",
+      "type": "single",
+      "scenario": "Incident sonrasinda iptables kurallarini `-S` formatinda goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iptables -S",
+          "hint_text": "Kural tanimlari icin `iptables -S` kullan.",
+          "hint_partial": "iptables -S"
+        }
+      ]
+    },
+    {
+      "id": "ssec-022-r57",
+      "type": "single",
+      "scenario": "Bakim oncesi firewalld mevcut zone bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "firewall-cmd --list-all",
+          "hint_text": "Firewalld durum ozeti icin `firewall-cmd --list-all` kullan.",
+          "hint_partial": "firewall-cmd ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-023-r58",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/etc/passwd` dosyasini immutable yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chattr +i /etc/passwd",
+          "hint_text": "Immutable bit icin `chattr +i` kullan.",
+          "hint_partial": "chattr +..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-024-r59",
+      "type": "single",
+      "scenario": "Deploy sonrasi tum filesystem altinda capability atanmis dosyalari tara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getcap -r / 2>/dev/null",
+          "hint_text": "Recursive capability taramasi icin `getcap -r /` kullan.",
+          "hint_partial": "getcap -r ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-025-r60",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde son login bilgilerini `lastlog` ile goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lastlog | head",
+          "hint_text": "Login ozetleri icin `lastlog` kullan.",
+          "hint_partial": "lastlog | ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-011-r61",
+      "type": "single",
+      "scenario": "Yeni acilan hostta aktif audit kurallarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "auditctl -l",
+          "hint_text": "Audit kurallari icin `auditctl -l` kullan.",
+          "hint_partial": "auditctl ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-012-r62",
+      "type": "single",
+      "scenario": "Runbook adiminda `sshd` anahtarli audit kayitlarini ara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ausearch -k sshd",
+          "hint_text": "Audit aramasi icin `ausearch -k` kullan.",
+          "hint_partial": "ausearch -k ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-013-r63",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde sELinux'te HTTP ile iliskili port tanimlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "semanage port -l | grep http",
+          "hint_text": "SELinux port map icin `semanage port -l` kullan.",
+          "hint_partial": "semanage port ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-014-r64",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/srv/app/proxy-64-64/app/proxy-64` ACL bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getfacl /srv/app/proxy-64-64/app/proxy-64",
+          "hint_text": "ACL incelemek icin `getfacl` kullan.",
+          "hint_partial": "getfacl ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-015-r65",
+      "type": "single",
+      "scenario": "Bakim oncesi `deploy` kullanicisine `/srv/app/web-65-65-65/app/web-65-65` uzerinde rwx ACL ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setfacl -m u:deploy:rwx /srv/app/web-65-65-65/app/web-65-65",
+          "hint_text": "Kullanici ACL eklemek icin `setfacl -m` kullan.",
+          "hint_partial": "setfacl -m ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-016-r66",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda srv66.internal:8105 icin TLS handshake detayini al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "openssl s_client -connect srv66.internal:8105 </dev/null",
+          "hint_text": "TLS inspect icin `openssl s_client` kullan.",
+          "hint_partial": "openssl s_client ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-017-r67",
+      "type": "single",
+      "scenario": "Deploy sonrasi `cert.pem` sertifikasini tam metin olarak ozetle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "openssl x509 -in cert.pem -noout -text",
+          "hint_text": "Sertifika detaylari icin `-text` kullan.",
+          "hint_partial": "openssl x509 ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-018-r68",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `release.tar.gz` dosyasinin imzasini `release.sig` ile dogrula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gpg --verify release.sig release.tar.gz",
+          "hint_text": "Imza dogrulamasi icin `gpg --verify sig file` kullan.",
+          "hint_partial": "gpg --verify ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-019-r69",
+      "type": "single",
+      "scenario": "Yeni acilan hostta localhost uzerinde servis versiyon taramasi yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "nmap -sV localhost",
+          "hint_text": "Version detection icin `nmap -sV` kullan.",
+          "hint_partial": "nmap -sV ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-020-r70",
+      "type": "single",
+      "scenario": "Runbook adiminda sadece 10.0.0.0/24 subnet'ine 22 portundan izin veren UFW kuralini ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ufw allow from 10.0.0.0/24 to any port 22",
+          "hint_text": "Kaynak subnet bazli UFW kuralini ilgili formatla yaz.",
+          "hint_partial": "ufw allow from ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-021-r71",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde iptables kurallarini `-S` formatinda goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iptables -S",
+          "hint_text": "Kural tanimlari icin `iptables -S` kullan.",
+          "hint_partial": "iptables -S"
+        }
+      ]
+    },
+    {
+      "id": "ssec-022-r72",
+      "type": "single",
+      "scenario": "Incident sonrasinda firewalld mevcut zone bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "firewall-cmd --list-all",
+          "hint_text": "Firewalld durum ozeti icin `firewall-cmd --list-all` kullan.",
+          "hint_partial": "firewall-cmd ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-023-r73",
+      "type": "single",
+      "scenario": "Bakim oncesi `/etc/passwd` dosyasini immutable yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chattr +i /etc/passwd",
+          "hint_text": "Immutable bit icin `chattr +i` kullan.",
+          "hint_partial": "chattr +..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-024-r74",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda tum filesystem altinda capability atanmis dosyalari tara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getcap -r / 2>/dev/null",
+          "hint_text": "Recursive capability taramasi icin `getcap -r /` kullan.",
+          "hint_partial": "getcap -r ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-025-r75",
+      "type": "single",
+      "scenario": "Deploy sonrasi son login bilgilerini `lastlog` ile goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lastlog | head",
+          "hint_text": "Login ozetleri icin `lastlog` kullan.",
+          "hint_partial": "lastlog | ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-011-r76",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde aktif audit kurallarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "auditctl -l",
+          "hint_text": "Audit kurallari icin `auditctl -l` kullan.",
+          "hint_partial": "auditctl ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-012-r77",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `sshd` anahtarli audit kayitlarini ara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ausearch -k sshd",
+          "hint_text": "Audit aramasi icin `ausearch -k` kullan.",
+          "hint_partial": "ausearch -k ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-013-r78",
+      "type": "single",
+      "scenario": "Runbook adiminda sELinux'te HTTP ile iliskili port tanimlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "semanage port -l | grep http",
+          "hint_text": "SELinux port map icin `semanage port -l` kullan.",
+          "hint_partial": "semanage port ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-014-r79",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `/srv/app/bastion-79-79/app/bastion-79` ACL bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getfacl /srv/app/bastion-79-79/app/bastion-79",
+          "hint_text": "ACL incelemek icin `getfacl` kullan.",
+          "hint_partial": "getfacl ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-015-r80",
+      "type": "single",
+      "scenario": "Incident sonrasinda `deploy` kullanicisine `/srv/app/proxy-80-80/app/proxy-80` uzerinde rwx ACL ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setfacl -m u:deploy:rwx /srv/app/proxy-80-80/app/proxy-80",
+          "hint_text": "Kullanici ACL eklemek icin `setfacl -m` kullan.",
+          "hint_partial": "setfacl -m ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-016-r81",
+      "type": "single",
+      "scenario": "Bakim oncesi srv81.internal:8360 icin TLS handshake detayini al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "openssl s_client -connect srv81.internal:8360 </dev/null",
+          "hint_text": "TLS inspect icin `openssl s_client` kullan.",
+          "hint_partial": "openssl s_client ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-017-r82",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `cert.pem` sertifikasini tam metin olarak ozetle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "openssl x509 -in cert.pem -noout -text",
+          "hint_text": "Sertifika detaylari icin `-text` kullan.",
+          "hint_partial": "openssl x509 ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-018-r83",
+      "type": "single",
+      "scenario": "Deploy sonrasi `release.tar.gz` dosyasinin imzasini `release.sig` ile dogrula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gpg --verify release.sig release.tar.gz",
+          "hint_text": "Imza dogrulamasi icin `gpg --verify sig file` kullan.",
+          "hint_partial": "gpg --verify ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-019-r84",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde localhost uzerinde servis versiyon taramasi yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "nmap -sV localhost",
+          "hint_text": "Version detection icin `nmap -sV` kullan.",
+          "hint_partial": "nmap -sV ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-020-r85",
+      "type": "single",
+      "scenario": "Yeni acilan hostta sadece 10.0.0.0/24 subnet'ine 22 portundan izin veren UFW kuralini ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ufw allow from 10.0.0.0/24 to any port 22",
+          "hint_text": "Kaynak subnet bazli UFW kuralini ilgili formatla yaz.",
+          "hint_partial": "ufw allow from ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-021-r86",
+      "type": "single",
+      "scenario": "Runbook adiminda iptables kurallarini `-S` formatinda goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iptables -S",
+          "hint_text": "Kural tanimlari icin `iptables -S` kullan.",
+          "hint_partial": "iptables -S"
+        }
+      ]
+    },
+    {
+      "id": "ssec-022-r87",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde firewalld mevcut zone bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "firewall-cmd --list-all",
+          "hint_text": "Firewalld durum ozeti icin `firewall-cmd --list-all` kullan.",
+          "hint_partial": "firewall-cmd ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-023-r88",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/etc/passwd` dosyasini immutable yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chattr +i /etc/passwd",
+          "hint_text": "Immutable bit icin `chattr +i` kullan.",
+          "hint_partial": "chattr +..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-024-r89",
+      "type": "single",
+      "scenario": "Bakim oncesi tum filesystem altinda capability atanmis dosyalari tara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getcap -r / 2>/dev/null",
+          "hint_text": "Recursive capability taramasi icin `getcap -r /` kullan.",
+          "hint_partial": "getcap -r ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-025-r90",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda son login bilgilerini `lastlog` ile goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lastlog | head",
+          "hint_text": "Login ozetleri icin `lastlog` kullan.",
+          "hint_partial": "lastlog | ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-011-r91",
+      "type": "single",
+      "scenario": "Deploy sonrasi aktif audit kurallarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "auditctl -l",
+          "hint_text": "Audit kurallari icin `auditctl -l` kullan.",
+          "hint_partial": "auditctl ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-012-r92",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `sshd` anahtarli audit kayitlarini ara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ausearch -k sshd",
+          "hint_text": "Audit aramasi icin `ausearch -k` kullan.",
+          "hint_partial": "ausearch -k ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-013-r93",
+      "type": "single",
+      "scenario": "Yeni acilan hostta sELinux'te HTTP ile iliskili port tanimlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "semanage port -l | grep http",
+          "hint_text": "SELinux port map icin `semanage port -l` kullan.",
+          "hint_partial": "semanage port ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-014-r94",
+      "type": "single",
+      "scenario": "Runbook adiminda `/srv/app/queue-94-94/app/queue-94` ACL bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getfacl /srv/app/queue-94-94/app/queue-94",
+          "hint_text": "ACL incelemek icin `getfacl` kullan.",
+          "hint_partial": "getfacl ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-015-r95",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `deploy` kullanicisine `/srv/app/bastion-95-95/app/bastion-95` uzerinde rwx ACL ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setfacl -m u:deploy:rwx /srv/app/bastion-95-95/app/bastion-95",
+          "hint_text": "Kullanici ACL eklemek icin `setfacl -m` kullan.",
+          "hint_partial": "setfacl -m ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-016-r96",
+      "type": "single",
+      "scenario": "Incident sonrasinda srv96.internal:8615 icin TLS handshake detayini al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "openssl s_client -connect srv96.internal:8615 </dev/null",
+          "hint_text": "TLS inspect icin `openssl s_client` kullan.",
+          "hint_partial": "openssl s_client ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-017-r97",
+      "type": "single",
+      "scenario": "Bakim oncesi `cert.pem` sertifikasini tam metin olarak ozetle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "openssl x509 -in cert.pem -noout -text",
+          "hint_text": "Sertifika detaylari icin `-text` kullan.",
+          "hint_partial": "openssl x509 ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-018-r98",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `release.tar.gz` dosyasinin imzasini `release.sig` ile dogrula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gpg --verify release.sig release.tar.gz",
+          "hint_text": "Imza dogrulamasi icin `gpg --verify sig file` kullan.",
+          "hint_partial": "gpg --verify ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-019-r99",
+      "type": "single",
+      "scenario": "Deploy sonrasi localhost uzerinde servis versiyon taramasi yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "nmap -sV localhost",
+          "hint_text": "Version detection icin `nmap -sV` kullan.",
+          "hint_partial": "nmap -sV ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-020-r100",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde sadece 10.0.0.0/24 subnet'ine 22 portundan izin veren UFW kuralini ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ufw allow from 10.0.0.0/24 to any port 22",
+          "hint_text": "Kaynak subnet bazli UFW kuralini ilgili formatla yaz.",
+          "hint_partial": "ufw allow from ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-021-r101",
+      "type": "single",
+      "scenario": "Yeni acilan hostta iptables kurallarini `-S` formatinda goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iptables -S",
+          "hint_text": "Kural tanimlari icin `iptables -S` kullan.",
+          "hint_partial": "iptables -S"
+        }
+      ]
+    },
+    {
+      "id": "ssec-022-r102",
+      "type": "single",
+      "scenario": "Runbook adiminda firewalld mevcut zone bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "firewall-cmd --list-all",
+          "hint_text": "Firewalld durum ozeti icin `firewall-cmd --list-all` kullan.",
+          "hint_partial": "firewall-cmd ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-023-r103",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `/etc/passwd` dosyasini immutable yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chattr +i /etc/passwd",
+          "hint_text": "Immutable bit icin `chattr +i` kullan.",
+          "hint_partial": "chattr +..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-024-r104",
+      "type": "single",
+      "scenario": "Incident sonrasinda tum filesystem altinda capability atanmis dosyalari tara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getcap -r / 2>/dev/null",
+          "hint_text": "Recursive capability taramasi icin `getcap -r /` kullan.",
+          "hint_partial": "getcap -r ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-025-r105",
+      "type": "single",
+      "scenario": "Bakim oncesi son login bilgilerini `lastlog` ile goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lastlog | head",
+          "hint_text": "Login ozetleri icin `lastlog` kullan.",
+          "hint_partial": "lastlog | ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-011-r106",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda aktif audit kurallarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "auditctl -l",
+          "hint_text": "Audit kurallari icin `auditctl -l` kullan.",
+          "hint_partial": "auditctl ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-012-r107",
+      "type": "single",
+      "scenario": "Deploy sonrasi `sshd` anahtarli audit kayitlarini ara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ausearch -k sshd",
+          "hint_text": "Audit aramasi icin `ausearch -k` kullan.",
+          "hint_partial": "ausearch -k ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-013-r108",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde sELinux'te HTTP ile iliskili port tanimlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "semanage port -l | grep http",
+          "hint_text": "SELinux port map icin `semanage port -l` kullan.",
+          "hint_partial": "semanage port ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-014-r109",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `/srv/app/cache-109-109-109/app/cache-109-109` ACL bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getfacl /srv/app/cache-109-109-109/app/cache-109-109",
+          "hint_text": "ACL incelemek icin `getfacl` kullan.",
+          "hint_partial": "getfacl ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-015-r110",
+      "type": "single",
+      "scenario": "Runbook adiminda `deploy` kullanicisine `/srv/app/queue-110-110/app/queue-110` uzerinde rwx ACL ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setfacl -m u:deploy:rwx /srv/app/queue-110-110/app/queue-110",
+          "hint_text": "Kullanici ACL eklemek icin `setfacl -m` kullan.",
+          "hint_partial": "setfacl -m ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-016-r111",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde srv111.internal:8870 icin TLS handshake detayini al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "openssl s_client -connect srv111.internal:8870 </dev/null",
+          "hint_text": "TLS inspect icin `openssl s_client` kullan.",
+          "hint_partial": "openssl s_client ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-017-r112",
+      "type": "single",
+      "scenario": "Incident sonrasinda `cert.pem` sertifikasini tam metin olarak ozetle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "openssl x509 -in cert.pem -noout -text",
+          "hint_text": "Sertifika detaylari icin `-text` kullan.",
+          "hint_partial": "openssl x509 ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-018-r113",
+      "type": "single",
+      "scenario": "Bakim oncesi `release.tar.gz` dosyasinin imzasini `release.sig` ile dogrula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gpg --verify release.sig release.tar.gz",
+          "hint_text": "Imza dogrulamasi icin `gpg --verify sig file` kullan.",
+          "hint_partial": "gpg --verify ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-019-r114",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda localhost uzerinde servis versiyon taramasi yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "nmap -sV localhost",
+          "hint_text": "Version detection icin `nmap -sV` kullan.",
+          "hint_partial": "nmap -sV ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-020-r115",
+      "type": "single",
+      "scenario": "Deploy sonrasi sadece 10.0.0.0/24 subnet'ine 22 portundan izin veren UFW kuralini ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ufw allow from 10.0.0.0/24 to any port 22",
+          "hint_text": "Kaynak subnet bazli UFW kuralini ilgili formatla yaz.",
+          "hint_partial": "ufw allow from ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-021-r116",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde iptables kurallarini `-S` formatinda goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iptables -S",
+          "hint_text": "Kural tanimlari icin `iptables -S` kullan.",
+          "hint_partial": "iptables -S"
+        }
+      ]
+    },
+    {
+      "id": "ssec-022-r117",
+      "type": "single",
+      "scenario": "Yeni acilan hostta firewalld mevcut zone bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "firewall-cmd --list-all",
+          "hint_text": "Firewalld durum ozeti icin `firewall-cmd --list-all` kullan.",
+          "hint_partial": "firewall-cmd ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-023-r118",
+      "type": "single",
+      "scenario": "Runbook adiminda `/etc/passwd` dosyasini immutable yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chattr +i /etc/passwd",
+          "hint_text": "Immutable bit icin `chattr +i` kullan.",
+          "hint_partial": "chattr +..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-024-r119",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde tum filesystem altinda capability atanmis dosyalari tara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getcap -r / 2>/dev/null",
+          "hint_text": "Recursive capability taramasi icin `getcap -r /` kullan.",
+          "hint_partial": "getcap -r ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-025-r120",
+      "type": "single",
+      "scenario": "Incident sonrasinda son login bilgilerini `lastlog` ile goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lastlog | head",
+          "hint_text": "Login ozetleri icin `lastlog` kullan.",
+          "hint_partial": "lastlog | ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-011-r121",
+      "type": "single",
+      "scenario": "Bakim oncesi aktif audit kurallarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "auditctl -l",
+          "hint_text": "Audit kurallari icin `auditctl -l` kullan.",
+          "hint_partial": "auditctl ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-012-r122",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `sshd` anahtarli audit kayitlarini ara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ausearch -k sshd",
+          "hint_text": "Audit aramasi icin `ausearch -k` kullan.",
+          "hint_partial": "ausearch -k ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-013-r123",
+      "type": "single",
+      "scenario": "Deploy sonrasi sELinux'te HTTP ile iliskili port tanimlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "semanage port -l | grep http",
+          "hint_text": "SELinux port map icin `semanage port -l` kullan.",
+          "hint_partial": "semanage port ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-014-r124",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/srv/app/db-124-124-124/app/db-124-124` ACL bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getfacl /srv/app/db-124-124-124/app/db-124-124",
+          "hint_text": "ACL incelemek icin `getfacl` kullan.",
+          "hint_partial": "getfacl ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-015-r125",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `deploy` kullanicisine `/srv/app/cache-125-125-125/app/cache-125-125` uzerinde rwx ACL ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setfacl -m u:deploy:rwx /srv/app/cache-125-125-125/app/cache-125-125",
+          "hint_text": "Kullanici ACL eklemek icin `setfacl -m` kullan.",
+          "hint_partial": "setfacl -m ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-016-r126",
+      "type": "single",
+      "scenario": "Runbook adiminda srv126.internal:8125 icin TLS handshake detayini al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "openssl s_client -connect srv126.internal:8125 </dev/null",
+          "hint_text": "TLS inspect icin `openssl s_client` kullan.",
+          "hint_partial": "openssl s_client ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-017-r127",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `cert.pem` sertifikasini tam metin olarak ozetle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "openssl x509 -in cert.pem -noout -text",
+          "hint_text": "Sertifika detaylari icin `-text` kullan.",
+          "hint_partial": "openssl x509 ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-018-r128",
+      "type": "single",
+      "scenario": "Incident sonrasinda `release.tar.gz` dosyasinin imzasini `release.sig` ile dogrula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gpg --verify release.sig release.tar.gz",
+          "hint_text": "Imza dogrulamasi icin `gpg --verify sig file` kullan.",
+          "hint_partial": "gpg --verify ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-019-r129",
+      "type": "single",
+      "scenario": "Bakim oncesi localhost uzerinde servis versiyon taramasi yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "nmap -sV localhost",
+          "hint_text": "Version detection icin `nmap -sV` kullan.",
+          "hint_partial": "nmap -sV ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-020-r130",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda sadece 10.0.0.0/24 subnet'ine 22 portundan izin veren UFW kuralini ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ufw allow from 10.0.0.0/24 to any port 22",
+          "hint_text": "Kaynak subnet bazli UFW kuralini ilgili formatla yaz.",
+          "hint_partial": "ufw allow from ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-021-r131",
+      "type": "single",
+      "scenario": "Deploy sonrasi iptables kurallarini `-S` formatinda goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iptables -S",
+          "hint_text": "Kural tanimlari icin `iptables -S` kullan.",
+          "hint_partial": "iptables -S"
+        }
+      ]
+    },
+    {
+      "id": "ssec-022-r132",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde firewalld mevcut zone bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "firewall-cmd --list-all",
+          "hint_text": "Firewalld durum ozeti icin `firewall-cmd --list-all` kullan.",
+          "hint_partial": "firewall-cmd ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-023-r133",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `/etc/passwd` dosyasini immutable yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chattr +i /etc/passwd",
+          "hint_text": "Immutable bit icin `chattr +i` kullan.",
+          "hint_partial": "chattr +..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-024-r134",
+      "type": "single",
+      "scenario": "Runbook adiminda tum filesystem altinda capability atanmis dosyalari tara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getcap -r / 2>/dev/null",
+          "hint_text": "Recursive capability taramasi icin `getcap -r /` kullan.",
+          "hint_partial": "getcap -r ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-025-r135",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde son login bilgilerini `lastlog` ile goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lastlog | head",
+          "hint_text": "Login ozetleri icin `lastlog` kullan.",
+          "hint_partial": "lastlog | ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-011-r136",
+      "type": "single",
+      "scenario": "Incident sonrasinda aktif audit kurallarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "auditctl -l",
+          "hint_text": "Audit kurallari icin `auditctl -l` kullan.",
+          "hint_partial": "auditctl ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-012-r137",
+      "type": "single",
+      "scenario": "Bakim oncesi `sshd` anahtarli audit kayitlarini ara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ausearch -k sshd",
+          "hint_text": "Audit aramasi icin `ausearch -k` kullan.",
+          "hint_partial": "ausearch -k ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-013-r138",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda sELinux'te HTTP ile iliskili port tanimlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "semanage port -l | grep http",
+          "hint_text": "SELinux port map icin `semanage port -l` kullan.",
+          "hint_partial": "semanage port ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-014-r139",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/srv/app/queue-139-139-139/app/queue-139-139` ACL bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getfacl /srv/app/queue-139-139-139/app/queue-139-139",
+          "hint_text": "ACL incelemek icin `getfacl` kullan.",
+          "hint_partial": "getfacl ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-015-r140",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `deploy` kullanicisine `/srv/app/db-140-140-140/app/db-140-140` uzerinde rwx ACL ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setfacl -m u:deploy:rwx /srv/app/db-140-140-140/app/db-140-140",
+          "hint_text": "Kullanici ACL eklemek icin `setfacl -m` kullan.",
+          "hint_partial": "setfacl -m ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-016-r141",
+      "type": "single",
+      "scenario": "Yeni acilan hostta srv141.internal:8380 icin TLS handshake detayini al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "openssl s_client -connect srv141.internal:8380 </dev/null",
+          "hint_text": "TLS inspect icin `openssl s_client` kullan.",
+          "hint_partial": "openssl s_client ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-017-r142",
+      "type": "single",
+      "scenario": "Runbook adiminda `cert.pem` sertifikasini tam metin olarak ozetle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "openssl x509 -in cert.pem -noout -text",
+          "hint_text": "Sertifika detaylari icin `-text` kullan.",
+          "hint_partial": "openssl x509 ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-018-r143",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `release.tar.gz` dosyasinin imzasini `release.sig` ile dogrula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gpg --verify release.sig release.tar.gz",
+          "hint_text": "Imza dogrulamasi icin `gpg --verify sig file` kullan.",
+          "hint_partial": "gpg --verify ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-019-r144",
+      "type": "single",
+      "scenario": "Incident sonrasinda localhost uzerinde servis versiyon taramasi yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "nmap -sV localhost",
+          "hint_text": "Version detection icin `nmap -sV` kullan.",
+          "hint_partial": "nmap -sV ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-020-r145",
+      "type": "single",
+      "scenario": "Bakim oncesi sadece 10.0.0.0/24 subnet'ine 22 portundan izin veren UFW kuralini ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ufw allow from 10.0.0.0/24 to any port 22",
+          "hint_text": "Kaynak subnet bazli UFW kuralini ilgili formatla yaz.",
+          "hint_partial": "ufw allow from ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-021-r146",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda iptables kurallarini `-S` formatinda goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iptables -S",
+          "hint_text": "Kural tanimlari icin `iptables -S` kullan.",
+          "hint_partial": "iptables -S"
+        }
+      ]
+    },
+    {
+      "id": "ssec-022-r147",
+      "type": "single",
+      "scenario": "Deploy sonrasi firewalld mevcut zone bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "firewall-cmd --list-all",
+          "hint_text": "Firewalld durum ozeti icin `firewall-cmd --list-all` kullan.",
+          "hint_partial": "firewall-cmd ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-023-r148",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/etc/passwd` dosyasini immutable yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chattr +i /etc/passwd",
+          "hint_text": "Immutable bit icin `chattr +i` kullan.",
+          "hint_partial": "chattr +..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-024-r149",
+      "type": "single",
+      "scenario": "Yeni acilan hostta tum filesystem altinda capability atanmis dosyalari tara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getcap -r / 2>/dev/null",
+          "hint_text": "Recursive capability taramasi icin `getcap -r /` kullan.",
+          "hint_partial": "getcap -r ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-025-r150",
+      "type": "single",
+      "scenario": "Runbook adiminda son login bilgilerini `lastlog` ile goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lastlog | head",
+          "hint_text": "Login ozetleri icin `lastlog` kullan.",
+          "hint_partial": "lastlog | ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-011-r151",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde aktif audit kurallarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "auditctl -l",
+          "hint_text": "Audit kurallari icin `auditctl -l` kullan.",
+          "hint_partial": "auditctl ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-012-r152",
+      "type": "single",
+      "scenario": "Incident sonrasinda `sshd` anahtarli audit kayitlarini ara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ausearch -k sshd",
+          "hint_text": "Audit aramasi icin `ausearch -k` kullan.",
+          "hint_partial": "ausearch -k ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-013-r153",
+      "type": "single",
+      "scenario": "Bakim oncesi sELinux'te HTTP ile iliskili port tanimlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "semanage port -l | grep http",
+          "hint_text": "SELinux port map icin `semanage port -l` kullan.",
+          "hint_partial": "semanage port ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-014-r154",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/srv/app/cache-154-154-154-154/app/cache-154-154-154` ACL bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getfacl /srv/app/cache-154-154-154-154/app/cache-154-154-154",
+          "hint_text": "ACL incelemek icin `getfacl` kullan.",
+          "hint_partial": "getfacl ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-015-r155",
+      "type": "single",
+      "scenario": "Deploy sonrasi `deploy` kullanicisine `/srv/app/queue-155-155-155/app/queue-155-155` uzerinde rwx ACL ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setfacl -m u:deploy:rwx /srv/app/queue-155-155-155/app/queue-155-155",
+          "hint_text": "Kullanici ACL eklemek icin `setfacl -m` kullan.",
+          "hint_partial": "setfacl -m ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-016-r156",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde srv156.internal:8635 icin TLS handshake detayini al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "openssl s_client -connect srv156.internal:8635 </dev/null",
+          "hint_text": "TLS inspect icin `openssl s_client` kullan.",
+          "hint_partial": "openssl s_client ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-017-r157",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `cert.pem` sertifikasini tam metin olarak ozetle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "openssl x509 -in cert.pem -noout -text",
+          "hint_text": "Sertifika detaylari icin `-text` kullan.",
+          "hint_partial": "openssl x509 ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-018-r158",
+      "type": "single",
+      "scenario": "Runbook adiminda `release.tar.gz` dosyasinin imzasini `release.sig` ile dogrula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gpg --verify release.sig release.tar.gz",
+          "hint_text": "Imza dogrulamasi icin `gpg --verify sig file` kullan.",
+          "hint_partial": "gpg --verify ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-019-r159",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde localhost uzerinde servis versiyon taramasi yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "nmap -sV localhost",
+          "hint_text": "Version detection icin `nmap -sV` kullan.",
+          "hint_partial": "nmap -sV ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-020-r160",
+      "type": "single",
+      "scenario": "Incident sonrasinda sadece 10.0.0.0/24 subnet'ine 22 portundan izin veren UFW kuralini ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ufw allow from 10.0.0.0/24 to any port 22",
+          "hint_text": "Kaynak subnet bazli UFW kuralini ilgili formatla yaz.",
+          "hint_partial": "ufw allow from ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-021-r161",
+      "type": "single",
+      "scenario": "Bakim oncesi iptables kurallarini `-S` formatinda goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iptables -S",
+          "hint_text": "Kural tanimlari icin `iptables -S` kullan.",
+          "hint_partial": "iptables -S"
+        }
+      ]
+    },
+    {
+      "id": "ssec-022-r162",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda firewalld mevcut zone bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "firewall-cmd --list-all",
+          "hint_text": "Firewalld durum ozeti icin `firewall-cmd --list-all` kullan.",
+          "hint_partial": "firewall-cmd ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-023-r163",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/etc/passwd` dosyasini immutable yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chattr +i /etc/passwd",
+          "hint_text": "Immutable bit icin `chattr +i` kullan.",
+          "hint_partial": "chattr +..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-024-r164",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde tum filesystem altinda capability atanmis dosyalari tara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getcap -r / 2>/dev/null",
+          "hint_text": "Recursive capability taramasi icin `getcap -r /` kullan.",
+          "hint_partial": "getcap -r ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-025-r165",
+      "type": "single",
+      "scenario": "Yeni acilan hostta son login bilgilerini `lastlog` ile goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lastlog | head",
+          "hint_text": "Login ozetleri icin `lastlog` kullan.",
+          "hint_partial": "lastlog | ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-011-r166",
+      "type": "single",
+      "scenario": "Runbook adiminda aktif audit kurallarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "auditctl -l",
+          "hint_text": "Audit kurallari icin `auditctl -l` kullan.",
+          "hint_partial": "auditctl ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-012-r167",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `sshd` anahtarli audit kayitlarini ara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ausearch -k sshd",
+          "hint_text": "Audit aramasi icin `ausearch -k` kullan.",
+          "hint_partial": "ausearch -k ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-013-r168",
+      "type": "single",
+      "scenario": "Incident sonrasinda sELinux'te HTTP ile iliskili port tanimlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "semanage port -l | grep http",
+          "hint_text": "SELinux port map icin `semanage port -l` kullan.",
+          "hint_partial": "semanage port ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-014-r169",
+      "type": "single",
+      "scenario": "Bakim oncesi `/srv/app/web-169-169-169/app/web-169-169` ACL bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getfacl /srv/app/web-169-169-169/app/web-169-169",
+          "hint_text": "ACL incelemek icin `getfacl` kullan.",
+          "hint_partial": "getfacl ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-015-r170",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `deploy` kullanicisine `/srv/app/cache-170-170-170-170/app/cache-170-170-170` uzerinde rwx ACL ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setfacl -m u:deploy:rwx /srv/app/cache-170-170-170-170/app/cache-170-170-170",
+          "hint_text": "Kullanici ACL eklemek icin `setfacl -m` kullan.",
+          "hint_partial": "setfacl -m ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-016-r171",
+      "type": "single",
+      "scenario": "Deploy sonrasi srv171.internal:8890 icin TLS handshake detayini al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "openssl s_client -connect srv171.internal:8890 </dev/null",
+          "hint_text": "TLS inspect icin `openssl s_client` kullan.",
+          "hint_partial": "openssl s_client ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-017-r172",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `cert.pem` sertifikasini tam metin olarak ozetle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "openssl x509 -in cert.pem -noout -text",
+          "hint_text": "Sertifika detaylari icin `-text` kullan.",
+          "hint_partial": "openssl x509 ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-018-r173",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `release.tar.gz` dosyasinin imzasini `release.sig` ile dogrula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gpg --verify release.sig release.tar.gz",
+          "hint_text": "Imza dogrulamasi icin `gpg --verify sig file` kullan.",
+          "hint_partial": "gpg --verify ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-019-r174",
+      "type": "single",
+      "scenario": "Runbook adiminda localhost uzerinde servis versiyon taramasi yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "nmap -sV localhost",
+          "hint_text": "Version detection icin `nmap -sV` kullan.",
+          "hint_partial": "nmap -sV ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-020-r175",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde sadece 10.0.0.0/24 subnet'ine 22 portundan izin veren UFW kuralini ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ufw allow from 10.0.0.0/24 to any port 22",
+          "hint_text": "Kaynak subnet bazli UFW kuralini ilgili formatla yaz.",
+          "hint_partial": "ufw allow from ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-021-r176",
+      "type": "single",
+      "scenario": "Incident sonrasinda iptables kurallarini `-S` formatinda goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iptables -S",
+          "hint_text": "Kural tanimlari icin `iptables -S` kullan.",
+          "hint_partial": "iptables -S"
+        }
+      ]
+    },
+    {
+      "id": "ssec-022-r177",
+      "type": "single",
+      "scenario": "Bakim oncesi firewalld mevcut zone bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "firewall-cmd --list-all",
+          "hint_text": "Firewalld durum ozeti icin `firewall-cmd --list-all` kullan.",
+          "hint_partial": "firewall-cmd ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-023-r178",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/etc/passwd` dosyasini immutable yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chattr +i /etc/passwd",
+          "hint_text": "Immutable bit icin `chattr +i` kullan.",
+          "hint_partial": "chattr +..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-024-r179",
+      "type": "single",
+      "scenario": "Deploy sonrasi tum filesystem altinda capability atanmis dosyalari tara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getcap -r / 2>/dev/null",
+          "hint_text": "Recursive capability taramasi icin `getcap -r /` kullan.",
+          "hint_partial": "getcap -r ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-025-r180",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde son login bilgilerini `lastlog` ile goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lastlog | head",
+          "hint_text": "Login ozetleri icin `lastlog` kullan.",
+          "hint_partial": "lastlog | ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-011-r181",
+      "type": "single",
+      "scenario": "Yeni acilan hostta aktif audit kurallarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "auditctl -l",
+          "hint_text": "Audit kurallari icin `auditctl -l` kullan.",
+          "hint_partial": "auditctl ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-012-r182",
+      "type": "single",
+      "scenario": "Runbook adiminda `sshd` anahtarli audit kayitlarini ara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ausearch -k sshd",
+          "hint_text": "Audit aramasi icin `ausearch -k` kullan.",
+          "hint_partial": "ausearch -k ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-013-r183",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde sELinux'te HTTP ile iliskili port tanimlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "semanage port -l | grep http",
+          "hint_text": "SELinux port map icin `semanage port -l` kullan.",
+          "hint_partial": "semanage port ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-014-r184",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/srv/app/proxy-184-184/app/proxy-184` ACL bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getfacl /srv/app/proxy-184-184/app/proxy-184",
+          "hint_text": "ACL incelemek icin `getfacl` kullan.",
+          "hint_partial": "getfacl ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-015-r185",
+      "type": "single",
+      "scenario": "Bakim oncesi `deploy` kullanicisine `/srv/app/web-185-185-185/app/web-185-185` uzerinde rwx ACL ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setfacl -m u:deploy:rwx /srv/app/web-185-185-185/app/web-185-185",
+          "hint_text": "Kullanici ACL eklemek icin `setfacl -m` kullan.",
+          "hint_partial": "setfacl -m ..."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+{
+  "level": "mid",
+  "topic": "shell",
+  "questions": [
+    {
+      "id": "msh-001",
+      "type": "single",
+      "scenario": "`deploy.sh` komutunun stdout ve stderr output'unu ayrı file'lara yönlendir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "./deploy.sh > deploy.out 2> deploy.err",
+          "hint_text": "stdout için `>`, stderr için `2>` kullan.",
+          "hint_partial": "./deploy.sh > ... 2> ..."
+        }
+      ]
+    },
+    {
+      "id": "msh-002",
+      "type": "single",
+      "scenario": "config.env file'ında boş olmayan ve `#` ile başlamayan line'ları filtrele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "grep -Ev '^#|^$' config.env",
+          "hint_text": "Extended regex ile comment ve boş line'ları ele.",
+          "hint_partial": "grep -Ev ..."
+        }
+      ]
+    },
+    {
+      "id": "msh-003",
+      "type": "multi-step",
+      "scenario": "logs.txt file'ından ikinci column'u al, sonra unique sayımını göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cut -d' ' -f2 logs.txt",
+          "hint_text": "Delimiter olarak boşluk verip ikinci field'ı al.",
+          "hint_partial": "cut -d' ' -f2 ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "cut -d' ' -f2 logs.txt | sort | uniq -c",
+          "hint_text": "Önce sırala, sonra `uniq -c` ile say.",
+          "hint_partial": "cut -d' ' -f2 ... | sort | uniq -c"
+        }
+      ]
+    },
+    {
+      "id": "msh-004",
+      "type": "single",
+      "scenario": "config.yml varsa `exists`, yoksa `missing` yazdır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "if [ -f config.yml ]; then echo exists; else echo missing; fi",
+          "hint_text": "`if` ve `-f` test operatörünü kullan.",
+          "hint_partial": "if [ -f ... ]; then ..."
+        }
+      ]
+    },
+    {
+      "id": "msh-005",
+      "type": "single",
+      "scenario": "urls.txt içeriğini `xargs` ile `curl -I` kullanarak tek tek sorgula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "xargs -n 1 curl -I < urls.txt",
+          "hint_text": "`xargs -n 1` her satır için bir komut çalıştırır.",
+          "hint_partial": "xargs -n 1 ... < ..."
+        }
+      ]
+    },
+    {
+      "id": "msh-006",
+      "type": "single",
+      "scenario": "`sort` ve `uniq` ile users.txt file'ındaki duplicate line'ları temizle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sort users.txt | uniq",
+          "hint_text": "Önce sırala, sonra `uniq` kullan.",
+          "hint_partial": "sort ... | uniq"
+        }
+      ]
+    },
+    {
+      "id": "msh-007",
+      "type": "single",
+      "scenario": "`app.log` içindeki ERROR sayısını tek komutta hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "grep -c 'ERROR' app.log",
+          "hint_text": "Sayım için `grep -c` kullan.",
+          "hint_partial": "grep -c ..."
+        }
+      ]
+    },
+    {
+      "id": "msh-009",
+      "type": "single",
+      "scenario": "`seq 1 5` output'unu tek satırda comma ile birleştir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "seq 1 5 | paste -sd ',' -",
+          "hint_text": "Satırları birleştirmek için `paste -sd` kullan.",
+          "hint_partial": "seq 1 5 | ..."
+        }
+      ]
+    }
+  ]
+}

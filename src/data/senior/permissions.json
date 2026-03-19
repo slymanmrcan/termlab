@@ -1,0 +1,231 @@
+{
+  "level": "senior",
+  "topic": "permissions",
+  "questions": [
+    {
+      "id": "sperm-001",
+      "type": "multi-step",
+      "scenario": "appuser için /opt/app/ directory'sine sadece okuma ACL izni ver, sonra alt directory'lere de inherit etmesini sağla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setfacl -R -m u:appuser:r-x /opt/app/",
+          "hint_text": "setfacl -R recursive, -m u:user:perms",
+          "hint_partial": "setfacl -R -m u:appuser:r-x ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "setfacl -R -m d:u:appuser:r-x /opt/app/",
+          "hint_text": "d: prefix default ACL (yeni file'lara da uygulanır)",
+          "hint_partial": "setfacl -R -m d:u:appuser:r-x ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-002",
+      "type": "single",
+      "scenario": "SELinux'ta myapp_t domain'inin hangi policy'lere sahip olduğunu listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sesearch --allow -s myapp_t",
+          "hint_text": "sesearch ile SELinux policy sorgusu",
+          "hint_partial": "sesearch --allow -s ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-003",
+      "type": "multi-step",
+      "scenario": "SELinux audit log'unda reddedilen erişimleri gör, sonra bunları policy'ye eklemek için module oluştur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ausearch -m avc -ts recent",
+          "hint_text": "ausearch -m avc audit mesajları, -ts recent son recordlar",
+          "hint_partial": "ausearch -m avc ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "audit2allow -a -M myapp_policy",
+          "hint_text": "audit2allow audit log'dan policy moduleü üretir",
+          "hint_partial": "audit2allow -a -M ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-004",
+      "type": "single",
+      "scenario": "AppArmor'da nginx profilinin status'unu kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "aa-status | grep nginx",
+          "hint_text": "aa-status AppArmor durumunu gösterir",
+          "hint_partial": "aa-status | grep ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-005",
+      "type": "single",
+      "scenario": "Linux capabilities kullanarak binary'e root olmadan bind port 80'e permission ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setcap cap_net_bind_service=ep /usr/bin/myapp",
+          "hint_text": "setcap ile capability ata, ep = effective+permitted",
+          "hint_partial": "setcap cap_net_bind_service=ep ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-006",
+      "type": "single",
+      "scenario": "Bir binary'ye atanan capability'leri hangi effective set ile geldigini gorecek sekilde dogrula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getcap -v /usr/bin/myapp",
+          "hint_text": "Detayli capability cikisi icin `getcap -v` kullan.",
+          "hint_partial": "getcap -v ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-007",
+      "type": "multi-step",
+      "scenario": "Sudoers file'inde deploy user'a parola sormadan sadece `systemctl restart myapp` çalıştırma izni ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "visudo -f /etc/sudoers.d/deploy",
+          "hint_text": "visudo ile ayrı bir sudoers file'ı oluştur",
+          "hint_partial": "visudo -f ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "deploy ALL=(ALL) NOPASSWD: /bin/systemctl restart myapp",
+          "hint_text": "user host=(runas) NOPASSWD: command formatı",
+          "hint_partial": "deploy ALL=(ALL) NOPASSWD: ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-008",
+      "type": "single",
+      "scenario": "Sistemdeki tüm SUID bit'li file'lari bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find / -perm -4000 -type f 2>/dev/null",
+          "hint_text": "find -perm -4000 SUID bit set olanları bulur",
+          "hint_partial": "find / -perm -4000 -type f ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-009",
+      "type": "single",
+      "scenario": "SSH login zincirindeki PAM modullerini yorum ve bos satirlari atarak incele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "grep -vE '^#|^$' /etc/pam.d/sshd",
+          "hint_text": "Gercek kurallari ayiklamak icin `grep -vE '^#|^$'` kullan.",
+          "hint_partial": "grep -vE '^#|^$' /etc/pam.d/sshd"
+        }
+      ]
+    },
+    {
+      "id": "sperm-010",
+      "type": "single",
+      "scenario": "immutable bit ile kritik bir config file'i değiştirilmez yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chattr +i /etc/resolv.conf",
+          "hint_text": "chattr +i immutable flag ekler, root bile değiştiremez",
+          "hint_partial": "chattr +i ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-011",
+      "type": "single",
+      "scenario": "ACL dahil uzun listeleme ile script.sh bilgisini goster",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls -le script.sh",
+          "hint_text": "ACL gosterimi icin ls secenegini kullan",
+          "hint_partial": "ls -le ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-012",
+      "type": "single",
+      "scenario": "config.yml file'indeki immutable niteligi kaldir",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chattr -i config.yml",
+          "hint_text": "Immutable biti kaldirmak icin chattr kullan",
+          "hint_partial": "chattr -i ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-013",
+      "type": "single",
+      "scenario": "Mevcut user icin parolasiz calisabilecek sudo kurallarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sudo -l | grep NOPASSWD",
+          "hint_text": "NOPASSWD satirlarini ayiklamak icin `sudo -l` cikisini filtrele.",
+          "hint_partial": "sudo -l | grep NOPASSWD"
+        }
+      ]
+    },
+    {
+      "id": "sperm-014",
+      "type": "single",
+      "scenario": "/srv/shared directory'de sticky bit durumunu uzun liste ile kontrol et",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls -ld /srv/shared",
+          "hint_text": "Klasorun permission'larını kontrol etmek icin ls -ld kullan",
+          "hint_partial": "ls -ld ..."
+        }
+      ]
+    },
+    {
+      "id": "sperm-015",
+      "type": "multi-step",
+      "scenario": "config.yml file'ini immutable yap, niteliklerini goster ve sonra immutable bitini kaldir",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chattr +i config.yml",
+          "hint_text": "Ilk adimda immutable biti ekle",
+          "hint_partial": "chattr +i ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "lsattr config.yml",
+          "hint_text": "Ikinci adimda attribute bilgisini goster",
+          "hint_partial": "lsattr ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "chattr -i config.yml",
+          "hint_text": "Son adimda biti geri kaldir",
+          "hint_partial": "chattr -i ..."
+        }
+      ]
+    }
+  ]
+}

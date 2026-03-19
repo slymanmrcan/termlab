@@ -1,0 +1,136 @@
+{
+  "level": "mid",
+  "topic": "ansible",
+  "questions": [
+    {
+      "id": "mans-001",
+      "type": "single",
+      "scenario": "Playbook'u sadece `web` grubunda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site.yml -i inventory --limit web",
+          "hint_text": "Host limit icin `--limit` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-002",
+      "type": "single",
+      "scenario": "Playbook'ta sadece `deploy` tag'li task'lari calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site.yml -i inventory --tags deploy",
+          "hint_text": "Tag filtre icin `--tags` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-003",
+      "type": "single",
+      "scenario": "Playbook'ta `restart` tag'li task'lari atla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site.yml -i inventory --skip-tags restart",
+          "hint_text": "Tag atlamak icin `--skip-tags` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-004",
+      "type": "single",
+      "scenario": "`group_vars/prod.yml` dosyasini ansible-vault ile sifrele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-vault encrypt group_vars/prod.yml",
+          "hint_text": "Vault sifreleme icin `ansible-vault encrypt` kullan.",
+          "hint_partial": "ansible-vault ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-005",
+      "type": "single",
+      "scenario": "`group_vars/prod.yml` dosyasini ansible-vault ile goruntule.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-vault view group_vars/prod.yml",
+          "hint_text": "Vault dosyasini okumak icin `ansible-vault view` kullan.",
+          "hint_partial": "ansible-vault ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-006",
+      "type": "single",
+      "scenario": "`requirements.yml` icindeki collection ve role'leri yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-galaxy install -r requirements.yml",
+          "hint_text": "Requirements dosyasini install etmek icin `ansible-galaxy install -r` kullan.",
+          "hint_partial": "ansible-galaxy ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-007",
+      "type": "single",
+      "scenario": "Tum host'lara `app.conf` dosyasini kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory -m copy -a 'src=app.conf dest=/etc/app/app.conf'",
+          "hint_text": "Copy module icin `-m copy -a` kullan.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-008",
+      "type": "single",
+      "scenario": "Tum host'larda nginx service'ini restart et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory -b -m service -a 'name=nginx state=restarted'",
+          "hint_text": "Service module ile restart et.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-009",
+      "type": "single",
+      "scenario": "Playbook'u diff modda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site.yml -i inventory --diff",
+          "hint_text": "Degisiklik diff'i icin `--diff` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-010",
+      "type": "single",
+      "scenario": "Degisen Ansible config ayarlarini dump et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-config dump --only-changed",
+          "hint_text": "Sadece farkli config icin `--only-changed` kullan.",
+          "hint_partial": "ansible-config ..."
+        }
+      ]
+    }
+  ]
+}

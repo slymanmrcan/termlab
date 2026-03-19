@@ -1,0 +1,2798 @@
+{
+  "level": "junior",
+  "topic": "permissions",
+  "questions": [
+    {
+      "id": "perm-001",
+      "type": "single",
+      "scenario": "File ve klasor permission'larını uzun formatta listele",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls -l",
+          "hint_text": "Izin bitlerini gormek icin ls komutunun uzun formatini kullan",
+          "hint_partial": "ls .."
+        }
+      ]
+    },
+    {
+      "id": "perm-002",
+      "type": "single",
+      "scenario": "script.sh file'a calistirma izni ekle",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod +x script.sh",
+          "hint_text": "Calistirma izni eklemek icin chmod ile +x kullan",
+          "hint_partial": "chmod ... script.sh"
+        }
+      ]
+    },
+    {
+      "id": "perm-003",
+      "type": "single",
+      "scenario": "notes.txt file'in permission'larını 644 olarak ayarla",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod 644 notes.txt",
+          "hint_text": "Sayisal permissionlerle chmod kullan",
+          "hint_partial": "chmod 644 ..."
+        }
+      ]
+    },
+    {
+      "id": "perm-004",
+      "type": "multi-step",
+      "scenario": "script.sh file'a calistirma izni ver ve sonra permission'larını kontrol et",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod +x script.sh",
+          "hint_text": "Ilk adimda file'ı calistirilabilir yap",
+          "hint_partial": "chmod ... script.sh"
+        },
+        {
+          "prompt": "$ ",
+          "answer": "ls -l script.sh",
+          "hint_text": "Tek file'in permission'larını uzun formatta goster",
+          "hint_partial": "ls -l ..."
+        }
+      ]
+    },
+    {
+      "id": "perm-005",
+      "type": "single",
+      "scenario": "Geçerli user'ı öğren",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "whoami",
+          "hint_text": "Aktif user adini gosteren basit komut",
+          "hint_partial": "w..."
+        }
+      ]
+    },
+    {
+      "id": "perm-006",
+      "type": "single",
+      "scenario": "shared directory'sinin permission'larını 755 olarak ayarla",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod 755 shared",
+          "hint_text": "Klasor permission'larını sayisal formatla ver",
+          "hint_partial": "chmod 755 ..."
+        }
+      ]
+    },
+    {
+      "id": "perm-007",
+      "type": "single",
+      "scenario": "Filenin sahipligini uzun liste ciktisinda kontrol et",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls -l file.txt",
+          "hint_text": "Tek file icin uzun format kullan",
+          "hint_partial": "ls -l ..."
+        }
+      ]
+    },
+    {
+      "id": "perm-008",
+      "type": "multi-step",
+      "scenario": "private.txt file'ini sadece owner okuyup yazabilecek hale getir ve sonra permission'larını kontrol et",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod 600 private.txt",
+          "hint_text": "Sadece owner icin rw izni ver",
+          "hint_partial": "chmod 600 ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "ls -l private.txt",
+          "hint_text": "Degisiklik sonrasi permission'ları kontrol et",
+          "hint_partial": "ls -l ..."
+        }
+      ]
+    },
+    {
+      "id": "perm-009",
+      "type": "single",
+      "scenario": "run.sh file'a sadece owner icin calistirma izni ekle",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod u+x run.sh",
+          "hint_text": "Sembolik olarak owner icin x izni ekle",
+          "hint_partial": "chmod ... run.sh"
+        }
+      ]
+    },
+    {
+      "id": "perm-010",
+      "type": "single",
+      "scenario": "report.txt file'in permission'larını 640 yap",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod 640 report.txt",
+          "hint_text": "Sayisal permission kullan",
+          "hint_partial": "chmod 640 ..."
+        }
+      ]
+    },
+    {
+      "id": "perm-011",
+      "type": "single",
+      "scenario": "Geçerli user'ın UID ve group bilgisini göster",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "id",
+          "hint_text": "Kullanicinin kimlik bilgisini veren komut",
+          "hint_partial": "i..."
+        }
+      ]
+    },
+    {
+      "id": "perm-012",
+      "type": "single",
+      "scenario": "script.sh file'inden tum userlar icin yazma permission'i kaldir",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod a-w script.sh",
+          "hint_text": "Tum userlardan yazma permission'i kaldir",
+          "hint_partial": "chmod ... script.sh"
+        }
+      ]
+    },
+    {
+      "id": "perm-013",
+      "type": "single",
+      "scenario": "shared directory'sini owner ve group icin yazilabilir, digerleri icin sadece okunur yap",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod 775 shared",
+          "hint_text": "Sayisal permissionle owner/group rwx, others rx ver",
+          "hint_partial": "chmod 775 ..."
+        }
+      ]
+    },
+    {
+      "id": "perm-014",
+      "type": "single",
+      "scenario": "run.sh file'in permission bitlerini sayisal olarak goruntulemek icin uzun liste al",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls -l run.sh",
+          "hint_text": "Tek file icin uzun format listeleme",
+          "hint_partial": "ls -l ..."
+        }
+      ]
+    },
+    {
+      "id": "perm-015",
+      "type": "multi-step",
+      "scenario": "run.sh file'ini calistirilabilir yap ve sonra aktif user'ı goster",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod +x run.sh",
+          "hint_text": "Ilk adimda file'a x izni ekle",
+          "hint_partial": "chmod ... run.sh"
+        },
+        {
+          "prompt": "$ ",
+          "answer": "whoami",
+          "hint_text": "Sonra aktif user'ı goster",
+          "hint_partial": "w..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-001",
+      "type": "single",
+      "scenario": "deploy.sh file'ına herkes için çalıştırma izni ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod +x deploy.sh",
+          "hint_text": "chmod ile +x çalıştırma izni ekler",
+          "hint_partial": "chmod +x ..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-002",
+      "type": "single",
+      "scenario": "config.env file'i sadece owner okuyup yazabilsin, başkası hiçbir şey yapmasın. Sayısal notasyon kullan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod 600 config.env",
+          "hint_text": "owner rw = 6, group = 0, other = 0",
+          "hint_partial": "chmod 6.. ..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-003",
+      "type": "single",
+      "scenario": "script.sh file'inin owner'ını deploy user'a değiştir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chown deploy script.sh",
+          "hint_text": "change owner komutu",
+          "hint_partial": "chown ..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-004",
+      "type": "single",
+      "scenario": "app/ directory'sini ve içindeki her şeyi www-data user'a ve group'una ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chown -R www-data:www-data app/",
+          "hint_text": "chown recursive, user:group format",
+          "hint_partial": "chown -R www-data:www-data ..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-005",
+      "type": "single",
+      "scenario": "private.key file'inin permission'larını göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls -l private.key",
+          "hint_text": "ls -l tek file için de çalışır",
+          "hint_partial": "ls -l ..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-006",
+      "type": "single",
+      "scenario": "Mevcut user'ın hangi group'lara üye olduğunu göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "groups",
+          "hint_text": "doğrudan groups komutu",
+          "hint_partial": "group..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-007",
+      "type": "multi-step",
+      "scenario": "backup.sh file'ı oluştur, sonra sadece owner çalıştırabilsin diye permission'larını ayarla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "touch backup.sh",
+          "hint_text": "boş file oluşturmak için touch",
+          "hint_partial": "touch ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "chmod 700 backup.sh",
+          "hint_text": "sadece owner için rwx = 7, diğerleri 0",
+          "hint_partial": "chmod 7.. ..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-008",
+      "type": "single",
+      "scenario": "Kimin session açtığını ve hangi privilegelerle çalıştığını gör.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "whoami",
+          "hint_text": "mevcut user adını yazdırır",
+          "hint_partial": "whoa..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-009",
+      "type": "single",
+      "scenario": "data.csv file'i herkes okuyabilsin ama sadece owner yazabilsin.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod 644 data.csv",
+          "hint_text": "owner rw=6, group r=4, other r=4",
+          "hint_partial": "chmod 6.. ..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-010",
+      "type": "single",
+      "scenario": "Geçici olarak root privilege'larıyla apt update çalıştır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sudo apt update",
+          "hint_text": "sudo ile komutu yüksek privilegeyle çalıştır",
+          "hint_partial": "sudo ..."
+        }
+      ]
+    },
+    {
+      "id": "perm-001-r1",
+      "type": "single",
+      "scenario": "Bakim oncesi file ve klasor permission'larını uzun formatta listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls -l",
+          "hint_text": "Izin bitlerini gormek icin ls komutunun uzun formatini kullan",
+          "hint_partial": "ls .."
+        }
+      ]
+    },
+    {
+      "id": "perm-002-r2",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda script.sh file'a calistirma izni ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod +x script.sh",
+          "hint_text": "Calistirma izni eklemek icin chmod ile +x kullan",
+          "hint_partial": "chmod ... script.sh"
+        }
+      ]
+    },
+    {
+      "id": "perm-003-r3",
+      "type": "single",
+      "scenario": "Deploy sonrasi notes.txt file'in permission'larını 644 olarak ayarla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod 644 notes.txt",
+          "hint_text": "Sayisal permissionlerle chmod kullan",
+          "hint_partial": "chmod 644 ..."
+        }
+      ]
+    },
+    {
+      "id": "perm-004-r4",
+      "type": "multi-step",
+      "scenario": "Kesinti incelemesinde script.sh file'a calistirma izni ver ve sonra permission'larını kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod +x script.sh",
+          "hint_text": "Ilk adimda file'ı calistirilabilir yap",
+          "hint_partial": "chmod ... script.sh"
+        },
+        {
+          "prompt": "$ ",
+          "answer": "ls -l script.sh",
+          "hint_text": "Tek file'in permission'larını uzun formatta goster",
+          "hint_partial": "ls -l ..."
+        }
+      ]
+    },
+    {
+      "id": "perm-005-r5",
+      "type": "single",
+      "scenario": "Yeni acilan hostta geçerli user'ı öğren.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "whoami",
+          "hint_text": "Aktif user adini gosteren basit komut",
+          "hint_partial": "w..."
+        }
+      ]
+    },
+    {
+      "id": "perm-006-r6",
+      "type": "single",
+      "scenario": "Runbook adiminda shared directory'sinin permission'larını 755 olarak ayarla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod 755 shared",
+          "hint_text": "Klasor permission'larını sayisal formatla ver",
+          "hint_partial": "chmod 755 ..."
+        }
+      ]
+    },
+    {
+      "id": "perm-007-r7",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde filenin sahipligini uzun liste ciktisinda kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls -l file.txt",
+          "hint_text": "Tek file icin uzun format kullan",
+          "hint_partial": "ls -l ..."
+        }
+      ]
+    },
+    {
+      "id": "perm-008-r8",
+      "type": "multi-step",
+      "scenario": "Incident sonrasinda private.txt file'ini sadece owner okuyup yazabilecek hale getir ve sonra permission'larını kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod 600 private.txt",
+          "hint_text": "Sadece owner icin rw izni ver",
+          "hint_partial": "chmod 600 ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "ls -l private.txt",
+          "hint_text": "Degisiklik sonrasi permission'ları kontrol et",
+          "hint_partial": "ls -l ..."
+        }
+      ]
+    },
+    {
+      "id": "perm-009-r9",
+      "type": "single",
+      "scenario": "Bakim oncesi run.sh file'a sadece owner icin calistirma izni ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod u+x run.sh",
+          "hint_text": "Sembolik olarak owner icin x izni ekle",
+          "hint_partial": "chmod ... run.sh"
+        }
+      ]
+    },
+    {
+      "id": "perm-010-r10",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda report.txt file'in permission'larını 640 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod 640 report.txt",
+          "hint_text": "Sayisal permission kullan",
+          "hint_partial": "chmod 640 ..."
+        }
+      ]
+    },
+    {
+      "id": "perm-011-r11",
+      "type": "single",
+      "scenario": "Deploy sonrasi geçerli user'ın UID ve group bilgisini göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "id",
+          "hint_text": "Kullanicinin kimlik bilgisini veren komut",
+          "hint_partial": "i..."
+        }
+      ]
+    },
+    {
+      "id": "perm-012-r12",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde script.sh file'inden tum userlar icin yazma permission'i kaldir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod a-w script.sh",
+          "hint_text": "Tum userlardan yazma permission'i kaldir",
+          "hint_partial": "chmod ... script.sh"
+        }
+      ]
+    },
+    {
+      "id": "perm-013-r13",
+      "type": "single",
+      "scenario": "Yeni acilan hostta shared directory'sini owner ve group icin yazilabilir, digerleri icin sadece okunur yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod 775 shared",
+          "hint_text": "Sayisal permissionle owner/group rwx, others rx ver",
+          "hint_partial": "chmod 775 ..."
+        }
+      ]
+    },
+    {
+      "id": "perm-014-r14",
+      "type": "single",
+      "scenario": "Runbook adiminda run.sh file'in permission bitlerini sayisal olarak goruntulemek icin uzun liste al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls -l run.sh",
+          "hint_text": "Tek file icin uzun format listeleme",
+          "hint_partial": "ls -l ..."
+        }
+      ]
+    },
+    {
+      "id": "perm-015-r15",
+      "type": "multi-step",
+      "scenario": "Operasyon kontrolunde run.sh file'ini calistirilabilir yap ve sonra aktif user'ı goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod +x run.sh",
+          "hint_text": "Ilk adimda file'a x izni ekle",
+          "hint_partial": "chmod ... run.sh"
+        },
+        {
+          "prompt": "$ ",
+          "answer": "whoami",
+          "hint_text": "Sonra aktif user'ı goster",
+          "hint_partial": "w..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-001-r16",
+      "type": "single",
+      "scenario": "Incident sonrasinda deploy.sh file'ına herkes için çalıştırma izni ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod +x deploy.sh",
+          "hint_text": "chmod ile +x çalıştırma izni ekler",
+          "hint_partial": "chmod +x ..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-002-r17",
+      "type": "single",
+      "scenario": "Bakim oncesi config.env file'i sadece owner okuyup yazabilsin, başkası hiçbir şey yapmasın. Sayısal notasyon kullan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod 600 config.env",
+          "hint_text": "owner rw = 6, group = 0, other = 0",
+          "hint_partial": "chmod 6.. ..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-003-r18",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda script.sh file'inin owner'ını deploy user'a değiştir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chown deploy script.sh",
+          "hint_text": "change owner komutu",
+          "hint_partial": "chown ..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-004-r19",
+      "type": "single",
+      "scenario": "Deploy sonrasi app/ directory'sini ve içindeki her şeyi www-data user'a ve group'una ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chown -R www-data:www-data app/",
+          "hint_text": "chown recursive, user:group format",
+          "hint_partial": "chown -R www-data:www-data ..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-005-r20",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde private.key file'inin permission'larını göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls -l private.key",
+          "hint_text": "ls -l tek file için de çalışır",
+          "hint_partial": "ls -l ..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-006-r21",
+      "type": "single",
+      "scenario": "Yeni acilan hostta mevcut user'ın hangi group'lara üye olduğunu göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "groups",
+          "hint_text": "doğrudan groups komutu",
+          "hint_partial": "group..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-007-r22",
+      "type": "multi-step",
+      "scenario": "Runbook adiminda backup.sh file'ı oluştur, sonra sadece owner çalıştırabilsin diye permission'larını ayarla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "touch backup.sh",
+          "hint_text": "boş file oluşturmak için touch",
+          "hint_partial": "touch ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "chmod 700 backup.sh",
+          "hint_text": "sadece owner için rwx = 7, diğerleri 0",
+          "hint_partial": "chmod 7.. ..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-008-r23",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde kimin session açtığını ve hangi privilegelerle çalıştığını gör.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "whoami",
+          "hint_text": "mevcut user adını yazdırır",
+          "hint_partial": "whoa..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-009-r24",
+      "type": "single",
+      "scenario": "Incident sonrasinda data.csv file'i herkes okuyabilsin ama sadece owner yazabilsin.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod 644 data.csv",
+          "hint_text": "owner rw=6, group r=6, other r=6",
+          "hint_partial": "chmod 6.. ..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-010-r25",
+      "type": "single",
+      "scenario": "Bakim oncesi geçici olarak root privilege'larıyla apt update çalıştır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sudo apt update",
+          "hint_text": "sudo ile komutu yüksek privilegeyle çalıştır",
+          "hint_partial": "sudo ..."
+        }
+      ]
+    },
+    {
+      "id": "perm-001-r26",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda file ve klasor permission'larını uzun formatta listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls -l",
+          "hint_text": "Izin bitlerini gormek icin ls komutunun uzun formatini kullan",
+          "hint_partial": "ls .."
+        }
+      ]
+    },
+    {
+      "id": "perm-002-r27",
+      "type": "single",
+      "scenario": "Deploy sonrasi script.sh file'a calistirma izni ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod +x script.sh",
+          "hint_text": "Calistirma izni eklemek icin chmod ile +x kullan",
+          "hint_partial": "chmod ... script.sh"
+        }
+      ]
+    },
+    {
+      "id": "perm-003-r28",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde notes.txt file'in permission'larını 644 olarak ayarla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod 644 notes.txt",
+          "hint_text": "Sayisal permissionlerle chmod kullan",
+          "hint_partial": "chmod 644 ..."
+        }
+      ]
+    },
+    {
+      "id": "perm-004-r29",
+      "type": "multi-step",
+      "scenario": "Yeni acilan hostta script.sh file'a calistirma izni ver ve sonra permission'larını kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod +x script.sh",
+          "hint_text": "Ilk adimda file'ı calistirilabilir yap",
+          "hint_partial": "chmod ... script.sh"
+        },
+        {
+          "prompt": "$ ",
+          "answer": "ls -l script.sh",
+          "hint_text": "Tek file'in permission'larını uzun formatta goster",
+          "hint_partial": "ls -l ..."
+        }
+      ]
+    },
+    {
+      "id": "perm-005-r30",
+      "type": "single",
+      "scenario": "Runbook adiminda geçerli user'ı öğren.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "whoami",
+          "hint_text": "Aktif user adini gosteren basit komut",
+          "hint_partial": "w..."
+        }
+      ]
+    },
+    {
+      "id": "perm-006-r31",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde shared directory'sinin permission'larını 755 olarak ayarla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod 755 shared",
+          "hint_text": "Klasor permission'larını sayisal formatla ver",
+          "hint_partial": "chmod 755 ..."
+        }
+      ]
+    },
+    {
+      "id": "perm-007-r32",
+      "type": "single",
+      "scenario": "Incident sonrasinda filenin sahipligini uzun liste ciktisinda kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls -l file.txt",
+          "hint_text": "Tek file icin uzun format kullan",
+          "hint_partial": "ls -l ..."
+        }
+      ]
+    },
+    {
+      "id": "perm-008-r33",
+      "type": "multi-step",
+      "scenario": "Bakim oncesi private.txt file'ini sadece owner okuyup yazabilecek hale getir ve sonra permission'larını kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod 600 private.txt",
+          "hint_text": "Sadece owner icin rw izni ver",
+          "hint_partial": "chmod 600 ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "ls -l private.txt",
+          "hint_text": "Degisiklik sonrasi permission'ları kontrol et",
+          "hint_partial": "ls -l ..."
+        }
+      ]
+    },
+    {
+      "id": "perm-009-r34",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda run.sh file'a sadece owner icin calistirma izni ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod u+x run.sh",
+          "hint_text": "Sembolik olarak owner icin x izni ekle",
+          "hint_partial": "chmod ... run.sh"
+        }
+      ]
+    },
+    {
+      "id": "perm-010-r35",
+      "type": "single",
+      "scenario": "Deploy sonrasi report.txt file'in permission'larını 640 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod 640 report.txt",
+          "hint_text": "Sayisal permission kullan",
+          "hint_partial": "chmod 640 ..."
+        }
+      ]
+    },
+    {
+      "id": "perm-011-r36",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde geçerli user'ın UID ve group bilgisini göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "id",
+          "hint_text": "Kullanicinin kimlik bilgisini veren komut",
+          "hint_partial": "i..."
+        }
+      ]
+    },
+    {
+      "id": "perm-012-r37",
+      "type": "single",
+      "scenario": "Yeni acilan hostta script.sh file'inden tum userlar icin yazma permission'i kaldir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod a-w script.sh",
+          "hint_text": "Tum userlardan yazma permission'i kaldir",
+          "hint_partial": "chmod ... script.sh"
+        }
+      ]
+    },
+    {
+      "id": "perm-013-r38",
+      "type": "single",
+      "scenario": "Runbook adiminda shared directory'sini owner ve group icin yazilabilir, digerleri icin sadece okunur yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod 775 shared",
+          "hint_text": "Sayisal permissionle owner/group rwx, others rx ver",
+          "hint_partial": "chmod 775 ..."
+        }
+      ]
+    },
+    {
+      "id": "perm-014-r39",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde run.sh file'in permission bitlerini sayisal olarak goruntulemek icin uzun liste al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls -l run.sh",
+          "hint_text": "Tek file icin uzun format listeleme",
+          "hint_partial": "ls -l ..."
+        }
+      ]
+    },
+    {
+      "id": "perm-015-r40",
+      "type": "multi-step",
+      "scenario": "Incident sonrasinda run.sh file'ini calistirilabilir yap ve sonra aktif user'ı goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod +x run.sh",
+          "hint_text": "Ilk adimda file'a x izni ekle",
+          "hint_partial": "chmod ... run.sh"
+        },
+        {
+          "prompt": "$ ",
+          "answer": "whoami",
+          "hint_text": "Sonra aktif user'ı goster",
+          "hint_partial": "w..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-001-r41",
+      "type": "single",
+      "scenario": "Bakim oncesi deploy.sh file'ına herkes için çalıştırma izni ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod +x deploy.sh",
+          "hint_text": "chmod ile +x çalıştırma izni ekler",
+          "hint_partial": "chmod +x ..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-002-r42",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda config.env file'i sadece owner okuyup yazabilsin, başkası hiçbir şey yapmasın. Sayısal notasyon kullan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod 600 config.env",
+          "hint_text": "owner rw = 6, group = 0, other = 0",
+          "hint_partial": "chmod 6.. ..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-003-r43",
+      "type": "single",
+      "scenario": "Deploy sonrasi script.sh file'inin owner'ını deploy user'a değiştir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chown deploy script.sh",
+          "hint_text": "change owner komutu",
+          "hint_partial": "chown ..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-004-r44",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde app/ directory'sini ve içindeki her şeyi www-data user'a ve group'una ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chown -R www-data:www-data app/",
+          "hint_text": "chown recursive, user:group format",
+          "hint_partial": "chown -R www-data:www-data ..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-005-r45",
+      "type": "single",
+      "scenario": "Yeni acilan hostta private.key file'inin permission'larını göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls -l private.key",
+          "hint_text": "ls -l tek file için de çalışır",
+          "hint_partial": "ls -l ..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-006-r46",
+      "type": "single",
+      "scenario": "Runbook adiminda mevcut user'ın hangi group'lara üye olduğunu göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "groups",
+          "hint_text": "doğrudan groups komutu",
+          "hint_partial": "group..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-007-r47",
+      "type": "multi-step",
+      "scenario": "Operasyon kontrolunde backup.sh file'ı oluştur, sonra sadece owner çalıştırabilsin diye permission'larını ayarla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "touch backup.sh",
+          "hint_text": "boş file oluşturmak için touch",
+          "hint_partial": "touch ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "chmod 700 backup.sh",
+          "hint_text": "sadece owner için rwx = 7, diğerleri 0",
+          "hint_partial": "chmod 7.. ..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-008-r48",
+      "type": "single",
+      "scenario": "Incident sonrasinda kimin session açtığını ve hangi privilegelerle çalıştığını gör.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "whoami",
+          "hint_text": "mevcut user adını yazdırır",
+          "hint_partial": "whoa..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-009-r49",
+      "type": "single",
+      "scenario": "Bakim oncesi data.csv file'i herkes okuyabilsin ama sadece owner yazabilsin.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod 644 data.csv",
+          "hint_text": "owner rw=6, group r=6, other r=6",
+          "hint_partial": "chmod 6.. ..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-010-r50",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda geçici olarak root privilege'larıyla apt update çalıştır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sudo apt update",
+          "hint_text": "sudo ile komutu yüksek privilegeyle çalıştır",
+          "hint_partial": "sudo ..."
+        }
+      ]
+    },
+    {
+      "id": "perm-001-r51",
+      "type": "single",
+      "scenario": "Deploy sonrasi file ve klasor permission'larını uzun formatta listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls -l",
+          "hint_text": "Izin bitlerini gormek icin ls komutunun uzun formatini kullan",
+          "hint_partial": "ls .."
+        }
+      ]
+    },
+    {
+      "id": "perm-002-r52",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde script.sh file'a calistirma izni ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod +x script.sh",
+          "hint_text": "Calistirma izni eklemek icin chmod ile +x kullan",
+          "hint_partial": "chmod ... script.sh"
+        }
+      ]
+    },
+    {
+      "id": "perm-003-r53",
+      "type": "single",
+      "scenario": "Yeni acilan hostta notes.txt file'in permission'larını 644 olarak ayarla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod 644 notes.txt",
+          "hint_text": "Sayisal permissionlerle chmod kullan",
+          "hint_partial": "chmod 644 ..."
+        }
+      ]
+    },
+    {
+      "id": "perm-004-r54",
+      "type": "multi-step",
+      "scenario": "Runbook adiminda script.sh file'a calistirma izni ver ve sonra permission'larını kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod +x script.sh",
+          "hint_text": "Ilk adimda file'ı calistirilabilir yap",
+          "hint_partial": "chmod ... script.sh"
+        },
+        {
+          "prompt": "$ ",
+          "answer": "ls -l script.sh",
+          "hint_text": "Tek file'in permission'larını uzun formatta goster",
+          "hint_partial": "ls -l ..."
+        }
+      ]
+    },
+    {
+      "id": "perm-005-r55",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde geçerli user'ı öğren.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "whoami",
+          "hint_text": "Aktif user adini gosteren basit komut",
+          "hint_partial": "w..."
+        }
+      ]
+    },
+    {
+      "id": "perm-006-r56",
+      "type": "single",
+      "scenario": "Incident sonrasinda shared directory'sinin permission'larını 755 olarak ayarla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod 755 shared",
+          "hint_text": "Klasor permission'larını sayisal formatla ver",
+          "hint_partial": "chmod 755 ..."
+        }
+      ]
+    },
+    {
+      "id": "perm-007-r57",
+      "type": "single",
+      "scenario": "Bakim oncesi filenin sahipligini uzun liste ciktisinda kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls -l file.txt",
+          "hint_text": "Tek file icin uzun format kullan",
+          "hint_partial": "ls -l ..."
+        }
+      ]
+    },
+    {
+      "id": "perm-008-r58",
+      "type": "multi-step",
+      "scenario": "Troubleshooting sirasinda private.txt file'ini sadece owner okuyup yazabilecek hale getir ve sonra permission'larını kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod 600 private.txt",
+          "hint_text": "Sadece owner icin rw izni ver",
+          "hint_partial": "chmod 600 ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "ls -l private.txt",
+          "hint_text": "Degisiklik sonrasi permission'ları kontrol et",
+          "hint_partial": "ls -l ..."
+        }
+      ]
+    },
+    {
+      "id": "perm-009-r59",
+      "type": "single",
+      "scenario": "Deploy sonrasi run.sh file'a sadece owner icin calistirma izni ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod u+x run.sh",
+          "hint_text": "Sembolik olarak owner icin x izni ekle",
+          "hint_partial": "chmod ... run.sh"
+        }
+      ]
+    },
+    {
+      "id": "perm-010-r60",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde report.txt file'in permission'larını 640 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod 640 report.txt",
+          "hint_text": "Sayisal permission kullan",
+          "hint_partial": "chmod 640 ..."
+        }
+      ]
+    },
+    {
+      "id": "perm-011-r61",
+      "type": "single",
+      "scenario": "Yeni acilan hostta geçerli user'ın UID ve group bilgisini göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "id",
+          "hint_text": "Kullanicinin kimlik bilgisini veren komut",
+          "hint_partial": "i..."
+        }
+      ]
+    },
+    {
+      "id": "perm-012-r62",
+      "type": "single",
+      "scenario": "Runbook adiminda script.sh file'inden tum userlar icin yazma permission'i kaldir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod a-w script.sh",
+          "hint_text": "Tum userlardan yazma permission'i kaldir",
+          "hint_partial": "chmod ... script.sh"
+        }
+      ]
+    },
+    {
+      "id": "perm-013-r63",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde shared directory'sini owner ve group icin yazilabilir, digerleri icin sadece okunur yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod 775 shared",
+          "hint_text": "Sayisal permissionle owner/group rwx, others rx ver",
+          "hint_partial": "chmod 775 ..."
+        }
+      ]
+    },
+    {
+      "id": "perm-014-r64",
+      "type": "single",
+      "scenario": "Incident sonrasinda run.sh file'in permission bitlerini sayisal olarak goruntulemek icin uzun liste al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls -l run.sh",
+          "hint_text": "Tek file icin uzun format listeleme",
+          "hint_partial": "ls -l ..."
+        }
+      ]
+    },
+    {
+      "id": "perm-015-r65",
+      "type": "multi-step",
+      "scenario": "Bakim oncesi run.sh file'ini calistirilabilir yap ve sonra aktif user'ı goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod +x run.sh",
+          "hint_text": "Ilk adimda file'a x izni ekle",
+          "hint_partial": "chmod ... run.sh"
+        },
+        {
+          "prompt": "$ ",
+          "answer": "whoami",
+          "hint_text": "Sonra aktif user'ı goster",
+          "hint_partial": "w..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-001-r66",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda deploy.sh file'ına herkes için çalıştırma izni ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod +x deploy.sh",
+          "hint_text": "chmod ile +x çalıştırma izni ekler",
+          "hint_partial": "chmod +x ..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-002-r67",
+      "type": "single",
+      "scenario": "Deploy sonrasi config.env file'i sadece owner okuyup yazabilsin, başkası hiçbir şey yapmasın. Sayısal notasyon kullan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod 600 config.env",
+          "hint_text": "owner rw = 6, group = 0, other = 0",
+          "hint_partial": "chmod 6.. ..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-003-r68",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde script.sh file'inin owner'ını deploy user'a değiştir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chown deploy script.sh",
+          "hint_text": "change owner komutu",
+          "hint_partial": "chown ..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-004-r69",
+      "type": "single",
+      "scenario": "Yeni acilan hostta app/ directory'sini ve içindeki her şeyi www-data user'a ve group'una ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chown -R www-data:www-data app/",
+          "hint_text": "chown recursive, user:group format",
+          "hint_partial": "chown -R www-data:www-data ..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-005-r70",
+      "type": "single",
+      "scenario": "Runbook adiminda private.key file'inin permission'larını göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls -l private.key",
+          "hint_text": "ls -l tek file için de çalışır",
+          "hint_partial": "ls -l ..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-006-r71",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde mevcut user'ın hangi group'lara üye olduğunu göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "groups",
+          "hint_text": "doğrudan groups komutu",
+          "hint_partial": "group..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-007-r72",
+      "type": "multi-step",
+      "scenario": "Incident sonrasinda backup.sh file'ı oluştur, sonra sadece owner çalıştırabilsin diye permission'larını ayarla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "touch backup.sh",
+          "hint_text": "boş file oluşturmak için touch",
+          "hint_partial": "touch ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "chmod 700 backup.sh",
+          "hint_text": "sadece owner için rwx = 7, diğerleri 0",
+          "hint_partial": "chmod 7.. ..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-008-r73",
+      "type": "single",
+      "scenario": "Bakim oncesi kimin session açtığını ve hangi privilegelerle çalıştığını gör.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "whoami",
+          "hint_text": "mevcut user adını yazdırır",
+          "hint_partial": "whoa..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-009-r74",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda data.csv file'i herkes okuyabilsin ama sadece owner yazabilsin.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod 644 data.csv",
+          "hint_text": "owner rw=6, group r=6, other r=6",
+          "hint_partial": "chmod 6.. ..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-010-r75",
+      "type": "single",
+      "scenario": "Deploy sonrasi geçici olarak root privilege'larıyla apt update çalıştır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sudo apt update",
+          "hint_text": "sudo ile komutu yüksek privilegeyle çalıştır",
+          "hint_partial": "sudo ..."
+        }
+      ]
+    },
+    {
+      "id": "perm-001-r76",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde file ve klasor permission'larını uzun formatta listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls -l",
+          "hint_text": "Izin bitlerini gormek icin ls komutunun uzun formatini kullan",
+          "hint_partial": "ls .."
+        }
+      ]
+    },
+    {
+      "id": "perm-002-r77",
+      "type": "single",
+      "scenario": "Yeni acilan hostta script.sh file'a calistirma izni ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod +x script.sh",
+          "hint_text": "Calistirma izni eklemek icin chmod ile +x kullan",
+          "hint_partial": "chmod ... script.sh"
+        }
+      ]
+    },
+    {
+      "id": "perm-003-r78",
+      "type": "single",
+      "scenario": "Runbook adiminda notes.txt file'in permission'larını 644 olarak ayarla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod 644 notes.txt",
+          "hint_text": "Sayisal permissionlerle chmod kullan",
+          "hint_partial": "chmod 644 ..."
+        }
+      ]
+    },
+    {
+      "id": "perm-004-r79",
+      "type": "multi-step",
+      "scenario": "Operasyon kontrolunde script.sh file'a calistirma izni ver ve sonra permission'larını kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod +x script.sh",
+          "hint_text": "Ilk adimda file'ı calistirilabilir yap",
+          "hint_partial": "chmod ... script.sh"
+        },
+        {
+          "prompt": "$ ",
+          "answer": "ls -l script.sh",
+          "hint_text": "Tek file'in permission'larını uzun formatta goster",
+          "hint_partial": "ls -l ..."
+        }
+      ]
+    },
+    {
+      "id": "perm-005-r80",
+      "type": "single",
+      "scenario": "Incident sonrasinda geçerli user'ı öğren.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "whoami",
+          "hint_text": "Aktif user adini gosteren basit komut",
+          "hint_partial": "w..."
+        }
+      ]
+    },
+    {
+      "id": "perm-006-r81",
+      "type": "single",
+      "scenario": "Bakim oncesi shared directory'sinin permission'larını 755 olarak ayarla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod 755 shared",
+          "hint_text": "Klasor permission'larını sayisal formatla ver",
+          "hint_partial": "chmod 755 ..."
+        }
+      ]
+    },
+    {
+      "id": "perm-007-r82",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda filenin sahipligini uzun liste ciktisinda kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls -l file.txt",
+          "hint_text": "Tek file icin uzun format kullan",
+          "hint_partial": "ls -l ..."
+        }
+      ]
+    },
+    {
+      "id": "perm-008-r83",
+      "type": "multi-step",
+      "scenario": "Deploy sonrasi private.txt file'ini sadece owner okuyup yazabilecek hale getir ve sonra permission'larını kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod 600 private.txt",
+          "hint_text": "Sadece owner icin rw izni ver",
+          "hint_partial": "chmod 600 ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "ls -l private.txt",
+          "hint_text": "Degisiklik sonrasi permission'ları kontrol et",
+          "hint_partial": "ls -l ..."
+        }
+      ]
+    },
+    {
+      "id": "perm-009-r84",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde run.sh file'a sadece owner icin calistirma izni ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod u+x run.sh",
+          "hint_text": "Sembolik olarak owner icin x izni ekle",
+          "hint_partial": "chmod ... run.sh"
+        }
+      ]
+    },
+    {
+      "id": "perm-010-r85",
+      "type": "single",
+      "scenario": "Yeni acilan hostta report.txt file'in permission'larını 640 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod 640 report.txt",
+          "hint_text": "Sayisal permission kullan",
+          "hint_partial": "chmod 640 ..."
+        }
+      ]
+    },
+    {
+      "id": "perm-011-r86",
+      "type": "single",
+      "scenario": "Runbook adiminda geçerli user'ın UID ve group bilgisini göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "id",
+          "hint_text": "Kullanicinin kimlik bilgisini veren komut",
+          "hint_partial": "i..."
+        }
+      ]
+    },
+    {
+      "id": "perm-012-r87",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde script.sh file'inden tum userlar icin yazma permission'i kaldir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod a-w script.sh",
+          "hint_text": "Tum userlardan yazma permission'i kaldir",
+          "hint_partial": "chmod ... script.sh"
+        }
+      ]
+    },
+    {
+      "id": "perm-013-r88",
+      "type": "single",
+      "scenario": "Incident sonrasinda shared directory'sini owner ve group icin yazilabilir, digerleri icin sadece okunur yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod 775 shared",
+          "hint_text": "Sayisal permissionle owner/group rwx, others rx ver",
+          "hint_partial": "chmod 775 ..."
+        }
+      ]
+    },
+    {
+      "id": "perm-014-r89",
+      "type": "single",
+      "scenario": "Bakim oncesi run.sh file'in permission bitlerini sayisal olarak goruntulemek icin uzun liste al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls -l run.sh",
+          "hint_text": "Tek file icin uzun format listeleme",
+          "hint_partial": "ls -l ..."
+        }
+      ]
+    },
+    {
+      "id": "perm-015-r90",
+      "type": "multi-step",
+      "scenario": "Troubleshooting sirasinda run.sh file'ini calistirilabilir yap ve sonra aktif user'ı goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod +x run.sh",
+          "hint_text": "Ilk adimda file'a x izni ekle",
+          "hint_partial": "chmod ... run.sh"
+        },
+        {
+          "prompt": "$ ",
+          "answer": "whoami",
+          "hint_text": "Sonra aktif user'ı goster",
+          "hint_partial": "w..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-001-r91",
+      "type": "single",
+      "scenario": "Deploy sonrasi deploy.sh file'ına herkes için çalıştırma izni ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod +x deploy.sh",
+          "hint_text": "chmod ile +x çalıştırma izni ekler",
+          "hint_partial": "chmod +x ..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-002-r92",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde config.env file'i sadece owner okuyup yazabilsin, başkası hiçbir şey yapmasın. Sayısal notasyon kullan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod 600 config.env",
+          "hint_text": "owner rw = 6, group = 0, other = 0",
+          "hint_partial": "chmod 6.. ..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-003-r93",
+      "type": "single",
+      "scenario": "Yeni acilan hostta script.sh file'inin owner'ını deploy user'a değiştir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chown deploy script.sh",
+          "hint_text": "change owner komutu",
+          "hint_partial": "chown ..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-004-r94",
+      "type": "single",
+      "scenario": "Runbook adiminda app/ directory'sini ve içindeki her şeyi www-data user'a ve group'una ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chown -R www-data:www-data app/",
+          "hint_text": "chown recursive, user:group format",
+          "hint_partial": "chown -R www-data:www-data ..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-005-r95",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde private.key file'inin permission'larını göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls -l private.key",
+          "hint_text": "ls -l tek file için de çalışır",
+          "hint_partial": "ls -l ..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-006-r96",
+      "type": "single",
+      "scenario": "Incident sonrasinda mevcut user'ın hangi group'lara üye olduğunu göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "groups",
+          "hint_text": "doğrudan groups komutu",
+          "hint_partial": "group..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-007-r97",
+      "type": "multi-step",
+      "scenario": "Bakim oncesi backup.sh file'ı oluştur, sonra sadece owner çalıştırabilsin diye permission'larını ayarla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "touch backup.sh",
+          "hint_text": "boş file oluşturmak için touch",
+          "hint_partial": "touch ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "chmod 700 backup.sh",
+          "hint_text": "sadece owner için rwx = 7, diğerleri 0",
+          "hint_partial": "chmod 7.. ..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-008-r98",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda kimin session açtığını ve hangi privilegelerle çalıştığını gör.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "whoami",
+          "hint_text": "mevcut user adını yazdırır",
+          "hint_partial": "whoa..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-009-r99",
+      "type": "single",
+      "scenario": "Deploy sonrasi data.csv file'i herkes okuyabilsin ama sadece owner yazabilsin.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod 644 data.csv",
+          "hint_text": "owner rw=6, group r=6, other r=6",
+          "hint_partial": "chmod 6.. ..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-010-r100",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde geçici olarak root privilege'larıyla apt update çalıştır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sudo apt update",
+          "hint_text": "sudo ile komutu yüksek privilegeyle çalıştır",
+          "hint_partial": "sudo ..."
+        }
+      ]
+    },
+    {
+      "id": "perm-001-r101",
+      "type": "single",
+      "scenario": "Yeni acilan hostta file ve klasor permission'larını uzun formatta listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls -l",
+          "hint_text": "Izin bitlerini gormek icin ls komutunun uzun formatini kullan",
+          "hint_partial": "ls .."
+        }
+      ]
+    },
+    {
+      "id": "perm-002-r102",
+      "type": "single",
+      "scenario": "Runbook adiminda script.sh file'a calistirma izni ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod +x script.sh",
+          "hint_text": "Calistirma izni eklemek icin chmod ile +x kullan",
+          "hint_partial": "chmod ... script.sh"
+        }
+      ]
+    },
+    {
+      "id": "perm-003-r103",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde notes.txt file'in permission'larını 644 olarak ayarla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod 644 notes.txt",
+          "hint_text": "Sayisal permissionlerle chmod kullan",
+          "hint_partial": "chmod 644 ..."
+        }
+      ]
+    },
+    {
+      "id": "perm-004-r104",
+      "type": "multi-step",
+      "scenario": "Incident sonrasinda script.sh file'a calistirma izni ver ve sonra permission'larını kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod +x script.sh",
+          "hint_text": "Ilk adimda file'ı calistirilabilir yap",
+          "hint_partial": "chmod ... script.sh"
+        },
+        {
+          "prompt": "$ ",
+          "answer": "ls -l script.sh",
+          "hint_text": "Tek file'in permission'larını uzun formatta goster",
+          "hint_partial": "ls -l ..."
+        }
+      ]
+    },
+    {
+      "id": "perm-005-r105",
+      "type": "single",
+      "scenario": "Bakim oncesi geçerli user'ı öğren.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "whoami",
+          "hint_text": "Aktif user adini gosteren basit komut",
+          "hint_partial": "w..."
+        }
+      ]
+    },
+    {
+      "id": "perm-006-r106",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda shared directory'sinin permission'larını 755 olarak ayarla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod 755 shared",
+          "hint_text": "Klasor permission'larını sayisal formatla ver",
+          "hint_partial": "chmod 755 ..."
+        }
+      ]
+    },
+    {
+      "id": "perm-007-r107",
+      "type": "single",
+      "scenario": "Deploy sonrasi filenin sahipligini uzun liste ciktisinda kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls -l file.txt",
+          "hint_text": "Tek file icin uzun format kullan",
+          "hint_partial": "ls -l ..."
+        }
+      ]
+    },
+    {
+      "id": "perm-008-r108",
+      "type": "multi-step",
+      "scenario": "Kesinti incelemesinde private.txt file'ini sadece owner okuyup yazabilecek hale getir ve sonra permission'larını kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod 600 private.txt",
+          "hint_text": "Sadece owner icin rw izni ver",
+          "hint_partial": "chmod 600 ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "ls -l private.txt",
+          "hint_text": "Degisiklik sonrasi permission'ları kontrol et",
+          "hint_partial": "ls -l ..."
+        }
+      ]
+    },
+    {
+      "id": "perm-009-r109",
+      "type": "single",
+      "scenario": "Yeni acilan hostta run.sh file'a sadece owner icin calistirma izni ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod u+x run.sh",
+          "hint_text": "Sembolik olarak owner icin x izni ekle",
+          "hint_partial": "chmod ... run.sh"
+        }
+      ]
+    },
+    {
+      "id": "perm-010-r110",
+      "type": "single",
+      "scenario": "Runbook adiminda report.txt file'in permission'larını 640 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod 640 report.txt",
+          "hint_text": "Sayisal permission kullan",
+          "hint_partial": "chmod 640 ..."
+        }
+      ]
+    },
+    {
+      "id": "perm-011-r111",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde geçerli user'ın UID ve group bilgisini göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "id",
+          "hint_text": "Kullanicinin kimlik bilgisini veren komut",
+          "hint_partial": "i..."
+        }
+      ]
+    },
+    {
+      "id": "perm-012-r112",
+      "type": "single",
+      "scenario": "Incident sonrasinda script.sh file'inden tum userlar icin yazma permission'i kaldir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod a-w script.sh",
+          "hint_text": "Tum userlardan yazma permission'i kaldir",
+          "hint_partial": "chmod ... script.sh"
+        }
+      ]
+    },
+    {
+      "id": "perm-013-r113",
+      "type": "single",
+      "scenario": "Bakim oncesi shared directory'sini owner ve group icin yazilabilir, digerleri icin sadece okunur yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod 775 shared",
+          "hint_text": "Sayisal permissionle owner/group rwx, others rx ver",
+          "hint_partial": "chmod 775 ..."
+        }
+      ]
+    },
+    {
+      "id": "perm-014-r114",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda run.sh file'in permission bitlerini sayisal olarak goruntulemek icin uzun liste al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls -l run.sh",
+          "hint_text": "Tek file icin uzun format listeleme",
+          "hint_partial": "ls -l ..."
+        }
+      ]
+    },
+    {
+      "id": "perm-015-r115",
+      "type": "multi-step",
+      "scenario": "Deploy sonrasi run.sh file'ini calistirilabilir yap ve sonra aktif user'ı goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod +x run.sh",
+          "hint_text": "Ilk adimda file'a x izni ekle",
+          "hint_partial": "chmod ... run.sh"
+        },
+        {
+          "prompt": "$ ",
+          "answer": "whoami",
+          "hint_text": "Sonra aktif user'ı goster",
+          "hint_partial": "w..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-001-r116",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde deploy.sh file'ına herkes için çalıştırma izni ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod +x deploy.sh",
+          "hint_text": "chmod ile +x çalıştırma izni ekler",
+          "hint_partial": "chmod +x ..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-002-r117",
+      "type": "single",
+      "scenario": "Yeni acilan hostta config.env file'i sadece owner okuyup yazabilsin, başkası hiçbir şey yapmasın. Sayısal notasyon kullan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod 600 config.env",
+          "hint_text": "owner rw = 6, group = 0, other = 0",
+          "hint_partial": "chmod 6.. ..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-003-r118",
+      "type": "single",
+      "scenario": "Runbook adiminda script.sh file'inin owner'ını deploy user'a değiştir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chown deploy script.sh",
+          "hint_text": "change owner komutu",
+          "hint_partial": "chown ..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-004-r119",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde app/ directory'sini ve içindeki her şeyi www-data user'a ve group'una ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chown -R www-data:www-data app/",
+          "hint_text": "chown recursive, user:group format",
+          "hint_partial": "chown -R www-data:www-data ..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-005-r120",
+      "type": "single",
+      "scenario": "Incident sonrasinda private.key file'inin permission'larını göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls -l private.key",
+          "hint_text": "ls -l tek file için de çalışır",
+          "hint_partial": "ls -l ..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-006-r121",
+      "type": "single",
+      "scenario": "Bakim oncesi mevcut user'ın hangi group'lara üye olduğunu göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "groups",
+          "hint_text": "doğrudan groups komutu",
+          "hint_partial": "group..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-007-r122",
+      "type": "multi-step",
+      "scenario": "Troubleshooting sirasinda backup.sh file'ı oluştur, sonra sadece owner çalıştırabilsin diye permission'larını ayarla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "touch backup.sh",
+          "hint_text": "boş file oluşturmak için touch",
+          "hint_partial": "touch ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "chmod 700 backup.sh",
+          "hint_text": "sadece owner için rwx = 7, diğerleri 0",
+          "hint_partial": "chmod 7.. ..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-008-r123",
+      "type": "single",
+      "scenario": "Deploy sonrasi kimin session açtığını ve hangi privilegelerle çalıştığını gör.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "whoami",
+          "hint_text": "mevcut user adını yazdırır",
+          "hint_partial": "whoa..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-009-r124",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde data.csv file'i herkes okuyabilsin ama sadece owner yazabilsin.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod 644 data.csv",
+          "hint_text": "owner rw=6, group r=6, other r=6",
+          "hint_partial": "chmod 6.. ..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-010-r125",
+      "type": "single",
+      "scenario": "Yeni acilan hostta geçici olarak root privilege'larıyla apt update çalıştır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sudo apt update",
+          "hint_text": "sudo ile komutu yüksek privilegeyle çalıştır",
+          "hint_partial": "sudo ..."
+        }
+      ]
+    },
+    {
+      "id": "perm-001-r126",
+      "type": "single",
+      "scenario": "Runbook adiminda file ve klasor permission'larını uzun formatta listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls -l",
+          "hint_text": "Izin bitlerini gormek icin ls komutunun uzun formatini kullan",
+          "hint_partial": "ls .."
+        }
+      ]
+    },
+    {
+      "id": "perm-002-r127",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde script.sh file'a calistirma izni ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod +x script.sh",
+          "hint_text": "Calistirma izni eklemek icin chmod ile +x kullan",
+          "hint_partial": "chmod ... script.sh"
+        }
+      ]
+    },
+    {
+      "id": "perm-003-r128",
+      "type": "single",
+      "scenario": "Incident sonrasinda notes.txt file'in permission'larını 644 olarak ayarla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod 644 notes.txt",
+          "hint_text": "Sayisal permissionlerle chmod kullan",
+          "hint_partial": "chmod 644 ..."
+        }
+      ]
+    },
+    {
+      "id": "perm-004-r129",
+      "type": "multi-step",
+      "scenario": "Bakim oncesi script.sh file'a calistirma izni ver ve sonra permission'larını kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod +x script.sh",
+          "hint_text": "Ilk adimda file'ı calistirilabilir yap",
+          "hint_partial": "chmod ... script.sh"
+        },
+        {
+          "prompt": "$ ",
+          "answer": "ls -l script.sh",
+          "hint_text": "Tek file'in permission'larını uzun formatta goster",
+          "hint_partial": "ls -l ..."
+        }
+      ]
+    },
+    {
+      "id": "perm-005-r130",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda geçerli user'ı öğren.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "whoami",
+          "hint_text": "Aktif user adini gosteren basit komut",
+          "hint_partial": "w..."
+        }
+      ]
+    },
+    {
+      "id": "perm-006-r131",
+      "type": "single",
+      "scenario": "Deploy sonrasi shared directory'sinin permission'larını 755 olarak ayarla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod 755 shared",
+          "hint_text": "Klasor permission'larını sayisal formatla ver",
+          "hint_partial": "chmod 755 ..."
+        }
+      ]
+    },
+    {
+      "id": "perm-007-r132",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde filenin sahipligini uzun liste ciktisinda kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls -l file.txt",
+          "hint_text": "Tek file icin uzun format kullan",
+          "hint_partial": "ls -l ..."
+        }
+      ]
+    },
+    {
+      "id": "perm-008-r133",
+      "type": "multi-step",
+      "scenario": "Yeni acilan hostta private.txt file'ini sadece owner okuyup yazabilecek hale getir ve sonra permission'larını kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod 600 private.txt",
+          "hint_text": "Sadece owner icin rw izni ver",
+          "hint_partial": "chmod 600 ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "ls -l private.txt",
+          "hint_text": "Degisiklik sonrasi permission'ları kontrol et",
+          "hint_partial": "ls -l ..."
+        }
+      ]
+    },
+    {
+      "id": "perm-009-r134",
+      "type": "single",
+      "scenario": "Runbook adiminda run.sh file'a sadece owner icin calistirma izni ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod u+x run.sh",
+          "hint_text": "Sembolik olarak owner icin x izni ekle",
+          "hint_partial": "chmod ... run.sh"
+        }
+      ]
+    },
+    {
+      "id": "perm-010-r135",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde report.txt file'in permission'larını 640 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod 640 report.txt",
+          "hint_text": "Sayisal permission kullan",
+          "hint_partial": "chmod 640 ..."
+        }
+      ]
+    },
+    {
+      "id": "perm-011-r136",
+      "type": "single",
+      "scenario": "Incident sonrasinda geçerli user'ın UID ve group bilgisini göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "id",
+          "hint_text": "Kullanicinin kimlik bilgisini veren komut",
+          "hint_partial": "i..."
+        }
+      ]
+    },
+    {
+      "id": "perm-012-r137",
+      "type": "single",
+      "scenario": "Bakim oncesi script.sh file'inden tum userlar icin yazma permission'i kaldir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod a-w script.sh",
+          "hint_text": "Tum userlardan yazma permission'i kaldir",
+          "hint_partial": "chmod ... script.sh"
+        }
+      ]
+    },
+    {
+      "id": "perm-013-r138",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda shared directory'sini owner ve group icin yazilabilir, digerleri icin sadece okunur yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod 775 shared",
+          "hint_text": "Sayisal permissionle owner/group rwx, others rx ver",
+          "hint_partial": "chmod 775 ..."
+        }
+      ]
+    },
+    {
+      "id": "perm-014-r139",
+      "type": "single",
+      "scenario": "Deploy sonrasi run.sh file'in permission bitlerini sayisal olarak goruntulemek icin uzun liste al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls -l run.sh",
+          "hint_text": "Tek file icin uzun format listeleme",
+          "hint_partial": "ls -l ..."
+        }
+      ]
+    },
+    {
+      "id": "perm-015-r140",
+      "type": "multi-step",
+      "scenario": "Kesinti incelemesinde run.sh file'ini calistirilabilir yap ve sonra aktif user'ı goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod +x run.sh",
+          "hint_text": "Ilk adimda file'a x izni ekle",
+          "hint_partial": "chmod ... run.sh"
+        },
+        {
+          "prompt": "$ ",
+          "answer": "whoami",
+          "hint_text": "Sonra aktif user'ı goster",
+          "hint_partial": "w..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-001-r141",
+      "type": "single",
+      "scenario": "Yeni acilan hostta deploy.sh file'ına herkes için çalıştırma izni ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod +x deploy.sh",
+          "hint_text": "chmod ile +x çalıştırma izni ekler",
+          "hint_partial": "chmod +x ..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-002-r142",
+      "type": "single",
+      "scenario": "Runbook adiminda config.env file'i sadece owner okuyup yazabilsin, başkası hiçbir şey yapmasın. Sayısal notasyon kullan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod 600 config.env",
+          "hint_text": "owner rw = 6, group = 0, other = 0",
+          "hint_partial": "chmod 6.. ..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-003-r143",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde script.sh file'inin owner'ını deploy user'a değiştir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chown deploy script.sh",
+          "hint_text": "change owner komutu",
+          "hint_partial": "chown ..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-004-r144",
+      "type": "single",
+      "scenario": "Incident sonrasinda app/ directory'sini ve içindeki her şeyi www-data user'a ve group'una ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chown -R www-data:www-data app/",
+          "hint_text": "chown recursive, user:group format",
+          "hint_partial": "chown -R www-data:www-data ..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-005-r145",
+      "type": "single",
+      "scenario": "Bakim oncesi private.key file'inin permission'larını göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls -l private.key",
+          "hint_text": "ls -l tek file için de çalışır",
+          "hint_partial": "ls -l ..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-006-r146",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda mevcut user'ın hangi group'lara üye olduğunu göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "groups",
+          "hint_text": "doğrudan groups komutu",
+          "hint_partial": "group..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-007-r147",
+      "type": "multi-step",
+      "scenario": "Deploy sonrasi backup.sh file'ı oluştur, sonra sadece owner çalıştırabilsin diye permission'larını ayarla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "touch backup.sh",
+          "hint_text": "boş file oluşturmak için touch",
+          "hint_partial": "touch ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "chmod 700 backup.sh",
+          "hint_text": "sadece owner için rwx = 7, diğerleri 0",
+          "hint_partial": "chmod 7.. ..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-008-r148",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde kimin session açtığını ve hangi privilegelerle çalıştığını gör.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "whoami",
+          "hint_text": "mevcut user adını yazdırır",
+          "hint_partial": "whoa..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-009-r149",
+      "type": "single",
+      "scenario": "Yeni acilan hostta data.csv file'i herkes okuyabilsin ama sadece owner yazabilsin.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod 644 data.csv",
+          "hint_text": "owner rw=6, group r=6, other r=6",
+          "hint_partial": "chmod 6.. ..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-010-r150",
+      "type": "single",
+      "scenario": "Runbook adiminda geçici olarak root privilege'larıyla apt update çalıştır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sudo apt update",
+          "hint_text": "sudo ile komutu yüksek privilegeyle çalıştır",
+          "hint_partial": "sudo ..."
+        }
+      ]
+    },
+    {
+      "id": "perm-001-r151",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde file ve klasor permission'larını uzun formatta listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls -l",
+          "hint_text": "Izin bitlerini gormek icin ls komutunun uzun formatini kullan",
+          "hint_partial": "ls .."
+        }
+      ]
+    },
+    {
+      "id": "perm-002-r152",
+      "type": "single",
+      "scenario": "Incident sonrasinda script.sh file'a calistirma izni ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod +x script.sh",
+          "hint_text": "Calistirma izni eklemek icin chmod ile +x kullan",
+          "hint_partial": "chmod ... script.sh"
+        }
+      ]
+    },
+    {
+      "id": "perm-003-r153",
+      "type": "single",
+      "scenario": "Bakim oncesi notes.txt file'in permission'larını 644 olarak ayarla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod 644 notes.txt",
+          "hint_text": "Sayisal permissionlerle chmod kullan",
+          "hint_partial": "chmod 644 ..."
+        }
+      ]
+    },
+    {
+      "id": "perm-004-r154",
+      "type": "multi-step",
+      "scenario": "Troubleshooting sirasinda script.sh file'a calistirma izni ver ve sonra permission'larını kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod +x script.sh",
+          "hint_text": "Ilk adimda file'ı calistirilabilir yap",
+          "hint_partial": "chmod ... script.sh"
+        },
+        {
+          "prompt": "$ ",
+          "answer": "ls -l script.sh",
+          "hint_text": "Tek file'in permission'larını uzun formatta goster",
+          "hint_partial": "ls -l ..."
+        }
+      ]
+    },
+    {
+      "id": "perm-005-r155",
+      "type": "single",
+      "scenario": "Deploy sonrasi geçerli user'ı öğren.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "whoami",
+          "hint_text": "Aktif user adini gosteren basit komut",
+          "hint_partial": "w..."
+        }
+      ]
+    },
+    {
+      "id": "perm-006-r156",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde shared directory'sinin permission'larını 755 olarak ayarla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod 755 shared",
+          "hint_text": "Klasor permission'larını sayisal formatla ver",
+          "hint_partial": "chmod 755 ..."
+        }
+      ]
+    },
+    {
+      "id": "perm-007-r157",
+      "type": "single",
+      "scenario": "Yeni acilan hostta filenin sahipligini uzun liste ciktisinda kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls -l file.txt",
+          "hint_text": "Tek file icin uzun format kullan",
+          "hint_partial": "ls -l ..."
+        }
+      ]
+    },
+    {
+      "id": "perm-008-r158",
+      "type": "multi-step",
+      "scenario": "Runbook adiminda private.txt file'ini sadece owner okuyup yazabilecek hale getir ve sonra permission'larını kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod 600 private.txt",
+          "hint_text": "Sadece owner icin rw izni ver",
+          "hint_partial": "chmod 600 ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "ls -l private.txt",
+          "hint_text": "Degisiklik sonrasi permission'ları kontrol et",
+          "hint_partial": "ls -l ..."
+        }
+      ]
+    },
+    {
+      "id": "perm-009-r159",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde run.sh file'a sadece owner icin calistirma izni ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod u+x run.sh",
+          "hint_text": "Sembolik olarak owner icin x izni ekle",
+          "hint_partial": "chmod ... run.sh"
+        }
+      ]
+    },
+    {
+      "id": "perm-010-r160",
+      "type": "single",
+      "scenario": "Incident sonrasinda report.txt file'in permission'larını 640 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod 640 report.txt",
+          "hint_text": "Sayisal permission kullan",
+          "hint_partial": "chmod 640 ..."
+        }
+      ]
+    },
+    {
+      "id": "perm-011-r161",
+      "type": "single",
+      "scenario": "Bakim oncesi geçerli user'ın UID ve group bilgisini göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "id",
+          "hint_text": "Kullanicinin kimlik bilgisini veren komut",
+          "hint_partial": "i..."
+        }
+      ]
+    },
+    {
+      "id": "perm-012-r162",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda script.sh file'inden tum userlar icin yazma permission'i kaldir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod a-w script.sh",
+          "hint_text": "Tum userlardan yazma permission'i kaldir",
+          "hint_partial": "chmod ... script.sh"
+        }
+      ]
+    },
+    {
+      "id": "perm-013-r163",
+      "type": "single",
+      "scenario": "Deploy sonrasi shared directory'sini owner ve group icin yazilabilir, digerleri icin sadece okunur yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod 775 shared",
+          "hint_text": "Sayisal permissionle owner/group rwx, others rx ver",
+          "hint_partial": "chmod 775 ..."
+        }
+      ]
+    },
+    {
+      "id": "perm-014-r164",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde run.sh file'in permission bitlerini sayisal olarak goruntulemek icin uzun liste al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls -l run.sh",
+          "hint_text": "Tek file icin uzun format listeleme",
+          "hint_partial": "ls -l ..."
+        }
+      ]
+    },
+    {
+      "id": "perm-015-r165",
+      "type": "multi-step",
+      "scenario": "Yeni acilan hostta run.sh file'ini calistirilabilir yap ve sonra aktif user'ı goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod +x run.sh",
+          "hint_text": "Ilk adimda file'a x izni ekle",
+          "hint_partial": "chmod ... run.sh"
+        },
+        {
+          "prompt": "$ ",
+          "answer": "whoami",
+          "hint_text": "Sonra aktif user'ı goster",
+          "hint_partial": "w..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-001-r166",
+      "type": "single",
+      "scenario": "Runbook adiminda deploy.sh file'ına herkes için çalıştırma izni ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod +x deploy.sh",
+          "hint_text": "chmod ile +x çalıştırma izni ekler",
+          "hint_partial": "chmod +x ..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-002-r167",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde config.env file'i sadece owner okuyup yazabilsin, başkası hiçbir şey yapmasın. Sayısal notasyon kullan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod 600 config.env",
+          "hint_text": "owner rw = 6, group = 0, other = 0",
+          "hint_partial": "chmod 6.. ..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-003-r168",
+      "type": "single",
+      "scenario": "Incident sonrasinda script.sh file'inin owner'ını deploy user'a değiştir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chown deploy script.sh",
+          "hint_text": "change owner komutu",
+          "hint_partial": "chown ..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-004-r169",
+      "type": "single",
+      "scenario": "Bakim oncesi app/ directory'sini ve içindeki her şeyi www-data user'a ve group'una ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chown -R www-data:www-data app/",
+          "hint_text": "chown recursive, user:group format",
+          "hint_partial": "chown -R www-data:www-data ..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-005-r170",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda private.key file'inin permission'larını göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls -l private.key",
+          "hint_text": "ls -l tek file için de çalışır",
+          "hint_partial": "ls -l ..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-006-r171",
+      "type": "single",
+      "scenario": "Deploy sonrasi mevcut user'ın hangi group'lara üye olduğunu göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "groups",
+          "hint_text": "doğrudan groups komutu",
+          "hint_partial": "group..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-007-r172",
+      "type": "multi-step",
+      "scenario": "Kesinti incelemesinde backup.sh file'ı oluştur, sonra sadece owner çalıştırabilsin diye permission'larını ayarla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "touch backup.sh",
+          "hint_text": "boş file oluşturmak için touch",
+          "hint_partial": "touch ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "chmod 700 backup.sh",
+          "hint_text": "sadece owner için rwx = 7, diğerleri 0",
+          "hint_partial": "chmod 7.. ..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-008-r173",
+      "type": "single",
+      "scenario": "Yeni acilan hostta kimin session açtığını ve hangi privilegelerle çalıştığını gör.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "whoami",
+          "hint_text": "mevcut user adını yazdırır",
+          "hint_partial": "whoa..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-009-r174",
+      "type": "single",
+      "scenario": "Runbook adiminda data.csv file'i herkes okuyabilsin ama sadece owner yazabilsin.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod 644 data.csv",
+          "hint_text": "owner rw=6, group r=6, other r=6",
+          "hint_partial": "chmod 6.. ..."
+        }
+      ]
+    },
+    {
+      "id": "jperm-010-r175",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde geçici olarak root privilege'larıyla apt update çalıştır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sudo apt update",
+          "hint_text": "sudo ile komutu yüksek privilegeyle çalıştır",
+          "hint_partial": "sudo ..."
+        }
+      ]
+    }
+  ]
+}

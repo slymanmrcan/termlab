@@ -1,0 +1,118 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;700&display=swap");
+@import "tailwindcss";
+
+:root {
+  --font-space-grotesk: "Space Grotesk";
+  --font-ibm-plex-mono: "IBM Plex Mono";
+  --background: #020402;
+  --foreground: #d4d4d8;
+  --panel: #09090b;
+  --terminal-grid: rgba(34, 197, 94, 0.08);
+  --terminal-green: #86efac;
+  --terminal-green-strong: #4ade80;
+  --terminal-muted: #71717a;
+  --terminal-amber: #facc15;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-space-grotesk);
+  --font-mono: var(--font-ibm-plex-mono);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-space-grotesk), sans-serif;
+  background-image:
+    radial-gradient(circle at top, rgba(34, 197, 94, 0.2), transparent 24%),
+    radial-gradient(circle at bottom right, rgba(20, 83, 45, 0.16), transparent 20%),
+    linear-gradient(180deg, rgba(6, 10, 8, 0.98), rgba(2, 4, 2, 1));
+}
+
+code,
+pre,
+.font-mono {
+  font-family: var(--font-ibm-plex-mono), monospace;
+}
+
+::selection {
+  background: rgba(34, 197, 94, 0.35);
+  color: #f0fdf4;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #09090b;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(63, 63, 70, 0.95);
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.terminal-cursor {
+  animation: blink 1s step-end infinite;
+}
+
+.terminal-grid {
+  background-image:
+    linear-gradient(rgba(34, 197, 94, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34, 197, 94, 0.04) 1px, transparent 1px);
+  background-position: center;
+  background-size: 100% 28px, 28px 100%;
+}
+
+.terminal-shell {
+  position: relative;
+}
+
+.terminal-shell::after {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.02),
+    transparent 16%,
+    transparent 84%,
+    rgba(16, 185, 129, 0.04)
+  );
+}
+
+#root {
+  min-height: 100vh;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}

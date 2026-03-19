@@ -1,0 +1,2606 @@
+{
+  "level": "senior",
+  "topic": "ansible",
+  "questions": [
+    {
+      "id": "sans-001-exp-001",
+      "type": "single",
+      "scenario": "Gece vardiyasinda playbook syntax check yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-201.yml -i inventory-201 --syntax-check",
+          "hint_text": "Syntax kontrolu icin `--syntax-check` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-002-exp-002",
+      "type": "single",
+      "scenario": "Audit sirasinda `Deploy app` task'inden baslayarak playbook'u calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-202.yml -i inventory-202 --start-at-task 'Deploy app'",
+          "hint_text": "Belirli task'ten devam etmek icin `--start-at-task` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-003-exp-003",
+      "type": "single",
+      "scenario": "Bakim penceresinde playbook'u sadece `queue-203-203` ve `prod` kesisimi host'larda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-203.yml -i inventory-203 --limit 'queue-203-203:&prod'",
+          "hint_text": "Inventory pattern ile grup kesisimi al.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-004-exp-004",
+      "type": "single",
+      "scenario": "Incident triajinda `group_vars/prod-204.yml` vault dosyasinin sifresini degistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-vault rekey group_vars/prod-204.yml",
+          "hint_text": "Vault rekey icin `ansible-vault rekey` kullan.",
+          "hint_partial": "ansible-vault ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-005-exp-005",
+      "type": "single",
+      "scenario": "Release kontrolunde `requirements-205.yml` icindeki role'leri yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-galaxy role install -r requirements-205.yml",
+          "hint_text": "Role install icin `ansible-galaxy role install -r` kullan.",
+          "hint_partial": "ansible-galaxy ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-006-exp-006",
+      "type": "single",
+      "scenario": "Operasyon devrinde tum host'larda `/srv/app/queue-206-206/app/queue-206` directory'sini 0755 ile olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-206 -b -m file -a 'path=/srv/app/queue-206-206/app/queue-206 state=directory mode=3'",
+          "hint_text": "File module ile directory olustur.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-007-exp-007",
+      "type": "single",
+      "scenario": "On-call gorevinde tum host'larda `deploy` kullanicisini `docker` grubuna ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-207 -b -m user -a 'name=deploy groups=docker append=yes'",
+          "hint_text": "User module ile gruba ekle.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-008-exp-008",
+      "type": "single",
+      "scenario": "Kesinti sonrasi playbook'u `env=prod` extra var'i ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-208.yml -i inventory-208 -e env=prod",
+          "hint_text": "Extra var icin `-e key=value` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-009-exp-009",
+      "type": "single",
+      "scenario": "Gece vardiyasinda playbook'u 20 fork ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-209.yml -i inventory-209 --forks 20",
+          "hint_text": "Paralellik icin `--forks` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-010-exp-010",
+      "type": "single",
+      "scenario": "Audit sirasinda inventory'yi graph seklinde goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-inventory-210 -i inventory-210 --graph",
+          "hint_text": "Grup grafi icin `ansible-inventory-210 --graph` kullan.",
+          "hint_partial": "ansible-inventory-210 ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-001-r1-exp-011",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi playbook syntax check yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-1.yml -i inventory-211-1 --syntax-check",
+          "hint_text": "Syntax kontrolu icin `--syntax-check` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-002-r2-exp-012",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda `Deploy app` task'inden baslayarak playbook'u calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-2.yml -i inventory-212-2 --start-at-task 'Deploy app'",
+          "hint_text": "Belirli task'ten devam etmek icin `--start-at-task` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-003-r3-exp-013",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi playbook'u sadece `bastion-213-3` ve `dev-3` kesisimi host'larda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-3.yml -i inventory-213-3 --limit 'bastion-213-3:&dev-3'",
+          "hint_text": "Inventory pattern ile grup kesisimi al.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-004-r4-exp-014",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde `group_vars/monitoring-4-4.yml` vault dosyasinin sifresini degistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-vault rekey group_vars/monitoring-4-4.yml",
+          "hint_text": "Vault rekey icin `ansible-vault rekey` kullan.",
+          "hint_partial": "ansible-vault ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-005-r5-exp-015",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta `requirements-5.yml` icindeki role'leri yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-galaxy role install -r requirements-5.yml",
+          "hint_text": "Role install icin `ansible-galaxy role install -r` kullan.",
+          "hint_partial": "ansible-galaxy ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-006-r6-exp-016",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda tum host'larda `/srv/app/bastion-216-216/app/bastion-216/queue-6-6/app/bastion-216/queue-6` directory'sini 0755 ile olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-216-6 -b -m file -a 'path=/srv/app/bastion-216-216/app/bastion-216/queue-6-6/app/bastion-216/queue-6 state=directory mode=7'",
+          "hint_text": "File module ile directory olustur.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-007-r7-exp-017",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde tum host'larda `deploy` kullanicisini `docker` grubuna ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-217-7 -b -m user -a 'name=deploy groups=docker append=yes'",
+          "hint_text": "User module ile gruba ekle.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-008-r8-exp-018",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda playbook'u `env=stage-8-8` extra var'i ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-8.yml -i inventory-218-8 -e env=stage-8-8",
+          "hint_text": "Extra var icin `-e key=value` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-009-r9-exp-019",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi playbook'u 20 fork ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-9.yml -i inventory-219-9 --forks 20",
+          "hint_text": "Paralellik icin `--forks` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-010-r10-exp-020",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda inventory-220'yi graph seklinde goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-inventory-220-10 -i inventory-220-10 --graph",
+          "hint_text": "Grup grafi icin `ansible-inventory-220-10 --graph` kullan.",
+          "hint_partial": "ansible-inventory-220-10 ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-001-r11-exp-021",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi playbook syntax check yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-11.yml -i inventory-221-11 --syntax-check",
+          "hint_text": "Syntax kontrolu icin `--syntax-check` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-002-r12-exp-022",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde `Deploy app` task'inden baslayarak playbook'u calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-12.yml -i inventory-222-12 --start-at-task 'Deploy app'",
+          "hint_text": "Belirli task'ten devam etmek icin `--start-at-task` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-003-r13-exp-023",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta playbook'u sadece `cache-223-13-13` ve `prod-13` kesisimi host'larda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-13.yml -i inventory-223-13 --limit 'cache-223-13-13:&prod-13'",
+          "hint_text": "Inventory pattern ile grup kesisimi al.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-004-r14-exp-024",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda `group_vars/stage-14-14-14.yml` vault dosyasinin sifresini degistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-vault rekey group_vars/stage-14-14-14.yml",
+          "hint_text": "Vault rekey icin `ansible-vault rekey` kullan.",
+          "hint_partial": "ansible-vault ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-005-r15-exp-025",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde `requirements-15.yml` icindeki role'leri yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-galaxy role install -r requirements-15.yml",
+          "hint_text": "Role install icin `ansible-galaxy role install -r` kullan.",
+          "hint_partial": "ansible-galaxy ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-006-r16-exp-026",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda tum host'larda `/srv/app/cache-226-226-226-226/app/cache-226-226-226/proxy-16-16/app/cache-226-226-226/proxy-16` directory'sini 0755 ile olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-226-16 -b -m file -a 'path=/srv/app/cache-226-226-226-226/app/cache-226-226-226/proxy-16-16/app/cache-226-226-226/proxy-16 state=directory mode=5'",
+          "hint_text": "File module ile directory olustur.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-007-r17-exp-027",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi tum host'larda `deploy` kullanicisini `docker` grubuna ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-227-17 -b -m user -a 'name=deploy groups=docker append=yes'",
+          "hint_text": "User module ile gruba ekle.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-008-r18-exp-028",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda playbook'u `env=ops-18` extra var'i ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-18.yml -i inventory-228-18 -e env=ops-18",
+          "hint_text": "Extra var icin `-e key=value` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-009-r19-exp-029",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi playbook'u 20 fork ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-19.yml -i inventory-229-19 --forks 20",
+          "hint_text": "Paralellik icin `--forks` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-010-r20-exp-030",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde inventory-230'yi graph seklinde goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-inventory-230-20 -i inventory-230-20 --graph",
+          "hint_text": "Grup grafi icin `ansible-inventory-230-20 --graph` kullan.",
+          "hint_partial": "ansible-inventory-230-20 ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-001-r21-exp-031",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta playbook syntax check yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-21.yml -i inventory-231-21 --syntax-check",
+          "hint_text": "Syntax kontrolu icin `--syntax-check` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-002-r22-exp-032",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda `Deploy app` task'inden baslayarak playbook'u calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-22.yml -i inventory-232-22 --start-at-task 'Deploy app'",
+          "hint_text": "Belirli task'ten devam etmek icin `--start-at-task` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-003-r23-exp-033",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde playbook'u sadece `bastion-23` ve `payments-23` kesisimi host'larda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-23.yml -i inventory-233-23 --limit 'bastion-23:&payments-23'",
+          "hint_text": "Inventory pattern ile grup kesisimi al.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-004-r24-exp-034",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda `group_vars/ops-24-24.yml` vault dosyasinin sifresini degistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-vault rekey group_vars/ops-24-24.yml",
+          "hint_text": "Vault rekey icin `ansible-vault rekey` kullan.",
+          "hint_partial": "ansible-vault ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-005-r25-exp-035",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi `requirements-25.yml` icindeki role'leri yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-galaxy role install -r requirements-25.yml",
+          "hint_text": "Role install icin `ansible-galaxy role install -r` kullan.",
+          "hint_partial": "ansible-galaxy ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-006-r26-exp-036",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda tum host'larda `/srv/app/db-236-236-236/app/db-236-236/cache-236-26-26-26-26/app/db-236-236/cache-236-26-26-26` directory'sini 0755 ile olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-236-26 -b -m file -a 'path=/srv/app/db-236-236-236/app/db-236-236/cache-236-26-26-26-26/app/db-236-236/cache-236-26-26-26 state=directory mode=3'",
+          "hint_text": "File module ile directory olustur.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-007-r27-exp-037",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi tum host'larda `deploy` kullanicisini `docker` grubuna ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-237-27 -b -m user -a 'name=deploy groups=docker append=yes'",
+          "hint_text": "User module ile gruba ekle.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-008-r28-exp-038",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde playbook'u `env=monitoring-28` extra var'i ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-28.yml -i inventory-238-28 -e env=monitoring-28",
+          "hint_text": "Extra var icin `-e key=value` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-009-r29-exp-039",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta playbook'u 20 fork ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-29.yml -i inventory-239-29 --forks 20",
+          "hint_text": "Paralellik icin `--forks` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-010-r30-exp-040",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda inventory-240'yi graph seklinde goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-inventory-240-30 -i inventory-240-30 --graph",
+          "hint_text": "Grup grafi icin `ansible-inventory-240-30 --graph` kullan.",
+          "hint_partial": "ansible-inventory-240-30 ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-001-r31-exp-041",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde playbook syntax check yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-31.yml -i inventory-241-31 --syntax-check",
+          "hint_text": "Syntax kontrolu icin `--syntax-check` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-002-r32-exp-042",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda `Deploy app` task'inden baslayarak playbook'u calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-32.yml -i inventory-242-32 --start-at-task 'Deploy app'",
+          "hint_text": "Belirli task'ten devam etmek icin `--start-at-task` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-003-r33-exp-043",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi playbook'u sadece `queue-243-243-33` ve `dev-33` kesisimi host'larda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-33.yml -i inventory-243-33 --limit 'queue-243-243-33:&dev-33'",
+          "hint_text": "Inventory pattern ile grup kesisimi al.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-004-r34-exp-044",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda `group_vars/monitoring-34-34.yml` vault dosyasinin sifresini degistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-vault rekey group_vars/monitoring-34-34.yml",
+          "hint_text": "Vault rekey icin `ansible-vault rekey` kullan.",
+          "hint_partial": "ansible-vault ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-005-r35-exp-045",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi `requirements-35.yml` icindeki role'leri yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-galaxy role install -r requirements-35.yml",
+          "hint_text": "Role install icin `ansible-galaxy role install -r` kullan.",
+          "hint_partial": "ansible-galaxy ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-006-r36-exp-046",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde tum host'larda `/srv/app/queue-246-246/app/queue-246/db-246-36-36-36/app/queue-246/db-246-36-36` directory'sini 0755 ile olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-246-36 -b -m file -a 'path=/srv/app/queue-246-246/app/queue-246/db-246-36-36-36/app/queue-246/db-246-36-36 state=directory mode=7'",
+          "hint_text": "File module ile directory olustur.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-007-r37-exp-047",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta tum host'larda `deploy` kullanicisini `docker` grubuna ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-247-37 -b -m user -a 'name=deploy groups=docker append=yes'",
+          "hint_text": "User module ile gruba ekle.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-008-r38-exp-048",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda playbook'u `env=stage-38-38` extra var'i ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-38.yml -i inventory-248-38 -e env=stage-38-38",
+          "hint_text": "Extra var icin `-e key=value` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-009-r39-exp-049",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde playbook'u 20 fork ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-39.yml -i inventory-249-39 --forks 20",
+          "hint_text": "Paralellik icin `--forks` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-010-r40-exp-050",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda inventory-250'yi graph seklinde goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-inventory-250-40 -i inventory-250-40 --graph",
+          "hint_text": "Grup grafi icin `ansible-inventory-250-40 --graph` kullan.",
+          "hint_partial": "ansible-inventory-250-40 ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-001-r41-exp-051",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi playbook syntax check yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-41.yml -i inventory-251-41 --syntax-check",
+          "hint_text": "Syntax kontrolu icin `--syntax-check` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-002-r42-exp-052",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda `Deploy app` task'inden baslayarak playbook'u calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-42.yml -i inventory-252-42 --start-at-task 'Deploy app'",
+          "hint_text": "Belirli task'ten devam etmek icin `--start-at-task` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-003-r43-exp-053",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi playbook'u sadece `bastion-253-43` ve `prod-43` kesisimi host'larda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-43.yml -i inventory-253-43 --limit 'bastion-253-43:&prod-43'",
+          "hint_text": "Inventory pattern ile grup kesisimi al.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-004-r44-exp-054",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde `group_vars/stage-44-44-44.yml` vault dosyasinin sifresini degistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-vault rekey group_vars/stage-44-44-44.yml",
+          "hint_text": "Vault rekey icin `ansible-vault rekey` kullan.",
+          "hint_partial": "ansible-vault ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-005-r45-exp-055",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta `requirements-45.yml` icindeki role'leri yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-galaxy role install -r requirements-45.yml",
+          "hint_text": "Role install icin `ansible-galaxy role install -r` kullan.",
+          "hint_partial": "ansible-galaxy ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-006-r46-exp-056",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda tum host'larda `/srv/app/bastion-256-256/app/bastion-256/queue-46-46/app/bastion-256/queue-46` directory'sini 0755 ile olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-256-46 -b -m file -a 'path=/srv/app/bastion-256-256/app/bastion-256/queue-46-46/app/bastion-256/queue-46 state=directory mode=5'",
+          "hint_text": "File module ile directory olustur.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-007-r47-exp-057",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde tum host'larda `deploy` kullanicisini `docker` grubuna ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-257-47 -b -m user -a 'name=deploy groups=docker append=yes'",
+          "hint_text": "User module ile gruba ekle.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-008-r48-exp-058",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda playbook'u `env=ops-48` extra var'i ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-48.yml -i inventory-258-48 -e env=ops-48",
+          "hint_text": "Extra var icin `-e key=value` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-009-r49-exp-059",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi playbook'u 20 fork ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-49.yml -i inventory-259-49 --forks 20",
+          "hint_text": "Paralellik icin `--forks` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-010-r50-exp-060",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda inventory-260'yi graph seklinde goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-inventory-260-50 -i inventory-260-50 --graph",
+          "hint_text": "Grup grafi icin `ansible-inventory-260-50 --graph` kullan.",
+          "hint_partial": "ansible-inventory-260-50 ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-001-r51-exp-061",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi playbook syntax check yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-51.yml -i inventory-261-51 --syntax-check",
+          "hint_text": "Syntax kontrolu icin `--syntax-check` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-002-r52-exp-062",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde `Deploy app` task'inden baslayarak playbook'u calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-52.yml -i inventory-262-52 --start-at-task 'Deploy app'",
+          "hint_text": "Belirli task'ten devam etmek icin `--start-at-task` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-003-r53-exp-063",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta playbook'u sadece `cache-263-53-53` ve `payments-53` kesisimi host'larda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-53.yml -i inventory-263-53 --limit 'cache-263-53-53:&payments-53'",
+          "hint_text": "Inventory pattern ile grup kesisimi al.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-004-r54-exp-064",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda `group_vars/ops-54-54.yml` vault dosyasinin sifresini degistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-vault rekey group_vars/ops-54-54.yml",
+          "hint_text": "Vault rekey icin `ansible-vault rekey` kullan.",
+          "hint_partial": "ansible-vault ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-005-r55-exp-065",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde `requirements-55.yml` icindeki role'leri yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-galaxy role install -r requirements-55.yml",
+          "hint_text": "Role install icin `ansible-galaxy role install -r` kullan.",
+          "hint_partial": "ansible-galaxy ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-006-r56-exp-066",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda tum host'larda `/srv/app/cache-266-266-266-266/app/cache-266-266-266/proxy-56-56/app/cache-266-266-266/proxy-56` directory'sini 0755 ile olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-266-56 -b -m file -a 'path=/srv/app/cache-266-266-266-266/app/cache-266-266-266/proxy-56-56/app/cache-266-266-266/proxy-56 state=directory mode=3'",
+          "hint_text": "File module ile directory olustur.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-007-r57-exp-067",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi tum host'larda `deploy` kullanicisini `docker` grubuna ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-267-57 -b -m user -a 'name=deploy groups=docker append=yes'",
+          "hint_text": "User module ile gruba ekle.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-008-r58-exp-068",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda playbook'u `env=monitoring-58` extra var'i ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-58.yml -i inventory-268-58 -e env=monitoring-58",
+          "hint_text": "Extra var icin `-e key=value` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-009-r59-exp-069",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi playbook'u 20 fork ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-59.yml -i inventory-269-59 --forks 20",
+          "hint_text": "Paralellik icin `--forks` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-010-r60-exp-070",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde inventory-270'yi graph seklinde goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-inventory-270-60 -i inventory-270-60 --graph",
+          "hint_text": "Grup grafi icin `ansible-inventory-270-60 --graph` kullan.",
+          "hint_partial": "ansible-inventory-270-60 ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-001-r61-exp-071",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta playbook syntax check yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-61.yml -i inventory-271-61 --syntax-check",
+          "hint_text": "Syntax kontrolu icin `--syntax-check` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-002-r62-exp-072",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda `Deploy app` task'inden baslayarak playbook'u calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-62.yml -i inventory-272-62 --start-at-task 'Deploy app'",
+          "hint_text": "Belirli task'ten devam etmek icin `--start-at-task` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-003-r63-exp-073",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde playbook'u sadece `bastion-63` ve `dev-63` kesisimi host'larda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-63.yml -i inventory-273-63 --limit 'bastion-63:&dev-63'",
+          "hint_text": "Inventory pattern ile grup kesisimi al.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-004-r64-exp-074",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda `group_vars/monitoring-64-64.yml` vault dosyasinin sifresini degistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-vault rekey group_vars/monitoring-64-64.yml",
+          "hint_text": "Vault rekey icin `ansible-vault rekey` kullan.",
+          "hint_partial": "ansible-vault ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-005-r65-exp-075",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi `requirements-65.yml` icindeki role'leri yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-galaxy role install -r requirements-65.yml",
+          "hint_text": "Role install icin `ansible-galaxy role install -r` kullan.",
+          "hint_partial": "ansible-galaxy ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-006-r66-exp-076",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda tum host'larda `/srv/app/db-276-276-276/app/db-276-276/cache-276-66-66-66-66/app/db-276-276/cache-276-66-66-66` directory'sini 0755 ile olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-276-66 -b -m file -a 'path=/srv/app/db-276-276-276/app/db-276-276/cache-276-66-66-66-66/app/db-276-276/cache-276-66-66-66 state=directory mode=7'",
+          "hint_text": "File module ile directory olustur.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-007-r67-exp-077",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi tum host'larda `deploy` kullanicisini `docker` grubuna ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-277-67 -b -m user -a 'name=deploy groups=docker append=yes'",
+          "hint_text": "User module ile gruba ekle.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-008-r68-exp-078",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde playbook'u `env=stage-68-68` extra var'i ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-68.yml -i inventory-278-68 -e env=stage-68-68",
+          "hint_text": "Extra var icin `-e key=value` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-009-r69-exp-079",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta playbook'u 20 fork ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-69.yml -i inventory-279-69 --forks 20",
+          "hint_text": "Paralellik icin `--forks` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-010-r70-exp-080",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda inventory-280'yi graph seklinde goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-inventory-280-70 -i inventory-280-70 --graph",
+          "hint_text": "Grup grafi icin `ansible-inventory-280-70 --graph` kullan.",
+          "hint_partial": "ansible-inventory-280-70 ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-001-r71-exp-081",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde playbook syntax check yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-71.yml -i inventory-281-71 --syntax-check",
+          "hint_text": "Syntax kontrolu icin `--syntax-check` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-002-r72-exp-082",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda `Deploy app` task'inden baslayarak playbook'u calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-72.yml -i inventory-282-72 --start-at-task 'Deploy app'",
+          "hint_text": "Belirli task'ten devam etmek icin `--start-at-task` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-003-r73-exp-083",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi playbook'u sadece `queue-283-283-73` ve `prod-73` kesisimi host'larda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-73.yml -i inventory-283-73 --limit 'queue-283-283-73:&prod-73'",
+          "hint_text": "Inventory pattern ile grup kesisimi al.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-004-r74-exp-084",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda `group_vars/stage-74-74-74.yml` vault dosyasinin sifresini degistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-vault rekey group_vars/stage-74-74-74.yml",
+          "hint_text": "Vault rekey icin `ansible-vault rekey` kullan.",
+          "hint_partial": "ansible-vault ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-005-r75-exp-085",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi `requirements-75.yml` icindeki role'leri yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-galaxy role install -r requirements-75.yml",
+          "hint_text": "Role install icin `ansible-galaxy role install -r` kullan.",
+          "hint_partial": "ansible-galaxy ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-006-r76-exp-086",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde tum host'larda `/srv/app/queue-286-286/app/queue-286/db-286-76-76-76/app/queue-286/db-286-76-76` directory'sini 0755 ile olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-286-76 -b -m file -a 'path=/srv/app/queue-286-286/app/queue-286/db-286-76-76-76/app/queue-286/db-286-76-76 state=directory mode=5'",
+          "hint_text": "File module ile directory olustur.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-007-r77-exp-087",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta tum host'larda `deploy` kullanicisini `docker` grubuna ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-287-77 -b -m user -a 'name=deploy groups=docker append=yes'",
+          "hint_text": "User module ile gruba ekle.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-008-r78-exp-088",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda playbook'u `env=ops-78` extra var'i ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-78.yml -i inventory-288-78 -e env=ops-78",
+          "hint_text": "Extra var icin `-e key=value` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-009-r79-exp-089",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde playbook'u 20 fork ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-79.yml -i inventory-289-79 --forks 20",
+          "hint_text": "Paralellik icin `--forks` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-010-r80-exp-090",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda inventory-290'yi graph seklinde goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-inventory-290-80 -i inventory-290-80 --graph",
+          "hint_text": "Grup grafi icin `ansible-inventory-290-80 --graph` kullan.",
+          "hint_partial": "ansible-inventory-290-80 ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-001-r81-exp-091",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi playbook syntax check yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-81.yml -i inventory-291-81 --syntax-check",
+          "hint_text": "Syntax kontrolu icin `--syntax-check` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-002-r82-exp-092",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda `Deploy app` task'inden baslayarak playbook'u calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-82.yml -i inventory-292-82 --start-at-task 'Deploy app'",
+          "hint_text": "Belirli task'ten devam etmek icin `--start-at-task` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-003-r83-exp-093",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi playbook'u sadece `bastion-293-83` ve `payments-83` kesisimi host'larda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-83.yml -i inventory-293-83 --limit 'bastion-293-83:&payments-83'",
+          "hint_text": "Inventory pattern ile grup kesisimi al.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-004-r84-exp-094",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde `group_vars/ops-84-84.yml` vault dosyasinin sifresini degistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-vault rekey group_vars/ops-84-84.yml",
+          "hint_text": "Vault rekey icin `ansible-vault rekey` kullan.",
+          "hint_partial": "ansible-vault ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-005-r85-exp-095",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta `requirements-85.yml` icindeki role'leri yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-galaxy role install -r requirements-85.yml",
+          "hint_text": "Role install icin `ansible-galaxy role install -r` kullan.",
+          "hint_partial": "ansible-galaxy ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-006-r86-exp-096",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda tum host'larda `/srv/app/bastion-296-296/app/bastion-296/queue-86-86/app/bastion-296/queue-86` directory'sini 0755 ile olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-296-86 -b -m file -a 'path=/srv/app/bastion-296-296/app/bastion-296/queue-86-86/app/bastion-296/queue-86 state=directory mode=3'",
+          "hint_text": "File module ile directory olustur.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-007-r87-exp-097",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde tum host'larda `deploy` kullanicisini `docker` grubuna ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-297-87 -b -m user -a 'name=deploy groups=docker append=yes'",
+          "hint_text": "User module ile gruba ekle.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-008-r88-exp-098",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda playbook'u `env=monitoring-88` extra var'i ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-88.yml -i inventory-298-88 -e env=monitoring-88",
+          "hint_text": "Extra var icin `-e key=value` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-009-r89-exp-099",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi playbook'u 20 fork ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-89.yml -i inventory-299-89 --forks 20",
+          "hint_text": "Paralellik icin `--forks` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-010-r90-exp-100",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda inventory-300'yi graph seklinde goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-inventory-300-90 -i inventory-300-90 --graph",
+          "hint_text": "Grup grafi icin `ansible-inventory-300-90 --graph` kullan.",
+          "hint_partial": "ansible-inventory-300-90 ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-001-r91-exp-101",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi playbook syntax check yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-91.yml -i inventory-301-91 --syntax-check",
+          "hint_text": "Syntax kontrolu icin `--syntax-check` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-002-r92-exp-102",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde `Deploy app` task'inden baslayarak playbook'u calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-92.yml -i inventory-302-92 --start-at-task 'Deploy app'",
+          "hint_text": "Belirli task'ten devam etmek icin `--start-at-task` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-003-r93-exp-103",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta playbook'u sadece `cache-303-93-93` ve `dev-93` kesisimi host'larda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-93.yml -i inventory-303-93 --limit 'cache-303-93-93:&dev-93'",
+          "hint_text": "Inventory pattern ile grup kesisimi al.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-004-r94-exp-104",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda `group_vars/monitoring-94-94.yml` vault dosyasinin sifresini degistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-vault rekey group_vars/monitoring-94-94.yml",
+          "hint_text": "Vault rekey icin `ansible-vault rekey` kullan.",
+          "hint_partial": "ansible-vault ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-005-r95-exp-105",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde `requirements-95.yml` icindeki role'leri yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-galaxy role install -r requirements-95.yml",
+          "hint_text": "Role install icin `ansible-galaxy role install -r` kullan.",
+          "hint_partial": "ansible-galaxy ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-006-r96-exp-106",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda tum host'larda `/srv/app/cache-306-306-306-306/app/cache-306-306-306/proxy-96-96/app/cache-306-306-306/proxy-96` directory'sini 0755 ile olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-306-96 -b -m file -a 'path=/srv/app/cache-306-306-306-306/app/cache-306-306-306/proxy-96-96/app/cache-306-306-306/proxy-96 state=directory mode=7'",
+          "hint_text": "File module ile directory olustur.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-007-r97-exp-107",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi tum host'larda `deploy` kullanicisini `docker` grubuna ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-307-97 -b -m user -a 'name=deploy groups=docker append=yes'",
+          "hint_text": "User module ile gruba ekle.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-008-r98-exp-108",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda playbook'u `env=stage-98-98` extra var'i ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-98.yml -i inventory-308-98 -e env=stage-98-98",
+          "hint_text": "Extra var icin `-e key=value` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-009-r99-exp-109",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi playbook'u 20 fork ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-99.yml -i inventory-309-99 --forks 20",
+          "hint_text": "Paralellik icin `--forks` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-010-r100-exp-110",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde inventory-310'yi graph seklinde goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-inventory-310-100 -i inventory-310-100 --graph",
+          "hint_text": "Grup grafi icin `ansible-inventory-310-100 --graph` kullan.",
+          "hint_partial": "ansible-inventory-310-100 ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-001-r101-exp-111",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta playbook syntax check yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-101.yml -i inventory-311-101 --syntax-check",
+          "hint_text": "Syntax kontrolu icin `--syntax-check` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-002-r102-exp-112",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda `Deploy app` task'inden baslayarak playbook'u calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-102.yml -i inventory-312-102 --start-at-task 'Deploy app'",
+          "hint_text": "Belirli task'ten devam etmek icin `--start-at-task` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-003-r103-exp-113",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde playbook'u sadece `bastion-103` ve `prod-103` kesisimi host'larda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-103.yml -i inventory-313-103 --limit 'bastion-103:&prod-103'",
+          "hint_text": "Inventory pattern ile grup kesisimi al.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-004-r104-exp-114",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda `group_vars/stage-104-104-104.yml` vault dosyasinin sifresini degistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-vault rekey group_vars/stage-104-104-104.yml",
+          "hint_text": "Vault rekey icin `ansible-vault rekey` kullan.",
+          "hint_partial": "ansible-vault ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-005-r105-exp-115",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi `requirements-105.yml` icindeki role'leri yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-galaxy role install -r requirements-105.yml",
+          "hint_text": "Role install icin `ansible-galaxy role install -r` kullan.",
+          "hint_partial": "ansible-galaxy ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-006-r106-exp-116",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda tum host'larda `/srv/app/db-316-316-316/app/db-316-316/cache-316-106-106-106-106/app/db-316-316/cache-316-106-106-106` directory'sini 0755 ile olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-316-106 -b -m file -a 'path=/srv/app/db-316-316-316/app/db-316-316/cache-316-106-106-106-106/app/db-316-316/cache-316-106-106-106 state=directory mode=5'",
+          "hint_text": "File module ile directory olustur.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-007-r107-exp-117",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi tum host'larda `deploy` kullanicisini `docker` grubuna ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-317-107 -b -m user -a 'name=deploy groups=docker append=yes'",
+          "hint_text": "User module ile gruba ekle.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-008-r108-exp-118",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde playbook'u `env=ops-108` extra var'i ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-108.yml -i inventory-318-108 -e env=ops-108",
+          "hint_text": "Extra var icin `-e key=value` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-009-r109-exp-119",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta playbook'u 20 fork ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-109.yml -i inventory-319-109 --forks 20",
+          "hint_text": "Paralellik icin `--forks` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-010-r110-exp-120",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda inventory-320'yi graph seklinde goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-inventory-320-110 -i inventory-320-110 --graph",
+          "hint_text": "Grup grafi icin `ansible-inventory-320-110 --graph` kullan.",
+          "hint_partial": "ansible-inventory-320-110 ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-001-r111-exp-121",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde playbook syntax check yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-111.yml -i inventory-321-111 --syntax-check",
+          "hint_text": "Syntax kontrolu icin `--syntax-check` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-002-r112-exp-122",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda `Deploy app` task'inden baslayarak playbook'u calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-112.yml -i inventory-322-112 --start-at-task 'Deploy app'",
+          "hint_text": "Belirli task'ten devam etmek icin `--start-at-task` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-003-r113-exp-123",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi playbook'u sadece `queue-323-323-113` ve `payments-113` kesisimi host'larda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-113.yml -i inventory-323-113 --limit 'queue-323-323-113:&payments-113'",
+          "hint_text": "Inventory pattern ile grup kesisimi al.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-004-r114-exp-124",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda `group_vars/ops-114-114.yml` vault dosyasinin sifresini degistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-vault rekey group_vars/ops-114-114.yml",
+          "hint_text": "Vault rekey icin `ansible-vault rekey` kullan.",
+          "hint_partial": "ansible-vault ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-005-r115-exp-125",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi `requirements-115.yml` icindeki role'leri yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-galaxy role install -r requirements-115.yml",
+          "hint_text": "Role install icin `ansible-galaxy role install -r` kullan.",
+          "hint_partial": "ansible-galaxy ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-006-r116-exp-126",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde tum host'larda `/srv/app/queue-326-326/app/queue-326/db-326-116-116-116/app/queue-326/db-326-116-116` directory'sini 0755 ile olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-326-116 -b -m file -a 'path=/srv/app/queue-326-326/app/queue-326/db-326-116-116-116/app/queue-326/db-326-116-116 state=directory mode=3'",
+          "hint_text": "File module ile directory olustur.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-007-r117-exp-127",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta tum host'larda `deploy` kullanicisini `docker` grubuna ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-327-117 -b -m user -a 'name=deploy groups=docker append=yes'",
+          "hint_text": "User module ile gruba ekle.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-008-r118-exp-128",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda playbook'u `env=monitoring-118` extra var'i ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-118.yml -i inventory-328-118 -e env=monitoring-118",
+          "hint_text": "Extra var icin `-e key=value` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-009-r119-exp-129",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde playbook'u 20 fork ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-119.yml -i inventory-329-119 --forks 20",
+          "hint_text": "Paralellik icin `--forks` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-010-r120-exp-130",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda inventory-330'yi graph seklinde goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-inventory-330-120 -i inventory-330-120 --graph",
+          "hint_text": "Grup grafi icin `ansible-inventory-330-120 --graph` kullan.",
+          "hint_partial": "ansible-inventory-330-120 ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-001-r121-exp-131",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi playbook syntax check yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-121.yml -i inventory-331-121 --syntax-check",
+          "hint_text": "Syntax kontrolu icin `--syntax-check` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-002-r122-exp-132",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda `Deploy app` task'inden baslayarak playbook'u calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-122.yml -i inventory-332-122 --start-at-task 'Deploy app'",
+          "hint_text": "Belirli task'ten devam etmek icin `--start-at-task` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-003-r123-exp-133",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi playbook'u sadece `bastion-333-123` ve `dev-123` kesisimi host'larda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-123.yml -i inventory-333-123 --limit 'bastion-333-123:&dev-123'",
+          "hint_text": "Inventory pattern ile grup kesisimi al.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-004-r124-exp-134",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde `group_vars/monitoring-124-124.yml` vault dosyasinin sifresini degistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-vault rekey group_vars/monitoring-124-124.yml",
+          "hint_text": "Vault rekey icin `ansible-vault rekey` kullan.",
+          "hint_partial": "ansible-vault ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-005-r125-exp-135",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta `requirements-125.yml` icindeki role'leri yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-galaxy role install -r requirements-125.yml",
+          "hint_text": "Role install icin `ansible-galaxy role install -r` kullan.",
+          "hint_partial": "ansible-galaxy ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-006-r126-exp-136",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda tum host'larda `/srv/app/bastion-336-336/app/bastion-336/queue-126-126/app/bastion-336/queue-126` directory'sini 0755 ile olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-336-126 -b -m file -a 'path=/srv/app/bastion-336-336/app/bastion-336/queue-126-126/app/bastion-336/queue-126 state=directory mode=7'",
+          "hint_text": "File module ile directory olustur.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-007-r127-exp-137",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde tum host'larda `deploy` kullanicisini `docker` grubuna ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-337-127 -b -m user -a 'name=deploy groups=docker append=yes'",
+          "hint_text": "User module ile gruba ekle.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-008-r128-exp-138",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda playbook'u `env=stage-128-128` extra var'i ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-128.yml -i inventory-338-128 -e env=stage-128-128",
+          "hint_text": "Extra var icin `-e key=value` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-009-r129-exp-139",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi playbook'u 20 fork ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-129.yml -i inventory-339-129 --forks 20",
+          "hint_text": "Paralellik icin `--forks` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-010-r130-exp-140",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda inventory-340'yi graph seklinde goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-inventory-340-130 -i inventory-340-130 --graph",
+          "hint_text": "Grup grafi icin `ansible-inventory-340-130 --graph` kullan.",
+          "hint_partial": "ansible-inventory-340-130 ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-001-r131-exp-141",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi playbook syntax check yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-131.yml -i inventory-341-131 --syntax-check",
+          "hint_text": "Syntax kontrolu icin `--syntax-check` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-002-r132-exp-142",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde `Deploy app` task'inden baslayarak playbook'u calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-132.yml -i inventory-342-132 --start-at-task 'Deploy app'",
+          "hint_text": "Belirli task'ten devam etmek icin `--start-at-task` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-003-r133-exp-143",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta playbook'u sadece `cache-343-133-133` ve `prod-133` kesisimi host'larda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-133.yml -i inventory-343-133 --limit 'cache-343-133-133:&prod-133'",
+          "hint_text": "Inventory pattern ile grup kesisimi al.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-004-r134-exp-144",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda `group_vars/stage-134-134-134.yml` vault dosyasinin sifresini degistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-vault rekey group_vars/stage-134-134-134.yml",
+          "hint_text": "Vault rekey icin `ansible-vault rekey` kullan.",
+          "hint_partial": "ansible-vault ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-005-r135-exp-145",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde `requirements-135.yml` icindeki role'leri yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-galaxy role install -r requirements-135.yml",
+          "hint_text": "Role install icin `ansible-galaxy role install -r` kullan.",
+          "hint_partial": "ansible-galaxy ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-006-r136-exp-146",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda tum host'larda `/srv/app/cache-346-346-346-346/app/cache-346-346-346/proxy-136-136/app/cache-346-346-346/proxy-136` directory'sini 0755 ile olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-346-136 -b -m file -a 'path=/srv/app/cache-346-346-346-346/app/cache-346-346-346/proxy-136-136/app/cache-346-346-346/proxy-136 state=directory mode=5'",
+          "hint_text": "File module ile directory olustur.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-007-r137-exp-147",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi tum host'larda `deploy` kullanicisini `docker` grubuna ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-347-137 -b -m user -a 'name=deploy groups=docker append=yes'",
+          "hint_text": "User module ile gruba ekle.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-008-r138-exp-148",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda playbook'u `env=ops-138` extra var'i ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-138.yml -i inventory-348-138 -e env=ops-138",
+          "hint_text": "Extra var icin `-e key=value` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-009-r139-exp-149",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi playbook'u 20 fork ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-139.yml -i inventory-349-139 --forks 20",
+          "hint_text": "Paralellik icin `--forks` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-010-r140-exp-150",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde inventory-350'yi graph seklinde goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-inventory-350-140 -i inventory-350-140 --graph",
+          "hint_text": "Grup grafi icin `ansible-inventory-350-140 --graph` kullan.",
+          "hint_partial": "ansible-inventory-350-140 ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-001-r141-exp-151",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta playbook syntax check yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-141.yml -i inventory-351-141 --syntax-check",
+          "hint_text": "Syntax kontrolu icin `--syntax-check` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-002-r142-exp-152",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda `Deploy app` task'inden baslayarak playbook'u calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-142.yml -i inventory-352-142 --start-at-task 'Deploy app'",
+          "hint_text": "Belirli task'ten devam etmek icin `--start-at-task` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-003-r143-exp-153",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde playbook'u sadece `bastion-143` ve `payments-143` kesisimi host'larda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-143.yml -i inventory-353-143 --limit 'bastion-143:&payments-143'",
+          "hint_text": "Inventory pattern ile grup kesisimi al.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-004-r144-exp-154",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda `group_vars/ops-144-144.yml` vault dosyasinin sifresini degistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-vault rekey group_vars/ops-144-144.yml",
+          "hint_text": "Vault rekey icin `ansible-vault rekey` kullan.",
+          "hint_partial": "ansible-vault ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-005-r145-exp-155",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi `requirements-145.yml` icindeki role'leri yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-galaxy role install -r requirements-145.yml",
+          "hint_text": "Role install icin `ansible-galaxy role install -r` kullan.",
+          "hint_partial": "ansible-galaxy ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-006-r146-exp-156",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda tum host'larda `/srv/app/db-356-356-356/app/db-356-356/cache-356-146-146-146-146/app/db-356-356/cache-356-146-146-146` directory'sini 0755 ile olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-356-146 -b -m file -a 'path=/srv/app/db-356-356-356/app/db-356-356/cache-356-146-146-146-146/app/db-356-356/cache-356-146-146-146 state=directory mode=3'",
+          "hint_text": "File module ile directory olustur.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-007-r147-exp-157",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi tum host'larda `deploy` kullanicisini `docker` grubuna ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-357-147 -b -m user -a 'name=deploy groups=docker append=yes'",
+          "hint_text": "User module ile gruba ekle.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-008-r148-exp-158",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde playbook'u `env=monitoring-148` extra var'i ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-148.yml -i inventory-358-148 -e env=monitoring-148",
+          "hint_text": "Extra var icin `-e key=value` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-009-r149-exp-159",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta playbook'u 20 fork ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-149.yml -i inventory-359-149 --forks 20",
+          "hint_text": "Paralellik icin `--forks` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-010-r150-exp-160",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda inventory-360'yi graph seklinde goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-inventory-360-150 -i inventory-360-150 --graph",
+          "hint_text": "Grup grafi icin `ansible-inventory-360-150 --graph` kullan.",
+          "hint_partial": "ansible-inventory-360-150 ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-001-r151-exp-161",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde playbook syntax check yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-151.yml -i inventory-361-151 --syntax-check",
+          "hint_text": "Syntax kontrolu icin `--syntax-check` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-002-r152-exp-162",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda `Deploy app` task'inden baslayarak playbook'u calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-152.yml -i inventory-362-152 --start-at-task 'Deploy app'",
+          "hint_text": "Belirli task'ten devam etmek icin `--start-at-task` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-003-r153-exp-163",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi playbook'u sadece `queue-363-363-153` ve `dev-153` kesisimi host'larda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-153.yml -i inventory-363-153 --limit 'queue-363-363-153:&dev-153'",
+          "hint_text": "Inventory pattern ile grup kesisimi al.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-004-r154-exp-164",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda `group_vars/monitoring-154-154.yml` vault dosyasinin sifresini degistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-vault rekey group_vars/monitoring-154-154.yml",
+          "hint_text": "Vault rekey icin `ansible-vault rekey` kullan.",
+          "hint_partial": "ansible-vault ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-005-r155-exp-165",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi `requirements-155.yml` icindeki role'leri yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-galaxy role install -r requirements-155.yml",
+          "hint_text": "Role install icin `ansible-galaxy role install -r` kullan.",
+          "hint_partial": "ansible-galaxy ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-006-r156-exp-166",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde tum host'larda `/srv/app/queue-366-366/app/queue-366/db-366-156-156-156/app/queue-366/db-366-156-156` directory'sini 0755 ile olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-366-156 -b -m file -a 'path=/srv/app/queue-366-366/app/queue-366/db-366-156-156-156/app/queue-366/db-366-156-156 state=directory mode=7'",
+          "hint_text": "File module ile directory olustur.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-007-r157-exp-167",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta tum host'larda `deploy` kullanicisini `docker` grubuna ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-367-157 -b -m user -a 'name=deploy groups=docker append=yes'",
+          "hint_text": "User module ile gruba ekle.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-008-r158-exp-168",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda playbook'u `env=stage-158-158` extra var'i ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-158.yml -i inventory-368-158 -e env=stage-158-158",
+          "hint_text": "Extra var icin `-e key=value` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-009-r159-exp-169",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde playbook'u 20 fork ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-159.yml -i inventory-369-159 --forks 20",
+          "hint_text": "Paralellik icin `--forks` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-010-r160-exp-170",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda inventory-370'yi graph seklinde goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-inventory-370-160 -i inventory-370-160 --graph",
+          "hint_text": "Grup grafi icin `ansible-inventory-370-160 --graph` kullan.",
+          "hint_partial": "ansible-inventory-370-160 ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-001-r161-exp-171",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi playbook syntax check yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-161.yml -i inventory-371-161 --syntax-check",
+          "hint_text": "Syntax kontrolu icin `--syntax-check` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-002-r162-exp-172",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda `Deploy app` task'inden baslayarak playbook'u calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-162.yml -i inventory-372-162 --start-at-task 'Deploy app'",
+          "hint_text": "Belirli task'ten devam etmek icin `--start-at-task` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-003-r163-exp-173",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi playbook'u sadece `bastion-373-163` ve `prod-163` kesisimi host'larda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-163.yml -i inventory-373-163 --limit 'bastion-373-163:&prod-163'",
+          "hint_text": "Inventory pattern ile grup kesisimi al.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-004-r164-exp-174",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde `group_vars/stage-164-164-164.yml` vault dosyasinin sifresini degistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-vault rekey group_vars/stage-164-164-164.yml",
+          "hint_text": "Vault rekey icin `ansible-vault rekey` kullan.",
+          "hint_partial": "ansible-vault ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-005-r165-exp-175",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta `requirements-165.yml` icindeki role'leri yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-galaxy role install -r requirements-165.yml",
+          "hint_text": "Role install icin `ansible-galaxy role install -r` kullan.",
+          "hint_partial": "ansible-galaxy ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-006-r166-exp-176",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda tum host'larda `/srv/app/bastion-376-376/app/bastion-376/queue-166-166/app/bastion-376/queue-166` directory'sini 0755 ile olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-376-166 -b -m file -a 'path=/srv/app/bastion-376-376/app/bastion-376/queue-166-166/app/bastion-376/queue-166 state=directory mode=5'",
+          "hint_text": "File module ile directory olustur.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-007-r167-exp-177",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde tum host'larda `deploy` kullanicisini `docker` grubuna ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-377-167 -b -m user -a 'name=deploy groups=docker append=yes'",
+          "hint_text": "User module ile gruba ekle.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-008-r168-exp-178",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda playbook'u `env=ops-168` extra var'i ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-168.yml -i inventory-378-168 -e env=ops-168",
+          "hint_text": "Extra var icin `-e key=value` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-009-r169-exp-179",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi playbook'u 20 fork ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-169.yml -i inventory-379-169 --forks 20",
+          "hint_text": "Paralellik icin `--forks` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-010-r170-exp-180",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda inventory-380'yi graph seklinde goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-inventory-380-170 -i inventory-380-170 --graph",
+          "hint_text": "Grup grafi icin `ansible-inventory-380-170 --graph` kullan.",
+          "hint_partial": "ansible-inventory-380-170 ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-001-r171-exp-181",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi playbook syntax check yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-171.yml -i inventory-381-171 --syntax-check",
+          "hint_text": "Syntax kontrolu icin `--syntax-check` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-002-r172-exp-182",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde `Deploy app` task'inden baslayarak playbook'u calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-172.yml -i inventory-382-172 --start-at-task 'Deploy app'",
+          "hint_text": "Belirli task'ten devam etmek icin `--start-at-task` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-003-r173-exp-183",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta playbook'u sadece `cache-383-173-173` ve `payments-173` kesisimi host'larda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-173.yml -i inventory-383-173 --limit 'cache-383-173-173:&payments-173'",
+          "hint_text": "Inventory pattern ile grup kesisimi al.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-004-r174-exp-184",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda `group_vars/ops-174-174.yml` vault dosyasinin sifresini degistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-vault rekey group_vars/ops-174-174.yml",
+          "hint_text": "Vault rekey icin `ansible-vault rekey` kullan.",
+          "hint_partial": "ansible-vault ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-005-r175-exp-185",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde `requirements-175.yml` icindeki role'leri yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-galaxy role install -r requirements-175.yml",
+          "hint_text": "Role install icin `ansible-galaxy role install -r` kullan.",
+          "hint_partial": "ansible-galaxy ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-006-r176-exp-186",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda tum host'larda `/srv/app/cache-386-386-386-386/app/cache-386-386-386/proxy-176-176/app/cache-386-386-386/proxy-176` directory'sini 0755 ile olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-386-176 -b -m file -a 'path=/srv/app/cache-386-386-386-386/app/cache-386-386-386/proxy-176-176/app/cache-386-386-386/proxy-176 state=directory mode=3'",
+          "hint_text": "File module ile directory olustur.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-007-r177-exp-187",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi tum host'larda `deploy` kullanicisini `docker` grubuna ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-387-177 -b -m user -a 'name=deploy groups=docker append=yes'",
+          "hint_text": "User module ile gruba ekle.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-008-r178-exp-188",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda playbook'u `env=monitoring-178` extra var'i ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-178.yml -i inventory-388-178 -e env=monitoring-178",
+          "hint_text": "Extra var icin `-e key=value` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-009-r179-exp-189",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi playbook'u 20 fork ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-179.yml -i inventory-389-179 --forks 20",
+          "hint_text": "Paralellik icin `--forks` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-010-r180-exp-190",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde inventory-390'yi graph seklinde goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-inventory-390-180 -i inventory-390-180 --graph",
+          "hint_text": "Grup grafi icin `ansible-inventory-390-180 --graph` kullan.",
+          "hint_partial": "ansible-inventory-390-180 ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-001-r181-exp-191",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta playbook syntax check yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-181.yml -i inventory-391-181 --syntax-check",
+          "hint_text": "Syntax kontrolu icin `--syntax-check` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-002-r182-exp-192",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda `Deploy app` task'inden baslayarak playbook'u calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-182.yml -i inventory-392-182 --start-at-task 'Deploy app'",
+          "hint_text": "Belirli task'ten devam etmek icin `--start-at-task` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-003-r183-exp-193",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde playbook'u sadece `bastion-183` ve `dev-183` kesisimi host'larda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-183.yml -i inventory-393-183 --limit 'bastion-183:&dev-183'",
+          "hint_text": "Inventory pattern ile grup kesisimi al.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-004-r184-exp-194",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda `group_vars/monitoring-184-184.yml` vault dosyasinin sifresini degistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-vault rekey group_vars/monitoring-184-184.yml",
+          "hint_text": "Vault rekey icin `ansible-vault rekey` kullan.",
+          "hint_partial": "ansible-vault ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-005-r185-exp-195",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi `requirements-185.yml` icindeki role'leri yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-galaxy role install -r requirements-185.yml",
+          "hint_text": "Role install icin `ansible-galaxy role install -r` kullan.",
+          "hint_partial": "ansible-galaxy ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-006-r186-exp-196",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda tum host'larda `/srv/app/db-396-396-396/app/db-396-396/cache-396-186-186-186-186/app/db-396-396/cache-396-186-186-186` directory'sini 0755 ile olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-396-186 -b -m file -a 'path=/srv/app/db-396-396-396/app/db-396-396/cache-396-186-186-186-186/app/db-396-396/cache-396-186-186-186 state=directory mode=7'",
+          "hint_text": "File module ile directory olustur.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-007-r187-exp-197",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi tum host'larda `deploy` kullanicisini `docker` grubuna ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-397-187 -b -m user -a 'name=deploy groups=docker append=yes'",
+          "hint_text": "User module ile gruba ekle.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-008-r188-exp-198",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde playbook'u `env=stage-188-188` extra var'i ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-188.yml -i inventory-398-188 -e env=stage-188-188",
+          "hint_text": "Extra var icin `-e key=value` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-009-r189-exp-199",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta playbook'u 20 fork ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-189.yml -i inventory-399-189 --forks 20",
+          "hint_text": "Paralellik icin `--forks` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "sans-010-r190-exp-200",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda inventory-400'yi graph seklinde goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-inventory-400-190 -i inventory-400-190 --graph",
+          "hint_text": "Grup grafi icin `ansible-inventory-400-190 --graph` kullan.",
+          "hint_partial": "ansible-inventory-400-190 ..."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,136 @@
+{
+  "level": "mid",
+  "topic": "kubernetes",
+  "questions": [
+    {
+      "id": "mk8s-001",
+      "type": "single",
+      "scenario": "`web` deployment rollout durumunu kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl rollout status deployment/web",
+          "hint_text": "Rollout takip icin `kubectl rollout status` kullan.",
+          "hint_partial": "kubectl rollout ..."
+        }
+      ]
+    },
+    {
+      "id": "mk8s-002",
+      "type": "single",
+      "scenario": "`web` deployment icin rolling restart tetikle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl rollout restart deployment/web",
+          "hint_text": "Rolling restart icin `kubectl rollout restart` kullan.",
+          "hint_partial": "kubectl rollout ..."
+        }
+      ]
+    },
+    {
+      "id": "mk8s-003",
+      "type": "single",
+      "scenario": "`web` deployment image'ini `nginx:1.27` yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl set image deployment/web web=nginx:1.27",
+          "hint_text": "Image guncellemek icin `kubectl set image` kullan.",
+          "hint_partial": "kubectl set ..."
+        }
+      ]
+    },
+    {
+      "id": "mk8s-004",
+      "type": "single",
+      "scenario": "Pod'lari node bilgisiyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get pods -o wide",
+          "hint_text": "Genis cikti icin `-o wide` kullan.",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "mk8s-005",
+      "type": "single",
+      "scenario": "`web-123` pod'u icinde shell ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl exec -it web-123 -- sh",
+          "hint_text": "Pod icinde komut icin `kubectl exec -it ... --` kullan.",
+          "hint_partial": "kubectl exec ..."
+        }
+      ]
+    },
+    {
+      "id": "mk8s-006",
+      "type": "single",
+      "scenario": "`api` service'ini local 8080 portuna forward et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl port-forward svc/api 8080:80",
+          "hint_text": "Port forward icin `kubectl port-forward svc/name local:remote` kullan.",
+          "hint_partial": "kubectl port-forward ..."
+        }
+      ]
+    },
+    {
+      "id": "mk8s-007",
+      "type": "single",
+      "scenario": "Pod kaynak kullanimini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl top pods",
+          "hint_text": "Kaynak kullanimi icin `kubectl top pods` kullan.",
+          "hint_partial": "kubectl top ..."
+        }
+      ]
+    },
+    {
+      "id": "mk8s-008",
+      "type": "single",
+      "scenario": "Ingress kaynaklarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get ingress",
+          "hint_text": "Ingress listesi icin `kubectl get ingress` kullan.",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "mk8s-009",
+      "type": "single",
+      "scenario": "`web` deployment'ine `owner=platform` annotation'i ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl annotate deployment/web owner=platform",
+          "hint_text": "Annotation eklemek icin `kubectl annotate` kullan.",
+          "hint_partial": "kubectl annotate ..."
+        }
+      ]
+    },
+    {
+      "id": "mk8s-010",
+      "type": "single",
+      "scenario": "`web` deployment replica sayisini patch ile 5 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl patch deployment web -p '{\"spec\":{\"replicas\":5}}'",
+          "hint_text": "JSON patch benzeri guncelleme icin `kubectl patch` kullan.",
+          "hint_partial": "kubectl patch ..."
+        }
+      ]
+    }
+  ]
+}

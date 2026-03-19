@@ -1,0 +1,237 @@
+{
+  "level": "senior",
+  "topic": "networking",
+  "questions": [
+    {
+      "id": "snet-001",
+      "type": "multi-step",
+      "scenario": "Ağda asymmetric routing şüphesi var. eth0 üzerinde gelen trafiği yakala, sadece SYN paketlerini filtrele ve bir file'a kaydet.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tcpdump -i eth0 'tcp[tcpflags] & tcp-syn != 0' -w /tmp/syn_capture.pcap",
+          "hint_text": "tcpdump ile TCP flag filtresi ve -w ile file'a yaz",
+          "hint_partial": "tcpdump -i eth0 'tcp[tcpflags] & tcp-syn != 0' -w ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "tcpdump -r /tmp/syn_capture.pcap | head -20",
+          "hint_text": "Kaydedilmiş pcap file'ını `-r` ile oku",
+          "hint_partial": "tcpdump -r /tmp/syn_capture.pcap | ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-002",
+      "type": "multi-step",
+      "scenario": "iptables ile 22 portuna sadece 10.0.0.0/8 subnet'inden access izni ver, diğerlerini drop et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iptables -A INPUT -p tcp --dport 22 -s 10.0.0.0/8 -j ACCEPT",
+          "hint_text": "iptables -A INPUT, -p tcp, --dport, -s source, -j ACCEPT",
+          "hint_partial": "iptables -A INPUT -p tcp --dport 22 -s 10.0.0.0/8 ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "iptables -A INPUT -p tcp --dport 22 -j DROP",
+          "hint_text": "diğer tüm bağlantıları drop et",
+          "hint_partial": "iptables -A INPUT -p tcp --dport 22 ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-003",
+      "type": "single",
+      "scenario": "Tüm iptables kurallarını line number'larıyla listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iptables -L --line-numbers -n",
+          "hint_text": "iptables -L ile listele, --line-numbers ekle, -n numeric",
+          "hint_partial": "iptables -L --line-numbers ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-004",
+      "type": "multi-step",
+      "scenario": "Sunucu 80 ve 443 portlarını dinliyor ama dışarıdan erişilemiyor. Önce local port'ları kontrol et, sonra iptables'ı incele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ss -tlnp | grep -E '80|443'",
+          "hint_text": "ss ile portların gerçekten dinlenip dinlenmediğini doğrula",
+          "hint_partial": "ss -tlnp | grep -E ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "iptables -L INPUT -n --line-numbers",
+          "hint_text": "INPUT chain'deki kuralları gör",
+          "hint_partial": "iptables -L INPUT -n ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-005",
+      "type": "single",
+      "scenario": "Linux'u router gibi kullanmak için IP forwarding'i aktif et (kalıcı).",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "echo 'net.ipv4.ip_forward=1' >> /etc/sysctl.conf && sysctl -p",
+          "hint_text": "sysctl.conf'a yaz ve sysctl -p ile uygula",
+          "hint_partial": "echo 'net.ipv4.ip_forward=1' >> /etc/sysctl.conf && ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-006",
+      "type": "single",
+      "scenario": "VLAN 100'ü eth0 interface'ine ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip link add link eth0 name eth0.100 type vlan id 100",
+          "hint_text": "ip link add ile VLAN interface oluştur",
+          "hint_partial": "ip link add link eth0 name eth0.100 type vlan id ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-007",
+      "type": "multi-step",
+      "scenario": "Network namespace oluştur, içinde sanal interface çalıştır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip netns add testns",
+          "hint_text": "ip netns add ile namespace oluştur",
+          "hint_partial": "ip netns add ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "ip netns exec testns ip link list",
+          "hint_text": "ip netns exec namespace'de komut çalıştır",
+          "hint_partial": "ip netns exec testns ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-008",
+      "type": "single",
+      "scenario": "BGP veya OSPF için quagga/frr service'inin status'unu kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "systemctl status frr",
+          "hint_text": "FRRouting (frr) modern Linux routing daemon'ı",
+          "hint_partial": "systemctl status ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-009",
+      "type": "single",
+      "scenario": "Yüksek bağlantı sayısı var, TIME_WAIT durumundaki TCP bağlantılarını say.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ss -tan | grep TIME-WAIT | wc -l",
+          "hint_text": "ss -tan tüm TCP, grep ile filtrele, wc ile say",
+          "hint_partial": "ss -tan | grep TIME-WAIT | ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-010",
+      "type": "multi-step",
+      "scenario": "10.0.0.5 host'una giden trafiği 10.0.0.6'ya yönlendir (DNAT).",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iptables -t nat -A PREROUTING -d 10.0.0.5 -j DNAT --to-destination 10.0.0.6",
+          "hint_text": "iptables nat tablosu, PREROUTING chain, DNAT target",
+          "hint_partial": "iptables -t nat -A PREROUTING -d 10.0.0.5 -j DNAT ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "iptables -t nat -L PREROUTING -n",
+          "hint_text": "nat tablosunun PREROUTING chain'ini kontrol et",
+          "hint_partial": "iptables -t nat -L PREROUTING ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-011",
+      "type": "single",
+      "scenario": "nftables ruleset'ini listele",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "nft list ruleset",
+          "hint_text": "nftables kurallarini topluca goster",
+          "hint_partial": "nft ... ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-012",
+      "type": "single",
+      "scenario": "example.com icin sadece nameserver kayitlarini goster",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dig +short ns example.com",
+          "hint_text": "NS kayitlari icin dig +short kullan",
+          "hint_partial": "dig +short ns ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-013",
+      "type": "single",
+      "scenario": "Sistem uzerindeki policy route kurallarini sayisal oncelikleriyle listele",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip rule list",
+          "hint_text": "Rule tablosunu listeleyen ip komutu",
+          "hint_partial": "ip rule ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-014",
+      "type": "single",
+      "scenario": "eth0 uzerindeki tum trafikten sadece SYN paketlerini yakala",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tcpdump -i eth0 'tcp[tcpflags] & tcp-syn != 0'",
+          "hint_text": "tcpdump ile TCP SYN filtresi kullan",
+          "hint_partial": "tcpdump -i eth0 ..."
+        }
+      ]
+    },
+    {
+      "id": "snet-015",
+      "type": "multi-step",
+      "scenario": "443 portunu dinleyen process'leri listele ve sonra example.com icin TLS connection'ını test et",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ss -ltnp | grep :443",
+          "hint_text": "Ilk adimda dinleyen 443 process'lerini filtrele",
+          "hint_partial": "ss -ltnp | grep ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "openssl s_client -connect example.com:443 -servername example.com",
+          "hint_text": "Ikinci adimda openssl ile connection kur",
+          "hint_partial": "openssl s_client -connect ..."
+        }
+      ]
+    }
+  ]
+}

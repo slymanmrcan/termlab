@@ -1,0 +1,2606 @@
+{
+  "level": "mid",
+  "topic": "ansible",
+  "questions": [
+    {
+      "id": "mans-001-exp-001",
+      "type": "single",
+      "scenario": "Gece vardiyasinda playbook'u sadece `web-201` grubunda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-201.yml -i inventory-201 --limit web-201",
+          "hint_text": "Host limit icin `--limit` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-002-exp-002",
+      "type": "single",
+      "scenario": "Audit sirasinda playbook'ta sadece `deploy` tag'li task'lari calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-202.yml -i inventory-202 --tags deploy",
+          "hint_text": "Tag filtre icin `--tags` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-003-exp-003",
+      "type": "single",
+      "scenario": "Bakim penceresinde playbook'ta `restart` tag'li task'lari atla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-203.yml -i inventory-203 --skip-tags restart",
+          "hint_text": "Tag atlamak icin `--skip-tags` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-004-exp-004",
+      "type": "single",
+      "scenario": "Incident triajinda `group_vars/prod-204.yml` dosyasini ansible-vault ile sifrele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-vault encrypt group_vars/prod-204.yml",
+          "hint_text": "Vault sifreleme icin `ansible-vault encrypt` kullan.",
+          "hint_partial": "ansible-vault ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-005-exp-005",
+      "type": "single",
+      "scenario": "Release kontrolunde `group_vars/prod-205.yml` dosyasini ansible-vault ile goruntule.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-vault view group_vars/prod-205.yml",
+          "hint_text": "Vault dosyasini okumak icin `ansible-vault view` kullan.",
+          "hint_partial": "ansible-vault ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-006-exp-006",
+      "type": "single",
+      "scenario": "Operasyon devrinde `requirements-206.yml` icindeki collection ve role'leri yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-galaxy install -r requirements-206.yml",
+          "hint_text": "Requirements dosyasini install etmek icin `ansible-galaxy install -r` kullan.",
+          "hint_partial": "ansible-galaxy ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-007-exp-007",
+      "type": "single",
+      "scenario": "On-call gorevinde tum host'lara `app-207.conf` dosyasini kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-207 -m copy -a 'src=app-207.conf dest=/etc/app/proxy-207/app/proxy-207-207.conf'",
+          "hint_text": "Copy module icin `-m copy -a` kullan.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-008-exp-008",
+      "type": "single",
+      "scenario": "Kesinti sonrasi tum host'larda haproxy-208 service'ini restart et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-208 -b -m service -a 'name=haproxy-208 state=restarted'",
+          "hint_text": "Service module ile restart et.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-009-exp-009",
+      "type": "single",
+      "scenario": "Gece vardiyasinda playbook'u diff modda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-209.yml -i inventory-209 --diff",
+          "hint_text": "Degisiklik diff'i icin `--diff` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-010-exp-010",
+      "type": "single",
+      "scenario": "Audit sirasinda degisen Ansible config ayarlarini dump et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-config dump --only-changed",
+          "hint_text": "Sadece farkli config icin `--only-changed` kullan.",
+          "hint_partial": "ansible-config ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-001-r1-exp-011",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi playbook'u sadece `queue-211-211-1` grubunda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-1.yml -i inventory-211-1 --limit queue-211-211-1",
+          "hint_text": "Host limit icin `--limit` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-002-r2-exp-012",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda playbook'ta sadece `deploy` tag'li task'lari calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-2.yml -i inventory-212-2 --tags deploy",
+          "hint_text": "Tag filtre icin `--tags` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-003-r3-exp-013",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi playbook'ta `restart` tag'li task'lari atla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-3.yml -i inventory-213-3 --skip-tags restart",
+          "hint_text": "Tag atlamak icin `--skip-tags` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-004-r4-exp-014",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde `group_vars/monitoring-4-4.yml` dosyasini ansible-vault ile sifrele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-vault encrypt group_vars/monitoring-4-4.yml",
+          "hint_text": "Vault sifreleme icin `ansible-vault encrypt` kullan.",
+          "hint_partial": "ansible-vault ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-005-r5-exp-015",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta `group_vars/payments-5-5.yml` dosyasini ansible-vault ile goruntule.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-vault view group_vars/payments-5-5.yml",
+          "hint_text": "Vault dosyasini okumak icin `ansible-vault view` kullan.",
+          "hint_partial": "ansible-vault ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-006-r6-exp-016",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda `requirements-6.yml` icindeki collection ve role'leri yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-galaxy install -r requirements-6.yml",
+          "hint_text": "Requirements dosyasini install etmek icin `ansible-galaxy install -r` kullan.",
+          "hint_partial": "ansible-galaxy ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-007-r7-exp-017",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde tum host'lara `app-7.conf` dosyasini kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-217-7 -m copy -a 'src=app-7.conf dest=/etc/app/web-217-217/bastion-7/app/web-217-217/bastion-7-7.conf'",
+          "hint_text": "Copy module icin `-m copy -a` kullan.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-008-r8-exp-018",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda tum host'larda postgres-218-8-8 service'ini restart et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-218-8 -b -m service -a 'name=postgres-218-8-8 state=restarted'",
+          "hint_text": "Service module ile restart et.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-009-r9-exp-019",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi playbook'u diff modda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-9.yml -i inventory-219-9 --diff",
+          "hint_text": "Degisiklik diff'i icin `--diff` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-010-r10-exp-020",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda degisen Ansible config ayarlarini dump et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-config dump --only-changed",
+          "hint_text": "Sadece farkli config icin `--only-changed` kullan.",
+          "hint_partial": "ansible-config ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-001-r11-exp-021",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi playbook'u sadece `bastion-221-11` grubunda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-11.yml -i inventory-221-11 --limit bastion-221-11",
+          "hint_text": "Host limit icin `--limit` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-002-r12-exp-022",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde playbook'ta sadece `deploy` tag'li task'lari calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-12.yml -i inventory-222-12 --tags deploy",
+          "hint_text": "Tag filtre icin `--tags` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-003-r13-exp-023",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta playbook'ta `restart` tag'li task'lari atla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-13.yml -i inventory-223-13 --skip-tags restart",
+          "hint_text": "Tag atlamak icin `--skip-tags` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-004-r14-exp-024",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda `group_vars/stage-14-14-14.yml` dosyasini ansible-vault ile sifrele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-vault encrypt group_vars/stage-14-14-14.yml",
+          "hint_text": "Vault sifreleme icin `ansible-vault encrypt` kullan.",
+          "hint_partial": "ansible-vault ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-005-r15-exp-025",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde `group_vars/dev-15-15.yml` dosyasini ansible-vault ile goruntule.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-vault view group_vars/dev-15-15.yml",
+          "hint_text": "Vault dosyasini okumak icin `ansible-vault view` kullan.",
+          "hint_partial": "ansible-vault ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-006-r16-exp-026",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda `requirements-16.yml` icindeki collection ve role'leri yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-galaxy install -r requirements-16.yml",
+          "hint_text": "Requirements dosyasini install etmek icin `ansible-galaxy install -r` kullan.",
+          "hint_partial": "ansible-galaxy ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-007-r17-exp-027",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi tum host'lara `app-17.conf` dosyasini kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-227-17 -m copy -a 'src=app-17.conf dest=/etc/app/queue-227-227/queue-227-227-17-17/app/queue-227-227/queue-227-227-17-17-17.conf'",
+          "hint_text": "Copy module icin `-m copy -a` kullan.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-008-r18-exp-028",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda tum host'larda vault-18 service'ini restart et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-228-18 -b -m service -a 'name=vault-18 state=restarted'",
+          "hint_text": "Service module ile restart et.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-009-r19-exp-029",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi playbook'u diff modda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-19.yml -i inventory-229-19 --diff",
+          "hint_text": "Degisiklik diff'i icin `--diff` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-010-r20-exp-030",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde degisen Ansible config ayarlarini dump et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-config dump --only-changed",
+          "hint_text": "Sadece farkli config icin `--only-changed` kullan.",
+          "hint_partial": "ansible-config ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-001-r21-exp-031",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta playbook'u sadece `cache-231-21-21` grubunda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-21.yml -i inventory-231-21 --limit cache-231-21-21",
+          "hint_text": "Host limit icin `--limit` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-002-r22-exp-032",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda playbook'ta sadece `deploy` tag'li task'lari calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-22.yml -i inventory-232-22 --tags deploy",
+          "hint_text": "Tag filtre icin `--tags` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-003-r23-exp-033",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde playbook'ta `restart` tag'li task'lari atla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-23.yml -i inventory-233-23 --skip-tags restart",
+          "hint_text": "Tag atlamak icin `--skip-tags` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-004-r24-exp-034",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda `group_vars/ops-24-24.yml` dosyasini ansible-vault ile sifrele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-vault encrypt group_vars/ops-24-24.yml",
+          "hint_text": "Vault sifreleme icin `ansible-vault encrypt` kullan.",
+          "hint_partial": "ansible-vault ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-005-r25-exp-035",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi `group_vars/prod-25-25.yml` dosyasini ansible-vault ile goruntule.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-vault view group_vars/prod-25-25.yml",
+          "hint_text": "Vault dosyasini okumak icin `ansible-vault view` kullan.",
+          "hint_partial": "ansible-vault ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-006-r26-exp-036",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda `requirements-26.yml` icindeki collection ve role'leri yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-galaxy install -r requirements-26.yml",
+          "hint_text": "Requirements dosyasini install etmek icin `ansible-galaxy install -r` kullan.",
+          "hint_partial": "ansible-galaxy ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-007-r27-exp-037",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi tum host'lara `app-27.conf` dosyasini kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-237-27 -m copy -a 'src=app-27.conf dest=/etc/app/cache-237-237/queue-27-27/app/cache-237-237/queue-27-27-27.conf'",
+          "hint_text": "Copy module icin `-m copy -a` kullan.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-008-r28-exp-038",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde tum host'larda traefik-28 service'ini restart et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-238-28 -b -m service -a 'name=traefik-28 state=restarted'",
+          "hint_text": "Service module ile restart et.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-009-r29-exp-039",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta playbook'u diff modda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-29.yml -i inventory-239-29 --diff",
+          "hint_text": "Degisiklik diff'i icin `--diff` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-010-r30-exp-040",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda degisen Ansible config ayarlarini dump et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-config dump --only-changed",
+          "hint_text": "Sadece farkli config icin `--only-changed` kullan.",
+          "hint_partial": "ansible-config ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-001-r31-exp-041",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde playbook'u sadece `bastion-31` grubunda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-31.yml -i inventory-241-31 --limit bastion-31",
+          "hint_text": "Host limit icin `--limit` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-002-r32-exp-042",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda playbook'ta sadece `deploy` tag'li task'lari calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-32.yml -i inventory-242-32 --tags deploy",
+          "hint_text": "Tag filtre icin `--tags` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-003-r33-exp-043",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi playbook'ta `restart` tag'li task'lari atla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-33.yml -i inventory-243-33 --skip-tags restart",
+          "hint_text": "Tag atlamak icin `--skip-tags` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-004-r34-exp-044",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda `group_vars/monitoring-34-34.yml` dosyasini ansible-vault ile sifrele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-vault encrypt group_vars/monitoring-34-34.yml",
+          "hint_text": "Vault sifreleme icin `ansible-vault encrypt` kullan.",
+          "hint_partial": "ansible-vault ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-005-r35-exp-045",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi `group_vars/payments-35-35.yml` dosyasini ansible-vault ile goruntule.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-vault view group_vars/payments-35-35.yml",
+          "hint_text": "Vault dosyasini okumak icin `ansible-vault view` kullan.",
+          "hint_partial": "ansible-vault ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-006-r36-exp-046",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde `requirements-36.yml` icindeki collection ve role'leri yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-galaxy install -r requirements-36.yml",
+          "hint_text": "Requirements dosyasini install etmek icin `ansible-galaxy install -r` kullan.",
+          "hint_partial": "ansible-galaxy ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-007-r37-exp-047",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta tum host'lara `app-37.conf` dosyasini kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-247-37 -m copy -a 'src=app-37.conf dest=/etc/app/proxy-247/cache-247-37-37/app/proxy-247/cache-247-37-37-37.conf'",
+          "hint_text": "Copy module icin `-m copy -a` kullan.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-008-r38-exp-048",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda tum host'larda postgres-248-38-38 service'ini restart et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-248-38 -b -m service -a 'name=postgres-248-38-38 state=restarted'",
+          "hint_text": "Service module ile restart et.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-009-r39-exp-049",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde playbook'u diff modda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-39.yml -i inventory-249-39 --diff",
+          "hint_text": "Degisiklik diff'i icin `--diff` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-010-r40-exp-050",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda degisen Ansible config ayarlarini dump et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-config dump --only-changed",
+          "hint_text": "Sadece farkli config icin `--only-changed` kullan.",
+          "hint_partial": "ansible-config ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-001-r41-exp-051",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi playbook'u sadece `queue-251-251-41` grubunda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-41.yml -i inventory-251-41 --limit queue-251-251-41",
+          "hint_text": "Host limit icin `--limit` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-002-r42-exp-052",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda playbook'ta sadece `deploy` tag'li task'lari calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-42.yml -i inventory-252-42 --tags deploy",
+          "hint_text": "Tag filtre icin `--tags` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-003-r43-exp-053",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi playbook'ta `restart` tag'li task'lari atla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-43.yml -i inventory-253-43 --skip-tags restart",
+          "hint_text": "Tag atlamak icin `--skip-tags` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-004-r44-exp-054",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde `group_vars/stage-44-44-44.yml` dosyasini ansible-vault ile sifrele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-vault encrypt group_vars/stage-44-44-44.yml",
+          "hint_text": "Vault sifreleme icin `ansible-vault encrypt` kullan.",
+          "hint_partial": "ansible-vault ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-005-r45-exp-055",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta `group_vars/dev-45-45.yml` dosyasini ansible-vault ile goruntule.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-vault view group_vars/dev-45-45.yml",
+          "hint_text": "Vault dosyasini okumak icin `ansible-vault view` kullan.",
+          "hint_partial": "ansible-vault ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-006-r46-exp-056",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda `requirements-46.yml` icindeki collection ve role'leri yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-galaxy install -r requirements-46.yml",
+          "hint_text": "Requirements dosyasini install etmek icin `ansible-galaxy install -r` kullan.",
+          "hint_partial": "ansible-galaxy ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-007-r47-exp-057",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde tum host'lara `app-47.conf` dosyasini kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-257-47 -m copy -a 'src=app-47.conf dest=/etc/app/web-257-257/bastion-47/app/web-257-257/bastion-47-47.conf'",
+          "hint_text": "Copy module icin `-m copy -a` kullan.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-008-r48-exp-058",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda tum host'larda vault-48 service'ini restart et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-258-48 -b -m service -a 'name=vault-48 state=restarted'",
+          "hint_text": "Service module ile restart et.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-009-r49-exp-059",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi playbook'u diff modda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-49.yml -i inventory-259-49 --diff",
+          "hint_text": "Degisiklik diff'i icin `--diff` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-010-r50-exp-060",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda degisen Ansible config ayarlarini dump et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-config dump --only-changed",
+          "hint_text": "Sadece farkli config icin `--only-changed` kullan.",
+          "hint_partial": "ansible-config ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-001-r51-exp-061",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi playbook'u sadece `bastion-261-51` grubunda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-51.yml -i inventory-261-51 --limit bastion-261-51",
+          "hint_text": "Host limit icin `--limit` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-002-r52-exp-062",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde playbook'ta sadece `deploy` tag'li task'lari calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-52.yml -i inventory-262-52 --tags deploy",
+          "hint_text": "Tag filtre icin `--tags` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-003-r53-exp-063",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta playbook'ta `restart` tag'li task'lari atla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-53.yml -i inventory-263-53 --skip-tags restart",
+          "hint_text": "Tag atlamak icin `--skip-tags` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-004-r54-exp-064",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda `group_vars/ops-54-54.yml` dosyasini ansible-vault ile sifrele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-vault encrypt group_vars/ops-54-54.yml",
+          "hint_text": "Vault sifreleme icin `ansible-vault encrypt` kullan.",
+          "hint_partial": "ansible-vault ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-005-r55-exp-065",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde `group_vars/prod-55-55.yml` dosyasini ansible-vault ile goruntule.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-vault view group_vars/prod-55-55.yml",
+          "hint_text": "Vault dosyasini okumak icin `ansible-vault view` kullan.",
+          "hint_partial": "ansible-vault ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-006-r56-exp-066",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda `requirements-56.yml` icindeki collection ve role'leri yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-galaxy install -r requirements-56.yml",
+          "hint_text": "Requirements dosyasini install etmek icin `ansible-galaxy install -r` kullan.",
+          "hint_partial": "ansible-galaxy ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-007-r57-exp-067",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi tum host'lara `app-57.conf` dosyasini kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-267-57 -m copy -a 'src=app-57.conf dest=/etc/app/queue-267-267/queue-267-267-57-57/app/queue-267-267/queue-267-267-57-57-57.conf'",
+          "hint_text": "Copy module icin `-m copy -a` kullan.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-008-r58-exp-068",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda tum host'larda traefik-58 service'ini restart et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-268-58 -b -m service -a 'name=traefik-58 state=restarted'",
+          "hint_text": "Service module ile restart et.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-009-r59-exp-069",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi playbook'u diff modda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-59.yml -i inventory-269-59 --diff",
+          "hint_text": "Degisiklik diff'i icin `--diff` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-010-r60-exp-070",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde degisen Ansible config ayarlarini dump et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-config dump --only-changed",
+          "hint_text": "Sadece farkli config icin `--only-changed` kullan.",
+          "hint_partial": "ansible-config ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-001-r61-exp-071",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta playbook'u sadece `cache-271-61-61` grubunda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-61.yml -i inventory-271-61 --limit cache-271-61-61",
+          "hint_text": "Host limit icin `--limit` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-002-r62-exp-072",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda playbook'ta sadece `deploy` tag'li task'lari calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-62.yml -i inventory-272-62 --tags deploy",
+          "hint_text": "Tag filtre icin `--tags` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-003-r63-exp-073",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde playbook'ta `restart` tag'li task'lari atla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-63.yml -i inventory-273-63 --skip-tags restart",
+          "hint_text": "Tag atlamak icin `--skip-tags` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-004-r64-exp-074",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda `group_vars/monitoring-64-64.yml` dosyasini ansible-vault ile sifrele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-vault encrypt group_vars/monitoring-64-64.yml",
+          "hint_text": "Vault sifreleme icin `ansible-vault encrypt` kullan.",
+          "hint_partial": "ansible-vault ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-005-r65-exp-075",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi `group_vars/payments-65-65.yml` dosyasini ansible-vault ile goruntule.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-vault view group_vars/payments-65-65.yml",
+          "hint_text": "Vault dosyasini okumak icin `ansible-vault view` kullan.",
+          "hint_partial": "ansible-vault ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-006-r66-exp-076",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda `requirements-66.yml` icindeki collection ve role'leri yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-galaxy install -r requirements-66.yml",
+          "hint_text": "Requirements dosyasini install etmek icin `ansible-galaxy install -r` kullan.",
+          "hint_partial": "ansible-galaxy ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-007-r67-exp-077",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi tum host'lara `app-67.conf` dosyasini kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-277-67 -m copy -a 'src=app-67.conf dest=/etc/app/cache-277-277/queue-67-67/app/cache-277-277/queue-67-67-67.conf'",
+          "hint_text": "Copy module icin `-m copy -a` kullan.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-008-r68-exp-078",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde tum host'larda postgres-278-68-68 service'ini restart et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-278-68 -b -m service -a 'name=postgres-278-68-68 state=restarted'",
+          "hint_text": "Service module ile restart et.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-009-r69-exp-079",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta playbook'u diff modda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-69.yml -i inventory-279-69 --diff",
+          "hint_text": "Degisiklik diff'i icin `--diff` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-010-r70-exp-080",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda degisen Ansible config ayarlarini dump et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-config dump --only-changed",
+          "hint_text": "Sadece farkli config icin `--only-changed` kullan.",
+          "hint_partial": "ansible-config ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-001-r71-exp-081",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde playbook'u sadece `bastion-71` grubunda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-71.yml -i inventory-281-71 --limit bastion-71",
+          "hint_text": "Host limit icin `--limit` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-002-r72-exp-082",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda playbook'ta sadece `deploy` tag'li task'lari calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-72.yml -i inventory-282-72 --tags deploy",
+          "hint_text": "Tag filtre icin `--tags` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-003-r73-exp-083",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi playbook'ta `restart` tag'li task'lari atla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-73.yml -i inventory-283-73 --skip-tags restart",
+          "hint_text": "Tag atlamak icin `--skip-tags` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-004-r74-exp-084",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda `group_vars/stage-74-74-74.yml` dosyasini ansible-vault ile sifrele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-vault encrypt group_vars/stage-74-74-74.yml",
+          "hint_text": "Vault sifreleme icin `ansible-vault encrypt` kullan.",
+          "hint_partial": "ansible-vault ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-005-r75-exp-085",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi `group_vars/dev-75-75.yml` dosyasini ansible-vault ile goruntule.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-vault view group_vars/dev-75-75.yml",
+          "hint_text": "Vault dosyasini okumak icin `ansible-vault view` kullan.",
+          "hint_partial": "ansible-vault ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-006-r76-exp-086",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde `requirements-76.yml` icindeki collection ve role'leri yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-galaxy install -r requirements-76.yml",
+          "hint_text": "Requirements dosyasini install etmek icin `ansible-galaxy install -r` kullan.",
+          "hint_partial": "ansible-galaxy ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-007-r77-exp-087",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta tum host'lara `app-77.conf` dosyasini kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-287-77 -m copy -a 'src=app-77.conf dest=/etc/app/proxy-287/cache-287-77-77/app/proxy-287/cache-287-77-77-77.conf'",
+          "hint_text": "Copy module icin `-m copy -a` kullan.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-008-r78-exp-088",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda tum host'larda vault-78 service'ini restart et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-288-78 -b -m service -a 'name=vault-78 state=restarted'",
+          "hint_text": "Service module ile restart et.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-009-r79-exp-089",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde playbook'u diff modda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-79.yml -i inventory-289-79 --diff",
+          "hint_text": "Degisiklik diff'i icin `--diff` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-010-r80-exp-090",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda degisen Ansible config ayarlarini dump et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-config dump --only-changed",
+          "hint_text": "Sadece farkli config icin `--only-changed` kullan.",
+          "hint_partial": "ansible-config ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-001-r81-exp-091",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi playbook'u sadece `queue-291-291-81` grubunda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-81.yml -i inventory-291-81 --limit queue-291-291-81",
+          "hint_text": "Host limit icin `--limit` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-002-r82-exp-092",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda playbook'ta sadece `deploy` tag'li task'lari calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-82.yml -i inventory-292-82 --tags deploy",
+          "hint_text": "Tag filtre icin `--tags` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-003-r83-exp-093",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi playbook'ta `restart` tag'li task'lari atla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-83.yml -i inventory-293-83 --skip-tags restart",
+          "hint_text": "Tag atlamak icin `--skip-tags` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-004-r84-exp-094",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde `group_vars/ops-84-84.yml` dosyasini ansible-vault ile sifrele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-vault encrypt group_vars/ops-84-84.yml",
+          "hint_text": "Vault sifreleme icin `ansible-vault encrypt` kullan.",
+          "hint_partial": "ansible-vault ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-005-r85-exp-095",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta `group_vars/prod-85-85.yml` dosyasini ansible-vault ile goruntule.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-vault view group_vars/prod-85-85.yml",
+          "hint_text": "Vault dosyasini okumak icin `ansible-vault view` kullan.",
+          "hint_partial": "ansible-vault ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-006-r86-exp-096",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda `requirements-86.yml` icindeki collection ve role'leri yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-galaxy install -r requirements-86.yml",
+          "hint_text": "Requirements dosyasini install etmek icin `ansible-galaxy install -r` kullan.",
+          "hint_partial": "ansible-galaxy ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-007-r87-exp-097",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde tum host'lara `app-87.conf` dosyasini kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-297-87 -m copy -a 'src=app-87.conf dest=/etc/app/web-297-297/bastion-87/app/web-297-297/bastion-87-87.conf'",
+          "hint_text": "Copy module icin `-m copy -a` kullan.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-008-r88-exp-098",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda tum host'larda traefik-88 service'ini restart et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-298-88 -b -m service -a 'name=traefik-88 state=restarted'",
+          "hint_text": "Service module ile restart et.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-009-r89-exp-099",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi playbook'u diff modda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-89.yml -i inventory-299-89 --diff",
+          "hint_text": "Degisiklik diff'i icin `--diff` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-010-r90-exp-100",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda degisen Ansible config ayarlarini dump et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-config dump --only-changed",
+          "hint_text": "Sadece farkli config icin `--only-changed` kullan.",
+          "hint_partial": "ansible-config ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-001-r91-exp-101",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi playbook'u sadece `bastion-301-91` grubunda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-91.yml -i inventory-301-91 --limit bastion-301-91",
+          "hint_text": "Host limit icin `--limit` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-002-r92-exp-102",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde playbook'ta sadece `deploy` tag'li task'lari calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-92.yml -i inventory-302-92 --tags deploy",
+          "hint_text": "Tag filtre icin `--tags` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-003-r93-exp-103",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta playbook'ta `restart` tag'li task'lari atla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-93.yml -i inventory-303-93 --skip-tags restart",
+          "hint_text": "Tag atlamak icin `--skip-tags` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-004-r94-exp-104",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda `group_vars/monitoring-94-94.yml` dosyasini ansible-vault ile sifrele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-vault encrypt group_vars/monitoring-94-94.yml",
+          "hint_text": "Vault sifreleme icin `ansible-vault encrypt` kullan.",
+          "hint_partial": "ansible-vault ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-005-r95-exp-105",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde `group_vars/payments-95-95.yml` dosyasini ansible-vault ile goruntule.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-vault view group_vars/payments-95-95.yml",
+          "hint_text": "Vault dosyasini okumak icin `ansible-vault view` kullan.",
+          "hint_partial": "ansible-vault ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-006-r96-exp-106",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda `requirements-96.yml` icindeki collection ve role'leri yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-galaxy install -r requirements-96.yml",
+          "hint_text": "Requirements dosyasini install etmek icin `ansible-galaxy install -r` kullan.",
+          "hint_partial": "ansible-galaxy ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-007-r97-exp-107",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi tum host'lara `app-97.conf` dosyasini kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-307-97 -m copy -a 'src=app-97.conf dest=/etc/app/queue-307-307/queue-307-307-97-97/app/queue-307-307/queue-307-307-97-97-97.conf'",
+          "hint_text": "Copy module icin `-m copy -a` kullan.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-008-r98-exp-108",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda tum host'larda postgres-308-98-98 service'ini restart et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-308-98 -b -m service -a 'name=postgres-308-98-98 state=restarted'",
+          "hint_text": "Service module ile restart et.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-009-r99-exp-109",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi playbook'u diff modda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-99.yml -i inventory-309-99 --diff",
+          "hint_text": "Degisiklik diff'i icin `--diff` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-010-r100-exp-110",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde degisen Ansible config ayarlarini dump et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-config dump --only-changed",
+          "hint_text": "Sadece farkli config icin `--only-changed` kullan.",
+          "hint_partial": "ansible-config ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-001-r101-exp-111",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta playbook'u sadece `cache-311-101-101` grubunda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-101.yml -i inventory-311-101 --limit cache-311-101-101",
+          "hint_text": "Host limit icin `--limit` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-002-r102-exp-112",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda playbook'ta sadece `deploy` tag'li task'lari calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-102.yml -i inventory-312-102 --tags deploy",
+          "hint_text": "Tag filtre icin `--tags` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-003-r103-exp-113",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde playbook'ta `restart` tag'li task'lari atla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-103.yml -i inventory-313-103 --skip-tags restart",
+          "hint_text": "Tag atlamak icin `--skip-tags` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-004-r104-exp-114",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda `group_vars/stage-104-104-104.yml` dosyasini ansible-vault ile sifrele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-vault encrypt group_vars/stage-104-104-104.yml",
+          "hint_text": "Vault sifreleme icin `ansible-vault encrypt` kullan.",
+          "hint_partial": "ansible-vault ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-005-r105-exp-115",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi `group_vars/dev-105-105.yml` dosyasini ansible-vault ile goruntule.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-vault view group_vars/dev-105-105.yml",
+          "hint_text": "Vault dosyasini okumak icin `ansible-vault view` kullan.",
+          "hint_partial": "ansible-vault ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-006-r106-exp-116",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda `requirements-106.yml` icindeki collection ve role'leri yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-galaxy install -r requirements-106.yml",
+          "hint_text": "Requirements dosyasini install etmek icin `ansible-galaxy install -r` kullan.",
+          "hint_partial": "ansible-galaxy ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-007-r107-exp-117",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi tum host'lara `app-107.conf` dosyasini kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-317-107 -m copy -a 'src=app-107.conf dest=/etc/app/cache-317-317/queue-107-107/app/cache-317-317/queue-107-107-107.conf'",
+          "hint_text": "Copy module icin `-m copy -a` kullan.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-008-r108-exp-118",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde tum host'larda vault-108 service'ini restart et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-318-108 -b -m service -a 'name=vault-108 state=restarted'",
+          "hint_text": "Service module ile restart et.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-009-r109-exp-119",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta playbook'u diff modda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-109.yml -i inventory-319-109 --diff",
+          "hint_text": "Degisiklik diff'i icin `--diff` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-010-r110-exp-120",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda degisen Ansible config ayarlarini dump et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-config dump --only-changed",
+          "hint_text": "Sadece farkli config icin `--only-changed` kullan.",
+          "hint_partial": "ansible-config ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-001-r111-exp-121",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde playbook'u sadece `bastion-111` grubunda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-111.yml -i inventory-321-111 --limit bastion-111",
+          "hint_text": "Host limit icin `--limit` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-002-r112-exp-122",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda playbook'ta sadece `deploy` tag'li task'lari calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-112.yml -i inventory-322-112 --tags deploy",
+          "hint_text": "Tag filtre icin `--tags` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-003-r113-exp-123",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi playbook'ta `restart` tag'li task'lari atla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-113.yml -i inventory-323-113 --skip-tags restart",
+          "hint_text": "Tag atlamak icin `--skip-tags` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-004-r114-exp-124",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda `group_vars/ops-114-114.yml` dosyasini ansible-vault ile sifrele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-vault encrypt group_vars/ops-114-114.yml",
+          "hint_text": "Vault sifreleme icin `ansible-vault encrypt` kullan.",
+          "hint_partial": "ansible-vault ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-005-r115-exp-125",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi `group_vars/prod-115-115.yml` dosyasini ansible-vault ile goruntule.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-vault view group_vars/prod-115-115.yml",
+          "hint_text": "Vault dosyasini okumak icin `ansible-vault view` kullan.",
+          "hint_partial": "ansible-vault ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-006-r116-exp-126",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde `requirements-116.yml` icindeki collection ve role'leri yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-galaxy install -r requirements-116.yml",
+          "hint_text": "Requirements dosyasini install etmek icin `ansible-galaxy install -r` kullan.",
+          "hint_partial": "ansible-galaxy ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-007-r117-exp-127",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta tum host'lara `app-117.conf` dosyasini kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-327-117 -m copy -a 'src=app-117.conf dest=/etc/app/proxy-327/cache-327-117-117/app/proxy-327/cache-327-117-117-117.conf'",
+          "hint_text": "Copy module icin `-m copy -a` kullan.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-008-r118-exp-128",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda tum host'larda traefik-118 service'ini restart et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-328-118 -b -m service -a 'name=traefik-118 state=restarted'",
+          "hint_text": "Service module ile restart et.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-009-r119-exp-129",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde playbook'u diff modda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-119.yml -i inventory-329-119 --diff",
+          "hint_text": "Degisiklik diff'i icin `--diff` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-010-r120-exp-130",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda degisen Ansible config ayarlarini dump et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-config dump --only-changed",
+          "hint_text": "Sadece farkli config icin `--only-changed` kullan.",
+          "hint_partial": "ansible-config ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-001-r121-exp-131",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi playbook'u sadece `queue-331-331-121` grubunda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-121.yml -i inventory-331-121 --limit queue-331-331-121",
+          "hint_text": "Host limit icin `--limit` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-002-r122-exp-132",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda playbook'ta sadece `deploy` tag'li task'lari calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-122.yml -i inventory-332-122 --tags deploy",
+          "hint_text": "Tag filtre icin `--tags` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-003-r123-exp-133",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi playbook'ta `restart` tag'li task'lari atla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-123.yml -i inventory-333-123 --skip-tags restart",
+          "hint_text": "Tag atlamak icin `--skip-tags` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-004-r124-exp-134",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde `group_vars/monitoring-124-124.yml` dosyasini ansible-vault ile sifrele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-vault encrypt group_vars/monitoring-124-124.yml",
+          "hint_text": "Vault sifreleme icin `ansible-vault encrypt` kullan.",
+          "hint_partial": "ansible-vault ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-005-r125-exp-135",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta `group_vars/payments-125-125.yml` dosyasini ansible-vault ile goruntule.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-vault view group_vars/payments-125-125.yml",
+          "hint_text": "Vault dosyasini okumak icin `ansible-vault view` kullan.",
+          "hint_partial": "ansible-vault ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-006-r126-exp-136",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda `requirements-126.yml` icindeki collection ve role'leri yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-galaxy install -r requirements-126.yml",
+          "hint_text": "Requirements dosyasini install etmek icin `ansible-galaxy install -r` kullan.",
+          "hint_partial": "ansible-galaxy ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-007-r127-exp-137",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde tum host'lara `app-127.conf` dosyasini kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-337-127 -m copy -a 'src=app-127.conf dest=/etc/app/web-337-337/bastion-127/app/web-337-337/bastion-127-127.conf'",
+          "hint_text": "Copy module icin `-m copy -a` kullan.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-008-r128-exp-138",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda tum host'larda postgres-338-128-128 service'ini restart et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-338-128 -b -m service -a 'name=postgres-338-128-128 state=restarted'",
+          "hint_text": "Service module ile restart et.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-009-r129-exp-139",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi playbook'u diff modda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-129.yml -i inventory-339-129 --diff",
+          "hint_text": "Degisiklik diff'i icin `--diff` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-010-r130-exp-140",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda degisen Ansible config ayarlarini dump et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-config dump --only-changed",
+          "hint_text": "Sadece farkli config icin `--only-changed` kullan.",
+          "hint_partial": "ansible-config ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-001-r131-exp-141",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi playbook'u sadece `bastion-341-131` grubunda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-131.yml -i inventory-341-131 --limit bastion-341-131",
+          "hint_text": "Host limit icin `--limit` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-002-r132-exp-142",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde playbook'ta sadece `deploy` tag'li task'lari calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-132.yml -i inventory-342-132 --tags deploy",
+          "hint_text": "Tag filtre icin `--tags` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-003-r133-exp-143",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta playbook'ta `restart` tag'li task'lari atla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-133.yml -i inventory-343-133 --skip-tags restart",
+          "hint_text": "Tag atlamak icin `--skip-tags` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-004-r134-exp-144",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda `group_vars/stage-134-134-134.yml` dosyasini ansible-vault ile sifrele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-vault encrypt group_vars/stage-134-134-134.yml",
+          "hint_text": "Vault sifreleme icin `ansible-vault encrypt` kullan.",
+          "hint_partial": "ansible-vault ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-005-r135-exp-145",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde `group_vars/dev-135-135.yml` dosyasini ansible-vault ile goruntule.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-vault view group_vars/dev-135-135.yml",
+          "hint_text": "Vault dosyasini okumak icin `ansible-vault view` kullan.",
+          "hint_partial": "ansible-vault ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-006-r136-exp-146",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda `requirements-136.yml` icindeki collection ve role'leri yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-galaxy install -r requirements-136.yml",
+          "hint_text": "Requirements dosyasini install etmek icin `ansible-galaxy install -r` kullan.",
+          "hint_partial": "ansible-galaxy ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-007-r137-exp-147",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi tum host'lara `app-137.conf` dosyasini kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-347-137 -m copy -a 'src=app-137.conf dest=/etc/app/queue-347-347/queue-347-347-137-137/app/queue-347-347/queue-347-347-137-137-137.conf'",
+          "hint_text": "Copy module icin `-m copy -a` kullan.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-008-r138-exp-148",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda tum host'larda vault-138 service'ini restart et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-348-138 -b -m service -a 'name=vault-138 state=restarted'",
+          "hint_text": "Service module ile restart et.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-009-r139-exp-149",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi playbook'u diff modda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-139.yml -i inventory-349-139 --diff",
+          "hint_text": "Degisiklik diff'i icin `--diff` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-010-r140-exp-150",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde degisen Ansible config ayarlarini dump et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-config dump --only-changed",
+          "hint_text": "Sadece farkli config icin `--only-changed` kullan.",
+          "hint_partial": "ansible-config ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-001-r141-exp-151",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta playbook'u sadece `cache-351-141-141` grubunda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-141.yml -i inventory-351-141 --limit cache-351-141-141",
+          "hint_text": "Host limit icin `--limit` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-002-r142-exp-152",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda playbook'ta sadece `deploy` tag'li task'lari calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-142.yml -i inventory-352-142 --tags deploy",
+          "hint_text": "Tag filtre icin `--tags` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-003-r143-exp-153",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde playbook'ta `restart` tag'li task'lari atla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-143.yml -i inventory-353-143 --skip-tags restart",
+          "hint_text": "Tag atlamak icin `--skip-tags` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-004-r144-exp-154",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda `group_vars/ops-144-144.yml` dosyasini ansible-vault ile sifrele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-vault encrypt group_vars/ops-144-144.yml",
+          "hint_text": "Vault sifreleme icin `ansible-vault encrypt` kullan.",
+          "hint_partial": "ansible-vault ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-005-r145-exp-155",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi `group_vars/prod-145-145.yml` dosyasini ansible-vault ile goruntule.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-vault view group_vars/prod-145-145.yml",
+          "hint_text": "Vault dosyasini okumak icin `ansible-vault view` kullan.",
+          "hint_partial": "ansible-vault ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-006-r146-exp-156",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda `requirements-146.yml` icindeki collection ve role'leri yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-galaxy install -r requirements-146.yml",
+          "hint_text": "Requirements dosyasini install etmek icin `ansible-galaxy install -r` kullan.",
+          "hint_partial": "ansible-galaxy ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-007-r147-exp-157",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi tum host'lara `app-147.conf` dosyasini kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-357-147 -m copy -a 'src=app-147.conf dest=/etc/app/cache-357-357/queue-147-147/app/cache-357-357/queue-147-147-147.conf'",
+          "hint_text": "Copy module icin `-m copy -a` kullan.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-008-r148-exp-158",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde tum host'larda traefik-148 service'ini restart et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-358-148 -b -m service -a 'name=traefik-148 state=restarted'",
+          "hint_text": "Service module ile restart et.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-009-r149-exp-159",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta playbook'u diff modda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-149.yml -i inventory-359-149 --diff",
+          "hint_text": "Degisiklik diff'i icin `--diff` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-010-r150-exp-160",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda degisen Ansible config ayarlarini dump et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-config dump --only-changed",
+          "hint_text": "Sadece farkli config icin `--only-changed` kullan.",
+          "hint_partial": "ansible-config ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-001-r151-exp-161",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde playbook'u sadece `bastion-151` grubunda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-151.yml -i inventory-361-151 --limit bastion-151",
+          "hint_text": "Host limit icin `--limit` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-002-r152-exp-162",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda playbook'ta sadece `deploy` tag'li task'lari calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-152.yml -i inventory-362-152 --tags deploy",
+          "hint_text": "Tag filtre icin `--tags` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-003-r153-exp-163",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi playbook'ta `restart` tag'li task'lari atla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-153.yml -i inventory-363-153 --skip-tags restart",
+          "hint_text": "Tag atlamak icin `--skip-tags` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-004-r154-exp-164",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda `group_vars/monitoring-154-154.yml` dosyasini ansible-vault ile sifrele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-vault encrypt group_vars/monitoring-154-154.yml",
+          "hint_text": "Vault sifreleme icin `ansible-vault encrypt` kullan.",
+          "hint_partial": "ansible-vault ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-005-r155-exp-165",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi `group_vars/payments-155-155.yml` dosyasini ansible-vault ile goruntule.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-vault view group_vars/payments-155-155.yml",
+          "hint_text": "Vault dosyasini okumak icin `ansible-vault view` kullan.",
+          "hint_partial": "ansible-vault ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-006-r156-exp-166",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde `requirements-156.yml` icindeki collection ve role'leri yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-galaxy install -r requirements-156.yml",
+          "hint_text": "Requirements dosyasini install etmek icin `ansible-galaxy install -r` kullan.",
+          "hint_partial": "ansible-galaxy ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-007-r157-exp-167",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta tum host'lara `app-157.conf` dosyasini kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-367-157 -m copy -a 'src=app-157.conf dest=/etc/app/proxy-367/cache-367-157-157/app/proxy-367/cache-367-157-157-157.conf'",
+          "hint_text": "Copy module icin `-m copy -a` kullan.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-008-r158-exp-168",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda tum host'larda postgres-368-158-158 service'ini restart et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-368-158 -b -m service -a 'name=postgres-368-158-158 state=restarted'",
+          "hint_text": "Service module ile restart et.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-009-r159-exp-169",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde playbook'u diff modda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-159.yml -i inventory-369-159 --diff",
+          "hint_text": "Degisiklik diff'i icin `--diff` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-010-r160-exp-170",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda degisen Ansible config ayarlarini dump et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-config dump --only-changed",
+          "hint_text": "Sadece farkli config icin `--only-changed` kullan.",
+          "hint_partial": "ansible-config ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-001-r161-exp-171",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi playbook'u sadece `queue-371-371-161` grubunda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-161.yml -i inventory-371-161 --limit queue-371-371-161",
+          "hint_text": "Host limit icin `--limit` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-002-r162-exp-172",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda playbook'ta sadece `deploy` tag'li task'lari calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-162.yml -i inventory-372-162 --tags deploy",
+          "hint_text": "Tag filtre icin `--tags` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-003-r163-exp-173",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi playbook'ta `restart` tag'li task'lari atla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-163.yml -i inventory-373-163 --skip-tags restart",
+          "hint_text": "Tag atlamak icin `--skip-tags` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-004-r164-exp-174",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde `group_vars/stage-164-164-164.yml` dosyasini ansible-vault ile sifrele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-vault encrypt group_vars/stage-164-164-164.yml",
+          "hint_text": "Vault sifreleme icin `ansible-vault encrypt` kullan.",
+          "hint_partial": "ansible-vault ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-005-r165-exp-175",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta `group_vars/dev-165-165.yml` dosyasini ansible-vault ile goruntule.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-vault view group_vars/dev-165-165.yml",
+          "hint_text": "Vault dosyasini okumak icin `ansible-vault view` kullan.",
+          "hint_partial": "ansible-vault ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-006-r166-exp-176",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda `requirements-166.yml` icindeki collection ve role'leri yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-galaxy install -r requirements-166.yml",
+          "hint_text": "Requirements dosyasini install etmek icin `ansible-galaxy install -r` kullan.",
+          "hint_partial": "ansible-galaxy ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-007-r167-exp-177",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde tum host'lara `app-167.conf` dosyasini kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-377-167 -m copy -a 'src=app-167.conf dest=/etc/app/web-377-377/bastion-167/app/web-377-377/bastion-167-167.conf'",
+          "hint_text": "Copy module icin `-m copy -a` kullan.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-008-r168-exp-178",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda tum host'larda vault-168 service'ini restart et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-378-168 -b -m service -a 'name=vault-168 state=restarted'",
+          "hint_text": "Service module ile restart et.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-009-r169-exp-179",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi playbook'u diff modda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-169.yml -i inventory-379-169 --diff",
+          "hint_text": "Degisiklik diff'i icin `--diff` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-010-r170-exp-180",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda degisen Ansible config ayarlarini dump et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-config dump --only-changed",
+          "hint_text": "Sadece farkli config icin `--only-changed` kullan.",
+          "hint_partial": "ansible-config ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-001-r171-exp-181",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi playbook'u sadece `bastion-381-171` grubunda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-171.yml -i inventory-381-171 --limit bastion-381-171",
+          "hint_text": "Host limit icin `--limit` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-002-r172-exp-182",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde playbook'ta sadece `deploy` tag'li task'lari calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-172.yml -i inventory-382-172 --tags deploy",
+          "hint_text": "Tag filtre icin `--tags` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-003-r173-exp-183",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta playbook'ta `restart` tag'li task'lari atla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-173.yml -i inventory-383-173 --skip-tags restart",
+          "hint_text": "Tag atlamak icin `--skip-tags` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-004-r174-exp-184",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda `group_vars/ops-174-174.yml` dosyasini ansible-vault ile sifrele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-vault encrypt group_vars/ops-174-174.yml",
+          "hint_text": "Vault sifreleme icin `ansible-vault encrypt` kullan.",
+          "hint_partial": "ansible-vault ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-005-r175-exp-185",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde `group_vars/prod-175-175.yml` dosyasini ansible-vault ile goruntule.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-vault view group_vars/prod-175-175.yml",
+          "hint_text": "Vault dosyasini okumak icin `ansible-vault view` kullan.",
+          "hint_partial": "ansible-vault ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-006-r176-exp-186",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda `requirements-176.yml` icindeki collection ve role'leri yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-galaxy install -r requirements-176.yml",
+          "hint_text": "Requirements dosyasini install etmek icin `ansible-galaxy install -r` kullan.",
+          "hint_partial": "ansible-galaxy ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-007-r177-exp-187",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi tum host'lara `app-177.conf` dosyasini kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-387-177 -m copy -a 'src=app-177.conf dest=/etc/app/queue-387-387/queue-387-387-177-177/app/queue-387-387/queue-387-387-177-177-177.conf'",
+          "hint_text": "Copy module icin `-m copy -a` kullan.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-008-r178-exp-188",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda tum host'larda traefik-178 service'ini restart et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-388-178 -b -m service -a 'name=traefik-178 state=restarted'",
+          "hint_text": "Service module ile restart et.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-009-r179-exp-189",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi playbook'u diff modda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-179.yml -i inventory-389-179 --diff",
+          "hint_text": "Degisiklik diff'i icin `--diff` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-010-r180-exp-190",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde degisen Ansible config ayarlarini dump et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-config dump --only-changed",
+          "hint_text": "Sadece farkli config icin `--only-changed` kullan.",
+          "hint_partial": "ansible-config ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-001-r181-exp-191",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta playbook'u sadece `cache-391-181-181` grubunda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-181.yml -i inventory-391-181 --limit cache-391-181-181",
+          "hint_text": "Host limit icin `--limit` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-002-r182-exp-192",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda playbook'ta sadece `deploy` tag'li task'lari calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-182.yml -i inventory-392-182 --tags deploy",
+          "hint_text": "Tag filtre icin `--tags` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-003-r183-exp-193",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde playbook'ta `restart` tag'li task'lari atla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-183.yml -i inventory-393-183 --skip-tags restart",
+          "hint_text": "Tag atlamak icin `--skip-tags` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-004-r184-exp-194",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda `group_vars/monitoring-184-184.yml` dosyasini ansible-vault ile sifrele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-vault encrypt group_vars/monitoring-184-184.yml",
+          "hint_text": "Vault sifreleme icin `ansible-vault encrypt` kullan.",
+          "hint_partial": "ansible-vault ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-005-r185-exp-195",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi `group_vars/payments-185-185.yml` dosyasini ansible-vault ile goruntule.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-vault view group_vars/payments-185-185.yml",
+          "hint_text": "Vault dosyasini okumak icin `ansible-vault view` kullan.",
+          "hint_partial": "ansible-vault ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-006-r186-exp-196",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda `requirements-186.yml` icindeki collection ve role'leri yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-galaxy install -r requirements-186.yml",
+          "hint_text": "Requirements dosyasini install etmek icin `ansible-galaxy install -r` kullan.",
+          "hint_partial": "ansible-galaxy ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-007-r187-exp-197",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi tum host'lara `app-187.conf` dosyasini kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-397-187 -m copy -a 'src=app-187.conf dest=/etc/app/cache-397-397/queue-187-187/app/cache-397-397/queue-187-187-187.conf'",
+          "hint_text": "Copy module icin `-m copy -a` kullan.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-008-r188-exp-198",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde tum host'larda postgres-398-188-188 service'ini restart et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-398-188 -b -m service -a 'name=postgres-398-188-188 state=restarted'",
+          "hint_text": "Service module ile restart et.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-009-r189-exp-199",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta playbook'u diff modda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-189.yml -i inventory-399-189 --diff",
+          "hint_text": "Degisiklik diff'i icin `--diff` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "mans-010-r190-exp-200",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda degisen Ansible config ayarlarini dump et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-config dump --only-changed",
+          "hint_text": "Sadece farkli config icin `--only-changed` kullan.",
+          "hint_partial": "ansible-config ..."
+        }
+      ]
+    }
+  ]
+}

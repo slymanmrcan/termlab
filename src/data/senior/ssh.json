@@ -1,0 +1,136 @@
+{
+  "level": "senior",
+  "topic": "ssh",
+  "questions": [
+    {
+      "id": "sssh-001",
+      "type": "single",
+      "scenario": "Bastion üzerinden `ProxyJump` kullanarak app.internal host'una bağlan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -J ops@bastion ops@app.internal",
+          "hint_text": "`-J` ile jump host belirt.",
+          "hint_partial": "ssh -J ... ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-002",
+      "type": "single",
+      "scenario": "Local 1080 port'unda bir SOCKS proxy tunnel aç.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -D 1080 user@bastion",
+          "hint_text": "Dynamic forwarding için `-D` kullan.",
+          "hint_partial": "ssh -D 1080 ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-003",
+      "type": "single",
+      "scenario": "Remote 8080 port'unu local 3000 port'una `reverse tunnel` ile yönlendir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -R 8080:localhost:3000 user@10.0.0.5",
+          "hint_text": "Reverse forwarding için `-R` kullan.",
+          "hint_partial": "ssh -R 8080:localhost:3000 ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-004",
+      "type": "single",
+      "scenario": "Connection multiplexing için `ControlMaster` ve `ControlPersist` ile background'da bir master session başlat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -MNf -o ControlMaster=yes -o ControlPersist=10m -S ~/.ssh/cm-%r@%h:%p user@10.0.0.5",
+          "hint_text": "`-MNf` ve `ControlMaster=yes` kombinasyonunu kullan.",
+          "hint_partial": "ssh -MNf -o ControlMaster=yes ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-005",
+      "type": "single",
+      "scenario": "`scp` ile bastion üzerinden app.internal host'una file kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp -J ops@bastion app.tar ops@app.internal:/tmp/",
+          "hint_text": "`scp -J` ile jump host kullan.",
+          "hint_partial": "scp -J ... ...:/tmp/"
+        }
+      ]
+    },
+    {
+      "id": "sssh-006",
+      "type": "single",
+      "scenario": "Connection test için config çözümlemesini host'a bağlanmadan göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -G app.internal",
+          "hint_text": "Effective config görmek için `ssh -G` kullan.",
+          "hint_partial": "ssh -G ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-007",
+      "type": "single",
+      "scenario": "Control socket üzerinden açık master session'ı kapat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -S ~/.ssh/cm-%r@%h:%p -O exit user@10.0.0.5",
+          "hint_text": "Control komutu için `-O exit` kullan.",
+          "hint_partial": "ssh -S ... -O exit ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-008",
+      "type": "single",
+      "scenario": "Jump host üzerinden local 8443 port'unu remote 443'e forward et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -J ops@bastion -L 8443:localhost:443 ops@app.internal",
+          "hint_text": "`-J` ve `-L` kombinasyonunu kullan.",
+          "hint_partial": "ssh -J ... -L 8443:..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-009",
+      "type": "single",
+      "scenario": "Server'ın sunduğu authentication method'ları verbose modda gör.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -vv user@10.0.0.5",
+          "hint_text": "Daha ayrıntılı debug için `-vv` kullan.",
+          "hint_partial": "ssh -vv ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-010",
+      "type": "single",
+      "scenario": "ProxyJump kullanarak remote host'tan local'e `backup.tar.gz` indir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp -J ops@bastion ops@app.internal:/tmp/backup.tar.gz .",
+          "hint_text": "`scp -J` ile jump host üzerinden copy yap.",
+          "hint_partial": "scp -J ... ... ."
+        }
+      ]
+    }
+  ]
+}

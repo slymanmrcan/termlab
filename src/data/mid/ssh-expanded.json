@@ -1,0 +1,2606 @@
+{
+  "level": "mid",
+  "topic": "ssh",
+  "questions": [
+    {
+      "id": "mssh-011",
+      "type": "single",
+      "scenario": "SSH baglantisini verbose modda baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -v user@host",
+          "hint_text": "Verbose output icin `-v` kullan.",
+          "hint_partial": "ssh -v ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-012",
+      "type": "single",
+      "scenario": "2222 portundan SSH baglantisi kur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -p 2222 user@host",
+          "hint_text": "Ozel port icin `-p` kullan.",
+          "hint_partial": "ssh -p ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-013",
+      "type": "single",
+      "scenario": "Remote host'ta `uptime` komutunu calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh user@host 'uptime'",
+          "hint_text": "Remote komutu SSH sonuna tirnak icinde ver.",
+          "hint_partial": "ssh user@host ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-014",
+      "type": "single",
+      "scenario": "`app.tar.gz` dosyasini `/tmp/` altina kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp app.tar.gz user@host:/tmp/",
+          "hint_text": "Uzak hedefe kopya icin `scp source user@host:path` kullan.",
+          "hint_partial": "scp app.tar.gz ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-015",
+      "type": "single",
+      "scenario": "Remote host'taki `/var/log/syslog` dosyasini current directory'ye kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp user@host:/var/log/syslog .",
+          "hint_text": "Remote dosyayi local'e almak icin `scp user@host:path .` kullan.",
+          "hint_partial": "scp user@host:..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-016",
+      "type": "single",
+      "scenario": "`dist/` klasorunu recursive olarak `/var/www/app` altina kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp -r dist/ user@host:/var/www/app",
+          "hint_text": "Klasor kopyasi icin `scp -r` kullan.",
+          "hint_partial": "scp -r ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-017",
+      "type": "single",
+      "scenario": "Yeni bir Ed25519 SSH anahtari uret.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-keygen -t ed25519",
+          "hint_text": "Anahtar tipi icin `-t ed25519` kullan.",
+          "hint_partial": "ssh-keygen -t ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-018",
+      "type": "single",
+      "scenario": "Public key'i remote host'a kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-copy-id user@host",
+          "hint_text": "Anahtari eklemek icin `ssh-copy-id` kullan.",
+          "hint_partial": "ssh-copy-id ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-019",
+      "type": "single",
+      "scenario": "SSH config genisletilmis degerleriyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -G user@host",
+          "hint_text": "Efektif config icin `ssh -G` kullan.",
+          "hint_partial": "ssh -G ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-020",
+      "type": "single",
+      "scenario": "Local 8080 portunu remote host'taki 127.0.0.1:80'e forward et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -L 8080:127.0.0.1:80 user@host",
+          "hint_text": "Local port forward icin `-L local:host:port` kullan.",
+          "hint_partial": "ssh -L ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-021",
+      "type": "single",
+      "scenario": "Remote 9000 portunu local 127.0.0.1:3000'e forward et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -R 9000:127.0.0.1:3000 user@host",
+          "hint_text": "Remote port forward icin `-R` kullan.",
+          "hint_partial": "ssh -R ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-022",
+      "type": "single",
+      "scenario": "SOCKS proxy icin dynamic SSH tunnel ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -D 1080 user@host",
+          "hint_text": "Dynamic tunnel icin `-D` kullan.",
+          "hint_partial": "ssh -D ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-023",
+      "type": "single",
+      "scenario": "Baglanti icin `~/.ssh/prod_ed25519` private key'ini kullan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -i ~/.ssh/prod_ed25519 user@host",
+          "hint_text": "Ozel key secmek icin `-i` kullan.",
+          "hint_partial": "ssh -i ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-024",
+      "type": "single",
+      "scenario": "Password sormadan baglantiyi test et ve hemen cik.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -o BatchMode=yes user@host exit",
+          "hint_text": "Prompt istememesi icin `BatchMode=yes` kullan.",
+          "hint_partial": "ssh -o BatchMode=yes ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-025",
+      "type": "single",
+      "scenario": "known_hosts icinden `host` kaydini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-keygen -R host",
+          "hint_text": "Eski host key temizligi icin `ssh-keygen -R` kullan.",
+          "hint_partial": "ssh-keygen -R ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-011-r1",
+      "type": "single",
+      "scenario": "Bakim oncesi sSH baglantisini verbose modda baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -v user@host",
+          "hint_text": "Verbose output icin `-v` kullan.",
+          "hint_partial": "ssh -v ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-012-r2",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda 2222 portundan SSH baglantisi kur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -p 2222 user@host",
+          "hint_text": "Ozel port icin `-p` kullan.",
+          "hint_partial": "ssh -p ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-013-r3",
+      "type": "single",
+      "scenario": "Deploy sonrasi remote host'ta `uptime` komutunu calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh user@host 'uptime'",
+          "hint_text": "Remote komutu SSH sonuna tirnak icinde ver.",
+          "hint_partial": "ssh user@host ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-014-r4",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `app.tar.gz` dosyasini `/tmp/job-4/` altina kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp app.tar.gz user@host:/tmp/job-4/",
+          "hint_text": "Uzak hedefe kopya icin `scp source user@host:path` kullan.",
+          "hint_partial": "scp app.tar.gz ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-015-r5",
+      "type": "single",
+      "scenario": "Yeni acilan hostta remote host'taki `/var/cache-5-5/log/cache-5-5/syslog` dosyasini current directory'ye kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp user@host:/var/cache-5-5/log/cache-5-5/syslog .",
+          "hint_text": "Remote dosyayi local'e almak icin `scp user@host:path .` kullan.",
+          "hint_partial": "scp user@host:..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-016-r6",
+      "type": "single",
+      "scenario": "Runbook adiminda `dist/` klasorunu recursive olarak `/var/queue-6/www/app/queue-6` altina kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp -r dist/ user@host:/var/queue-6/www/app/queue-6",
+          "hint_text": "Klasor kopyasi icin `scp -r` kullan.",
+          "hint_partial": "scp -r ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-017-r7",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde yeni bir Ed25519 SSH anahtari uret.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-keygen -t ed25519",
+          "hint_text": "Anahtar tipi icin `-t ed25519` kullan.",
+          "hint_partial": "ssh-keygen -t ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-018-r8",
+      "type": "single",
+      "scenario": "Incident sonrasinda public key'i remote host'a kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-copy-id user@host",
+          "hint_text": "Anahtari eklemek icin `ssh-copy-id` kullan.",
+          "hint_partial": "ssh-copy-id ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-019-r9",
+      "type": "single",
+      "scenario": "Bakim oncesi sSH config genisletilmis degerleriyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -G user@host",
+          "hint_text": "Efektif config icin `ssh -G` kullan.",
+          "hint_partial": "ssh -G ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-020-r10",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda local 8080 portunu remote host'taki 127.0.0.1:8153'e forward et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -L 2:8153.0.0.1:8153 user@host",
+          "hint_text": "Local port forward icin `-L local:host:port` kullan.",
+          "hint_partial": "ssh -L ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-021-r11",
+      "type": "single",
+      "scenario": "Deploy sonrasi remote 9000 portunu local 127.0.0.1:8170'e forward et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -R 9000:8170.0.0.1:8170 user@host",
+          "hint_text": "Remote port forward icin `-R` kullan.",
+          "hint_partial": "ssh -R ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-022-r12",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde sOCKS proxy icin dynamic SSH tunnel ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -D 1080 user@host",
+          "hint_text": "Dynamic tunnel icin `-D` kullan.",
+          "hint_partial": "ssh -D ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-023-r13",
+      "type": "single",
+      "scenario": "Yeni acilan hostta baglanti icin `~/.ssh/prod_ed25519` private key'ini kullan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -i ~/.ssh/prod_ed25519 user@host",
+          "hint_text": "Ozel key secmek icin `-i` kullan.",
+          "hint_partial": "ssh -i ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-024-r14",
+      "type": "single",
+      "scenario": "Runbook adiminda password sormadan baglantiyi test et ve hemen cik.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -o BatchMode=yes user@host exit",
+          "hint_text": "Prompt istememesi icin `BatchMode=yes` kullan.",
+          "hint_partial": "ssh -o BatchMode=yes ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-025-r15",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde known_hosts icinden `host` kaydini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-keygen -R host",
+          "hint_text": "Eski host key temizligi icin `ssh-keygen -R` kullan.",
+          "hint_partial": "ssh-keygen -R ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-011-r16",
+      "type": "single",
+      "scenario": "Incident sonrasinda sSH baglantisini verbose modda baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -v user@host",
+          "hint_text": "Verbose output icin `-v` kullan.",
+          "hint_partial": "ssh -v ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-012-r17",
+      "type": "single",
+      "scenario": "Bakim oncesi 2222 portundan SSH baglantisi kur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -p 2222 user@host",
+          "hint_text": "Ozel port icin `-p` kullan.",
+          "hint_partial": "ssh -p ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-013-r18",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda remote host'ta `uptime` komutunu calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh user@host 'uptime'",
+          "hint_text": "Remote komutu SSH sonuna tirnak icinde ver.",
+          "hint_partial": "ssh user@host ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-014-r19",
+      "type": "single",
+      "scenario": "Deploy sonrasi `app.tar.gz` dosyasini `/tmp/job-19/` altina kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp app.tar.gz user@host:/tmp/job-19/",
+          "hint_text": "Uzak hedefe kopya icin `scp source user@host:path` kullan.",
+          "hint_partial": "scp app.tar.gz ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-015-r20",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde remote host'taki `/var/db-20-20/log/db-20-20/syslog` dosyasini current directory'ye kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp user@host:/var/db-20-20/log/db-20-20/syslog .",
+          "hint_text": "Remote dosyayi local'e almak icin `scp user@host:path .` kullan.",
+          "hint_partial": "scp user@host:..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-016-r21",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `dist/` klasorunu recursive olarak `/var/cache-21-21/www/app/cache-21-21` altina kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp -r dist/ user@host:/var/cache-21-21/www/app/cache-21-21",
+          "hint_text": "Klasor kopyasi icin `scp -r` kullan.",
+          "hint_partial": "scp -r ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-017-r22",
+      "type": "single",
+      "scenario": "Runbook adiminda yeni bir Ed25519 SSH anahtari uret.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-keygen -t ed25519",
+          "hint_text": "Anahtar tipi icin `-t ed25519` kullan.",
+          "hint_partial": "ssh-keygen -t ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-018-r23",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde public key'i remote host'a kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-copy-id user@host",
+          "hint_text": "Anahtari eklemek icin `ssh-copy-id` kullan.",
+          "hint_partial": "ssh-copy-id ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-019-r24",
+      "type": "single",
+      "scenario": "Incident sonrasinda sSH config genisletilmis degerleriyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -G user@host",
+          "hint_text": "Efektif config icin `ssh -G` kullan.",
+          "hint_partial": "ssh -G ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-020-r25",
+      "type": "single",
+      "scenario": "Bakim oncesi local 8080 portunu remote host'taki 127.0.0.1:8408'e forward et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -L 2:8408.0.0.1:8408 user@host",
+          "hint_text": "Local port forward icin `-L local:host:port` kullan.",
+          "hint_partial": "ssh -L ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-021-r26",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda remote 9000 portunu local 127.0.0.1:8425'e forward et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -R 9000:8425.0.0.1:8425 user@host",
+          "hint_text": "Remote port forward icin `-R` kullan.",
+          "hint_partial": "ssh -R ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-022-r27",
+      "type": "single",
+      "scenario": "Deploy sonrasi sOCKS proxy icin dynamic SSH tunnel ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -D 1080 user@host",
+          "hint_text": "Dynamic tunnel icin `-D` kullan.",
+          "hint_partial": "ssh -D ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-023-r28",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde baglanti icin `~/.ssh/prod_ed25519` private key'ini kullan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -i ~/.ssh/prod_ed25519 user@host",
+          "hint_text": "Ozel key secmek icin `-i` kullan.",
+          "hint_partial": "ssh -i ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-024-r29",
+      "type": "single",
+      "scenario": "Yeni acilan hostta password sormadan baglantiyi test et ve hemen cik.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -o BatchMode=yes user@host exit",
+          "hint_text": "Prompt istememesi icin `BatchMode=yes` kullan.",
+          "hint_partial": "ssh -o BatchMode=yes ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-025-r30",
+      "type": "single",
+      "scenario": "Runbook adiminda known_hosts icinden `host` kaydini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-keygen -R host",
+          "hint_text": "Eski host key temizligi icin `ssh-keygen -R` kullan.",
+          "hint_partial": "ssh-keygen -R ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-011-r31",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde sSH baglantisini verbose modda baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -v user@host",
+          "hint_text": "Verbose output icin `-v` kullan.",
+          "hint_partial": "ssh -v ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-012-r32",
+      "type": "single",
+      "scenario": "Incident sonrasinda 2222 portundan SSH baglantisi kur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -p 2222 user@host",
+          "hint_text": "Ozel port icin `-p` kullan.",
+          "hint_partial": "ssh -p ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-013-r33",
+      "type": "single",
+      "scenario": "Bakim oncesi remote host'ta `uptime` komutunu calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh user@host 'uptime'",
+          "hint_text": "Remote komutu SSH sonuna tirnak icinde ver.",
+          "hint_partial": "ssh user@host ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-014-r34",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `app.tar.gz` dosyasini `/tmp/job-34/` altina kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp app.tar.gz user@host:/tmp/job-34/",
+          "hint_text": "Uzak hedefe kopya icin `scp source user@host:path` kullan.",
+          "hint_partial": "scp app.tar.gz ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-015-r35",
+      "type": "single",
+      "scenario": "Deploy sonrasi remote host'taki `/var/queue-35-35/log/queue-35-35/syslog` dosyasini current directory'ye kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp user@host:/var/queue-35-35/log/queue-35-35/syslog .",
+          "hint_text": "Remote dosyayi local'e almak icin `scp user@host:path .` kullan.",
+          "hint_partial": "scp user@host:..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-016-r36",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `dist/` klasorunu recursive olarak `/var/db-36-36/www/app/db-36-36` altina kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp -r dist/ user@host:/var/db-36-36/www/app/db-36-36",
+          "hint_text": "Klasor kopyasi icin `scp -r` kullan.",
+          "hint_partial": "scp -r ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-017-r37",
+      "type": "single",
+      "scenario": "Yeni acilan hostta yeni bir Ed25519 SSH anahtari uret.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-keygen -t ed25519",
+          "hint_text": "Anahtar tipi icin `-t ed25519` kullan.",
+          "hint_partial": "ssh-keygen -t ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-018-r38",
+      "type": "single",
+      "scenario": "Runbook adiminda public key'i remote host'a kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-copy-id user@host",
+          "hint_text": "Anahtari eklemek icin `ssh-copy-id` kullan.",
+          "hint_partial": "ssh-copy-id ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-019-r39",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde sSH config genisletilmis degerleriyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -G user@host",
+          "hint_text": "Efektif config icin `ssh -G` kullan.",
+          "hint_partial": "ssh -G ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-020-r40",
+      "type": "single",
+      "scenario": "Incident sonrasinda local 8080 portunu remote host'taki 127.0.0.1:8663'e forward et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -L 2:8663.0.0.1:8663 user@host",
+          "hint_text": "Local port forward icin `-L local:host:port` kullan.",
+          "hint_partial": "ssh -L ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-021-r41",
+      "type": "single",
+      "scenario": "Bakim oncesi remote 9000 portunu local 127.0.0.1:8680'e forward et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -R 9000:8680.0.0.1:8680 user@host",
+          "hint_text": "Remote port forward icin `-R` kullan.",
+          "hint_partial": "ssh -R ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-022-r42",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda sOCKS proxy icin dynamic SSH tunnel ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -D 1080 user@host",
+          "hint_text": "Dynamic tunnel icin `-D` kullan.",
+          "hint_partial": "ssh -D ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-023-r43",
+      "type": "single",
+      "scenario": "Deploy sonrasi baglanti icin `~/.ssh/prod_ed25519` private key'ini kullan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -i ~/.ssh/prod_ed25519 user@host",
+          "hint_text": "Ozel key secmek icin `-i` kullan.",
+          "hint_partial": "ssh -i ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-024-r44",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde password sormadan baglantiyi test et ve hemen cik.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -o BatchMode=yes user@host exit",
+          "hint_text": "Prompt istememesi icin `BatchMode=yes` kullan.",
+          "hint_partial": "ssh -o BatchMode=yes ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-025-r45",
+      "type": "single",
+      "scenario": "Yeni acilan hostta known_hosts icinden `host` kaydini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-keygen -R host",
+          "hint_text": "Eski host key temizligi icin `ssh-keygen -R` kullan.",
+          "hint_partial": "ssh-keygen -R ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-011-r46",
+      "type": "single",
+      "scenario": "Runbook adiminda sSH baglantisini verbose modda baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -v user@host",
+          "hint_text": "Verbose output icin `-v` kullan.",
+          "hint_partial": "ssh -v ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-012-r47",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde 2222 portundan SSH baglantisi kur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -p 2222 user@host",
+          "hint_text": "Ozel port icin `-p` kullan.",
+          "hint_partial": "ssh -p ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-013-r48",
+      "type": "single",
+      "scenario": "Incident sonrasinda remote host'ta `uptime` komutunu calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh user@host 'uptime'",
+          "hint_text": "Remote komutu SSH sonuna tirnak icinde ver.",
+          "hint_partial": "ssh user@host ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-014-r49",
+      "type": "single",
+      "scenario": "Bakim oncesi `app.tar.gz` dosyasini `/tmp/job-49/` altina kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp app.tar.gz user@host:/tmp/job-49/",
+          "hint_text": "Uzak hedefe kopya icin `scp source user@host:path` kullan.",
+          "hint_partial": "scp app.tar.gz ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-015-r50",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda remote host'taki `/var/cache-50-50-50/log/cache-50-50-50/syslog` dosyasini current directory'ye kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp user@host:/var/cache-50-50-50/log/cache-50-50-50/syslog .",
+          "hint_text": "Remote dosyayi local'e almak icin `scp user@host:path .` kullan.",
+          "hint_partial": "scp user@host:..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-016-r51",
+      "type": "single",
+      "scenario": "Deploy sonrasi `dist/` klasorunu recursive olarak `/var/queue-51-51/www/app/queue-51-51` altina kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp -r dist/ user@host:/var/queue-51-51/www/app/queue-51-51",
+          "hint_text": "Klasor kopyasi icin `scp -r` kullan.",
+          "hint_partial": "scp -r ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-017-r52",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde yeni bir Ed25519 SSH anahtari uret.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-keygen -t ed25519",
+          "hint_text": "Anahtar tipi icin `-t ed25519` kullan.",
+          "hint_partial": "ssh-keygen -t ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-018-r53",
+      "type": "single",
+      "scenario": "Yeni acilan hostta public key'i remote host'a kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-copy-id user@host",
+          "hint_text": "Anahtari eklemek icin `ssh-copy-id` kullan.",
+          "hint_partial": "ssh-copy-id ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-019-r54",
+      "type": "single",
+      "scenario": "Runbook adiminda sSH config genisletilmis degerleriyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -G user@host",
+          "hint_text": "Efektif config icin `ssh -G` kullan.",
+          "hint_partial": "ssh -G ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-020-r55",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde local 8080 portunu remote host'taki 127.0.0.1:8918'e forward et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -L 2:8918.0.0.1:8918 user@host",
+          "hint_text": "Local port forward icin `-L local:host:port` kullan.",
+          "hint_partial": "ssh -L ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-021-r56",
+      "type": "single",
+      "scenario": "Incident sonrasinda remote 9000 portunu local 127.0.0.1:8935'e forward et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -R 9000:8935.0.0.1:8935 user@host",
+          "hint_text": "Remote port forward icin `-R` kullan.",
+          "hint_partial": "ssh -R ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-022-r57",
+      "type": "single",
+      "scenario": "Bakim oncesi sOCKS proxy icin dynamic SSH tunnel ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -D 1080 user@host",
+          "hint_text": "Dynamic tunnel icin `-D` kullan.",
+          "hint_partial": "ssh -D ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-023-r58",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda baglanti icin `~/.ssh/prod_ed25519` private key'ini kullan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -i ~/.ssh/prod_ed25519 user@host",
+          "hint_text": "Ozel key secmek icin `-i` kullan.",
+          "hint_partial": "ssh -i ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-024-r59",
+      "type": "single",
+      "scenario": "Deploy sonrasi password sormadan baglantiyi test et ve hemen cik.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -o BatchMode=yes user@host exit",
+          "hint_text": "Prompt istememesi icin `BatchMode=yes` kullan.",
+          "hint_partial": "ssh -o BatchMode=yes ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-025-r60",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde known_hosts icinden `host` kaydini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-keygen -R host",
+          "hint_text": "Eski host key temizligi icin `ssh-keygen -R` kullan.",
+          "hint_partial": "ssh-keygen -R ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-011-r61",
+      "type": "single",
+      "scenario": "Yeni acilan hostta sSH baglantisini verbose modda baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -v user@host",
+          "hint_text": "Verbose output icin `-v` kullan.",
+          "hint_partial": "ssh -v ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-012-r62",
+      "type": "single",
+      "scenario": "Runbook adiminda 2222 portundan SSH baglantisi kur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -p 2222 user@host",
+          "hint_text": "Ozel port icin `-p` kullan.",
+          "hint_partial": "ssh -p ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-013-r63",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde remote host'ta `uptime` komutunu calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh user@host 'uptime'",
+          "hint_text": "Remote komutu SSH sonuna tirnak icinde ver.",
+          "hint_partial": "ssh user@host ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-014-r64",
+      "type": "single",
+      "scenario": "Incident sonrasinda `app.tar.gz` dosyasini `/tmp/job-64/` altina kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp app.tar.gz user@host:/tmp/job-64/",
+          "hint_text": "Uzak hedefe kopya icin `scp source user@host:path` kullan.",
+          "hint_partial": "scp app.tar.gz ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-015-r65",
+      "type": "single",
+      "scenario": "Bakim oncesi remote host'taki `/var/web-65-65/log/web-65-65/syslog` dosyasini current directory'ye kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp user@host:/var/web-65-65/log/web-65-65/syslog .",
+          "hint_text": "Remote dosyayi local'e almak icin `scp user@host:path .` kullan.",
+          "hint_partial": "scp user@host:..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-016-r66",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `dist/` klasorunu recursive olarak `/var/cache-66-66-66/www/app/cache-66-66-66` altina kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp -r dist/ user@host:/var/cache-66-66-66/www/app/cache-66-66-66",
+          "hint_text": "Klasor kopyasi icin `scp -r` kullan.",
+          "hint_partial": "scp -r ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-017-r67",
+      "type": "single",
+      "scenario": "Deploy sonrasi yeni bir Ed25519 SSH anahtari uret.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-keygen -t ed25519",
+          "hint_text": "Anahtar tipi icin `-t ed25519` kullan.",
+          "hint_partial": "ssh-keygen -t ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-018-r68",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde public key'i remote host'a kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-copy-id user@host",
+          "hint_text": "Anahtari eklemek icin `ssh-copy-id` kullan.",
+          "hint_partial": "ssh-copy-id ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-019-r69",
+      "type": "single",
+      "scenario": "Yeni acilan hostta sSH config genisletilmis degerleriyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -G user@host",
+          "hint_text": "Efektif config icin `ssh -G` kullan.",
+          "hint_partial": "ssh -G ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-020-r70",
+      "type": "single",
+      "scenario": "Runbook adiminda local 8080 portunu remote host'taki 127.0.0.1:8173'e forward et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -L 2:8173.0.0.1:8173 user@host",
+          "hint_text": "Local port forward icin `-L local:host:port` kullan.",
+          "hint_partial": "ssh -L ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-021-r71",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde remote 9000 portunu local 127.0.0.1:8190'e forward et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -R 9000:8190.0.0.1:8190 user@host",
+          "hint_text": "Remote port forward icin `-R` kullan.",
+          "hint_partial": "ssh -R ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-022-r72",
+      "type": "single",
+      "scenario": "Incident sonrasinda sOCKS proxy icin dynamic SSH tunnel ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -D 1080 user@host",
+          "hint_text": "Dynamic tunnel icin `-D` kullan.",
+          "hint_partial": "ssh -D ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-023-r73",
+      "type": "single",
+      "scenario": "Bakim oncesi baglanti icin `~/.ssh/prod_ed25519` private key'ini kullan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -i ~/.ssh/prod_ed25519 user@host",
+          "hint_text": "Ozel key secmek icin `-i` kullan.",
+          "hint_partial": "ssh -i ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-024-r74",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda password sormadan baglantiyi test et ve hemen cik.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -o BatchMode=yes user@host exit",
+          "hint_text": "Prompt istememesi icin `BatchMode=yes` kullan.",
+          "hint_partial": "ssh -o BatchMode=yes ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-025-r75",
+      "type": "single",
+      "scenario": "Deploy sonrasi known_hosts icinden `host` kaydini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-keygen -R host",
+          "hint_text": "Eski host key temizligi icin `ssh-keygen -R` kullan.",
+          "hint_partial": "ssh-keygen -R ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-011-r76",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde sSH baglantisini verbose modda baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -v user@host",
+          "hint_text": "Verbose output icin `-v` kullan.",
+          "hint_partial": "ssh -v ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-012-r77",
+      "type": "single",
+      "scenario": "Yeni acilan hostta 2222 portundan SSH baglantisi kur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -p 2222 user@host",
+          "hint_text": "Ozel port icin `-p` kullan.",
+          "hint_partial": "ssh -p ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-013-r78",
+      "type": "single",
+      "scenario": "Runbook adiminda remote host'ta `uptime` komutunu calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh user@host 'uptime'",
+          "hint_text": "Remote komutu SSH sonuna tirnak icinde ver.",
+          "hint_partial": "ssh user@host ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-014-r79",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `app.tar.gz` dosyasini `/tmp/job-79/` altina kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp app.tar.gz user@host:/tmp/job-79/",
+          "hint_text": "Uzak hedefe kopya icin `scp source user@host:path` kullan.",
+          "hint_partial": "scp app.tar.gz ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-015-r80",
+      "type": "single",
+      "scenario": "Incident sonrasinda remote host'taki `/var/proxy-80/log/proxy-80/syslog` dosyasini current directory'ye kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp user@host:/var/proxy-80/log/proxy-80/syslog .",
+          "hint_text": "Remote dosyayi local'e almak icin `scp user@host:path .` kullan.",
+          "hint_partial": "scp user@host:..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-016-r81",
+      "type": "single",
+      "scenario": "Bakim oncesi `dist/` klasorunu recursive olarak `/var/web-81-81/www/app/web-81-81` altina kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp -r dist/ user@host:/var/web-81-81/www/app/web-81-81",
+          "hint_text": "Klasor kopyasi icin `scp -r` kullan.",
+          "hint_partial": "scp -r ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-017-r82",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda yeni bir Ed25519 SSH anahtari uret.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-keygen -t ed25519",
+          "hint_text": "Anahtar tipi icin `-t ed25519` kullan.",
+          "hint_partial": "ssh-keygen -t ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-018-r83",
+      "type": "single",
+      "scenario": "Deploy sonrasi public key'i remote host'a kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-copy-id user@host",
+          "hint_text": "Anahtari eklemek icin `ssh-copy-id` kullan.",
+          "hint_partial": "ssh-copy-id ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-019-r84",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde sSH config genisletilmis degerleriyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -G user@host",
+          "hint_text": "Efektif config icin `ssh -G` kullan.",
+          "hint_partial": "ssh -G ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-020-r85",
+      "type": "single",
+      "scenario": "Yeni acilan hostta local 8080 portunu remote host'taki 127.0.0.1:8428'e forward et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -L 2:8428.0.0.1:8428 user@host",
+          "hint_text": "Local port forward icin `-L local:host:port` kullan.",
+          "hint_partial": "ssh -L ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-021-r86",
+      "type": "single",
+      "scenario": "Runbook adiminda remote 9000 portunu local 127.0.0.1:8445'e forward et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -R 9000:8445.0.0.1:8445 user@host",
+          "hint_text": "Remote port forward icin `-R` kullan.",
+          "hint_partial": "ssh -R ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-022-r87",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde sOCKS proxy icin dynamic SSH tunnel ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -D 1080 user@host",
+          "hint_text": "Dynamic tunnel icin `-D` kullan.",
+          "hint_partial": "ssh -D ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-023-r88",
+      "type": "single",
+      "scenario": "Incident sonrasinda baglanti icin `~/.ssh/prod_ed25519` private key'ini kullan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -i ~/.ssh/prod_ed25519 user@host",
+          "hint_text": "Ozel key secmek icin `-i` kullan.",
+          "hint_partial": "ssh -i ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-024-r89",
+      "type": "single",
+      "scenario": "Bakim oncesi password sormadan baglantiyi test et ve hemen cik.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -o BatchMode=yes user@host exit",
+          "hint_text": "Prompt istememesi icin `BatchMode=yes` kullan.",
+          "hint_partial": "ssh -o BatchMode=yes ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-025-r90",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda known_hosts icinden `host` kaydini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-keygen -R host",
+          "hint_text": "Eski host key temizligi icin `ssh-keygen -R` kullan.",
+          "hint_partial": "ssh-keygen -R ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-011-r91",
+      "type": "single",
+      "scenario": "Deploy sonrasi sSH baglantisini verbose modda baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -v user@host",
+          "hint_text": "Verbose output icin `-v` kullan.",
+          "hint_partial": "ssh -v ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-012-r92",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde 2222 portundan SSH baglantisi kur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -p 2222 user@host",
+          "hint_text": "Ozel port icin `-p` kullan.",
+          "hint_partial": "ssh -p ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-013-r93",
+      "type": "single",
+      "scenario": "Yeni acilan hostta remote host'ta `uptime` komutunu calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh user@host 'uptime'",
+          "hint_text": "Remote komutu SSH sonuna tirnak icinde ver.",
+          "hint_partial": "ssh user@host ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-014-r94",
+      "type": "single",
+      "scenario": "Runbook adiminda `app.tar.gz` dosyasini `/tmp/job-94/` altina kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp app.tar.gz user@host:/tmp/job-94/",
+          "hint_text": "Uzak hedefe kopya icin `scp source user@host:path` kullan.",
+          "hint_partial": "scp app.tar.gz ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-015-r95",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde remote host'taki `/var/bastion-95/log/bastion-95/syslog` dosyasini current directory'ye kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp user@host:/var/bastion-95/log/bastion-95/syslog .",
+          "hint_text": "Remote dosyayi local'e almak icin `scp user@host:path .` kullan.",
+          "hint_partial": "scp user@host:..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-016-r96",
+      "type": "single",
+      "scenario": "Incident sonrasinda `dist/` klasorunu recursive olarak `/var/proxy-96/www/app/proxy-96` altina kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp -r dist/ user@host:/var/proxy-96/www/app/proxy-96",
+          "hint_text": "Klasor kopyasi icin `scp -r` kullan.",
+          "hint_partial": "scp -r ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-017-r97",
+      "type": "single",
+      "scenario": "Bakim oncesi yeni bir Ed25519 SSH anahtari uret.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-keygen -t ed25519",
+          "hint_text": "Anahtar tipi icin `-t ed25519` kullan.",
+          "hint_partial": "ssh-keygen -t ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-018-r98",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda public key'i remote host'a kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-copy-id user@host",
+          "hint_text": "Anahtari eklemek icin `ssh-copy-id` kullan.",
+          "hint_partial": "ssh-copy-id ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-019-r99",
+      "type": "single",
+      "scenario": "Deploy sonrasi sSH config genisletilmis degerleriyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -G user@host",
+          "hint_text": "Efektif config icin `ssh -G` kullan.",
+          "hint_partial": "ssh -G ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-020-r100",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde local 8080 portunu remote host'taki 127.0.0.1:8683'e forward et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -L 2:8683.0.0.1:8683 user@host",
+          "hint_text": "Local port forward icin `-L local:host:port` kullan.",
+          "hint_partial": "ssh -L ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-021-r101",
+      "type": "single",
+      "scenario": "Yeni acilan hostta remote 9000 portunu local 127.0.0.1:8700'e forward et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -R 9000:8700.0.0.1:8700 user@host",
+          "hint_text": "Remote port forward icin `-R` kullan.",
+          "hint_partial": "ssh -R ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-022-r102",
+      "type": "single",
+      "scenario": "Runbook adiminda sOCKS proxy icin dynamic SSH tunnel ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -D 1080 user@host",
+          "hint_text": "Dynamic tunnel icin `-D` kullan.",
+          "hint_partial": "ssh -D ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-023-r103",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde baglanti icin `~/.ssh/prod_ed25519` private key'ini kullan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -i ~/.ssh/prod_ed25519 user@host",
+          "hint_text": "Ozel key secmek icin `-i` kullan.",
+          "hint_partial": "ssh -i ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-024-r104",
+      "type": "single",
+      "scenario": "Incident sonrasinda password sormadan baglantiyi test et ve hemen cik.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -o BatchMode=yes user@host exit",
+          "hint_text": "Prompt istememesi icin `BatchMode=yes` kullan.",
+          "hint_partial": "ssh -o BatchMode=yes ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-025-r105",
+      "type": "single",
+      "scenario": "Bakim oncesi known_hosts icinden `host` kaydini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-keygen -R host",
+          "hint_text": "Eski host key temizligi icin `ssh-keygen -R` kullan.",
+          "hint_partial": "ssh-keygen -R ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-011-r106",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda sSH baglantisini verbose modda baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -v user@host",
+          "hint_text": "Verbose output icin `-v` kullan.",
+          "hint_partial": "ssh -v ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-012-r107",
+      "type": "single",
+      "scenario": "Deploy sonrasi 2222 portundan SSH baglantisi kur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -p 2222 user@host",
+          "hint_text": "Ozel port icin `-p` kullan.",
+          "hint_partial": "ssh -p ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-013-r108",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde remote host'ta `uptime` komutunu calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh user@host 'uptime'",
+          "hint_text": "Remote komutu SSH sonuna tirnak icinde ver.",
+          "hint_partial": "ssh user@host ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-014-r109",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `app.tar.gz` dosyasini `/tmp/job-109/` altina kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp app.tar.gz user@host:/tmp/job-109/",
+          "hint_text": "Uzak hedefe kopya icin `scp source user@host:path` kullan.",
+          "hint_partial": "scp app.tar.gz ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-015-r110",
+      "type": "single",
+      "scenario": "Runbook adiminda remote host'taki `/var/queue-110/log/queue-110/syslog` dosyasini current directory'ye kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp user@host:/var/queue-110/log/queue-110/syslog .",
+          "hint_text": "Remote dosyayi local'e almak icin `scp user@host:path .` kullan.",
+          "hint_partial": "scp user@host:..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-016-r111",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `dist/` klasorunu recursive olarak `/var/bastion-111/www/app/bastion-111` altina kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp -r dist/ user@host:/var/bastion-111/www/app/bastion-111",
+          "hint_text": "Klasor kopyasi icin `scp -r` kullan.",
+          "hint_partial": "scp -r ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-017-r112",
+      "type": "single",
+      "scenario": "Incident sonrasinda yeni bir Ed25519 SSH anahtari uret.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-keygen -t ed25519",
+          "hint_text": "Anahtar tipi icin `-t ed25519` kullan.",
+          "hint_partial": "ssh-keygen -t ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-018-r113",
+      "type": "single",
+      "scenario": "Bakim oncesi public key'i remote host'a kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-copy-id user@host",
+          "hint_text": "Anahtari eklemek icin `ssh-copy-id` kullan.",
+          "hint_partial": "ssh-copy-id ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-019-r114",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda sSH config genisletilmis degerleriyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -G user@host",
+          "hint_text": "Efektif config icin `ssh -G` kullan.",
+          "hint_partial": "ssh -G ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-020-r115",
+      "type": "single",
+      "scenario": "Deploy sonrasi local 8080 portunu remote host'taki 127.0.0.1:8938'e forward et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -L 2:8938.0.0.1:8938 user@host",
+          "hint_text": "Local port forward icin `-L local:host:port` kullan.",
+          "hint_partial": "ssh -L ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-021-r116",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde remote 9000 portunu local 127.0.0.1:8955'e forward et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -R 9000:8955.0.0.1:8955 user@host",
+          "hint_text": "Remote port forward icin `-R` kullan.",
+          "hint_partial": "ssh -R ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-022-r117",
+      "type": "single",
+      "scenario": "Yeni acilan hostta sOCKS proxy icin dynamic SSH tunnel ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -D 1080 user@host",
+          "hint_text": "Dynamic tunnel icin `-D` kullan.",
+          "hint_partial": "ssh -D ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-023-r118",
+      "type": "single",
+      "scenario": "Runbook adiminda baglanti icin `~/.ssh/prod_ed25519` private key'ini kullan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -i ~/.ssh/prod_ed25519 user@host",
+          "hint_text": "Ozel key secmek icin `-i` kullan.",
+          "hint_partial": "ssh -i ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-024-r119",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde password sormadan baglantiyi test et ve hemen cik.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -o BatchMode=yes user@host exit",
+          "hint_text": "Prompt istememesi icin `BatchMode=yes` kullan.",
+          "hint_partial": "ssh -o BatchMode=yes ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-025-r120",
+      "type": "single",
+      "scenario": "Incident sonrasinda known_hosts icinden `host` kaydini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-keygen -R host",
+          "hint_text": "Eski host key temizligi icin `ssh-keygen -R` kullan.",
+          "hint_partial": "ssh-keygen -R ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-011-r121",
+      "type": "single",
+      "scenario": "Bakim oncesi sSH baglantisini verbose modda baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -v user@host",
+          "hint_text": "Verbose output icin `-v` kullan.",
+          "hint_partial": "ssh -v ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-012-r122",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda 2222 portundan SSH baglantisi kur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -p 2222 user@host",
+          "hint_text": "Ozel port icin `-p` kullan.",
+          "hint_partial": "ssh -p ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-013-r123",
+      "type": "single",
+      "scenario": "Deploy sonrasi remote host'ta `uptime` komutunu calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh user@host 'uptime'",
+          "hint_text": "Remote komutu SSH sonuna tirnak icinde ver.",
+          "hint_partial": "ssh user@host ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-014-r124",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `app.tar.gz` dosyasini `/tmp/job-124/` altina kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp app.tar.gz user@host:/tmp/job-124/",
+          "hint_text": "Uzak hedefe kopya icin `scp source user@host:path` kullan.",
+          "hint_partial": "scp app.tar.gz ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-015-r125",
+      "type": "single",
+      "scenario": "Yeni acilan hostta remote host'taki `/var/cache-125-125/log/cache-125-125/syslog` dosyasini current directory'ye kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp user@host:/var/cache-125-125/log/cache-125-125/syslog .",
+          "hint_text": "Remote dosyayi local'e almak icin `scp user@host:path .` kullan.",
+          "hint_partial": "scp user@host:..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-016-r126",
+      "type": "single",
+      "scenario": "Runbook adiminda `dist/` klasorunu recursive olarak `/var/queue-126/www/app/queue-126` altina kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp -r dist/ user@host:/var/queue-126/www/app/queue-126",
+          "hint_text": "Klasor kopyasi icin `scp -r` kullan.",
+          "hint_partial": "scp -r ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-017-r127",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde yeni bir Ed25519 SSH anahtari uret.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-keygen -t ed25519",
+          "hint_text": "Anahtar tipi icin `-t ed25519` kullan.",
+          "hint_partial": "ssh-keygen -t ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-018-r128",
+      "type": "single",
+      "scenario": "Incident sonrasinda public key'i remote host'a kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-copy-id user@host",
+          "hint_text": "Anahtari eklemek icin `ssh-copy-id` kullan.",
+          "hint_partial": "ssh-copy-id ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-019-r129",
+      "type": "single",
+      "scenario": "Bakim oncesi sSH config genisletilmis degerleriyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -G user@host",
+          "hint_text": "Efektif config icin `ssh -G` kullan.",
+          "hint_partial": "ssh -G ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-020-r130",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda local 8080 portunu remote host'taki 127.0.0.1:8193'e forward et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -L 2:8193.0.0.1:8193 user@host",
+          "hint_text": "Local port forward icin `-L local:host:port` kullan.",
+          "hint_partial": "ssh -L ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-021-r131",
+      "type": "single",
+      "scenario": "Deploy sonrasi remote 9000 portunu local 127.0.0.1:8210'e forward et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -R 9000:8210.0.0.1:8210 user@host",
+          "hint_text": "Remote port forward icin `-R` kullan.",
+          "hint_partial": "ssh -R ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-022-r132",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde sOCKS proxy icin dynamic SSH tunnel ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -D 1080 user@host",
+          "hint_text": "Dynamic tunnel icin `-D` kullan.",
+          "hint_partial": "ssh -D ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-023-r133",
+      "type": "single",
+      "scenario": "Yeni acilan hostta baglanti icin `~/.ssh/prod_ed25519` private key'ini kullan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -i ~/.ssh/prod_ed25519 user@host",
+          "hint_text": "Ozel key secmek icin `-i` kullan.",
+          "hint_partial": "ssh -i ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-024-r134",
+      "type": "single",
+      "scenario": "Runbook adiminda password sormadan baglantiyi test et ve hemen cik.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -o BatchMode=yes user@host exit",
+          "hint_text": "Prompt istememesi icin `BatchMode=yes` kullan.",
+          "hint_partial": "ssh -o BatchMode=yes ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-025-r135",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde known_hosts icinden `host` kaydini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-keygen -R host",
+          "hint_text": "Eski host key temizligi icin `ssh-keygen -R` kullan.",
+          "hint_partial": "ssh-keygen -R ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-011-r136",
+      "type": "single",
+      "scenario": "Incident sonrasinda sSH baglantisini verbose modda baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -v user@host",
+          "hint_text": "Verbose output icin `-v` kullan.",
+          "hint_partial": "ssh -v ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-012-r137",
+      "type": "single",
+      "scenario": "Bakim oncesi 2222 portundan SSH baglantisi kur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -p 2222 user@host",
+          "hint_text": "Ozel port icin `-p` kullan.",
+          "hint_partial": "ssh -p ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-013-r138",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda remote host'ta `uptime` komutunu calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh user@host 'uptime'",
+          "hint_text": "Remote komutu SSH sonuna tirnak icinde ver.",
+          "hint_partial": "ssh user@host ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-014-r139",
+      "type": "single",
+      "scenario": "Deploy sonrasi `app.tar.gz` dosyasini `/tmp/job-139/` altina kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp app.tar.gz user@host:/tmp/job-139/",
+          "hint_text": "Uzak hedefe kopya icin `scp source user@host:path` kullan.",
+          "hint_partial": "scp app.tar.gz ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-015-r140",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde remote host'taki `/var/db-140-140/log/db-140-140/syslog` dosyasini current directory'ye kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp user@host:/var/db-140-140/log/db-140-140/syslog .",
+          "hint_text": "Remote dosyayi local'e almak icin `scp user@host:path .` kullan.",
+          "hint_partial": "scp user@host:..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-016-r141",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `dist/` klasorunu recursive olarak `/var/cache-141-141/www/app/cache-141-141` altina kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp -r dist/ user@host:/var/cache-141-141/www/app/cache-141-141",
+          "hint_text": "Klasor kopyasi icin `scp -r` kullan.",
+          "hint_partial": "scp -r ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-017-r142",
+      "type": "single",
+      "scenario": "Runbook adiminda yeni bir Ed25519 SSH anahtari uret.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-keygen -t ed25519",
+          "hint_text": "Anahtar tipi icin `-t ed25519` kullan.",
+          "hint_partial": "ssh-keygen -t ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-018-r143",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde public key'i remote host'a kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-copy-id user@host",
+          "hint_text": "Anahtari eklemek icin `ssh-copy-id` kullan.",
+          "hint_partial": "ssh-copy-id ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-019-r144",
+      "type": "single",
+      "scenario": "Incident sonrasinda sSH config genisletilmis degerleriyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -G user@host",
+          "hint_text": "Efektif config icin `ssh -G` kullan.",
+          "hint_partial": "ssh -G ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-020-r145",
+      "type": "single",
+      "scenario": "Bakim oncesi local 8080 portunu remote host'taki 127.0.0.1:8448'e forward et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -L 2:8448.0.0.1:8448 user@host",
+          "hint_text": "Local port forward icin `-L local:host:port` kullan.",
+          "hint_partial": "ssh -L ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-021-r146",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda remote 9000 portunu local 127.0.0.1:8465'e forward et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -R 9000:8465.0.0.1:8465 user@host",
+          "hint_text": "Remote port forward icin `-R` kullan.",
+          "hint_partial": "ssh -R ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-022-r147",
+      "type": "single",
+      "scenario": "Deploy sonrasi sOCKS proxy icin dynamic SSH tunnel ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -D 1080 user@host",
+          "hint_text": "Dynamic tunnel icin `-D` kullan.",
+          "hint_partial": "ssh -D ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-023-r148",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde baglanti icin `~/.ssh/prod_ed25519` private key'ini kullan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -i ~/.ssh/prod_ed25519 user@host",
+          "hint_text": "Ozel key secmek icin `-i` kullan.",
+          "hint_partial": "ssh -i ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-024-r149",
+      "type": "single",
+      "scenario": "Yeni acilan hostta password sormadan baglantiyi test et ve hemen cik.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -o BatchMode=yes user@host exit",
+          "hint_text": "Prompt istememesi icin `BatchMode=yes` kullan.",
+          "hint_partial": "ssh -o BatchMode=yes ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-025-r150",
+      "type": "single",
+      "scenario": "Runbook adiminda known_hosts icinden `host` kaydini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-keygen -R host",
+          "hint_text": "Eski host key temizligi icin `ssh-keygen -R` kullan.",
+          "hint_partial": "ssh-keygen -R ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-011-r151",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde sSH baglantisini verbose modda baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -v user@host",
+          "hint_text": "Verbose output icin `-v` kullan.",
+          "hint_partial": "ssh -v ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-012-r152",
+      "type": "single",
+      "scenario": "Incident sonrasinda 2222 portundan SSH baglantisi kur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -p 2222 user@host",
+          "hint_text": "Ozel port icin `-p` kullan.",
+          "hint_partial": "ssh -p ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-013-r153",
+      "type": "single",
+      "scenario": "Bakim oncesi remote host'ta `uptime` komutunu calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh user@host 'uptime'",
+          "hint_text": "Remote komutu SSH sonuna tirnak icinde ver.",
+          "hint_partial": "ssh user@host ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-014-r154",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `app.tar.gz` dosyasini `/tmp/job-154/` altina kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp app.tar.gz user@host:/tmp/job-154/",
+          "hint_text": "Uzak hedefe kopya icin `scp source user@host:path` kullan.",
+          "hint_partial": "scp app.tar.gz ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-015-r155",
+      "type": "single",
+      "scenario": "Deploy sonrasi remote host'taki `/var/queue-155-155/log/queue-155-155/syslog` dosyasini current directory'ye kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp user@host:/var/queue-155-155/log/queue-155-155/syslog .",
+          "hint_text": "Remote dosyayi local'e almak icin `scp user@host:path .` kullan.",
+          "hint_partial": "scp user@host:..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-016-r156",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `dist/` klasorunu recursive olarak `/var/db-156-156/www/app/db-156-156` altina kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp -r dist/ user@host:/var/db-156-156/www/app/db-156-156",
+          "hint_text": "Klasor kopyasi icin `scp -r` kullan.",
+          "hint_partial": "scp -r ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-017-r157",
+      "type": "single",
+      "scenario": "Yeni acilan hostta yeni bir Ed25519 SSH anahtari uret.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-keygen -t ed25519",
+          "hint_text": "Anahtar tipi icin `-t ed25519` kullan.",
+          "hint_partial": "ssh-keygen -t ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-018-r158",
+      "type": "single",
+      "scenario": "Runbook adiminda public key'i remote host'a kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-copy-id user@host",
+          "hint_text": "Anahtari eklemek icin `ssh-copy-id` kullan.",
+          "hint_partial": "ssh-copy-id ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-019-r159",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde sSH config genisletilmis degerleriyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -G user@host",
+          "hint_text": "Efektif config icin `ssh -G` kullan.",
+          "hint_partial": "ssh -G ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-020-r160",
+      "type": "single",
+      "scenario": "Incident sonrasinda local 8080 portunu remote host'taki 127.0.0.1:8703'e forward et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -L 2:8703.0.0.1:8703 user@host",
+          "hint_text": "Local port forward icin `-L local:host:port` kullan.",
+          "hint_partial": "ssh -L ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-021-r161",
+      "type": "single",
+      "scenario": "Bakim oncesi remote 9000 portunu local 127.0.0.1:8720'e forward et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -R 9000:8720.0.0.1:8720 user@host",
+          "hint_text": "Remote port forward icin `-R` kullan.",
+          "hint_partial": "ssh -R ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-022-r162",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda sOCKS proxy icin dynamic SSH tunnel ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -D 1080 user@host",
+          "hint_text": "Dynamic tunnel icin `-D` kullan.",
+          "hint_partial": "ssh -D ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-023-r163",
+      "type": "single",
+      "scenario": "Deploy sonrasi baglanti icin `~/.ssh/prod_ed25519` private key'ini kullan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -i ~/.ssh/prod_ed25519 user@host",
+          "hint_text": "Ozel key secmek icin `-i` kullan.",
+          "hint_partial": "ssh -i ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-024-r164",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde password sormadan baglantiyi test et ve hemen cik.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -o BatchMode=yes user@host exit",
+          "hint_text": "Prompt istememesi icin `BatchMode=yes` kullan.",
+          "hint_partial": "ssh -o BatchMode=yes ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-025-r165",
+      "type": "single",
+      "scenario": "Yeni acilan hostta known_hosts icinden `host` kaydini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-keygen -R host",
+          "hint_text": "Eski host key temizligi icin `ssh-keygen -R` kullan.",
+          "hint_partial": "ssh-keygen -R ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-011-r166",
+      "type": "single",
+      "scenario": "Runbook adiminda sSH baglantisini verbose modda baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -v user@host",
+          "hint_text": "Verbose output icin `-v` kullan.",
+          "hint_partial": "ssh -v ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-012-r167",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde 2222 portundan SSH baglantisi kur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -p 2222 user@host",
+          "hint_text": "Ozel port icin `-p` kullan.",
+          "hint_partial": "ssh -p ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-013-r168",
+      "type": "single",
+      "scenario": "Incident sonrasinda remote host'ta `uptime` komutunu calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh user@host 'uptime'",
+          "hint_text": "Remote komutu SSH sonuna tirnak icinde ver.",
+          "hint_partial": "ssh user@host ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-014-r169",
+      "type": "single",
+      "scenario": "Bakim oncesi `app.tar.gz` dosyasini `/tmp/job-169/` altina kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp app.tar.gz user@host:/tmp/job-169/",
+          "hint_text": "Uzak hedefe kopya icin `scp source user@host:path` kullan.",
+          "hint_partial": "scp app.tar.gz ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-015-r170",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda remote host'taki `/var/cache-170-170-170/log/cache-170-170-170/syslog` dosyasini current directory'ye kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp user@host:/var/cache-170-170-170/log/cache-170-170-170/syslog .",
+          "hint_text": "Remote dosyayi local'e almak icin `scp user@host:path .` kullan.",
+          "hint_partial": "scp user@host:..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-016-r171",
+      "type": "single",
+      "scenario": "Deploy sonrasi `dist/` klasorunu recursive olarak `/var/queue-171-171/www/app/queue-171-171` altina kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp -r dist/ user@host:/var/queue-171-171/www/app/queue-171-171",
+          "hint_text": "Klasor kopyasi icin `scp -r` kullan.",
+          "hint_partial": "scp -r ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-017-r172",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde yeni bir Ed25519 SSH anahtari uret.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-keygen -t ed25519",
+          "hint_text": "Anahtar tipi icin `-t ed25519` kullan.",
+          "hint_partial": "ssh-keygen -t ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-018-r173",
+      "type": "single",
+      "scenario": "Yeni acilan hostta public key'i remote host'a kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-copy-id user@host",
+          "hint_text": "Anahtari eklemek icin `ssh-copy-id` kullan.",
+          "hint_partial": "ssh-copy-id ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-019-r174",
+      "type": "single",
+      "scenario": "Runbook adiminda sSH config genisletilmis degerleriyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -G user@host",
+          "hint_text": "Efektif config icin `ssh -G` kullan.",
+          "hint_partial": "ssh -G ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-020-r175",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde local 8080 portunu remote host'taki 127.0.0.1:8958'e forward et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -L 2:8958.0.0.1:8958 user@host",
+          "hint_text": "Local port forward icin `-L local:host:port` kullan.",
+          "hint_partial": "ssh -L ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-021-r176",
+      "type": "single",
+      "scenario": "Incident sonrasinda remote 9000 portunu local 127.0.0.1:8975'e forward et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -R 9000:8975.0.0.1:8975 user@host",
+          "hint_text": "Remote port forward icin `-R` kullan.",
+          "hint_partial": "ssh -R ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-022-r177",
+      "type": "single",
+      "scenario": "Bakim oncesi sOCKS proxy icin dynamic SSH tunnel ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -D 1080 user@host",
+          "hint_text": "Dynamic tunnel icin `-D` kullan.",
+          "hint_partial": "ssh -D ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-023-r178",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda baglanti icin `~/.ssh/prod_ed25519` private key'ini kullan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -i ~/.ssh/prod_ed25519 user@host",
+          "hint_text": "Ozel key secmek icin `-i` kullan.",
+          "hint_partial": "ssh -i ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-024-r179",
+      "type": "single",
+      "scenario": "Deploy sonrasi password sormadan baglantiyi test et ve hemen cik.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -o BatchMode=yes user@host exit",
+          "hint_text": "Prompt istememesi icin `BatchMode=yes` kullan.",
+          "hint_partial": "ssh -o BatchMode=yes ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-025-r180",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde known_hosts icinden `host` kaydini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-keygen -R host",
+          "hint_text": "Eski host key temizligi icin `ssh-keygen -R` kullan.",
+          "hint_partial": "ssh-keygen -R ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-011-r181",
+      "type": "single",
+      "scenario": "Yeni acilan hostta sSH baglantisini verbose modda baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -v user@host",
+          "hint_text": "Verbose output icin `-v` kullan.",
+          "hint_partial": "ssh -v ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-012-r182",
+      "type": "single",
+      "scenario": "Runbook adiminda 2222 portundan SSH baglantisi kur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -p 2222 user@host",
+          "hint_text": "Ozel port icin `-p` kullan.",
+          "hint_partial": "ssh -p ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-013-r183",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde remote host'ta `uptime` komutunu calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh user@host 'uptime'",
+          "hint_text": "Remote komutu SSH sonuna tirnak icinde ver.",
+          "hint_partial": "ssh user@host ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-014-r184",
+      "type": "single",
+      "scenario": "Incident sonrasinda `app.tar.gz` dosyasini `/tmp/job-184/` altina kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp app.tar.gz user@host:/tmp/job-184/",
+          "hint_text": "Uzak hedefe kopya icin `scp source user@host:path` kullan.",
+          "hint_partial": "scp app.tar.gz ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-015-r185",
+      "type": "single",
+      "scenario": "Bakim oncesi remote host'taki `/var/web-185-185/log/web-185-185/syslog` dosyasini current directory'ye kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp user@host:/var/web-185-185/log/web-185-185/syslog .",
+          "hint_text": "Remote dosyayi local'e almak icin `scp user@host:path .` kullan.",
+          "hint_partial": "scp user@host:..."
+        }
+      ]
+    }
+  ]
+}

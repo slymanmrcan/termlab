@@ -1,0 +1,2606 @@
+{
+  "level": "senior",
+  "topic": "shell",
+  "questions": [
+    {
+      "id": "sshl-011",
+      "type": "single",
+      "scenario": "Script'te agresif hata takibi icin guclu shell option set'ini ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "set -euxo pipefail",
+          "hint_text": "Hata, undefined var ve pipe kontrolu icin bu seti kullan.",
+          "hint_partial": "set -..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-012",
+      "type": "single",
+      "scenario": "STDOUT ve STDERR'i ayni anda `app.log` dosyasina tee ederek yonlendir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "exec > >(tee app.log) 2>&1",
+          "hint_text": "Process substitution ile `tee` kullan.",
+          "hint_partial": "exec > >(..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-013",
+      "type": "single",
+      "scenario": "`/var/log` klasorunu archive ederken komutun ne kadar surdugunu olc.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "time tar -czf backup.tgz /var/log",
+          "hint_text": "Sure olcumu icin komutun basina `time` ekle.",
+          "hint_partial": "time tar ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-014",
+      "type": "single",
+      "scenario": "Current shell'de `vi` line editing modunu aktif et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "set -o vi",
+          "hint_text": "Readline modu icin `set -o vi` kullan.",
+          "hint_partial": "set -o ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-015",
+      "type": "single",
+      "scenario": "Ek bir file descriptor ac ve `debug.log` dosyasina bagla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "exec 3>debug.log",
+          "hint_text": "Yeni FD acmak icin `exec 3>file` kullan.",
+          "hint_partial": "exec 3>..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-016",
+      "type": "single",
+      "scenario": "Son pipeline'in her adiminin exit code'unu yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "printf '%s ' \"${PIPESTATUS[@]}\"",
+          "hint_text": "Pipeline durumlari icin `${PIPESTATUS[@]}` kullan.",
+          "hint_partial": "printf '%s\\n' ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-017",
+      "type": "single",
+      "scenario": "Prompt'u `[prod]user@host:path$` formatina cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "export PS1='[prod]\\u@\\h:\\w\\$ '",
+          "hint_text": "Prompt degistirmek icin `PS1` export et.",
+          "hint_partial": "export PS1=..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-018",
+      "type": "single",
+      "scenario": "Acilabilecek maksimum file descriptor sayisini 65535 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ulimit -n 65535",
+          "hint_text": "Open files limiti icin `ulimit -n` kullan.",
+          "hint_partial": "ulimit -..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-019",
+      "type": "single",
+      "scenario": "`docker` ile baslayan tum calistirilabilir komutlari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "compgen -c | grep '^docker'",
+          "hint_text": "Komut tamamlama listesini `compgen -c` ile al.",
+          "hint_partial": "compgen -c | ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-020",
+      "type": "single",
+      "scenario": "History'de `ssh` gecen satirlari filtrele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "history | grep ssh",
+          "hint_text": "History cikisini `grep` ile daralt.",
+          "hint_partial": "history | ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-021",
+      "type": "single",
+      "scenario": "Son 10 history kaydini `fc` ile listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fc -l -10",
+          "hint_text": "History listeleme icin `fc -l` kullan.",
+          "hint_partial": "fc -l ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-022",
+      "type": "single",
+      "scenario": "Background job'u shell'den ayir ki HUP almasin.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "disown %1",
+          "hint_text": "Job ayirmak icin `disown` kullan.",
+          "hint_partial": "disown ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-023",
+      "type": "single",
+      "scenario": "Job 1 bitene kadar bekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "wait %1",
+          "hint_text": "Belirli job'u beklemek icin `wait` kullan.",
+          "hint_partial": "wait ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-024",
+      "type": "single",
+      "scenario": "Shell cikisinda `/tmp/lock` dosyasini silecek EXIT trap'i kur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "trap 'rm -f /tmp/lock' EXIT",
+          "hint_text": "EXIT aninda cleanup icin `trap` kullan.",
+          "hint_partial": "trap ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-025",
+      "type": "single",
+      "scenario": "Ortam degiskenleri bos, profile dosyalari okunmayan tertemiz bir shell ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "env -i bash --noprofile --norc",
+          "hint_text": "Temiz environment icin `env -i` ile bash baslat.",
+          "hint_partial": "env -i ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-011-r1",
+      "type": "single",
+      "scenario": "Bakim oncesi script'te agresif hata takibi icin guclu shell option set'ini ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "set -euxo pipefail",
+          "hint_text": "Hata, undefined var ve pipe kontrolu icin bu seti kullan.",
+          "hint_partial": "set -..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-012-r2",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda sTDOUT ve STDERR'i ayni anda `app-2.log` dosyasina tee ederek yonlendir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "exec > >(tee app-2.log) 2>&1",
+          "hint_text": "Process substitution ile `tee` kullan.",
+          "hint_partial": "exec > >(..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-013-r3",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/var/queue-3-3/log/queue-3-3` klasorunu archive ederken komutun ne kadar surdugunu olc.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "time tar -czf backup.tgz /var/queue-3-3/log/queue-3-3",
+          "hint_text": "Sure olcumu icin komutun basina `time` ekle.",
+          "hint_partial": "time tar ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-014-r4",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde current shell'de `vi` line editing modunu aktif et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "set -o vi",
+          "hint_text": "Readline modu icin `set -o vi` kullan.",
+          "hint_partial": "set -o ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-015-r5",
+      "type": "single",
+      "scenario": "Yeni acilan hostta ek bir file descriptor ac ve `debug.log` dosyasina bagla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "exec 3>debug.log",
+          "hint_text": "Yeni FD acmak icin `exec 3>file` kullan.",
+          "hint_partial": "exec 3>..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-016-r6",
+      "type": "single",
+      "scenario": "Runbook adiminda son pipeline'in her adiminin exit code'unu yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "printf '%s ' \"${PIPESTATUS[@]}\"",
+          "hint_text": "Pipeline durumlari icin `${PIPESTATUS[@]}` kullan.",
+          "hint_partial": "printf '%s\\n' ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-017-r7",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde prompt'u `[prod-7]user@host:path$` formatina cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "export PS1='[prod-7]\\u@\\h:\\w\\$ '",
+          "hint_text": "Prompt degistirmek icin `PS1` export et.",
+          "hint_partial": "export PS1=..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-018-r8",
+      "type": "single",
+      "scenario": "Incident sonrasinda acilabilecek maksimum file descriptor sayisini 65535 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ulimit -n 65535",
+          "hint_text": "Open files limiti icin `ulimit -n` kullan.",
+          "hint_partial": "ulimit -..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-019-r9",
+      "type": "single",
+      "scenario": "Bakim oncesi `docker` ile baslayan tum calistirilabilir komutlari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "compgen -c | grep '^docker'",
+          "hint_text": "Komut tamamlama listesini `compgen -c` ile al.",
+          "hint_partial": "compgen -c | ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-020-r10",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda history'de `ssh` gecen satirlari filtrele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "history | grep ssh",
+          "hint_text": "History cikisini `grep` ile daralt.",
+          "hint_partial": "history | ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-021-r11",
+      "type": "single",
+      "scenario": "Deploy sonrasi son 10 history kaydini `fc` ile listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fc -l -10",
+          "hint_text": "History listeleme icin `fc -l` kullan.",
+          "hint_partial": "fc -l ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-022-r12",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde background job'u shell'den ayir ki HUP almasin.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "disown %1",
+          "hint_text": "Job ayirmak icin `disown` kullan.",
+          "hint_partial": "disown ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-023-r13",
+      "type": "single",
+      "scenario": "Yeni acilan hostta job 1 bitene kadar bekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "wait %1",
+          "hint_text": "Belirli job'u beklemek icin `wait` kullan.",
+          "hint_partial": "wait ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-024-r14",
+      "type": "single",
+      "scenario": "Runbook adiminda shell cikisinda `/tmp/job-14/lock` dosyasini silecek EXIT trap'i kur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "trap 'rm -f /tmp/job-14/lock' EXIT",
+          "hint_text": "EXIT aninda cleanup icin `trap` kullan.",
+          "hint_partial": "trap ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-025-r15",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde ortam degiskenleri bos, profile dosyalari okunmayan tertemiz bir shell ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "env -i bash --noprofile --norc",
+          "hint_text": "Temiz environment icin `env -i` ile bash baslat.",
+          "hint_partial": "env -i ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-011-r16",
+      "type": "single",
+      "scenario": "Incident sonrasinda script'te agresif hata takibi icin guclu shell option set'ini ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "set -euxo pipefail",
+          "hint_text": "Hata, undefined var ve pipe kontrolu icin bu seti kullan.",
+          "hint_partial": "set -..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-012-r17",
+      "type": "single",
+      "scenario": "Bakim oncesi sTDOUT ve STDERR'i ayni anda `app-17.log` dosyasina tee ederek yonlendir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "exec > >(tee app-17.log) 2>&1",
+          "hint_text": "Process substitution ile `tee` kullan.",
+          "hint_partial": "exec > >(..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-013-r18",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/var/cache-18-18-18/log/cache-18-18-18` klasorunu archive ederken komutun ne kadar surdugunu olc.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "time tar -czf backup.tgz /var/cache-18-18-18/log/cache-18-18-18",
+          "hint_text": "Sure olcumu icin komutun basina `time` ekle.",
+          "hint_partial": "time tar ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-014-r19",
+      "type": "single",
+      "scenario": "Deploy sonrasi current shell'de `vi` line editing modunu aktif et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "set -o vi",
+          "hint_text": "Readline modu icin `set -o vi` kullan.",
+          "hint_partial": "set -o ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-015-r20",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde ek bir file descriptor ac ve `debug.log` dosyasina bagla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "exec 3>debug.log",
+          "hint_text": "Yeni FD acmak icin `exec 3>file` kullan.",
+          "hint_partial": "exec 3>..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-016-r21",
+      "type": "single",
+      "scenario": "Yeni acilan hostta son pipeline'in her adiminin exit code'unu yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "printf '%s ' \"${PIPESTATUS[@]}\"",
+          "hint_text": "Pipeline durumlari icin `${PIPESTATUS[@]}` kullan.",
+          "hint_partial": "printf '%s\\n' ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-017-r22",
+      "type": "single",
+      "scenario": "Runbook adiminda prompt'u `[monitoring-22]user@host:path$` formatina cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "export PS1='[monitoring-22]\\u@\\h:\\w\\$ '",
+          "hint_text": "Prompt degistirmek icin `PS1` export et.",
+          "hint_partial": "export PS1=..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-018-r23",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde acilabilecek maksimum file descriptor sayisini 65535 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ulimit -n 65535",
+          "hint_text": "Open files limiti icin `ulimit -n` kullan.",
+          "hint_partial": "ulimit -..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-019-r24",
+      "type": "single",
+      "scenario": "Incident sonrasinda `docker` ile baslayan tum calistirilabilir komutlari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "compgen -c | grep '^docker'",
+          "hint_text": "Komut tamamlama listesini `compgen -c` ile al.",
+          "hint_partial": "compgen -c | ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-020-r25",
+      "type": "single",
+      "scenario": "Bakim oncesi history'de `ssh` gecen satirlari filtrele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "history | grep ssh",
+          "hint_text": "History cikisini `grep` ile daralt.",
+          "hint_partial": "history | ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-021-r26",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda son 10 history kaydini `fc` ile listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fc -l -10",
+          "hint_text": "History listeleme icin `fc -l` kullan.",
+          "hint_partial": "fc -l ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-022-r27",
+      "type": "single",
+      "scenario": "Deploy sonrasi background job'u shell'den ayir ki HUP almasin.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "disown %1",
+          "hint_text": "Job ayirmak icin `disown` kullan.",
+          "hint_partial": "disown ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-023-r28",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde job 1 bitene kadar bekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "wait %1",
+          "hint_text": "Belirli job'u beklemek icin `wait` kullan.",
+          "hint_partial": "wait ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-024-r29",
+      "type": "single",
+      "scenario": "Yeni acilan hostta shell cikisinda `/tmp/job-29/lock` dosyasini silecek EXIT trap'i kur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "trap 'rm -f /tmp/job-29/lock' EXIT",
+          "hint_text": "EXIT aninda cleanup icin `trap` kullan.",
+          "hint_partial": "trap ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-025-r30",
+      "type": "single",
+      "scenario": "Runbook adiminda ortam degiskenleri bos, profile dosyalari okunmayan tertemiz bir shell ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "env -i bash --noprofile --norc",
+          "hint_text": "Temiz environment icin `env -i` ile bash baslat.",
+          "hint_partial": "env -i ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-011-r31",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde script'te agresif hata takibi icin guclu shell option set'ini ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "set -euxo pipefail",
+          "hint_text": "Hata, undefined var ve pipe kontrolu icin bu seti kullan.",
+          "hint_partial": "set -..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-012-r32",
+      "type": "single",
+      "scenario": "Incident sonrasinda sTDOUT ve STDERR'i ayni anda `app-32.log` dosyasina tee ederek yonlendir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "exec > >(tee app-32.log) 2>&1",
+          "hint_text": "Process substitution ile `tee` kullan.",
+          "hint_partial": "exec > >(..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-013-r33",
+      "type": "single",
+      "scenario": "Bakim oncesi `/var/web-33-33/log/web-33-33` klasorunu archive ederken komutun ne kadar surdugunu olc.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "time tar -czf backup.tgz /var/web-33-33/log/web-33-33",
+          "hint_text": "Sure olcumu icin komutun basina `time` ekle.",
+          "hint_partial": "time tar ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-014-r34",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda current shell'de `vi` line editing modunu aktif et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "set -o vi",
+          "hint_text": "Readline modu icin `set -o vi` kullan.",
+          "hint_partial": "set -o ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-015-r35",
+      "type": "single",
+      "scenario": "Deploy sonrasi ek bir file descriptor ac ve `debug.log` dosyasina bagla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "exec 3>debug.log",
+          "hint_text": "Yeni FD acmak icin `exec 3>file` kullan.",
+          "hint_partial": "exec 3>..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-016-r36",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde son pipeline'in her adiminin exit code'unu yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "printf '%s ' \"${PIPESTATUS[@]}\"",
+          "hint_text": "Pipeline durumlari icin `${PIPESTATUS[@]}` kullan.",
+          "hint_partial": "printf '%s\\n' ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-017-r37",
+      "type": "single",
+      "scenario": "Yeni acilan hostta prompt'u `[prod-37]user@host:path$` formatina cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "export PS1='[prod-37]\\u@\\h:\\w\\$ '",
+          "hint_text": "Prompt degistirmek icin `PS1` export et.",
+          "hint_partial": "export PS1=..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-018-r38",
+      "type": "single",
+      "scenario": "Runbook adiminda acilabilecek maksimum file descriptor sayisini 65535 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ulimit -n 65535",
+          "hint_text": "Open files limiti icin `ulimit -n` kullan.",
+          "hint_partial": "ulimit -..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-019-r39",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `docker` ile baslayan tum calistirilabilir komutlari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "compgen -c | grep '^docker'",
+          "hint_text": "Komut tamamlama listesini `compgen -c` ile al.",
+          "hint_partial": "compgen -c | ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-020-r40",
+      "type": "single",
+      "scenario": "Incident sonrasinda history'de `ssh` gecen satirlari filtrele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "history | grep ssh",
+          "hint_text": "History cikisini `grep` ile daralt.",
+          "hint_partial": "history | ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-021-r41",
+      "type": "single",
+      "scenario": "Bakim oncesi son 10 history kaydini `fc` ile listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fc -l -10",
+          "hint_text": "History listeleme icin `fc -l` kullan.",
+          "hint_partial": "fc -l ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-022-r42",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda background job'u shell'den ayir ki HUP almasin.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "disown %1",
+          "hint_text": "Job ayirmak icin `disown` kullan.",
+          "hint_partial": "disown ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-023-r43",
+      "type": "single",
+      "scenario": "Deploy sonrasi job 1 bitene kadar bekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "wait %1",
+          "hint_text": "Belirli job'u beklemek icin `wait` kullan.",
+          "hint_partial": "wait ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-024-r44",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde shell cikisinda `/tmp/job-44/lock` dosyasini silecek EXIT trap'i kur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "trap 'rm -f /tmp/job-44/lock' EXIT",
+          "hint_text": "EXIT aninda cleanup icin `trap` kullan.",
+          "hint_partial": "trap ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-025-r45",
+      "type": "single",
+      "scenario": "Yeni acilan hostta ortam degiskenleri bos, profile dosyalari okunmayan tertemiz bir shell ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "env -i bash --noprofile --norc",
+          "hint_text": "Temiz environment icin `env -i` ile bash baslat.",
+          "hint_partial": "env -i ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-011-r46",
+      "type": "single",
+      "scenario": "Runbook adiminda script'te agresif hata takibi icin guclu shell option set'ini ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "set -euxo pipefail",
+          "hint_text": "Hata, undefined var ve pipe kontrolu icin bu seti kullan.",
+          "hint_partial": "set -..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-012-r47",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde sTDOUT ve STDERR'i ayni anda `app-47.log` dosyasina tee ederek yonlendir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "exec > >(tee app-47.log) 2>&1",
+          "hint_text": "Process substitution ile `tee` kullan.",
+          "hint_partial": "exec > >(..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-013-r48",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/var/proxy-48/log/proxy-48` klasorunu archive ederken komutun ne kadar surdugunu olc.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "time tar -czf backup.tgz /var/proxy-48/log/proxy-48",
+          "hint_text": "Sure olcumu icin komutun basina `time` ekle.",
+          "hint_partial": "time tar ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-014-r49",
+      "type": "single",
+      "scenario": "Bakim oncesi current shell'de `vi` line editing modunu aktif et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "set -o vi",
+          "hint_text": "Readline modu icin `set -o vi` kullan.",
+          "hint_partial": "set -o ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-015-r50",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda ek bir file descriptor ac ve `debug.log` dosyasina bagla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "exec 3>debug.log",
+          "hint_text": "Yeni FD acmak icin `exec 3>file` kullan.",
+          "hint_partial": "exec 3>..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-016-r51",
+      "type": "single",
+      "scenario": "Deploy sonrasi son pipeline'in her adiminin exit code'unu yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "printf '%s ' \"${PIPESTATUS[@]}\"",
+          "hint_text": "Pipeline durumlari icin `${PIPESTATUS[@]}` kullan.",
+          "hint_partial": "printf '%s\\n' ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-017-r52",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde prompt'u `[monitoring-52]user@host:path$` formatina cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "export PS1='[monitoring-52]\\u@\\h:\\w\\$ '",
+          "hint_text": "Prompt degistirmek icin `PS1` export et.",
+          "hint_partial": "export PS1=..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-018-r53",
+      "type": "single",
+      "scenario": "Yeni acilan hostta acilabilecek maksimum file descriptor sayisini 65535 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ulimit -n 65535",
+          "hint_text": "Open files limiti icin `ulimit -n` kullan.",
+          "hint_partial": "ulimit -..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-019-r54",
+      "type": "single",
+      "scenario": "Runbook adiminda `docker` ile baslayan tum calistirilabilir komutlari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "compgen -c | grep '^docker'",
+          "hint_text": "Komut tamamlama listesini `compgen -c` ile al.",
+          "hint_partial": "compgen -c | ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-020-r55",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde history'de `ssh` gecen satirlari filtrele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "history | grep ssh",
+          "hint_text": "History cikisini `grep` ile daralt.",
+          "hint_partial": "history | ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-021-r56",
+      "type": "single",
+      "scenario": "Incident sonrasinda son 10 history kaydini `fc` ile listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fc -l -10",
+          "hint_text": "History listeleme icin `fc -l` kullan.",
+          "hint_partial": "fc -l ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-022-r57",
+      "type": "single",
+      "scenario": "Bakim oncesi background job'u shell'den ayir ki HUP almasin.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "disown %1",
+          "hint_text": "Job ayirmak icin `disown` kullan.",
+          "hint_partial": "disown ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-023-r58",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda job 1 bitene kadar bekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "wait %1",
+          "hint_text": "Belirli job'u beklemek icin `wait` kullan.",
+          "hint_partial": "wait ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-024-r59",
+      "type": "single",
+      "scenario": "Deploy sonrasi shell cikisinda `/tmp/job-59/lock` dosyasini silecek EXIT trap'i kur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "trap 'rm -f /tmp/job-59/lock' EXIT",
+          "hint_text": "EXIT aninda cleanup icin `trap` kullan.",
+          "hint_partial": "trap ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-025-r60",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde ortam degiskenleri bos, profile dosyalari okunmayan tertemiz bir shell ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "env -i bash --noprofile --norc",
+          "hint_text": "Temiz environment icin `env -i` ile bash baslat.",
+          "hint_partial": "env -i ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-011-r61",
+      "type": "single",
+      "scenario": "Yeni acilan hostta script'te agresif hata takibi icin guclu shell option set'ini ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "set -euxo pipefail",
+          "hint_text": "Hata, undefined var ve pipe kontrolu icin bu seti kullan.",
+          "hint_partial": "set -..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-012-r62",
+      "type": "single",
+      "scenario": "Runbook adiminda sTDOUT ve STDERR'i ayni anda `app-62.log` dosyasina tee ederek yonlendir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "exec > >(tee app-62.log) 2>&1",
+          "hint_text": "Process substitution ile `tee` kullan.",
+          "hint_partial": "exec > >(..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-013-r63",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `/var/bastion-63/log/bastion-63` klasorunu archive ederken komutun ne kadar surdugunu olc.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "time tar -czf backup.tgz /var/bastion-63/log/bastion-63",
+          "hint_text": "Sure olcumu icin komutun basina `time` ekle.",
+          "hint_partial": "time tar ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-014-r64",
+      "type": "single",
+      "scenario": "Incident sonrasinda current shell'de `vi` line editing modunu aktif et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "set -o vi",
+          "hint_text": "Readline modu icin `set -o vi` kullan.",
+          "hint_partial": "set -o ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-015-r65",
+      "type": "single",
+      "scenario": "Bakim oncesi ek bir file descriptor ac ve `debug.log` dosyasina bagla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "exec 3>debug.log",
+          "hint_text": "Yeni FD acmak icin `exec 3>file` kullan.",
+          "hint_partial": "exec 3>..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-016-r66",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda son pipeline'in her adiminin exit code'unu yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "printf '%s ' \"${PIPESTATUS[@]}\"",
+          "hint_text": "Pipeline durumlari icin `${PIPESTATUS[@]}` kullan.",
+          "hint_partial": "printf '%s\\n' ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-017-r67",
+      "type": "single",
+      "scenario": "Deploy sonrasi prompt'u `[prod-67]user@host:path$` formatina cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "export PS1='[prod-67]\\u@\\h:\\w\\$ '",
+          "hint_text": "Prompt degistirmek icin `PS1` export et.",
+          "hint_partial": "export PS1=..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-018-r68",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde acilabilecek maksimum file descriptor sayisini 65535 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ulimit -n 65535",
+          "hint_text": "Open files limiti icin `ulimit -n` kullan.",
+          "hint_partial": "ulimit -..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-019-r69",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `docker` ile baslayan tum calistirilabilir komutlari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "compgen -c | grep '^docker'",
+          "hint_text": "Komut tamamlama listesini `compgen -c` ile al.",
+          "hint_partial": "compgen -c | ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-020-r70",
+      "type": "single",
+      "scenario": "Runbook adiminda history'de `ssh` gecen satirlari filtrele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "history | grep ssh",
+          "hint_text": "History cikisini `grep` ile daralt.",
+          "hint_partial": "history | ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-021-r71",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde son 10 history kaydini `fc` ile listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fc -l -10",
+          "hint_text": "History listeleme icin `fc -l` kullan.",
+          "hint_partial": "fc -l ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-022-r72",
+      "type": "single",
+      "scenario": "Incident sonrasinda background job'u shell'den ayir ki HUP almasin.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "disown %1",
+          "hint_text": "Job ayirmak icin `disown` kullan.",
+          "hint_partial": "disown ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-023-r73",
+      "type": "single",
+      "scenario": "Bakim oncesi job 1 bitene kadar bekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "wait %1",
+          "hint_text": "Belirli job'u beklemek icin `wait` kullan.",
+          "hint_partial": "wait ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-024-r74",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda shell cikisinda `/tmp/job-74/lock` dosyasini silecek EXIT trap'i kur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "trap 'rm -f /tmp/job-74/lock' EXIT",
+          "hint_text": "EXIT aninda cleanup icin `trap` kullan.",
+          "hint_partial": "trap ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-025-r75",
+      "type": "single",
+      "scenario": "Deploy sonrasi ortam degiskenleri bos, profile dosyalari okunmayan tertemiz bir shell ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "env -i bash --noprofile --norc",
+          "hint_text": "Temiz environment icin `env -i` ile bash baslat.",
+          "hint_partial": "env -i ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-011-r76",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde script'te agresif hata takibi icin guclu shell option set'ini ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "set -euxo pipefail",
+          "hint_text": "Hata, undefined var ve pipe kontrolu icin bu seti kullan.",
+          "hint_partial": "set -..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-012-r77",
+      "type": "single",
+      "scenario": "Yeni acilan hostta sTDOUT ve STDERR'i ayni anda `app-77.log` dosyasina tee ederek yonlendir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "exec > >(tee app-77.log) 2>&1",
+          "hint_text": "Process substitution ile `tee` kullan.",
+          "hint_partial": "exec > >(..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-013-r78",
+      "type": "single",
+      "scenario": "Runbook adiminda `/var/queue-78/log/queue-78` klasorunu archive ederken komutun ne kadar surdugunu olc.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "time tar -czf backup.tgz /var/queue-78/log/queue-78",
+          "hint_text": "Sure olcumu icin komutun basina `time` ekle.",
+          "hint_partial": "time tar ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-014-r79",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde current shell'de `vi` line editing modunu aktif et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "set -o vi",
+          "hint_text": "Readline modu icin `set -o vi` kullan.",
+          "hint_partial": "set -o ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-015-r80",
+      "type": "single",
+      "scenario": "Incident sonrasinda ek bir file descriptor ac ve `debug.log` dosyasina bagla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "exec 3>debug.log",
+          "hint_text": "Yeni FD acmak icin `exec 3>file` kullan.",
+          "hint_partial": "exec 3>..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-016-r81",
+      "type": "single",
+      "scenario": "Bakim oncesi son pipeline'in her adiminin exit code'unu yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "printf '%s ' \"${PIPESTATUS[@]}\"",
+          "hint_text": "Pipeline durumlari icin `${PIPESTATUS[@]}` kullan.",
+          "hint_partial": "printf '%s\\n' ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-017-r82",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda prompt'u `[monitoring-82]user@host:path$` formatina cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "export PS1='[monitoring-82]\\u@\\h:\\w\\$ '",
+          "hint_text": "Prompt degistirmek icin `PS1` export et.",
+          "hint_partial": "export PS1=..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-018-r83",
+      "type": "single",
+      "scenario": "Deploy sonrasi acilabilecek maksimum file descriptor sayisini 65535 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ulimit -n 65535",
+          "hint_text": "Open files limiti icin `ulimit -n` kullan.",
+          "hint_partial": "ulimit -..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-019-r84",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `docker` ile baslayan tum calistirilabilir komutlari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "compgen -c | grep '^docker'",
+          "hint_text": "Komut tamamlama listesini `compgen -c` ile al.",
+          "hint_partial": "compgen -c | ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-020-r85",
+      "type": "single",
+      "scenario": "Yeni acilan hostta history'de `ssh` gecen satirlari filtrele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "history | grep ssh",
+          "hint_text": "History cikisini `grep` ile daralt.",
+          "hint_partial": "history | ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-021-r86",
+      "type": "single",
+      "scenario": "Runbook adiminda son 10 history kaydini `fc` ile listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fc -l -10",
+          "hint_text": "History listeleme icin `fc -l` kullan.",
+          "hint_partial": "fc -l ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-022-r87",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde background job'u shell'den ayir ki HUP almasin.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "disown %1",
+          "hint_text": "Job ayirmak icin `disown` kullan.",
+          "hint_partial": "disown ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-023-r88",
+      "type": "single",
+      "scenario": "Incident sonrasinda job 1 bitene kadar bekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "wait %1",
+          "hint_text": "Belirli job'u beklemek icin `wait` kullan.",
+          "hint_partial": "wait ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-024-r89",
+      "type": "single",
+      "scenario": "Bakim oncesi shell cikisinda `/tmp/job-89/lock` dosyasini silecek EXIT trap'i kur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "trap 'rm -f /tmp/job-89/lock' EXIT",
+          "hint_text": "EXIT aninda cleanup icin `trap` kullan.",
+          "hint_partial": "trap ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-025-r90",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda ortam degiskenleri bos, profile dosyalari okunmayan tertemiz bir shell ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "env -i bash --noprofile --norc",
+          "hint_text": "Temiz environment icin `env -i` ile bash baslat.",
+          "hint_partial": "env -i ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-011-r91",
+      "type": "single",
+      "scenario": "Deploy sonrasi script'te agresif hata takibi icin guclu shell option set'ini ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "set -euxo pipefail",
+          "hint_text": "Hata, undefined var ve pipe kontrolu icin bu seti kullan.",
+          "hint_partial": "set -..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-012-r92",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde sTDOUT ve STDERR'i ayni anda `app-92.log` dosyasina tee ederek yonlendir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "exec > >(tee app-92.log) 2>&1",
+          "hint_text": "Process substitution ile `tee` kullan.",
+          "hint_partial": "exec > >(..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-013-r93",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `/var/cache-93-93/log/cache-93-93` klasorunu archive ederken komutun ne kadar surdugunu olc.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "time tar -czf backup.tgz /var/cache-93-93/log/cache-93-93",
+          "hint_text": "Sure olcumu icin komutun basina `time` ekle.",
+          "hint_partial": "time tar ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-014-r94",
+      "type": "single",
+      "scenario": "Runbook adiminda current shell'de `vi` line editing modunu aktif et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "set -o vi",
+          "hint_text": "Readline modu icin `set -o vi` kullan.",
+          "hint_partial": "set -o ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-015-r95",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde ek bir file descriptor ac ve `debug.log` dosyasina bagla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "exec 3>debug.log",
+          "hint_text": "Yeni FD acmak icin `exec 3>file` kullan.",
+          "hint_partial": "exec 3>..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-016-r96",
+      "type": "single",
+      "scenario": "Incident sonrasinda son pipeline'in her adiminin exit code'unu yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "printf '%s ' \"${PIPESTATUS[@]}\"",
+          "hint_text": "Pipeline durumlari icin `${PIPESTATUS[@]}` kullan.",
+          "hint_partial": "printf '%s\\n' ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-017-r97",
+      "type": "single",
+      "scenario": "Bakim oncesi prompt'u `[prod-97]user@host:path$` formatina cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "export PS1='[prod-97]\\u@\\h:\\w\\$ '",
+          "hint_text": "Prompt degistirmek icin `PS1` export et.",
+          "hint_partial": "export PS1=..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-018-r98",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda acilabilecek maksimum file descriptor sayisini 65535 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ulimit -n 65535",
+          "hint_text": "Open files limiti icin `ulimit -n` kullan.",
+          "hint_partial": "ulimit -..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-019-r99",
+      "type": "single",
+      "scenario": "Deploy sonrasi `docker` ile baslayan tum calistirilabilir komutlari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "compgen -c | grep '^docker'",
+          "hint_text": "Komut tamamlama listesini `compgen -c` ile al.",
+          "hint_partial": "compgen -c | ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-020-r100",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde history'de `ssh` gecen satirlari filtrele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "history | grep ssh",
+          "hint_text": "History cikisini `grep` ile daralt.",
+          "hint_partial": "history | ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-021-r101",
+      "type": "single",
+      "scenario": "Yeni acilan hostta son 10 history kaydini `fc` ile listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fc -l -10",
+          "hint_text": "History listeleme icin `fc -l` kullan.",
+          "hint_partial": "fc -l ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-022-r102",
+      "type": "single",
+      "scenario": "Runbook adiminda background job'u shell'den ayir ki HUP almasin.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "disown %1",
+          "hint_text": "Job ayirmak icin `disown` kullan.",
+          "hint_partial": "disown ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-023-r103",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde job 1 bitene kadar bekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "wait %1",
+          "hint_text": "Belirli job'u beklemek icin `wait` kullan.",
+          "hint_partial": "wait ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-024-r104",
+      "type": "single",
+      "scenario": "Incident sonrasinda shell cikisinda `/tmp/job-104/lock` dosyasini silecek EXIT trap'i kur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "trap 'rm -f /tmp/job-104/lock' EXIT",
+          "hint_text": "EXIT aninda cleanup icin `trap` kullan.",
+          "hint_partial": "trap ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-025-r105",
+      "type": "single",
+      "scenario": "Bakim oncesi ortam degiskenleri bos, profile dosyalari okunmayan tertemiz bir shell ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "env -i bash --noprofile --norc",
+          "hint_text": "Temiz environment icin `env -i` ile bash baslat.",
+          "hint_partial": "env -i ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-011-r106",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda script'te agresif hata takibi icin guclu shell option set'ini ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "set -euxo pipefail",
+          "hint_text": "Hata, undefined var ve pipe kontrolu icin bu seti kullan.",
+          "hint_partial": "set -..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-012-r107",
+      "type": "single",
+      "scenario": "Deploy sonrasi sTDOUT ve STDERR'i ayni anda `app-107.log` dosyasina tee ederek yonlendir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "exec > >(tee app-107.log) 2>&1",
+          "hint_text": "Process substitution ile `tee` kullan.",
+          "hint_partial": "exec > >(..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-013-r108",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/var/db-108-108/log/db-108-108` klasorunu archive ederken komutun ne kadar surdugunu olc.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "time tar -czf backup.tgz /var/db-108-108/log/db-108-108",
+          "hint_text": "Sure olcumu icin komutun basina `time` ekle.",
+          "hint_partial": "time tar ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-014-r109",
+      "type": "single",
+      "scenario": "Yeni acilan hostta current shell'de `vi` line editing modunu aktif et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "set -o vi",
+          "hint_text": "Readline modu icin `set -o vi` kullan.",
+          "hint_partial": "set -o ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-015-r110",
+      "type": "single",
+      "scenario": "Runbook adiminda ek bir file descriptor ac ve `debug.log` dosyasina bagla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "exec 3>debug.log",
+          "hint_text": "Yeni FD acmak icin `exec 3>file` kullan.",
+          "hint_partial": "exec 3>..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-016-r111",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde son pipeline'in her adiminin exit code'unu yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "printf '%s ' \"${PIPESTATUS[@]}\"",
+          "hint_text": "Pipeline durumlari icin `${PIPESTATUS[@]}` kullan.",
+          "hint_partial": "printf '%s\\n' ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-017-r112",
+      "type": "single",
+      "scenario": "Incident sonrasinda prompt'u `[monitoring-112]user@host:path$` formatina cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "export PS1='[monitoring-112]\\u@\\h:\\w\\$ '",
+          "hint_text": "Prompt degistirmek icin `PS1` export et.",
+          "hint_partial": "export PS1=..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-018-r113",
+      "type": "single",
+      "scenario": "Bakim oncesi acilabilecek maksimum file descriptor sayisini 65535 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ulimit -n 65535",
+          "hint_text": "Open files limiti icin `ulimit -n` kullan.",
+          "hint_partial": "ulimit -..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-019-r114",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `docker` ile baslayan tum calistirilabilir komutlari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "compgen -c | grep '^docker'",
+          "hint_text": "Komut tamamlama listesini `compgen -c` ile al.",
+          "hint_partial": "compgen -c | ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-020-r115",
+      "type": "single",
+      "scenario": "Deploy sonrasi history'de `ssh` gecen satirlari filtrele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "history | grep ssh",
+          "hint_text": "History cikisini `grep` ile daralt.",
+          "hint_partial": "history | ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-021-r116",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde son 10 history kaydini `fc` ile listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fc -l -10",
+          "hint_text": "History listeleme icin `fc -l` kullan.",
+          "hint_partial": "fc -l ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-022-r117",
+      "type": "single",
+      "scenario": "Yeni acilan hostta background job'u shell'den ayir ki HUP almasin.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "disown %1",
+          "hint_text": "Job ayirmak icin `disown` kullan.",
+          "hint_partial": "disown ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-023-r118",
+      "type": "single",
+      "scenario": "Runbook adiminda job 1 bitene kadar bekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "wait %1",
+          "hint_text": "Belirli job'u beklemek icin `wait` kullan.",
+          "hint_partial": "wait ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-024-r119",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde shell cikisinda `/tmp/job-119/lock` dosyasini silecek EXIT trap'i kur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "trap 'rm -f /tmp/job-119/lock' EXIT",
+          "hint_text": "EXIT aninda cleanup icin `trap` kullan.",
+          "hint_partial": "trap ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-025-r120",
+      "type": "single",
+      "scenario": "Incident sonrasinda ortam degiskenleri bos, profile dosyalari okunmayan tertemiz bir shell ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "env -i bash --noprofile --norc",
+          "hint_text": "Temiz environment icin `env -i` ile bash baslat.",
+          "hint_partial": "env -i ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-011-r121",
+      "type": "single",
+      "scenario": "Bakim oncesi script'te agresif hata takibi icin guclu shell option set'ini ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "set -euxo pipefail",
+          "hint_text": "Hata, undefined var ve pipe kontrolu icin bu seti kullan.",
+          "hint_partial": "set -..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-012-r122",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda sTDOUT ve STDERR'i ayni anda `app-122.log` dosyasina tee ederek yonlendir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "exec > >(tee app-122.log) 2>&1",
+          "hint_text": "Process substitution ile `tee` kullan.",
+          "hint_partial": "exec > >(..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-013-r123",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/var/queue-123-123/log/queue-123-123` klasorunu archive ederken komutun ne kadar surdugunu olc.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "time tar -czf backup.tgz /var/queue-123-123/log/queue-123-123",
+          "hint_text": "Sure olcumu icin komutun basina `time` ekle.",
+          "hint_partial": "time tar ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-014-r124",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde current shell'de `vi` line editing modunu aktif et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "set -o vi",
+          "hint_text": "Readline modu icin `set -o vi` kullan.",
+          "hint_partial": "set -o ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-015-r125",
+      "type": "single",
+      "scenario": "Yeni acilan hostta ek bir file descriptor ac ve `debug.log` dosyasina bagla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "exec 3>debug.log",
+          "hint_text": "Yeni FD acmak icin `exec 3>file` kullan.",
+          "hint_partial": "exec 3>..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-016-r126",
+      "type": "single",
+      "scenario": "Runbook adiminda son pipeline'in her adiminin exit code'unu yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "printf '%s ' \"${PIPESTATUS[@]}\"",
+          "hint_text": "Pipeline durumlari icin `${PIPESTATUS[@]}` kullan.",
+          "hint_partial": "printf '%s\\n' ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-017-r127",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde prompt'u `[prod-127]user@host:path$` formatina cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "export PS1='[prod-127]\\u@\\h:\\w\\$ '",
+          "hint_text": "Prompt degistirmek icin `PS1` export et.",
+          "hint_partial": "export PS1=..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-018-r128",
+      "type": "single",
+      "scenario": "Incident sonrasinda acilabilecek maksimum file descriptor sayisini 65535 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ulimit -n 65535",
+          "hint_text": "Open files limiti icin `ulimit -n` kullan.",
+          "hint_partial": "ulimit -..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-019-r129",
+      "type": "single",
+      "scenario": "Bakim oncesi `docker` ile baslayan tum calistirilabilir komutlari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "compgen -c | grep '^docker'",
+          "hint_text": "Komut tamamlama listesini `compgen -c` ile al.",
+          "hint_partial": "compgen -c | ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-020-r130",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda history'de `ssh` gecen satirlari filtrele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "history | grep ssh",
+          "hint_text": "History cikisini `grep` ile daralt.",
+          "hint_partial": "history | ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-021-r131",
+      "type": "single",
+      "scenario": "Deploy sonrasi son 10 history kaydini `fc` ile listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fc -l -10",
+          "hint_text": "History listeleme icin `fc -l` kullan.",
+          "hint_partial": "fc -l ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-022-r132",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde background job'u shell'den ayir ki HUP almasin.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "disown %1",
+          "hint_text": "Job ayirmak icin `disown` kullan.",
+          "hint_partial": "disown ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-023-r133",
+      "type": "single",
+      "scenario": "Yeni acilan hostta job 1 bitene kadar bekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "wait %1",
+          "hint_text": "Belirli job'u beklemek icin `wait` kullan.",
+          "hint_partial": "wait ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-024-r134",
+      "type": "single",
+      "scenario": "Runbook adiminda shell cikisinda `/tmp/job-134/lock` dosyasini silecek EXIT trap'i kur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "trap 'rm -f /tmp/job-134/lock' EXIT",
+          "hint_text": "EXIT aninda cleanup icin `trap` kullan.",
+          "hint_partial": "trap ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-025-r135",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde ortam degiskenleri bos, profile dosyalari okunmayan tertemiz bir shell ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "env -i bash --noprofile --norc",
+          "hint_text": "Temiz environment icin `env -i` ile bash baslat.",
+          "hint_partial": "env -i ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-011-r136",
+      "type": "single",
+      "scenario": "Incident sonrasinda script'te agresif hata takibi icin guclu shell option set'ini ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "set -euxo pipefail",
+          "hint_text": "Hata, undefined var ve pipe kontrolu icin bu seti kullan.",
+          "hint_partial": "set -..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-012-r137",
+      "type": "single",
+      "scenario": "Bakim oncesi sTDOUT ve STDERR'i ayni anda `app-137.log` dosyasina tee ederek yonlendir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "exec > >(tee app-137.log) 2>&1",
+          "hint_text": "Process substitution ile `tee` kullan.",
+          "hint_partial": "exec > >(..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-013-r138",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/var/cache-138-138-138/log/cache-138-138-138` klasorunu archive ederken komutun ne kadar surdugunu olc.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "time tar -czf backup.tgz /var/cache-138-138-138/log/cache-138-138-138",
+          "hint_text": "Sure olcumu icin komutun basina `time` ekle.",
+          "hint_partial": "time tar ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-014-r139",
+      "type": "single",
+      "scenario": "Deploy sonrasi current shell'de `vi` line editing modunu aktif et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "set -o vi",
+          "hint_text": "Readline modu icin `set -o vi` kullan.",
+          "hint_partial": "set -o ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-015-r140",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde ek bir file descriptor ac ve `debug.log` dosyasina bagla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "exec 3>debug.log",
+          "hint_text": "Yeni FD acmak icin `exec 3>file` kullan.",
+          "hint_partial": "exec 3>..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-016-r141",
+      "type": "single",
+      "scenario": "Yeni acilan hostta son pipeline'in her adiminin exit code'unu yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "printf '%s ' \"${PIPESTATUS[@]}\"",
+          "hint_text": "Pipeline durumlari icin `${PIPESTATUS[@]}` kullan.",
+          "hint_partial": "printf '%s\\n' ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-017-r142",
+      "type": "single",
+      "scenario": "Runbook adiminda prompt'u `[monitoring-142]user@host:path$` formatina cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "export PS1='[monitoring-142]\\u@\\h:\\w\\$ '",
+          "hint_text": "Prompt degistirmek icin `PS1` export et.",
+          "hint_partial": "export PS1=..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-018-r143",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde acilabilecek maksimum file descriptor sayisini 65535 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ulimit -n 65535",
+          "hint_text": "Open files limiti icin `ulimit -n` kullan.",
+          "hint_partial": "ulimit -..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-019-r144",
+      "type": "single",
+      "scenario": "Incident sonrasinda `docker` ile baslayan tum calistirilabilir komutlari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "compgen -c | grep '^docker'",
+          "hint_text": "Komut tamamlama listesini `compgen -c` ile al.",
+          "hint_partial": "compgen -c | ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-020-r145",
+      "type": "single",
+      "scenario": "Bakim oncesi history'de `ssh` gecen satirlari filtrele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "history | grep ssh",
+          "hint_text": "History cikisini `grep` ile daralt.",
+          "hint_partial": "history | ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-021-r146",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda son 10 history kaydini `fc` ile listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fc -l -10",
+          "hint_text": "History listeleme icin `fc -l` kullan.",
+          "hint_partial": "fc -l ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-022-r147",
+      "type": "single",
+      "scenario": "Deploy sonrasi background job'u shell'den ayir ki HUP almasin.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "disown %1",
+          "hint_text": "Job ayirmak icin `disown` kullan.",
+          "hint_partial": "disown ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-023-r148",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde job 1 bitene kadar bekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "wait %1",
+          "hint_text": "Belirli job'u beklemek icin `wait` kullan.",
+          "hint_partial": "wait ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-024-r149",
+      "type": "single",
+      "scenario": "Yeni acilan hostta shell cikisinda `/tmp/job-149/lock` dosyasini silecek EXIT trap'i kur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "trap 'rm -f /tmp/job-149/lock' EXIT",
+          "hint_text": "EXIT aninda cleanup icin `trap` kullan.",
+          "hint_partial": "trap ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-025-r150",
+      "type": "single",
+      "scenario": "Runbook adiminda ortam degiskenleri bos, profile dosyalari okunmayan tertemiz bir shell ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "env -i bash --noprofile --norc",
+          "hint_text": "Temiz environment icin `env -i` ile bash baslat.",
+          "hint_partial": "env -i ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-011-r151",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde script'te agresif hata takibi icin guclu shell option set'ini ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "set -euxo pipefail",
+          "hint_text": "Hata, undefined var ve pipe kontrolu icin bu seti kullan.",
+          "hint_partial": "set -..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-012-r152",
+      "type": "single",
+      "scenario": "Incident sonrasinda sTDOUT ve STDERR'i ayni anda `app-152.log` dosyasina tee ederek yonlendir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "exec > >(tee app-152.log) 2>&1",
+          "hint_text": "Process substitution ile `tee` kullan.",
+          "hint_partial": "exec > >(..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-013-r153",
+      "type": "single",
+      "scenario": "Bakim oncesi `/var/web-153-153/log/web-153-153` klasorunu archive ederken komutun ne kadar surdugunu olc.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "time tar -czf backup.tgz /var/web-153-153/log/web-153-153",
+          "hint_text": "Sure olcumu icin komutun basina `time` ekle.",
+          "hint_partial": "time tar ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-014-r154",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda current shell'de `vi` line editing modunu aktif et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "set -o vi",
+          "hint_text": "Readline modu icin `set -o vi` kullan.",
+          "hint_partial": "set -o ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-015-r155",
+      "type": "single",
+      "scenario": "Deploy sonrasi ek bir file descriptor ac ve `debug.log` dosyasina bagla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "exec 3>debug.log",
+          "hint_text": "Yeni FD acmak icin `exec 3>file` kullan.",
+          "hint_partial": "exec 3>..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-016-r156",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde son pipeline'in her adiminin exit code'unu yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "printf '%s ' \"${PIPESTATUS[@]}\"",
+          "hint_text": "Pipeline durumlari icin `${PIPESTATUS[@]}` kullan.",
+          "hint_partial": "printf '%s\\n' ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-017-r157",
+      "type": "single",
+      "scenario": "Yeni acilan hostta prompt'u `[prod-157]user@host:path$` formatina cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "export PS1='[prod-157]\\u@\\h:\\w\\$ '",
+          "hint_text": "Prompt degistirmek icin `PS1` export et.",
+          "hint_partial": "export PS1=..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-018-r158",
+      "type": "single",
+      "scenario": "Runbook adiminda acilabilecek maksimum file descriptor sayisini 65535 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ulimit -n 65535",
+          "hint_text": "Open files limiti icin `ulimit -n` kullan.",
+          "hint_partial": "ulimit -..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-019-r159",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `docker` ile baslayan tum calistirilabilir komutlari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "compgen -c | grep '^docker'",
+          "hint_text": "Komut tamamlama listesini `compgen -c` ile al.",
+          "hint_partial": "compgen -c | ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-020-r160",
+      "type": "single",
+      "scenario": "Incident sonrasinda history'de `ssh` gecen satirlari filtrele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "history | grep ssh",
+          "hint_text": "History cikisini `grep` ile daralt.",
+          "hint_partial": "history | ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-021-r161",
+      "type": "single",
+      "scenario": "Bakim oncesi son 10 history kaydini `fc` ile listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fc -l -10",
+          "hint_text": "History listeleme icin `fc -l` kullan.",
+          "hint_partial": "fc -l ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-022-r162",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda background job'u shell'den ayir ki HUP almasin.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "disown %1",
+          "hint_text": "Job ayirmak icin `disown` kullan.",
+          "hint_partial": "disown ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-023-r163",
+      "type": "single",
+      "scenario": "Deploy sonrasi job 1 bitene kadar bekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "wait %1",
+          "hint_text": "Belirli job'u beklemek icin `wait` kullan.",
+          "hint_partial": "wait ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-024-r164",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde shell cikisinda `/tmp/job-164/lock` dosyasini silecek EXIT trap'i kur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "trap 'rm -f /tmp/job-164/lock' EXIT",
+          "hint_text": "EXIT aninda cleanup icin `trap` kullan.",
+          "hint_partial": "trap ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-025-r165",
+      "type": "single",
+      "scenario": "Yeni acilan hostta ortam degiskenleri bos, profile dosyalari okunmayan tertemiz bir shell ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "env -i bash --noprofile --norc",
+          "hint_text": "Temiz environment icin `env -i` ile bash baslat.",
+          "hint_partial": "env -i ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-011-r166",
+      "type": "single",
+      "scenario": "Runbook adiminda script'te agresif hata takibi icin guclu shell option set'ini ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "set -euxo pipefail",
+          "hint_text": "Hata, undefined var ve pipe kontrolu icin bu seti kullan.",
+          "hint_partial": "set -..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-012-r167",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde sTDOUT ve STDERR'i ayni anda `app-167.log` dosyasina tee ederek yonlendir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "exec > >(tee app-167.log) 2>&1",
+          "hint_text": "Process substitution ile `tee` kullan.",
+          "hint_partial": "exec > >(..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-013-r168",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/var/proxy-168/log/proxy-168` klasorunu archive ederken komutun ne kadar surdugunu olc.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "time tar -czf backup.tgz /var/proxy-168/log/proxy-168",
+          "hint_text": "Sure olcumu icin komutun basina `time` ekle.",
+          "hint_partial": "time tar ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-014-r169",
+      "type": "single",
+      "scenario": "Bakim oncesi current shell'de `vi` line editing modunu aktif et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "set -o vi",
+          "hint_text": "Readline modu icin `set -o vi` kullan.",
+          "hint_partial": "set -o ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-015-r170",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda ek bir file descriptor ac ve `debug.log` dosyasina bagla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "exec 3>debug.log",
+          "hint_text": "Yeni FD acmak icin `exec 3>file` kullan.",
+          "hint_partial": "exec 3>..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-016-r171",
+      "type": "single",
+      "scenario": "Deploy sonrasi son pipeline'in her adiminin exit code'unu yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "printf '%s ' \"${PIPESTATUS[@]}\"",
+          "hint_text": "Pipeline durumlari icin `${PIPESTATUS[@]}` kullan.",
+          "hint_partial": "printf '%s\\n' ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-017-r172",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde prompt'u `[monitoring-172]user@host:path$` formatina cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "export PS1='[monitoring-172]\\u@\\h:\\w\\$ '",
+          "hint_text": "Prompt degistirmek icin `PS1` export et.",
+          "hint_partial": "export PS1=..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-018-r173",
+      "type": "single",
+      "scenario": "Yeni acilan hostta acilabilecek maksimum file descriptor sayisini 65535 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ulimit -n 65535",
+          "hint_text": "Open files limiti icin `ulimit -n` kullan.",
+          "hint_partial": "ulimit -..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-019-r174",
+      "type": "single",
+      "scenario": "Runbook adiminda `docker` ile baslayan tum calistirilabilir komutlari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "compgen -c | grep '^docker'",
+          "hint_text": "Komut tamamlama listesini `compgen -c` ile al.",
+          "hint_partial": "compgen -c | ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-020-r175",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde history'de `ssh` gecen satirlari filtrele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "history | grep ssh",
+          "hint_text": "History cikisini `grep` ile daralt.",
+          "hint_partial": "history | ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-021-r176",
+      "type": "single",
+      "scenario": "Incident sonrasinda son 10 history kaydini `fc` ile listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fc -l -10",
+          "hint_text": "History listeleme icin `fc -l` kullan.",
+          "hint_partial": "fc -l ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-022-r177",
+      "type": "single",
+      "scenario": "Bakim oncesi background job'u shell'den ayir ki HUP almasin.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "disown %1",
+          "hint_text": "Job ayirmak icin `disown` kullan.",
+          "hint_partial": "disown ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-023-r178",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda job 1 bitene kadar bekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "wait %1",
+          "hint_text": "Belirli job'u beklemek icin `wait` kullan.",
+          "hint_partial": "wait ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-024-r179",
+      "type": "single",
+      "scenario": "Deploy sonrasi shell cikisinda `/tmp/job-179/lock` dosyasini silecek EXIT trap'i kur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "trap 'rm -f /tmp/job-179/lock' EXIT",
+          "hint_text": "EXIT aninda cleanup icin `trap` kullan.",
+          "hint_partial": "trap ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-025-r180",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde ortam degiskenleri bos, profile dosyalari okunmayan tertemiz bir shell ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "env -i bash --noprofile --norc",
+          "hint_text": "Temiz environment icin `env -i` ile bash baslat.",
+          "hint_partial": "env -i ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-011-r181",
+      "type": "single",
+      "scenario": "Yeni acilan hostta script'te agresif hata takibi icin guclu shell option set'ini ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "set -euxo pipefail",
+          "hint_text": "Hata, undefined var ve pipe kontrolu icin bu seti kullan.",
+          "hint_partial": "set -..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-012-r182",
+      "type": "single",
+      "scenario": "Runbook adiminda sTDOUT ve STDERR'i ayni anda `app-182.log` dosyasina tee ederek yonlendir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "exec > >(tee app-182.log) 2>&1",
+          "hint_text": "Process substitution ile `tee` kullan.",
+          "hint_partial": "exec > >(..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-013-r183",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `/var/bastion-183/log/bastion-183` klasorunu archive ederken komutun ne kadar surdugunu olc.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "time tar -czf backup.tgz /var/bastion-183/log/bastion-183",
+          "hint_text": "Sure olcumu icin komutun basina `time` ekle.",
+          "hint_partial": "time tar ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-014-r184",
+      "type": "single",
+      "scenario": "Incident sonrasinda current shell'de `vi` line editing modunu aktif et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "set -o vi",
+          "hint_text": "Readline modu icin `set -o vi` kullan.",
+          "hint_partial": "set -o ..."
+        }
+      ]
+    },
+    {
+      "id": "sshl-015-r185",
+      "type": "single",
+      "scenario": "Bakim oncesi ek bir file descriptor ac ve `debug.log` dosyasina bagla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "exec 3>debug.log",
+          "hint_text": "Yeni FD acmak icin `exec 3>file` kullan.",
+          "hint_partial": "exec 3>..."
+        }
+      ]
+    }
+  ]
+}

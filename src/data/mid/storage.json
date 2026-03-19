@@ -1,0 +1,154 @@
+{
+  "level": "mid",
+  "topic": "storage",
+  "questions": [
+    {
+      "id": "mstg-001",
+      "type": "single",
+      "scenario": "Yeni disk eklendiginde isim, boyut, fs tipi, UUID ve mountpoint bilgisini tek tabloda cikar.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsblk -o NAME,SIZE,FSTYPE,UUID,MOUNTPOINTS",
+          "hint_text": "Gerekli kolonlari secmek icin `lsblk -o` kullan.",
+          "hint_partial": "lsblk -o NAME,SIZE,FSTYPE,UUID,MOUNTPOINTS"
+        }
+      ]
+    },
+    {
+      "id": "mstg-002",
+      "type": "single",
+      "scenario": "`/dev/sdb` üzerindeki partition table bilgisini göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fdisk -l /dev/sdb",
+          "hint_text": "Partition table için `fdisk -l` kullan.",
+          "hint_partial": "fdisk -l ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-003",
+      "type": "multi-step",
+      "scenario": "`/dev/sdb1` partition'ını `/mnt/data` altına mount et, sonra mount'u doğrula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount /dev/sdb1 /mnt/data",
+          "hint_text": "Önce `mount device target` çalıştır.",
+          "hint_partial": "mount /dev/... /mnt/..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "findmnt /mnt/data",
+          "hint_text": "Mount doğrulamak için `findmnt` kullan.",
+          "hint_partial": "findmnt ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-004",
+      "type": "single",
+      "scenario": "fstab satiri yazmadan once `/dev/sdb1` icin UUID ve fs tipini export formatinda oku.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "blkid -o export /dev/sdb1",
+          "hint_text": "Kolay parse edilecek output icin `blkid -o export` kullan.",
+          "hint_partial": "blkid -o export ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-005",
+      "type": "single",
+      "scenario": "Boot'ta beklenen mount gelmediyse `/etc/fstab` icindeki yorum olmayan entry'leri incele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "grep -vE '^#|^$' /etc/fstab",
+          "hint_text": "Yorum ve bos satirlari atmak icin `grep -vE '^#|^$'` kullan.",
+          "hint_partial": "grep -vE '^#|^$' /etc/fstab"
+        }
+      ]
+    },
+    {
+      "id": "mstg-006",
+      "type": "multi-step",
+      "scenario": "fstab degisikliklerini test etmek icin tum entry'leri mount etmeyi dene, sonra mount tablosunu verify et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount -a",
+          "hint_text": "fstab'i test etmek icin `mount -a` calistir.",
+          "hint_partial": "mount -a"
+        },
+        {
+          "prompt": "$ ",
+          "answer": "findmnt --verify",
+          "hint_text": "Mount tablosu tutarliligini kontrol etmek icin `findmnt --verify` kullan.",
+          "hint_partial": "findmnt --verify"
+        }
+      ]
+    },
+    {
+      "id": "mstg-007",
+      "type": "single",
+      "scenario": "`/dev/sdb1` filesystem tipini göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsblk -f /dev/sdb1",
+          "hint_text": "Belirli device için `lsblk -f` kullan.",
+          "hint_partial": "lsblk -f ..."
+        }
+      ]
+    },
+    {
+      "id": "mstg-008",
+      "type": "multi-step",
+      "scenario": "Unmount basarisiz oluyorsa once `/mnt/data` mount'unu tutan process'leri bul, sonra lazy unmount uygula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof +f -- /mnt/data",
+          "hint_text": "Mount'u kullanan process'leri gormek icin `lsof +f -- /mnt/data` kullan.",
+          "hint_partial": "lsof +f -- /mnt/data"
+        },
+        {
+          "prompt": "$ ",
+          "answer": "umount -l /mnt/data",
+          "hint_text": "Kaynak hemen birakilmiyorsa `umount -l` ile lazy unmount yap.",
+          "hint_partial": "umount -l /mnt/data"
+        }
+      ]
+    },
+    {
+      "id": "mstg-009",
+      "type": "single",
+      "scenario": "Tum block device'leri UUID, label ve fs tipiyle birlikte ozet cikar.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "blkid -o list",
+          "hint_text": "Liste formatinda metadata icin `blkid -o list` kullan.",
+          "hint_partial": "blkid -o list"
+        }
+      ]
+    },
+    {
+      "id": "mstg-010",
+      "type": "single",
+      "scenario": "`/dev/sdb` disk boyutunu human-readable olarak göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsblk -o NAME,SIZE /dev/sdb",
+          "hint_text": "Kolon seçmek için `lsblk -o` kullan.",
+          "hint_partial": "lsblk -o ..."
+        }
+      ]
+    }
+  ]
+}

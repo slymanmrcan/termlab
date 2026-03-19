@@ -1,0 +1,2606 @@
+{
+  "level": "senior",
+  "topic": "ssh",
+  "questions": [
+    {
+      "id": "sssh-011",
+      "type": "single",
+      "scenario": "Bastion host uzerinden hedefe jump ile baglan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -J bastion app@10.0.0.5",
+          "hint_text": "Jump host icin `-J` kullan.",
+          "hint_partial": "ssh -J ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-012",
+      "type": "single",
+      "scenario": "Host key kontrolunu gecici olarak kapatarak baglan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -o StrictHostKeyChecking=no user@host",
+          "hint_text": "Strict host key kontrolu icin `-o` opsiyonunu kullan.",
+          "hint_partial": "ssh -o ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-013",
+      "type": "single",
+      "scenario": "Baglanti timeout'unu 5 saniyeye cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -o ConnectTimeout=5 user@host",
+          "hint_text": "Baglanti zaman asimi icin `ConnectTimeout` kullan.",
+          "hint_partial": "ssh -o ConnectTimeout=..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-014",
+      "type": "single",
+      "scenario": "Background'da kalici local port forward ac: 5433 -> 127.0.0.1:5432.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -MNf -L 5433:127.0.0.1:5432 db-gw",
+          "hint_text": "Background tunnel icin `-MNf -L` kombinasyonunu kullan.",
+          "hint_partial": "ssh -MNf ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-015",
+      "type": "single",
+      "scenario": "ControlMaster socket uzerinden acik baglantiyi kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -S ~/.ssh/cm-%r@%h:%p -O check user@host",
+          "hint_text": "Control socket icin `-S` ve `-O check` kullan.",
+          "hint_partial": "ssh -S ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-016",
+      "type": "single",
+      "scenario": "Desteklenen SSH cipher'larini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -Q cipher",
+          "hint_text": "Algoritma listesi icin `ssh -Q cipher` kullan.",
+          "hint_partial": "ssh -Q ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-017",
+      "type": "single",
+      "scenario": "Iki remote host arasinda `scp` ile ucuncu taraf kopya yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp -3 user@src:/tmp/a user@dst:/tmp/a",
+          "hint_text": "Remote-to-remote kopya icin `scp -3` kullan.",
+          "hint_partial": "scp -3 ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-018",
+      "type": "single",
+      "scenario": "`dist/` klasorunu rsync+ssh ile `/srv/app/` altina senkronize et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "rsync -avz -e ssh ./dist/ user@host:/srv/app/",
+          "hint_text": "SSH uzerinden rsync icin `-e ssh` kullan.",
+          "hint_partial": "rsync -avz ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-019",
+      "type": "single",
+      "scenario": "SFTP oturumu ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sftp user@host",
+          "hint_text": "SFTP icin `sftp user@host` kullan.",
+          "hint_partial": "sftp ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-020",
+      "type": "single",
+      "scenario": "`host` icin host key'i alip `known_hosts` dosyasina ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-keyscan -H host >> ~/.ssh/known_hosts",
+          "hint_text": "Host key toplamak icin `ssh-keyscan -H` kullan.",
+          "hint_partial": "ssh-keyscan -H ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-021",
+      "type": "single",
+      "scenario": "SSH agent'taki yuklu key'leri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-add -l",
+          "hint_text": "Agent key listesi icin `ssh-add -l` kullan.",
+          "hint_partial": "ssh-add ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-022",
+      "type": "single",
+      "scenario": "`~/.ssh/prod_ed25519` key'ini agent'a ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-add ~/.ssh/prod_ed25519",
+          "hint_text": "Agent'a key eklemek icin `ssh-add` kullan.",
+          "hint_partial": "ssh-add ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-023",
+      "type": "single",
+      "scenario": "Bastion uzerinden hedef host'ta `sudo systemctl status nginx` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -o ProxyJump=bastion user@host 'sudo systemctl status nginx'",
+          "hint_text": "ProxyJump opsiyonunu remote komutla birlestir.",
+          "hint_partial": "ssh -o ProxyJump=..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-024",
+      "type": "single",
+      "scenario": "2222 portundan `backup.sql` dosyasini remote `/tmp/` altina kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp -P 2222 backup.sql user@host:/tmp/",
+          "hint_text": "SCP ozel port icin `-P` kullanir.",
+          "hint_partial": "scp -P ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-025",
+      "type": "single",
+      "scenario": "Remote host'ta nginx access log'unu canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh user@host 'tail -f /var/log/nginx/access.log'",
+          "hint_text": "Remote follow icin `ssh host 'tail -f ...'` kullan.",
+          "hint_partial": "ssh user@host ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-011-r1",
+      "type": "single",
+      "scenario": "Bakim oncesi bastion host uzerinden hedefe jump ile baglan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -J bastion app@10.0.0.5",
+          "hint_text": "Jump host icin `-J` kullan.",
+          "hint_partial": "ssh -J ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-012-r2",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda host key kontrolunu gecici olarak kapatarak baglan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -o StrictHostKeyChecking=no user@host",
+          "hint_text": "Strict host key kontrolu icin `-o` opsiyonunu kullan.",
+          "hint_partial": "ssh -o ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-013-r3",
+      "type": "single",
+      "scenario": "Deploy sonrasi baglanti timeout'unu 5 saniyeye cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -o ConnectTimeout=5 user@host",
+          "hint_text": "Baglanti zaman asimi icin `ConnectTimeout` kullan.",
+          "hint_partial": "ssh -o ConnectTimeout=..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-014-r4",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde background'da kalici local port forward ac: 5433 -> 127.0.0.1:8051.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -MNf -L 2:8051.0.0.1:8051 db-4-gw",
+          "hint_text": "Background tunnel icin `-MNf -L` kombinasyonunu kullan.",
+          "hint_partial": "ssh -MNf ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-015-r5",
+      "type": "single",
+      "scenario": "Yeni acilan hostta controlMaster socket uzerinden acik baglantiyi kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -S ~/.ssh/cm-%r@%h:%p -O check user@host",
+          "hint_text": "Control socket icin `-S` ve `-O check` kullan.",
+          "hint_partial": "ssh -S ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-016-r6",
+      "type": "single",
+      "scenario": "Runbook adiminda desteklenen SSH cipher'larini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -Q cipher",
+          "hint_text": "Algoritma listesi icin `ssh -Q cipher` kullan.",
+          "hint_partial": "ssh -Q ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-017-r7",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde iki remote host arasinda `scp` ile ucuncu taraf kopya yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp -3 user@src:/tmp/job-7/a user@dst:/tmp/job-7/a",
+          "hint_text": "Remote-to-remote kopya icin `scp -3` kullan.",
+          "hint_partial": "scp -3 ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-018-r8",
+      "type": "single",
+      "scenario": "Incident sonrasinda `dist/` klasorunu rsync+ssh ile `/srv/app/proxy-8-8/app/proxy-8/` altina senkronize et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "rsync -avz -e ssh ./dist/ user@host:/srv/app/proxy-8-8/app/proxy-8/",
+          "hint_text": "SSH uzerinden rsync icin `-e ssh` kullan.",
+          "hint_partial": "rsync -avz ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-019-r9",
+      "type": "single",
+      "scenario": "Bakim oncesi sFTP oturumu ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sftp user@host",
+          "hint_text": "SFTP icin `sftp user@host` kullan.",
+          "hint_partial": "sftp ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-020-r10",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `host` icin host key'i alip `known_hosts` dosyasina ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-keyscan -H host >> ~/.ssh/known_hosts",
+          "hint_text": "Host key toplamak icin `ssh-keyscan -H` kullan.",
+          "hint_partial": "ssh-keyscan -H ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-021-r11",
+      "type": "single",
+      "scenario": "Deploy sonrasi sSH agent'taki yuklu key'leri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-add -l",
+          "hint_text": "Agent key listesi icin `ssh-add -l` kullan.",
+          "hint_partial": "ssh-add ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-022-r12",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `~/.ssh/prod_ed25519` key'ini agent'a ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-add ~/.ssh/prod_ed25519",
+          "hint_text": "Agent'a key eklemek icin `ssh-add` kullan.",
+          "hint_partial": "ssh-add ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-023-r13",
+      "type": "single",
+      "scenario": "Yeni acilan hostta bastion uzerinden hedef host'ta `sudo systemctl status nginx-13` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -o ProxyJump=bastion user@host 'sudo systemctl status nginx-13'",
+          "hint_text": "ProxyJump opsiyonunu remote komutla birlestir.",
+          "hint_partial": "ssh -o ProxyJump=..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-024-r14",
+      "type": "single",
+      "scenario": "Runbook adiminda 2222 portundan `backup.sql` dosyasini remote `/tmp/job-14/` altina kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp -P 2222 backup.sql user@host:/tmp/job-14/",
+          "hint_text": "SCP ozel port icin `-P` kullanir.",
+          "hint_partial": "scp -P ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-025-r15",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde remote host'ta redis-15 access log'unu canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh user@host 'tail -f /var/bastion-15/log/bastion-15/redis-15/access.log'",
+          "hint_text": "Remote follow icin `ssh host 'tail -f ...'` kullan.",
+          "hint_partial": "ssh user@host ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-011-r16",
+      "type": "single",
+      "scenario": "Incident sonrasinda bastion host uzerinden hedefe jump ile baglan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -J bastion app@10.0.0.5",
+          "hint_text": "Jump host icin `-J` kullan.",
+          "hint_partial": "ssh -J ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-012-r17",
+      "type": "single",
+      "scenario": "Bakim oncesi host key kontrolunu gecici olarak kapatarak baglan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -o StrictHostKeyChecking=no user@host",
+          "hint_text": "Strict host key kontrolu icin `-o` opsiyonunu kullan.",
+          "hint_partial": "ssh -o ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-013-r18",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda baglanti timeout'unu 5 saniyeye cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -o ConnectTimeout=5 user@host",
+          "hint_text": "Baglanti zaman asimi icin `ConnectTimeout` kullan.",
+          "hint_partial": "ssh -o ConnectTimeout=..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-014-r19",
+      "type": "single",
+      "scenario": "Deploy sonrasi background'da kalici local port forward ac: 5433 -> 127.0.0.1:8306.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -MNf -L 2:8306.0.0.1:8306 db-19-gw",
+          "hint_text": "Background tunnel icin `-MNf -L` kombinasyonunu kullan.",
+          "hint_partial": "ssh -MNf ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-015-r20",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde controlMaster socket uzerinden acik baglantiyi kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -S ~/.ssh/cm-%r@%h:%p -O check user@host",
+          "hint_text": "Control socket icin `-S` ve `-O check` kullan.",
+          "hint_partial": "ssh -S ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-016-r21",
+      "type": "single",
+      "scenario": "Yeni acilan hostta desteklenen SSH cipher'larini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -Q cipher",
+          "hint_text": "Algoritma listesi icin `ssh -Q cipher` kullan.",
+          "hint_partial": "ssh -Q ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-017-r22",
+      "type": "single",
+      "scenario": "Runbook adiminda iki remote host arasinda `scp` ile ucuncu taraf kopya yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp -3 user@src:/tmp/job-22/a user@dst:/tmp/job-22/a",
+          "hint_text": "Remote-to-remote kopya icin `scp -3` kullan.",
+          "hint_partial": "scp -3 ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-018-r23",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `dist/` klasorunu rsync+ssh ile `/srv/app/bastion-23-23/app/bastion-23/` altina senkronize et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "rsync -avz -e ssh ./dist/ user@host:/srv/app/bastion-23-23/app/bastion-23/",
+          "hint_text": "SSH uzerinden rsync icin `-e ssh` kullan.",
+          "hint_partial": "rsync -avz ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-019-r24",
+      "type": "single",
+      "scenario": "Incident sonrasinda sFTP oturumu ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sftp user@host",
+          "hint_text": "SFTP icin `sftp user@host` kullan.",
+          "hint_partial": "sftp ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-020-r25",
+      "type": "single",
+      "scenario": "Bakim oncesi `host` icin host key'i alip `known_hosts` dosyasina ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-keyscan -H host >> ~/.ssh/known_hosts",
+          "hint_text": "Host key toplamak icin `ssh-keyscan -H` kullan.",
+          "hint_partial": "ssh-keyscan -H ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-021-r26",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda sSH agent'taki yuklu key'leri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-add -l",
+          "hint_text": "Agent key listesi icin `ssh-add -l` kullan.",
+          "hint_partial": "ssh-add ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-022-r27",
+      "type": "single",
+      "scenario": "Deploy sonrasi `~/.ssh/prod_ed25519` key'ini agent'a ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-add ~/.ssh/prod_ed25519",
+          "hint_text": "Agent'a key eklemek icin `ssh-add` kullan.",
+          "hint_partial": "ssh-add ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-023-r28",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde bastion uzerinden hedef host'ta `sudo systemctl status traefik-28` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -o ProxyJump=bastion user@host 'sudo systemctl status traefik-28'",
+          "hint_text": "ProxyJump opsiyonunu remote komutla birlestir.",
+          "hint_partial": "ssh -o ProxyJump=..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-024-r29",
+      "type": "single",
+      "scenario": "Yeni acilan hostta 2222 portundan `backup.sql` dosyasini remote `/tmp/job-29/` altina kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp -P 2222 backup.sql user@host:/tmp/job-29/",
+          "hint_text": "SCP ozel port icin `-P` kullanir.",
+          "hint_partial": "scp -P ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-025-r30",
+      "type": "single",
+      "scenario": "Runbook adiminda remote host'ta vault-30 access log'unu canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh user@host 'tail -f /var/queue-30/log/queue-30/vault-30/access.log'",
+          "hint_text": "Remote follow icin `ssh host 'tail -f ...'` kullan.",
+          "hint_partial": "ssh user@host ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-011-r31",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde bastion host uzerinden hedefe jump ile baglan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -J bastion app@10.0.0.5",
+          "hint_text": "Jump host icin `-J` kullan.",
+          "hint_partial": "ssh -J ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-012-r32",
+      "type": "single",
+      "scenario": "Incident sonrasinda host key kontrolunu gecici olarak kapatarak baglan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -o StrictHostKeyChecking=no user@host",
+          "hint_text": "Strict host key kontrolu icin `-o` opsiyonunu kullan.",
+          "hint_partial": "ssh -o ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-013-r33",
+      "type": "single",
+      "scenario": "Bakim oncesi baglanti timeout'unu 5 saniyeye cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -o ConnectTimeout=5 user@host",
+          "hint_text": "Baglanti zaman asimi icin `ConnectTimeout` kullan.",
+          "hint_partial": "ssh -o ConnectTimeout=..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-014-r34",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda background'da kalici local port forward ac: 5433 -> 127.0.0.1:8561.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -MNf -L 2:8561.0.0.1:8561 db-34-gw",
+          "hint_text": "Background tunnel icin `-MNf -L` kombinasyonunu kullan.",
+          "hint_partial": "ssh -MNf ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-015-r35",
+      "type": "single",
+      "scenario": "Deploy sonrasi controlMaster socket uzerinden acik baglantiyi kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -S ~/.ssh/cm-%r@%h:%p -O check user@host",
+          "hint_text": "Control socket icin `-S` ve `-O check` kullan.",
+          "hint_partial": "ssh -S ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-016-r36",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde desteklenen SSH cipher'larini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -Q cipher",
+          "hint_text": "Algoritma listesi icin `ssh -Q cipher` kullan.",
+          "hint_partial": "ssh -Q ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-017-r37",
+      "type": "single",
+      "scenario": "Yeni acilan hostta iki remote host arasinda `scp` ile ucuncu taraf kopya yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp -3 user@src:/tmp/job-37/a user@dst:/tmp/job-37/a",
+          "hint_text": "Remote-to-remote kopya icin `scp -3` kullan.",
+          "hint_partial": "scp -3 ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-018-r38",
+      "type": "single",
+      "scenario": "Runbook adiminda `dist/` klasorunu rsync+ssh ile `/srv/app/queue-38-38/app/queue-38/` altina senkronize et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "rsync -avz -e ssh ./dist/ user@host:/srv/app/queue-38-38/app/queue-38/",
+          "hint_text": "SSH uzerinden rsync icin `-e ssh` kullan.",
+          "hint_partial": "rsync -avz ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-019-r39",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde sFTP oturumu ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sftp user@host",
+          "hint_text": "SFTP icin `sftp user@host` kullan.",
+          "hint_partial": "sftp ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-020-r40",
+      "type": "single",
+      "scenario": "Incident sonrasinda `host` icin host key'i alip `known_hosts` dosyasina ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-keyscan -H host >> ~/.ssh/known_hosts",
+          "hint_text": "Host key toplamak icin `ssh-keyscan -H` kullan.",
+          "hint_partial": "ssh-keyscan -H ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-021-r41",
+      "type": "single",
+      "scenario": "Bakim oncesi sSH agent'taki yuklu key'leri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-add -l",
+          "hint_text": "Agent key listesi icin `ssh-add -l` kullan.",
+          "hint_partial": "ssh-add ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-022-r42",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `~/.ssh/prod_ed25519` key'ini agent'a ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-add ~/.ssh/prod_ed25519",
+          "hint_text": "Agent'a key eklemek icin `ssh-add` kullan.",
+          "hint_partial": "ssh-add ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-023-r43",
+      "type": "single",
+      "scenario": "Deploy sonrasi bastion uzerinden hedef host'ta `sudo systemctl status nginx-43` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -o ProxyJump=bastion user@host 'sudo systemctl status nginx-43'",
+          "hint_text": "ProxyJump opsiyonunu remote komutla birlestir.",
+          "hint_partial": "ssh -o ProxyJump=..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-024-r44",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde 2222 portundan `backup.sql` dosyasini remote `/tmp/job-44/` altina kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp -P 2222 backup.sql user@host:/tmp/job-44/",
+          "hint_text": "SCP ozel port icin `-P` kullanir.",
+          "hint_partial": "scp -P ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-025-r45",
+      "type": "single",
+      "scenario": "Yeni acilan hostta remote host'ta redis-45 access log'unu canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh user@host 'tail -f /var/cache-45-45/log/cache-45-45/redis-45/access.log'",
+          "hint_text": "Remote follow icin `ssh host 'tail -f ...'` kullan.",
+          "hint_partial": "ssh user@host ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-011-r46",
+      "type": "single",
+      "scenario": "Runbook adiminda bastion host uzerinden hedefe jump ile baglan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -J bastion app@10.0.0.5",
+          "hint_text": "Jump host icin `-J` kullan.",
+          "hint_partial": "ssh -J ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-012-r47",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde host key kontrolunu gecici olarak kapatarak baglan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -o StrictHostKeyChecking=no user@host",
+          "hint_text": "Strict host key kontrolu icin `-o` opsiyonunu kullan.",
+          "hint_partial": "ssh -o ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-013-r48",
+      "type": "single",
+      "scenario": "Incident sonrasinda baglanti timeout'unu 5 saniyeye cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -o ConnectTimeout=5 user@host",
+          "hint_text": "Baglanti zaman asimi icin `ConnectTimeout` kullan.",
+          "hint_partial": "ssh -o ConnectTimeout=..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-014-r49",
+      "type": "single",
+      "scenario": "Bakim oncesi background'da kalici local port forward ac: 5433 -> 127.0.0.1:8816.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -MNf -L 2:8816.0.0.1:8816 db-49-gw",
+          "hint_text": "Background tunnel icin `-MNf -L` kombinasyonunu kullan.",
+          "hint_partial": "ssh -MNf ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-015-r50",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda controlMaster socket uzerinden acik baglantiyi kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -S ~/.ssh/cm-%r@%h:%p -O check user@host",
+          "hint_text": "Control socket icin `-S` ve `-O check` kullan.",
+          "hint_partial": "ssh -S ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-016-r51",
+      "type": "single",
+      "scenario": "Deploy sonrasi desteklenen SSH cipher'larini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -Q cipher",
+          "hint_text": "Algoritma listesi icin `ssh -Q cipher` kullan.",
+          "hint_partial": "ssh -Q ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-017-r52",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde iki remote host arasinda `scp` ile ucuncu taraf kopya yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp -3 user@src:/tmp/job-52/a user@dst:/tmp/job-52/a",
+          "hint_text": "Remote-to-remote kopya icin `scp -3` kullan.",
+          "hint_partial": "scp -3 ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-018-r53",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `dist/` klasorunu rsync+ssh ile `/srv/app/cache-53-53-53/app/cache-53-53/` altina senkronize et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "rsync -avz -e ssh ./dist/ user@host:/srv/app/cache-53-53-53/app/cache-53-53/",
+          "hint_text": "SSH uzerinden rsync icin `-e ssh` kullan.",
+          "hint_partial": "rsync -avz ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-019-r54",
+      "type": "single",
+      "scenario": "Runbook adiminda sFTP oturumu ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sftp user@host",
+          "hint_text": "SFTP icin `sftp user@host` kullan.",
+          "hint_partial": "sftp ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-020-r55",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `host` icin host key'i alip `known_hosts` dosyasina ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-keyscan -H host >> ~/.ssh/known_hosts",
+          "hint_text": "Host key toplamak icin `ssh-keyscan -H` kullan.",
+          "hint_partial": "ssh-keyscan -H ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-021-r56",
+      "type": "single",
+      "scenario": "Incident sonrasinda sSH agent'taki yuklu key'leri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-add -l",
+          "hint_text": "Agent key listesi icin `ssh-add -l` kullan.",
+          "hint_partial": "ssh-add ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-022-r57",
+      "type": "single",
+      "scenario": "Bakim oncesi `~/.ssh/prod_ed25519` key'ini agent'a ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-add ~/.ssh/prod_ed25519",
+          "hint_text": "Agent'a key eklemek icin `ssh-add` kullan.",
+          "hint_partial": "ssh-add ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-023-r58",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda bastion uzerinden hedef host'ta `sudo systemctl status traefik-58` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -o ProxyJump=bastion user@host 'sudo systemctl status traefik-58'",
+          "hint_text": "ProxyJump opsiyonunu remote komutla birlestir.",
+          "hint_partial": "ssh -o ProxyJump=..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-024-r59",
+      "type": "single",
+      "scenario": "Deploy sonrasi 2222 portundan `backup.sql` dosyasini remote `/tmp/job-59/` altina kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp -P 2222 backup.sql user@host:/tmp/job-59/",
+          "hint_text": "SCP ozel port icin `-P` kullanir.",
+          "hint_partial": "scp -P ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-025-r60",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde remote host'ta vault-60 access log'unu canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh user@host 'tail -f /var/db-60-60/log/db-60-60/vault-60/access.log'",
+          "hint_text": "Remote follow icin `ssh host 'tail -f ...'` kullan.",
+          "hint_partial": "ssh user@host ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-011-r61",
+      "type": "single",
+      "scenario": "Yeni acilan hostta bastion host uzerinden hedefe jump ile baglan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -J bastion app@10.0.0.5",
+          "hint_text": "Jump host icin `-J` kullan.",
+          "hint_partial": "ssh -J ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-012-r62",
+      "type": "single",
+      "scenario": "Runbook adiminda host key kontrolunu gecici olarak kapatarak baglan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -o StrictHostKeyChecking=no user@host",
+          "hint_text": "Strict host key kontrolu icin `-o` opsiyonunu kullan.",
+          "hint_partial": "ssh -o ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-013-r63",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde baglanti timeout'unu 5 saniyeye cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -o ConnectTimeout=5 user@host",
+          "hint_text": "Baglanti zaman asimi icin `ConnectTimeout` kullan.",
+          "hint_partial": "ssh -o ConnectTimeout=..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-014-r64",
+      "type": "single",
+      "scenario": "Incident sonrasinda background'da kalici local port forward ac: 5433 -> 127.0.0.1:8071.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -MNf -L 2:8071.0.0.1:8071 db-64-gw",
+          "hint_text": "Background tunnel icin `-MNf -L` kombinasyonunu kullan.",
+          "hint_partial": "ssh -MNf ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-015-r65",
+      "type": "single",
+      "scenario": "Bakim oncesi controlMaster socket uzerinden acik baglantiyi kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -S ~/.ssh/cm-%r@%h:%p -O check user@host",
+          "hint_text": "Control socket icin `-S` ve `-O check` kullan.",
+          "hint_partial": "ssh -S ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-016-r66",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda desteklenen SSH cipher'larini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -Q cipher",
+          "hint_text": "Algoritma listesi icin `ssh -Q cipher` kullan.",
+          "hint_partial": "ssh -Q ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-017-r67",
+      "type": "single",
+      "scenario": "Deploy sonrasi iki remote host arasinda `scp` ile ucuncu taraf kopya yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp -3 user@src:/tmp/job-67/a user@dst:/tmp/job-67/a",
+          "hint_text": "Remote-to-remote kopya icin `scp -3` kullan.",
+          "hint_partial": "scp -3 ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-018-r68",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `dist/` klasorunu rsync+ssh ile `/srv/app/db-68-68-68/app/db-68-68/` altina senkronize et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "rsync -avz -e ssh ./dist/ user@host:/srv/app/db-68-68-68/app/db-68-68/",
+          "hint_text": "SSH uzerinden rsync icin `-e ssh` kullan.",
+          "hint_partial": "rsync -avz ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-019-r69",
+      "type": "single",
+      "scenario": "Yeni acilan hostta sFTP oturumu ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sftp user@host",
+          "hint_text": "SFTP icin `sftp user@host` kullan.",
+          "hint_partial": "sftp ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-020-r70",
+      "type": "single",
+      "scenario": "Runbook adiminda `host` icin host key'i alip `known_hosts` dosyasina ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-keyscan -H host >> ~/.ssh/known_hosts",
+          "hint_text": "Host key toplamak icin `ssh-keyscan -H` kullan.",
+          "hint_partial": "ssh-keyscan -H ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-021-r71",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde sSH agent'taki yuklu key'leri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-add -l",
+          "hint_text": "Agent key listesi icin `ssh-add -l` kullan.",
+          "hint_partial": "ssh-add ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-022-r72",
+      "type": "single",
+      "scenario": "Incident sonrasinda `~/.ssh/prod_ed25519` key'ini agent'a ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-add ~/.ssh/prod_ed25519",
+          "hint_text": "Agent'a key eklemek icin `ssh-add` kullan.",
+          "hint_partial": "ssh-add ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-023-r73",
+      "type": "single",
+      "scenario": "Bakim oncesi bastion uzerinden hedef host'ta `sudo systemctl status nginx-73` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -o ProxyJump=bastion user@host 'sudo systemctl status nginx-73'",
+          "hint_text": "ProxyJump opsiyonunu remote komutla birlestir.",
+          "hint_partial": "ssh -o ProxyJump=..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-024-r74",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda 2222 portundan `backup.sql` dosyasini remote `/tmp/job-74/` altina kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp -P 2222 backup.sql user@host:/tmp/job-74/",
+          "hint_text": "SCP ozel port icin `-P` kullanir.",
+          "hint_partial": "scp -P ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-025-r75",
+      "type": "single",
+      "scenario": "Deploy sonrasi remote host'ta redis-75 access log'unu canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh user@host 'tail -f /var/queue-75-75/log/queue-75-75/redis-75/access.log'",
+          "hint_text": "Remote follow icin `ssh host 'tail -f ...'` kullan.",
+          "hint_partial": "ssh user@host ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-011-r76",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde bastion host uzerinden hedefe jump ile baglan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -J bastion app@10.0.0.5",
+          "hint_text": "Jump host icin `-J` kullan.",
+          "hint_partial": "ssh -J ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-012-r77",
+      "type": "single",
+      "scenario": "Yeni acilan hostta host key kontrolunu gecici olarak kapatarak baglan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -o StrictHostKeyChecking=no user@host",
+          "hint_text": "Strict host key kontrolu icin `-o` opsiyonunu kullan.",
+          "hint_partial": "ssh -o ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-013-r78",
+      "type": "single",
+      "scenario": "Runbook adiminda baglanti timeout'unu 5 saniyeye cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -o ConnectTimeout=5 user@host",
+          "hint_text": "Baglanti zaman asimi icin `ConnectTimeout` kullan.",
+          "hint_partial": "ssh -o ConnectTimeout=..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-014-r79",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde background'da kalici local port forward ac: 5433 -> 127.0.0.1:8326.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -MNf -L 2:8326.0.0.1:8326 db-79-gw",
+          "hint_text": "Background tunnel icin `-MNf -L` kombinasyonunu kullan.",
+          "hint_partial": "ssh -MNf ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-015-r80",
+      "type": "single",
+      "scenario": "Incident sonrasinda controlMaster socket uzerinden acik baglantiyi kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -S ~/.ssh/cm-%r@%h:%p -O check user@host",
+          "hint_text": "Control socket icin `-S` ve `-O check` kullan.",
+          "hint_partial": "ssh -S ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-016-r81",
+      "type": "single",
+      "scenario": "Bakim oncesi desteklenen SSH cipher'larini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -Q cipher",
+          "hint_text": "Algoritma listesi icin `ssh -Q cipher` kullan.",
+          "hint_partial": "ssh -Q ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-017-r82",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda iki remote host arasinda `scp` ile ucuncu taraf kopya yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp -3 user@src:/tmp/job-82/a user@dst:/tmp/job-82/a",
+          "hint_text": "Remote-to-remote kopya icin `scp -3` kullan.",
+          "hint_partial": "scp -3 ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-018-r83",
+      "type": "single",
+      "scenario": "Deploy sonrasi `dist/` klasorunu rsync+ssh ile `/srv/app/queue-83-83-83/app/queue-83-83/` altina senkronize et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "rsync -avz -e ssh ./dist/ user@host:/srv/app/queue-83-83-83/app/queue-83-83/",
+          "hint_text": "SSH uzerinden rsync icin `-e ssh` kullan.",
+          "hint_partial": "rsync -avz ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-019-r84",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde sFTP oturumu ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sftp user@host",
+          "hint_text": "SFTP icin `sftp user@host` kullan.",
+          "hint_partial": "sftp ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-020-r85",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `host` icin host key'i alip `known_hosts` dosyasina ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-keyscan -H host >> ~/.ssh/known_hosts",
+          "hint_text": "Host key toplamak icin `ssh-keyscan -H` kullan.",
+          "hint_partial": "ssh-keyscan -H ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-021-r86",
+      "type": "single",
+      "scenario": "Runbook adiminda sSH agent'taki yuklu key'leri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-add -l",
+          "hint_text": "Agent key listesi icin `ssh-add -l` kullan.",
+          "hint_partial": "ssh-add ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-022-r87",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `~/.ssh/prod_ed25519` key'ini agent'a ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-add ~/.ssh/prod_ed25519",
+          "hint_text": "Agent'a key eklemek icin `ssh-add` kullan.",
+          "hint_partial": "ssh-add ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-023-r88",
+      "type": "single",
+      "scenario": "Incident sonrasinda bastion uzerinden hedef host'ta `sudo systemctl status traefik-88` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -o ProxyJump=bastion user@host 'sudo systemctl status traefik-88'",
+          "hint_text": "ProxyJump opsiyonunu remote komutla birlestir.",
+          "hint_partial": "ssh -o ProxyJump=..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-024-r89",
+      "type": "single",
+      "scenario": "Bakim oncesi 2222 portundan `backup.sql` dosyasini remote `/tmp/job-89/` altina kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp -P 2222 backup.sql user@host:/tmp/job-89/",
+          "hint_text": "SCP ozel port icin `-P` kullanir.",
+          "hint_partial": "scp -P ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-025-r90",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda remote host'ta vault-90 access log'unu canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh user@host 'tail -f /var/cache-90-90-90/log/cache-90-90-90/vault-90/access.log'",
+          "hint_text": "Remote follow icin `ssh host 'tail -f ...'` kullan.",
+          "hint_partial": "ssh user@host ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-011-r91",
+      "type": "single",
+      "scenario": "Deploy sonrasi bastion host uzerinden hedefe jump ile baglan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -J bastion app@10.0.0.5",
+          "hint_text": "Jump host icin `-J` kullan.",
+          "hint_partial": "ssh -J ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-012-r92",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde host key kontrolunu gecici olarak kapatarak baglan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -o StrictHostKeyChecking=no user@host",
+          "hint_text": "Strict host key kontrolu icin `-o` opsiyonunu kullan.",
+          "hint_partial": "ssh -o ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-013-r93",
+      "type": "single",
+      "scenario": "Yeni acilan hostta baglanti timeout'unu 5 saniyeye cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -o ConnectTimeout=5 user@host",
+          "hint_text": "Baglanti zaman asimi icin `ConnectTimeout` kullan.",
+          "hint_partial": "ssh -o ConnectTimeout=..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-014-r94",
+      "type": "single",
+      "scenario": "Runbook adiminda background'da kalici local port forward ac: 5433 -> 127.0.0.1:8581.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -MNf -L 2:8581.0.0.1:8581 db-94-gw",
+          "hint_text": "Background tunnel icin `-MNf -L` kombinasyonunu kullan.",
+          "hint_partial": "ssh -MNf ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-015-r95",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde controlMaster socket uzerinden acik baglantiyi kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -S ~/.ssh/cm-%r@%h:%p -O check user@host",
+          "hint_text": "Control socket icin `-S` ve `-O check` kullan.",
+          "hint_partial": "ssh -S ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-016-r96",
+      "type": "single",
+      "scenario": "Incident sonrasinda desteklenen SSH cipher'larini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -Q cipher",
+          "hint_text": "Algoritma listesi icin `ssh -Q cipher` kullan.",
+          "hint_partial": "ssh -Q ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-017-r97",
+      "type": "single",
+      "scenario": "Bakim oncesi iki remote host arasinda `scp` ile ucuncu taraf kopya yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp -3 user@src:/tmp/job-97/a user@dst:/tmp/job-97/a",
+          "hint_text": "Remote-to-remote kopya icin `scp -3` kullan.",
+          "hint_partial": "scp -3 ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-018-r98",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `dist/` klasorunu rsync+ssh ile `/srv/app/cache-98-98-98-98/app/cache-98-98-98/` altina senkronize et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "rsync -avz -e ssh ./dist/ user@host:/srv/app/cache-98-98-98-98/app/cache-98-98-98/",
+          "hint_text": "SSH uzerinden rsync icin `-e ssh` kullan.",
+          "hint_partial": "rsync -avz ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-019-r99",
+      "type": "single",
+      "scenario": "Deploy sonrasi sFTP oturumu ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sftp user@host",
+          "hint_text": "SFTP icin `sftp user@host` kullan.",
+          "hint_partial": "sftp ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-020-r100",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `host` icin host key'i alip `known_hosts` dosyasina ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-keyscan -H host >> ~/.ssh/known_hosts",
+          "hint_text": "Host key toplamak icin `ssh-keyscan -H` kullan.",
+          "hint_partial": "ssh-keyscan -H ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-021-r101",
+      "type": "single",
+      "scenario": "Yeni acilan hostta sSH agent'taki yuklu key'leri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-add -l",
+          "hint_text": "Agent key listesi icin `ssh-add -l` kullan.",
+          "hint_partial": "ssh-add ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-022-r102",
+      "type": "single",
+      "scenario": "Runbook adiminda `~/.ssh/prod_ed25519` key'ini agent'a ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-add ~/.ssh/prod_ed25519",
+          "hint_text": "Agent'a key eklemek icin `ssh-add` kullan.",
+          "hint_partial": "ssh-add ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-023-r103",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde bastion uzerinden hedef host'ta `sudo systemctl status nginx-103` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -o ProxyJump=bastion user@host 'sudo systemctl status nginx-103'",
+          "hint_text": "ProxyJump opsiyonunu remote komutla birlestir.",
+          "hint_partial": "ssh -o ProxyJump=..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-024-r104",
+      "type": "single",
+      "scenario": "Incident sonrasinda 2222 portundan `backup.sql` dosyasini remote `/tmp/job-104/` altina kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp -P 2222 backup.sql user@host:/tmp/job-104/",
+          "hint_text": "SCP ozel port icin `-P` kullanir.",
+          "hint_partial": "scp -P ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-025-r105",
+      "type": "single",
+      "scenario": "Bakim oncesi remote host'ta redis-105 access log'unu canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh user@host 'tail -f /var/web-105-105/log/web-105-105/redis-105/access.log'",
+          "hint_text": "Remote follow icin `ssh host 'tail -f ...'` kullan.",
+          "hint_partial": "ssh user@host ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-011-r106",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda bastion host uzerinden hedefe jump ile baglan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -J bastion app@10.0.0.5",
+          "hint_text": "Jump host icin `-J` kullan.",
+          "hint_partial": "ssh -J ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-012-r107",
+      "type": "single",
+      "scenario": "Deploy sonrasi host key kontrolunu gecici olarak kapatarak baglan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -o StrictHostKeyChecking=no user@host",
+          "hint_text": "Strict host key kontrolu icin `-o` opsiyonunu kullan.",
+          "hint_partial": "ssh -o ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-013-r108",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde baglanti timeout'unu 5 saniyeye cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -o ConnectTimeout=5 user@host",
+          "hint_text": "Baglanti zaman asimi icin `ConnectTimeout` kullan.",
+          "hint_partial": "ssh -o ConnectTimeout=..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-014-r109",
+      "type": "single",
+      "scenario": "Yeni acilan hostta background'da kalici local port forward ac: 5433 -> 127.0.0.1:8836.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -MNf -L 2:8836.0.0.1:8836 db-109-gw",
+          "hint_text": "Background tunnel icin `-MNf -L` kombinasyonunu kullan.",
+          "hint_partial": "ssh -MNf ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-015-r110",
+      "type": "single",
+      "scenario": "Runbook adiminda controlMaster socket uzerinden acik baglantiyi kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -S ~/.ssh/cm-%r@%h:%p -O check user@host",
+          "hint_text": "Control socket icin `-S` ve `-O check` kullan.",
+          "hint_partial": "ssh -S ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-016-r111",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde desteklenen SSH cipher'larini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -Q cipher",
+          "hint_text": "Algoritma listesi icin `ssh -Q cipher` kullan.",
+          "hint_partial": "ssh -Q ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-017-r112",
+      "type": "single",
+      "scenario": "Incident sonrasinda iki remote host arasinda `scp` ile ucuncu taraf kopya yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp -3 user@src:/tmp/job-112/a user@dst:/tmp/job-112/a",
+          "hint_text": "Remote-to-remote kopya icin `scp -3` kullan.",
+          "hint_partial": "scp -3 ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-018-r113",
+      "type": "single",
+      "scenario": "Bakim oncesi `dist/` klasorunu rsync+ssh ile `/srv/app/web-113-113-113/app/web-113-113/` altina senkronize et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "rsync -avz -e ssh ./dist/ user@host:/srv/app/web-113-113-113/app/web-113-113/",
+          "hint_text": "SSH uzerinden rsync icin `-e ssh` kullan.",
+          "hint_partial": "rsync -avz ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-019-r114",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda sFTP oturumu ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sftp user@host",
+          "hint_text": "SFTP icin `sftp user@host` kullan.",
+          "hint_partial": "sftp ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-020-r115",
+      "type": "single",
+      "scenario": "Deploy sonrasi `host` icin host key'i alip `known_hosts` dosyasina ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-keyscan -H host >> ~/.ssh/known_hosts",
+          "hint_text": "Host key toplamak icin `ssh-keyscan -H` kullan.",
+          "hint_partial": "ssh-keyscan -H ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-021-r116",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde sSH agent'taki yuklu key'leri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-add -l",
+          "hint_text": "Agent key listesi icin `ssh-add -l` kullan.",
+          "hint_partial": "ssh-add ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-022-r117",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `~/.ssh/prod_ed25519` key'ini agent'a ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-add ~/.ssh/prod_ed25519",
+          "hint_text": "Agent'a key eklemek icin `ssh-add` kullan.",
+          "hint_partial": "ssh-add ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-023-r118",
+      "type": "single",
+      "scenario": "Runbook adiminda bastion uzerinden hedef host'ta `sudo systemctl status traefik-118` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -o ProxyJump=bastion user@host 'sudo systemctl status traefik-118'",
+          "hint_text": "ProxyJump opsiyonunu remote komutla birlestir.",
+          "hint_partial": "ssh -o ProxyJump=..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-024-r119",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde 2222 portundan `backup.sql` dosyasini remote `/tmp/job-119/` altina kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp -P 2222 backup.sql user@host:/tmp/job-119/",
+          "hint_text": "SCP ozel port icin `-P` kullanir.",
+          "hint_partial": "scp -P ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-025-r120",
+      "type": "single",
+      "scenario": "Incident sonrasinda remote host'ta vault-120 access log'unu canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh user@host 'tail -f /var/proxy-120/log/proxy-120/vault-120/access.log'",
+          "hint_text": "Remote follow icin `ssh host 'tail -f ...'` kullan.",
+          "hint_partial": "ssh user@host ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-011-r121",
+      "type": "single",
+      "scenario": "Bakim oncesi bastion host uzerinden hedefe jump ile baglan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -J bastion app@10.0.0.5",
+          "hint_text": "Jump host icin `-J` kullan.",
+          "hint_partial": "ssh -J ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-012-r122",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda host key kontrolunu gecici olarak kapatarak baglan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -o StrictHostKeyChecking=no user@host",
+          "hint_text": "Strict host key kontrolu icin `-o` opsiyonunu kullan.",
+          "hint_partial": "ssh -o ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-013-r123",
+      "type": "single",
+      "scenario": "Deploy sonrasi baglanti timeout'unu 5 saniyeye cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -o ConnectTimeout=5 user@host",
+          "hint_text": "Baglanti zaman asimi icin `ConnectTimeout` kullan.",
+          "hint_partial": "ssh -o ConnectTimeout=..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-014-r124",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde background'da kalici local port forward ac: 5433 -> 127.0.0.1:8091.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -MNf -L 2:8091.0.0.1:8091 db-124-gw",
+          "hint_text": "Background tunnel icin `-MNf -L` kombinasyonunu kullan.",
+          "hint_partial": "ssh -MNf ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-015-r125",
+      "type": "single",
+      "scenario": "Yeni acilan hostta controlMaster socket uzerinden acik baglantiyi kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -S ~/.ssh/cm-%r@%h:%p -O check user@host",
+          "hint_text": "Control socket icin `-S` ve `-O check` kullan.",
+          "hint_partial": "ssh -S ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-016-r126",
+      "type": "single",
+      "scenario": "Runbook adiminda desteklenen SSH cipher'larini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -Q cipher",
+          "hint_text": "Algoritma listesi icin `ssh -Q cipher` kullan.",
+          "hint_partial": "ssh -Q ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-017-r127",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde iki remote host arasinda `scp` ile ucuncu taraf kopya yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp -3 user@src:/tmp/job-127/a user@dst:/tmp/job-127/a",
+          "hint_text": "Remote-to-remote kopya icin `scp -3` kullan.",
+          "hint_partial": "scp -3 ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-018-r128",
+      "type": "single",
+      "scenario": "Incident sonrasinda `dist/` klasorunu rsync+ssh ile `/srv/app/proxy-128-128/app/proxy-128/` altina senkronize et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "rsync -avz -e ssh ./dist/ user@host:/srv/app/proxy-128-128/app/proxy-128/",
+          "hint_text": "SSH uzerinden rsync icin `-e ssh` kullan.",
+          "hint_partial": "rsync -avz ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-019-r129",
+      "type": "single",
+      "scenario": "Bakim oncesi sFTP oturumu ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sftp user@host",
+          "hint_text": "SFTP icin `sftp user@host` kullan.",
+          "hint_partial": "sftp ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-020-r130",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `host` icin host key'i alip `known_hosts` dosyasina ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-keyscan -H host >> ~/.ssh/known_hosts",
+          "hint_text": "Host key toplamak icin `ssh-keyscan -H` kullan.",
+          "hint_partial": "ssh-keyscan -H ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-021-r131",
+      "type": "single",
+      "scenario": "Deploy sonrasi sSH agent'taki yuklu key'leri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-add -l",
+          "hint_text": "Agent key listesi icin `ssh-add -l` kullan.",
+          "hint_partial": "ssh-add ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-022-r132",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `~/.ssh/prod_ed25519` key'ini agent'a ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-add ~/.ssh/prod_ed25519",
+          "hint_text": "Agent'a key eklemek icin `ssh-add` kullan.",
+          "hint_partial": "ssh-add ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-023-r133",
+      "type": "single",
+      "scenario": "Yeni acilan hostta bastion uzerinden hedef host'ta `sudo systemctl status nginx-133` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -o ProxyJump=bastion user@host 'sudo systemctl status nginx-133'",
+          "hint_text": "ProxyJump opsiyonunu remote komutla birlestir.",
+          "hint_partial": "ssh -o ProxyJump=..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-024-r134",
+      "type": "single",
+      "scenario": "Runbook adiminda 2222 portundan `backup.sql` dosyasini remote `/tmp/job-134/` altina kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp -P 2222 backup.sql user@host:/tmp/job-134/",
+          "hint_text": "SCP ozel port icin `-P` kullanir.",
+          "hint_partial": "scp -P ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-025-r135",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde remote host'ta redis-135 access log'unu canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh user@host 'tail -f /var/bastion-135/log/bastion-135/redis-135/access.log'",
+          "hint_text": "Remote follow icin `ssh host 'tail -f ...'` kullan.",
+          "hint_partial": "ssh user@host ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-011-r136",
+      "type": "single",
+      "scenario": "Incident sonrasinda bastion host uzerinden hedefe jump ile baglan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -J bastion app@10.0.0.5",
+          "hint_text": "Jump host icin `-J` kullan.",
+          "hint_partial": "ssh -J ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-012-r137",
+      "type": "single",
+      "scenario": "Bakim oncesi host key kontrolunu gecici olarak kapatarak baglan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -o StrictHostKeyChecking=no user@host",
+          "hint_text": "Strict host key kontrolu icin `-o` opsiyonunu kullan.",
+          "hint_partial": "ssh -o ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-013-r138",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda baglanti timeout'unu 5 saniyeye cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -o ConnectTimeout=5 user@host",
+          "hint_text": "Baglanti zaman asimi icin `ConnectTimeout` kullan.",
+          "hint_partial": "ssh -o ConnectTimeout=..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-014-r139",
+      "type": "single",
+      "scenario": "Deploy sonrasi background'da kalici local port forward ac: 5433 -> 127.0.0.1:8346.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -MNf -L 2:8346.0.0.1:8346 db-139-gw",
+          "hint_text": "Background tunnel icin `-MNf -L` kombinasyonunu kullan.",
+          "hint_partial": "ssh -MNf ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-015-r140",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde controlMaster socket uzerinden acik baglantiyi kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -S ~/.ssh/cm-%r@%h:%p -O check user@host",
+          "hint_text": "Control socket icin `-S` ve `-O check` kullan.",
+          "hint_partial": "ssh -S ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-016-r141",
+      "type": "single",
+      "scenario": "Yeni acilan hostta desteklenen SSH cipher'larini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -Q cipher",
+          "hint_text": "Algoritma listesi icin `ssh -Q cipher` kullan.",
+          "hint_partial": "ssh -Q ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-017-r142",
+      "type": "single",
+      "scenario": "Runbook adiminda iki remote host arasinda `scp` ile ucuncu taraf kopya yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp -3 user@src:/tmp/job-142/a user@dst:/tmp/job-142/a",
+          "hint_text": "Remote-to-remote kopya icin `scp -3` kullan.",
+          "hint_partial": "scp -3 ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-018-r143",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `dist/` klasorunu rsync+ssh ile `/srv/app/bastion-143-143/app/bastion-143/` altina senkronize et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "rsync -avz -e ssh ./dist/ user@host:/srv/app/bastion-143-143/app/bastion-143/",
+          "hint_text": "SSH uzerinden rsync icin `-e ssh` kullan.",
+          "hint_partial": "rsync -avz ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-019-r144",
+      "type": "single",
+      "scenario": "Incident sonrasinda sFTP oturumu ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sftp user@host",
+          "hint_text": "SFTP icin `sftp user@host` kullan.",
+          "hint_partial": "sftp ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-020-r145",
+      "type": "single",
+      "scenario": "Bakim oncesi `host` icin host key'i alip `known_hosts` dosyasina ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-keyscan -H host >> ~/.ssh/known_hosts",
+          "hint_text": "Host key toplamak icin `ssh-keyscan -H` kullan.",
+          "hint_partial": "ssh-keyscan -H ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-021-r146",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda sSH agent'taki yuklu key'leri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-add -l",
+          "hint_text": "Agent key listesi icin `ssh-add -l` kullan.",
+          "hint_partial": "ssh-add ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-022-r147",
+      "type": "single",
+      "scenario": "Deploy sonrasi `~/.ssh/prod_ed25519` key'ini agent'a ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-add ~/.ssh/prod_ed25519",
+          "hint_text": "Agent'a key eklemek icin `ssh-add` kullan.",
+          "hint_partial": "ssh-add ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-023-r148",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde bastion uzerinden hedef host'ta `sudo systemctl status traefik-148` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -o ProxyJump=bastion user@host 'sudo systemctl status traefik-148'",
+          "hint_text": "ProxyJump opsiyonunu remote komutla birlestir.",
+          "hint_partial": "ssh -o ProxyJump=..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-024-r149",
+      "type": "single",
+      "scenario": "Yeni acilan hostta 2222 portundan `backup.sql` dosyasini remote `/tmp/job-149/` altina kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp -P 2222 backup.sql user@host:/tmp/job-149/",
+          "hint_text": "SCP ozel port icin `-P` kullanir.",
+          "hint_partial": "scp -P ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-025-r150",
+      "type": "single",
+      "scenario": "Runbook adiminda remote host'ta vault-150 access log'unu canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh user@host 'tail -f /var/queue-150/log/queue-150/vault-150/access.log'",
+          "hint_text": "Remote follow icin `ssh host 'tail -f ...'` kullan.",
+          "hint_partial": "ssh user@host ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-011-r151",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde bastion host uzerinden hedefe jump ile baglan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -J bastion app@10.0.0.5",
+          "hint_text": "Jump host icin `-J` kullan.",
+          "hint_partial": "ssh -J ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-012-r152",
+      "type": "single",
+      "scenario": "Incident sonrasinda host key kontrolunu gecici olarak kapatarak baglan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -o StrictHostKeyChecking=no user@host",
+          "hint_text": "Strict host key kontrolu icin `-o` opsiyonunu kullan.",
+          "hint_partial": "ssh -o ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-013-r153",
+      "type": "single",
+      "scenario": "Bakim oncesi baglanti timeout'unu 5 saniyeye cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -o ConnectTimeout=5 user@host",
+          "hint_text": "Baglanti zaman asimi icin `ConnectTimeout` kullan.",
+          "hint_partial": "ssh -o ConnectTimeout=..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-014-r154",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda background'da kalici local port forward ac: 5433 -> 127.0.0.1:8601.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -MNf -L 2:8601.0.0.1:8601 db-154-gw",
+          "hint_text": "Background tunnel icin `-MNf -L` kombinasyonunu kullan.",
+          "hint_partial": "ssh -MNf ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-015-r155",
+      "type": "single",
+      "scenario": "Deploy sonrasi controlMaster socket uzerinden acik baglantiyi kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -S ~/.ssh/cm-%r@%h:%p -O check user@host",
+          "hint_text": "Control socket icin `-S` ve `-O check` kullan.",
+          "hint_partial": "ssh -S ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-016-r156",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde desteklenen SSH cipher'larini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -Q cipher",
+          "hint_text": "Algoritma listesi icin `ssh -Q cipher` kullan.",
+          "hint_partial": "ssh -Q ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-017-r157",
+      "type": "single",
+      "scenario": "Yeni acilan hostta iki remote host arasinda `scp` ile ucuncu taraf kopya yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp -3 user@src:/tmp/job-157/a user@dst:/tmp/job-157/a",
+          "hint_text": "Remote-to-remote kopya icin `scp -3` kullan.",
+          "hint_partial": "scp -3 ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-018-r158",
+      "type": "single",
+      "scenario": "Runbook adiminda `dist/` klasorunu rsync+ssh ile `/srv/app/queue-158-158/app/queue-158/` altina senkronize et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "rsync -avz -e ssh ./dist/ user@host:/srv/app/queue-158-158/app/queue-158/",
+          "hint_text": "SSH uzerinden rsync icin `-e ssh` kullan.",
+          "hint_partial": "rsync -avz ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-019-r159",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde sFTP oturumu ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sftp user@host",
+          "hint_text": "SFTP icin `sftp user@host` kullan.",
+          "hint_partial": "sftp ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-020-r160",
+      "type": "single",
+      "scenario": "Incident sonrasinda `host` icin host key'i alip `known_hosts` dosyasina ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-keyscan -H host >> ~/.ssh/known_hosts",
+          "hint_text": "Host key toplamak icin `ssh-keyscan -H` kullan.",
+          "hint_partial": "ssh-keyscan -H ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-021-r161",
+      "type": "single",
+      "scenario": "Bakim oncesi sSH agent'taki yuklu key'leri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-add -l",
+          "hint_text": "Agent key listesi icin `ssh-add -l` kullan.",
+          "hint_partial": "ssh-add ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-022-r162",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `~/.ssh/prod_ed25519` key'ini agent'a ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-add ~/.ssh/prod_ed25519",
+          "hint_text": "Agent'a key eklemek icin `ssh-add` kullan.",
+          "hint_partial": "ssh-add ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-023-r163",
+      "type": "single",
+      "scenario": "Deploy sonrasi bastion uzerinden hedef host'ta `sudo systemctl status nginx-163` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -o ProxyJump=bastion user@host 'sudo systemctl status nginx-163'",
+          "hint_text": "ProxyJump opsiyonunu remote komutla birlestir.",
+          "hint_partial": "ssh -o ProxyJump=..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-024-r164",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde 2222 portundan `backup.sql` dosyasini remote `/tmp/job-164/` altina kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp -P 2222 backup.sql user@host:/tmp/job-164/",
+          "hint_text": "SCP ozel port icin `-P` kullanir.",
+          "hint_partial": "scp -P ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-025-r165",
+      "type": "single",
+      "scenario": "Yeni acilan hostta remote host'ta redis-165 access log'unu canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh user@host 'tail -f /var/cache-165-165/log/cache-165-165/redis-165/access.log'",
+          "hint_text": "Remote follow icin `ssh host 'tail -f ...'` kullan.",
+          "hint_partial": "ssh user@host ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-011-r166",
+      "type": "single",
+      "scenario": "Runbook adiminda bastion host uzerinden hedefe jump ile baglan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -J bastion app@10.0.0.5",
+          "hint_text": "Jump host icin `-J` kullan.",
+          "hint_partial": "ssh -J ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-012-r167",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde host key kontrolunu gecici olarak kapatarak baglan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -o StrictHostKeyChecking=no user@host",
+          "hint_text": "Strict host key kontrolu icin `-o` opsiyonunu kullan.",
+          "hint_partial": "ssh -o ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-013-r168",
+      "type": "single",
+      "scenario": "Incident sonrasinda baglanti timeout'unu 5 saniyeye cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -o ConnectTimeout=5 user@host",
+          "hint_text": "Baglanti zaman asimi icin `ConnectTimeout` kullan.",
+          "hint_partial": "ssh -o ConnectTimeout=..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-014-r169",
+      "type": "single",
+      "scenario": "Bakim oncesi background'da kalici local port forward ac: 5433 -> 127.0.0.1:8856.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -MNf -L 2:8856.0.0.1:8856 db-169-gw",
+          "hint_text": "Background tunnel icin `-MNf -L` kombinasyonunu kullan.",
+          "hint_partial": "ssh -MNf ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-015-r170",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda controlMaster socket uzerinden acik baglantiyi kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -S ~/.ssh/cm-%r@%h:%p -O check user@host",
+          "hint_text": "Control socket icin `-S` ve `-O check` kullan.",
+          "hint_partial": "ssh -S ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-016-r171",
+      "type": "single",
+      "scenario": "Deploy sonrasi desteklenen SSH cipher'larini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -Q cipher",
+          "hint_text": "Algoritma listesi icin `ssh -Q cipher` kullan.",
+          "hint_partial": "ssh -Q ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-017-r172",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde iki remote host arasinda `scp` ile ucuncu taraf kopya yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp -3 user@src:/tmp/job-172/a user@dst:/tmp/job-172/a",
+          "hint_text": "Remote-to-remote kopya icin `scp -3` kullan.",
+          "hint_partial": "scp -3 ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-018-r173",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `dist/` klasorunu rsync+ssh ile `/srv/app/cache-173-173-173/app/cache-173-173/` altina senkronize et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "rsync -avz -e ssh ./dist/ user@host:/srv/app/cache-173-173-173/app/cache-173-173/",
+          "hint_text": "SSH uzerinden rsync icin `-e ssh` kullan.",
+          "hint_partial": "rsync -avz ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-019-r174",
+      "type": "single",
+      "scenario": "Runbook adiminda sFTP oturumu ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sftp user@host",
+          "hint_text": "SFTP icin `sftp user@host` kullan.",
+          "hint_partial": "sftp ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-020-r175",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `host` icin host key'i alip `known_hosts` dosyasina ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-keyscan -H host >> ~/.ssh/known_hosts",
+          "hint_text": "Host key toplamak icin `ssh-keyscan -H` kullan.",
+          "hint_partial": "ssh-keyscan -H ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-021-r176",
+      "type": "single",
+      "scenario": "Incident sonrasinda sSH agent'taki yuklu key'leri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-add -l",
+          "hint_text": "Agent key listesi icin `ssh-add -l` kullan.",
+          "hint_partial": "ssh-add ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-022-r177",
+      "type": "single",
+      "scenario": "Bakim oncesi `~/.ssh/prod_ed25519` key'ini agent'a ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-add ~/.ssh/prod_ed25519",
+          "hint_text": "Agent'a key eklemek icin `ssh-add` kullan.",
+          "hint_partial": "ssh-add ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-023-r178",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda bastion uzerinden hedef host'ta `sudo systemctl status traefik-178` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -o ProxyJump=bastion user@host 'sudo systemctl status traefik-178'",
+          "hint_text": "ProxyJump opsiyonunu remote komutla birlestir.",
+          "hint_partial": "ssh -o ProxyJump=..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-024-r179",
+      "type": "single",
+      "scenario": "Deploy sonrasi 2222 portundan `backup.sql` dosyasini remote `/tmp/job-179/` altina kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp -P 2222 backup.sql user@host:/tmp/job-179/",
+          "hint_text": "SCP ozel port icin `-P` kullanir.",
+          "hint_partial": "scp -P ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-025-r180",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde remote host'ta vault-180 access log'unu canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh user@host 'tail -f /var/db-180-180/log/db-180-180/vault-180/access.log'",
+          "hint_text": "Remote follow icin `ssh host 'tail -f ...'` kullan.",
+          "hint_partial": "ssh user@host ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-011-r181",
+      "type": "single",
+      "scenario": "Yeni acilan hostta bastion host uzerinden hedefe jump ile baglan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -J bastion app@10.0.0.5",
+          "hint_text": "Jump host icin `-J` kullan.",
+          "hint_partial": "ssh -J ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-012-r182",
+      "type": "single",
+      "scenario": "Runbook adiminda host key kontrolunu gecici olarak kapatarak baglan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -o StrictHostKeyChecking=no user@host",
+          "hint_text": "Strict host key kontrolu icin `-o` opsiyonunu kullan.",
+          "hint_partial": "ssh -o ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-013-r183",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde baglanti timeout'unu 5 saniyeye cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -o ConnectTimeout=5 user@host",
+          "hint_text": "Baglanti zaman asimi icin `ConnectTimeout` kullan.",
+          "hint_partial": "ssh -o ConnectTimeout=..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-014-r184",
+      "type": "single",
+      "scenario": "Incident sonrasinda background'da kalici local port forward ac: 5433 -> 127.0.0.1:8111.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -MNf -L 2:8111.0.0.1:8111 db-184-gw",
+          "hint_text": "Background tunnel icin `-MNf -L` kombinasyonunu kullan.",
+          "hint_partial": "ssh -MNf ..."
+        }
+      ]
+    },
+    {
+      "id": "sssh-015-r185",
+      "type": "single",
+      "scenario": "Bakim oncesi controlMaster socket uzerinden acik baglantiyi kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -S ~/.ssh/cm-%r@%h:%p -O check user@host",
+          "hint_text": "Control socket icin `-S` ve `-O check` kullan.",
+          "hint_partial": "ssh -S ..."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,135 @@
+{
+  "level": "senior",
+  "topic": "scripting",
+  "questions": [
+    {
+      "id": "sscr-001",
+      "type": "single",
+      "scenario": "Bir Bash script'te strict mode'u aç.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "set -euo pipefail",
+          "hint_text": "`-e`, `-u` ve `pipefail` kombinasyonunu kullan.",
+          "hint_partial": "set -..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-002",
+      "type": "single",
+      "scenario": "Script exit ederken cleanup çalıştırmak için EXIT trap tanımla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "trap 'rm -f /tmp/app.lock' EXIT",
+          "hint_text": "`trap` ile EXIT cleanup bağla.",
+          "hint_partial": "trap '..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-003",
+      "type": "single",
+      "scenario": "`getopts` ile `-e` option'ını parse eden tek satırlık loop yaz.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "while getopts 'e:' opt; do case $opt in e) env=$OPTARG ;; esac; done",
+          "hint_text": "`getopts` ve `case` yapısını birleştir.",
+          "hint_partial": "while getopts ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-004",
+      "type": "multi-step",
+      "scenario": "Prod env dosyasini export ederek yukle, sonra `APP_ENV` degerinin shell'e geldiginin dogrula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "set -a && . ./.env && set +a",
+          "hint_text": "Tum degiskenleri export ederek source etmek icin `set -a` kullan.",
+          "hint_partial": "set -a && . ./.env && set +a"
+        },
+        {
+          "prompt": "$ ",
+          "answer": "echo $APP_ENV",
+          "hint_text": "Yuklenen degiskeni dogrulamak icin `echo $APP_ENV` kullan.",
+          "hint_partial": "echo $APP_ENV"
+        }
+      ]
+    },
+    {
+      "id": "sscr-005",
+      "type": "single",
+      "scenario": "`deploy.sh` script'ini stdout ve stderr output'unu tek log file'ına alarak çalıştır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "./deploy.sh > deploy.log 2>&1",
+          "hint_text": "stderr'i stdout'a yönlendirip tek file'a yaz.",
+          "hint_partial": "./deploy.sh > ... 2>&1"
+        }
+      ]
+    },
+    {
+      "id": "sscr-006",
+      "type": "single",
+      "scenario": "Bir komut fail ettiğinde bulunduğu line number'ını yazdıran ERR trap tanımla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "trap 'echo $LINENO' ERR",
+          "hint_text": "ERR trap için `trap` kullan.",
+          "hint_partial": "trap 'echo ...' ERR"
+        }
+      ]
+    },
+    {
+      "id": "sscr-008",
+      "type": "single",
+      "scenario": "Bir script'te tüm argümanları sırayla yazdır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "for arg in \"$@\"; do echo \"$arg\"; done",
+          "hint_text": "Tüm positional argümanlar için `\"$@\"` ile loop kur.",
+          "hint_partial": "for arg in \"$@\"; do ..."
+        }
+      ]
+    },
+    {
+      "id": "sscr-009",
+      "type": "multi-step",
+      "scenario": "Bir deploy script'inde lock file yaklaşımı kur: önce lock oluştur, iş bitince trap ile sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "touch /tmp/deploy.lock",
+          "hint_text": "Önce lock file oluştur.",
+          "hint_partial": "touch /tmp/..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "trap 'rm -f /tmp/deploy.lock' EXIT",
+          "hint_text": "Script biterken lock'u silmek için EXIT trap tanımla.",
+          "hint_partial": "trap 'rm -f ...' EXIT"
+        }
+      ]
+    },
+    {
+      "id": "sscr-010",
+      "type": "single",
+      "scenario": "Script içinde ilk argüman verilmediyse `usage` yazdırıp exit 1 dön.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "[ -z \"$1\" ] && { echo usage; exit 1; }",
+          "hint_text": "Boş argüman kontrolü için test ve kısa blok kullan.",
+          "hint_partial": "[ -z \"$1\" ] && { ...; exit 1; }"
+        }
+      ]
+    }
+  ]
+}

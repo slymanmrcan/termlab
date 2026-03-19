@@ -1,0 +1,2606 @@
+{
+  "level": "senior",
+  "topic": "text",
+  "questions": [
+    {
+      "id": "stext-016",
+      "type": "single",
+      "scenario": "`a.txt` ve `b.txt` dosyalarini ilk kolona gore join et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "join -1 1 -2 1 <(sort a.txt) <(sort b.txt)",
+          "hint_text": "Join icin once iki dosyayi sirala.",
+          "hint_partial": "join -1 1 -2 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-017",
+      "type": "single",
+      "scenario": "access.log icindeki HTTP status code histogramini uret.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk '{print $9}' access.log | sort | uniq -c | sort -rn",
+          "hint_text": "Status kolonunu cekip `uniq -c` ile histogram yap.",
+          "hint_partial": "awk '{print $9}' ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-018",
+      "type": "single",
+      "scenario": "gzip'li log icinde `error` gecen satirlari ara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "zgrep -i error app.log.gz",
+          "hint_text": "Sikistirilmis log aramasi icin `zgrep` kullan.",
+          "hint_partial": "zgrep -i ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-019",
+      "type": "single",
+      "scenario": "`payload.json` dosyasini pretty-print et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "jq . payload.json",
+          "hint_text": "JSON formatlamak icin `jq .` kullan.",
+          "hint_partial": "jq . ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-020",
+      "type": "single",
+      "scenario": "Current directory'deki birinci seviye tum file'lar icin md5 hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find . -maxdepth 1 -type f -exec md5sum {} \\;",
+          "hint_text": "Her file icin checksum icin `find -exec md5sum` kullan.",
+          "hint_partial": "find . -maxdepth 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-021",
+      "type": "single",
+      "scenario": "`data.xml` icinden tum `item/name` metinlerini cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "xmllint --xpath '//item/name/text()' data.xml",
+          "hint_text": "XML secimi icin `xmllint --xpath` kullan.",
+          "hint_partial": "xmllint --xpath ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-022",
+      "type": "single",
+      "scenario": "`old.txt` ve `new.txt` dosyalarinin unique sirali farkini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "diff <(sort -u old.txt) <(sort -u new.txt)",
+          "hint_text": "Process substitution ile siralanmis fark al.",
+          "hint_partial": "diff <(sort -u ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-023",
+      "type": "single",
+      "scenario": "`data.csv` dosyasini tablo gibi hizali goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "column -t -s, data.csv",
+          "hint_text": "CSV kolonlarini hizalamak icin `column -t -s,` kullan.",
+          "hint_partial": "column -t ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-024",
+      "type": "single",
+      "scenario": "`data.csv` dosyasini TSV'ye cevirip stdout'a yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tr ',' '\\t' < data.csv",
+          "hint_text": "Delimiter donusumu icin `tr` kullan.",
+          "hint_partial": "tr ',' ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-025",
+      "type": "single",
+      "scenario": "Duplicate line'lari sayarak azalan sirada goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sort access.log | uniq -cd | sort -rn",
+          "hint_text": "Duplicate satirlar icin `uniq -cd` kullan.",
+          "hint_partial": "sort access.log | ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-016-r1",
+      "type": "single",
+      "scenario": "Bakim oncesi `a.txt` ve `b.txt` dosyalarini ilk kolona gore join et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "join -1 1 -2 1 <(sort a.txt) <(sort b.txt)",
+          "hint_text": "Join icin once iki dosyayi sirala.",
+          "hint_partial": "join -1 1 -2 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-017-r2",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda access.log icindeki HTTP status code histogramini uret.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk '{print $9}' access.log | sort | uniq -c | sort -rn",
+          "hint_text": "Status kolonunu cekip `uniq -c` ile histogram yap.",
+          "hint_partial": "awk '{print $9}' ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-018-r3",
+      "type": "single",
+      "scenario": "Deploy sonrasi gzip'li log icinde `error` gecen satirlari ara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "zgrep -i error app-3.log.gz",
+          "hint_text": "Sikistirilmis log aramasi icin `zgrep` kullan.",
+          "hint_partial": "zgrep -i ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-019-r4",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `payload.json` dosyasini pretty-print et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "jq . payload.json",
+          "hint_text": "JSON formatlamak icin `jq .` kullan.",
+          "hint_partial": "jq . ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-020-r5",
+      "type": "single",
+      "scenario": "Yeni acilan hostta current directory'deki birinci seviye tum file'lar icin md5 hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find . -maxdepth 1 -type f -exec md5sum {} \\;",
+          "hint_text": "Her file icin checksum icin `find -exec md5sum` kullan.",
+          "hint_partial": "find . -maxdepth 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-021-r6",
+      "type": "single",
+      "scenario": "Runbook adiminda `data.xml` icinden tum `item/name` metinlerini cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "xmllint --xpath '//item/name/text()' data.xml",
+          "hint_text": "XML secimi icin `xmllint --xpath` kullan.",
+          "hint_partial": "xmllint --xpath ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-022-r7",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `old.txt` ve `new.txt` dosyalarinin unique sirali farkini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "diff <(sort -u old.txt) <(sort -u new.txt)",
+          "hint_text": "Process substitution ile siralanmis fark al.",
+          "hint_partial": "diff <(sort -u ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-023-r8",
+      "type": "single",
+      "scenario": "Incident sonrasinda `data.csv` dosyasini tablo gibi hizali goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "column -t -s, data.csv",
+          "hint_text": "CSV kolonlarini hizalamak icin `column -t -s,` kullan.",
+          "hint_partial": "column -t ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-024-r9",
+      "type": "single",
+      "scenario": "Bakim oncesi `data.csv` dosyasini TSV'ye cevirip stdout'a yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tr ',' '\\t' < data.csv",
+          "hint_text": "Delimiter donusumu icin `tr` kullan.",
+          "hint_partial": "tr ',' ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-025-r10",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda duplicate line'lari sayarak azalan sirada goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sort access.log | uniq -cd | sort -rn",
+          "hint_text": "Duplicate satirlar icin `uniq -cd` kullan.",
+          "hint_partial": "sort access.log | ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-016-r11",
+      "type": "single",
+      "scenario": "Deploy sonrasi `a.txt` ve `b.txt` dosyalarini ilk kolona gore join et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "join -1 1 -2 1 <(sort a.txt) <(sort b.txt)",
+          "hint_text": "Join icin once iki dosyayi sirala.",
+          "hint_partial": "join -1 1 -2 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-017-r12",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde access.log icindeki HTTP status code histogramini uret.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk '{print $9}' access.log | sort | uniq -c | sort -rn",
+          "hint_text": "Status kolonunu cekip `uniq -c` ile histogram yap.",
+          "hint_partial": "awk '{print $9}' ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-018-r13",
+      "type": "single",
+      "scenario": "Yeni acilan hostta gzip'li log icinde `error` gecen satirlari ara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "zgrep -i error app-13.log.gz",
+          "hint_text": "Sikistirilmis log aramasi icin `zgrep` kullan.",
+          "hint_partial": "zgrep -i ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-019-r14",
+      "type": "single",
+      "scenario": "Runbook adiminda `payload.json` dosyasini pretty-print et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "jq . payload.json",
+          "hint_text": "JSON formatlamak icin `jq .` kullan.",
+          "hint_partial": "jq . ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-020-r15",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde current directory'deki birinci seviye tum file'lar icin md5 hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find . -maxdepth 1 -type f -exec md5sum {} \\;",
+          "hint_text": "Her file icin checksum icin `find -exec md5sum` kullan.",
+          "hint_partial": "find . -maxdepth 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-021-r16",
+      "type": "single",
+      "scenario": "Incident sonrasinda `data.xml` icinden tum `item/name` metinlerini cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "xmllint --xpath '//item/name/text()' data.xml",
+          "hint_text": "XML secimi icin `xmllint --xpath` kullan.",
+          "hint_partial": "xmllint --xpath ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-022-r17",
+      "type": "single",
+      "scenario": "Bakim oncesi `old.txt` ve `new.txt` dosyalarinin unique sirali farkini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "diff <(sort -u old.txt) <(sort -u new.txt)",
+          "hint_text": "Process substitution ile siralanmis fark al.",
+          "hint_partial": "diff <(sort -u ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-023-r18",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `data.csv` dosyasini tablo gibi hizali goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "column -t -s, data.csv",
+          "hint_text": "CSV kolonlarini hizalamak icin `column -t -s,` kullan.",
+          "hint_partial": "column -t ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-024-r19",
+      "type": "single",
+      "scenario": "Deploy sonrasi `data.csv` dosyasini TSV'ye cevirip stdout'a yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tr ',' '\\t' < data.csv",
+          "hint_text": "Delimiter donusumu icin `tr` kullan.",
+          "hint_partial": "tr ',' ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-025-r20",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde duplicate line'lari sayarak azalan sirada goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sort access.log | uniq -cd | sort -rn",
+          "hint_text": "Duplicate satirlar icin `uniq -cd` kullan.",
+          "hint_partial": "sort access.log | ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-016-r21",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `a.txt` ve `b.txt` dosyalarini ilk kolona gore join et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "join -1 1 -2 1 <(sort a.txt) <(sort b.txt)",
+          "hint_text": "Join icin once iki dosyayi sirala.",
+          "hint_partial": "join -1 1 -2 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-017-r22",
+      "type": "single",
+      "scenario": "Runbook adiminda access.log icindeki HTTP status code histogramini uret.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk '{print $9}' access.log | sort | uniq -c | sort -rn",
+          "hint_text": "Status kolonunu cekip `uniq -c` ile histogram yap.",
+          "hint_partial": "awk '{print $9}' ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-018-r23",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde gzip'li log icinde `error` gecen satirlari ara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "zgrep -i error app-23.log.gz",
+          "hint_text": "Sikistirilmis log aramasi icin `zgrep` kullan.",
+          "hint_partial": "zgrep -i ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-019-r24",
+      "type": "single",
+      "scenario": "Incident sonrasinda `payload.json` dosyasini pretty-print et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "jq . payload.json",
+          "hint_text": "JSON formatlamak icin `jq .` kullan.",
+          "hint_partial": "jq . ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-020-r25",
+      "type": "single",
+      "scenario": "Bakim oncesi current directory'deki birinci seviye tum file'lar icin md5 hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find . -maxdepth 1 -type f -exec md5sum {} \\;",
+          "hint_text": "Her file icin checksum icin `find -exec md5sum` kullan.",
+          "hint_partial": "find . -maxdepth 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-021-r26",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `data.xml` icinden tum `item/name` metinlerini cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "xmllint --xpath '//item/name/text()' data.xml",
+          "hint_text": "XML secimi icin `xmllint --xpath` kullan.",
+          "hint_partial": "xmllint --xpath ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-022-r27",
+      "type": "single",
+      "scenario": "Deploy sonrasi `old.txt` ve `new.txt` dosyalarinin unique sirali farkini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "diff <(sort -u old.txt) <(sort -u new.txt)",
+          "hint_text": "Process substitution ile siralanmis fark al.",
+          "hint_partial": "diff <(sort -u ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-023-r28",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `data.csv` dosyasini tablo gibi hizali goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "column -t -s, data.csv",
+          "hint_text": "CSV kolonlarini hizalamak icin `column -t -s,` kullan.",
+          "hint_partial": "column -t ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-024-r29",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `data.csv` dosyasini TSV'ye cevirip stdout'a yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tr ',' '\\t' < data.csv",
+          "hint_text": "Delimiter donusumu icin `tr` kullan.",
+          "hint_partial": "tr ',' ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-025-r30",
+      "type": "single",
+      "scenario": "Runbook adiminda duplicate line'lari sayarak azalan sirada goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sort access.log | uniq -cd | sort -rn",
+          "hint_text": "Duplicate satirlar icin `uniq -cd` kullan.",
+          "hint_partial": "sort access.log | ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-016-r31",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `a.txt` ve `b.txt` dosyalarini ilk kolona gore join et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "join -1 1 -2 1 <(sort a.txt) <(sort b.txt)",
+          "hint_text": "Join icin once iki dosyayi sirala.",
+          "hint_partial": "join -1 1 -2 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-017-r32",
+      "type": "single",
+      "scenario": "Incident sonrasinda access.log icindeki HTTP status code histogramini uret.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk '{print $9}' access.log | sort | uniq -c | sort -rn",
+          "hint_text": "Status kolonunu cekip `uniq -c` ile histogram yap.",
+          "hint_partial": "awk '{print $9}' ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-018-r33",
+      "type": "single",
+      "scenario": "Bakim oncesi gzip'li log icinde `error` gecen satirlari ara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "zgrep -i error app-33.log.gz",
+          "hint_text": "Sikistirilmis log aramasi icin `zgrep` kullan.",
+          "hint_partial": "zgrep -i ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-019-r34",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `payload.json` dosyasini pretty-print et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "jq . payload.json",
+          "hint_text": "JSON formatlamak icin `jq .` kullan.",
+          "hint_partial": "jq . ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-020-r35",
+      "type": "single",
+      "scenario": "Deploy sonrasi current directory'deki birinci seviye tum file'lar icin md5 hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find . -maxdepth 1 -type f -exec md5sum {} \\;",
+          "hint_text": "Her file icin checksum icin `find -exec md5sum` kullan.",
+          "hint_partial": "find . -maxdepth 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-021-r36",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `data.xml` icinden tum `item/name` metinlerini cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "xmllint --xpath '//item/name/text()' data.xml",
+          "hint_text": "XML secimi icin `xmllint --xpath` kullan.",
+          "hint_partial": "xmllint --xpath ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-022-r37",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `old.txt` ve `new.txt` dosyalarinin unique sirali farkini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "diff <(sort -u old.txt) <(sort -u new.txt)",
+          "hint_text": "Process substitution ile siralanmis fark al.",
+          "hint_partial": "diff <(sort -u ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-023-r38",
+      "type": "single",
+      "scenario": "Runbook adiminda `data.csv` dosyasini tablo gibi hizali goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "column -t -s, data.csv",
+          "hint_text": "CSV kolonlarini hizalamak icin `column -t -s,` kullan.",
+          "hint_partial": "column -t ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-024-r39",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `data.csv` dosyasini TSV'ye cevirip stdout'a yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tr ',' '\\t' < data.csv",
+          "hint_text": "Delimiter donusumu icin `tr` kullan.",
+          "hint_partial": "tr ',' ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-025-r40",
+      "type": "single",
+      "scenario": "Incident sonrasinda duplicate line'lari sayarak azalan sirada goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sort access.log | uniq -cd | sort -rn",
+          "hint_text": "Duplicate satirlar icin `uniq -cd` kullan.",
+          "hint_partial": "sort access.log | ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-016-r41",
+      "type": "single",
+      "scenario": "Bakim oncesi `a.txt` ve `b.txt` dosyalarini ilk kolona gore join et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "join -1 1 -2 1 <(sort a.txt) <(sort b.txt)",
+          "hint_text": "Join icin once iki dosyayi sirala.",
+          "hint_partial": "join -1 1 -2 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-017-r42",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda access.log icindeki HTTP status code histogramini uret.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk '{print $9}' access.log | sort | uniq -c | sort -rn",
+          "hint_text": "Status kolonunu cekip `uniq -c` ile histogram yap.",
+          "hint_partial": "awk '{print $9}' ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-018-r43",
+      "type": "single",
+      "scenario": "Deploy sonrasi gzip'li log icinde `error` gecen satirlari ara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "zgrep -i error app-43.log.gz",
+          "hint_text": "Sikistirilmis log aramasi icin `zgrep` kullan.",
+          "hint_partial": "zgrep -i ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-019-r44",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `payload.json` dosyasini pretty-print et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "jq . payload.json",
+          "hint_text": "JSON formatlamak icin `jq .` kullan.",
+          "hint_partial": "jq . ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-020-r45",
+      "type": "single",
+      "scenario": "Yeni acilan hostta current directory'deki birinci seviye tum file'lar icin md5 hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find . -maxdepth 1 -type f -exec md5sum {} \\;",
+          "hint_text": "Her file icin checksum icin `find -exec md5sum` kullan.",
+          "hint_partial": "find . -maxdepth 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-021-r46",
+      "type": "single",
+      "scenario": "Runbook adiminda `data.xml` icinden tum `item/name` metinlerini cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "xmllint --xpath '//item/name/text()' data.xml",
+          "hint_text": "XML secimi icin `xmllint --xpath` kullan.",
+          "hint_partial": "xmllint --xpath ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-022-r47",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `old.txt` ve `new.txt` dosyalarinin unique sirali farkini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "diff <(sort -u old.txt) <(sort -u new.txt)",
+          "hint_text": "Process substitution ile siralanmis fark al.",
+          "hint_partial": "diff <(sort -u ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-023-r48",
+      "type": "single",
+      "scenario": "Incident sonrasinda `data.csv` dosyasini tablo gibi hizali goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "column -t -s, data.csv",
+          "hint_text": "CSV kolonlarini hizalamak icin `column -t -s,` kullan.",
+          "hint_partial": "column -t ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-024-r49",
+      "type": "single",
+      "scenario": "Bakim oncesi `data.csv` dosyasini TSV'ye cevirip stdout'a yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tr ',' '\\t' < data.csv",
+          "hint_text": "Delimiter donusumu icin `tr` kullan.",
+          "hint_partial": "tr ',' ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-025-r50",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda duplicate line'lari sayarak azalan sirada goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sort access.log | uniq -cd | sort -rn",
+          "hint_text": "Duplicate satirlar icin `uniq -cd` kullan.",
+          "hint_partial": "sort access.log | ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-016-r51",
+      "type": "single",
+      "scenario": "Deploy sonrasi `a.txt` ve `b.txt` dosyalarini ilk kolona gore join et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "join -1 1 -2 1 <(sort a.txt) <(sort b.txt)",
+          "hint_text": "Join icin once iki dosyayi sirala.",
+          "hint_partial": "join -1 1 -2 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-017-r52",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde access.log icindeki HTTP status code histogramini uret.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk '{print $9}' access.log | sort | uniq -c | sort -rn",
+          "hint_text": "Status kolonunu cekip `uniq -c` ile histogram yap.",
+          "hint_partial": "awk '{print $9}' ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-018-r53",
+      "type": "single",
+      "scenario": "Yeni acilan hostta gzip'li log icinde `error` gecen satirlari ara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "zgrep -i error app-53.log.gz",
+          "hint_text": "Sikistirilmis log aramasi icin `zgrep` kullan.",
+          "hint_partial": "zgrep -i ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-019-r54",
+      "type": "single",
+      "scenario": "Runbook adiminda `payload.json` dosyasini pretty-print et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "jq . payload.json",
+          "hint_text": "JSON formatlamak icin `jq .` kullan.",
+          "hint_partial": "jq . ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-020-r55",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde current directory'deki birinci seviye tum file'lar icin md5 hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find . -maxdepth 1 -type f -exec md5sum {} \\;",
+          "hint_text": "Her file icin checksum icin `find -exec md5sum` kullan.",
+          "hint_partial": "find . -maxdepth 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-021-r56",
+      "type": "single",
+      "scenario": "Incident sonrasinda `data.xml` icinden tum `item/name` metinlerini cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "xmllint --xpath '//item/name/text()' data.xml",
+          "hint_text": "XML secimi icin `xmllint --xpath` kullan.",
+          "hint_partial": "xmllint --xpath ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-022-r57",
+      "type": "single",
+      "scenario": "Bakim oncesi `old.txt` ve `new.txt` dosyalarinin unique sirali farkini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "diff <(sort -u old.txt) <(sort -u new.txt)",
+          "hint_text": "Process substitution ile siralanmis fark al.",
+          "hint_partial": "diff <(sort -u ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-023-r58",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `data.csv` dosyasini tablo gibi hizali goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "column -t -s, data.csv",
+          "hint_text": "CSV kolonlarini hizalamak icin `column -t -s,` kullan.",
+          "hint_partial": "column -t ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-024-r59",
+      "type": "single",
+      "scenario": "Deploy sonrasi `data.csv` dosyasini TSV'ye cevirip stdout'a yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tr ',' '\\t' < data.csv",
+          "hint_text": "Delimiter donusumu icin `tr` kullan.",
+          "hint_partial": "tr ',' ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-025-r60",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde duplicate line'lari sayarak azalan sirada goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sort access.log | uniq -cd | sort -rn",
+          "hint_text": "Duplicate satirlar icin `uniq -cd` kullan.",
+          "hint_partial": "sort access.log | ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-016-r61",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `a.txt` ve `b.txt` dosyalarini ilk kolona gore join et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "join -1 1 -2 1 <(sort a.txt) <(sort b.txt)",
+          "hint_text": "Join icin once iki dosyayi sirala.",
+          "hint_partial": "join -1 1 -2 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-017-r62",
+      "type": "single",
+      "scenario": "Runbook adiminda access.log icindeki HTTP status code histogramini uret.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk '{print $9}' access.log | sort | uniq -c | sort -rn",
+          "hint_text": "Status kolonunu cekip `uniq -c` ile histogram yap.",
+          "hint_partial": "awk '{print $9}' ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-018-r63",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde gzip'li log icinde `error` gecen satirlari ara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "zgrep -i error app-63.log.gz",
+          "hint_text": "Sikistirilmis log aramasi icin `zgrep` kullan.",
+          "hint_partial": "zgrep -i ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-019-r64",
+      "type": "single",
+      "scenario": "Incident sonrasinda `payload.json` dosyasini pretty-print et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "jq . payload.json",
+          "hint_text": "JSON formatlamak icin `jq .` kullan.",
+          "hint_partial": "jq . ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-020-r65",
+      "type": "single",
+      "scenario": "Bakim oncesi current directory'deki birinci seviye tum file'lar icin md5 hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find . -maxdepth 1 -type f -exec md5sum {} \\;",
+          "hint_text": "Her file icin checksum icin `find -exec md5sum` kullan.",
+          "hint_partial": "find . -maxdepth 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-021-r66",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `data.xml` icinden tum `item/name` metinlerini cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "xmllint --xpath '//item/name/text()' data.xml",
+          "hint_text": "XML secimi icin `xmllint --xpath` kullan.",
+          "hint_partial": "xmllint --xpath ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-022-r67",
+      "type": "single",
+      "scenario": "Deploy sonrasi `old.txt` ve `new.txt` dosyalarinin unique sirali farkini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "diff <(sort -u old.txt) <(sort -u new.txt)",
+          "hint_text": "Process substitution ile siralanmis fark al.",
+          "hint_partial": "diff <(sort -u ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-023-r68",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `data.csv` dosyasini tablo gibi hizali goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "column -t -s, data.csv",
+          "hint_text": "CSV kolonlarini hizalamak icin `column -t -s,` kullan.",
+          "hint_partial": "column -t ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-024-r69",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `data.csv` dosyasini TSV'ye cevirip stdout'a yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tr ',' '\\t' < data.csv",
+          "hint_text": "Delimiter donusumu icin `tr` kullan.",
+          "hint_partial": "tr ',' ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-025-r70",
+      "type": "single",
+      "scenario": "Runbook adiminda duplicate line'lari sayarak azalan sirada goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sort access.log | uniq -cd | sort -rn",
+          "hint_text": "Duplicate satirlar icin `uniq -cd` kullan.",
+          "hint_partial": "sort access.log | ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-016-r71",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `a.txt` ve `b.txt` dosyalarini ilk kolona gore join et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "join -1 1 -2 1 <(sort a.txt) <(sort b.txt)",
+          "hint_text": "Join icin once iki dosyayi sirala.",
+          "hint_partial": "join -1 1 -2 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-017-r72",
+      "type": "single",
+      "scenario": "Incident sonrasinda access.log icindeki HTTP status code histogramini uret.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk '{print $9}' access.log | sort | uniq -c | sort -rn",
+          "hint_text": "Status kolonunu cekip `uniq -c` ile histogram yap.",
+          "hint_partial": "awk '{print $9}' ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-018-r73",
+      "type": "single",
+      "scenario": "Bakim oncesi gzip'li log icinde `error` gecen satirlari ara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "zgrep -i error app-73.log.gz",
+          "hint_text": "Sikistirilmis log aramasi icin `zgrep` kullan.",
+          "hint_partial": "zgrep -i ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-019-r74",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `payload.json` dosyasini pretty-print et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "jq . payload.json",
+          "hint_text": "JSON formatlamak icin `jq .` kullan.",
+          "hint_partial": "jq . ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-020-r75",
+      "type": "single",
+      "scenario": "Deploy sonrasi current directory'deki birinci seviye tum file'lar icin md5 hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find . -maxdepth 1 -type f -exec md5sum {} \\;",
+          "hint_text": "Her file icin checksum icin `find -exec md5sum` kullan.",
+          "hint_partial": "find . -maxdepth 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-021-r76",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `data.xml` icinden tum `item/name` metinlerini cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "xmllint --xpath '//item/name/text()' data.xml",
+          "hint_text": "XML secimi icin `xmllint --xpath` kullan.",
+          "hint_partial": "xmllint --xpath ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-022-r77",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `old.txt` ve `new.txt` dosyalarinin unique sirali farkini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "diff <(sort -u old.txt) <(sort -u new.txt)",
+          "hint_text": "Process substitution ile siralanmis fark al.",
+          "hint_partial": "diff <(sort -u ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-023-r78",
+      "type": "single",
+      "scenario": "Runbook adiminda `data.csv` dosyasini tablo gibi hizali goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "column -t -s, data.csv",
+          "hint_text": "CSV kolonlarini hizalamak icin `column -t -s,` kullan.",
+          "hint_partial": "column -t ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-024-r79",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `data.csv` dosyasini TSV'ye cevirip stdout'a yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tr ',' '\\t' < data.csv",
+          "hint_text": "Delimiter donusumu icin `tr` kullan.",
+          "hint_partial": "tr ',' ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-025-r80",
+      "type": "single",
+      "scenario": "Incident sonrasinda duplicate line'lari sayarak azalan sirada goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sort access.log | uniq -cd | sort -rn",
+          "hint_text": "Duplicate satirlar icin `uniq -cd` kullan.",
+          "hint_partial": "sort access.log | ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-016-r81",
+      "type": "single",
+      "scenario": "Bakim oncesi `a.txt` ve `b.txt` dosyalarini ilk kolona gore join et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "join -1 1 -2 1 <(sort a.txt) <(sort b.txt)",
+          "hint_text": "Join icin once iki dosyayi sirala.",
+          "hint_partial": "join -1 1 -2 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-017-r82",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda access.log icindeki HTTP status code histogramini uret.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk '{print $9}' access.log | sort | uniq -c | sort -rn",
+          "hint_text": "Status kolonunu cekip `uniq -c` ile histogram yap.",
+          "hint_partial": "awk '{print $9}' ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-018-r83",
+      "type": "single",
+      "scenario": "Deploy sonrasi gzip'li log icinde `error` gecen satirlari ara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "zgrep -i error app-83.log.gz",
+          "hint_text": "Sikistirilmis log aramasi icin `zgrep` kullan.",
+          "hint_partial": "zgrep -i ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-019-r84",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `payload.json` dosyasini pretty-print et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "jq . payload.json",
+          "hint_text": "JSON formatlamak icin `jq .` kullan.",
+          "hint_partial": "jq . ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-020-r85",
+      "type": "single",
+      "scenario": "Yeni acilan hostta current directory'deki birinci seviye tum file'lar icin md5 hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find . -maxdepth 1 -type f -exec md5sum {} \\;",
+          "hint_text": "Her file icin checksum icin `find -exec md5sum` kullan.",
+          "hint_partial": "find . -maxdepth 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-021-r86",
+      "type": "single",
+      "scenario": "Runbook adiminda `data.xml` icinden tum `item/name` metinlerini cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "xmllint --xpath '//item/name/text()' data.xml",
+          "hint_text": "XML secimi icin `xmllint --xpath` kullan.",
+          "hint_partial": "xmllint --xpath ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-022-r87",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `old.txt` ve `new.txt` dosyalarinin unique sirali farkini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "diff <(sort -u old.txt) <(sort -u new.txt)",
+          "hint_text": "Process substitution ile siralanmis fark al.",
+          "hint_partial": "diff <(sort -u ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-023-r88",
+      "type": "single",
+      "scenario": "Incident sonrasinda `data.csv` dosyasini tablo gibi hizali goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "column -t -s, data.csv",
+          "hint_text": "CSV kolonlarini hizalamak icin `column -t -s,` kullan.",
+          "hint_partial": "column -t ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-024-r89",
+      "type": "single",
+      "scenario": "Bakim oncesi `data.csv` dosyasini TSV'ye cevirip stdout'a yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tr ',' '\\t' < data.csv",
+          "hint_text": "Delimiter donusumu icin `tr` kullan.",
+          "hint_partial": "tr ',' ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-025-r90",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda duplicate line'lari sayarak azalan sirada goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sort access.log | uniq -cd | sort -rn",
+          "hint_text": "Duplicate satirlar icin `uniq -cd` kullan.",
+          "hint_partial": "sort access.log | ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-016-r91",
+      "type": "single",
+      "scenario": "Deploy sonrasi `a.txt` ve `b.txt` dosyalarini ilk kolona gore join et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "join -1 1 -2 1 <(sort a.txt) <(sort b.txt)",
+          "hint_text": "Join icin once iki dosyayi sirala.",
+          "hint_partial": "join -1 1 -2 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-017-r92",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde access.log icindeki HTTP status code histogramini uret.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk '{print $9}' access.log | sort | uniq -c | sort -rn",
+          "hint_text": "Status kolonunu cekip `uniq -c` ile histogram yap.",
+          "hint_partial": "awk '{print $9}' ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-018-r93",
+      "type": "single",
+      "scenario": "Yeni acilan hostta gzip'li log icinde `error` gecen satirlari ara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "zgrep -i error app-93.log.gz",
+          "hint_text": "Sikistirilmis log aramasi icin `zgrep` kullan.",
+          "hint_partial": "zgrep -i ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-019-r94",
+      "type": "single",
+      "scenario": "Runbook adiminda `payload.json` dosyasini pretty-print et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "jq . payload.json",
+          "hint_text": "JSON formatlamak icin `jq .` kullan.",
+          "hint_partial": "jq . ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-020-r95",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde current directory'deki birinci seviye tum file'lar icin md5 hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find . -maxdepth 1 -type f -exec md5sum {} \\;",
+          "hint_text": "Her file icin checksum icin `find -exec md5sum` kullan.",
+          "hint_partial": "find . -maxdepth 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-021-r96",
+      "type": "single",
+      "scenario": "Incident sonrasinda `data.xml` icinden tum `item/name` metinlerini cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "xmllint --xpath '//item/name/text()' data.xml",
+          "hint_text": "XML secimi icin `xmllint --xpath` kullan.",
+          "hint_partial": "xmllint --xpath ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-022-r97",
+      "type": "single",
+      "scenario": "Bakim oncesi `old.txt` ve `new.txt` dosyalarinin unique sirali farkini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "diff <(sort -u old.txt) <(sort -u new.txt)",
+          "hint_text": "Process substitution ile siralanmis fark al.",
+          "hint_partial": "diff <(sort -u ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-023-r98",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `data.csv` dosyasini tablo gibi hizali goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "column -t -s, data.csv",
+          "hint_text": "CSV kolonlarini hizalamak icin `column -t -s,` kullan.",
+          "hint_partial": "column -t ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-024-r99",
+      "type": "single",
+      "scenario": "Deploy sonrasi `data.csv` dosyasini TSV'ye cevirip stdout'a yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tr ',' '\\t' < data.csv",
+          "hint_text": "Delimiter donusumu icin `tr` kullan.",
+          "hint_partial": "tr ',' ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-025-r100",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde duplicate line'lari sayarak azalan sirada goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sort access.log | uniq -cd | sort -rn",
+          "hint_text": "Duplicate satirlar icin `uniq -cd` kullan.",
+          "hint_partial": "sort access.log | ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-016-r101",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `a.txt` ve `b.txt` dosyalarini ilk kolona gore join et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "join -1 1 -2 1 <(sort a.txt) <(sort b.txt)",
+          "hint_text": "Join icin once iki dosyayi sirala.",
+          "hint_partial": "join -1 1 -2 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-017-r102",
+      "type": "single",
+      "scenario": "Runbook adiminda access.log icindeki HTTP status code histogramini uret.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk '{print $9}' access.log | sort | uniq -c | sort -rn",
+          "hint_text": "Status kolonunu cekip `uniq -c` ile histogram yap.",
+          "hint_partial": "awk '{print $9}' ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-018-r103",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde gzip'li log icinde `error` gecen satirlari ara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "zgrep -i error app-103.log.gz",
+          "hint_text": "Sikistirilmis log aramasi icin `zgrep` kullan.",
+          "hint_partial": "zgrep -i ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-019-r104",
+      "type": "single",
+      "scenario": "Incident sonrasinda `payload.json` dosyasini pretty-print et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "jq . payload.json",
+          "hint_text": "JSON formatlamak icin `jq .` kullan.",
+          "hint_partial": "jq . ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-020-r105",
+      "type": "single",
+      "scenario": "Bakim oncesi current directory'deki birinci seviye tum file'lar icin md5 hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find . -maxdepth 1 -type f -exec md5sum {} \\;",
+          "hint_text": "Her file icin checksum icin `find -exec md5sum` kullan.",
+          "hint_partial": "find . -maxdepth 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-021-r106",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `data.xml` icinden tum `item/name` metinlerini cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "xmllint --xpath '//item/name/text()' data.xml",
+          "hint_text": "XML secimi icin `xmllint --xpath` kullan.",
+          "hint_partial": "xmllint --xpath ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-022-r107",
+      "type": "single",
+      "scenario": "Deploy sonrasi `old.txt` ve `new.txt` dosyalarinin unique sirali farkini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "diff <(sort -u old.txt) <(sort -u new.txt)",
+          "hint_text": "Process substitution ile siralanmis fark al.",
+          "hint_partial": "diff <(sort -u ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-023-r108",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `data.csv` dosyasini tablo gibi hizali goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "column -t -s, data.csv",
+          "hint_text": "CSV kolonlarini hizalamak icin `column -t -s,` kullan.",
+          "hint_partial": "column -t ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-024-r109",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `data.csv` dosyasini TSV'ye cevirip stdout'a yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tr ',' '\\t' < data.csv",
+          "hint_text": "Delimiter donusumu icin `tr` kullan.",
+          "hint_partial": "tr ',' ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-025-r110",
+      "type": "single",
+      "scenario": "Runbook adiminda duplicate line'lari sayarak azalan sirada goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sort access.log | uniq -cd | sort -rn",
+          "hint_text": "Duplicate satirlar icin `uniq -cd` kullan.",
+          "hint_partial": "sort access.log | ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-016-r111",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `a.txt` ve `b.txt` dosyalarini ilk kolona gore join et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "join -1 1 -2 1 <(sort a.txt) <(sort b.txt)",
+          "hint_text": "Join icin once iki dosyayi sirala.",
+          "hint_partial": "join -1 1 -2 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-017-r112",
+      "type": "single",
+      "scenario": "Incident sonrasinda access.log icindeki HTTP status code histogramini uret.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk '{print $9}' access.log | sort | uniq -c | sort -rn",
+          "hint_text": "Status kolonunu cekip `uniq -c` ile histogram yap.",
+          "hint_partial": "awk '{print $9}' ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-018-r113",
+      "type": "single",
+      "scenario": "Bakim oncesi gzip'li log icinde `error` gecen satirlari ara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "zgrep -i error app-113.log.gz",
+          "hint_text": "Sikistirilmis log aramasi icin `zgrep` kullan.",
+          "hint_partial": "zgrep -i ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-019-r114",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `payload.json` dosyasini pretty-print et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "jq . payload.json",
+          "hint_text": "JSON formatlamak icin `jq .` kullan.",
+          "hint_partial": "jq . ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-020-r115",
+      "type": "single",
+      "scenario": "Deploy sonrasi current directory'deki birinci seviye tum file'lar icin md5 hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find . -maxdepth 1 -type f -exec md5sum {} \\;",
+          "hint_text": "Her file icin checksum icin `find -exec md5sum` kullan.",
+          "hint_partial": "find . -maxdepth 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-021-r116",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `data.xml` icinden tum `item/name` metinlerini cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "xmllint --xpath '//item/name/text()' data.xml",
+          "hint_text": "XML secimi icin `xmllint --xpath` kullan.",
+          "hint_partial": "xmllint --xpath ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-022-r117",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `old.txt` ve `new.txt` dosyalarinin unique sirali farkini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "diff <(sort -u old.txt) <(sort -u new.txt)",
+          "hint_text": "Process substitution ile siralanmis fark al.",
+          "hint_partial": "diff <(sort -u ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-023-r118",
+      "type": "single",
+      "scenario": "Runbook adiminda `data.csv` dosyasini tablo gibi hizali goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "column -t -s, data.csv",
+          "hint_text": "CSV kolonlarini hizalamak icin `column -t -s,` kullan.",
+          "hint_partial": "column -t ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-024-r119",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `data.csv` dosyasini TSV'ye cevirip stdout'a yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tr ',' '\\t' < data.csv",
+          "hint_text": "Delimiter donusumu icin `tr` kullan.",
+          "hint_partial": "tr ',' ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-025-r120",
+      "type": "single",
+      "scenario": "Incident sonrasinda duplicate line'lari sayarak azalan sirada goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sort access.log | uniq -cd | sort -rn",
+          "hint_text": "Duplicate satirlar icin `uniq -cd` kullan.",
+          "hint_partial": "sort access.log | ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-016-r121",
+      "type": "single",
+      "scenario": "Bakim oncesi `a.txt` ve `b.txt` dosyalarini ilk kolona gore join et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "join -1 1 -2 1 <(sort a.txt) <(sort b.txt)",
+          "hint_text": "Join icin once iki dosyayi sirala.",
+          "hint_partial": "join -1 1 -2 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-017-r122",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda access.log icindeki HTTP status code histogramini uret.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk '{print $9}' access.log | sort | uniq -c | sort -rn",
+          "hint_text": "Status kolonunu cekip `uniq -c` ile histogram yap.",
+          "hint_partial": "awk '{print $9}' ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-018-r123",
+      "type": "single",
+      "scenario": "Deploy sonrasi gzip'li log icinde `error` gecen satirlari ara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "zgrep -i error app-123.log.gz",
+          "hint_text": "Sikistirilmis log aramasi icin `zgrep` kullan.",
+          "hint_partial": "zgrep -i ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-019-r124",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `payload.json` dosyasini pretty-print et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "jq . payload.json",
+          "hint_text": "JSON formatlamak icin `jq .` kullan.",
+          "hint_partial": "jq . ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-020-r125",
+      "type": "single",
+      "scenario": "Yeni acilan hostta current directory'deki birinci seviye tum file'lar icin md5 hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find . -maxdepth 1 -type f -exec md5sum {} \\;",
+          "hint_text": "Her file icin checksum icin `find -exec md5sum` kullan.",
+          "hint_partial": "find . -maxdepth 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-021-r126",
+      "type": "single",
+      "scenario": "Runbook adiminda `data.xml` icinden tum `item/name` metinlerini cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "xmllint --xpath '//item/name/text()' data.xml",
+          "hint_text": "XML secimi icin `xmllint --xpath` kullan.",
+          "hint_partial": "xmllint --xpath ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-022-r127",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `old.txt` ve `new.txt` dosyalarinin unique sirali farkini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "diff <(sort -u old.txt) <(sort -u new.txt)",
+          "hint_text": "Process substitution ile siralanmis fark al.",
+          "hint_partial": "diff <(sort -u ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-023-r128",
+      "type": "single",
+      "scenario": "Incident sonrasinda `data.csv` dosyasini tablo gibi hizali goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "column -t -s, data.csv",
+          "hint_text": "CSV kolonlarini hizalamak icin `column -t -s,` kullan.",
+          "hint_partial": "column -t ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-024-r129",
+      "type": "single",
+      "scenario": "Bakim oncesi `data.csv` dosyasini TSV'ye cevirip stdout'a yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tr ',' '\\t' < data.csv",
+          "hint_text": "Delimiter donusumu icin `tr` kullan.",
+          "hint_partial": "tr ',' ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-025-r130",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda duplicate line'lari sayarak azalan sirada goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sort access.log | uniq -cd | sort -rn",
+          "hint_text": "Duplicate satirlar icin `uniq -cd` kullan.",
+          "hint_partial": "sort access.log | ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-016-r131",
+      "type": "single",
+      "scenario": "Deploy sonrasi `a.txt` ve `b.txt` dosyalarini ilk kolona gore join et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "join -1 1 -2 1 <(sort a.txt) <(sort b.txt)",
+          "hint_text": "Join icin once iki dosyayi sirala.",
+          "hint_partial": "join -1 1 -2 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-017-r132",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde access.log icindeki HTTP status code histogramini uret.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk '{print $9}' access.log | sort | uniq -c | sort -rn",
+          "hint_text": "Status kolonunu cekip `uniq -c` ile histogram yap.",
+          "hint_partial": "awk '{print $9}' ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-018-r133",
+      "type": "single",
+      "scenario": "Yeni acilan hostta gzip'li log icinde `error` gecen satirlari ara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "zgrep -i error app-133.log.gz",
+          "hint_text": "Sikistirilmis log aramasi icin `zgrep` kullan.",
+          "hint_partial": "zgrep -i ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-019-r134",
+      "type": "single",
+      "scenario": "Runbook adiminda `payload.json` dosyasini pretty-print et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "jq . payload.json",
+          "hint_text": "JSON formatlamak icin `jq .` kullan.",
+          "hint_partial": "jq . ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-020-r135",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde current directory'deki birinci seviye tum file'lar icin md5 hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find . -maxdepth 1 -type f -exec md5sum {} \\;",
+          "hint_text": "Her file icin checksum icin `find -exec md5sum` kullan.",
+          "hint_partial": "find . -maxdepth 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-021-r136",
+      "type": "single",
+      "scenario": "Incident sonrasinda `data.xml` icinden tum `item/name` metinlerini cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "xmllint --xpath '//item/name/text()' data.xml",
+          "hint_text": "XML secimi icin `xmllint --xpath` kullan.",
+          "hint_partial": "xmllint --xpath ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-022-r137",
+      "type": "single",
+      "scenario": "Bakim oncesi `old.txt` ve `new.txt` dosyalarinin unique sirali farkini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "diff <(sort -u old.txt) <(sort -u new.txt)",
+          "hint_text": "Process substitution ile siralanmis fark al.",
+          "hint_partial": "diff <(sort -u ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-023-r138",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `data.csv` dosyasini tablo gibi hizali goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "column -t -s, data.csv",
+          "hint_text": "CSV kolonlarini hizalamak icin `column -t -s,` kullan.",
+          "hint_partial": "column -t ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-024-r139",
+      "type": "single",
+      "scenario": "Deploy sonrasi `data.csv` dosyasini TSV'ye cevirip stdout'a yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tr ',' '\\t' < data.csv",
+          "hint_text": "Delimiter donusumu icin `tr` kullan.",
+          "hint_partial": "tr ',' ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-025-r140",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde duplicate line'lari sayarak azalan sirada goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sort access.log | uniq -cd | sort -rn",
+          "hint_text": "Duplicate satirlar icin `uniq -cd` kullan.",
+          "hint_partial": "sort access.log | ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-016-r141",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `a.txt` ve `b.txt` dosyalarini ilk kolona gore join et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "join -1 1 -2 1 <(sort a.txt) <(sort b.txt)",
+          "hint_text": "Join icin once iki dosyayi sirala.",
+          "hint_partial": "join -1 1 -2 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-017-r142",
+      "type": "single",
+      "scenario": "Runbook adiminda access.log icindeki HTTP status code histogramini uret.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk '{print $9}' access.log | sort | uniq -c | sort -rn",
+          "hint_text": "Status kolonunu cekip `uniq -c` ile histogram yap.",
+          "hint_partial": "awk '{print $9}' ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-018-r143",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde gzip'li log icinde `error` gecen satirlari ara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "zgrep -i error app-143.log.gz",
+          "hint_text": "Sikistirilmis log aramasi icin `zgrep` kullan.",
+          "hint_partial": "zgrep -i ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-019-r144",
+      "type": "single",
+      "scenario": "Incident sonrasinda `payload.json` dosyasini pretty-print et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "jq . payload.json",
+          "hint_text": "JSON formatlamak icin `jq .` kullan.",
+          "hint_partial": "jq . ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-020-r145",
+      "type": "single",
+      "scenario": "Bakim oncesi current directory'deki birinci seviye tum file'lar icin md5 hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find . -maxdepth 1 -type f -exec md5sum {} \\;",
+          "hint_text": "Her file icin checksum icin `find -exec md5sum` kullan.",
+          "hint_partial": "find . -maxdepth 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-021-r146",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `data.xml` icinden tum `item/name` metinlerini cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "xmllint --xpath '//item/name/text()' data.xml",
+          "hint_text": "XML secimi icin `xmllint --xpath` kullan.",
+          "hint_partial": "xmllint --xpath ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-022-r147",
+      "type": "single",
+      "scenario": "Deploy sonrasi `old.txt` ve `new.txt` dosyalarinin unique sirali farkini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "diff <(sort -u old.txt) <(sort -u new.txt)",
+          "hint_text": "Process substitution ile siralanmis fark al.",
+          "hint_partial": "diff <(sort -u ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-023-r148",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `data.csv` dosyasini tablo gibi hizali goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "column -t -s, data.csv",
+          "hint_text": "CSV kolonlarini hizalamak icin `column -t -s,` kullan.",
+          "hint_partial": "column -t ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-024-r149",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `data.csv` dosyasini TSV'ye cevirip stdout'a yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tr ',' '\\t' < data.csv",
+          "hint_text": "Delimiter donusumu icin `tr` kullan.",
+          "hint_partial": "tr ',' ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-025-r150",
+      "type": "single",
+      "scenario": "Runbook adiminda duplicate line'lari sayarak azalan sirada goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sort access.log | uniq -cd | sort -rn",
+          "hint_text": "Duplicate satirlar icin `uniq -cd` kullan.",
+          "hint_partial": "sort access.log | ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-016-r151",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `a.txt` ve `b.txt` dosyalarini ilk kolona gore join et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "join -1 1 -2 1 <(sort a.txt) <(sort b.txt)",
+          "hint_text": "Join icin once iki dosyayi sirala.",
+          "hint_partial": "join -1 1 -2 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-017-r152",
+      "type": "single",
+      "scenario": "Incident sonrasinda access.log icindeki HTTP status code histogramini uret.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk '{print $9}' access.log | sort | uniq -c | sort -rn",
+          "hint_text": "Status kolonunu cekip `uniq -c` ile histogram yap.",
+          "hint_partial": "awk '{print $9}' ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-018-r153",
+      "type": "single",
+      "scenario": "Bakim oncesi gzip'li log icinde `error` gecen satirlari ara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "zgrep -i error app-153.log.gz",
+          "hint_text": "Sikistirilmis log aramasi icin `zgrep` kullan.",
+          "hint_partial": "zgrep -i ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-019-r154",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `payload.json` dosyasini pretty-print et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "jq . payload.json",
+          "hint_text": "JSON formatlamak icin `jq .` kullan.",
+          "hint_partial": "jq . ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-020-r155",
+      "type": "single",
+      "scenario": "Deploy sonrasi current directory'deki birinci seviye tum file'lar icin md5 hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find . -maxdepth 1 -type f -exec md5sum {} \\;",
+          "hint_text": "Her file icin checksum icin `find -exec md5sum` kullan.",
+          "hint_partial": "find . -maxdepth 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-021-r156",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `data.xml` icinden tum `item/name` metinlerini cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "xmllint --xpath '//item/name/text()' data.xml",
+          "hint_text": "XML secimi icin `xmllint --xpath` kullan.",
+          "hint_partial": "xmllint --xpath ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-022-r157",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `old.txt` ve `new.txt` dosyalarinin unique sirali farkini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "diff <(sort -u old.txt) <(sort -u new.txt)",
+          "hint_text": "Process substitution ile siralanmis fark al.",
+          "hint_partial": "diff <(sort -u ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-023-r158",
+      "type": "single",
+      "scenario": "Runbook adiminda `data.csv` dosyasini tablo gibi hizali goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "column -t -s, data.csv",
+          "hint_text": "CSV kolonlarini hizalamak icin `column -t -s,` kullan.",
+          "hint_partial": "column -t ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-024-r159",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `data.csv` dosyasini TSV'ye cevirip stdout'a yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tr ',' '\\t' < data.csv",
+          "hint_text": "Delimiter donusumu icin `tr` kullan.",
+          "hint_partial": "tr ',' ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-025-r160",
+      "type": "single",
+      "scenario": "Incident sonrasinda duplicate line'lari sayarak azalan sirada goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sort access.log | uniq -cd | sort -rn",
+          "hint_text": "Duplicate satirlar icin `uniq -cd` kullan.",
+          "hint_partial": "sort access.log | ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-016-r161",
+      "type": "single",
+      "scenario": "Bakim oncesi `a.txt` ve `b.txt` dosyalarini ilk kolona gore join et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "join -1 1 -2 1 <(sort a.txt) <(sort b.txt)",
+          "hint_text": "Join icin once iki dosyayi sirala.",
+          "hint_partial": "join -1 1 -2 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-017-r162",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda access.log icindeki HTTP status code histogramini uret.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk '{print $9}' access.log | sort | uniq -c | sort -rn",
+          "hint_text": "Status kolonunu cekip `uniq -c` ile histogram yap.",
+          "hint_partial": "awk '{print $9}' ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-018-r163",
+      "type": "single",
+      "scenario": "Deploy sonrasi gzip'li log icinde `error` gecen satirlari ara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "zgrep -i error app-163.log.gz",
+          "hint_text": "Sikistirilmis log aramasi icin `zgrep` kullan.",
+          "hint_partial": "zgrep -i ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-019-r164",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `payload.json` dosyasini pretty-print et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "jq . payload.json",
+          "hint_text": "JSON formatlamak icin `jq .` kullan.",
+          "hint_partial": "jq . ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-020-r165",
+      "type": "single",
+      "scenario": "Yeni acilan hostta current directory'deki birinci seviye tum file'lar icin md5 hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find . -maxdepth 1 -type f -exec md5sum {} \\;",
+          "hint_text": "Her file icin checksum icin `find -exec md5sum` kullan.",
+          "hint_partial": "find . -maxdepth 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-021-r166",
+      "type": "single",
+      "scenario": "Runbook adiminda `data.xml` icinden tum `item/name` metinlerini cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "xmllint --xpath '//item/name/text()' data.xml",
+          "hint_text": "XML secimi icin `xmllint --xpath` kullan.",
+          "hint_partial": "xmllint --xpath ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-022-r167",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `old.txt` ve `new.txt` dosyalarinin unique sirali farkini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "diff <(sort -u old.txt) <(sort -u new.txt)",
+          "hint_text": "Process substitution ile siralanmis fark al.",
+          "hint_partial": "diff <(sort -u ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-023-r168",
+      "type": "single",
+      "scenario": "Incident sonrasinda `data.csv` dosyasini tablo gibi hizali goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "column -t -s, data.csv",
+          "hint_text": "CSV kolonlarini hizalamak icin `column -t -s,` kullan.",
+          "hint_partial": "column -t ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-024-r169",
+      "type": "single",
+      "scenario": "Bakim oncesi `data.csv` dosyasini TSV'ye cevirip stdout'a yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tr ',' '\\t' < data.csv",
+          "hint_text": "Delimiter donusumu icin `tr` kullan.",
+          "hint_partial": "tr ',' ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-025-r170",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda duplicate line'lari sayarak azalan sirada goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sort access.log | uniq -cd | sort -rn",
+          "hint_text": "Duplicate satirlar icin `uniq -cd` kullan.",
+          "hint_partial": "sort access.log | ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-016-r171",
+      "type": "single",
+      "scenario": "Deploy sonrasi `a.txt` ve `b.txt` dosyalarini ilk kolona gore join et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "join -1 1 -2 1 <(sort a.txt) <(sort b.txt)",
+          "hint_text": "Join icin once iki dosyayi sirala.",
+          "hint_partial": "join -1 1 -2 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-017-r172",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde access.log icindeki HTTP status code histogramini uret.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk '{print $9}' access.log | sort | uniq -c | sort -rn",
+          "hint_text": "Status kolonunu cekip `uniq -c` ile histogram yap.",
+          "hint_partial": "awk '{print $9}' ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-018-r173",
+      "type": "single",
+      "scenario": "Yeni acilan hostta gzip'li log icinde `error` gecen satirlari ara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "zgrep -i error app-173.log.gz",
+          "hint_text": "Sikistirilmis log aramasi icin `zgrep` kullan.",
+          "hint_partial": "zgrep -i ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-019-r174",
+      "type": "single",
+      "scenario": "Runbook adiminda `payload.json` dosyasini pretty-print et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "jq . payload.json",
+          "hint_text": "JSON formatlamak icin `jq .` kullan.",
+          "hint_partial": "jq . ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-020-r175",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde current directory'deki birinci seviye tum file'lar icin md5 hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find . -maxdepth 1 -type f -exec md5sum {} \\;",
+          "hint_text": "Her file icin checksum icin `find -exec md5sum` kullan.",
+          "hint_partial": "find . -maxdepth 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-021-r176",
+      "type": "single",
+      "scenario": "Incident sonrasinda `data.xml` icinden tum `item/name` metinlerini cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "xmllint --xpath '//item/name/text()' data.xml",
+          "hint_text": "XML secimi icin `xmllint --xpath` kullan.",
+          "hint_partial": "xmllint --xpath ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-022-r177",
+      "type": "single",
+      "scenario": "Bakim oncesi `old.txt` ve `new.txt` dosyalarinin unique sirali farkini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "diff <(sort -u old.txt) <(sort -u new.txt)",
+          "hint_text": "Process substitution ile siralanmis fark al.",
+          "hint_partial": "diff <(sort -u ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-023-r178",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `data.csv` dosyasini tablo gibi hizali goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "column -t -s, data.csv",
+          "hint_text": "CSV kolonlarini hizalamak icin `column -t -s,` kullan.",
+          "hint_partial": "column -t ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-024-r179",
+      "type": "single",
+      "scenario": "Deploy sonrasi `data.csv` dosyasini TSV'ye cevirip stdout'a yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tr ',' '\\t' < data.csv",
+          "hint_text": "Delimiter donusumu icin `tr` kullan.",
+          "hint_partial": "tr ',' ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-025-r180",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde duplicate line'lari sayarak azalan sirada goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sort access.log | uniq -cd | sort -rn",
+          "hint_text": "Duplicate satirlar icin `uniq -cd` kullan.",
+          "hint_partial": "sort access.log | ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-016-r181",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `a.txt` ve `b.txt` dosyalarini ilk kolona gore join et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "join -1 1 -2 1 <(sort a.txt) <(sort b.txt)",
+          "hint_text": "Join icin once iki dosyayi sirala.",
+          "hint_partial": "join -1 1 -2 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-017-r182",
+      "type": "single",
+      "scenario": "Runbook adiminda access.log icindeki HTTP status code histogramini uret.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk '{print $9}' access.log | sort | uniq -c | sort -rn",
+          "hint_text": "Status kolonunu cekip `uniq -c` ile histogram yap.",
+          "hint_partial": "awk '{print $9}' ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-018-r183",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde gzip'li log icinde `error` gecen satirlari ara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "zgrep -i error app-183.log.gz",
+          "hint_text": "Sikistirilmis log aramasi icin `zgrep` kullan.",
+          "hint_partial": "zgrep -i ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-019-r184",
+      "type": "single",
+      "scenario": "Incident sonrasinda `payload.json` dosyasini pretty-print et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "jq . payload.json",
+          "hint_text": "JSON formatlamak icin `jq .` kullan.",
+          "hint_partial": "jq . ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-020-r185",
+      "type": "single",
+      "scenario": "Bakim oncesi current directory'deki birinci seviye tum file'lar icin md5 hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find . -maxdepth 1 -type f -exec md5sum {} \\;",
+          "hint_text": "Her file icin checksum icin `find -exec md5sum` kullan.",
+          "hint_partial": "find . -maxdepth 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-021-r186",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `data.xml` icinden tum `item/name` metinlerini cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "xmllint --xpath '//item/name/text()' data.xml",
+          "hint_text": "XML secimi icin `xmllint --xpath` kullan.",
+          "hint_partial": "xmllint --xpath ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-022-r187",
+      "type": "single",
+      "scenario": "Deploy sonrasi `old.txt` ve `new.txt` dosyalarinin unique sirali farkini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "diff <(sort -u old.txt) <(sort -u new.txt)",
+          "hint_text": "Process substitution ile siralanmis fark al.",
+          "hint_partial": "diff <(sort -u ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-023-r188",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `data.csv` dosyasini tablo gibi hizali goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "column -t -s, data.csv",
+          "hint_text": "CSV kolonlarini hizalamak icin `column -t -s,` kullan.",
+          "hint_partial": "column -t ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-024-r189",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `data.csv` dosyasini TSV'ye cevirip stdout'a yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tr ',' '\\t' < data.csv",
+          "hint_text": "Delimiter donusumu icin `tr` kullan.",
+          "hint_partial": "tr ',' ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-025-r190",
+      "type": "single",
+      "scenario": "Runbook adiminda duplicate line'lari sayarak azalan sirada goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sort access.log | uniq -cd | sort -rn",
+          "hint_text": "Duplicate satirlar icin `uniq -cd` kullan.",
+          "hint_partial": "sort access.log | ..."
+        }
+      ]
+    }
+  ]
+}

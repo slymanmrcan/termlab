@@ -1,0 +1,154 @@
+{
+  "level": "senior",
+  "topic": "storage",
+  "questions": [
+    {
+      "id": "sstg-001",
+      "type": "multi-step",
+      "scenario": "Yeni bir diski LVM'e ekle: önce Physical Volume oluştur, sonra `vgdata` volume group'una dahil et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pvcreate /dev/sdc",
+          "hint_text": "Önce diski PV olarak initialize et.",
+          "hint_partial": "pvcreate /dev/..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "vgextend vgdata /dev/sdc",
+          "hint_text": "Sonra volume group'u genişlet.",
+          "hint_partial": "vgextend ... /dev/..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-002",
+      "type": "single",
+      "scenario": "LVM incident'inda `lvapp` logical volume'un hangi VG/PV'den beslendigini segment bilgisiyle incele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lvs -a -o lv_name,vg_name,lv_size,segtype,devices /dev/vgdata/lvapp",
+          "hint_text": "LV segment ve device baglantisi icin `lvs -a -o ...` kullan.",
+          "hint_partial": "lvs -a -o lv_name,vg_name,lv_size,segtype,devices ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-003",
+      "type": "single",
+      "scenario": "`/dev/md0` RAID array detaylarını göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mdadm --detail /dev/md0",
+          "hint_text": "RAID sağlık bilgisi için `mdadm --detail` kullan.",
+          "hint_partial": "mdadm --detail ..."
+        }
+      ]
+    },
+    {
+      "id": "sstg-004",
+      "type": "single",
+      "scenario": "`/dev/sdb` üzerindeki partition layout'u `parted` ile yazdır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "parted /dev/sdb print",
+          "hint_text": "Partition layout için `parted device print` kullan.",
+          "hint_partial": "parted /dev/... print"
+        }
+      ]
+    },
+    {
+      "id": "sstg-005",
+      "type": "multi-step",
+      "scenario": "fstab değişikliğini doğrulamak için tüm mount entry'lerini yeniden yükle, sonra `/data` mount'unu kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount -a",
+          "hint_text": "fstab doğrulaması için `mount -a` çalıştır.",
+          "hint_partial": "mount -a"
+        },
+        {
+          "prompt": "$ ",
+          "answer": "findmnt /data",
+          "hint_text": "Sonra hedef mount point'i `findmnt` ile kontrol et.",
+          "hint_partial": "findmnt /data"
+        }
+      ]
+    },
+    {
+      "id": "sstg-006",
+      "type": "single",
+      "scenario": "VG kapasite baskisini gormek icin her volume group'u free extent ve free size ile listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "vgs -o vg_name,pv_count,lv_count,vg_size,vg_free",
+          "hint_text": "Kapasite ozeti icin `vgs -o ...` kullan.",
+          "hint_partial": "vgs -o vg_name,pv_count,lv_count,vg_size,vg_free"
+        }
+      ]
+    },
+    {
+      "id": "sstg-007",
+      "type": "single",
+      "scenario": "Physical volume'lerin hangi VG'ye ait oldugunu ve ne kadar bos alani kaldigini cikar.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pvs -o pv_name,vg_name,pv_size,pv_free",
+          "hint_text": "PV bazli kapasite ozeti icin `pvs -o ...` kullan.",
+          "hint_partial": "pvs -o pv_name,vg_name,pv_size,pv_free"
+        }
+      ]
+    },
+    {
+      "id": "sstg-008",
+      "type": "single",
+      "scenario": "Tum logical volume'leri attribute, boyut ve arkadaki device bilgisiyle listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lvs -a -o lv_name,vg_name,lv_attr,lv_size,devices",
+          "hint_text": "LV attribute ve device detaylari icin `lvs -a -o ...` kullan.",
+          "hint_partial": "lvs -a -o lv_name,vg_name,lv_attr,lv_size,devices"
+        }
+      ]
+    },
+    {
+      "id": "sstg-009",
+      "type": "multi-step",
+      "scenario": "RAID rebuild var mi anlamak icin once cekirdek ozetini gor, sonra array detayini dogrula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/mdstat",
+          "hint_text": "RAID ozet durumu icin `cat /proc/mdstat` kullan.",
+          "hint_partial": "cat /proc/mdstat"
+        },
+        {
+          "prompt": "$ ",
+          "answer": "mdadm --detail /dev/md0",
+          "hint_text": "Array durumunu ayrintili dogrulamak icin `mdadm --detail` kullan.",
+          "hint_partial": "mdadm --detail /dev/md0"
+        }
+      ]
+    },
+    {
+      "id": "sstg-010",
+      "type": "single",
+      "scenario": "Parted ile disk üzerindeki boş alanı MB biriminde göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "parted /dev/sdb unit MB print free",
+          "hint_text": "Boş alan görmek için `print free` kullan.",
+          "hint_partial": "parted /dev/... unit MB print free"
+        }
+      ]
+    }
+  ]
+}

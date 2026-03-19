@@ -1,0 +1,213 @@
+{
+  "level": "senior",
+  "topic": "text",
+  "questions": [
+    {
+      "id": "stext-001",
+      "type": "single",
+      "scenario": "100GB access.log file'inde sadece `POST /api` ile başlayan line'lardaki response time ortalamasını hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "grep 'POST /api' access.log | awk '{sum+=$NF; count++} END {print sum/count}'",
+          "hint_text": "grep filtrele, awk ile son column topla ve böl",
+          "hint_partial": "grep 'POST /api' access.log | awk '{sum+=$NF; count++} END {print sum/count}'"
+        }
+      ]
+    },
+    {
+      "id": "stext-002",
+      "type": "multi-step",
+      "scenario": "Çok büyük bir JSON log file'i jq ile parse et — sadece 'level: error' olan record'larin 'message' field'ını çıkar.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "jq -r 'select(.level == \"error\") | .message' app.log",
+          "hint_text": "jq select ile filtrele, -r raw output",
+          "hint_partial": "jq -r 'select(.level == \"error\") | ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-003",
+      "type": "single",
+      "scenario": "Binary file'ın içindeki readable string'leri çıkar ve 'version' içerenleri filtrele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "strings /usr/bin/myapp | grep -i version",
+          "hint_text": "strings binary'den readable text çıkarır",
+          "hint_partial": "strings /usr/bin/myapp | grep -i ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-004",
+      "type": "single",
+      "scenario": "access.log'daki en çok istek atan IP'yi bul ve kaç istek attığını göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk '{print $1}' access.log | sort | uniq -c | sort -rn | head -1",
+          "hint_text": "IP'leri çek, say, en büyükten sırala, ilkini al",
+          "hint_partial": "awk '{print $1}' access.log | sort | uniq -c | sort -rn | ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-005",
+      "type": "multi-step",
+      "scenario": "Multi-line log entry'lerini tek line'a birleştir; her yeni entry `[timestamp]` ile başlıyor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk '/^\\[/{if(line) print line; line=$0} !/^\\[/{line=line\" \"$0} END{print line}' app.log",
+          "hint_text": "awk ile timestamp ile başlayan line'ları ayırt et ve birleştir",
+          "hint_partial": "awk '/^\\[/{if(line) print line; line=$0} !/^\\[/{line=line\" \"$0} END{print line}' ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-006",
+      "type": "single",
+      "scenario": "İki büyük file'ı birleştirirken RAM'i verimli kullan; pipe ile işle, ara file yazma.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat file1.log file2.log | gzip > combined.log.gz",
+          "hint_text": "cat pipe gzip stream olarak sıkıştır",
+          "hint_partial": "cat file1.log file2.log | gzip > ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-007",
+      "type": "single",
+      "scenario": "Prometheus metrics endpoint'inden sadece 'http_requests_total' metriğini çek ve parse et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "curl -s localhost:9090/metrics | grep '^http_requests_total'",
+          "hint_text": "curl -s sessiz, grep ile başlangıç filtrele",
+          "hint_partial": "curl -s localhost:9090/metrics | grep ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-008",
+      "type": "multi-step",
+      "scenario": "Günlük rotation için log file'i tarihle arşivle, sıkıştır ve 30 günden eski arşivleri temizle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mv app.log app.log.$(date +%Y%m%d) && gzip app.log.$(date +%Y%m%d)",
+          "hint_text": "mv ile tarih ekle, gzip ile sıkıştır",
+          "hint_partial": "mv app.log app.log.$(date +%Y%m%d) && gzip ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "find /var/log/myapp/ -name '*.gz' -mtime +30 -delete",
+          "hint_text": "find -mtime +30 eski file'lari bulur, -delete siler",
+          "hint_partial": "find /var/log/myapp/ -name '*.gz' -mtime +30 ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-009",
+      "type": "single",
+      "scenario": "Büyük CSV'den belirli columnları çek ve SQL benzeri grouplama yap (awk ile).",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk -F',' 'NR>1 {count[$3]++} END {for(k in count) print count[k], k}' data.csv | sort -rn",
+          "hint_text": "awk -F delimiter, NR>1 header'ı atla, array ile say",
+          "hint_partial": "awk -F',' 'NR>1 {count[$3]++} END {for(k in count) print count[k], k}' data.csv | ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-010",
+      "type": "single",
+      "scenario": "config.json file'indeki nested bir değeri jq ile güncelle (database.host field'ini 'db.prod.internal' yap).",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "jq '.database.host = \"db.prod.internal\"' config.json > config.tmp && mv config.tmp config.json",
+          "hint_text": "jq ile değer ata, geçici file'a yaz ve üzerine taşı",
+          "hint_partial": "jq '.database.host = \"db.prod.internal\"' config.json > config.tmp && ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-011",
+      "type": "single",
+      "scenario": "config.ini file'indeki boş ve comment olmayan satırları göster",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "grep -Ev '^#|^$' config.ini",
+          "hint_text": "Birden fazla desen icin extended regex kullan",
+          "hint_partial": "grep -Ev ... ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-012",
+      "type": "single",
+      "scenario": "sales.csv file'in ikinci kolonunun ortalamasini awk ile hesapla",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk -F, '{sum+=$2; n++} END {print sum/n}' sales.csv",
+          "hint_text": "Toplam ve sayac tutup END blogunda bol",
+          "hint_partial": "awk -F, '{sum+=$2; n++} END {print sum/n}' ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-013",
+      "type": "single",
+      "scenario": "Incident notlarinda en yeni satirlari ustte gorecek sekilde `notes.txt` ters sirayla ac ve ilk 20 satiri getir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tac notes.txt | head -20",
+          "hint_text": "Ters sira ve kisaltma icin `tac ... | head -20` kullan.",
+          "hint_partial": "tac notes.txt | head -20"
+        }
+      ]
+    },
+    {
+      "id": "stext-014",
+      "type": "single",
+      "scenario": "config.ini icindeki esittir isaretinden sonraki degerleri kesip yazdir",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cut -d= -f2 config.ini",
+          "hint_text": "Alan ayiriciyi = yapip ikinci alani al",
+          "hint_partial": "cut -d= -f2 ..."
+        }
+      ]
+    },
+    {
+      "id": "stext-015",
+      "type": "multi-step",
+      "scenario": "app.log icindeki error satirlarini satir numaralariyla goster ve sonra toplam sayisini hesapla",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "grep -n error app.log",
+          "hint_text": "Ilk adimda satir numaralarini da goster",
+          "hint_partial": "grep -n ... ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "grep -c error app.log",
+          "hint_text": "Ikinci adimda toplam eslesme sayisi",
+          "hint_partial": "grep -c ... ..."
+        }
+      ]
+    }
+  ]
+}

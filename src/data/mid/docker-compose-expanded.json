@@ -1,0 +1,2606 @@
+{
+  "level": "mid",
+  "topic": "docker-compose",
+  "questions": [
+    {
+      "id": "mdc-011",
+      "type": "single",
+      "scenario": "`api` servisini dependency'lerini etkilemeden detached olarak recreate et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose up -d --no-deps api",
+          "hint_text": "Bagimliliklari atlamak icin `--no-deps` kullan.",
+          "hint_partial": "docker compose up ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-012",
+      "type": "single",
+      "scenario": "`api` image'ini cache kullanmadan yeniden build et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose build --no-cache api",
+          "hint_text": "Cache'siz build icin `--no-cache` kullan.",
+          "hint_partial": "docker compose build ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-013",
+      "type": "single",
+      "scenario": "Sadece `api` image'ini registry'den cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose pull api",
+          "hint_text": "Tek servis image cekmek icin servis adini ekle.",
+          "hint_partial": "docker compose pull ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-014",
+      "type": "single",
+      "scenario": "Container'lari olustur ama baslatma.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose create",
+          "hint_text": "Sadece create etmek icin `docker compose create` kullan.",
+          "hint_partial": "docker compose create"
+        }
+      ]
+    },
+    {
+      "id": "mdc-015",
+      "type": "single",
+      "scenario": "Durdurulmus `api` servisini tekrar baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose start api",
+          "hint_text": "Tek servis start icin `docker compose start service` kullan.",
+          "hint_partial": "docker compose start ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-016",
+      "type": "single",
+      "scenario": "`api` servisini SIGKILL ile oldur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose kill api",
+          "hint_text": "Servisi oldurmek icin `docker compose kill` kullan.",
+          "hint_partial": "docker compose kill ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-017",
+      "type": "single",
+      "scenario": "`api` container'ini once durdurup sonra force ederek sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose rm -s -f api",
+          "hint_text": "Stop+remove icin `rm -s -f` kullan.",
+          "hint_partial": "docker compose rm ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-018",
+      "type": "single",
+      "scenario": "`api` icin canli log takibi yap ama son 50 satirdan basla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose logs -f --tail 50 api",
+          "hint_text": "Takip ve tail'i birlikte kullan.",
+          "hint_partial": "docker compose logs ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-019",
+      "type": "single",
+      "scenario": "`api` servisi icinde TTY olmadan environment variable'lari yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose exec -T api env",
+          "hint_text": "TTY'siz exec icin `-T` kullan.",
+          "hint_partial": "docker compose exec ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-020",
+      "type": "single",
+      "scenario": "`web` servisini service port'lariyla birlikte one-off olarak calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose run --rm --service-ports web sh",
+          "hint_text": "Port publish etmek icin `--service-ports` kullan.",
+          "hint_partial": "docker compose run ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-021",
+      "type": "single",
+      "scenario": "`web` servisinin 80 portunun host mapping'ini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose port web 80",
+          "hint_text": "Port eslemesi icin `docker compose port` kullan.",
+          "hint_partial": "docker compose port ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-022",
+      "type": "single",
+      "scenario": "`web` servisi icindeki `nginx.conf` dosyasini current directory'ye kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose cp web:/etc/nginx/nginx.conf .",
+          "hint_text": "Compose tarafinda copy icin `docker compose cp` kullan.",
+          "hint_partial": "docker compose cp ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-023",
+      "type": "single",
+      "scenario": "Config'te kullanilan image isimlerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose config --images",
+          "hint_text": "Image listesi icin `config --images` kullan.",
+          "hint_partial": "docker compose config ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-024",
+      "type": "single",
+      "scenario": "Config'te tanimli volume isimlerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose config --volumes",
+          "hint_text": "Volume listesi icin `config --volumes` kullan.",
+          "hint_partial": "docker compose config ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-025",
+      "type": "single",
+      "scenario": "Stack'i orphan container'lari da temizleyerek kapat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose down --remove-orphans",
+          "hint_text": "Orphan temizligi icin `--remove-orphans` ekle.",
+          "hint_partial": "docker compose down ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-011-r1",
+      "type": "single",
+      "scenario": "Bakim oncesi `db-1-1` servisini dependency'lerini etkilemeden detached olarak recreate et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose up -d --no-deps db-1-1",
+          "hint_text": "Bagimliliklari atlamak icin `--no-deps` kullan.",
+          "hint_partial": "docker compose up ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-012-r2",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `cache-2-2` image'ini cache-2 kullanmadan yeniden build et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose build --no-cache-2 cache-2-2",
+          "hint_text": "Cache'siz build icin `--no-cache-2` kullan.",
+          "hint_partial": "docker compose build ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-013-r3",
+      "type": "single",
+      "scenario": "Deploy sonrasi sadece `queue-3` image'ini registry'den cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose pull queue-3",
+          "hint_text": "Tek servis image cekmek icin servis adini ekle.",
+          "hint_partial": "docker compose pull ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-014-r4",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde container'lari olustur ama baslatma.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose create",
+          "hint_text": "Sadece create etmek icin `docker compose create` kullan.",
+          "hint_partial": "docker compose create"
+        }
+      ]
+    },
+    {
+      "id": "mdc-015-r5",
+      "type": "single",
+      "scenario": "Yeni acilan hostta durdurulmus `proxy-5` servisini tekrar baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose start proxy-5",
+          "hint_text": "Tek servis start icin `docker compose start service` kullan.",
+          "hint_partial": "docker compose start ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-016-r6",
+      "type": "single",
+      "scenario": "Runbook adiminda `web-6` servisini SIGKILL ile oldur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose kill web-6",
+          "hint_text": "Servisi oldurmek icin `docker compose kill` kullan.",
+          "hint_partial": "docker compose kill ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-017-r7",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `api-7` container'ini once durdurup sonra force ederek sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose rm -s -f api-7",
+          "hint_text": "Stop+remove icin `rm -s -f` kullan.",
+          "hint_partial": "docker compose rm ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-018-r8",
+      "type": "single",
+      "scenario": "Incident sonrasinda `worker-8` icin canli log takibi yap ama son 50 satirdan basla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose logs -f --tail 50 worker-8",
+          "hint_text": "Takip ve tail'i birlikte kullan.",
+          "hint_partial": "docker compose logs ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-019-r9",
+      "type": "single",
+      "scenario": "Bakim oncesi `db-9-9` servisi icinde TTY olmadan environment variable'lari yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose exec -T db-9-9 env",
+          "hint_text": "TTY'siz exec icin `-T` kullan.",
+          "hint_partial": "docker compose exec ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-020-r10",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `cache-10-10-10` servisini service port'lariyla birlikte one-off olarak calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose run --rm --service-ports cache-10-10-10 sh",
+          "hint_text": "Port publish etmek icin `--service-ports` kullan.",
+          "hint_partial": "docker compose run ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-021-r11",
+      "type": "single",
+      "scenario": "Deploy sonrasi `worker-11` servisinin 80 portunun host mapping'ini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose port worker-11 80",
+          "hint_text": "Port eslemesi icin `docker compose port` kullan.",
+          "hint_partial": "docker compose port ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-022-r12",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `db-12-12` servisi icindeki `vault-12-12.conf` dosyasini current directory'ye kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose cp db-12-12:/etc/vault-12/vault-12-12.conf .",
+          "hint_text": "Compose tarafinda copy icin `docker compose cp` kullan.",
+          "hint_partial": "docker compose cp ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-023-r13",
+      "type": "single",
+      "scenario": "Yeni acilan hostta config'te kullanilan image isimlerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose config --images",
+          "hint_text": "Image listesi icin `config --images` kullan.",
+          "hint_partial": "docker compose config ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-024-r14",
+      "type": "single",
+      "scenario": "Runbook adiminda config'te tanimli volume isimlerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose config --volumes",
+          "hint_text": "Volume listesi icin `config --volumes` kullan.",
+          "hint_partial": "docker compose config ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-025-r15",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde stack'i orphan container'lari da temizleyerek kapat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose down --remove-orphans",
+          "hint_text": "Orphan temizligi icin `--remove-orphans` ekle.",
+          "hint_partial": "docker compose down ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-011-r16",
+      "type": "single",
+      "scenario": "Incident sonrasinda `worker-16` servisini dependency'lerini etkilemeden detached olarak recreate et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose up -d --no-deps worker-16",
+          "hint_text": "Bagimliliklari atlamak icin `--no-deps` kullan.",
+          "hint_partial": "docker compose up ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-012-r17",
+      "type": "single",
+      "scenario": "Bakim oncesi `db-17-17` image'ini cache-17 kullanmadan yeniden build et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose build --no-cache-17 db-17-17",
+          "hint_text": "Cache'siz build icin `--no-cache-17` kullan.",
+          "hint_partial": "docker compose build ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-013-r18",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda sadece `cache-18-18` image'ini registry'den cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose pull cache-18-18",
+          "hint_text": "Tek servis image cekmek icin servis adini ekle.",
+          "hint_partial": "docker compose pull ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-014-r19",
+      "type": "single",
+      "scenario": "Deploy sonrasi container'lari olustur ama baslatma.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose create",
+          "hint_text": "Sadece create etmek icin `docker compose create` kullan.",
+          "hint_partial": "docker compose create"
+        }
+      ]
+    },
+    {
+      "id": "mdc-015-r20",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde durdurulmus `bastion-20` servisini tekrar baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose start bastion-20",
+          "hint_text": "Tek servis start icin `docker compose start service` kullan.",
+          "hint_partial": "docker compose start ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-016-r21",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `proxy-21` servisini SIGKILL ile oldur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose kill proxy-21",
+          "hint_text": "Servisi oldurmek icin `docker compose kill` kullan.",
+          "hint_partial": "docker compose kill ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-017-r22",
+      "type": "single",
+      "scenario": "Runbook adiminda `web-22` container'ini once durdurup sonra force ederek sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose rm -s -f web-22",
+          "hint_text": "Stop+remove icin `rm -s -f` kullan.",
+          "hint_partial": "docker compose rm ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-018-r23",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `api-23` icin canli log takibi yap ama son 50 satirdan basla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose logs -f --tail 50 api-23",
+          "hint_text": "Takip ve tail'i birlikte kullan.",
+          "hint_partial": "docker compose logs ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-019-r24",
+      "type": "single",
+      "scenario": "Incident sonrasinda `worker-24` servisi icinde TTY olmadan environment variable'lari yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose exec -T worker-24 env",
+          "hint_text": "TTY'siz exec icin `-T` kullan.",
+          "hint_partial": "docker compose exec ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-020-r25",
+      "type": "single",
+      "scenario": "Bakim oncesi `web-25` servisini service port'lariyla birlikte one-off olarak calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose run --rm --service-ports web-25 sh",
+          "hint_text": "Port publish etmek icin `--service-ports` kullan.",
+          "hint_partial": "docker compose run ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-021-r26",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `cache-26-26-26` servisinin 80 portunun host mapping'ini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose port cache-26-26-26 80",
+          "hint_text": "Port eslemesi icin `docker compose port` kullan.",
+          "hint_partial": "docker compose port ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-022-r27",
+      "type": "single",
+      "scenario": "Deploy sonrasi `worker-27` servisi icindeki `redis-27-27.conf` dosyasini current directory'ye kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose cp worker-27:/etc/redis-27/redis-27-27.conf .",
+          "hint_text": "Compose tarafinda copy icin `docker compose cp` kullan.",
+          "hint_partial": "docker compose cp ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-023-r28",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde config'te kullanilan image isimlerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose config --images",
+          "hint_text": "Image listesi icin `config --images` kullan.",
+          "hint_partial": "docker compose config ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-024-r29",
+      "type": "single",
+      "scenario": "Yeni acilan hostta config'te tanimli volume isimlerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose config --volumes",
+          "hint_text": "Volume listesi icin `config --volumes` kullan.",
+          "hint_partial": "docker compose config ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-025-r30",
+      "type": "single",
+      "scenario": "Runbook adiminda stack'i orphan container'lari da temizleyerek kapat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose down --remove-orphans",
+          "hint_text": "Orphan temizligi icin `--remove-orphans` ekle.",
+          "hint_partial": "docker compose down ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-011-r31",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `api-31` servisini dependency'lerini etkilemeden detached olarak recreate et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose up -d --no-deps api-31",
+          "hint_text": "Bagimliliklari atlamak icin `--no-deps` kullan.",
+          "hint_partial": "docker compose up ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-012-r32",
+      "type": "single",
+      "scenario": "Incident sonrasinda `worker-32` image'ini cache-32 kullanmadan yeniden build et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose build --no-cache-32 worker-32",
+          "hint_text": "Cache'siz build icin `--no-cache-32` kullan.",
+          "hint_partial": "docker compose build ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-013-r33",
+      "type": "single",
+      "scenario": "Bakim oncesi sadece `db-33-33` image'ini registry'den cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose pull db-33-33",
+          "hint_text": "Tek servis image cekmek icin servis adini ekle.",
+          "hint_partial": "docker compose pull ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-014-r34",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda container'lari olustur ama baslatma.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose create",
+          "hint_text": "Sadece create etmek icin `docker compose create` kullan.",
+          "hint_partial": "docker compose create"
+        }
+      ]
+    },
+    {
+      "id": "mdc-015-r35",
+      "type": "single",
+      "scenario": "Deploy sonrasi durdurulmus `queue-35` servisini tekrar baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose start queue-35",
+          "hint_text": "Tek servis start icin `docker compose start service` kullan.",
+          "hint_partial": "docker compose start ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-016-r36",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `bastion-36` servisini SIGKILL ile oldur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose kill bastion-36",
+          "hint_text": "Servisi oldurmek icin `docker compose kill` kullan.",
+          "hint_partial": "docker compose kill ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-017-r37",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `proxy-37` container'ini once durdurup sonra force ederek sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose rm -s -f proxy-37",
+          "hint_text": "Stop+remove icin `rm -s -f` kullan.",
+          "hint_partial": "docker compose rm ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-018-r38",
+      "type": "single",
+      "scenario": "Runbook adiminda `web-38` icin canli log takibi yap ama son 50 satirdan basla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose logs -f --tail 50 web-38",
+          "hint_text": "Takip ve tail'i birlikte kullan.",
+          "hint_partial": "docker compose logs ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-019-r39",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `api-39` servisi icinde TTY olmadan environment variable'lari yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose exec -T api-39 env",
+          "hint_text": "TTY'siz exec icin `-T` kullan.",
+          "hint_partial": "docker compose exec ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-020-r40",
+      "type": "single",
+      "scenario": "Incident sonrasinda `proxy-40` servisini service port'lariyla birlikte one-off olarak calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose run --rm --service-ports proxy-40 sh",
+          "hint_text": "Port publish etmek icin `--service-ports` kullan.",
+          "hint_partial": "docker compose run ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-021-r41",
+      "type": "single",
+      "scenario": "Bakim oncesi `web-41` servisinin 80 portunun host mapping'ini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose port web-41 80",
+          "hint_text": "Port eslemesi icin `docker compose port` kullan.",
+          "hint_partial": "docker compose port ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-022-r42",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `cache-42-42-42` servisi icindeki `vault-42-42.conf` dosyasini current directory'ye kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose cp cache-42-42-42:/etc/vault-42/vault-42-42.conf .",
+          "hint_text": "Compose tarafinda copy icin `docker compose cp` kullan.",
+          "hint_partial": "docker compose cp ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-023-r43",
+      "type": "single",
+      "scenario": "Deploy sonrasi config'te kullanilan image isimlerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose config --images",
+          "hint_text": "Image listesi icin `config --images` kullan.",
+          "hint_partial": "docker compose config ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-024-r44",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde config'te tanimli volume isimlerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose config --volumes",
+          "hint_text": "Volume listesi icin `config --volumes` kullan.",
+          "hint_partial": "docker compose config ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-025-r45",
+      "type": "single",
+      "scenario": "Yeni acilan hostta stack'i orphan container'lari da temizleyerek kapat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose down --remove-orphans",
+          "hint_text": "Orphan temizligi icin `--remove-orphans` ekle.",
+          "hint_partial": "docker compose down ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-011-r46",
+      "type": "single",
+      "scenario": "Runbook adiminda `web-46` servisini dependency'lerini etkilemeden detached olarak recreate et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose up -d --no-deps web-46",
+          "hint_text": "Bagimliliklari atlamak icin `--no-deps` kullan.",
+          "hint_partial": "docker compose up ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-012-r47",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `api-47` image'ini cache-47 kullanmadan yeniden build et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose build --no-cache-47 api-47",
+          "hint_text": "Cache'siz build icin `--no-cache-47` kullan.",
+          "hint_partial": "docker compose build ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-013-r48",
+      "type": "single",
+      "scenario": "Incident sonrasinda sadece `worker-48` image'ini registry'den cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose pull worker-48",
+          "hint_text": "Tek servis image cekmek icin servis adini ekle.",
+          "hint_partial": "docker compose pull ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-014-r49",
+      "type": "single",
+      "scenario": "Bakim oncesi container'lari olustur ama baslatma.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose create",
+          "hint_text": "Sadece create etmek icin `docker compose create` kullan.",
+          "hint_partial": "docker compose create"
+        }
+      ]
+    },
+    {
+      "id": "mdc-015-r50",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda durdurulmus `cache-50-50` servisini tekrar baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose start cache-50-50",
+          "hint_text": "Tek servis start icin `docker compose start service` kullan.",
+          "hint_partial": "docker compose start ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-016-r51",
+      "type": "single",
+      "scenario": "Deploy sonrasi `queue-51` servisini SIGKILL ile oldur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose kill queue-51",
+          "hint_text": "Servisi oldurmek icin `docker compose kill` kullan.",
+          "hint_partial": "docker compose kill ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-017-r52",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `bastion-52` container'ini once durdurup sonra force ederek sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose rm -s -f bastion-52",
+          "hint_text": "Stop+remove icin `rm -s -f` kullan.",
+          "hint_partial": "docker compose rm ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-018-r53",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `proxy-53` icin canli log takibi yap ama son 50 satirdan basla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose logs -f --tail 50 proxy-53",
+          "hint_text": "Takip ve tail'i birlikte kullan.",
+          "hint_partial": "docker compose logs ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-019-r54",
+      "type": "single",
+      "scenario": "Runbook adiminda `web-54` servisi icinde TTY olmadan environment variable'lari yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose exec -T web-54 env",
+          "hint_text": "TTY'siz exec icin `-T` kullan.",
+          "hint_partial": "docker compose exec ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-020-r55",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `bastion-55` servisini service port'lariyla birlikte one-off olarak calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose run --rm --service-ports bastion-55 sh",
+          "hint_text": "Port publish etmek icin `--service-ports` kullan.",
+          "hint_partial": "docker compose run ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-021-r56",
+      "type": "single",
+      "scenario": "Incident sonrasinda `proxy-56` servisinin 80 portunun host mapping'ini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose port proxy-56 80",
+          "hint_text": "Port eslemesi icin `docker compose port` kullan.",
+          "hint_partial": "docker compose port ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-022-r57",
+      "type": "single",
+      "scenario": "Bakim oncesi `web-57` servisi icindeki `redis-57-57.conf` dosyasini current directory'ye kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose cp web-57:/etc/redis-57/redis-57-57.conf .",
+          "hint_text": "Compose tarafinda copy icin `docker compose cp` kullan.",
+          "hint_partial": "docker compose cp ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-023-r58",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda config'te kullanilan image isimlerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose config --images",
+          "hint_text": "Image listesi icin `config --images` kullan.",
+          "hint_partial": "docker compose config ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-024-r59",
+      "type": "single",
+      "scenario": "Deploy sonrasi config'te tanimli volume isimlerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose config --volumes",
+          "hint_text": "Volume listesi icin `config --volumes` kullan.",
+          "hint_partial": "docker compose config ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-025-r60",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde stack'i orphan container'lari da temizleyerek kapat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose down --remove-orphans",
+          "hint_text": "Orphan temizligi icin `--remove-orphans` ekle.",
+          "hint_partial": "docker compose down ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-011-r61",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `proxy-61` servisini dependency'lerini etkilemeden detached olarak recreate et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose up -d --no-deps proxy-61",
+          "hint_text": "Bagimliliklari atlamak icin `--no-deps` kullan.",
+          "hint_partial": "docker compose up ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-012-r62",
+      "type": "single",
+      "scenario": "Runbook adiminda `web-62` image'ini cache-62 kullanmadan yeniden build et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose build --no-cache-62 web-62",
+          "hint_text": "Cache'siz build icin `--no-cache-62` kullan.",
+          "hint_partial": "docker compose build ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-013-r63",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde sadece `api-63` image'ini registry'den cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose pull api-63",
+          "hint_text": "Tek servis image cekmek icin servis adini ekle.",
+          "hint_partial": "docker compose pull ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-014-r64",
+      "type": "single",
+      "scenario": "Incident sonrasinda container'lari olustur ama baslatma.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose create",
+          "hint_text": "Sadece create etmek icin `docker compose create` kullan.",
+          "hint_partial": "docker compose create"
+        }
+      ]
+    },
+    {
+      "id": "mdc-015-r65",
+      "type": "single",
+      "scenario": "Bakim oncesi durdurulmus `db-65-65` servisini tekrar baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose start db-65-65",
+          "hint_text": "Tek servis start icin `docker compose start service` kullan.",
+          "hint_partial": "docker compose start ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-016-r66",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `cache-66-66` servisini SIGKILL ile oldur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose kill cache-66-66",
+          "hint_text": "Servisi oldurmek icin `docker compose kill` kullan.",
+          "hint_partial": "docker compose kill ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-017-r67",
+      "type": "single",
+      "scenario": "Deploy sonrasi `queue-67` container'ini once durdurup sonra force ederek sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose rm -s -f queue-67",
+          "hint_text": "Stop+remove icin `rm -s -f` kullan.",
+          "hint_partial": "docker compose rm ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-018-r68",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `bastion-68` icin canli log takibi yap ama son 50 satirdan basla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose logs -f --tail 50 bastion-68",
+          "hint_text": "Takip ve tail'i birlikte kullan.",
+          "hint_partial": "docker compose logs ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-019-r69",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `proxy-69` servisi icinde TTY olmadan environment variable'lari yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose exec -T proxy-69 env",
+          "hint_text": "TTY'siz exec icin `-T` kullan.",
+          "hint_partial": "docker compose exec ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-020-r70",
+      "type": "single",
+      "scenario": "Runbook adiminda `queue-70` servisini service port'lariyla birlikte one-off olarak calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose run --rm --service-ports queue-70 sh",
+          "hint_text": "Port publish etmek icin `--service-ports` kullan.",
+          "hint_partial": "docker compose run ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-021-r71",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `bastion-71` servisinin 80 portunun host mapping'ini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose port bastion-71 80",
+          "hint_text": "Port eslemesi icin `docker compose port` kullan.",
+          "hint_partial": "docker compose port ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-022-r72",
+      "type": "single",
+      "scenario": "Incident sonrasinda `proxy-72` servisi icindeki `vault-72-72.conf` dosyasini current directory'ye kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose cp proxy-72:/etc/vault-72/vault-72-72.conf .",
+          "hint_text": "Compose tarafinda copy icin `docker compose cp` kullan.",
+          "hint_partial": "docker compose cp ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-023-r73",
+      "type": "single",
+      "scenario": "Bakim oncesi config'te kullanilan image isimlerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose config --images",
+          "hint_text": "Image listesi icin `config --images` kullan.",
+          "hint_partial": "docker compose config ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-024-r74",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda config'te tanimli volume isimlerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose config --volumes",
+          "hint_text": "Volume listesi icin `config --volumes` kullan.",
+          "hint_partial": "docker compose config ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-025-r75",
+      "type": "single",
+      "scenario": "Deploy sonrasi stack'i orphan container'lari da temizleyerek kapat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose down --remove-orphans",
+          "hint_text": "Orphan temizligi icin `--remove-orphans` ekle.",
+          "hint_partial": "docker compose down ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-011-r76",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `bastion-76` servisini dependency'lerini etkilemeden detached olarak recreate et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose up -d --no-deps bastion-76",
+          "hint_text": "Bagimliliklari atlamak icin `--no-deps` kullan.",
+          "hint_partial": "docker compose up ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-012-r77",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `proxy-77` image'ini cache-77 kullanmadan yeniden build et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose build --no-cache-77 proxy-77",
+          "hint_text": "Cache'siz build icin `--no-cache-77` kullan.",
+          "hint_partial": "docker compose build ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-013-r78",
+      "type": "single",
+      "scenario": "Runbook adiminda sadece `web-78` image'ini registry'den cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose pull web-78",
+          "hint_text": "Tek servis image cekmek icin servis adini ekle.",
+          "hint_partial": "docker compose pull ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-014-r79",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde container'lari olustur ama baslatma.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose create",
+          "hint_text": "Sadece create etmek icin `docker compose create` kullan.",
+          "hint_partial": "docker compose create"
+        }
+      ]
+    },
+    {
+      "id": "mdc-015-r80",
+      "type": "single",
+      "scenario": "Incident sonrasinda durdurulmus `worker-80` servisini tekrar baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose start worker-80",
+          "hint_text": "Tek servis start icin `docker compose start service` kullan.",
+          "hint_partial": "docker compose start ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-016-r81",
+      "type": "single",
+      "scenario": "Bakim oncesi `db-81-81` servisini SIGKILL ile oldur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose kill db-81-81",
+          "hint_text": "Servisi oldurmek icin `docker compose kill` kullan.",
+          "hint_partial": "docker compose kill ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-017-r82",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `cache-82-82` container'ini once durdurup sonra force ederek sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose rm -s -f cache-82-82",
+          "hint_text": "Stop+remove icin `rm -s -f` kullan.",
+          "hint_partial": "docker compose rm ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-018-r83",
+      "type": "single",
+      "scenario": "Deploy sonrasi `queue-83` icin canli log takibi yap ama son 50 satirdan basla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose logs -f --tail 50 queue-83",
+          "hint_text": "Takip ve tail'i birlikte kullan.",
+          "hint_partial": "docker compose logs ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-019-r84",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `bastion-84` servisi icinde TTY olmadan environment variable'lari yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose exec -T bastion-84 env",
+          "hint_text": "TTY'siz exec icin `-T` kullan.",
+          "hint_partial": "docker compose exec ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-020-r85",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `cache-85-85` servisini service port'lariyla birlikte one-off olarak calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose run --rm --service-ports cache-85-85 sh",
+          "hint_text": "Port publish etmek icin `--service-ports` kullan.",
+          "hint_partial": "docker compose run ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-021-r86",
+      "type": "single",
+      "scenario": "Runbook adiminda `queue-86` servisinin 80 portunun host mapping'ini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose port queue-86 80",
+          "hint_text": "Port eslemesi icin `docker compose port` kullan.",
+          "hint_partial": "docker compose port ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-022-r87",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `bastion-87` servisi icindeki `redis-87-87.conf` dosyasini current directory'ye kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose cp bastion-87:/etc/redis-87/redis-87-87.conf .",
+          "hint_text": "Compose tarafinda copy icin `docker compose cp` kullan.",
+          "hint_partial": "docker compose cp ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-023-r88",
+      "type": "single",
+      "scenario": "Incident sonrasinda config'te kullanilan image isimlerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose config --images",
+          "hint_text": "Image listesi icin `config --images` kullan.",
+          "hint_partial": "docker compose config ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-024-r89",
+      "type": "single",
+      "scenario": "Bakim oncesi config'te tanimli volume isimlerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose config --volumes",
+          "hint_text": "Volume listesi icin `config --volumes` kullan.",
+          "hint_partial": "docker compose config ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-025-r90",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda stack'i orphan container'lari da temizleyerek kapat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose down --remove-orphans",
+          "hint_text": "Orphan temizligi icin `--remove-orphans` ekle.",
+          "hint_partial": "docker compose down ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-011-r91",
+      "type": "single",
+      "scenario": "Deploy sonrasi `queue-91` servisini dependency'lerini etkilemeden detached olarak recreate et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose up -d --no-deps queue-91",
+          "hint_text": "Bagimliliklari atlamak icin `--no-deps` kullan.",
+          "hint_partial": "docker compose up ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-012-r92",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `bastion-92` image'ini cache-92 kullanmadan yeniden build et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose build --no-cache-92 bastion-92",
+          "hint_text": "Cache'siz build icin `--no-cache-92` kullan.",
+          "hint_partial": "docker compose build ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-013-r93",
+      "type": "single",
+      "scenario": "Yeni acilan hostta sadece `proxy-93` image'ini registry'den cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose pull proxy-93",
+          "hint_text": "Tek servis image cekmek icin servis adini ekle.",
+          "hint_partial": "docker compose pull ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-014-r94",
+      "type": "single",
+      "scenario": "Runbook adiminda container'lari olustur ama baslatma.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose create",
+          "hint_text": "Sadece create etmek icin `docker compose create` kullan.",
+          "hint_partial": "docker compose create"
+        }
+      ]
+    },
+    {
+      "id": "mdc-015-r95",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde durdurulmus `api-95` servisini tekrar baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose start api-95",
+          "hint_text": "Tek servis start icin `docker compose start service` kullan.",
+          "hint_partial": "docker compose start ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-016-r96",
+      "type": "single",
+      "scenario": "Incident sonrasinda `worker-96` servisini SIGKILL ile oldur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose kill worker-96",
+          "hint_text": "Servisi oldurmek icin `docker compose kill` kullan.",
+          "hint_partial": "docker compose kill ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-017-r97",
+      "type": "single",
+      "scenario": "Bakim oncesi `db-97-97` container'ini once durdurup sonra force ederek sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose rm -s -f db-97-97",
+          "hint_text": "Stop+remove icin `rm -s -f` kullan.",
+          "hint_partial": "docker compose rm ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-018-r98",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `cache-98-98` icin canli log takibi yap ama son 50 satirdan basla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose logs -f --tail 50 cache-98-98",
+          "hint_text": "Takip ve tail'i birlikte kullan.",
+          "hint_partial": "docker compose logs ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-019-r99",
+      "type": "single",
+      "scenario": "Deploy sonrasi `queue-99` servisi icinde TTY olmadan environment variable'lari yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose exec -T queue-99 env",
+          "hint_text": "TTY'siz exec icin `-T` kullan.",
+          "hint_partial": "docker compose exec ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-020-r100",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `db-100-100` servisini service port'lariyla birlikte one-off olarak calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose run --rm --service-ports db-100-100 sh",
+          "hint_text": "Port publish etmek icin `--service-ports` kullan.",
+          "hint_partial": "docker compose run ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-021-r101",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `cache-101-101` servisinin 80 portunun host mapping'ini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose port cache-101-101 80",
+          "hint_text": "Port eslemesi icin `docker compose port` kullan.",
+          "hint_partial": "docker compose port ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-022-r102",
+      "type": "single",
+      "scenario": "Runbook adiminda `queue-102` servisi icindeki `vault-102-102.conf` dosyasini current directory'ye kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose cp queue-102:/etc/vault-102/vault-102-102.conf .",
+          "hint_text": "Compose tarafinda copy icin `docker compose cp` kullan.",
+          "hint_partial": "docker compose cp ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-023-r103",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde config'te kullanilan image isimlerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose config --images",
+          "hint_text": "Image listesi icin `config --images` kullan.",
+          "hint_partial": "docker compose config ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-024-r104",
+      "type": "single",
+      "scenario": "Incident sonrasinda config'te tanimli volume isimlerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose config --volumes",
+          "hint_text": "Volume listesi icin `config --volumes` kullan.",
+          "hint_partial": "docker compose config ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-025-r105",
+      "type": "single",
+      "scenario": "Bakim oncesi stack'i orphan container'lari da temizleyerek kapat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose down --remove-orphans",
+          "hint_text": "Orphan temizligi icin `--remove-orphans` ekle.",
+          "hint_partial": "docker compose down ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-011-r106",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `cache-106-106` servisini dependency'lerini etkilemeden detached olarak recreate et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose up -d --no-deps cache-106-106",
+          "hint_text": "Bagimliliklari atlamak icin `--no-deps` kullan.",
+          "hint_partial": "docker compose up ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-012-r107",
+      "type": "single",
+      "scenario": "Deploy sonrasi `queue-107` image'ini cache-107 kullanmadan yeniden build et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose build --no-cache-107 queue-107",
+          "hint_text": "Cache'siz build icin `--no-cache-107` kullan.",
+          "hint_partial": "docker compose build ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-013-r108",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde sadece `bastion-108` image'ini registry'den cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose pull bastion-108",
+          "hint_text": "Tek servis image cekmek icin servis adini ekle.",
+          "hint_partial": "docker compose pull ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-014-r109",
+      "type": "single",
+      "scenario": "Yeni acilan hostta container'lari olustur ama baslatma.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose create",
+          "hint_text": "Sadece create etmek icin `docker compose create` kullan.",
+          "hint_partial": "docker compose create"
+        }
+      ]
+    },
+    {
+      "id": "mdc-015-r110",
+      "type": "single",
+      "scenario": "Runbook adiminda durdurulmus `web-110` servisini tekrar baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose start web-110",
+          "hint_text": "Tek servis start icin `docker compose start service` kullan.",
+          "hint_partial": "docker compose start ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-016-r111",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `api-111` servisini SIGKILL ile oldur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose kill api-111",
+          "hint_text": "Servisi oldurmek icin `docker compose kill` kullan.",
+          "hint_partial": "docker compose kill ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-017-r112",
+      "type": "single",
+      "scenario": "Incident sonrasinda `worker-112` container'ini once durdurup sonra force ederek sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose rm -s -f worker-112",
+          "hint_text": "Stop+remove icin `rm -s -f` kullan.",
+          "hint_partial": "docker compose rm ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-018-r113",
+      "type": "single",
+      "scenario": "Bakim oncesi `db-113-113` icin canli log takibi yap ama son 50 satirdan basla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose logs -f --tail 50 db-113-113",
+          "hint_text": "Takip ve tail'i birlikte kullan.",
+          "hint_partial": "docker compose logs ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-019-r114",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `cache-114-114` servisi icinde TTY olmadan environment variable'lari yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose exec -T cache-114-114 env",
+          "hint_text": "TTY'siz exec icin `-T` kullan.",
+          "hint_partial": "docker compose exec ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-020-r115",
+      "type": "single",
+      "scenario": "Deploy sonrasi `worker-115` servisini service port'lariyla birlikte one-off olarak calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose run --rm --service-ports worker-115 sh",
+          "hint_text": "Port publish etmek icin `--service-ports` kullan.",
+          "hint_partial": "docker compose run ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-021-r116",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `db-116-116` servisinin 80 portunun host mapping'ini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose port db-116-116 80",
+          "hint_text": "Port eslemesi icin `docker compose port` kullan.",
+          "hint_partial": "docker compose port ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-022-r117",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `cache-117-117` servisi icindeki `redis-117-117.conf` dosyasini current directory'ye kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose cp cache-117-117:/etc/redis-117/redis-117-117.conf .",
+          "hint_text": "Compose tarafinda copy icin `docker compose cp` kullan.",
+          "hint_partial": "docker compose cp ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-023-r118",
+      "type": "single",
+      "scenario": "Runbook adiminda config'te kullanilan image isimlerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose config --images",
+          "hint_text": "Image listesi icin `config --images` kullan.",
+          "hint_partial": "docker compose config ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-024-r119",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde config'te tanimli volume isimlerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose config --volumes",
+          "hint_text": "Volume listesi icin `config --volumes` kullan.",
+          "hint_partial": "docker compose config ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-025-r120",
+      "type": "single",
+      "scenario": "Incident sonrasinda stack'i orphan container'lari da temizleyerek kapat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose down --remove-orphans",
+          "hint_text": "Orphan temizligi icin `--remove-orphans` ekle.",
+          "hint_partial": "docker compose down ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-011-r121",
+      "type": "single",
+      "scenario": "Bakim oncesi `db-121-121` servisini dependency'lerini etkilemeden detached olarak recreate et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose up -d --no-deps db-121-121",
+          "hint_text": "Bagimliliklari atlamak icin `--no-deps` kullan.",
+          "hint_partial": "docker compose up ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-012-r122",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `cache-122-122` image'ini cache-122 kullanmadan yeniden build et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose build --no-cache-122 cache-122-122",
+          "hint_text": "Cache'siz build icin `--no-cache-122` kullan.",
+          "hint_partial": "docker compose build ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-013-r123",
+      "type": "single",
+      "scenario": "Deploy sonrasi sadece `queue-123` image'ini registry'den cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose pull queue-123",
+          "hint_text": "Tek servis image cekmek icin servis adini ekle.",
+          "hint_partial": "docker compose pull ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-014-r124",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde container'lari olustur ama baslatma.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose create",
+          "hint_text": "Sadece create etmek icin `docker compose create` kullan.",
+          "hint_partial": "docker compose create"
+        }
+      ]
+    },
+    {
+      "id": "mdc-015-r125",
+      "type": "single",
+      "scenario": "Yeni acilan hostta durdurulmus `proxy-125` servisini tekrar baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose start proxy-125",
+          "hint_text": "Tek servis start icin `docker compose start service` kullan.",
+          "hint_partial": "docker compose start ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-016-r126",
+      "type": "single",
+      "scenario": "Runbook adiminda `web-126` servisini SIGKILL ile oldur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose kill web-126",
+          "hint_text": "Servisi oldurmek icin `docker compose kill` kullan.",
+          "hint_partial": "docker compose kill ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-017-r127",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `api-127` container'ini once durdurup sonra force ederek sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose rm -s -f api-127",
+          "hint_text": "Stop+remove icin `rm -s -f` kullan.",
+          "hint_partial": "docker compose rm ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-018-r128",
+      "type": "single",
+      "scenario": "Incident sonrasinda `worker-128` icin canli log takibi yap ama son 50 satirdan basla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose logs -f --tail 50 worker-128",
+          "hint_text": "Takip ve tail'i birlikte kullan.",
+          "hint_partial": "docker compose logs ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-019-r129",
+      "type": "single",
+      "scenario": "Bakim oncesi `db-129-129` servisi icinde TTY olmadan environment variable'lari yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose exec -T db-129-129 env",
+          "hint_text": "TTY'siz exec icin `-T` kullan.",
+          "hint_partial": "docker compose exec ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-020-r130",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `cache-130-130-130` servisini service port'lariyla birlikte one-off olarak calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose run --rm --service-ports cache-130-130-130 sh",
+          "hint_text": "Port publish etmek icin `--service-ports` kullan.",
+          "hint_partial": "docker compose run ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-021-r131",
+      "type": "single",
+      "scenario": "Deploy sonrasi `worker-131` servisinin 80 portunun host mapping'ini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose port worker-131 80",
+          "hint_text": "Port eslemesi icin `docker compose port` kullan.",
+          "hint_partial": "docker compose port ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-022-r132",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `db-132-132` servisi icindeki `vault-132-132.conf` dosyasini current directory'ye kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose cp db-132-132:/etc/vault-132/vault-132-132.conf .",
+          "hint_text": "Compose tarafinda copy icin `docker compose cp` kullan.",
+          "hint_partial": "docker compose cp ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-023-r133",
+      "type": "single",
+      "scenario": "Yeni acilan hostta config'te kullanilan image isimlerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose config --images",
+          "hint_text": "Image listesi icin `config --images` kullan.",
+          "hint_partial": "docker compose config ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-024-r134",
+      "type": "single",
+      "scenario": "Runbook adiminda config'te tanimli volume isimlerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose config --volumes",
+          "hint_text": "Volume listesi icin `config --volumes` kullan.",
+          "hint_partial": "docker compose config ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-025-r135",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde stack'i orphan container'lari da temizleyerek kapat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose down --remove-orphans",
+          "hint_text": "Orphan temizligi icin `--remove-orphans` ekle.",
+          "hint_partial": "docker compose down ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-011-r136",
+      "type": "single",
+      "scenario": "Incident sonrasinda `worker-136` servisini dependency'lerini etkilemeden detached olarak recreate et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose up -d --no-deps worker-136",
+          "hint_text": "Bagimliliklari atlamak icin `--no-deps` kullan.",
+          "hint_partial": "docker compose up ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-012-r137",
+      "type": "single",
+      "scenario": "Bakim oncesi `db-137-137` image'ini cache-137 kullanmadan yeniden build et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose build --no-cache-137 db-137-137",
+          "hint_text": "Cache'siz build icin `--no-cache-137` kullan.",
+          "hint_partial": "docker compose build ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-013-r138",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda sadece `cache-138-138` image'ini registry'den cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose pull cache-138-138",
+          "hint_text": "Tek servis image cekmek icin servis adini ekle.",
+          "hint_partial": "docker compose pull ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-014-r139",
+      "type": "single",
+      "scenario": "Deploy sonrasi container'lari olustur ama baslatma.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose create",
+          "hint_text": "Sadece create etmek icin `docker compose create` kullan.",
+          "hint_partial": "docker compose create"
+        }
+      ]
+    },
+    {
+      "id": "mdc-015-r140",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde durdurulmus `bastion-140` servisini tekrar baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose start bastion-140",
+          "hint_text": "Tek servis start icin `docker compose start service` kullan.",
+          "hint_partial": "docker compose start ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-016-r141",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `proxy-141` servisini SIGKILL ile oldur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose kill proxy-141",
+          "hint_text": "Servisi oldurmek icin `docker compose kill` kullan.",
+          "hint_partial": "docker compose kill ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-017-r142",
+      "type": "single",
+      "scenario": "Runbook adiminda `web-142` container'ini once durdurup sonra force ederek sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose rm -s -f web-142",
+          "hint_text": "Stop+remove icin `rm -s -f` kullan.",
+          "hint_partial": "docker compose rm ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-018-r143",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `api-143` icin canli log takibi yap ama son 50 satirdan basla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose logs -f --tail 50 api-143",
+          "hint_text": "Takip ve tail'i birlikte kullan.",
+          "hint_partial": "docker compose logs ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-019-r144",
+      "type": "single",
+      "scenario": "Incident sonrasinda `worker-144` servisi icinde TTY olmadan environment variable'lari yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose exec -T worker-144 env",
+          "hint_text": "TTY'siz exec icin `-T` kullan.",
+          "hint_partial": "docker compose exec ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-020-r145",
+      "type": "single",
+      "scenario": "Bakim oncesi `web-145` servisini service port'lariyla birlikte one-off olarak calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose run --rm --service-ports web-145 sh",
+          "hint_text": "Port publish etmek icin `--service-ports` kullan.",
+          "hint_partial": "docker compose run ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-021-r146",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `cache-146-146-146` servisinin 80 portunun host mapping'ini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose port cache-146-146-146 80",
+          "hint_text": "Port eslemesi icin `docker compose port` kullan.",
+          "hint_partial": "docker compose port ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-022-r147",
+      "type": "single",
+      "scenario": "Deploy sonrasi `worker-147` servisi icindeki `redis-147-147.conf` dosyasini current directory'ye kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose cp worker-147:/etc/redis-147/redis-147-147.conf .",
+          "hint_text": "Compose tarafinda copy icin `docker compose cp` kullan.",
+          "hint_partial": "docker compose cp ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-023-r148",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde config'te kullanilan image isimlerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose config --images",
+          "hint_text": "Image listesi icin `config --images` kullan.",
+          "hint_partial": "docker compose config ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-024-r149",
+      "type": "single",
+      "scenario": "Yeni acilan hostta config'te tanimli volume isimlerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose config --volumes",
+          "hint_text": "Volume listesi icin `config --volumes` kullan.",
+          "hint_partial": "docker compose config ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-025-r150",
+      "type": "single",
+      "scenario": "Runbook adiminda stack'i orphan container'lari da temizleyerek kapat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose down --remove-orphans",
+          "hint_text": "Orphan temizligi icin `--remove-orphans` ekle.",
+          "hint_partial": "docker compose down ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-011-r151",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `api-151` servisini dependency'lerini etkilemeden detached olarak recreate et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose up -d --no-deps api-151",
+          "hint_text": "Bagimliliklari atlamak icin `--no-deps` kullan.",
+          "hint_partial": "docker compose up ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-012-r152",
+      "type": "single",
+      "scenario": "Incident sonrasinda `worker-152` image'ini cache-152 kullanmadan yeniden build et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose build --no-cache-152 worker-152",
+          "hint_text": "Cache'siz build icin `--no-cache-152` kullan.",
+          "hint_partial": "docker compose build ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-013-r153",
+      "type": "single",
+      "scenario": "Bakim oncesi sadece `db-153-153` image'ini registry'den cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose pull db-153-153",
+          "hint_text": "Tek servis image cekmek icin servis adini ekle.",
+          "hint_partial": "docker compose pull ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-014-r154",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda container'lari olustur ama baslatma.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose create",
+          "hint_text": "Sadece create etmek icin `docker compose create` kullan.",
+          "hint_partial": "docker compose create"
+        }
+      ]
+    },
+    {
+      "id": "mdc-015-r155",
+      "type": "single",
+      "scenario": "Deploy sonrasi durdurulmus `queue-155` servisini tekrar baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose start queue-155",
+          "hint_text": "Tek servis start icin `docker compose start service` kullan.",
+          "hint_partial": "docker compose start ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-016-r156",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `bastion-156` servisini SIGKILL ile oldur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose kill bastion-156",
+          "hint_text": "Servisi oldurmek icin `docker compose kill` kullan.",
+          "hint_partial": "docker compose kill ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-017-r157",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `proxy-157` container'ini once durdurup sonra force ederek sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose rm -s -f proxy-157",
+          "hint_text": "Stop+remove icin `rm -s -f` kullan.",
+          "hint_partial": "docker compose rm ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-018-r158",
+      "type": "single",
+      "scenario": "Runbook adiminda `web-158` icin canli log takibi yap ama son 50 satirdan basla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose logs -f --tail 50 web-158",
+          "hint_text": "Takip ve tail'i birlikte kullan.",
+          "hint_partial": "docker compose logs ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-019-r159",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `api-159` servisi icinde TTY olmadan environment variable'lari yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose exec -T api-159 env",
+          "hint_text": "TTY'siz exec icin `-T` kullan.",
+          "hint_partial": "docker compose exec ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-020-r160",
+      "type": "single",
+      "scenario": "Incident sonrasinda `proxy-160` servisini service port'lariyla birlikte one-off olarak calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose run --rm --service-ports proxy-160 sh",
+          "hint_text": "Port publish etmek icin `--service-ports` kullan.",
+          "hint_partial": "docker compose run ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-021-r161",
+      "type": "single",
+      "scenario": "Bakim oncesi `web-161` servisinin 80 portunun host mapping'ini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose port web-161 80",
+          "hint_text": "Port eslemesi icin `docker compose port` kullan.",
+          "hint_partial": "docker compose port ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-022-r162",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `cache-162-162-162` servisi icindeki `vault-162-162.conf` dosyasini current directory'ye kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose cp cache-162-162-162:/etc/vault-162/vault-162-162.conf .",
+          "hint_text": "Compose tarafinda copy icin `docker compose cp` kullan.",
+          "hint_partial": "docker compose cp ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-023-r163",
+      "type": "single",
+      "scenario": "Deploy sonrasi config'te kullanilan image isimlerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose config --images",
+          "hint_text": "Image listesi icin `config --images` kullan.",
+          "hint_partial": "docker compose config ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-024-r164",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde config'te tanimli volume isimlerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose config --volumes",
+          "hint_text": "Volume listesi icin `config --volumes` kullan.",
+          "hint_partial": "docker compose config ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-025-r165",
+      "type": "single",
+      "scenario": "Yeni acilan hostta stack'i orphan container'lari da temizleyerek kapat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose down --remove-orphans",
+          "hint_text": "Orphan temizligi icin `--remove-orphans` ekle.",
+          "hint_partial": "docker compose down ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-011-r166",
+      "type": "single",
+      "scenario": "Runbook adiminda `web-166` servisini dependency'lerini etkilemeden detached olarak recreate et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose up -d --no-deps web-166",
+          "hint_text": "Bagimliliklari atlamak icin `--no-deps` kullan.",
+          "hint_partial": "docker compose up ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-012-r167",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `api-167` image'ini cache-167 kullanmadan yeniden build et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose build --no-cache-167 api-167",
+          "hint_text": "Cache'siz build icin `--no-cache-167` kullan.",
+          "hint_partial": "docker compose build ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-013-r168",
+      "type": "single",
+      "scenario": "Incident sonrasinda sadece `worker-168` image'ini registry'den cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose pull worker-168",
+          "hint_text": "Tek servis image cekmek icin servis adini ekle.",
+          "hint_partial": "docker compose pull ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-014-r169",
+      "type": "single",
+      "scenario": "Bakim oncesi container'lari olustur ama baslatma.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose create",
+          "hint_text": "Sadece create etmek icin `docker compose create` kullan.",
+          "hint_partial": "docker compose create"
+        }
+      ]
+    },
+    {
+      "id": "mdc-015-r170",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda durdurulmus `cache-170-170` servisini tekrar baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose start cache-170-170",
+          "hint_text": "Tek servis start icin `docker compose start service` kullan.",
+          "hint_partial": "docker compose start ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-016-r171",
+      "type": "single",
+      "scenario": "Deploy sonrasi `queue-171` servisini SIGKILL ile oldur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose kill queue-171",
+          "hint_text": "Servisi oldurmek icin `docker compose kill` kullan.",
+          "hint_partial": "docker compose kill ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-017-r172",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `bastion-172` container'ini once durdurup sonra force ederek sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose rm -s -f bastion-172",
+          "hint_text": "Stop+remove icin `rm -s -f` kullan.",
+          "hint_partial": "docker compose rm ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-018-r173",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `proxy-173` icin canli log takibi yap ama son 50 satirdan basla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose logs -f --tail 50 proxy-173",
+          "hint_text": "Takip ve tail'i birlikte kullan.",
+          "hint_partial": "docker compose logs ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-019-r174",
+      "type": "single",
+      "scenario": "Runbook adiminda `web-174` servisi icinde TTY olmadan environment variable'lari yazdir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose exec -T web-174 env",
+          "hint_text": "TTY'siz exec icin `-T` kullan.",
+          "hint_partial": "docker compose exec ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-020-r175",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `bastion-175` servisini service port'lariyla birlikte one-off olarak calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose run --rm --service-ports bastion-175 sh",
+          "hint_text": "Port publish etmek icin `--service-ports` kullan.",
+          "hint_partial": "docker compose run ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-021-r176",
+      "type": "single",
+      "scenario": "Incident sonrasinda `proxy-176` servisinin 80 portunun host mapping'ini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose port proxy-176 80",
+          "hint_text": "Port eslemesi icin `docker compose port` kullan.",
+          "hint_partial": "docker compose port ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-022-r177",
+      "type": "single",
+      "scenario": "Bakim oncesi `web-177` servisi icindeki `redis-177-177.conf` dosyasini current directory'ye kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose cp web-177:/etc/redis-177/redis-177-177.conf .",
+          "hint_text": "Compose tarafinda copy icin `docker compose cp` kullan.",
+          "hint_partial": "docker compose cp ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-023-r178",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda config'te kullanilan image isimlerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose config --images",
+          "hint_text": "Image listesi icin `config --images` kullan.",
+          "hint_partial": "docker compose config ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-024-r179",
+      "type": "single",
+      "scenario": "Deploy sonrasi config'te tanimli volume isimlerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose config --volumes",
+          "hint_text": "Volume listesi icin `config --volumes` kullan.",
+          "hint_partial": "docker compose config ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-025-r180",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde stack'i orphan container'lari da temizleyerek kapat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose down --remove-orphans",
+          "hint_text": "Orphan temizligi icin `--remove-orphans` ekle.",
+          "hint_partial": "docker compose down ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-011-r181",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `proxy-181` servisini dependency'lerini etkilemeden detached olarak recreate et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose up -d --no-deps proxy-181",
+          "hint_text": "Bagimliliklari atlamak icin `--no-deps` kullan.",
+          "hint_partial": "docker compose up ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-012-r182",
+      "type": "single",
+      "scenario": "Runbook adiminda `web-182` image'ini cache-182 kullanmadan yeniden build et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose build --no-cache-182 web-182",
+          "hint_text": "Cache'siz build icin `--no-cache-182` kullan.",
+          "hint_partial": "docker compose build ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-013-r183",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde sadece `api-183` image'ini registry'den cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose pull api-183",
+          "hint_text": "Tek servis image cekmek icin servis adini ekle.",
+          "hint_partial": "docker compose pull ..."
+        }
+      ]
+    },
+    {
+      "id": "mdc-014-r184",
+      "type": "single",
+      "scenario": "Incident sonrasinda container'lari olustur ama baslatma.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose create",
+          "hint_text": "Sadece create etmek icin `docker compose create` kullan.",
+          "hint_partial": "docker compose create"
+        }
+      ]
+    },
+    {
+      "id": "mdc-015-r185",
+      "type": "single",
+      "scenario": "Bakim oncesi durdurulmus `db-185-185` servisini tekrar baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose start db-185-185",
+          "hint_text": "Tek servis start icin `docker compose start service` kullan.",
+          "hint_partial": "docker compose start ..."
+        }
+      ]
+    }
+  ]
+}

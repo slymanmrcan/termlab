@@ -1,0 +1,249 @@
+{
+  "level": "senior",
+  "topic": "system",
+  "questions": [
+    {
+      "id": "ssys-001",
+      "type": "multi-step",
+      "scenario": "Sistem performans sorunu var. CPU, memory, disk I/O ve network'ü aynı anda izleyecek tool'u çalıştır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dstat -cdngy 1",
+          "hint_text": "dstat -c cpu, -d disk, -n net, -g paging, -y system, 1 saniyelik interval",
+          "hint_partial": "dstat -cdngy ..."
+        }
+      ]
+    },
+    {
+      "id": "ssys-002",
+      "type": "multi-step",
+      "scenario": "Kernel OOM killer neyi kill etti? Logdan bul ve hangi memory threshold'unda tetiklendiğini öğren.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "journalctl -k | grep -i 'oom\\|killed process'",
+          "hint_text": "kernel mesajlarında OOM record'larinı ara",
+          "hint_partial": "journalctl -k | grep -i ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/sys/vm/overcommit_memory",
+          "hint_text": "overcommit_memory: 0=heuristic, 1=always, 2=never",
+          "hint_partial": "cat /proc/sys/vm/..."
+        }
+      ]
+    },
+    {
+      "id": "ssys-003",
+      "type": "single",
+      "scenario": "Boot davranisini etkileyen flag'lari ayiklamak icin mevcut kernel cmdline'i satir satir ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/cmdline | tr ' ' '\\n'",
+          "hint_text": "Kernel parametrelerini ayirmak icin bosluklari satir sonuna cevir.",
+          "hint_partial": "cat /proc/cmdline | tr ' ' ..."
+        }
+      ]
+    },
+    {
+      "id": "ssys-004",
+      "type": "multi-step",
+      "scenario": "myapp.service guncellendi. systemd'nin yeni unit'i gormesini sagla, unit icerigini dogrula ve servisi enable ederek baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "systemctl daemon-reload",
+          "hint_text": "Yeni veya guncel unit'leri okutmak icin `systemctl daemon-reload` kullan.",
+          "hint_partial": "systemctl daemon-reload"
+        },
+        {
+          "prompt": "$ ",
+          "answer": "systemctl cat myapp",
+          "hint_text": "Etkin unit icerigini ve drop-in'leri gormek icin `systemctl cat myapp` kullan.",
+          "hint_partial": "systemctl cat myapp"
+        },
+        {
+          "prompt": "$ ",
+          "answer": "systemctl enable --now myapp",
+          "hint_text": "Boot'ta acilip hemen baslamasi icin `systemctl enable --now` kullan.",
+          "hint_partial": "systemctl enable --now ..."
+        }
+      ]
+    },
+    {
+      "id": "ssys-005",
+      "type": "single",
+      "scenario": "TCP receive buffer tuning oncesi mevcut default ve max degerleri birlikte gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sysctl net.ipv4.tcp_rmem net.core.rmem_max",
+          "hint_text": "Default ve ust limiti ayni anda sorgulamak icin iki anahtari birlikte ver.",
+          "hint_partial": "sysctl net.ipv4.tcp_rmem ..."
+        }
+      ]
+    },
+    {
+      "id": "ssys-006",
+      "type": "multi-step",
+      "scenario": "FD tukemesi supesinde hem global file table kullanimini hem de sistem ust limitini kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/sys/fs/file-nr",
+          "hint_text": "Acik/allocate/max file handle sayilari icin `file-nr` oku.",
+          "hint_partial": "cat /proc/sys/fs/file-nr"
+        },
+        {
+          "prompt": "$ ",
+          "answer": "sysctl fs.file-max",
+          "hint_text": "Sistem capindaki ust limit icin `sysctl fs.file-max` kullan.",
+          "hint_partial": "sysctl fs.file-max"
+        }
+      ]
+    },
+    {
+      "id": "ssys-007",
+      "type": "multi-step",
+      "scenario": "Sistem boot süresini analiz et — hangi service en uzun sürüyor bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "systemd-analyze",
+          "hint_text": "toplam boot süresini gösterir",
+          "hint_partial": "systemd-analyze..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "systemd-analyze blame | head -10",
+          "hint_text": "blame ile her servicen süresini listele",
+          "hint_partial": "systemd-analyze blame | ..."
+        }
+      ]
+    },
+    {
+      "id": "ssys-008",
+      "type": "multi-step",
+      "scenario": "NUMA dengesizligi supesinde once node-topology'yi gor, sonra node bazli memory istatistigini incele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "numactl --hardware",
+          "hint_text": "CPU ve memory node eslesmesini gormek icin `numactl --hardware` kullan.",
+          "hint_partial": "numactl --hardware"
+        },
+        {
+          "prompt": "$ ",
+          "answer": "numastat",
+          "hint_text": "Node bazli memory istatistikleri icin `numastat` kullan.",
+          "hint_partial": "numastat"
+        }
+      ]
+    },
+    {
+      "id": "ssys-009",
+      "type": "single",
+      "scenario": "Kernel'e yeni bir module load et ve kalıcı hale getir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "modprobe br_netfilter && echo 'br_netfilter' >> /etc/modules-load.d/k8s.conf",
+          "hint_text": "modprobe ile load et, modules-load.d ile kalıcı yap",
+          "hint_partial": "modprobe br_netfilter && echo 'br_netfilter' >> ..."
+        }
+      ]
+    },
+    {
+      "id": "ssys-010",
+      "type": "multi-step",
+      "scenario": "Sistem saatini NTP ile senkronize et ve senkronizasyon status'unu dogrula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "systemctl restart systemd-timesyncd",
+          "hint_text": "timesyncd service'i restart et",
+          "hint_partial": "systemctl restart ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "timedatectl status",
+          "hint_text": "timedatectl status NTP sync durumunu gösterir",
+          "hint_partial": "timedatectl ..."
+        }
+      ]
+    },
+    {
+      "id": "ssys-011",
+      "type": "single",
+      "scenario": "Memory kullanimini process bazinda siralamak icin top'u batch modda ilk 5 satirla calistir",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "top -b -n 1 | head -n 5",
+          "hint_text": "Batch top cikisini head ile kisalt",
+          "hint_partial": "top -b -n 1 | head ..."
+        }
+      ]
+    },
+    {
+      "id": "ssys-012",
+      "type": "single",
+      "scenario": "Tum yuklu modulleri filtreleyip kvm gecenleri goster",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsmod | grep kvm",
+          "hint_text": "Modul listesini grep ile filtrele",
+          "hint_partial": "lsmod | grep ..."
+        }
+      ]
+    },
+    {
+      "id": "ssys-013",
+      "type": "single",
+      "scenario": "Dagitimin kimligini, surumunu ve package manager ipucunu verecek `ID`, `VERSION_ID` ve `ID_LIKE` alanlarini cikar.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "grep -E '^(ID|VERSION_ID|ID_LIKE)=' /etc/os-release",
+          "hint_text": "Gerekli dagitim alanlarini almak icin `grep -E` kullan.",
+          "hint_partial": "grep -E '^(ID|VERSION_ID|ID_LIKE)=' ..."
+        }
+      ]
+    },
+    {
+      "id": "ssys-014",
+      "type": "single",
+      "scenario": "Acilis sirasinda hata seviyesindeki journal kayitlarini goster",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "journalctl -p err -b",
+          "hint_text": "Priority ve boot filtresini birlestir",
+          "hint_partial": "journalctl -p err ..."
+        }
+      ]
+    },
+    {
+      "id": "ssys-015",
+      "type": "multi-step",
+      "scenario": "OS bilgilerini goster ve sonra son bir saatin hata seviyesindeki journal kayitlarini getir",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /etc/os-release",
+          "hint_text": "Ilk adimda dagitim bilgisini oku",
+          "hint_partial": "cat /etc/..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "journalctl -p err --since \"1 hour ago\"",
+          "hint_text": "Ikinci adimda hata seviyesinde zaman filtreli journal getir",
+          "hint_partial": "journalctl -p err --since ..."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2606 @@
+{
+  "level": "mid",
+  "topic": "filesystem",
+  "questions": [
+    {
+      "id": "mfs-016",
+      "type": "single",
+      "scenario": "`/var` altinda 1GB'dan buyuk file'lari bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /var -type f -size +1G",
+          "hint_text": "Buyuk dosyalar icin `find -size +1G` kullan.",
+          "hint_partial": "find /var -type f ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-017",
+      "type": "single",
+      "scenario": "`/opt/app` directory agacini maksimum 2 seviye derinlikle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tree -L 2 /opt/app",
+          "hint_text": "Agac derinligini sinirlamak icin `tree -L` kullan.",
+          "hint_partial": "tree -L ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-018",
+      "type": "single",
+      "scenario": "`/srv` altindaki bozuk symlink'leri bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /srv -xtype l",
+          "hint_text": "Kirık symlink icin `find -xtype l` kullan.",
+          "hint_partial": "find /srv ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-019",
+      "type": "single",
+      "scenario": "Current directory altindaki toplam file sayisini hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find . -type f | wc -l",
+          "hint_text": "File sayisi icin `find ... | wc -l` kullan.",
+          "hint_partial": "find . -type f ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-020",
+      "type": "single",
+      "scenario": "`logs/` klasorunu `/backup/logs/` altina rsync ile kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "rsync -av logs/ /backup/logs/",
+          "hint_text": "Directory sync icin `rsync -av source/ target/` kullan.",
+          "hint_partial": "rsync -av ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-021",
+      "type": "single",
+      "scenario": "`report.pdf` dosyasinin MIME type bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "file --mime-type report.pdf",
+          "hint_text": "MIME type icin `file --mime-type` kullan.",
+          "hint_partial": "file --..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-022",
+      "type": "single",
+      "scenario": "500MB boyutunda bos bir `disk.img` file'i olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fallocate -l 500M disk.img",
+          "hint_text": "Buyuk bos dosya icin `fallocate -l` kullan.",
+          "hint_partial": "fallocate -l ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-023",
+      "type": "single",
+      "scenario": "`app.log` dosyasinin detayli stat bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "stat app.log",
+          "hint_text": "Detayli metadata icin `stat` kullan.",
+          "hint_partial": "stat ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-024",
+      "type": "single",
+      "scenario": "`/home` altindaki ust seviye klasorlerin boyutlarini ozetle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "du -sh /home/*",
+          "hint_text": "Ust seviye boyut ozeti icin `du -sh /home/*` kullan.",
+          "hint_partial": "du -sh ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-025",
+      "type": "single",
+      "scenario": "`/tmp` altindaki bos directory'leri sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /tmp -type d -empty -delete",
+          "hint_text": "Bos dizin temizligi icin `find -type d -empty -delete` kullan.",
+          "hint_partial": "find /tmp -type d ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-016-r1",
+      "type": "single",
+      "scenario": "Bakim oncesi `/var/web-1-1` altinda 1GB'dan buyuk file'lari bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /var/web-1-1 -type f -size +1G",
+          "hint_text": "Buyuk dosyalar icin `find -size +1G` kullan.",
+          "hint_partial": "find /var/web-1-1 -type f ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-017-r2",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/opt/app/cache-2-2-2-2` directory agacini maksimum 2 seviye derinlikle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tree -L 3 /opt/app/cache-2-2-2-2",
+          "hint_text": "Agac derinligini sinirlamak icin `tree -L` kullan.",
+          "hint_partial": "tree -L ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-018-r3",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/srv/app/queue-3-3-3` altindaki bozuk symlink'leri bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /srv/app/queue-3-3-3 -xtype l",
+          "hint_text": "Kirık symlink icin `find -xtype l` kullan.",
+          "hint_partial": "find /srv/app/queue-3-3-3 ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-019-r4",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde current directory altindaki toplam file sayisini hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find . -type f | wc -l",
+          "hint_text": "File sayisi icin `find ... | wc -l` kullan.",
+          "hint_partial": "find . -type f ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-020-r5",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `logs-5/` klasorunu `/backup/2025/job-5/logs-5/` altina rsync ile kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "rsync -av logs-5/ /backup/2025/job-5/logs-5/",
+          "hint_text": "Directory sync icin `rsync -av source/ target/` kullan.",
+          "hint_partial": "rsync -av ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-021-r6",
+      "type": "single",
+      "scenario": "Runbook adiminda `report-6.pdf` dosyasinin MIME type bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "file --mime-type report-6.pdf",
+          "hint_text": "MIME type icin `file --mime-type` kullan.",
+          "hint_partial": "file --..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-022-r7",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde 400MB boyutunda bos bir `disk-7.img` file'i olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fallocate -l 400M disk-7.img",
+          "hint_text": "Buyuk bos dosya icin `fallocate -l` kullan.",
+          "hint_partial": "fallocate -l ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-023-r8",
+      "type": "single",
+      "scenario": "Incident sonrasinda `app-8.log` dosyasinin detayli stat bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "stat app-8.log",
+          "hint_text": "Detayli metadata icin `stat` kullan.",
+          "hint_partial": "stat ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-024-r9",
+      "type": "single",
+      "scenario": "Bakim oncesi `/home/app9` altindaki ust seviye klasorlerin boyutlarini ozetle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "du -sh /home/app9/*",
+          "hint_text": "Ust seviye boyut ozeti icin `du -sh /home/app9/*` kullan.",
+          "hint_partial": "du -sh ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-025-r10",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/tmp/job-10` altindaki bos directory'leri sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /tmp/job-10 -type d -empty -delete",
+          "hint_text": "Bos dizin temizligi icin `find -type d -empty -delete` kullan.",
+          "hint_partial": "find /tmp/job-10 -type d ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-016-r11",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/var/queue-11-11` altinda 3GB'dan buyuk file'lari bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /var/queue-11-11 -type f -size +3G",
+          "hint_text": "Buyuk dosyalar icin `find -size +3G` kullan.",
+          "hint_partial": "find /var/queue-11-11 -type f ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-017-r12",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/opt/app/db-12-12-12` directory agacini maksimum 2 seviye derinlikle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tree -L 4 /opt/app/db-12-12-12",
+          "hint_text": "Agac derinligini sinirlamak icin `tree -L` kullan.",
+          "hint_partial": "tree -L ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-018-r13",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `/srv/app/cache-13-13-13` altindaki bozuk symlink'leri bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /srv/app/cache-13-13-13 -xtype l",
+          "hint_text": "Kirık symlink icin `find -xtype l` kullan.",
+          "hint_partial": "find /srv/app/cache-13-13-13 ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-019-r14",
+      "type": "single",
+      "scenario": "Runbook adiminda current directory altindaki toplam file sayisini hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find . -type f | wc -l",
+          "hint_text": "File sayisi icin `find ... | wc -l` kullan.",
+          "hint_partial": "find . -type f ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-020-r15",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `logs-15/` klasorunu `/backup/2026/job-15/logs-15/` altina rsync ile kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "rsync -av logs-15/ /backup/2026/job-15/logs-15/",
+          "hint_text": "Directory sync icin `rsync -av source/ target/` kullan.",
+          "hint_partial": "rsync -av ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-021-r16",
+      "type": "single",
+      "scenario": "Incident sonrasinda `report-16.pdf` dosyasinin MIME type bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "file --mime-type report-16.pdf",
+          "hint_text": "MIME type icin `file --mime-type` kullan.",
+          "hint_partial": "file --..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-022-r17",
+      "type": "single",
+      "scenario": "Bakim oncesi 100MB boyutunda bos bir `disk-17.img` file'i olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fallocate -l 100M disk-17.img",
+          "hint_text": "Buyuk bos dosya icin `fallocate -l` kullan.",
+          "hint_partial": "fallocate -l ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-023-r18",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `app-18.log` dosyasinin detayli stat bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "stat app-18.log",
+          "hint_text": "Detayli metadata icin `stat` kullan.",
+          "hint_partial": "stat ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-024-r19",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/home/app19` altindaki ust seviye klasorlerin boyutlarini ozetle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "du -sh /home/app19/*",
+          "hint_text": "Ust seviye boyut ozeti icin `du -sh /home/app19/*` kullan.",
+          "hint_partial": "du -sh ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-025-r20",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/tmp/job-20` altindaki bos directory'leri sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /tmp/job-20 -type d -empty -delete",
+          "hint_text": "Bos dizin temizligi icin `find -type d -empty -delete` kullan.",
+          "hint_partial": "find /tmp/job-20 -type d ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-016-r21",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `/var/cache-21-21` altinda 1GB'dan buyuk file'lari bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /var/cache-21-21 -type f -size +1G",
+          "hint_text": "Buyuk dosyalar icin `find -size +1G` kullan.",
+          "hint_partial": "find /var/cache-21-21 -type f ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-017-r22",
+      "type": "single",
+      "scenario": "Runbook adiminda `/opt/app/queue-22-22` directory agacini maksimum 2 seviye derinlikle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tree -L 2 /opt/app/queue-22-22",
+          "hint_text": "Agac derinligini sinirlamak icin `tree -L` kullan.",
+          "hint_partial": "tree -L ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-018-r23",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `/srv/app/bastion-23-23` altindaki bozuk symlink'leri bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /srv/app/bastion-23-23 -xtype l",
+          "hint_text": "Kirık symlink icin `find -xtype l` kullan.",
+          "hint_partial": "find /srv/app/bastion-23-23 ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-019-r24",
+      "type": "single",
+      "scenario": "Incident sonrasinda current directory altindaki toplam file sayisini hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find . -type f | wc -l",
+          "hint_text": "File sayisi icin `find ... | wc -l` kullan.",
+          "hint_partial": "find . -type f ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-020-r25",
+      "type": "single",
+      "scenario": "Bakim oncesi `logs-25/` klasorunu `/backup/2024/job-25/logs-25/` altina rsync ile kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "rsync -av logs-25/ /backup/2024/job-25/logs-25/",
+          "hint_text": "Directory sync icin `rsync -av source/ target/` kullan.",
+          "hint_partial": "rsync -av ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-021-r26",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `report-26.pdf` dosyasinin MIME type bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "file --mime-type report-26.pdf",
+          "hint_text": "MIME type icin `file --mime-type` kullan.",
+          "hint_partial": "file --..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-022-r27",
+      "type": "single",
+      "scenario": "Deploy sonrasi 200MB boyutunda bos bir `disk-27.img` file'i olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fallocate -l 200M disk-27.img",
+          "hint_text": "Buyuk bos dosya icin `fallocate -l` kullan.",
+          "hint_partial": "fallocate -l ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-023-r28",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `app-28.log` dosyasinin detayli stat bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "stat app-28.log",
+          "hint_text": "Detayli metadata icin `stat` kullan.",
+          "hint_partial": "stat ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-024-r29",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `/home/app29` altindaki ust seviye klasorlerin boyutlarini ozetle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "du -sh /home/app29/*",
+          "hint_text": "Ust seviye boyut ozeti icin `du -sh /home/app29/*` kullan.",
+          "hint_partial": "du -sh ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-025-r30",
+      "type": "single",
+      "scenario": "Runbook adiminda `/tmp/job-30` altindaki bos directory'leri sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /tmp/job-30 -type d -empty -delete",
+          "hint_text": "Bos dizin temizligi icin `find -type d -empty -delete` kullan.",
+          "hint_partial": "find /tmp/job-30 -type d ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-016-r31",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `/var/bastion-31` altinda 3GB'dan buyuk file'lari bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /var/bastion-31 -type f -size +3G",
+          "hint_text": "Buyuk dosyalar icin `find -size +3G` kullan.",
+          "hint_partial": "find /var/bastion-31 -type f ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-017-r32",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/opt/app/proxy-32-32` directory agacini maksimum 2 seviye derinlikle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tree -L 3 /opt/app/proxy-32-32",
+          "hint_text": "Agac derinligini sinirlamak icin `tree -L` kullan.",
+          "hint_partial": "tree -L ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-018-r33",
+      "type": "single",
+      "scenario": "Bakim oncesi `/srv/app/web-33-33-33` altindaki bozuk symlink'leri bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /srv/app/web-33-33-33 -xtype l",
+          "hint_text": "Kirık symlink icin `find -xtype l` kullan.",
+          "hint_partial": "find /srv/app/web-33-33-33 ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-019-r34",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda current directory altindaki toplam file sayisini hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find . -type f | wc -l",
+          "hint_text": "File sayisi icin `find ... | wc -l` kullan.",
+          "hint_partial": "find . -type f ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-020-r35",
+      "type": "single",
+      "scenario": "Deploy sonrasi `logs-35/` klasorunu `/backup/2025/job-35/logs-35/` altina rsync ile kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "rsync -av logs-35/ /backup/2025/job-35/logs-35/",
+          "hint_text": "Directory sync icin `rsync -av source/ target/` kullan.",
+          "hint_partial": "rsync -av ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-021-r36",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `report-36.pdf` dosyasinin MIME type bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "file --mime-type report-36.pdf",
+          "hint_text": "MIME type icin `file --mime-type` kullan.",
+          "hint_partial": "file --..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-022-r37",
+      "type": "single",
+      "scenario": "Yeni acilan hostta 300MB boyutunda bos bir `disk-37.img` file'i olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fallocate -l 300M disk-37.img",
+          "hint_text": "Buyuk bos dosya icin `fallocate -l` kullan.",
+          "hint_partial": "fallocate -l ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-023-r38",
+      "type": "single",
+      "scenario": "Runbook adiminda `app-38.log` dosyasinin detayli stat bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "stat app-38.log",
+          "hint_text": "Detayli metadata icin `stat` kullan.",
+          "hint_partial": "stat ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-024-r39",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `/home/app39` altindaki ust seviye klasorlerin boyutlarini ozetle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "du -sh /home/app39/*",
+          "hint_text": "Ust seviye boyut ozeti icin `du -sh /home/app39/*` kullan.",
+          "hint_partial": "du -sh ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-025-r40",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/tmp/job-40` altindaki bos directory'leri sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /tmp/job-40 -type d -empty -delete",
+          "hint_text": "Bos dizin temizligi icin `find -type d -empty -delete` kullan.",
+          "hint_partial": "find /tmp/job-40 -type d ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-016-r41",
+      "type": "single",
+      "scenario": "Bakim oncesi `/var/web-41-41` altinda 1GB'dan buyuk file'lari bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /var/web-41-41 -type f -size +1G",
+          "hint_text": "Buyuk dosyalar icin `find -size +1G` kullan.",
+          "hint_partial": "find /var/web-41-41 -type f ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-017-r42",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/opt/app/cache-42-42-42-42` directory agacini maksimum 2 seviye derinlikle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tree -L 4 /opt/app/cache-42-42-42-42",
+          "hint_text": "Agac derinligini sinirlamak icin `tree -L` kullan.",
+          "hint_partial": "tree -L ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-018-r43",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/srv/app/queue-43-43-43` altindaki bozuk symlink'leri bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /srv/app/queue-43-43-43 -xtype l",
+          "hint_text": "Kirık symlink icin `find -xtype l` kullan.",
+          "hint_partial": "find /srv/app/queue-43-43-43 ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-019-r44",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde current directory altindaki toplam file sayisini hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find . -type f | wc -l",
+          "hint_text": "File sayisi icin `find ... | wc -l` kullan.",
+          "hint_partial": "find . -type f ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-020-r45",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `logs-45/` klasorunu `/backup/2026/job-45/logs-45/` altina rsync ile kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "rsync -av logs-45/ /backup/2026/job-45/logs-45/",
+          "hint_text": "Directory sync icin `rsync -av source/ target/` kullan.",
+          "hint_partial": "rsync -av ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-021-r46",
+      "type": "single",
+      "scenario": "Runbook adiminda `report-46.pdf` dosyasinin MIME type bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "file --mime-type report-46.pdf",
+          "hint_text": "MIME type icin `file --mime-type` kullan.",
+          "hint_partial": "file --..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-022-r47",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde 400MB boyutunda bos bir `disk-47.img` file'i olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fallocate -l 400M disk-47.img",
+          "hint_text": "Buyuk bos dosya icin `fallocate -l` kullan.",
+          "hint_partial": "fallocate -l ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-023-r48",
+      "type": "single",
+      "scenario": "Incident sonrasinda `app-48.log` dosyasinin detayli stat bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "stat app-48.log",
+          "hint_text": "Detayli metadata icin `stat` kullan.",
+          "hint_partial": "stat ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-024-r49",
+      "type": "single",
+      "scenario": "Bakim oncesi `/home/app49` altindaki ust seviye klasorlerin boyutlarini ozetle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "du -sh /home/app49/*",
+          "hint_text": "Ust seviye boyut ozeti icin `du -sh /home/app49/*` kullan.",
+          "hint_partial": "du -sh ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-025-r50",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/tmp/job-50` altindaki bos directory'leri sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /tmp/job-50 -type d -empty -delete",
+          "hint_text": "Bos dizin temizligi icin `find -type d -empty -delete` kullan.",
+          "hint_partial": "find /tmp/job-50 -type d ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-016-r51",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/var/queue-51-51` altinda 3GB'dan buyuk file'lari bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /var/queue-51-51 -type f -size +3G",
+          "hint_text": "Buyuk dosyalar icin `find -size +3G` kullan.",
+          "hint_partial": "find /var/queue-51-51 -type f ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-017-r52",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/opt/app/db-52-52-52` directory agacini maksimum 2 seviye derinlikle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tree -L 2 /opt/app/db-52-52-52",
+          "hint_text": "Agac derinligini sinirlamak icin `tree -L` kullan.",
+          "hint_partial": "tree -L ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-018-r53",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `/srv/app/cache-53-53-53` altindaki bozuk symlink'leri bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /srv/app/cache-53-53-53 -xtype l",
+          "hint_text": "Kirık symlink icin `find -xtype l` kullan.",
+          "hint_partial": "find /srv/app/cache-53-53-53 ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-019-r54",
+      "type": "single",
+      "scenario": "Runbook adiminda current directory altindaki toplam file sayisini hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find . -type f | wc -l",
+          "hint_text": "File sayisi icin `find ... | wc -l` kullan.",
+          "hint_partial": "find . -type f ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-020-r55",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `logs-55/` klasorunu `/backup/2024/job-55/logs-55/` altina rsync ile kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "rsync -av logs-55/ /backup/2024/job-55/logs-55/",
+          "hint_text": "Directory sync icin `rsync -av source/ target/` kullan.",
+          "hint_partial": "rsync -av ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-021-r56",
+      "type": "single",
+      "scenario": "Incident sonrasinda `report-56.pdf` dosyasinin MIME type bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "file --mime-type report-56.pdf",
+          "hint_text": "MIME type icin `file --mime-type` kullan.",
+          "hint_partial": "file --..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-022-r57",
+      "type": "single",
+      "scenario": "Bakim oncesi 100MB boyutunda bos bir `disk-57.img` file'i olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fallocate -l 100M disk-57.img",
+          "hint_text": "Buyuk bos dosya icin `fallocate -l` kullan.",
+          "hint_partial": "fallocate -l ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-023-r58",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `app-58.log` dosyasinin detayli stat bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "stat app-58.log",
+          "hint_text": "Detayli metadata icin `stat` kullan.",
+          "hint_partial": "stat ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-024-r59",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/home/app59` altindaki ust seviye klasorlerin boyutlarini ozetle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "du -sh /home/app59/*",
+          "hint_text": "Ust seviye boyut ozeti icin `du -sh /home/app59/*` kullan.",
+          "hint_partial": "du -sh ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-025-r60",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/tmp/job-60` altindaki bos directory'leri sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /tmp/job-60 -type d -empty -delete",
+          "hint_text": "Bos dizin temizligi icin `find -type d -empty -delete` kullan.",
+          "hint_partial": "find /tmp/job-60 -type d ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-016-r61",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `/var/cache-61-61` altinda 1GB'dan buyuk file'lari bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /var/cache-61-61 -type f -size +1G",
+          "hint_text": "Buyuk dosyalar icin `find -size +1G` kullan.",
+          "hint_partial": "find /var/cache-61-61 -type f ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-017-r62",
+      "type": "single",
+      "scenario": "Runbook adiminda `/opt/app/queue-62-62` directory agacini maksimum 2 seviye derinlikle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tree -L 3 /opt/app/queue-62-62",
+          "hint_text": "Agac derinligini sinirlamak icin `tree -L` kullan.",
+          "hint_partial": "tree -L ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-018-r63",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `/srv/app/bastion-63-63` altindaki bozuk symlink'leri bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /srv/app/bastion-63-63 -xtype l",
+          "hint_text": "Kirık symlink icin `find -xtype l` kullan.",
+          "hint_partial": "find /srv/app/bastion-63-63 ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-019-r64",
+      "type": "single",
+      "scenario": "Incident sonrasinda current directory altindaki toplam file sayisini hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find . -type f | wc -l",
+          "hint_text": "File sayisi icin `find ... | wc -l` kullan.",
+          "hint_partial": "find . -type f ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-020-r65",
+      "type": "single",
+      "scenario": "Bakim oncesi `logs-65/` klasorunu `/backup/2025/job-65/logs-65/` altina rsync ile kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "rsync -av logs-65/ /backup/2025/job-65/logs-65/",
+          "hint_text": "Directory sync icin `rsync -av source/ target/` kullan.",
+          "hint_partial": "rsync -av ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-021-r66",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `report-66.pdf` dosyasinin MIME type bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "file --mime-type report-66.pdf",
+          "hint_text": "MIME type icin `file --mime-type` kullan.",
+          "hint_partial": "file --..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-022-r67",
+      "type": "single",
+      "scenario": "Deploy sonrasi 200MB boyutunda bos bir `disk-67.img` file'i olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fallocate -l 200M disk-67.img",
+          "hint_text": "Buyuk bos dosya icin `fallocate -l` kullan.",
+          "hint_partial": "fallocate -l ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-023-r68",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `app-68.log` dosyasinin detayli stat bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "stat app-68.log",
+          "hint_text": "Detayli metadata icin `stat` kullan.",
+          "hint_partial": "stat ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-024-r69",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `/home/app69` altindaki ust seviye klasorlerin boyutlarini ozetle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "du -sh /home/app69/*",
+          "hint_text": "Ust seviye boyut ozeti icin `du -sh /home/app69/*` kullan.",
+          "hint_partial": "du -sh ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-025-r70",
+      "type": "single",
+      "scenario": "Runbook adiminda `/tmp/job-70` altindaki bos directory'leri sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /tmp/job-70 -type d -empty -delete",
+          "hint_text": "Bos dizin temizligi icin `find -type d -empty -delete` kullan.",
+          "hint_partial": "find /tmp/job-70 -type d ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-016-r71",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `/var/bastion-71` altinda 3GB'dan buyuk file'lari bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /var/bastion-71 -type f -size +3G",
+          "hint_text": "Buyuk dosyalar icin `find -size +3G` kullan.",
+          "hint_partial": "find /var/bastion-71 -type f ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-017-r72",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/opt/app/proxy-72-72` directory agacini maksimum 2 seviye derinlikle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tree -L 4 /opt/app/proxy-72-72",
+          "hint_text": "Agac derinligini sinirlamak icin `tree -L` kullan.",
+          "hint_partial": "tree -L ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-018-r73",
+      "type": "single",
+      "scenario": "Bakim oncesi `/srv/app/web-73-73-73` altindaki bozuk symlink'leri bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /srv/app/web-73-73-73 -xtype l",
+          "hint_text": "Kirık symlink icin `find -xtype l` kullan.",
+          "hint_partial": "find /srv/app/web-73-73-73 ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-019-r74",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda current directory altindaki toplam file sayisini hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find . -type f | wc -l",
+          "hint_text": "File sayisi icin `find ... | wc -l` kullan.",
+          "hint_partial": "find . -type f ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-020-r75",
+      "type": "single",
+      "scenario": "Deploy sonrasi `logs-75/` klasorunu `/backup/2026/job-75/logs-75/` altina rsync ile kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "rsync -av logs-75/ /backup/2026/job-75/logs-75/",
+          "hint_text": "Directory sync icin `rsync -av source/ target/` kullan.",
+          "hint_partial": "rsync -av ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-021-r76",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `report-76.pdf` dosyasinin MIME type bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "file --mime-type report-76.pdf",
+          "hint_text": "MIME type icin `file --mime-type` kullan.",
+          "hint_partial": "file --..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-022-r77",
+      "type": "single",
+      "scenario": "Yeni acilan hostta 300MB boyutunda bos bir `disk-77.img` file'i olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fallocate -l 300M disk-77.img",
+          "hint_text": "Buyuk bos dosya icin `fallocate -l` kullan.",
+          "hint_partial": "fallocate -l ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-023-r78",
+      "type": "single",
+      "scenario": "Runbook adiminda `app-78.log` dosyasinin detayli stat bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "stat app-78.log",
+          "hint_text": "Detayli metadata icin `stat` kullan.",
+          "hint_partial": "stat ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-024-r79",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `/home/app79` altindaki ust seviye klasorlerin boyutlarini ozetle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "du -sh /home/app79/*",
+          "hint_text": "Ust seviye boyut ozeti icin `du -sh /home/app79/*` kullan.",
+          "hint_partial": "du -sh ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-025-r80",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/tmp/job-80` altindaki bos directory'leri sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /tmp/job-80 -type d -empty -delete",
+          "hint_text": "Bos dizin temizligi icin `find -type d -empty -delete` kullan.",
+          "hint_partial": "find /tmp/job-80 -type d ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-016-r81",
+      "type": "single",
+      "scenario": "Bakim oncesi `/var/web-81-81` altinda 1GB'dan buyuk file'lari bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /var/web-81-81 -type f -size +1G",
+          "hint_text": "Buyuk dosyalar icin `find -size +1G` kullan.",
+          "hint_partial": "find /var/web-81-81 -type f ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-017-r82",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/opt/app/cache-82-82-82-82` directory agacini maksimum 2 seviye derinlikle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tree -L 2 /opt/app/cache-82-82-82-82",
+          "hint_text": "Agac derinligini sinirlamak icin `tree -L` kullan.",
+          "hint_partial": "tree -L ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-018-r83",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/srv/app/queue-83-83-83` altindaki bozuk symlink'leri bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /srv/app/queue-83-83-83 -xtype l",
+          "hint_text": "Kirık symlink icin `find -xtype l` kullan.",
+          "hint_partial": "find /srv/app/queue-83-83-83 ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-019-r84",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde current directory altindaki toplam file sayisini hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find . -type f | wc -l",
+          "hint_text": "File sayisi icin `find ... | wc -l` kullan.",
+          "hint_partial": "find . -type f ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-020-r85",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `logs-85/` klasorunu `/backup/2024/job-85/logs-85/` altina rsync ile kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "rsync -av logs-85/ /backup/2024/job-85/logs-85/",
+          "hint_text": "Directory sync icin `rsync -av source/ target/` kullan.",
+          "hint_partial": "rsync -av ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-021-r86",
+      "type": "single",
+      "scenario": "Runbook adiminda `report-86.pdf` dosyasinin MIME type bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "file --mime-type report-86.pdf",
+          "hint_text": "MIME type icin `file --mime-type` kullan.",
+          "hint_partial": "file --..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-022-r87",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde 400MB boyutunda bos bir `disk-87.img` file'i olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fallocate -l 400M disk-87.img",
+          "hint_text": "Buyuk bos dosya icin `fallocate -l` kullan.",
+          "hint_partial": "fallocate -l ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-023-r88",
+      "type": "single",
+      "scenario": "Incident sonrasinda `app-88.log` dosyasinin detayli stat bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "stat app-88.log",
+          "hint_text": "Detayli metadata icin `stat` kullan.",
+          "hint_partial": "stat ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-024-r89",
+      "type": "single",
+      "scenario": "Bakim oncesi `/home/app89` altindaki ust seviye klasorlerin boyutlarini ozetle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "du -sh /home/app89/*",
+          "hint_text": "Ust seviye boyut ozeti icin `du -sh /home/app89/*` kullan.",
+          "hint_partial": "du -sh ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-025-r90",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/tmp/job-90` altindaki bos directory'leri sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /tmp/job-90 -type d -empty -delete",
+          "hint_text": "Bos dizin temizligi icin `find -type d -empty -delete` kullan.",
+          "hint_partial": "find /tmp/job-90 -type d ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-016-r91",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/var/queue-91-91` altinda 3GB'dan buyuk file'lari bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /var/queue-91-91 -type f -size +3G",
+          "hint_text": "Buyuk dosyalar icin `find -size +3G` kullan.",
+          "hint_partial": "find /var/queue-91-91 -type f ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-017-r92",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/opt/app/db-92-92-92` directory agacini maksimum 2 seviye derinlikle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tree -L 3 /opt/app/db-92-92-92",
+          "hint_text": "Agac derinligini sinirlamak icin `tree -L` kullan.",
+          "hint_partial": "tree -L ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-018-r93",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `/srv/app/cache-93-93-93` altindaki bozuk symlink'leri bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /srv/app/cache-93-93-93 -xtype l",
+          "hint_text": "Kirık symlink icin `find -xtype l` kullan.",
+          "hint_partial": "find /srv/app/cache-93-93-93 ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-019-r94",
+      "type": "single",
+      "scenario": "Runbook adiminda current directory altindaki toplam file sayisini hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find . -type f | wc -l",
+          "hint_text": "File sayisi icin `find ... | wc -l` kullan.",
+          "hint_partial": "find . -type f ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-020-r95",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `logs-95/` klasorunu `/backup/2025/job-95/logs-95/` altina rsync ile kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "rsync -av logs-95/ /backup/2025/job-95/logs-95/",
+          "hint_text": "Directory sync icin `rsync -av source/ target/` kullan.",
+          "hint_partial": "rsync -av ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-021-r96",
+      "type": "single",
+      "scenario": "Incident sonrasinda `report-96.pdf` dosyasinin MIME type bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "file --mime-type report-96.pdf",
+          "hint_text": "MIME type icin `file --mime-type` kullan.",
+          "hint_partial": "file --..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-022-r97",
+      "type": "single",
+      "scenario": "Bakim oncesi 100MB boyutunda bos bir `disk-97.img` file'i olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fallocate -l 100M disk-97.img",
+          "hint_text": "Buyuk bos dosya icin `fallocate -l` kullan.",
+          "hint_partial": "fallocate -l ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-023-r98",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `app-98.log` dosyasinin detayli stat bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "stat app-98.log",
+          "hint_text": "Detayli metadata icin `stat` kullan.",
+          "hint_partial": "stat ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-024-r99",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/home/app99` altindaki ust seviye klasorlerin boyutlarini ozetle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "du -sh /home/app99/*",
+          "hint_text": "Ust seviye boyut ozeti icin `du -sh /home/app99/*` kullan.",
+          "hint_partial": "du -sh ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-025-r100",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/tmp/job-100` altindaki bos directory'leri sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /tmp/job-100 -type d -empty -delete",
+          "hint_text": "Bos dizin temizligi icin `find -type d -empty -delete` kullan.",
+          "hint_partial": "find /tmp/job-100 -type d ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-016-r101",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `/var/cache-101-101` altinda 1GB'dan buyuk file'lari bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /var/cache-101-101 -type f -size +1G",
+          "hint_text": "Buyuk dosyalar icin `find -size +1G` kullan.",
+          "hint_partial": "find /var/cache-101-101 -type f ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-017-r102",
+      "type": "single",
+      "scenario": "Runbook adiminda `/opt/app/queue-102-102` directory agacini maksimum 2 seviye derinlikle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tree -L 4 /opt/app/queue-102-102",
+          "hint_text": "Agac derinligini sinirlamak icin `tree -L` kullan.",
+          "hint_partial": "tree -L ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-018-r103",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `/srv/app/bastion-103-103` altindaki bozuk symlink'leri bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /srv/app/bastion-103-103 -xtype l",
+          "hint_text": "Kirık symlink icin `find -xtype l` kullan.",
+          "hint_partial": "find /srv/app/bastion-103-103 ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-019-r104",
+      "type": "single",
+      "scenario": "Incident sonrasinda current directory altindaki toplam file sayisini hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find . -type f | wc -l",
+          "hint_text": "File sayisi icin `find ... | wc -l` kullan.",
+          "hint_partial": "find . -type f ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-020-r105",
+      "type": "single",
+      "scenario": "Bakim oncesi `logs-105/` klasorunu `/backup/2026/job-105/logs-105/` altina rsync ile kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "rsync -av logs-105/ /backup/2026/job-105/logs-105/",
+          "hint_text": "Directory sync icin `rsync -av source/ target/` kullan.",
+          "hint_partial": "rsync -av ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-021-r106",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `report-106.pdf` dosyasinin MIME type bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "file --mime-type report-106.pdf",
+          "hint_text": "MIME type icin `file --mime-type` kullan.",
+          "hint_partial": "file --..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-022-r107",
+      "type": "single",
+      "scenario": "Deploy sonrasi 200MB boyutunda bos bir `disk-107.img` file'i olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fallocate -l 200M disk-107.img",
+          "hint_text": "Buyuk bos dosya icin `fallocate -l` kullan.",
+          "hint_partial": "fallocate -l ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-023-r108",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `app-108.log` dosyasinin detayli stat bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "stat app-108.log",
+          "hint_text": "Detayli metadata icin `stat` kullan.",
+          "hint_partial": "stat ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-024-r109",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `/home/app109` altindaki ust seviye klasorlerin boyutlarini ozetle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "du -sh /home/app109/*",
+          "hint_text": "Ust seviye boyut ozeti icin `du -sh /home/app109/*` kullan.",
+          "hint_partial": "du -sh ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-025-r110",
+      "type": "single",
+      "scenario": "Runbook adiminda `/tmp/job-110` altindaki bos directory'leri sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /tmp/job-110 -type d -empty -delete",
+          "hint_text": "Bos dizin temizligi icin `find -type d -empty -delete` kullan.",
+          "hint_partial": "find /tmp/job-110 -type d ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-016-r111",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `/var/bastion-111` altinda 3GB'dan buyuk file'lari bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /var/bastion-111 -type f -size +3G",
+          "hint_text": "Buyuk dosyalar icin `find -size +3G` kullan.",
+          "hint_partial": "find /var/bastion-111 -type f ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-017-r112",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/opt/app/proxy-112-112` directory agacini maksimum 2 seviye derinlikle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tree -L 2 /opt/app/proxy-112-112",
+          "hint_text": "Agac derinligini sinirlamak icin `tree -L` kullan.",
+          "hint_partial": "tree -L ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-018-r113",
+      "type": "single",
+      "scenario": "Bakim oncesi `/srv/app/web-113-113-113` altindaki bozuk symlink'leri bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /srv/app/web-113-113-113 -xtype l",
+          "hint_text": "Kirık symlink icin `find -xtype l` kullan.",
+          "hint_partial": "find /srv/app/web-113-113-113 ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-019-r114",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda current directory altindaki toplam file sayisini hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find . -type f | wc -l",
+          "hint_text": "File sayisi icin `find ... | wc -l` kullan.",
+          "hint_partial": "find . -type f ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-020-r115",
+      "type": "single",
+      "scenario": "Deploy sonrasi `logs-115/` klasorunu `/backup/2024/job-115/logs-115/` altina rsync ile kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "rsync -av logs-115/ /backup/2024/job-115/logs-115/",
+          "hint_text": "Directory sync icin `rsync -av source/ target/` kullan.",
+          "hint_partial": "rsync -av ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-021-r116",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `report-116.pdf` dosyasinin MIME type bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "file --mime-type report-116.pdf",
+          "hint_text": "MIME type icin `file --mime-type` kullan.",
+          "hint_partial": "file --..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-022-r117",
+      "type": "single",
+      "scenario": "Yeni acilan hostta 300MB boyutunda bos bir `disk-117.img` file'i olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fallocate -l 300M disk-117.img",
+          "hint_text": "Buyuk bos dosya icin `fallocate -l` kullan.",
+          "hint_partial": "fallocate -l ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-023-r118",
+      "type": "single",
+      "scenario": "Runbook adiminda `app-118.log` dosyasinin detayli stat bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "stat app-118.log",
+          "hint_text": "Detayli metadata icin `stat` kullan.",
+          "hint_partial": "stat ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-024-r119",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `/home/app119` altindaki ust seviye klasorlerin boyutlarini ozetle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "du -sh /home/app119/*",
+          "hint_text": "Ust seviye boyut ozeti icin `du -sh /home/app119/*` kullan.",
+          "hint_partial": "du -sh ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-025-r120",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/tmp/job-120` altindaki bos directory'leri sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /tmp/job-120 -type d -empty -delete",
+          "hint_text": "Bos dizin temizligi icin `find -type d -empty -delete` kullan.",
+          "hint_partial": "find /tmp/job-120 -type d ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-016-r121",
+      "type": "single",
+      "scenario": "Bakim oncesi `/var/web-121-121` altinda 1GB'dan buyuk file'lari bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /var/web-121-121 -type f -size +1G",
+          "hint_text": "Buyuk dosyalar icin `find -size +1G` kullan.",
+          "hint_partial": "find /var/web-121-121 -type f ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-017-r122",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/opt/app/cache-122-122-122-122` directory agacini maksimum 2 seviye derinlikle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tree -L 3 /opt/app/cache-122-122-122-122",
+          "hint_text": "Agac derinligini sinirlamak icin `tree -L` kullan.",
+          "hint_partial": "tree -L ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-018-r123",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/srv/app/queue-123-123-123` altindaki bozuk symlink'leri bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /srv/app/queue-123-123-123 -xtype l",
+          "hint_text": "Kirık symlink icin `find -xtype l` kullan.",
+          "hint_partial": "find /srv/app/queue-123-123-123 ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-019-r124",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde current directory altindaki toplam file sayisini hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find . -type f | wc -l",
+          "hint_text": "File sayisi icin `find ... | wc -l` kullan.",
+          "hint_partial": "find . -type f ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-020-r125",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `logs-125/` klasorunu `/backup/2025/job-125/logs-125/` altina rsync ile kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "rsync -av logs-125/ /backup/2025/job-125/logs-125/",
+          "hint_text": "Directory sync icin `rsync -av source/ target/` kullan.",
+          "hint_partial": "rsync -av ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-021-r126",
+      "type": "single",
+      "scenario": "Runbook adiminda `report-126.pdf` dosyasinin MIME type bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "file --mime-type report-126.pdf",
+          "hint_text": "MIME type icin `file --mime-type` kullan.",
+          "hint_partial": "file --..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-022-r127",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde 400MB boyutunda bos bir `disk-127.img` file'i olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fallocate -l 400M disk-127.img",
+          "hint_text": "Buyuk bos dosya icin `fallocate -l` kullan.",
+          "hint_partial": "fallocate -l ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-023-r128",
+      "type": "single",
+      "scenario": "Incident sonrasinda `app-128.log` dosyasinin detayli stat bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "stat app-128.log",
+          "hint_text": "Detayli metadata icin `stat` kullan.",
+          "hint_partial": "stat ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-024-r129",
+      "type": "single",
+      "scenario": "Bakim oncesi `/home/app129` altindaki ust seviye klasorlerin boyutlarini ozetle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "du -sh /home/app129/*",
+          "hint_text": "Ust seviye boyut ozeti icin `du -sh /home/app129/*` kullan.",
+          "hint_partial": "du -sh ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-025-r130",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/tmp/job-130` altindaki bos directory'leri sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /tmp/job-130 -type d -empty -delete",
+          "hint_text": "Bos dizin temizligi icin `find -type d -empty -delete` kullan.",
+          "hint_partial": "find /tmp/job-130 -type d ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-016-r131",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/var/queue-131-131` altinda 3GB'dan buyuk file'lari bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /var/queue-131-131 -type f -size +3G",
+          "hint_text": "Buyuk dosyalar icin `find -size +3G` kullan.",
+          "hint_partial": "find /var/queue-131-131 -type f ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-017-r132",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/opt/app/db-132-132-132` directory agacini maksimum 2 seviye derinlikle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tree -L 4 /opt/app/db-132-132-132",
+          "hint_text": "Agac derinligini sinirlamak icin `tree -L` kullan.",
+          "hint_partial": "tree -L ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-018-r133",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `/srv/app/cache-133-133-133` altindaki bozuk symlink'leri bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /srv/app/cache-133-133-133 -xtype l",
+          "hint_text": "Kirık symlink icin `find -xtype l` kullan.",
+          "hint_partial": "find /srv/app/cache-133-133-133 ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-019-r134",
+      "type": "single",
+      "scenario": "Runbook adiminda current directory altindaki toplam file sayisini hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find . -type f | wc -l",
+          "hint_text": "File sayisi icin `find ... | wc -l` kullan.",
+          "hint_partial": "find . -type f ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-020-r135",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `logs-135/` klasorunu `/backup/2026/job-135/logs-135/` altina rsync ile kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "rsync -av logs-135/ /backup/2026/job-135/logs-135/",
+          "hint_text": "Directory sync icin `rsync -av source/ target/` kullan.",
+          "hint_partial": "rsync -av ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-021-r136",
+      "type": "single",
+      "scenario": "Incident sonrasinda `report-136.pdf` dosyasinin MIME type bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "file --mime-type report-136.pdf",
+          "hint_text": "MIME type icin `file --mime-type` kullan.",
+          "hint_partial": "file --..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-022-r137",
+      "type": "single",
+      "scenario": "Bakim oncesi 100MB boyutunda bos bir `disk-137.img` file'i olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fallocate -l 100M disk-137.img",
+          "hint_text": "Buyuk bos dosya icin `fallocate -l` kullan.",
+          "hint_partial": "fallocate -l ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-023-r138",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `app-138.log` dosyasinin detayli stat bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "stat app-138.log",
+          "hint_text": "Detayli metadata icin `stat` kullan.",
+          "hint_partial": "stat ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-024-r139",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/home/app139` altindaki ust seviye klasorlerin boyutlarini ozetle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "du -sh /home/app139/*",
+          "hint_text": "Ust seviye boyut ozeti icin `du -sh /home/app139/*` kullan.",
+          "hint_partial": "du -sh ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-025-r140",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/tmp/job-140` altindaki bos directory'leri sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /tmp/job-140 -type d -empty -delete",
+          "hint_text": "Bos dizin temizligi icin `find -type d -empty -delete` kullan.",
+          "hint_partial": "find /tmp/job-140 -type d ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-016-r141",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `/var/cache-141-141` altinda 1GB'dan buyuk file'lari bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /var/cache-141-141 -type f -size +1G",
+          "hint_text": "Buyuk dosyalar icin `find -size +1G` kullan.",
+          "hint_partial": "find /var/cache-141-141 -type f ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-017-r142",
+      "type": "single",
+      "scenario": "Runbook adiminda `/opt/app/queue-142-142` directory agacini maksimum 2 seviye derinlikle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tree -L 2 /opt/app/queue-142-142",
+          "hint_text": "Agac derinligini sinirlamak icin `tree -L` kullan.",
+          "hint_partial": "tree -L ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-018-r143",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `/srv/app/bastion-143-143` altindaki bozuk symlink'leri bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /srv/app/bastion-143-143 -xtype l",
+          "hint_text": "Kirık symlink icin `find -xtype l` kullan.",
+          "hint_partial": "find /srv/app/bastion-143-143 ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-019-r144",
+      "type": "single",
+      "scenario": "Incident sonrasinda current directory altindaki toplam file sayisini hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find . -type f | wc -l",
+          "hint_text": "File sayisi icin `find ... | wc -l` kullan.",
+          "hint_partial": "find . -type f ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-020-r145",
+      "type": "single",
+      "scenario": "Bakim oncesi `logs-145/` klasorunu `/backup/2024/job-145/logs-145/` altina rsync ile kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "rsync -av logs-145/ /backup/2024/job-145/logs-145/",
+          "hint_text": "Directory sync icin `rsync -av source/ target/` kullan.",
+          "hint_partial": "rsync -av ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-021-r146",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `report-146.pdf` dosyasinin MIME type bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "file --mime-type report-146.pdf",
+          "hint_text": "MIME type icin `file --mime-type` kullan.",
+          "hint_partial": "file --..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-022-r147",
+      "type": "single",
+      "scenario": "Deploy sonrasi 200MB boyutunda bos bir `disk-147.img` file'i olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fallocate -l 200M disk-147.img",
+          "hint_text": "Buyuk bos dosya icin `fallocate -l` kullan.",
+          "hint_partial": "fallocate -l ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-023-r148",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `app-148.log` dosyasinin detayli stat bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "stat app-148.log",
+          "hint_text": "Detayli metadata icin `stat` kullan.",
+          "hint_partial": "stat ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-024-r149",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `/home/app149` altindaki ust seviye klasorlerin boyutlarini ozetle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "du -sh /home/app149/*",
+          "hint_text": "Ust seviye boyut ozeti icin `du -sh /home/app149/*` kullan.",
+          "hint_partial": "du -sh ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-025-r150",
+      "type": "single",
+      "scenario": "Runbook adiminda `/tmp/job-150` altindaki bos directory'leri sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /tmp/job-150 -type d -empty -delete",
+          "hint_text": "Bos dizin temizligi icin `find -type d -empty -delete` kullan.",
+          "hint_partial": "find /tmp/job-150 -type d ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-016-r151",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `/var/bastion-151` altinda 3GB'dan buyuk file'lari bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /var/bastion-151 -type f -size +3G",
+          "hint_text": "Buyuk dosyalar icin `find -size +3G` kullan.",
+          "hint_partial": "find /var/bastion-151 -type f ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-017-r152",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/opt/app/proxy-152-152` directory agacini maksimum 2 seviye derinlikle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tree -L 3 /opt/app/proxy-152-152",
+          "hint_text": "Agac derinligini sinirlamak icin `tree -L` kullan.",
+          "hint_partial": "tree -L ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-018-r153",
+      "type": "single",
+      "scenario": "Bakim oncesi `/srv/app/web-153-153-153` altindaki bozuk symlink'leri bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /srv/app/web-153-153-153 -xtype l",
+          "hint_text": "Kirık symlink icin `find -xtype l` kullan.",
+          "hint_partial": "find /srv/app/web-153-153-153 ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-019-r154",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda current directory altindaki toplam file sayisini hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find . -type f | wc -l",
+          "hint_text": "File sayisi icin `find ... | wc -l` kullan.",
+          "hint_partial": "find . -type f ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-020-r155",
+      "type": "single",
+      "scenario": "Deploy sonrasi `logs-155/` klasorunu `/backup/2025/job-155/logs-155/` altina rsync ile kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "rsync -av logs-155/ /backup/2025/job-155/logs-155/",
+          "hint_text": "Directory sync icin `rsync -av source/ target/` kullan.",
+          "hint_partial": "rsync -av ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-021-r156",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `report-156.pdf` dosyasinin MIME type bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "file --mime-type report-156.pdf",
+          "hint_text": "MIME type icin `file --mime-type` kullan.",
+          "hint_partial": "file --..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-022-r157",
+      "type": "single",
+      "scenario": "Yeni acilan hostta 300MB boyutunda bos bir `disk-157.img` file'i olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fallocate -l 300M disk-157.img",
+          "hint_text": "Buyuk bos dosya icin `fallocate -l` kullan.",
+          "hint_partial": "fallocate -l ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-023-r158",
+      "type": "single",
+      "scenario": "Runbook adiminda `app-158.log` dosyasinin detayli stat bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "stat app-158.log",
+          "hint_text": "Detayli metadata icin `stat` kullan.",
+          "hint_partial": "stat ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-024-r159",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `/home/app159` altindaki ust seviye klasorlerin boyutlarini ozetle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "du -sh /home/app159/*",
+          "hint_text": "Ust seviye boyut ozeti icin `du -sh /home/app159/*` kullan.",
+          "hint_partial": "du -sh ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-025-r160",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/tmp/job-160` altindaki bos directory'leri sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /tmp/job-160 -type d -empty -delete",
+          "hint_text": "Bos dizin temizligi icin `find -type d -empty -delete` kullan.",
+          "hint_partial": "find /tmp/job-160 -type d ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-016-r161",
+      "type": "single",
+      "scenario": "Bakim oncesi `/var/web-161-161` altinda 1GB'dan buyuk file'lari bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /var/web-161-161 -type f -size +1G",
+          "hint_text": "Buyuk dosyalar icin `find -size +1G` kullan.",
+          "hint_partial": "find /var/web-161-161 -type f ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-017-r162",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/opt/app/cache-162-162-162-162` directory agacini maksimum 2 seviye derinlikle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tree -L 4 /opt/app/cache-162-162-162-162",
+          "hint_text": "Agac derinligini sinirlamak icin `tree -L` kullan.",
+          "hint_partial": "tree -L ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-018-r163",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/srv/app/queue-163-163-163` altindaki bozuk symlink'leri bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /srv/app/queue-163-163-163 -xtype l",
+          "hint_text": "Kirık symlink icin `find -xtype l` kullan.",
+          "hint_partial": "find /srv/app/queue-163-163-163 ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-019-r164",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde current directory altindaki toplam file sayisini hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find . -type f | wc -l",
+          "hint_text": "File sayisi icin `find ... | wc -l` kullan.",
+          "hint_partial": "find . -type f ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-020-r165",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `logs-165/` klasorunu `/backup/2026/job-165/logs-165/` altina rsync ile kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "rsync -av logs-165/ /backup/2026/job-165/logs-165/",
+          "hint_text": "Directory sync icin `rsync -av source/ target/` kullan.",
+          "hint_partial": "rsync -av ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-021-r166",
+      "type": "single",
+      "scenario": "Runbook adiminda `report-166.pdf` dosyasinin MIME type bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "file --mime-type report-166.pdf",
+          "hint_text": "MIME type icin `file --mime-type` kullan.",
+          "hint_partial": "file --..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-022-r167",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde 400MB boyutunda bos bir `disk-167.img` file'i olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fallocate -l 400M disk-167.img",
+          "hint_text": "Buyuk bos dosya icin `fallocate -l` kullan.",
+          "hint_partial": "fallocate -l ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-023-r168",
+      "type": "single",
+      "scenario": "Incident sonrasinda `app-168.log` dosyasinin detayli stat bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "stat app-168.log",
+          "hint_text": "Detayli metadata icin `stat` kullan.",
+          "hint_partial": "stat ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-024-r169",
+      "type": "single",
+      "scenario": "Bakim oncesi `/home/app169` altindaki ust seviye klasorlerin boyutlarini ozetle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "du -sh /home/app169/*",
+          "hint_text": "Ust seviye boyut ozeti icin `du -sh /home/app169/*` kullan.",
+          "hint_partial": "du -sh ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-025-r170",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/tmp/job-170` altindaki bos directory'leri sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /tmp/job-170 -type d -empty -delete",
+          "hint_text": "Bos dizin temizligi icin `find -type d -empty -delete` kullan.",
+          "hint_partial": "find /tmp/job-170 -type d ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-016-r171",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/var/queue-171-171` altinda 3GB'dan buyuk file'lari bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /var/queue-171-171 -type f -size +3G",
+          "hint_text": "Buyuk dosyalar icin `find -size +3G` kullan.",
+          "hint_partial": "find /var/queue-171-171 -type f ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-017-r172",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/opt/app/db-172-172-172` directory agacini maksimum 2 seviye derinlikle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tree -L 2 /opt/app/db-172-172-172",
+          "hint_text": "Agac derinligini sinirlamak icin `tree -L` kullan.",
+          "hint_partial": "tree -L ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-018-r173",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `/srv/app/cache-173-173-173` altindaki bozuk symlink'leri bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /srv/app/cache-173-173-173 -xtype l",
+          "hint_text": "Kirık symlink icin `find -xtype l` kullan.",
+          "hint_partial": "find /srv/app/cache-173-173-173 ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-019-r174",
+      "type": "single",
+      "scenario": "Runbook adiminda current directory altindaki toplam file sayisini hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find . -type f | wc -l",
+          "hint_text": "File sayisi icin `find ... | wc -l` kullan.",
+          "hint_partial": "find . -type f ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-020-r175",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `logs-175/` klasorunu `/backup/2024/job-175/logs-175/` altina rsync ile kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "rsync -av logs-175/ /backup/2024/job-175/logs-175/",
+          "hint_text": "Directory sync icin `rsync -av source/ target/` kullan.",
+          "hint_partial": "rsync -av ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-021-r176",
+      "type": "single",
+      "scenario": "Incident sonrasinda `report-176.pdf` dosyasinin MIME type bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "file --mime-type report-176.pdf",
+          "hint_text": "MIME type icin `file --mime-type` kullan.",
+          "hint_partial": "file --..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-022-r177",
+      "type": "single",
+      "scenario": "Bakim oncesi 100MB boyutunda bos bir `disk-177.img` file'i olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fallocate -l 100M disk-177.img",
+          "hint_text": "Buyuk bos dosya icin `fallocate -l` kullan.",
+          "hint_partial": "fallocate -l ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-023-r178",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `app-178.log` dosyasinin detayli stat bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "stat app-178.log",
+          "hint_text": "Detayli metadata icin `stat` kullan.",
+          "hint_partial": "stat ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-024-r179",
+      "type": "single",
+      "scenario": "Deploy sonrasi `/home/app179` altindaki ust seviye klasorlerin boyutlarini ozetle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "du -sh /home/app179/*",
+          "hint_text": "Ust seviye boyut ozeti icin `du -sh /home/app179/*` kullan.",
+          "hint_partial": "du -sh ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-025-r180",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `/tmp/job-180` altindaki bos directory'leri sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /tmp/job-180 -type d -empty -delete",
+          "hint_text": "Bos dizin temizligi icin `find -type d -empty -delete` kullan.",
+          "hint_partial": "find /tmp/job-180 -type d ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-016-r181",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `/var/cache-181-181` altinda 1GB'dan buyuk file'lari bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /var/cache-181-181 -type f -size +1G",
+          "hint_text": "Buyuk dosyalar icin `find -size +1G` kullan.",
+          "hint_partial": "find /var/cache-181-181 -type f ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-017-r182",
+      "type": "single",
+      "scenario": "Runbook adiminda `/opt/app/queue-182-182` directory agacini maksimum 2 seviye derinlikle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tree -L 3 /opt/app/queue-182-182",
+          "hint_text": "Agac derinligini sinirlamak icin `tree -L` kullan.",
+          "hint_partial": "tree -L ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-018-r183",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `/srv/app/bastion-183-183` altindaki bozuk symlink'leri bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /srv/app/bastion-183-183 -xtype l",
+          "hint_text": "Kirık symlink icin `find -xtype l` kullan.",
+          "hint_partial": "find /srv/app/bastion-183-183 ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-019-r184",
+      "type": "single",
+      "scenario": "Incident sonrasinda current directory altindaki toplam file sayisini hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find . -type f | wc -l",
+          "hint_text": "File sayisi icin `find ... | wc -l` kullan.",
+          "hint_partial": "find . -type f ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-020-r185",
+      "type": "single",
+      "scenario": "Bakim oncesi `logs-185/` klasorunu `/backup/2025/job-185/logs-185/` altina rsync ile kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "rsync -av logs-185/ /backup/2025/job-185/logs-185/",
+          "hint_text": "Directory sync icin `rsync -av source/ target/` kullan.",
+          "hint_partial": "rsync -av ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-021-r186",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `report-186.pdf` dosyasinin MIME type bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "file --mime-type report-186.pdf",
+          "hint_text": "MIME type icin `file --mime-type` kullan.",
+          "hint_partial": "file --..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-022-r187",
+      "type": "single",
+      "scenario": "Deploy sonrasi 200MB boyutunda bos bir `disk-187.img` file'i olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fallocate -l 200M disk-187.img",
+          "hint_text": "Buyuk bos dosya icin `fallocate -l` kullan.",
+          "hint_partial": "fallocate -l ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-023-r188",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `app-188.log` dosyasinin detayli stat bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "stat app-188.log",
+          "hint_text": "Detayli metadata icin `stat` kullan.",
+          "hint_partial": "stat ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-024-r189",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `/home/app189` altindaki ust seviye klasorlerin boyutlarini ozetle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "du -sh /home/app189/*",
+          "hint_text": "Ust seviye boyut ozeti icin `du -sh /home/app189/*` kullan.",
+          "hint_partial": "du -sh ..."
+        }
+      ]
+    },
+    {
+      "id": "mfs-025-r190",
+      "type": "single",
+      "scenario": "Runbook adiminda `/tmp/job-190` altindaki bos directory'leri sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /tmp/job-190 -type d -empty -delete",
+          "hint_text": "Bos dizin temizligi icin `find -type d -empty -delete` kullan.",
+          "hint_partial": "find /tmp/job-190 -type d ..."
+        }
+      ]
+    }
+  ]
+}

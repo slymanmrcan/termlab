@@ -1,0 +1,136 @@
+{
+  "level": "mid",
+  "topic": "ssh",
+  "questions": [
+    {
+      "id": "mssh-001",
+      "type": "single",
+      "scenario": "SSH config'teki `app` alias'inin hangi host, user ve identityfile ile cozuldgunu dogrula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -G app | grep -E '^(hostname|user|identityfile) '",
+          "hint_text": "Baglanti acmadan cozulmus konfigurasyonu gormek icin `ssh -G` kullan.",
+          "hint_partial": "ssh -G app | grep -E '^(hostname|user|identityfile) '"
+        }
+      ]
+    },
+    {
+      "id": "mssh-002",
+      "type": "single",
+      "scenario": "Local 5432 port'unu remote db.internal:5432'ye `local port forwarding` ile yönlendir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -L 5432:db.internal:5432 user@bastion",
+          "hint_text": "`ssh -L local:target:remoteport` kullan.",
+          "hint_partial": "ssh -L 5432:..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-003",
+      "type": "single",
+      "scenario": "Remote host üzerinde tek komut olarak `uptime` çalıştır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh user@10.0.0.5 uptime",
+          "hint_text": "Host bilgisinden sonra remote command ver.",
+          "hint_partial": "ssh user@... ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-004",
+      "type": "single",
+      "scenario": "Current directory'yi remote /opt/app/ directory'sine `rsync` ile senkronize et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "rsync -avz . user@10.0.0.5:/opt/app/",
+          "hint_text": "`rsync -avz source target` kullan.",
+          "hint_partial": "rsync -avz . ...:/opt/app/"
+        }
+      ]
+    },
+    {
+      "id": "mssh-005",
+      "type": "single",
+      "scenario": "SSH public key fingerprint'ini göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-keygen -lf ~/.ssh/id_ed25519.pub",
+          "hint_text": "`ssh-keygen -lf` fingerprint gösterir.",
+          "hint_partial": "ssh-keygen -lf ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-006",
+      "type": "single",
+      "scenario": "Remote 8080 port'unu local 8080 port'a `reverse tunnel` ile aç.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -R 8080:localhost:8080 user@10.0.0.5",
+          "hint_text": "Reverse forwarding için `-R` kullan.",
+          "hint_partial": "ssh -R 8080:localhost:8080 ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-007",
+      "type": "single",
+      "scenario": "SOCKS proxy için local 1080 port'unda dynamic tunnel aç.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -D 1080 user@bastion",
+          "hint_text": "Dynamic forwarding için `-D` kullan.",
+          "hint_partial": "ssh -D 1080 ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-008",
+      "type": "single",
+      "scenario": "SSH verbose debug output'uyla bağlantı kur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh -v user@10.0.0.5",
+          "hint_text": "Bağlantı debug için `-v` ekle.",
+          "hint_partial": "ssh -v ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-009",
+      "type": "single",
+      "scenario": "Known hosts içinden 10.0.0.5 kaydını sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-keygen -R 10.0.0.5",
+          "hint_text": "Known host kaydını kaldırmak için `ssh-keygen -R` kullan.",
+          "hint_partial": "ssh-keygen -R ..."
+        }
+      ]
+    },
+    {
+      "id": "mssh-010",
+      "type": "single",
+      "scenario": "Remote /var/log/syslog file'ını sıkıştırılmış transfer ile local'e kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "scp -C user@10.0.0.5:/var/log/syslog .",
+          "hint_text": "Sıkıştırma için `scp -C` kullan.",
+          "hint_partial": "scp -C ..."
+        }
+      ]
+    }
+  ]
+}

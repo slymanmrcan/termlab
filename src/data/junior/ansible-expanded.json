@@ -1,0 +1,2606 @@
+{
+  "level": "junior",
+  "topic": "ansible",
+  "questions": [
+    {
+      "id": "jans-001-exp-001",
+      "type": "single",
+      "scenario": "Gece vardiyasinda ansible surumunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible --version",
+          "hint_text": "Surum icin `ansible --version` kullan.",
+          "hint_partial": "ansible --..."
+        }
+      ]
+    },
+    {
+      "id": "jans-002-exp-002",
+      "type": "single",
+      "scenario": "Audit sirasinda inventory'deki tum host'lara ping module'u calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-202 -m ping",
+          "hint_text": "Ping module icin `ansible all -m ping` kullan.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-003-exp-003",
+      "type": "single",
+      "scenario": "Bakim penceresinde `queue-203-203` grubunda `uptime` komutunu calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible queue-203-203 -i inventory-203 -m shell -a 'uptime'",
+          "hint_text": "Shell module icin `-m shell -a` kullan.",
+          "hint_partial": "ansible queue-203-203 ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-004-exp-004",
+      "type": "single",
+      "scenario": "Incident triajinda `site-204.yml` playbook'unu inventory-204 ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-204.yml -i inventory-204",
+          "hint_text": "Playbook calistirmak icin `ansible-playbook` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-005-exp-005",
+      "type": "single",
+      "scenario": "Release kontrolunde inventory'yi JSON olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-inventory-205 -i inventory-205 --list",
+          "hint_text": "Inventory dump icin `ansible-inventory-205 --list` kullan.",
+          "hint_partial": "ansible-inventory-205 ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-006-exp-006",
+      "type": "single",
+      "scenario": "Operasyon devrinde `ping` module dokumantasyonunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-doc ping",
+          "hint_text": "Module doc icin `ansible-doc` kullan.",
+          "hint_partial": "ansible-doc ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-007-exp-007",
+      "type": "single",
+      "scenario": "On-call gorevinde kurulu collection'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-galaxy collection list",
+          "hint_text": "Collection listesi icin `ansible-galaxy collection list` kullan.",
+          "hint_partial": "ansible-galaxy ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-008-exp-008",
+      "type": "single",
+      "scenario": "Kesinti sonrasi localhost host facts bilgisini topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible localhost -m setup",
+          "hint_text": "Facts toplamak icin `setup` module'unu kullan.",
+          "hint_partial": "ansible localhost ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-009-exp-009",
+      "type": "single",
+      "scenario": "Gece vardiyasinda tum host'larda `curl` paketini yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-209 -b -m apt -a 'name=curl state=present'",
+          "hint_text": "APT module ile paket kurulumunu kullan.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-010-exp-010",
+      "type": "single",
+      "scenario": "Audit sirasinda `site-210.yml` playbook'unu check modda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-210.yml -i inventory-210 --check",
+          "hint_text": "Dry-run icin `--check` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-001-r1-exp-011",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi ansible surumunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible --version",
+          "hint_text": "Surum icin `ansible --version` kullan.",
+          "hint_partial": "ansible --..."
+        }
+      ]
+    },
+    {
+      "id": "jans-002-r2-exp-012",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda inventory-212'deki tum host'lara ping module'u calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-212-2 -m ping",
+          "hint_text": "Ping module icin `ansible all -m ping` kullan.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-003-r3-exp-013",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi `bastion-213-3` grubunda `uptime` komutunu calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible bastion-213-3 -i inventory-213-3 -m shell -a 'uptime'",
+          "hint_text": "Shell module icin `-m shell -a` kullan.",
+          "hint_partial": "ansible bastion-213-3 ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-004-r4-exp-014",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde `site-4.yml` playbook'unu inventory-214-4 ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-4.yml -i inventory-214-4",
+          "hint_text": "Playbook calistirmak icin `ansible-playbook` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-005-r5-exp-015",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta inventory-215'yi JSON olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-inventory-215-5 -i inventory-215-5 --list",
+          "hint_text": "Inventory dump icin `ansible-inventory-215-5 --list` kullan.",
+          "hint_partial": "ansible-inventory-215-5 ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-006-r6-exp-016",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda `ping` module dokumantasyonunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-doc ping",
+          "hint_text": "Module doc icin `ansible-doc` kullan.",
+          "hint_partial": "ansible-doc ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-007-r7-exp-017",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde kurulu collection'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-galaxy collection list",
+          "hint_text": "Collection listesi icin `ansible-galaxy collection list` kullan.",
+          "hint_partial": "ansible-galaxy ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-008-r8-exp-018",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda localhost host facts bilgisini topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible localhost -m setup",
+          "hint_text": "Facts toplamak icin `setup` module'unu kullan.",
+          "hint_partial": "ansible localhost ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-009-r9-exp-019",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi tum host'larda `curl` paketini yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-219-9 -b -m apt -a 'name=curl state=present'",
+          "hint_text": "APT module ile paket kurulumunu kullan.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-010-r10-exp-020",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda `site-10.yml` playbook'unu check modda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-10.yml -i inventory-220-10 --check",
+          "hint_text": "Dry-run icin `--check` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-001-r11-exp-021",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi ansible surumunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible --version",
+          "hint_text": "Surum icin `ansible --version` kullan.",
+          "hint_partial": "ansible --..."
+        }
+      ]
+    },
+    {
+      "id": "jans-002-r12-exp-022",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde inventory-222'deki tum host'lara ping module'u calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-222-12 -m ping",
+          "hint_text": "Ping module icin `ansible all -m ping` kullan.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-003-r13-exp-023",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta `cache-223-13-13` grubunda `uptime` komutunu calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible cache-223-13-13 -i inventory-223-13 -m shell -a 'uptime'",
+          "hint_text": "Shell module icin `-m shell -a` kullan.",
+          "hint_partial": "ansible cache-223-13-13 ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-004-r14-exp-024",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda `site-14.yml` playbook'unu inventory-224-14 ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-14.yml -i inventory-224-14",
+          "hint_text": "Playbook calistirmak icin `ansible-playbook` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-005-r15-exp-025",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde inventory-225'yi JSON olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-inventory-225-15 -i inventory-225-15 --list",
+          "hint_text": "Inventory dump icin `ansible-inventory-225-15 --list` kullan.",
+          "hint_partial": "ansible-inventory-225-15 ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-006-r16-exp-026",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda `ping` module dokumantasyonunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-doc ping",
+          "hint_text": "Module doc icin `ansible-doc` kullan.",
+          "hint_partial": "ansible-doc ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-007-r17-exp-027",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi kurulu collection'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-galaxy collection list",
+          "hint_text": "Collection listesi icin `ansible-galaxy collection list` kullan.",
+          "hint_partial": "ansible-galaxy ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-008-r18-exp-028",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda localhost host facts bilgisini topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible localhost -m setup",
+          "hint_text": "Facts toplamak icin `setup` module'unu kullan.",
+          "hint_partial": "ansible localhost ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-009-r19-exp-029",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi tum host'larda `curl` paketini yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-229-19 -b -m apt -a 'name=curl state=present'",
+          "hint_text": "APT module ile paket kurulumunu kullan.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-010-r20-exp-030",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde `site-20.yml` playbook'unu check modda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-20.yml -i inventory-230-20 --check",
+          "hint_text": "Dry-run icin `--check` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-001-r21-exp-031",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta ansible surumunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible --version",
+          "hint_text": "Surum icin `ansible --version` kullan.",
+          "hint_partial": "ansible --..."
+        }
+      ]
+    },
+    {
+      "id": "jans-002-r22-exp-032",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda inventory-232'deki tum host'lara ping module'u calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-232-22 -m ping",
+          "hint_text": "Ping module icin `ansible all -m ping` kullan.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-003-r23-exp-033",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde `bastion-23` grubunda `uptime` komutunu calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible bastion-23 -i inventory-233-23 -m shell -a 'uptime'",
+          "hint_text": "Shell module icin `-m shell -a` kullan.",
+          "hint_partial": "ansible bastion-23 ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-004-r24-exp-034",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda `site-24.yml` playbook'unu inventory-234-24 ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-24.yml -i inventory-234-24",
+          "hint_text": "Playbook calistirmak icin `ansible-playbook` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-005-r25-exp-035",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi inventory-235'yi JSON olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-inventory-235-25 -i inventory-235-25 --list",
+          "hint_text": "Inventory dump icin `ansible-inventory-235-25 --list` kullan.",
+          "hint_partial": "ansible-inventory-235-25 ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-006-r26-exp-036",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda `ping` module dokumantasyonunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-doc ping",
+          "hint_text": "Module doc icin `ansible-doc` kullan.",
+          "hint_partial": "ansible-doc ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-007-r27-exp-037",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi kurulu collection'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-galaxy collection list",
+          "hint_text": "Collection listesi icin `ansible-galaxy collection list` kullan.",
+          "hint_partial": "ansible-galaxy ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-008-r28-exp-038",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde localhost host facts bilgisini topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible localhost -m setup",
+          "hint_text": "Facts toplamak icin `setup` module'unu kullan.",
+          "hint_partial": "ansible localhost ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-009-r29-exp-039",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta tum host'larda `curl` paketini yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-239-29 -b -m apt -a 'name=curl state=present'",
+          "hint_text": "APT module ile paket kurulumunu kullan.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-010-r30-exp-040",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda `site-30.yml` playbook'unu check modda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-30.yml -i inventory-240-30 --check",
+          "hint_text": "Dry-run icin `--check` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-001-r31-exp-041",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde ansible surumunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible --version",
+          "hint_text": "Surum icin `ansible --version` kullan.",
+          "hint_partial": "ansible --..."
+        }
+      ]
+    },
+    {
+      "id": "jans-002-r32-exp-042",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda inventory-242'deki tum host'lara ping module'u calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-242-32 -m ping",
+          "hint_text": "Ping module icin `ansible all -m ping` kullan.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-003-r33-exp-043",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi `queue-243-243-33` grubunda `uptime` komutunu calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible queue-243-243-33 -i inventory-243-33 -m shell -a 'uptime'",
+          "hint_text": "Shell module icin `-m shell -a` kullan.",
+          "hint_partial": "ansible queue-243-243-33 ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-004-r34-exp-044",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda `site-34.yml` playbook'unu inventory-244-34 ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-34.yml -i inventory-244-34",
+          "hint_text": "Playbook calistirmak icin `ansible-playbook` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-005-r35-exp-045",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi inventory-245'yi JSON olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-inventory-245-35 -i inventory-245-35 --list",
+          "hint_text": "Inventory dump icin `ansible-inventory-245-35 --list` kullan.",
+          "hint_partial": "ansible-inventory-245-35 ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-006-r36-exp-046",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde `ping` module dokumantasyonunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-doc ping",
+          "hint_text": "Module doc icin `ansible-doc` kullan.",
+          "hint_partial": "ansible-doc ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-007-r37-exp-047",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta kurulu collection'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-galaxy collection list",
+          "hint_text": "Collection listesi icin `ansible-galaxy collection list` kullan.",
+          "hint_partial": "ansible-galaxy ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-008-r38-exp-048",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda localhost host facts bilgisini topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible localhost -m setup",
+          "hint_text": "Facts toplamak icin `setup` module'unu kullan.",
+          "hint_partial": "ansible localhost ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-009-r39-exp-049",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde tum host'larda `curl` paketini yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-249-39 -b -m apt -a 'name=curl state=present'",
+          "hint_text": "APT module ile paket kurulumunu kullan.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-010-r40-exp-050",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda `site-40.yml` playbook'unu check modda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-40.yml -i inventory-250-40 --check",
+          "hint_text": "Dry-run icin `--check` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-001-r41-exp-051",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi ansible surumunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible --version",
+          "hint_text": "Surum icin `ansible --version` kullan.",
+          "hint_partial": "ansible --..."
+        }
+      ]
+    },
+    {
+      "id": "jans-002-r42-exp-052",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda inventory-252'deki tum host'lara ping module'u calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-252-42 -m ping",
+          "hint_text": "Ping module icin `ansible all -m ping` kullan.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-003-r43-exp-053",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi `bastion-253-43` grubunda `uptime` komutunu calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible bastion-253-43 -i inventory-253-43 -m shell -a 'uptime'",
+          "hint_text": "Shell module icin `-m shell -a` kullan.",
+          "hint_partial": "ansible bastion-253-43 ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-004-r44-exp-054",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde `site-44.yml` playbook'unu inventory-254-44 ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-44.yml -i inventory-254-44",
+          "hint_text": "Playbook calistirmak icin `ansible-playbook` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-005-r45-exp-055",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta inventory-255'yi JSON olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-inventory-255-45 -i inventory-255-45 --list",
+          "hint_text": "Inventory dump icin `ansible-inventory-255-45 --list` kullan.",
+          "hint_partial": "ansible-inventory-255-45 ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-006-r46-exp-056",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda `ping` module dokumantasyonunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-doc ping",
+          "hint_text": "Module doc icin `ansible-doc` kullan.",
+          "hint_partial": "ansible-doc ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-007-r47-exp-057",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde kurulu collection'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-galaxy collection list",
+          "hint_text": "Collection listesi icin `ansible-galaxy collection list` kullan.",
+          "hint_partial": "ansible-galaxy ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-008-r48-exp-058",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda localhost host facts bilgisini topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible localhost -m setup",
+          "hint_text": "Facts toplamak icin `setup` module'unu kullan.",
+          "hint_partial": "ansible localhost ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-009-r49-exp-059",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi tum host'larda `curl` paketini yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-259-49 -b -m apt -a 'name=curl state=present'",
+          "hint_text": "APT module ile paket kurulumunu kullan.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-010-r50-exp-060",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda `site-50.yml` playbook'unu check modda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-50.yml -i inventory-260-50 --check",
+          "hint_text": "Dry-run icin `--check` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-001-r51-exp-061",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi ansible surumunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible --version",
+          "hint_text": "Surum icin `ansible --version` kullan.",
+          "hint_partial": "ansible --..."
+        }
+      ]
+    },
+    {
+      "id": "jans-002-r52-exp-062",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde inventory-262'deki tum host'lara ping module'u calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-262-52 -m ping",
+          "hint_text": "Ping module icin `ansible all -m ping` kullan.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-003-r53-exp-063",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta `cache-263-53-53` grubunda `uptime` komutunu calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible cache-263-53-53 -i inventory-263-53 -m shell -a 'uptime'",
+          "hint_text": "Shell module icin `-m shell -a` kullan.",
+          "hint_partial": "ansible cache-263-53-53 ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-004-r54-exp-064",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda `site-54.yml` playbook'unu inventory-264-54 ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-54.yml -i inventory-264-54",
+          "hint_text": "Playbook calistirmak icin `ansible-playbook` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-005-r55-exp-065",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde inventory-265'yi JSON olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-inventory-265-55 -i inventory-265-55 --list",
+          "hint_text": "Inventory dump icin `ansible-inventory-265-55 --list` kullan.",
+          "hint_partial": "ansible-inventory-265-55 ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-006-r56-exp-066",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda `ping` module dokumantasyonunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-doc ping",
+          "hint_text": "Module doc icin `ansible-doc` kullan.",
+          "hint_partial": "ansible-doc ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-007-r57-exp-067",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi kurulu collection'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-galaxy collection list",
+          "hint_text": "Collection listesi icin `ansible-galaxy collection list` kullan.",
+          "hint_partial": "ansible-galaxy ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-008-r58-exp-068",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda localhost host facts bilgisini topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible localhost -m setup",
+          "hint_text": "Facts toplamak icin `setup` module'unu kullan.",
+          "hint_partial": "ansible localhost ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-009-r59-exp-069",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi tum host'larda `curl` paketini yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-269-59 -b -m apt -a 'name=curl state=present'",
+          "hint_text": "APT module ile paket kurulumunu kullan.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-010-r60-exp-070",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde `site-60.yml` playbook'unu check modda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-60.yml -i inventory-270-60 --check",
+          "hint_text": "Dry-run icin `--check` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-001-r61-exp-071",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta ansible surumunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible --version",
+          "hint_text": "Surum icin `ansible --version` kullan.",
+          "hint_partial": "ansible --..."
+        }
+      ]
+    },
+    {
+      "id": "jans-002-r62-exp-072",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda inventory-272'deki tum host'lara ping module'u calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-272-62 -m ping",
+          "hint_text": "Ping module icin `ansible all -m ping` kullan.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-003-r63-exp-073",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde `bastion-63` grubunda `uptime` komutunu calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible bastion-63 -i inventory-273-63 -m shell -a 'uptime'",
+          "hint_text": "Shell module icin `-m shell -a` kullan.",
+          "hint_partial": "ansible bastion-63 ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-004-r64-exp-074",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda `site-64.yml` playbook'unu inventory-274-64 ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-64.yml -i inventory-274-64",
+          "hint_text": "Playbook calistirmak icin `ansible-playbook` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-005-r65-exp-075",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi inventory-275'yi JSON olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-inventory-275-65 -i inventory-275-65 --list",
+          "hint_text": "Inventory dump icin `ansible-inventory-275-65 --list` kullan.",
+          "hint_partial": "ansible-inventory-275-65 ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-006-r66-exp-076",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda `ping` module dokumantasyonunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-doc ping",
+          "hint_text": "Module doc icin `ansible-doc` kullan.",
+          "hint_partial": "ansible-doc ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-007-r67-exp-077",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi kurulu collection'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-galaxy collection list",
+          "hint_text": "Collection listesi icin `ansible-galaxy collection list` kullan.",
+          "hint_partial": "ansible-galaxy ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-008-r68-exp-078",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde localhost host facts bilgisini topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible localhost -m setup",
+          "hint_text": "Facts toplamak icin `setup` module'unu kullan.",
+          "hint_partial": "ansible localhost ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-009-r69-exp-079",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta tum host'larda `curl` paketini yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-279-69 -b -m apt -a 'name=curl state=present'",
+          "hint_text": "APT module ile paket kurulumunu kullan.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-010-r70-exp-080",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda `site-70.yml` playbook'unu check modda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-70.yml -i inventory-280-70 --check",
+          "hint_text": "Dry-run icin `--check` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-001-r71-exp-081",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde ansible surumunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible --version",
+          "hint_text": "Surum icin `ansible --version` kullan.",
+          "hint_partial": "ansible --..."
+        }
+      ]
+    },
+    {
+      "id": "jans-002-r72-exp-082",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda inventory-282'deki tum host'lara ping module'u calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-282-72 -m ping",
+          "hint_text": "Ping module icin `ansible all -m ping` kullan.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-003-r73-exp-083",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi `queue-283-283-73` grubunda `uptime` komutunu calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible queue-283-283-73 -i inventory-283-73 -m shell -a 'uptime'",
+          "hint_text": "Shell module icin `-m shell -a` kullan.",
+          "hint_partial": "ansible queue-283-283-73 ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-004-r74-exp-084",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda `site-74.yml` playbook'unu inventory-284-74 ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-74.yml -i inventory-284-74",
+          "hint_text": "Playbook calistirmak icin `ansible-playbook` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-005-r75-exp-085",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi inventory-285'yi JSON olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-inventory-285-75 -i inventory-285-75 --list",
+          "hint_text": "Inventory dump icin `ansible-inventory-285-75 --list` kullan.",
+          "hint_partial": "ansible-inventory-285-75 ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-006-r76-exp-086",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde `ping` module dokumantasyonunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-doc ping",
+          "hint_text": "Module doc icin `ansible-doc` kullan.",
+          "hint_partial": "ansible-doc ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-007-r77-exp-087",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta kurulu collection'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-galaxy collection list",
+          "hint_text": "Collection listesi icin `ansible-galaxy collection list` kullan.",
+          "hint_partial": "ansible-galaxy ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-008-r78-exp-088",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda localhost host facts bilgisini topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible localhost -m setup",
+          "hint_text": "Facts toplamak icin `setup` module'unu kullan.",
+          "hint_partial": "ansible localhost ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-009-r79-exp-089",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde tum host'larda `curl` paketini yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-289-79 -b -m apt -a 'name=curl state=present'",
+          "hint_text": "APT module ile paket kurulumunu kullan.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-010-r80-exp-090",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda `site-80.yml` playbook'unu check modda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-80.yml -i inventory-290-80 --check",
+          "hint_text": "Dry-run icin `--check` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-001-r81-exp-091",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi ansible surumunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible --version",
+          "hint_text": "Surum icin `ansible --version` kullan.",
+          "hint_partial": "ansible --..."
+        }
+      ]
+    },
+    {
+      "id": "jans-002-r82-exp-092",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda inventory-292'deki tum host'lara ping module'u calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-292-82 -m ping",
+          "hint_text": "Ping module icin `ansible all -m ping` kullan.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-003-r83-exp-093",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi `bastion-293-83` grubunda `uptime` komutunu calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible bastion-293-83 -i inventory-293-83 -m shell -a 'uptime'",
+          "hint_text": "Shell module icin `-m shell -a` kullan.",
+          "hint_partial": "ansible bastion-293-83 ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-004-r84-exp-094",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde `site-84.yml` playbook'unu inventory-294-84 ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-84.yml -i inventory-294-84",
+          "hint_text": "Playbook calistirmak icin `ansible-playbook` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-005-r85-exp-095",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta inventory-295'yi JSON olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-inventory-295-85 -i inventory-295-85 --list",
+          "hint_text": "Inventory dump icin `ansible-inventory-295-85 --list` kullan.",
+          "hint_partial": "ansible-inventory-295-85 ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-006-r86-exp-096",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda `ping` module dokumantasyonunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-doc ping",
+          "hint_text": "Module doc icin `ansible-doc` kullan.",
+          "hint_partial": "ansible-doc ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-007-r87-exp-097",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde kurulu collection'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-galaxy collection list",
+          "hint_text": "Collection listesi icin `ansible-galaxy collection list` kullan.",
+          "hint_partial": "ansible-galaxy ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-008-r88-exp-098",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda localhost host facts bilgisini topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible localhost -m setup",
+          "hint_text": "Facts toplamak icin `setup` module'unu kullan.",
+          "hint_partial": "ansible localhost ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-009-r89-exp-099",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi tum host'larda `curl` paketini yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-299-89 -b -m apt -a 'name=curl state=present'",
+          "hint_text": "APT module ile paket kurulumunu kullan.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-010-r90-exp-100",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda `site-90.yml` playbook'unu check modda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-90.yml -i inventory-300-90 --check",
+          "hint_text": "Dry-run icin `--check` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-001-r91-exp-101",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi ansible surumunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible --version",
+          "hint_text": "Surum icin `ansible --version` kullan.",
+          "hint_partial": "ansible --..."
+        }
+      ]
+    },
+    {
+      "id": "jans-002-r92-exp-102",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde inventory-302'deki tum host'lara ping module'u calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-302-92 -m ping",
+          "hint_text": "Ping module icin `ansible all -m ping` kullan.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-003-r93-exp-103",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta `cache-303-93-93` grubunda `uptime` komutunu calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible cache-303-93-93 -i inventory-303-93 -m shell -a 'uptime'",
+          "hint_text": "Shell module icin `-m shell -a` kullan.",
+          "hint_partial": "ansible cache-303-93-93 ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-004-r94-exp-104",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda `site-94.yml` playbook'unu inventory-304-94 ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-94.yml -i inventory-304-94",
+          "hint_text": "Playbook calistirmak icin `ansible-playbook` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-005-r95-exp-105",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde inventory-305'yi JSON olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-inventory-305-95 -i inventory-305-95 --list",
+          "hint_text": "Inventory dump icin `ansible-inventory-305-95 --list` kullan.",
+          "hint_partial": "ansible-inventory-305-95 ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-006-r96-exp-106",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda `ping` module dokumantasyonunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-doc ping",
+          "hint_text": "Module doc icin `ansible-doc` kullan.",
+          "hint_partial": "ansible-doc ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-007-r97-exp-107",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi kurulu collection'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-galaxy collection list",
+          "hint_text": "Collection listesi icin `ansible-galaxy collection list` kullan.",
+          "hint_partial": "ansible-galaxy ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-008-r98-exp-108",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda localhost host facts bilgisini topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible localhost -m setup",
+          "hint_text": "Facts toplamak icin `setup` module'unu kullan.",
+          "hint_partial": "ansible localhost ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-009-r99-exp-109",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi tum host'larda `curl` paketini yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-309-99 -b -m apt -a 'name=curl state=present'",
+          "hint_text": "APT module ile paket kurulumunu kullan.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-010-r100-exp-110",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde `site-100.yml` playbook'unu check modda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-100.yml -i inventory-310-100 --check",
+          "hint_text": "Dry-run icin `--check` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-001-r101-exp-111",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta ansible surumunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible --version",
+          "hint_text": "Surum icin `ansible --version` kullan.",
+          "hint_partial": "ansible --..."
+        }
+      ]
+    },
+    {
+      "id": "jans-002-r102-exp-112",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda inventory-312'deki tum host'lara ping module'u calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-312-102 -m ping",
+          "hint_text": "Ping module icin `ansible all -m ping` kullan.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-003-r103-exp-113",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde `bastion-103` grubunda `uptime` komutunu calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible bastion-103 -i inventory-313-103 -m shell -a 'uptime'",
+          "hint_text": "Shell module icin `-m shell -a` kullan.",
+          "hint_partial": "ansible bastion-103 ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-004-r104-exp-114",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda `site-104.yml` playbook'unu inventory-314-104 ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-104.yml -i inventory-314-104",
+          "hint_text": "Playbook calistirmak icin `ansible-playbook` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-005-r105-exp-115",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi inventory-315'yi JSON olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-inventory-315-105 -i inventory-315-105 --list",
+          "hint_text": "Inventory dump icin `ansible-inventory-315-105 --list` kullan.",
+          "hint_partial": "ansible-inventory-315-105 ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-006-r106-exp-116",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda `ping` module dokumantasyonunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-doc ping",
+          "hint_text": "Module doc icin `ansible-doc` kullan.",
+          "hint_partial": "ansible-doc ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-007-r107-exp-117",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi kurulu collection'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-galaxy collection list",
+          "hint_text": "Collection listesi icin `ansible-galaxy collection list` kullan.",
+          "hint_partial": "ansible-galaxy ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-008-r108-exp-118",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde localhost host facts bilgisini topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible localhost -m setup",
+          "hint_text": "Facts toplamak icin `setup` module'unu kullan.",
+          "hint_partial": "ansible localhost ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-009-r109-exp-119",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta tum host'larda `curl` paketini yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-319-109 -b -m apt -a 'name=curl state=present'",
+          "hint_text": "APT module ile paket kurulumunu kullan.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-010-r110-exp-120",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda `site-110.yml` playbook'unu check modda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-110.yml -i inventory-320-110 --check",
+          "hint_text": "Dry-run icin `--check` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-001-r111-exp-121",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde ansible surumunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible --version",
+          "hint_text": "Surum icin `ansible --version` kullan.",
+          "hint_partial": "ansible --..."
+        }
+      ]
+    },
+    {
+      "id": "jans-002-r112-exp-122",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda inventory-322'deki tum host'lara ping module'u calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-322-112 -m ping",
+          "hint_text": "Ping module icin `ansible all -m ping` kullan.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-003-r113-exp-123",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi `queue-323-323-113` grubunda `uptime` komutunu calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible queue-323-323-113 -i inventory-323-113 -m shell -a 'uptime'",
+          "hint_text": "Shell module icin `-m shell -a` kullan.",
+          "hint_partial": "ansible queue-323-323-113 ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-004-r114-exp-124",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda `site-114.yml` playbook'unu inventory-324-114 ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-114.yml -i inventory-324-114",
+          "hint_text": "Playbook calistirmak icin `ansible-playbook` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-005-r115-exp-125",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi inventory-325'yi JSON olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-inventory-325-115 -i inventory-325-115 --list",
+          "hint_text": "Inventory dump icin `ansible-inventory-325-115 --list` kullan.",
+          "hint_partial": "ansible-inventory-325-115 ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-006-r116-exp-126",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde `ping` module dokumantasyonunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-doc ping",
+          "hint_text": "Module doc icin `ansible-doc` kullan.",
+          "hint_partial": "ansible-doc ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-007-r117-exp-127",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta kurulu collection'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-galaxy collection list",
+          "hint_text": "Collection listesi icin `ansible-galaxy collection list` kullan.",
+          "hint_partial": "ansible-galaxy ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-008-r118-exp-128",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda localhost host facts bilgisini topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible localhost -m setup",
+          "hint_text": "Facts toplamak icin `setup` module'unu kullan.",
+          "hint_partial": "ansible localhost ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-009-r119-exp-129",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde tum host'larda `curl` paketini yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-329-119 -b -m apt -a 'name=curl state=present'",
+          "hint_text": "APT module ile paket kurulumunu kullan.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-010-r120-exp-130",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda `site-120.yml` playbook'unu check modda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-120.yml -i inventory-330-120 --check",
+          "hint_text": "Dry-run icin `--check` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-001-r121-exp-131",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi ansible surumunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible --version",
+          "hint_text": "Surum icin `ansible --version` kullan.",
+          "hint_partial": "ansible --..."
+        }
+      ]
+    },
+    {
+      "id": "jans-002-r122-exp-132",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda inventory-332'deki tum host'lara ping module'u calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-332-122 -m ping",
+          "hint_text": "Ping module icin `ansible all -m ping` kullan.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-003-r123-exp-133",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi `bastion-333-123` grubunda `uptime` komutunu calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible bastion-333-123 -i inventory-333-123 -m shell -a 'uptime'",
+          "hint_text": "Shell module icin `-m shell -a` kullan.",
+          "hint_partial": "ansible bastion-333-123 ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-004-r124-exp-134",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde `site-124.yml` playbook'unu inventory-334-124 ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-124.yml -i inventory-334-124",
+          "hint_text": "Playbook calistirmak icin `ansible-playbook` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-005-r125-exp-135",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta inventory-335'yi JSON olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-inventory-335-125 -i inventory-335-125 --list",
+          "hint_text": "Inventory dump icin `ansible-inventory-335-125 --list` kullan.",
+          "hint_partial": "ansible-inventory-335-125 ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-006-r126-exp-136",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda `ping` module dokumantasyonunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-doc ping",
+          "hint_text": "Module doc icin `ansible-doc` kullan.",
+          "hint_partial": "ansible-doc ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-007-r127-exp-137",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde kurulu collection'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-galaxy collection list",
+          "hint_text": "Collection listesi icin `ansible-galaxy collection list` kullan.",
+          "hint_partial": "ansible-galaxy ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-008-r128-exp-138",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda localhost host facts bilgisini topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible localhost -m setup",
+          "hint_text": "Facts toplamak icin `setup` module'unu kullan.",
+          "hint_partial": "ansible localhost ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-009-r129-exp-139",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi tum host'larda `curl` paketini yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-339-129 -b -m apt -a 'name=curl state=present'",
+          "hint_text": "APT module ile paket kurulumunu kullan.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-010-r130-exp-140",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda `site-130.yml` playbook'unu check modda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-130.yml -i inventory-340-130 --check",
+          "hint_text": "Dry-run icin `--check` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-001-r131-exp-141",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi ansible surumunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible --version",
+          "hint_text": "Surum icin `ansible --version` kullan.",
+          "hint_partial": "ansible --..."
+        }
+      ]
+    },
+    {
+      "id": "jans-002-r132-exp-142",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde inventory-342'deki tum host'lara ping module'u calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-342-132 -m ping",
+          "hint_text": "Ping module icin `ansible all -m ping` kullan.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-003-r133-exp-143",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta `cache-343-133-133` grubunda `uptime` komutunu calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible cache-343-133-133 -i inventory-343-133 -m shell -a 'uptime'",
+          "hint_text": "Shell module icin `-m shell -a` kullan.",
+          "hint_partial": "ansible cache-343-133-133 ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-004-r134-exp-144",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda `site-134.yml` playbook'unu inventory-344-134 ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-134.yml -i inventory-344-134",
+          "hint_text": "Playbook calistirmak icin `ansible-playbook` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-005-r135-exp-145",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde inventory-345'yi JSON olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-inventory-345-135 -i inventory-345-135 --list",
+          "hint_text": "Inventory dump icin `ansible-inventory-345-135 --list` kullan.",
+          "hint_partial": "ansible-inventory-345-135 ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-006-r136-exp-146",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda `ping` module dokumantasyonunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-doc ping",
+          "hint_text": "Module doc icin `ansible-doc` kullan.",
+          "hint_partial": "ansible-doc ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-007-r137-exp-147",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi kurulu collection'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-galaxy collection list",
+          "hint_text": "Collection listesi icin `ansible-galaxy collection list` kullan.",
+          "hint_partial": "ansible-galaxy ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-008-r138-exp-148",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda localhost host facts bilgisini topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible localhost -m setup",
+          "hint_text": "Facts toplamak icin `setup` module'unu kullan.",
+          "hint_partial": "ansible localhost ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-009-r139-exp-149",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi tum host'larda `curl` paketini yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-349-139 -b -m apt -a 'name=curl state=present'",
+          "hint_text": "APT module ile paket kurulumunu kullan.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-010-r140-exp-150",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde `site-140.yml` playbook'unu check modda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-140.yml -i inventory-350-140 --check",
+          "hint_text": "Dry-run icin `--check` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-001-r141-exp-151",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta ansible surumunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible --version",
+          "hint_text": "Surum icin `ansible --version` kullan.",
+          "hint_partial": "ansible --..."
+        }
+      ]
+    },
+    {
+      "id": "jans-002-r142-exp-152",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda inventory-352'deki tum host'lara ping module'u calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-352-142 -m ping",
+          "hint_text": "Ping module icin `ansible all -m ping` kullan.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-003-r143-exp-153",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde `bastion-143` grubunda `uptime` komutunu calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible bastion-143 -i inventory-353-143 -m shell -a 'uptime'",
+          "hint_text": "Shell module icin `-m shell -a` kullan.",
+          "hint_partial": "ansible bastion-143 ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-004-r144-exp-154",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda `site-144.yml` playbook'unu inventory-354-144 ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-144.yml -i inventory-354-144",
+          "hint_text": "Playbook calistirmak icin `ansible-playbook` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-005-r145-exp-155",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi inventory-355'yi JSON olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-inventory-355-145 -i inventory-355-145 --list",
+          "hint_text": "Inventory dump icin `ansible-inventory-355-145 --list` kullan.",
+          "hint_partial": "ansible-inventory-355-145 ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-006-r146-exp-156",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda `ping` module dokumantasyonunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-doc ping",
+          "hint_text": "Module doc icin `ansible-doc` kullan.",
+          "hint_partial": "ansible-doc ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-007-r147-exp-157",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi kurulu collection'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-galaxy collection list",
+          "hint_text": "Collection listesi icin `ansible-galaxy collection list` kullan.",
+          "hint_partial": "ansible-galaxy ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-008-r148-exp-158",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde localhost host facts bilgisini topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible localhost -m setup",
+          "hint_text": "Facts toplamak icin `setup` module'unu kullan.",
+          "hint_partial": "ansible localhost ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-009-r149-exp-159",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta tum host'larda `curl` paketini yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-359-149 -b -m apt -a 'name=curl state=present'",
+          "hint_text": "APT module ile paket kurulumunu kullan.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-010-r150-exp-160",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda `site-150.yml` playbook'unu check modda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-150.yml -i inventory-360-150 --check",
+          "hint_text": "Dry-run icin `--check` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-001-r151-exp-161",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde ansible surumunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible --version",
+          "hint_text": "Surum icin `ansible --version` kullan.",
+          "hint_partial": "ansible --..."
+        }
+      ]
+    },
+    {
+      "id": "jans-002-r152-exp-162",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda inventory-362'deki tum host'lara ping module'u calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-362-152 -m ping",
+          "hint_text": "Ping module icin `ansible all -m ping` kullan.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-003-r153-exp-163",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi `queue-363-363-153` grubunda `uptime` komutunu calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible queue-363-363-153 -i inventory-363-153 -m shell -a 'uptime'",
+          "hint_text": "Shell module icin `-m shell -a` kullan.",
+          "hint_partial": "ansible queue-363-363-153 ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-004-r154-exp-164",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda `site-154.yml` playbook'unu inventory-364-154 ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-154.yml -i inventory-364-154",
+          "hint_text": "Playbook calistirmak icin `ansible-playbook` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-005-r155-exp-165",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi inventory-365'yi JSON olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-inventory-365-155 -i inventory-365-155 --list",
+          "hint_text": "Inventory dump icin `ansible-inventory-365-155 --list` kullan.",
+          "hint_partial": "ansible-inventory-365-155 ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-006-r156-exp-166",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde `ping` module dokumantasyonunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-doc ping",
+          "hint_text": "Module doc icin `ansible-doc` kullan.",
+          "hint_partial": "ansible-doc ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-007-r157-exp-167",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta kurulu collection'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-galaxy collection list",
+          "hint_text": "Collection listesi icin `ansible-galaxy collection list` kullan.",
+          "hint_partial": "ansible-galaxy ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-008-r158-exp-168",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda localhost host facts bilgisini topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible localhost -m setup",
+          "hint_text": "Facts toplamak icin `setup` module'unu kullan.",
+          "hint_partial": "ansible localhost ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-009-r159-exp-169",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde tum host'larda `curl` paketini yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-369-159 -b -m apt -a 'name=curl state=present'",
+          "hint_text": "APT module ile paket kurulumunu kullan.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-010-r160-exp-170",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda `site-160.yml` playbook'unu check modda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-160.yml -i inventory-370-160 --check",
+          "hint_text": "Dry-run icin `--check` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-001-r161-exp-171",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi ansible surumunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible --version",
+          "hint_text": "Surum icin `ansible --version` kullan.",
+          "hint_partial": "ansible --..."
+        }
+      ]
+    },
+    {
+      "id": "jans-002-r162-exp-172",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda inventory-372'deki tum host'lara ping module'u calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-372-162 -m ping",
+          "hint_text": "Ping module icin `ansible all -m ping` kullan.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-003-r163-exp-173",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi `bastion-373-163` grubunda `uptime` komutunu calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible bastion-373-163 -i inventory-373-163 -m shell -a 'uptime'",
+          "hint_text": "Shell module icin `-m shell -a` kullan.",
+          "hint_partial": "ansible bastion-373-163 ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-004-r164-exp-174",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde `site-164.yml` playbook'unu inventory-374-164 ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-164.yml -i inventory-374-164",
+          "hint_text": "Playbook calistirmak icin `ansible-playbook` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-005-r165-exp-175",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta inventory-375'yi JSON olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-inventory-375-165 -i inventory-375-165 --list",
+          "hint_text": "Inventory dump icin `ansible-inventory-375-165 --list` kullan.",
+          "hint_partial": "ansible-inventory-375-165 ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-006-r166-exp-176",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda `ping` module dokumantasyonunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-doc ping",
+          "hint_text": "Module doc icin `ansible-doc` kullan.",
+          "hint_partial": "ansible-doc ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-007-r167-exp-177",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde kurulu collection'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-galaxy collection list",
+          "hint_text": "Collection listesi icin `ansible-galaxy collection list` kullan.",
+          "hint_partial": "ansible-galaxy ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-008-r168-exp-178",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda localhost host facts bilgisini topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible localhost -m setup",
+          "hint_text": "Facts toplamak icin `setup` module'unu kullan.",
+          "hint_partial": "ansible localhost ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-009-r169-exp-179",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi tum host'larda `curl` paketini yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-379-169 -b -m apt -a 'name=curl state=present'",
+          "hint_text": "APT module ile paket kurulumunu kullan.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-010-r170-exp-180",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda `site-170.yml` playbook'unu check modda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-170.yml -i inventory-380-170 --check",
+          "hint_text": "Dry-run icin `--check` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-001-r171-exp-181",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi ansible surumunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible --version",
+          "hint_text": "Surum icin `ansible --version` kullan.",
+          "hint_partial": "ansible --..."
+        }
+      ]
+    },
+    {
+      "id": "jans-002-r172-exp-182",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde inventory-382'deki tum host'lara ping module'u calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-382-172 -m ping",
+          "hint_text": "Ping module icin `ansible all -m ping` kullan.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-003-r173-exp-183",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta `cache-383-173-173` grubunda `uptime` komutunu calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible cache-383-173-173 -i inventory-383-173 -m shell -a 'uptime'",
+          "hint_text": "Shell module icin `-m shell -a` kullan.",
+          "hint_partial": "ansible cache-383-173-173 ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-004-r174-exp-184",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda `site-174.yml` playbook'unu inventory-384-174 ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-174.yml -i inventory-384-174",
+          "hint_text": "Playbook calistirmak icin `ansible-playbook` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-005-r175-exp-185",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde inventory-385'yi JSON olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-inventory-385-175 -i inventory-385-175 --list",
+          "hint_text": "Inventory dump icin `ansible-inventory-385-175 --list` kullan.",
+          "hint_partial": "ansible-inventory-385-175 ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-006-r176-exp-186",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda `ping` module dokumantasyonunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-doc ping",
+          "hint_text": "Module doc icin `ansible-doc` kullan.",
+          "hint_partial": "ansible-doc ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-007-r177-exp-187",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi kurulu collection'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-galaxy collection list",
+          "hint_text": "Collection listesi icin `ansible-galaxy collection list` kullan.",
+          "hint_partial": "ansible-galaxy ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-008-r178-exp-188",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda localhost host facts bilgisini topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible localhost -m setup",
+          "hint_text": "Facts toplamak icin `setup` module'unu kullan.",
+          "hint_partial": "ansible localhost ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-009-r179-exp-189",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi tum host'larda `curl` paketini yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-389-179 -b -m apt -a 'name=curl state=present'",
+          "hint_text": "APT module ile paket kurulumunu kullan.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-010-r180-exp-190",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde `site-180.yml` playbook'unu check modda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-180.yml -i inventory-390-180 --check",
+          "hint_text": "Dry-run icin `--check` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-001-r181-exp-191",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta ansible surumunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible --version",
+          "hint_text": "Surum icin `ansible --version` kullan.",
+          "hint_partial": "ansible --..."
+        }
+      ]
+    },
+    {
+      "id": "jans-002-r182-exp-192",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda inventory-392'deki tum host'lara ping module'u calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-392-182 -m ping",
+          "hint_text": "Ping module icin `ansible all -m ping` kullan.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-003-r183-exp-193",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde `bastion-183` grubunda `uptime` komutunu calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible bastion-183 -i inventory-393-183 -m shell -a 'uptime'",
+          "hint_text": "Shell module icin `-m shell -a` kullan.",
+          "hint_partial": "ansible bastion-183 ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-004-r184-exp-194",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda `site-184.yml` playbook'unu inventory-394-184 ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-184.yml -i inventory-394-184",
+          "hint_text": "Playbook calistirmak icin `ansible-playbook` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-005-r185-exp-195",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi inventory-395'yi JSON olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-inventory-395-185 -i inventory-395-185 --list",
+          "hint_text": "Inventory dump icin `ansible-inventory-395-185 --list` kullan.",
+          "hint_partial": "ansible-inventory-395-185 ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-006-r186-exp-196",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda `ping` module dokumantasyonunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-doc ping",
+          "hint_text": "Module doc icin `ansible-doc` kullan.",
+          "hint_partial": "ansible-doc ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-007-r187-exp-197",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi kurulu collection'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-galaxy collection list",
+          "hint_text": "Collection listesi icin `ansible-galaxy collection list` kullan.",
+          "hint_partial": "ansible-galaxy ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-008-r188-exp-198",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde localhost host facts bilgisini topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible localhost -m setup",
+          "hint_text": "Facts toplamak icin `setup` module'unu kullan.",
+          "hint_partial": "ansible localhost ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-009-r189-exp-199",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta tum host'larda `curl` paketini yukle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible all -i inventory-399-189 -b -m apt -a 'name=curl state=present'",
+          "hint_text": "APT module ile paket kurulumunu kullan.",
+          "hint_partial": "ansible all ..."
+        }
+      ]
+    },
+    {
+      "id": "jans-010-r190-exp-200",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda `site-190.yml` playbook'unu check modda calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ansible-playbook site-190.yml -i inventory-400-190 --check",
+          "hint_text": "Dry-run icin `--check` kullan.",
+          "hint_partial": "ansible-playbook ..."
+        }
+      ]
+    }
+  ]
+}

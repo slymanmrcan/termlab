@@ -1,0 +1,218 @@
+{
+  "level": "mid",
+  "topic": "system",
+  "questions": [
+    {
+      "id": "msys-001",
+      "type": "multi-step",
+      "scenario": "Sistem yavaş, önce load average kontrol et, sonra en fazla kaynak tüketen process'leri gör.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "uptime",
+          "hint_text": "load average buradan görülür",
+          "hint_partial": "upti..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "ps aux --sort=-%mem | head -10",
+          "hint_text": "ps aux'u memory'ye göre sırala",
+          "hint_partial": "ps aux --sort=-%mem | ..."
+        }
+      ]
+    },
+    {
+      "id": "msys-002",
+      "type": "single",
+      "scenario": "nginx'in son bootden bu yana tüm loglarını gör.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "journalctl -u nginx -b",
+          "hint_text": "journalctl -u service adı, -b bu boot'tan itibaren",
+          "hint_partial": "journalctl -u nginx ..."
+        }
+      ]
+    },
+    {
+      "id": "msys-003",
+      "type": "single",
+      "scenario": "Nginx incident'inda sadece bu boot'a ait warning ve error loglarini canli izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "journalctl -u nginx -b -p warning -f",
+          "hint_text": "Servis, boot, seviye ve follow filtrelerini birlikte kullan.",
+          "hint_partial": "journalctl -u nginx -b -p warning -f"
+        }
+      ]
+    },
+    {
+      "id": "msys-004",
+      "type": "multi-step",
+      "scenario": "Kernel parametresi vm.swappiness'i geçici olarak 10'a düşür, sonra kalıcı hale getir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sysctl -w vm.swappiness=10",
+          "hint_text": "sysctl -w runtime'da parametre yazar",
+          "hint_partial": "sysctl -w ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "echo 'vm.swappiness=10' >> /etc/sysctl.conf",
+          "hint_text": "kalıcı için /etc/sysctl.conf'a ekle",
+          "hint_partial": "echo 'vm.swappiness=10' >> ..."
+        }
+      ]
+    },
+    {
+      "id": "msys-005",
+      "type": "single",
+      "scenario": "Boot sirasinda hangi service'lerin enabled olduğunu listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "systemctl list-unit-files --type=service --state=enabled",
+          "hint_text": "systemctl list-unit-files ile filtrele",
+          "hint_partial": "systemctl list-unit-files --type=service ..."
+        }
+      ]
+    },
+    {
+      "id": "msys-007",
+      "type": "single",
+      "scenario": "Servis konfigurasyonunu etkileyen APP_, DB_ ve REDIS_ environment variable'larini alfabetik filtreyle incele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "env | sort | grep -E '^(APP_|DB_|REDIS_)'",
+          "hint_text": "Ortam degiskenlerini filtrelemek icin `env | sort | grep -E` kullan.",
+          "hint_partial": "env | sort | grep -E '^(APP_|DB_|REDIS_)'"
+        }
+      ]
+    },
+    {
+      "id": "msys-008",
+      "type": "multi-step",
+      "scenario": "Yeni bir swap field oluştur (/swapfile, 2GB), aktif et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fallocate -l 2G /swapfile",
+          "hint_text": "fallocate ile file oluştur",
+          "hint_partial": "fallocate -l 2G ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "chmod 600 /swapfile",
+          "hint_text": "swap file'ına sadece root erişebilmeli",
+          "hint_partial": "chmod 600 ..."
+        }
+      ]
+    },
+    {
+      "id": "msys-009",
+      "type": "single",
+      "scenario": "Son kernel panic veya OOM (Out of Memory) mesajlarını logdan bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "journalctl -k | grep -i 'oom\\|panic'",
+          "hint_text": "journalctl -k kernel mesajları, grep ile filtrele",
+          "hint_partial": "journalctl -k | grep -i ..."
+        }
+      ]
+    },
+    {
+      "id": "msys-010",
+      "type": "single",
+      "scenario": "Hangi user'ın hangi komutları sudo ile çalıştırdığını log'dan göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "grep sudo /var/log/auth.log",
+          "hint_text": "sudo aktivitesi auth.log'da tutulur",
+          "hint_partial": "grep sudo /var/log/..."
+        }
+      ]
+    },
+    {
+      "id": "msys-011",
+      "type": "single",
+      "scenario": "Incident raporu icin CPU modeli, toplam CPU sayisi ve NUMA node sayisini kisa ozetle cikar.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lscpu | grep -E 'Model name|CPU\\(s\\)|NUMA node\\(s\\)'",
+          "hint_text": "Sadece kritik CPU alanlarini filtrelemek icin `lscpu | grep -E` kullan.",
+          "hint_partial": "lscpu | grep -E 'Model name|CPU\\(s\\)|NUMA node\\(s\\)'"
+        }
+      ]
+    },
+    {
+      "id": "msys-012",
+      "type": "single",
+      "scenario": "Calisan systemd service'lerini listele",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "systemctl list-units --type=service --state=running",
+          "hint_text": "Service tipini ve running durumunu filtrele",
+          "hint_partial": "systemctl list-units ..."
+        }
+      ]
+    },
+    {
+      "id": "msys-013",
+      "type": "multi-step",
+      "scenario": "Makine reboot etmis mi anlamak icin son boot zamanini gor, sonra en son reboot kayitlarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "who -b",
+          "hint_text": "Son boot zamanini gormek icin `who -b` kullan.",
+          "hint_partial": "who -b"
+        },
+        {
+          "prompt": "$ ",
+          "answer": "last reboot | head -3",
+          "hint_text": "Gecmis reboot kayitlarini gormek icin `last reboot` kullan.",
+          "hint_partial": "last reboot | head -3"
+        }
+      ]
+    },
+    {
+      "id": "msys-014",
+      "type": "single",
+      "scenario": "File sistemlerini turleriyle birlikte listele",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mount | column -t",
+          "hint_text": "mount cikisini daha okunur hale getir",
+          "hint_partial": "mount | ..."
+        }
+      ]
+    },
+    {
+      "id": "msys-015",
+      "type": "multi-step",
+      "scenario": "Tarih-saat ayarlarini goster ve sonra aktif zamanlayicilari listele",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "timedatectl",
+          "hint_text": "Ilk adimda zaman ayarlarini goster",
+          "hint_partial": "timedatectl"
+        },
+        {
+          "prompt": "$ ",
+          "answer": "systemctl list-timers",
+          "hint_text": "Ikinci adimda aktif timer'lari listele",
+          "hint_partial": "systemctl list-timers"
+        }
+      ]
+    }
+  ]
+}

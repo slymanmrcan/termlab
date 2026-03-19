@@ -1,0 +1,2606 @@
+{
+  "level": "mid",
+  "topic": "monitoring",
+  "questions": [
+    {
+      "id": "mmon-011",
+      "type": "single",
+      "scenario": "CPU kullanimini 5 ornek boyunca `sar` ile topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sar -u 1 5",
+          "hint_text": "CPU icin `sar -u interval count` kullan.",
+          "hint_partial": "sar -u ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-012",
+      "type": "single",
+      "scenario": "Process bazinda CPU kullanimini izlemeye basla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pidstat -u 1",
+          "hint_text": "Process CPU istatistigi icin `pidstat -u` kullan.",
+          "hint_partial": "pidstat -u ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-013",
+      "type": "single",
+      "scenario": "Block device I/O performansini detayli izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iostat -dx 1",
+          "hint_text": "Device bazinda detay icin `iostat -dx` kullan.",
+          "hint_partial": "iostat -dx ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-014",
+      "type": "single",
+      "scenario": "Tum CPU core'larini ayri ayri izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mpstat -P ALL 1",
+          "hint_text": "Tum core'lar icin `mpstat -P ALL` kullan.",
+          "hint_partial": "mpstat -P ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-015",
+      "type": "single",
+      "scenario": "Socket durumlarini ozet olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ss -s",
+          "hint_text": "Socket ozeti icin `ss -s` kullan.",
+          "hint_partial": "ss -s"
+        }
+      ]
+    },
+    {
+      "id": "mmon-016",
+      "type": "single",
+      "scenario": "Her saniye top 10 CPU process'ini yenileyerek goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "watch -n 1 \"ps aux --sort=-%cpu | head -10\"",
+          "hint_text": "`watch` ile `ps` komutunu periyodik calistir.",
+          "hint_partial": "watch -n 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-017",
+      "type": "single",
+      "scenario": "Anlik load average degerlerini `/proc` altindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/loadavg",
+          "hint_text": "Load average bilgisi icin `/proc/loadavg` kullan.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-018",
+      "type": "single",
+      "scenario": "Ham CPU sayaclarini `/proc` altindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/stat",
+          "hint_text": "CPU ve scheduler sayaclari icin `/proc/stat` kullan.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-019",
+      "type": "single",
+      "scenario": "vmstat'in toplam ozet sayaclarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "vmstat -s",
+          "hint_text": "Toplam sayaç ozeti icin `vmstat -s` kullan.",
+          "hint_partial": "vmstat -s"
+        }
+      ]
+    },
+    {
+      "id": "mmon-020",
+      "type": "single",
+      "scenario": "Memory kullanimini MB formatinda goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "free -m",
+          "hint_text": "MB ciktisi icin `free -m` kullan.",
+          "hint_partial": "free -..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-021",
+      "type": "single",
+      "scenario": "PID 1234 icin acik dosyalari goster ve ilk satirlariyla sinirla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof -p 1234 | head",
+          "hint_text": "Belirli PID icin `lsof -p` kullan.",
+          "hint_partial": "lsof -p ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-022",
+      "type": "single",
+      "scenario": "Sadece aktif I/O yapan process'leri goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iotop -o",
+          "hint_text": "Aktif I/O process'leri icin `iotop -o` kullan.",
+          "hint_partial": "iotop ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-023",
+      "type": "single",
+      "scenario": "CPU, disk ve network ozetini 1 saniyelik araliklarla izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dstat 1",
+          "hint_text": "Birden fazla metriyi birlikte izlemek icin `dstat` kullan.",
+          "hint_partial": "dstat ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-024",
+      "type": "single",
+      "scenario": "Memory kullanimini `sar` ile 5 ornek topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sar -r 1 5",
+          "hint_text": "Memory istatistikleri icin `sar -r` kullan.",
+          "hint_partial": "sar -r ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-025",
+      "type": "single",
+      "scenario": "Process bazinda memory kullanimini izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pidstat -r 1",
+          "hint_text": "Process memory icin `pidstat -r` kullan.",
+          "hint_partial": "pidstat -r ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-011-r1",
+      "type": "single",
+      "scenario": "Bakim oncesi cPU kullanimini 5 ornek boyunca `sar` ile topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sar -u 1 5",
+          "hint_text": "CPU icin `sar -u interval count` kullan.",
+          "hint_partial": "sar -u ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-012-r2",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda process bazinda CPU kullanimini izlemeye basla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pidstat -u 1",
+          "hint_text": "Process CPU istatistigi icin `pidstat -u` kullan.",
+          "hint_partial": "pidstat -u ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-013-r3",
+      "type": "single",
+      "scenario": "Deploy sonrasi block device I/O performansini detayli izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iostat -dx 1",
+          "hint_text": "Device bazinda detay icin `iostat -dx` kullan.",
+          "hint_partial": "iostat -dx ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-014-r4",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde tum CPU core'larini ayri ayri izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mpstat -P ALL 1",
+          "hint_text": "Tum core'lar icin `mpstat -P ALL` kullan.",
+          "hint_partial": "mpstat -P ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-015-r5",
+      "type": "single",
+      "scenario": "Yeni acilan hostta socket durumlarini ozet olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ss -s",
+          "hint_text": "Socket ozeti icin `ss -s` kullan.",
+          "hint_partial": "ss -s"
+        }
+      ]
+    },
+    {
+      "id": "mmon-016-r6",
+      "type": "single",
+      "scenario": "Runbook adiminda her saniye top 10 CPU process'ini yenileyerek goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "watch -n 1 \"ps aux --sort=-%cpu | head -3\"",
+          "hint_text": "`watch` ile `ps` komutunu periyodik calistir.",
+          "hint_partial": "watch -n 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-017-r7",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde anlik load average degerlerini `/proc` altindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/loadavg",
+          "hint_text": "Load average bilgisi icin `/proc/loadavg` kullan.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-018-r8",
+      "type": "single",
+      "scenario": "Incident sonrasinda ham CPU sayaclarini `/proc` altindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/stat",
+          "hint_text": "CPU ve scheduler sayaclari icin `/proc/stat` kullan.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-019-r9",
+      "type": "single",
+      "scenario": "Bakim oncesi vmstat'in toplam ozet sayaclarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "vmstat -s",
+          "hint_text": "Toplam sayaç ozeti icin `vmstat -s` kullan.",
+          "hint_partial": "vmstat -s"
+        }
+      ]
+    },
+    {
+      "id": "mmon-020-r10",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda memory kullanimini MB formatinda goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "free -m",
+          "hint_text": "MB ciktisi icin `free -m` kullan.",
+          "hint_partial": "free -..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-021-r11",
+      "type": "single",
+      "scenario": "Deploy sonrasi pID 1234 icin acik dosyalari goster ve ilk satirlariyla sinirla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof -p 1234 | head",
+          "hint_text": "Belirli PID icin `lsof -p` kullan.",
+          "hint_partial": "lsof -p ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-022-r12",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde sadece aktif I/O yapan process'leri goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iotop -o",
+          "hint_text": "Aktif I/O process'leri icin `iotop -o` kullan.",
+          "hint_partial": "iotop ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-023-r13",
+      "type": "single",
+      "scenario": "Yeni acilan hostta cPU, disk ve network ozetini 1 saniyelik araliklarla izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dstat 1",
+          "hint_text": "Birden fazla metriyi birlikte izlemek icin `dstat` kullan.",
+          "hint_partial": "dstat ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-024-r14",
+      "type": "single",
+      "scenario": "Runbook adiminda memory kullanimini `sar` ile 5 ornek topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sar -r 1 5",
+          "hint_text": "Memory istatistikleri icin `sar -r` kullan.",
+          "hint_partial": "sar -r ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-025-r15",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde process bazinda memory kullanimini izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pidstat -r 1",
+          "hint_text": "Process memory icin `pidstat -r` kullan.",
+          "hint_partial": "pidstat -r ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-011-r16",
+      "type": "single",
+      "scenario": "Incident sonrasinda cPU kullanimini 5 ornek boyunca `sar` ile topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sar -u 1 5",
+          "hint_text": "CPU icin `sar -u interval count` kullan.",
+          "hint_partial": "sar -u ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-012-r17",
+      "type": "single",
+      "scenario": "Bakim oncesi process bazinda CPU kullanimini izlemeye basla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pidstat -u 1",
+          "hint_text": "Process CPU istatistigi icin `pidstat -u` kullan.",
+          "hint_partial": "pidstat -u ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-013-r18",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda block device I/O performansini detayli izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iostat -dx 1",
+          "hint_text": "Device bazinda detay icin `iostat -dx` kullan.",
+          "hint_partial": "iostat -dx ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-014-r19",
+      "type": "single",
+      "scenario": "Deploy sonrasi tum CPU core'larini ayri ayri izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mpstat -P ALL 1",
+          "hint_text": "Tum core'lar icin `mpstat -P ALL` kullan.",
+          "hint_partial": "mpstat -P ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-015-r20",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde socket durumlarini ozet olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ss -s",
+          "hint_text": "Socket ozeti icin `ss -s` kullan.",
+          "hint_partial": "ss -s"
+        }
+      ]
+    },
+    {
+      "id": "mmon-016-r21",
+      "type": "single",
+      "scenario": "Yeni acilan hostta her saniye top 10 CPU process'ini yenileyerek goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "watch -n 1 \"ps aux --sort=-%cpu | head -3\"",
+          "hint_text": "`watch` ile `ps` komutunu periyodik calistir.",
+          "hint_partial": "watch -n 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-017-r22",
+      "type": "single",
+      "scenario": "Runbook adiminda anlik load average degerlerini `/proc` altindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/loadavg",
+          "hint_text": "Load average bilgisi icin `/proc/loadavg` kullan.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-018-r23",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde ham CPU sayaclarini `/proc` altindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/stat",
+          "hint_text": "CPU ve scheduler sayaclari icin `/proc/stat` kullan.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-019-r24",
+      "type": "single",
+      "scenario": "Incident sonrasinda vmstat'in toplam ozet sayaclarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "vmstat -s",
+          "hint_text": "Toplam sayaç ozeti icin `vmstat -s` kullan.",
+          "hint_partial": "vmstat -s"
+        }
+      ]
+    },
+    {
+      "id": "mmon-020-r25",
+      "type": "single",
+      "scenario": "Bakim oncesi memory kullanimini MB formatinda goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "free -m",
+          "hint_text": "MB ciktisi icin `free -m` kullan.",
+          "hint_partial": "free -..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-021-r26",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda pID 1234 icin acik dosyalari goster ve ilk satirlariyla sinirla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof -p 1234 | head",
+          "hint_text": "Belirli PID icin `lsof -p` kullan.",
+          "hint_partial": "lsof -p ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-022-r27",
+      "type": "single",
+      "scenario": "Deploy sonrasi sadece aktif I/O yapan process'leri goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iotop -o",
+          "hint_text": "Aktif I/O process'leri icin `iotop -o` kullan.",
+          "hint_partial": "iotop ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-023-r28",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde cPU, disk ve network ozetini 1 saniyelik araliklarla izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dstat 1",
+          "hint_text": "Birden fazla metriyi birlikte izlemek icin `dstat` kullan.",
+          "hint_partial": "dstat ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-024-r29",
+      "type": "single",
+      "scenario": "Yeni acilan hostta memory kullanimini `sar` ile 5 ornek topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sar -r 1 5",
+          "hint_text": "Memory istatistikleri icin `sar -r` kullan.",
+          "hint_partial": "sar -r ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-025-r30",
+      "type": "single",
+      "scenario": "Runbook adiminda process bazinda memory kullanimini izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pidstat -r 1",
+          "hint_text": "Process memory icin `pidstat -r` kullan.",
+          "hint_partial": "pidstat -r ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-011-r31",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde cPU kullanimini 5 ornek boyunca `sar` ile topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sar -u 1 5",
+          "hint_text": "CPU icin `sar -u interval count` kullan.",
+          "hint_partial": "sar -u ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-012-r32",
+      "type": "single",
+      "scenario": "Incident sonrasinda process bazinda CPU kullanimini izlemeye basla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pidstat -u 1",
+          "hint_text": "Process CPU istatistigi icin `pidstat -u` kullan.",
+          "hint_partial": "pidstat -u ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-013-r33",
+      "type": "single",
+      "scenario": "Bakim oncesi block device I/O performansini detayli izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iostat -dx 1",
+          "hint_text": "Device bazinda detay icin `iostat -dx` kullan.",
+          "hint_partial": "iostat -dx ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-014-r34",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda tum CPU core'larini ayri ayri izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mpstat -P ALL 1",
+          "hint_text": "Tum core'lar icin `mpstat -P ALL` kullan.",
+          "hint_partial": "mpstat -P ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-015-r35",
+      "type": "single",
+      "scenario": "Deploy sonrasi socket durumlarini ozet olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ss -s",
+          "hint_text": "Socket ozeti icin `ss -s` kullan.",
+          "hint_partial": "ss -s"
+        }
+      ]
+    },
+    {
+      "id": "mmon-016-r36",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde her saniye top 10 CPU process'ini yenileyerek goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "watch -n 1 \"ps aux --sort=-%cpu | head -3\"",
+          "hint_text": "`watch` ile `ps` komutunu periyodik calistir.",
+          "hint_partial": "watch -n 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-017-r37",
+      "type": "single",
+      "scenario": "Yeni acilan hostta anlik load average degerlerini `/proc` altindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/loadavg",
+          "hint_text": "Load average bilgisi icin `/proc/loadavg` kullan.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-018-r38",
+      "type": "single",
+      "scenario": "Runbook adiminda ham CPU sayaclarini `/proc` altindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/stat",
+          "hint_text": "CPU ve scheduler sayaclari icin `/proc/stat` kullan.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-019-r39",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde vmstat'in toplam ozet sayaclarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "vmstat -s",
+          "hint_text": "Toplam sayaç ozeti icin `vmstat -s` kullan.",
+          "hint_partial": "vmstat -s"
+        }
+      ]
+    },
+    {
+      "id": "mmon-020-r40",
+      "type": "single",
+      "scenario": "Incident sonrasinda memory kullanimini MB formatinda goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "free -m",
+          "hint_text": "MB ciktisi icin `free -m` kullan.",
+          "hint_partial": "free -..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-021-r41",
+      "type": "single",
+      "scenario": "Bakim oncesi pID 1234 icin acik dosyalari goster ve ilk satirlariyla sinirla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof -p 1234 | head",
+          "hint_text": "Belirli PID icin `lsof -p` kullan.",
+          "hint_partial": "lsof -p ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-022-r42",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda sadece aktif I/O yapan process'leri goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iotop -o",
+          "hint_text": "Aktif I/O process'leri icin `iotop -o` kullan.",
+          "hint_partial": "iotop ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-023-r43",
+      "type": "single",
+      "scenario": "Deploy sonrasi cPU, disk ve network ozetini 1 saniyelik araliklarla izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dstat 1",
+          "hint_text": "Birden fazla metriyi birlikte izlemek icin `dstat` kullan.",
+          "hint_partial": "dstat ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-024-r44",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde memory kullanimini `sar` ile 5 ornek topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sar -r 1 5",
+          "hint_text": "Memory istatistikleri icin `sar -r` kullan.",
+          "hint_partial": "sar -r ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-025-r45",
+      "type": "single",
+      "scenario": "Yeni acilan hostta process bazinda memory kullanimini izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pidstat -r 1",
+          "hint_text": "Process memory icin `pidstat -r` kullan.",
+          "hint_partial": "pidstat -r ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-011-r46",
+      "type": "single",
+      "scenario": "Runbook adiminda cPU kullanimini 5 ornek boyunca `sar` ile topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sar -u 1 5",
+          "hint_text": "CPU icin `sar -u interval count` kullan.",
+          "hint_partial": "sar -u ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-012-r47",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde process bazinda CPU kullanimini izlemeye basla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pidstat -u 1",
+          "hint_text": "Process CPU istatistigi icin `pidstat -u` kullan.",
+          "hint_partial": "pidstat -u ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-013-r48",
+      "type": "single",
+      "scenario": "Incident sonrasinda block device I/O performansini detayli izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iostat -dx 1",
+          "hint_text": "Device bazinda detay icin `iostat -dx` kullan.",
+          "hint_partial": "iostat -dx ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-014-r49",
+      "type": "single",
+      "scenario": "Bakim oncesi tum CPU core'larini ayri ayri izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mpstat -P ALL 1",
+          "hint_text": "Tum core'lar icin `mpstat -P ALL` kullan.",
+          "hint_partial": "mpstat -P ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-015-r50",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda socket durumlarini ozet olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ss -s",
+          "hint_text": "Socket ozeti icin `ss -s` kullan.",
+          "hint_partial": "ss -s"
+        }
+      ]
+    },
+    {
+      "id": "mmon-016-r51",
+      "type": "single",
+      "scenario": "Deploy sonrasi her saniye top 10 CPU process'ini yenileyerek goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "watch -n 1 \"ps aux --sort=-%cpu | head -3\"",
+          "hint_text": "`watch` ile `ps` komutunu periyodik calistir.",
+          "hint_partial": "watch -n 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-017-r52",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde anlik load average degerlerini `/proc` altindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/loadavg",
+          "hint_text": "Load average bilgisi icin `/proc/loadavg` kullan.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-018-r53",
+      "type": "single",
+      "scenario": "Yeni acilan hostta ham CPU sayaclarini `/proc` altindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/stat",
+          "hint_text": "CPU ve scheduler sayaclari icin `/proc/stat` kullan.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-019-r54",
+      "type": "single",
+      "scenario": "Runbook adiminda vmstat'in toplam ozet sayaclarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "vmstat -s",
+          "hint_text": "Toplam sayaç ozeti icin `vmstat -s` kullan.",
+          "hint_partial": "vmstat -s"
+        }
+      ]
+    },
+    {
+      "id": "mmon-020-r55",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde memory kullanimini MB formatinda goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "free -m",
+          "hint_text": "MB ciktisi icin `free -m` kullan.",
+          "hint_partial": "free -..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-021-r56",
+      "type": "single",
+      "scenario": "Incident sonrasinda pID 1234 icin acik dosyalari goster ve ilk satirlariyla sinirla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof -p 1234 | head",
+          "hint_text": "Belirli PID icin `lsof -p` kullan.",
+          "hint_partial": "lsof -p ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-022-r57",
+      "type": "single",
+      "scenario": "Bakim oncesi sadece aktif I/O yapan process'leri goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iotop -o",
+          "hint_text": "Aktif I/O process'leri icin `iotop -o` kullan.",
+          "hint_partial": "iotop ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-023-r58",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda cPU, disk ve network ozetini 1 saniyelik araliklarla izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dstat 1",
+          "hint_text": "Birden fazla metriyi birlikte izlemek icin `dstat` kullan.",
+          "hint_partial": "dstat ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-024-r59",
+      "type": "single",
+      "scenario": "Deploy sonrasi memory kullanimini `sar` ile 5 ornek topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sar -r 1 5",
+          "hint_text": "Memory istatistikleri icin `sar -r` kullan.",
+          "hint_partial": "sar -r ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-025-r60",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde process bazinda memory kullanimini izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pidstat -r 1",
+          "hint_text": "Process memory icin `pidstat -r` kullan.",
+          "hint_partial": "pidstat -r ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-011-r61",
+      "type": "single",
+      "scenario": "Yeni acilan hostta cPU kullanimini 5 ornek boyunca `sar` ile topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sar -u 1 5",
+          "hint_text": "CPU icin `sar -u interval count` kullan.",
+          "hint_partial": "sar -u ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-012-r62",
+      "type": "single",
+      "scenario": "Runbook adiminda process bazinda CPU kullanimini izlemeye basla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pidstat -u 1",
+          "hint_text": "Process CPU istatistigi icin `pidstat -u` kullan.",
+          "hint_partial": "pidstat -u ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-013-r63",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde block device I/O performansini detayli izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iostat -dx 1",
+          "hint_text": "Device bazinda detay icin `iostat -dx` kullan.",
+          "hint_partial": "iostat -dx ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-014-r64",
+      "type": "single",
+      "scenario": "Incident sonrasinda tum CPU core'larini ayri ayri izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mpstat -P ALL 1",
+          "hint_text": "Tum core'lar icin `mpstat -P ALL` kullan.",
+          "hint_partial": "mpstat -P ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-015-r65",
+      "type": "single",
+      "scenario": "Bakim oncesi socket durumlarini ozet olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ss -s",
+          "hint_text": "Socket ozeti icin `ss -s` kullan.",
+          "hint_partial": "ss -s"
+        }
+      ]
+    },
+    {
+      "id": "mmon-016-r66",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda her saniye top 10 CPU process'ini yenileyerek goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "watch -n 1 \"ps aux --sort=-%cpu | head -3\"",
+          "hint_text": "`watch` ile `ps` komutunu periyodik calistir.",
+          "hint_partial": "watch -n 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-017-r67",
+      "type": "single",
+      "scenario": "Deploy sonrasi anlik load average degerlerini `/proc` altindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/loadavg",
+          "hint_text": "Load average bilgisi icin `/proc/loadavg` kullan.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-018-r68",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde ham CPU sayaclarini `/proc` altindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/stat",
+          "hint_text": "CPU ve scheduler sayaclari icin `/proc/stat` kullan.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-019-r69",
+      "type": "single",
+      "scenario": "Yeni acilan hostta vmstat'in toplam ozet sayaclarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "vmstat -s",
+          "hint_text": "Toplam sayaç ozeti icin `vmstat -s` kullan.",
+          "hint_partial": "vmstat -s"
+        }
+      ]
+    },
+    {
+      "id": "mmon-020-r70",
+      "type": "single",
+      "scenario": "Runbook adiminda memory kullanimini MB formatinda goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "free -m",
+          "hint_text": "MB ciktisi icin `free -m` kullan.",
+          "hint_partial": "free -..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-021-r71",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde pID 1234 icin acik dosyalari goster ve ilk satirlariyla sinirla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof -p 1234 | head",
+          "hint_text": "Belirli PID icin `lsof -p` kullan.",
+          "hint_partial": "lsof -p ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-022-r72",
+      "type": "single",
+      "scenario": "Incident sonrasinda sadece aktif I/O yapan process'leri goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iotop -o",
+          "hint_text": "Aktif I/O process'leri icin `iotop -o` kullan.",
+          "hint_partial": "iotop ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-023-r73",
+      "type": "single",
+      "scenario": "Bakim oncesi cPU, disk ve network ozetini 1 saniyelik araliklarla izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dstat 1",
+          "hint_text": "Birden fazla metriyi birlikte izlemek icin `dstat` kullan.",
+          "hint_partial": "dstat ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-024-r74",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda memory kullanimini `sar` ile 5 ornek topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sar -r 1 5",
+          "hint_text": "Memory istatistikleri icin `sar -r` kullan.",
+          "hint_partial": "sar -r ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-025-r75",
+      "type": "single",
+      "scenario": "Deploy sonrasi process bazinda memory kullanimini izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pidstat -r 1",
+          "hint_text": "Process memory icin `pidstat -r` kullan.",
+          "hint_partial": "pidstat -r ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-011-r76",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde cPU kullanimini 5 ornek boyunca `sar` ile topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sar -u 1 5",
+          "hint_text": "CPU icin `sar -u interval count` kullan.",
+          "hint_partial": "sar -u ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-012-r77",
+      "type": "single",
+      "scenario": "Yeni acilan hostta process bazinda CPU kullanimini izlemeye basla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pidstat -u 1",
+          "hint_text": "Process CPU istatistigi icin `pidstat -u` kullan.",
+          "hint_partial": "pidstat -u ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-013-r78",
+      "type": "single",
+      "scenario": "Runbook adiminda block device I/O performansini detayli izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iostat -dx 1",
+          "hint_text": "Device bazinda detay icin `iostat -dx` kullan.",
+          "hint_partial": "iostat -dx ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-014-r79",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde tum CPU core'larini ayri ayri izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mpstat -P ALL 1",
+          "hint_text": "Tum core'lar icin `mpstat -P ALL` kullan.",
+          "hint_partial": "mpstat -P ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-015-r80",
+      "type": "single",
+      "scenario": "Incident sonrasinda socket durumlarini ozet olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ss -s",
+          "hint_text": "Socket ozeti icin `ss -s` kullan.",
+          "hint_partial": "ss -s"
+        }
+      ]
+    },
+    {
+      "id": "mmon-016-r81",
+      "type": "single",
+      "scenario": "Bakim oncesi her saniye top 10 CPU process'ini yenileyerek goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "watch -n 1 \"ps aux --sort=-%cpu | head -3\"",
+          "hint_text": "`watch` ile `ps` komutunu periyodik calistir.",
+          "hint_partial": "watch -n 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-017-r82",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda anlik load average degerlerini `/proc` altindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/loadavg",
+          "hint_text": "Load average bilgisi icin `/proc/loadavg` kullan.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-018-r83",
+      "type": "single",
+      "scenario": "Deploy sonrasi ham CPU sayaclarini `/proc` altindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/stat",
+          "hint_text": "CPU ve scheduler sayaclari icin `/proc/stat` kullan.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-019-r84",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde vmstat'in toplam ozet sayaclarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "vmstat -s",
+          "hint_text": "Toplam sayaç ozeti icin `vmstat -s` kullan.",
+          "hint_partial": "vmstat -s"
+        }
+      ]
+    },
+    {
+      "id": "mmon-020-r85",
+      "type": "single",
+      "scenario": "Yeni acilan hostta memory kullanimini MB formatinda goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "free -m",
+          "hint_text": "MB ciktisi icin `free -m` kullan.",
+          "hint_partial": "free -..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-021-r86",
+      "type": "single",
+      "scenario": "Runbook adiminda pID 1234 icin acik dosyalari goster ve ilk satirlariyla sinirla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof -p 1234 | head",
+          "hint_text": "Belirli PID icin `lsof -p` kullan.",
+          "hint_partial": "lsof -p ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-022-r87",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde sadece aktif I/O yapan process'leri goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iotop -o",
+          "hint_text": "Aktif I/O process'leri icin `iotop -o` kullan.",
+          "hint_partial": "iotop ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-023-r88",
+      "type": "single",
+      "scenario": "Incident sonrasinda cPU, disk ve network ozetini 1 saniyelik araliklarla izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dstat 1",
+          "hint_text": "Birden fazla metriyi birlikte izlemek icin `dstat` kullan.",
+          "hint_partial": "dstat ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-024-r89",
+      "type": "single",
+      "scenario": "Bakim oncesi memory kullanimini `sar` ile 5 ornek topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sar -r 1 5",
+          "hint_text": "Memory istatistikleri icin `sar -r` kullan.",
+          "hint_partial": "sar -r ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-025-r90",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda process bazinda memory kullanimini izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pidstat -r 1",
+          "hint_text": "Process memory icin `pidstat -r` kullan.",
+          "hint_partial": "pidstat -r ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-011-r91",
+      "type": "single",
+      "scenario": "Deploy sonrasi cPU kullanimini 5 ornek boyunca `sar` ile topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sar -u 1 5",
+          "hint_text": "CPU icin `sar -u interval count` kullan.",
+          "hint_partial": "sar -u ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-012-r92",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde process bazinda CPU kullanimini izlemeye basla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pidstat -u 1",
+          "hint_text": "Process CPU istatistigi icin `pidstat -u` kullan.",
+          "hint_partial": "pidstat -u ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-013-r93",
+      "type": "single",
+      "scenario": "Yeni acilan hostta block device I/O performansini detayli izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iostat -dx 1",
+          "hint_text": "Device bazinda detay icin `iostat -dx` kullan.",
+          "hint_partial": "iostat -dx ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-014-r94",
+      "type": "single",
+      "scenario": "Runbook adiminda tum CPU core'larini ayri ayri izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mpstat -P ALL 1",
+          "hint_text": "Tum core'lar icin `mpstat -P ALL` kullan.",
+          "hint_partial": "mpstat -P ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-015-r95",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde socket durumlarini ozet olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ss -s",
+          "hint_text": "Socket ozeti icin `ss -s` kullan.",
+          "hint_partial": "ss -s"
+        }
+      ]
+    },
+    {
+      "id": "mmon-016-r96",
+      "type": "single",
+      "scenario": "Incident sonrasinda her saniye top 10 CPU process'ini yenileyerek goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "watch -n 1 \"ps aux --sort=-%cpu | head -3\"",
+          "hint_text": "`watch` ile `ps` komutunu periyodik calistir.",
+          "hint_partial": "watch -n 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-017-r97",
+      "type": "single",
+      "scenario": "Bakim oncesi anlik load average degerlerini `/proc` altindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/loadavg",
+          "hint_text": "Load average bilgisi icin `/proc/loadavg` kullan.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-018-r98",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda ham CPU sayaclarini `/proc` altindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/stat",
+          "hint_text": "CPU ve scheduler sayaclari icin `/proc/stat` kullan.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-019-r99",
+      "type": "single",
+      "scenario": "Deploy sonrasi vmstat'in toplam ozet sayaclarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "vmstat -s",
+          "hint_text": "Toplam sayaç ozeti icin `vmstat -s` kullan.",
+          "hint_partial": "vmstat -s"
+        }
+      ]
+    },
+    {
+      "id": "mmon-020-r100",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde memory kullanimini MB formatinda goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "free -m",
+          "hint_text": "MB ciktisi icin `free -m` kullan.",
+          "hint_partial": "free -..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-021-r101",
+      "type": "single",
+      "scenario": "Yeni acilan hostta pID 1234 icin acik dosyalari goster ve ilk satirlariyla sinirla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof -p 1234 | head",
+          "hint_text": "Belirli PID icin `lsof -p` kullan.",
+          "hint_partial": "lsof -p ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-022-r102",
+      "type": "single",
+      "scenario": "Runbook adiminda sadece aktif I/O yapan process'leri goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iotop -o",
+          "hint_text": "Aktif I/O process'leri icin `iotop -o` kullan.",
+          "hint_partial": "iotop ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-023-r103",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde cPU, disk ve network ozetini 1 saniyelik araliklarla izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dstat 1",
+          "hint_text": "Birden fazla metriyi birlikte izlemek icin `dstat` kullan.",
+          "hint_partial": "dstat ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-024-r104",
+      "type": "single",
+      "scenario": "Incident sonrasinda memory kullanimini `sar` ile 5 ornek topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sar -r 1 5",
+          "hint_text": "Memory istatistikleri icin `sar -r` kullan.",
+          "hint_partial": "sar -r ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-025-r105",
+      "type": "single",
+      "scenario": "Bakim oncesi process bazinda memory kullanimini izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pidstat -r 1",
+          "hint_text": "Process memory icin `pidstat -r` kullan.",
+          "hint_partial": "pidstat -r ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-011-r106",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda cPU kullanimini 5 ornek boyunca `sar` ile topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sar -u 1 5",
+          "hint_text": "CPU icin `sar -u interval count` kullan.",
+          "hint_partial": "sar -u ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-012-r107",
+      "type": "single",
+      "scenario": "Deploy sonrasi process bazinda CPU kullanimini izlemeye basla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pidstat -u 1",
+          "hint_text": "Process CPU istatistigi icin `pidstat -u` kullan.",
+          "hint_partial": "pidstat -u ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-013-r108",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde block device I/O performansini detayli izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iostat -dx 1",
+          "hint_text": "Device bazinda detay icin `iostat -dx` kullan.",
+          "hint_partial": "iostat -dx ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-014-r109",
+      "type": "single",
+      "scenario": "Yeni acilan hostta tum CPU core'larini ayri ayri izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mpstat -P ALL 1",
+          "hint_text": "Tum core'lar icin `mpstat -P ALL` kullan.",
+          "hint_partial": "mpstat -P ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-015-r110",
+      "type": "single",
+      "scenario": "Runbook adiminda socket durumlarini ozet olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ss -s",
+          "hint_text": "Socket ozeti icin `ss -s` kullan.",
+          "hint_partial": "ss -s"
+        }
+      ]
+    },
+    {
+      "id": "mmon-016-r111",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde her saniye top 10 CPU process'ini yenileyerek goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "watch -n 1 \"ps aux --sort=-%cpu | head -3\"",
+          "hint_text": "`watch` ile `ps` komutunu periyodik calistir.",
+          "hint_partial": "watch -n 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-017-r112",
+      "type": "single",
+      "scenario": "Incident sonrasinda anlik load average degerlerini `/proc` altindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/loadavg",
+          "hint_text": "Load average bilgisi icin `/proc/loadavg` kullan.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-018-r113",
+      "type": "single",
+      "scenario": "Bakim oncesi ham CPU sayaclarini `/proc` altindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/stat",
+          "hint_text": "CPU ve scheduler sayaclari icin `/proc/stat` kullan.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-019-r114",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda vmstat'in toplam ozet sayaclarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "vmstat -s",
+          "hint_text": "Toplam sayaç ozeti icin `vmstat -s` kullan.",
+          "hint_partial": "vmstat -s"
+        }
+      ]
+    },
+    {
+      "id": "mmon-020-r115",
+      "type": "single",
+      "scenario": "Deploy sonrasi memory kullanimini MB formatinda goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "free -m",
+          "hint_text": "MB ciktisi icin `free -m` kullan.",
+          "hint_partial": "free -..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-021-r116",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde pID 1234 icin acik dosyalari goster ve ilk satirlariyla sinirla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof -p 1234 | head",
+          "hint_text": "Belirli PID icin `lsof -p` kullan.",
+          "hint_partial": "lsof -p ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-022-r117",
+      "type": "single",
+      "scenario": "Yeni acilan hostta sadece aktif I/O yapan process'leri goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iotop -o",
+          "hint_text": "Aktif I/O process'leri icin `iotop -o` kullan.",
+          "hint_partial": "iotop ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-023-r118",
+      "type": "single",
+      "scenario": "Runbook adiminda cPU, disk ve network ozetini 1 saniyelik araliklarla izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dstat 1",
+          "hint_text": "Birden fazla metriyi birlikte izlemek icin `dstat` kullan.",
+          "hint_partial": "dstat ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-024-r119",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde memory kullanimini `sar` ile 5 ornek topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sar -r 1 5",
+          "hint_text": "Memory istatistikleri icin `sar -r` kullan.",
+          "hint_partial": "sar -r ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-025-r120",
+      "type": "single",
+      "scenario": "Incident sonrasinda process bazinda memory kullanimini izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pidstat -r 1",
+          "hint_text": "Process memory icin `pidstat -r` kullan.",
+          "hint_partial": "pidstat -r ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-011-r121",
+      "type": "single",
+      "scenario": "Bakim oncesi cPU kullanimini 5 ornek boyunca `sar` ile topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sar -u 1 5",
+          "hint_text": "CPU icin `sar -u interval count` kullan.",
+          "hint_partial": "sar -u ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-012-r122",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda process bazinda CPU kullanimini izlemeye basla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pidstat -u 1",
+          "hint_text": "Process CPU istatistigi icin `pidstat -u` kullan.",
+          "hint_partial": "pidstat -u ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-013-r123",
+      "type": "single",
+      "scenario": "Deploy sonrasi block device I/O performansini detayli izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iostat -dx 1",
+          "hint_text": "Device bazinda detay icin `iostat -dx` kullan.",
+          "hint_partial": "iostat -dx ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-014-r124",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde tum CPU core'larini ayri ayri izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mpstat -P ALL 1",
+          "hint_text": "Tum core'lar icin `mpstat -P ALL` kullan.",
+          "hint_partial": "mpstat -P ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-015-r125",
+      "type": "single",
+      "scenario": "Yeni acilan hostta socket durumlarini ozet olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ss -s",
+          "hint_text": "Socket ozeti icin `ss -s` kullan.",
+          "hint_partial": "ss -s"
+        }
+      ]
+    },
+    {
+      "id": "mmon-016-r126",
+      "type": "single",
+      "scenario": "Runbook adiminda her saniye top 10 CPU process'ini yenileyerek goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "watch -n 1 \"ps aux --sort=-%cpu | head -3\"",
+          "hint_text": "`watch` ile `ps` komutunu periyodik calistir.",
+          "hint_partial": "watch -n 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-017-r127",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde anlik load average degerlerini `/proc` altindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/loadavg",
+          "hint_text": "Load average bilgisi icin `/proc/loadavg` kullan.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-018-r128",
+      "type": "single",
+      "scenario": "Incident sonrasinda ham CPU sayaclarini `/proc` altindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/stat",
+          "hint_text": "CPU ve scheduler sayaclari icin `/proc/stat` kullan.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-019-r129",
+      "type": "single",
+      "scenario": "Bakim oncesi vmstat'in toplam ozet sayaclarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "vmstat -s",
+          "hint_text": "Toplam sayaç ozeti icin `vmstat -s` kullan.",
+          "hint_partial": "vmstat -s"
+        }
+      ]
+    },
+    {
+      "id": "mmon-020-r130",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda memory kullanimini MB formatinda goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "free -m",
+          "hint_text": "MB ciktisi icin `free -m` kullan.",
+          "hint_partial": "free -..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-021-r131",
+      "type": "single",
+      "scenario": "Deploy sonrasi pID 1234 icin acik dosyalari goster ve ilk satirlariyla sinirla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof -p 1234 | head",
+          "hint_text": "Belirli PID icin `lsof -p` kullan.",
+          "hint_partial": "lsof -p ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-022-r132",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde sadece aktif I/O yapan process'leri goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iotop -o",
+          "hint_text": "Aktif I/O process'leri icin `iotop -o` kullan.",
+          "hint_partial": "iotop ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-023-r133",
+      "type": "single",
+      "scenario": "Yeni acilan hostta cPU, disk ve network ozetini 1 saniyelik araliklarla izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dstat 1",
+          "hint_text": "Birden fazla metriyi birlikte izlemek icin `dstat` kullan.",
+          "hint_partial": "dstat ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-024-r134",
+      "type": "single",
+      "scenario": "Runbook adiminda memory kullanimini `sar` ile 5 ornek topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sar -r 1 5",
+          "hint_text": "Memory istatistikleri icin `sar -r` kullan.",
+          "hint_partial": "sar -r ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-025-r135",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde process bazinda memory kullanimini izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pidstat -r 1",
+          "hint_text": "Process memory icin `pidstat -r` kullan.",
+          "hint_partial": "pidstat -r ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-011-r136",
+      "type": "single",
+      "scenario": "Incident sonrasinda cPU kullanimini 5 ornek boyunca `sar` ile topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sar -u 1 5",
+          "hint_text": "CPU icin `sar -u interval count` kullan.",
+          "hint_partial": "sar -u ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-012-r137",
+      "type": "single",
+      "scenario": "Bakim oncesi process bazinda CPU kullanimini izlemeye basla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pidstat -u 1",
+          "hint_text": "Process CPU istatistigi icin `pidstat -u` kullan.",
+          "hint_partial": "pidstat -u ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-013-r138",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda block device I/O performansini detayli izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iostat -dx 1",
+          "hint_text": "Device bazinda detay icin `iostat -dx` kullan.",
+          "hint_partial": "iostat -dx ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-014-r139",
+      "type": "single",
+      "scenario": "Deploy sonrasi tum CPU core'larini ayri ayri izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mpstat -P ALL 1",
+          "hint_text": "Tum core'lar icin `mpstat -P ALL` kullan.",
+          "hint_partial": "mpstat -P ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-015-r140",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde socket durumlarini ozet olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ss -s",
+          "hint_text": "Socket ozeti icin `ss -s` kullan.",
+          "hint_partial": "ss -s"
+        }
+      ]
+    },
+    {
+      "id": "mmon-016-r141",
+      "type": "single",
+      "scenario": "Yeni acilan hostta her saniye top 10 CPU process'ini yenileyerek goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "watch -n 1 \"ps aux --sort=-%cpu | head -3\"",
+          "hint_text": "`watch` ile `ps` komutunu periyodik calistir.",
+          "hint_partial": "watch -n 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-017-r142",
+      "type": "single",
+      "scenario": "Runbook adiminda anlik load average degerlerini `/proc` altindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/loadavg",
+          "hint_text": "Load average bilgisi icin `/proc/loadavg` kullan.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-018-r143",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde ham CPU sayaclarini `/proc` altindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/stat",
+          "hint_text": "CPU ve scheduler sayaclari icin `/proc/stat` kullan.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-019-r144",
+      "type": "single",
+      "scenario": "Incident sonrasinda vmstat'in toplam ozet sayaclarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "vmstat -s",
+          "hint_text": "Toplam sayaç ozeti icin `vmstat -s` kullan.",
+          "hint_partial": "vmstat -s"
+        }
+      ]
+    },
+    {
+      "id": "mmon-020-r145",
+      "type": "single",
+      "scenario": "Bakim oncesi memory kullanimini MB formatinda goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "free -m",
+          "hint_text": "MB ciktisi icin `free -m` kullan.",
+          "hint_partial": "free -..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-021-r146",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda pID 1234 icin acik dosyalari goster ve ilk satirlariyla sinirla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof -p 1234 | head",
+          "hint_text": "Belirli PID icin `lsof -p` kullan.",
+          "hint_partial": "lsof -p ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-022-r147",
+      "type": "single",
+      "scenario": "Deploy sonrasi sadece aktif I/O yapan process'leri goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iotop -o",
+          "hint_text": "Aktif I/O process'leri icin `iotop -o` kullan.",
+          "hint_partial": "iotop ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-023-r148",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde cPU, disk ve network ozetini 1 saniyelik araliklarla izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dstat 1",
+          "hint_text": "Birden fazla metriyi birlikte izlemek icin `dstat` kullan.",
+          "hint_partial": "dstat ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-024-r149",
+      "type": "single",
+      "scenario": "Yeni acilan hostta memory kullanimini `sar` ile 5 ornek topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sar -r 1 5",
+          "hint_text": "Memory istatistikleri icin `sar -r` kullan.",
+          "hint_partial": "sar -r ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-025-r150",
+      "type": "single",
+      "scenario": "Runbook adiminda process bazinda memory kullanimini izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pidstat -r 1",
+          "hint_text": "Process memory icin `pidstat -r` kullan.",
+          "hint_partial": "pidstat -r ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-011-r151",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde cPU kullanimini 5 ornek boyunca `sar` ile topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sar -u 1 5",
+          "hint_text": "CPU icin `sar -u interval count` kullan.",
+          "hint_partial": "sar -u ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-012-r152",
+      "type": "single",
+      "scenario": "Incident sonrasinda process bazinda CPU kullanimini izlemeye basla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pidstat -u 1",
+          "hint_text": "Process CPU istatistigi icin `pidstat -u` kullan.",
+          "hint_partial": "pidstat -u ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-013-r153",
+      "type": "single",
+      "scenario": "Bakim oncesi block device I/O performansini detayli izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iostat -dx 1",
+          "hint_text": "Device bazinda detay icin `iostat -dx` kullan.",
+          "hint_partial": "iostat -dx ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-014-r154",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda tum CPU core'larini ayri ayri izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mpstat -P ALL 1",
+          "hint_text": "Tum core'lar icin `mpstat -P ALL` kullan.",
+          "hint_partial": "mpstat -P ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-015-r155",
+      "type": "single",
+      "scenario": "Deploy sonrasi socket durumlarini ozet olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ss -s",
+          "hint_text": "Socket ozeti icin `ss -s` kullan.",
+          "hint_partial": "ss -s"
+        }
+      ]
+    },
+    {
+      "id": "mmon-016-r156",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde her saniye top 10 CPU process'ini yenileyerek goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "watch -n 1 \"ps aux --sort=-%cpu | head -3\"",
+          "hint_text": "`watch` ile `ps` komutunu periyodik calistir.",
+          "hint_partial": "watch -n 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-017-r157",
+      "type": "single",
+      "scenario": "Yeni acilan hostta anlik load average degerlerini `/proc` altindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/loadavg",
+          "hint_text": "Load average bilgisi icin `/proc/loadavg` kullan.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-018-r158",
+      "type": "single",
+      "scenario": "Runbook adiminda ham CPU sayaclarini `/proc` altindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/stat",
+          "hint_text": "CPU ve scheduler sayaclari icin `/proc/stat` kullan.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-019-r159",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde vmstat'in toplam ozet sayaclarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "vmstat -s",
+          "hint_text": "Toplam sayaç ozeti icin `vmstat -s` kullan.",
+          "hint_partial": "vmstat -s"
+        }
+      ]
+    },
+    {
+      "id": "mmon-020-r160",
+      "type": "single",
+      "scenario": "Incident sonrasinda memory kullanimini MB formatinda goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "free -m",
+          "hint_text": "MB ciktisi icin `free -m` kullan.",
+          "hint_partial": "free -..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-021-r161",
+      "type": "single",
+      "scenario": "Bakim oncesi pID 1234 icin acik dosyalari goster ve ilk satirlariyla sinirla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof -p 1234 | head",
+          "hint_text": "Belirli PID icin `lsof -p` kullan.",
+          "hint_partial": "lsof -p ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-022-r162",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda sadece aktif I/O yapan process'leri goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iotop -o",
+          "hint_text": "Aktif I/O process'leri icin `iotop -o` kullan.",
+          "hint_partial": "iotop ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-023-r163",
+      "type": "single",
+      "scenario": "Deploy sonrasi cPU, disk ve network ozetini 1 saniyelik araliklarla izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dstat 1",
+          "hint_text": "Birden fazla metriyi birlikte izlemek icin `dstat` kullan.",
+          "hint_partial": "dstat ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-024-r164",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde memory kullanimini `sar` ile 5 ornek topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sar -r 1 5",
+          "hint_text": "Memory istatistikleri icin `sar -r` kullan.",
+          "hint_partial": "sar -r ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-025-r165",
+      "type": "single",
+      "scenario": "Yeni acilan hostta process bazinda memory kullanimini izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pidstat -r 1",
+          "hint_text": "Process memory icin `pidstat -r` kullan.",
+          "hint_partial": "pidstat -r ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-011-r166",
+      "type": "single",
+      "scenario": "Runbook adiminda cPU kullanimini 5 ornek boyunca `sar` ile topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sar -u 1 5",
+          "hint_text": "CPU icin `sar -u interval count` kullan.",
+          "hint_partial": "sar -u ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-012-r167",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde process bazinda CPU kullanimini izlemeye basla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pidstat -u 1",
+          "hint_text": "Process CPU istatistigi icin `pidstat -u` kullan.",
+          "hint_partial": "pidstat -u ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-013-r168",
+      "type": "single",
+      "scenario": "Incident sonrasinda block device I/O performansini detayli izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iostat -dx 1",
+          "hint_text": "Device bazinda detay icin `iostat -dx` kullan.",
+          "hint_partial": "iostat -dx ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-014-r169",
+      "type": "single",
+      "scenario": "Bakim oncesi tum CPU core'larini ayri ayri izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mpstat -P ALL 1",
+          "hint_text": "Tum core'lar icin `mpstat -P ALL` kullan.",
+          "hint_partial": "mpstat -P ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-015-r170",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda socket durumlarini ozet olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ss -s",
+          "hint_text": "Socket ozeti icin `ss -s` kullan.",
+          "hint_partial": "ss -s"
+        }
+      ]
+    },
+    {
+      "id": "mmon-016-r171",
+      "type": "single",
+      "scenario": "Deploy sonrasi her saniye top 10 CPU process'ini yenileyerek goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "watch -n 1 \"ps aux --sort=-%cpu | head -3\"",
+          "hint_text": "`watch` ile `ps` komutunu periyodik calistir.",
+          "hint_partial": "watch -n 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-017-r172",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde anlik load average degerlerini `/proc` altindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/loadavg",
+          "hint_text": "Load average bilgisi icin `/proc/loadavg` kullan.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-018-r173",
+      "type": "single",
+      "scenario": "Yeni acilan hostta ham CPU sayaclarini `/proc` altindan goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/stat",
+          "hint_text": "CPU ve scheduler sayaclari icin `/proc/stat` kullan.",
+          "hint_partial": "cat /proc/..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-019-r174",
+      "type": "single",
+      "scenario": "Runbook adiminda vmstat'in toplam ozet sayaclarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "vmstat -s",
+          "hint_text": "Toplam sayaç ozeti icin `vmstat -s` kullan.",
+          "hint_partial": "vmstat -s"
+        }
+      ]
+    },
+    {
+      "id": "mmon-020-r175",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde memory kullanimini MB formatinda goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "free -m",
+          "hint_text": "MB ciktisi icin `free -m` kullan.",
+          "hint_partial": "free -..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-021-r176",
+      "type": "single",
+      "scenario": "Incident sonrasinda pID 1234 icin acik dosyalari goster ve ilk satirlariyla sinirla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof -p 1234 | head",
+          "hint_text": "Belirli PID icin `lsof -p` kullan.",
+          "hint_partial": "lsof -p ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-022-r177",
+      "type": "single",
+      "scenario": "Bakim oncesi sadece aktif I/O yapan process'leri goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iotop -o",
+          "hint_text": "Aktif I/O process'leri icin `iotop -o` kullan.",
+          "hint_partial": "iotop ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-023-r178",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda cPU, disk ve network ozetini 1 saniyelik araliklarla izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dstat 1",
+          "hint_text": "Birden fazla metriyi birlikte izlemek icin `dstat` kullan.",
+          "hint_partial": "dstat ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-024-r179",
+      "type": "single",
+      "scenario": "Deploy sonrasi memory kullanimini `sar` ile 5 ornek topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sar -r 1 5",
+          "hint_text": "Memory istatistikleri icin `sar -r` kullan.",
+          "hint_partial": "sar -r ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-025-r180",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde process bazinda memory kullanimini izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pidstat -r 1",
+          "hint_text": "Process memory icin `pidstat -r` kullan.",
+          "hint_partial": "pidstat -r ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-011-r181",
+      "type": "single",
+      "scenario": "Yeni acilan hostta cPU kullanimini 5 ornek boyunca `sar` ile topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sar -u 1 5",
+          "hint_text": "CPU icin `sar -u interval count` kullan.",
+          "hint_partial": "sar -u ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-012-r182",
+      "type": "single",
+      "scenario": "Runbook adiminda process bazinda CPU kullanimini izlemeye basla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pidstat -u 1",
+          "hint_text": "Process CPU istatistigi icin `pidstat -u` kullan.",
+          "hint_partial": "pidstat -u ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-013-r183",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde block device I/O performansini detayli izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iostat -dx 1",
+          "hint_text": "Device bazinda detay icin `iostat -dx` kullan.",
+          "hint_partial": "iostat -dx ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-014-r184",
+      "type": "single",
+      "scenario": "Incident sonrasinda tum CPU core'larini ayri ayri izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mpstat -P ALL 1",
+          "hint_text": "Tum core'lar icin `mpstat -P ALL` kullan.",
+          "hint_partial": "mpstat -P ..."
+        }
+      ]
+    },
+    {
+      "id": "mmon-015-r185",
+      "type": "single",
+      "scenario": "Bakim oncesi socket durumlarini ozet olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ss -s",
+          "hint_text": "Socket ozeti icin `ss -s` kullan.",
+          "hint_partial": "ss -s"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,142 @@
+{
+  "level": "mid",
+  "topic": "docker",
+  "questions": [
+    {
+      "id": "mctr-001",
+      "type": "single",
+      "scenario": "nginx image'ından 8080:80 port eşlemesiyle detached container başlat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker run -d -p 8080:80 --name web nginx",
+          "hint_text": "`docker run -d -p` ile detached container başlat.",
+          "hint_partial": "docker run -d -p ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-002",
+      "type": "single",
+      "scenario": "web container'ının network ayarlarını inspect et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker inspect web",
+          "hint_text": "Container metadata için `docker inspect` kullan.",
+          "hint_partial": "docker inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-003",
+      "type": "multi-step",
+      "scenario": "Deploy sonrasi durmus container'lar neden kapanmis anlamak icin once tum container'lari durumlariyla listele, sonra son cikan container'in logunu ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker ps -a --format 'table {{.Names}}\\t{{.Status}}\\t{{.Image}}'",
+          "hint_text": "Tum container'lari okunur formatta gormek icin `docker ps -a --format ...` kullan.",
+          "hint_partial": "docker ps -a --format ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "docker logs $(docker ps -aq --latest)",
+          "hint_text": "En son olusan veya duran container logunu almak icin `docker ps -aq --latest` ile ID alip `docker logs` calistir.",
+          "hint_partial": "docker logs $(docker ps -aq ...)"
+        }
+      ]
+    },
+    {
+      "id": "mctr-004",
+      "type": "single",
+      "scenario": "Container resource kullanımını tek seferlik göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stats --no-stream",
+          "hint_text": "Anlık istatistik için `--no-stream` kullan.",
+          "hint_partial": "docker stats --no-stream"
+        }
+      ]
+    },
+    {
+      "id": "mctr-005",
+      "type": "single",
+      "scenario": "Default bridge network'üne bağlı container'ları göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network inspect bridge",
+          "hint_text": "Network detayları için `docker network inspect` kullan.",
+          "hint_partial": "docker network inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-006",
+      "type": "single",
+      "scenario": "web container'ını environment variable ile yeniden başlatmak için yeni container komutu yaz: APP_ENV=prod.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker run -d -e APP_ENV=prod --name web nginx",
+          "hint_text": "`-e` ile environment variable ver.",
+          "hint_partial": "docker run -d -e ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-007",
+      "type": "single",
+      "scenario": "Local current directory'yi `/app` olarak mount ederek alpine container başlat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker run --rm -v \"$PWD\":/app alpine",
+          "hint_text": "Bind mount için `-v host:container` kullan.",
+          "hint_partial": "docker run --rm -v ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-008",
+      "type": "single",
+      "scenario": "web image'ının layer geçmişini göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker history nginx",
+          "hint_text": "Image geçmişi için `docker history` kullan.",
+          "hint_partial": "docker history ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-009",
+      "type": "single",
+      "scenario": "İsmi `web` olan container'ın sadece ID bilgisini göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker ps -aqf name=web",
+          "hint_text": "Filtre ve quiet output için `-qf` kullan.",
+          "hint_partial": "docker ps -aqf ..."
+        }
+      ]
+    },
+    {
+      "id": "mctr-010",
+      "type": "single",
+      "scenario": "Kullanılmayan image'ları temizle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker image prune",
+          "hint_text": "Unused image cleanup için `docker image prune` kullan.",
+          "hint_partial": "docker image prune"
+        }
+      ]
+    }
+  ]
+}

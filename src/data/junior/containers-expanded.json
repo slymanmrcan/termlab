@@ -1,0 +1,2606 @@
+{
+  "level": "junior",
+  "topic": "docker",
+  "questions": [
+    {
+      "id": "jctr-011",
+      "type": "single",
+      "scenario": "Image ID'lerini kısa formatta listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker images -q",
+          "hint_text": "Sadece image ID'leri icin `docker images -q` kullan.",
+          "hint_partial": "docker images ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-012",
+      "type": "single",
+      "scenario": "web container'inin detayli bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker inspect web",
+          "hint_text": "Container detaylari icin `docker inspect` kullan.",
+          "hint_partial": "docker inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-013",
+      "type": "single",
+      "scenario": "web container loglarini canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker logs -f web",
+          "hint_text": "Canli log takibi icin `docker logs -f` kullan.",
+          "hint_partial": "docker logs -f ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-014",
+      "type": "single",
+      "scenario": "web container'ini yeniden baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker restart web",
+          "hint_text": "Container yeniden baslatmak icin `docker restart` kullan.",
+          "hint_partial": "docker restart ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-015",
+      "type": "single",
+      "scenario": "Tek seferlik alpine container calistirip `echo hello` komutunu kos.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker run --rm alpine echo hello",
+          "hint_text": "Gecici container icin `docker run --rm` kullan.",
+          "hint_partial": "docker run --rm ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-016",
+      "type": "single",
+      "scenario": "nginx:alpine image'ini indir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker pull nginx:alpine",
+          "hint_text": "Tag'li image indirmek icin `docker pull image:tag` kullan.",
+          "hint_partial": "docker pull ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-017",
+      "type": "single",
+      "scenario": "`demo` adinda detached nginx container baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker run -d --name demo nginx",
+          "hint_text": "Detached baslatmak icin `docker run -d --name` kullan.",
+          "hint_partial": "docker run -d ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-018",
+      "type": "single",
+      "scenario": "Docker network listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network ls",
+          "hint_text": "Network listesi icin `docker network ls` kullan.",
+          "hint_partial": "docker network ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-019",
+      "type": "single",
+      "scenario": "Docker volume listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker volume ls",
+          "hint_text": "Volume listesi icin `docker volume ls` kullan.",
+          "hint_partial": "docker volume ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-020",
+      "type": "single",
+      "scenario": "web container'inin port eslemelerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker port web",
+          "hint_text": "Port bilgisi icin `docker port` kullan.",
+          "hint_partial": "docker port ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-021",
+      "type": "single",
+      "scenario": "web container'i icinde `/app` klasorunu listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker exec web ls /app",
+          "hint_text": "Container icinde komut calistirmak icin `docker exec` kullan.",
+          "hint_partial": "docker exec ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-022",
+      "type": "single",
+      "scenario": "`demo-old` container'inin adini `demo` yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker rename demo-old demo",
+          "hint_text": "Container ad degisikligi icin `docker rename` kullan.",
+          "hint_partial": "docker rename ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-023",
+      "type": "single",
+      "scenario": "hello-world image'ini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker rmi hello-world",
+          "hint_text": "Image silmek icin `docker rmi` kullan.",
+          "hint_partial": "docker rmi ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-024",
+      "type": "single",
+      "scenario": "Local `index.html` dosyasini web container'i icinde `/usr/share/nginx/html/index.html` yoluna kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker cp index.html web:/usr/share/nginx/html/index.html",
+          "hint_text": "Container'a dosya kopyalamak icin `docker cp` kullan.",
+          "hint_partial": "docker cp ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-025",
+      "type": "single",
+      "scenario": "web container'i icindeki `/var/log/nginx/access.log` dosyasini current directory'ye `./access.log` olarak kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker cp web:/var/log/nginx/access.log ./access.log",
+          "hint_text": "Container'dan host'a kopya icin yine `docker cp` kullan.",
+          "hint_partial": "docker cp ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-011-r1",
+      "type": "single",
+      "scenario": "Bakim oncesi image ID'lerini kısa formatta listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker images -q",
+          "hint_text": "Sadece image ID'leri icin `docker images -q` kullan.",
+          "hint_partial": "docker images ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-012-r2",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda cache-2-2-2 container'inin detayli bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker inspect cache-2-2-2",
+          "hint_text": "Container detaylari icin `docker inspect` kullan.",
+          "hint_partial": "docker inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-013-r3",
+      "type": "single",
+      "scenario": "Deploy sonrasi worker-3 container loglarini canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker logs -f worker-3",
+          "hint_text": "Canli log takibi icin `docker logs -f` kullan.",
+          "hint_partial": "docker logs -f ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-014-r4",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde db-4-4 container'ini yeniden baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker restart db-4-4",
+          "hint_text": "Container yeniden baslatmak icin `docker restart` kullan.",
+          "hint_partial": "docker restart ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-015-r5",
+      "type": "single",
+      "scenario": "Yeni acilan hostta tek seferlik alpine container calistirip `echo hello` komutunu kos.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker run --rm alpine echo hello",
+          "hint_text": "Gecici container icin `docker run --rm` kullan.",
+          "hint_partial": "docker run --rm ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-016-r6",
+      "type": "single",
+      "scenario": "Runbook adiminda vault-6:alpine image'ini indir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker pull vault-6:alpine",
+          "hint_text": "Tag'li image indirmek icin `docker pull image:tag` kullan.",
+          "hint_partial": "docker pull ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-017-r7",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `demo` adinda detached nginx-7 container baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker run -d --name demo nginx-7",
+          "hint_text": "Detached baslatmak icin `docker run -d --name` kullan.",
+          "hint_partial": "docker run -d ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-018-r8",
+      "type": "single",
+      "scenario": "Incident sonrasinda docker network listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network ls",
+          "hint_text": "Network listesi icin `docker network ls` kullan.",
+          "hint_partial": "docker network ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-019-r9",
+      "type": "single",
+      "scenario": "Bakim oncesi docker volume listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker volume ls",
+          "hint_text": "Volume listesi icin `docker volume ls` kullan.",
+          "hint_partial": "docker volume ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-020-r10",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda cache-10-10-10 container'inin port eslemelerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker port cache-10-10-10",
+          "hint_text": "Port bilgisi icin `docker port` kullan.",
+          "hint_partial": "docker port ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-021-r11",
+      "type": "single",
+      "scenario": "Deploy sonrasi worker-11 container'i icinde `/app/queue-11-11` klasorunu listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker exec worker-11 ls /app/queue-11-11",
+          "hint_text": "Container icinde komut calistirmak icin `docker exec` kullan.",
+          "hint_partial": "docker exec ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-022-r12",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `demo-old` container'inin adini `demo` yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker rename demo-old demo",
+          "hint_text": "Container ad degisikligi icin `docker rename` kullan.",
+          "hint_partial": "docker rename ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-023-r13",
+      "type": "single",
+      "scenario": "Yeni acilan hostta hello-world image'ini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker rmi hello-world",
+          "hint_text": "Image silmek icin `docker rmi` kullan.",
+          "hint_partial": "docker rmi ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-024-r14",
+      "type": "single",
+      "scenario": "Runbook adiminda local `index.html` dosyasini queue-14 container'i icinde `/usr/share/postgres-14-14/html/index.html` yoluna kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker cp index.html queue-14:/usr/share/postgres-14-14/html/index.html",
+          "hint_text": "Container'a dosya kopyalamak icin `docker cp` kullan.",
+          "hint_partial": "docker cp ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-025-r15",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde bastion-15 container'i icindeki `/var/bastion-15/log/bastion-15/redis-15/access.log` dosyasini current directory'ye `./access.log` olarak kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker cp bastion-15:/var/bastion-15/log/bastion-15/redis-15/access.log ./access.log",
+          "hint_text": "Container'dan host'a kopya icin yine `docker cp` kullan.",
+          "hint_partial": "docker cp ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-011-r16",
+      "type": "single",
+      "scenario": "Incident sonrasinda image ID'lerini kısa formatta listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker images -q",
+          "hint_text": "Sadece image ID'leri icin `docker images -q` kullan.",
+          "hint_partial": "docker images ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-012-r17",
+      "type": "single",
+      "scenario": "Bakim oncesi web-17 container'inin detayli bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker inspect web-17",
+          "hint_text": "Container detaylari icin `docker inspect` kullan.",
+          "hint_partial": "docker inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-013-r18",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda cache-18-18-18 container loglarini canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker logs -f cache-18-18-18",
+          "hint_text": "Canli log takibi icin `docker logs -f` kullan.",
+          "hint_partial": "docker logs -f ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-014-r19",
+      "type": "single",
+      "scenario": "Deploy sonrasi worker-19 container'ini yeniden baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker restart worker-19",
+          "hint_text": "Container yeniden baslatmak icin `docker restart` kullan.",
+          "hint_partial": "docker restart ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-015-r20",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde tek seferlik alpine container calistirip `echo hello` komutunu kos.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker run --rm alpine echo hello",
+          "hint_text": "Gecici container icin `docker run --rm` kullan.",
+          "hint_partial": "docker run --rm ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-016-r21",
+      "type": "single",
+      "scenario": "Yeni acilan hostta redis-21:alpine image'ini indir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker pull redis-21:alpine",
+          "hint_text": "Tag'li image indirmek icin `docker pull image:tag` kullan.",
+          "hint_partial": "docker pull ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-017-r22",
+      "type": "single",
+      "scenario": "Runbook adiminda `demo` adinda detached traefik-22 container baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker run -d --name demo traefik-22",
+          "hint_text": "Detached baslatmak icin `docker run -d --name` kullan.",
+          "hint_partial": "docker run -d ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-018-r23",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde docker network listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network ls",
+          "hint_text": "Network listesi icin `docker network ls` kullan.",
+          "hint_partial": "docker network ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-019-r24",
+      "type": "single",
+      "scenario": "Incident sonrasinda docker volume listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker volume ls",
+          "hint_text": "Volume listesi icin `docker volume ls` kullan.",
+          "hint_partial": "docker volume ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-020-r25",
+      "type": "single",
+      "scenario": "Bakim oncesi web-25 container'inin port eslemelerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker port web-25",
+          "hint_text": "Port bilgisi icin `docker port` kullan.",
+          "hint_partial": "docker port ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-021-r26",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda cache-26-26-26 container'i icinde `/app/cache-26-26-26` klasorunu listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker exec cache-26-26-26 ls /app/cache-26-26-26",
+          "hint_text": "Container icinde komut calistirmak icin `docker exec` kullan.",
+          "hint_partial": "docker exec ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-022-r27",
+      "type": "single",
+      "scenario": "Deploy sonrasi `demo-old` container'inin adini `demo` yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker rename demo-old demo",
+          "hint_text": "Container ad degisikligi icin `docker rename` kullan.",
+          "hint_partial": "docker rename ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-023-r28",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde hello-world image'ini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker rmi hello-world",
+          "hint_text": "Image silmek icin `docker rmi` kullan.",
+          "hint_partial": "docker rmi ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-024-r29",
+      "type": "single",
+      "scenario": "Yeni acilan hostta local `index.html` dosyasini cache-29-29 container'i icinde `/usr/share/haproxy-29/html/index.html` yoluna kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker cp index.html cache-29-29:/usr/share/haproxy-29/html/index.html",
+          "hint_text": "Container'a dosya kopyalamak icin `docker cp` kullan.",
+          "hint_partial": "docker cp ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-025-r30",
+      "type": "single",
+      "scenario": "Runbook adiminda queue-30 container'i icindeki `/var/queue-30/log/queue-30/vault-30/access.log` dosyasini current directory'ye `./access.log` olarak kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker cp queue-30:/var/queue-30/log/queue-30/vault-30/access.log ./access.log",
+          "hint_text": "Container'dan host'a kopya icin yine `docker cp` kullan.",
+          "hint_partial": "docker cp ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-011-r31",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde image ID'lerini kısa formatta listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker images -q",
+          "hint_text": "Sadece image ID'leri icin `docker images -q` kullan.",
+          "hint_partial": "docker images ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-012-r32",
+      "type": "single",
+      "scenario": "Incident sonrasinda proxy-32 container'inin detayli bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker inspect proxy-32",
+          "hint_text": "Container detaylari icin `docker inspect` kullan.",
+          "hint_partial": "docker inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-013-r33",
+      "type": "single",
+      "scenario": "Bakim oncesi web-33 container loglarini canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker logs -f web-33",
+          "hint_text": "Canli log takibi icin `docker logs -f` kullan.",
+          "hint_partial": "docker logs -f ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-014-r34",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda cache-34-34-34 container'ini yeniden baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker restart cache-34-34-34",
+          "hint_text": "Container yeniden baslatmak icin `docker restart` kullan.",
+          "hint_partial": "docker restart ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-015-r35",
+      "type": "single",
+      "scenario": "Deploy sonrasi tek seferlik alpine container calistirip `echo hello` komutunu kos.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker run --rm alpine echo hello",
+          "hint_text": "Gecici container icin `docker run --rm` kullan.",
+          "hint_partial": "docker run --rm ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-016-r36",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde vault-36:alpine image'ini indir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker pull vault-36:alpine",
+          "hint_text": "Tag'li image indirmek icin `docker pull image:tag` kullan.",
+          "hint_partial": "docker pull ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-017-r37",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `demo` adinda detached nginx-37 container baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker run -d --name demo nginx-37",
+          "hint_text": "Detached baslatmak icin `docker run -d --name` kullan.",
+          "hint_partial": "docker run -d ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-018-r38",
+      "type": "single",
+      "scenario": "Runbook adiminda docker network listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network ls",
+          "hint_text": "Network listesi icin `docker network ls` kullan.",
+          "hint_partial": "docker network ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-019-r39",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde docker volume listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker volume ls",
+          "hint_text": "Volume listesi icin `docker volume ls` kullan.",
+          "hint_partial": "docker volume ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-020-r40",
+      "type": "single",
+      "scenario": "Incident sonrasinda proxy-40 container'inin port eslemelerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker port proxy-40",
+          "hint_text": "Port bilgisi icin `docker port` kullan.",
+          "hint_partial": "docker port ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-021-r41",
+      "type": "single",
+      "scenario": "Bakim oncesi web-41 container'i icinde `/app/web-41-41` klasorunu listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker exec web-41 ls /app/web-41-41",
+          "hint_text": "Container icinde komut calistirmak icin `docker exec` kullan.",
+          "hint_partial": "docker exec ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-022-r42",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `demo-old` container'inin adini `demo` yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker rename demo-old demo",
+          "hint_text": "Container ad degisikligi icin `docker rename` kullan.",
+          "hint_partial": "docker rename ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-023-r43",
+      "type": "single",
+      "scenario": "Deploy sonrasi hello-world image'ini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker rmi hello-world",
+          "hint_text": "Image silmek icin `docker rmi` kullan.",
+          "hint_partial": "docker rmi ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-024-r44",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde local `index.html` dosyasini db-44-44 container'i icinde `/usr/share/postgres-44-44/html/index.html` yoluna kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker cp index.html db-44-44:/usr/share/postgres-44-44/html/index.html",
+          "hint_text": "Container'a dosya kopyalamak icin `docker cp` kullan.",
+          "hint_partial": "docker cp ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-025-r45",
+      "type": "single",
+      "scenario": "Yeni acilan hostta cache-45-45 container'i icindeki `/var/cache-45-45/log/cache-45-45/redis-45/access.log` dosyasini current directory'ye `./access.log` olarak kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker cp cache-45-45:/var/cache-45-45/log/cache-45-45/redis-45/access.log ./access.log",
+          "hint_text": "Container'dan host'a kopya icin yine `docker cp` kullan.",
+          "hint_partial": "docker cp ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-011-r46",
+      "type": "single",
+      "scenario": "Runbook adiminda image ID'lerini kısa formatta listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker images -q",
+          "hint_text": "Sadece image ID'leri icin `docker images -q` kullan.",
+          "hint_partial": "docker images ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-012-r47",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde bastion-47 container'inin detayli bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker inspect bastion-47",
+          "hint_text": "Container detaylari icin `docker inspect` kullan.",
+          "hint_partial": "docker inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-013-r48",
+      "type": "single",
+      "scenario": "Incident sonrasinda proxy-48 container loglarini canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker logs -f proxy-48",
+          "hint_text": "Canli log takibi icin `docker logs -f` kullan.",
+          "hint_partial": "docker logs -f ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-014-r49",
+      "type": "single",
+      "scenario": "Bakim oncesi web-49 container'ini yeniden baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker restart web-49",
+          "hint_text": "Container yeniden baslatmak icin `docker restart` kullan.",
+          "hint_partial": "docker restart ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-015-r50",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda tek seferlik alpine container calistirip `echo hello` komutunu kos.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker run --rm alpine echo hello",
+          "hint_text": "Gecici container icin `docker run --rm` kullan.",
+          "hint_partial": "docker run --rm ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-016-r51",
+      "type": "single",
+      "scenario": "Deploy sonrasi redis-51:alpine image'ini indir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker pull redis-51:alpine",
+          "hint_text": "Tag'li image indirmek icin `docker pull image:tag` kullan.",
+          "hint_partial": "docker pull ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-017-r52",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `demo` adinda detached traefik-52 container baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker run -d --name demo traefik-52",
+          "hint_text": "Detached baslatmak icin `docker run -d --name` kullan.",
+          "hint_partial": "docker run -d ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-018-r53",
+      "type": "single",
+      "scenario": "Yeni acilan hostta docker network listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network ls",
+          "hint_text": "Network listesi icin `docker network ls` kullan.",
+          "hint_partial": "docker network ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-019-r54",
+      "type": "single",
+      "scenario": "Runbook adiminda docker volume listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker volume ls",
+          "hint_text": "Volume listesi icin `docker volume ls` kullan.",
+          "hint_partial": "docker volume ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-020-r55",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde bastion-55 container'inin port eslemelerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker port bastion-55",
+          "hint_text": "Port bilgisi icin `docker port` kullan.",
+          "hint_partial": "docker port ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-021-r56",
+      "type": "single",
+      "scenario": "Incident sonrasinda proxy-56 container'i icinde `/app/proxy-56` klasorunu listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker exec proxy-56 ls /app/proxy-56",
+          "hint_text": "Container icinde komut calistirmak icin `docker exec` kullan.",
+          "hint_partial": "docker exec ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-022-r57",
+      "type": "single",
+      "scenario": "Bakim oncesi `demo-old` container'inin adini `demo` yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker rename demo-old demo",
+          "hint_text": "Container ad degisikligi icin `docker rename` kullan.",
+          "hint_partial": "docker rename ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-023-r58",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda hello-world image'ini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker rmi hello-world",
+          "hint_text": "Image silmek icin `docker rmi` kullan.",
+          "hint_partial": "docker rmi ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-024-r59",
+      "type": "single",
+      "scenario": "Deploy sonrasi local `index.html` dosyasini worker-59 container'i icinde `/usr/share/haproxy-59/html/index.html` yoluna kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker cp index.html worker-59:/usr/share/haproxy-59/html/index.html",
+          "hint_text": "Container'a dosya kopyalamak icin `docker cp` kullan.",
+          "hint_partial": "docker cp ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-025-r60",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde db-60-60 container'i icindeki `/var/db-60-60/log/db-60-60/vault-60/access.log` dosyasini current directory'ye `./access.log` olarak kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker cp db-60-60:/var/db-60-60/log/db-60-60/vault-60/access.log ./access.log",
+          "hint_text": "Container'dan host'a kopya icin yine `docker cp` kullan.",
+          "hint_partial": "docker cp ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-011-r61",
+      "type": "single",
+      "scenario": "Yeni acilan hostta image ID'lerini kısa formatta listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker images -q",
+          "hint_text": "Sadece image ID'leri icin `docker images -q` kullan.",
+          "hint_partial": "docker images ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-012-r62",
+      "type": "single",
+      "scenario": "Runbook adiminda queue-62 container'inin detayli bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker inspect queue-62",
+          "hint_text": "Container detaylari icin `docker inspect` kullan.",
+          "hint_partial": "docker inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-013-r63",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde bastion-63 container loglarini canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker logs -f bastion-63",
+          "hint_text": "Canli log takibi icin `docker logs -f` kullan.",
+          "hint_partial": "docker logs -f ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-014-r64",
+      "type": "single",
+      "scenario": "Incident sonrasinda proxy-64 container'ini yeniden baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker restart proxy-64",
+          "hint_text": "Container yeniden baslatmak icin `docker restart` kullan.",
+          "hint_partial": "docker restart ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-015-r65",
+      "type": "single",
+      "scenario": "Bakim oncesi tek seferlik alpine container calistirip `echo hello` komutunu kos.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker run --rm alpine echo hello",
+          "hint_text": "Gecici container icin `docker run --rm` kullan.",
+          "hint_partial": "docker run --rm ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-016-r66",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda vault-66:alpine image'ini indir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker pull vault-66:alpine",
+          "hint_text": "Tag'li image indirmek icin `docker pull image:tag` kullan.",
+          "hint_partial": "docker pull ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-017-r67",
+      "type": "single",
+      "scenario": "Deploy sonrasi `demo` adinda detached nginx-67 container baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker run -d --name demo nginx-67",
+          "hint_text": "Detached baslatmak icin `docker run -d --name` kullan.",
+          "hint_partial": "docker run -d ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-018-r68",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde docker network listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network ls",
+          "hint_text": "Network listesi icin `docker network ls` kullan.",
+          "hint_partial": "docker network ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-019-r69",
+      "type": "single",
+      "scenario": "Yeni acilan hostta docker volume listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker volume ls",
+          "hint_text": "Volume listesi icin `docker volume ls` kullan.",
+          "hint_partial": "docker volume ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-020-r70",
+      "type": "single",
+      "scenario": "Runbook adiminda queue-70 container'inin port eslemelerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker port queue-70",
+          "hint_text": "Port bilgisi icin `docker port` kullan.",
+          "hint_partial": "docker port ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-021-r71",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde bastion-71 container'i icinde `/app/bastion-71` klasorunu listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker exec bastion-71 ls /app/bastion-71",
+          "hint_text": "Container icinde komut calistirmak icin `docker exec` kullan.",
+          "hint_partial": "docker exec ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-022-r72",
+      "type": "single",
+      "scenario": "Incident sonrasinda `demo-old` container'inin adini `demo` yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker rename demo-old demo",
+          "hint_text": "Container ad degisikligi icin `docker rename` kullan.",
+          "hint_partial": "docker rename ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-023-r73",
+      "type": "single",
+      "scenario": "Bakim oncesi hello-world image'ini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker rmi hello-world",
+          "hint_text": "Image silmek icin `docker rmi` kullan.",
+          "hint_partial": "docker rmi ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-024-r74",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda local `index.html` dosyasini cache-74-74-74 container'i icinde `/usr/share/postgres-74-74/html/index.html` yoluna kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker cp index.html cache-74-74-74:/usr/share/postgres-74-74/html/index.html",
+          "hint_text": "Container'a dosya kopyalamak icin `docker cp` kullan.",
+          "hint_partial": "docker cp ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-025-r75",
+      "type": "single",
+      "scenario": "Deploy sonrasi worker-75 container'i icindeki `/var/queue-75-75/log/queue-75-75/redis-75/access.log` dosyasini current directory'ye `./access.log` olarak kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker cp worker-75:/var/queue-75-75/log/queue-75-75/redis-75/access.log ./access.log",
+          "hint_text": "Container'dan host'a kopya icin yine `docker cp` kullan.",
+          "hint_partial": "docker cp ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-011-r76",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde image ID'lerini kısa formatta listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker images -q",
+          "hint_text": "Sadece image ID'leri icin `docker images -q` kullan.",
+          "hint_partial": "docker images ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-012-r77",
+      "type": "single",
+      "scenario": "Yeni acilan hostta cache-77-77 container'inin detayli bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker inspect cache-77-77",
+          "hint_text": "Container detaylari icin `docker inspect` kullan.",
+          "hint_partial": "docker inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-013-r78",
+      "type": "single",
+      "scenario": "Runbook adiminda queue-78 container loglarini canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker logs -f queue-78",
+          "hint_text": "Canli log takibi icin `docker logs -f` kullan.",
+          "hint_partial": "docker logs -f ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-014-r79",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde bastion-79 container'ini yeniden baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker restart bastion-79",
+          "hint_text": "Container yeniden baslatmak icin `docker restart` kullan.",
+          "hint_partial": "docker restart ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-015-r80",
+      "type": "single",
+      "scenario": "Incident sonrasinda tek seferlik alpine container calistirip `echo hello` komutunu kos.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker run --rm alpine echo hello",
+          "hint_text": "Gecici container icin `docker run --rm` kullan.",
+          "hint_partial": "docker run --rm ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-016-r81",
+      "type": "single",
+      "scenario": "Bakim oncesi redis-81:alpine image'ini indir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker pull redis-81:alpine",
+          "hint_text": "Tag'li image indirmek icin `docker pull image:tag` kullan.",
+          "hint_partial": "docker pull ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-017-r82",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `demo` adinda detached traefik-82 container baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker run -d --name demo traefik-82",
+          "hint_text": "Detached baslatmak icin `docker run -d --name` kullan.",
+          "hint_partial": "docker run -d ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-018-r83",
+      "type": "single",
+      "scenario": "Deploy sonrasi docker network listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network ls",
+          "hint_text": "Network listesi icin `docker network ls` kullan.",
+          "hint_partial": "docker network ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-019-r84",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde docker volume listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker volume ls",
+          "hint_text": "Volume listesi icin `docker volume ls` kullan.",
+          "hint_partial": "docker volume ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-020-r85",
+      "type": "single",
+      "scenario": "Yeni acilan hostta cache-85-85 container'inin port eslemelerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker port cache-85-85",
+          "hint_text": "Port bilgisi icin `docker port` kullan.",
+          "hint_partial": "docker port ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-021-r86",
+      "type": "single",
+      "scenario": "Runbook adiminda queue-86 container'i icinde `/app/queue-86` klasorunu listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker exec queue-86 ls /app/queue-86",
+          "hint_text": "Container icinde komut calistirmak icin `docker exec` kullan.",
+          "hint_partial": "docker exec ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-022-r87",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `demo-old` container'inin adini `demo` yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker rename demo-old demo",
+          "hint_text": "Container ad degisikligi icin `docker rename` kullan.",
+          "hint_partial": "docker rename ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-023-r88",
+      "type": "single",
+      "scenario": "Incident sonrasinda hello-world image'ini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker rmi hello-world",
+          "hint_text": "Image silmek icin `docker rmi` kullan.",
+          "hint_partial": "docker rmi ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-024-r89",
+      "type": "single",
+      "scenario": "Bakim oncesi local `index.html` dosyasini web-89 container'i icinde `/usr/share/haproxy-89/html/index.html` yoluna kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker cp index.html web-89:/usr/share/haproxy-89/html/index.html",
+          "hint_text": "Container'a dosya kopyalamak icin `docker cp` kullan.",
+          "hint_partial": "docker cp ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-025-r90",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda cache-90-90-90 container'i icindeki `/var/cache-90-90-90/log/cache-90-90-90/vault-90/access.log` dosyasini current directory'ye `./access.log` olarak kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker cp cache-90-90-90:/var/cache-90-90-90/log/cache-90-90-90/vault-90/access.log ./access.log",
+          "hint_text": "Container'dan host'a kopya icin yine `docker cp` kullan.",
+          "hint_partial": "docker cp ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-011-r91",
+      "type": "single",
+      "scenario": "Deploy sonrasi image ID'lerini kısa formatta listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker images -q",
+          "hint_text": "Sadece image ID'leri icin `docker images -q` kullan.",
+          "hint_partial": "docker images ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-012-r92",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde db-92-92 container'inin detayli bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker inspect db-92-92",
+          "hint_text": "Container detaylari icin `docker inspect` kullan.",
+          "hint_partial": "docker inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-013-r93",
+      "type": "single",
+      "scenario": "Yeni acilan hostta cache-93-93 container loglarini canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker logs -f cache-93-93",
+          "hint_text": "Canli log takibi icin `docker logs -f` kullan.",
+          "hint_partial": "docker logs -f ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-014-r94",
+      "type": "single",
+      "scenario": "Runbook adiminda queue-94 container'ini yeniden baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker restart queue-94",
+          "hint_text": "Container yeniden baslatmak icin `docker restart` kullan.",
+          "hint_partial": "docker restart ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-015-r95",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde tek seferlik alpine container calistirip `echo hello` komutunu kos.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker run --rm alpine echo hello",
+          "hint_text": "Gecici container icin `docker run --rm` kullan.",
+          "hint_partial": "docker run --rm ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-016-r96",
+      "type": "single",
+      "scenario": "Incident sonrasinda vault-96:alpine image'ini indir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker pull vault-96:alpine",
+          "hint_text": "Tag'li image indirmek icin `docker pull image:tag` kullan.",
+          "hint_partial": "docker pull ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-017-r97",
+      "type": "single",
+      "scenario": "Bakim oncesi `demo` adinda detached nginx-97 container baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker run -d --name demo nginx-97",
+          "hint_text": "Detached baslatmak icin `docker run -d --name` kullan.",
+          "hint_partial": "docker run -d ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-018-r98",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda docker network listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network ls",
+          "hint_text": "Network listesi icin `docker network ls` kullan.",
+          "hint_partial": "docker network ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-019-r99",
+      "type": "single",
+      "scenario": "Deploy sonrasi docker volume listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker volume ls",
+          "hint_text": "Volume listesi icin `docker volume ls` kullan.",
+          "hint_partial": "docker volume ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-020-r100",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde db-100-100 container'inin port eslemelerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker port db-100-100",
+          "hint_text": "Port bilgisi icin `docker port` kullan.",
+          "hint_partial": "docker port ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-021-r101",
+      "type": "single",
+      "scenario": "Yeni acilan hostta cache-101-101 container'i icinde `/app/cache-101-101` klasorunu listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker exec cache-101-101 ls /app/cache-101-101",
+          "hint_text": "Container icinde komut calistirmak icin `docker exec` kullan.",
+          "hint_partial": "docker exec ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-022-r102",
+      "type": "single",
+      "scenario": "Runbook adiminda `demo-old` container'inin adini `demo` yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker rename demo-old demo",
+          "hint_text": "Container ad degisikligi icin `docker rename` kullan.",
+          "hint_partial": "docker rename ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-023-r103",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde hello-world image'ini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker rmi hello-world",
+          "hint_text": "Image silmek icin `docker rmi` kullan.",
+          "hint_partial": "docker rmi ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-024-r104",
+      "type": "single",
+      "scenario": "Incident sonrasinda local `index.html` dosyasini proxy-104 container'i icinde `/usr/share/postgres-104-104/html/index.html` yoluna kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker cp index.html proxy-104:/usr/share/postgres-104-104/html/index.html",
+          "hint_text": "Container'a dosya kopyalamak icin `docker cp` kullan.",
+          "hint_partial": "docker cp ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-025-r105",
+      "type": "single",
+      "scenario": "Bakim oncesi web-105 container'i icindeki `/var/web-105-105/log/web-105-105/redis-105/access.log` dosyasini current directory'ye `./access.log` olarak kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker cp web-105:/var/web-105-105/log/web-105-105/redis-105/access.log ./access.log",
+          "hint_text": "Container'dan host'a kopya icin yine `docker cp` kullan.",
+          "hint_partial": "docker cp ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-011-r106",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda image ID'lerini kısa formatta listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker images -q",
+          "hint_text": "Sadece image ID'leri icin `docker images -q` kullan.",
+          "hint_partial": "docker images ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-012-r107",
+      "type": "single",
+      "scenario": "Deploy sonrasi worker-107 container'inin detayli bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker inspect worker-107",
+          "hint_text": "Container detaylari icin `docker inspect` kullan.",
+          "hint_partial": "docker inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-013-r108",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde db-108-108 container loglarini canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker logs -f db-108-108",
+          "hint_text": "Canli log takibi icin `docker logs -f` kullan.",
+          "hint_partial": "docker logs -f ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-014-r109",
+      "type": "single",
+      "scenario": "Yeni acilan hostta cache-109-109 container'ini yeniden baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker restart cache-109-109",
+          "hint_text": "Container yeniden baslatmak icin `docker restart` kullan.",
+          "hint_partial": "docker restart ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-015-r110",
+      "type": "single",
+      "scenario": "Runbook adiminda tek seferlik alpine container calistirip `echo hello` komutunu kos.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker run --rm alpine echo hello",
+          "hint_text": "Gecici container icin `docker run --rm` kullan.",
+          "hint_partial": "docker run --rm ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-016-r111",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde redis-111:alpine image'ini indir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker pull redis-111:alpine",
+          "hint_text": "Tag'li image indirmek icin `docker pull image:tag` kullan.",
+          "hint_partial": "docker pull ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-017-r112",
+      "type": "single",
+      "scenario": "Incident sonrasinda `demo` adinda detached traefik-112 container baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker run -d --name demo traefik-112",
+          "hint_text": "Detached baslatmak icin `docker run -d --name` kullan.",
+          "hint_partial": "docker run -d ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-018-r113",
+      "type": "single",
+      "scenario": "Bakim oncesi docker network listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network ls",
+          "hint_text": "Network listesi icin `docker network ls` kullan.",
+          "hint_partial": "docker network ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-019-r114",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda docker volume listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker volume ls",
+          "hint_text": "Volume listesi icin `docker volume ls` kullan.",
+          "hint_partial": "docker volume ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-020-r115",
+      "type": "single",
+      "scenario": "Deploy sonrasi worker-115 container'inin port eslemelerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker port worker-115",
+          "hint_text": "Port bilgisi icin `docker port` kullan.",
+          "hint_partial": "docker port ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-021-r116",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde db-116-116 container'i icinde `/app/db-116-116` klasorunu listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker exec db-116-116 ls /app/db-116-116",
+          "hint_text": "Container icinde komut calistirmak icin `docker exec` kullan.",
+          "hint_partial": "docker exec ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-022-r117",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `demo-old` container'inin adini `demo` yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker rename demo-old demo",
+          "hint_text": "Container ad degisikligi icin `docker rename` kullan.",
+          "hint_partial": "docker rename ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-023-r118",
+      "type": "single",
+      "scenario": "Runbook adiminda hello-world image'ini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker rmi hello-world",
+          "hint_text": "Image silmek icin `docker rmi` kullan.",
+          "hint_partial": "docker rmi ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-024-r119",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde local `index.html` dosyasini bastion-119 container'i icinde `/usr/share/haproxy-119/html/index.html` yoluna kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker cp index.html bastion-119:/usr/share/haproxy-119/html/index.html",
+          "hint_text": "Container'a dosya kopyalamak icin `docker cp` kullan.",
+          "hint_partial": "docker cp ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-025-r120",
+      "type": "single",
+      "scenario": "Incident sonrasinda proxy-120 container'i icindeki `/var/proxy-120/log/proxy-120/vault-120/access.log` dosyasini current directory'ye `./access.log` olarak kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker cp proxy-120:/var/proxy-120/log/proxy-120/vault-120/access.log ./access.log",
+          "hint_text": "Container'dan host'a kopya icin yine `docker cp` kullan.",
+          "hint_partial": "docker cp ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-011-r121",
+      "type": "single",
+      "scenario": "Bakim oncesi image ID'lerini kısa formatta listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker images -q",
+          "hint_text": "Sadece image ID'leri icin `docker images -q` kullan.",
+          "hint_partial": "docker images ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-012-r122",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda cache-122-122-122 container'inin detayli bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker inspect cache-122-122-122",
+          "hint_text": "Container detaylari icin `docker inspect` kullan.",
+          "hint_partial": "docker inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-013-r123",
+      "type": "single",
+      "scenario": "Deploy sonrasi worker-123 container loglarini canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker logs -f worker-123",
+          "hint_text": "Canli log takibi icin `docker logs -f` kullan.",
+          "hint_partial": "docker logs -f ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-014-r124",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde db-124-124 container'ini yeniden baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker restart db-124-124",
+          "hint_text": "Container yeniden baslatmak icin `docker restart` kullan.",
+          "hint_partial": "docker restart ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-015-r125",
+      "type": "single",
+      "scenario": "Yeni acilan hostta tek seferlik alpine container calistirip `echo hello` komutunu kos.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker run --rm alpine echo hello",
+          "hint_text": "Gecici container icin `docker run --rm` kullan.",
+          "hint_partial": "docker run --rm ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-016-r126",
+      "type": "single",
+      "scenario": "Runbook adiminda vault-126:alpine image'ini indir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker pull vault-126:alpine",
+          "hint_text": "Tag'li image indirmek icin `docker pull image:tag` kullan.",
+          "hint_partial": "docker pull ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-017-r127",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `demo` adinda detached nginx-127 container baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker run -d --name demo nginx-127",
+          "hint_text": "Detached baslatmak icin `docker run -d --name` kullan.",
+          "hint_partial": "docker run -d ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-018-r128",
+      "type": "single",
+      "scenario": "Incident sonrasinda docker network listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network ls",
+          "hint_text": "Network listesi icin `docker network ls` kullan.",
+          "hint_partial": "docker network ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-019-r129",
+      "type": "single",
+      "scenario": "Bakim oncesi docker volume listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker volume ls",
+          "hint_text": "Volume listesi icin `docker volume ls` kullan.",
+          "hint_partial": "docker volume ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-020-r130",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda cache-130-130-130 container'inin port eslemelerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker port cache-130-130-130",
+          "hint_text": "Port bilgisi icin `docker port` kullan.",
+          "hint_partial": "docker port ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-021-r131",
+      "type": "single",
+      "scenario": "Deploy sonrasi worker-131 container'i icinde `/app/queue-131-131` klasorunu listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker exec worker-131 ls /app/queue-131-131",
+          "hint_text": "Container icinde komut calistirmak icin `docker exec` kullan.",
+          "hint_partial": "docker exec ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-022-r132",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `demo-old` container'inin adini `demo` yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker rename demo-old demo",
+          "hint_text": "Container ad degisikligi icin `docker rename` kullan.",
+          "hint_partial": "docker rename ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-023-r133",
+      "type": "single",
+      "scenario": "Yeni acilan hostta hello-world image'ini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker rmi hello-world",
+          "hint_text": "Image silmek icin `docker rmi` kullan.",
+          "hint_partial": "docker rmi ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-024-r134",
+      "type": "single",
+      "scenario": "Runbook adiminda local `index.html` dosyasini queue-134 container'i icinde `/usr/share/postgres-134-134/html/index.html` yoluna kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker cp index.html queue-134:/usr/share/postgres-134-134/html/index.html",
+          "hint_text": "Container'a dosya kopyalamak icin `docker cp` kullan.",
+          "hint_partial": "docker cp ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-025-r135",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde bastion-135 container'i icindeki `/var/bastion-135/log/bastion-135/redis-135/access.log` dosyasini current directory'ye `./access.log` olarak kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker cp bastion-135:/var/bastion-135/log/bastion-135/redis-135/access.log ./access.log",
+          "hint_text": "Container'dan host'a kopya icin yine `docker cp` kullan.",
+          "hint_partial": "docker cp ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-011-r136",
+      "type": "single",
+      "scenario": "Incident sonrasinda image ID'lerini kısa formatta listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker images -q",
+          "hint_text": "Sadece image ID'leri icin `docker images -q` kullan.",
+          "hint_partial": "docker images ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-012-r137",
+      "type": "single",
+      "scenario": "Bakim oncesi web-137 container'inin detayli bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker inspect web-137",
+          "hint_text": "Container detaylari icin `docker inspect` kullan.",
+          "hint_partial": "docker inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-013-r138",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda cache-138-138-138 container loglarini canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker logs -f cache-138-138-138",
+          "hint_text": "Canli log takibi icin `docker logs -f` kullan.",
+          "hint_partial": "docker logs -f ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-014-r139",
+      "type": "single",
+      "scenario": "Deploy sonrasi worker-139 container'ini yeniden baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker restart worker-139",
+          "hint_text": "Container yeniden baslatmak icin `docker restart` kullan.",
+          "hint_partial": "docker restart ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-015-r140",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde tek seferlik alpine container calistirip `echo hello` komutunu kos.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker run --rm alpine echo hello",
+          "hint_text": "Gecici container icin `docker run --rm` kullan.",
+          "hint_partial": "docker run --rm ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-016-r141",
+      "type": "single",
+      "scenario": "Yeni acilan hostta redis-141:alpine image'ini indir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker pull redis-141:alpine",
+          "hint_text": "Tag'li image indirmek icin `docker pull image:tag` kullan.",
+          "hint_partial": "docker pull ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-017-r142",
+      "type": "single",
+      "scenario": "Runbook adiminda `demo` adinda detached traefik-142 container baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker run -d --name demo traefik-142",
+          "hint_text": "Detached baslatmak icin `docker run -d --name` kullan.",
+          "hint_partial": "docker run -d ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-018-r143",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde docker network listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network ls",
+          "hint_text": "Network listesi icin `docker network ls` kullan.",
+          "hint_partial": "docker network ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-019-r144",
+      "type": "single",
+      "scenario": "Incident sonrasinda docker volume listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker volume ls",
+          "hint_text": "Volume listesi icin `docker volume ls` kullan.",
+          "hint_partial": "docker volume ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-020-r145",
+      "type": "single",
+      "scenario": "Bakim oncesi web-145 container'inin port eslemelerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker port web-145",
+          "hint_text": "Port bilgisi icin `docker port` kullan.",
+          "hint_partial": "docker port ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-021-r146",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda cache-146-146-146 container'i icinde `/app/cache-146-146-146` klasorunu listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker exec cache-146-146-146 ls /app/cache-146-146-146",
+          "hint_text": "Container icinde komut calistirmak icin `docker exec` kullan.",
+          "hint_partial": "docker exec ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-022-r147",
+      "type": "single",
+      "scenario": "Deploy sonrasi `demo-old` container'inin adini `demo` yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker rename demo-old demo",
+          "hint_text": "Container ad degisikligi icin `docker rename` kullan.",
+          "hint_partial": "docker rename ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-023-r148",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde hello-world image'ini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker rmi hello-world",
+          "hint_text": "Image silmek icin `docker rmi` kullan.",
+          "hint_partial": "docker rmi ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-024-r149",
+      "type": "single",
+      "scenario": "Yeni acilan hostta local `index.html` dosyasini cache-149-149 container'i icinde `/usr/share/haproxy-149/html/index.html` yoluna kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker cp index.html cache-149-149:/usr/share/haproxy-149/html/index.html",
+          "hint_text": "Container'a dosya kopyalamak icin `docker cp` kullan.",
+          "hint_partial": "docker cp ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-025-r150",
+      "type": "single",
+      "scenario": "Runbook adiminda queue-150 container'i icindeki `/var/queue-150/log/queue-150/vault-150/access.log` dosyasini current directory'ye `./access.log` olarak kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker cp queue-150:/var/queue-150/log/queue-150/vault-150/access.log ./access.log",
+          "hint_text": "Container'dan host'a kopya icin yine `docker cp` kullan.",
+          "hint_partial": "docker cp ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-011-r151",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde image ID'lerini kısa formatta listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker images -q",
+          "hint_text": "Sadece image ID'leri icin `docker images -q` kullan.",
+          "hint_partial": "docker images ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-012-r152",
+      "type": "single",
+      "scenario": "Incident sonrasinda proxy-152 container'inin detayli bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker inspect proxy-152",
+          "hint_text": "Container detaylari icin `docker inspect` kullan.",
+          "hint_partial": "docker inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-013-r153",
+      "type": "single",
+      "scenario": "Bakim oncesi web-153 container loglarini canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker logs -f web-153",
+          "hint_text": "Canli log takibi icin `docker logs -f` kullan.",
+          "hint_partial": "docker logs -f ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-014-r154",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda cache-154-154-154 container'ini yeniden baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker restart cache-154-154-154",
+          "hint_text": "Container yeniden baslatmak icin `docker restart` kullan.",
+          "hint_partial": "docker restart ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-015-r155",
+      "type": "single",
+      "scenario": "Deploy sonrasi tek seferlik alpine container calistirip `echo hello` komutunu kos.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker run --rm alpine echo hello",
+          "hint_text": "Gecici container icin `docker run --rm` kullan.",
+          "hint_partial": "docker run --rm ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-016-r156",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde vault-156:alpine image'ini indir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker pull vault-156:alpine",
+          "hint_text": "Tag'li image indirmek icin `docker pull image:tag` kullan.",
+          "hint_partial": "docker pull ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-017-r157",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `demo` adinda detached nginx-157 container baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker run -d --name demo nginx-157",
+          "hint_text": "Detached baslatmak icin `docker run -d --name` kullan.",
+          "hint_partial": "docker run -d ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-018-r158",
+      "type": "single",
+      "scenario": "Runbook adiminda docker network listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network ls",
+          "hint_text": "Network listesi icin `docker network ls` kullan.",
+          "hint_partial": "docker network ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-019-r159",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde docker volume listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker volume ls",
+          "hint_text": "Volume listesi icin `docker volume ls` kullan.",
+          "hint_partial": "docker volume ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-020-r160",
+      "type": "single",
+      "scenario": "Incident sonrasinda proxy-160 container'inin port eslemelerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker port proxy-160",
+          "hint_text": "Port bilgisi icin `docker port` kullan.",
+          "hint_partial": "docker port ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-021-r161",
+      "type": "single",
+      "scenario": "Bakim oncesi web-161 container'i icinde `/app/web-161-161` klasorunu listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker exec web-161 ls /app/web-161-161",
+          "hint_text": "Container icinde komut calistirmak icin `docker exec` kullan.",
+          "hint_partial": "docker exec ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-022-r162",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `demo-old` container'inin adini `demo` yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker rename demo-old demo",
+          "hint_text": "Container ad degisikligi icin `docker rename` kullan.",
+          "hint_partial": "docker rename ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-023-r163",
+      "type": "single",
+      "scenario": "Deploy sonrasi hello-world image'ini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker rmi hello-world",
+          "hint_text": "Image silmek icin `docker rmi` kullan.",
+          "hint_partial": "docker rmi ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-024-r164",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde local `index.html` dosyasini db-164-164 container'i icinde `/usr/share/postgres-164-164/html/index.html` yoluna kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker cp index.html db-164-164:/usr/share/postgres-164-164/html/index.html",
+          "hint_text": "Container'a dosya kopyalamak icin `docker cp` kullan.",
+          "hint_partial": "docker cp ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-025-r165",
+      "type": "single",
+      "scenario": "Yeni acilan hostta cache-165-165 container'i icindeki `/var/cache-165-165/log/cache-165-165/redis-165/access.log` dosyasini current directory'ye `./access.log` olarak kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker cp cache-165-165:/var/cache-165-165/log/cache-165-165/redis-165/access.log ./access.log",
+          "hint_text": "Container'dan host'a kopya icin yine `docker cp` kullan.",
+          "hint_partial": "docker cp ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-011-r166",
+      "type": "single",
+      "scenario": "Runbook adiminda image ID'lerini kısa formatta listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker images -q",
+          "hint_text": "Sadece image ID'leri icin `docker images -q` kullan.",
+          "hint_partial": "docker images ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-012-r167",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde bastion-167 container'inin detayli bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker inspect bastion-167",
+          "hint_text": "Container detaylari icin `docker inspect` kullan.",
+          "hint_partial": "docker inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-013-r168",
+      "type": "single",
+      "scenario": "Incident sonrasinda proxy-168 container loglarini canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker logs -f proxy-168",
+          "hint_text": "Canli log takibi icin `docker logs -f` kullan.",
+          "hint_partial": "docker logs -f ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-014-r169",
+      "type": "single",
+      "scenario": "Bakim oncesi web-169 container'ini yeniden baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker restart web-169",
+          "hint_text": "Container yeniden baslatmak icin `docker restart` kullan.",
+          "hint_partial": "docker restart ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-015-r170",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda tek seferlik alpine container calistirip `echo hello` komutunu kos.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker run --rm alpine echo hello",
+          "hint_text": "Gecici container icin `docker run --rm` kullan.",
+          "hint_partial": "docker run --rm ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-016-r171",
+      "type": "single",
+      "scenario": "Deploy sonrasi redis-171:alpine image'ini indir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker pull redis-171:alpine",
+          "hint_text": "Tag'li image indirmek icin `docker pull image:tag` kullan.",
+          "hint_partial": "docker pull ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-017-r172",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `demo` adinda detached traefik-172 container baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker run -d --name demo traefik-172",
+          "hint_text": "Detached baslatmak icin `docker run -d --name` kullan.",
+          "hint_partial": "docker run -d ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-018-r173",
+      "type": "single",
+      "scenario": "Yeni acilan hostta docker network listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network ls",
+          "hint_text": "Network listesi icin `docker network ls` kullan.",
+          "hint_partial": "docker network ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-019-r174",
+      "type": "single",
+      "scenario": "Runbook adiminda docker volume listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker volume ls",
+          "hint_text": "Volume listesi icin `docker volume ls` kullan.",
+          "hint_partial": "docker volume ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-020-r175",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde bastion-175 container'inin port eslemelerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker port bastion-175",
+          "hint_text": "Port bilgisi icin `docker port` kullan.",
+          "hint_partial": "docker port ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-021-r176",
+      "type": "single",
+      "scenario": "Incident sonrasinda proxy-176 container'i icinde `/app/proxy-176` klasorunu listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker exec proxy-176 ls /app/proxy-176",
+          "hint_text": "Container icinde komut calistirmak icin `docker exec` kullan.",
+          "hint_partial": "docker exec ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-022-r177",
+      "type": "single",
+      "scenario": "Bakim oncesi `demo-old` container'inin adini `demo` yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker rename demo-old demo",
+          "hint_text": "Container ad degisikligi icin `docker rename` kullan.",
+          "hint_partial": "docker rename ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-023-r178",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda hello-world image'ini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker rmi hello-world",
+          "hint_text": "Image silmek icin `docker rmi` kullan.",
+          "hint_partial": "docker rmi ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-024-r179",
+      "type": "single",
+      "scenario": "Deploy sonrasi local `index.html` dosyasini worker-179 container'i icinde `/usr/share/haproxy-179/html/index.html` yoluna kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker cp index.html worker-179:/usr/share/haproxy-179/html/index.html",
+          "hint_text": "Container'a dosya kopyalamak icin `docker cp` kullan.",
+          "hint_partial": "docker cp ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-025-r180",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde db-180-180 container'i icindeki `/var/db-180-180/log/db-180-180/vault-180/access.log` dosyasini current directory'ye `./access.log` olarak kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker cp db-180-180:/var/db-180-180/log/db-180-180/vault-180/access.log ./access.log",
+          "hint_text": "Container'dan host'a kopya icin yine `docker cp` kullan.",
+          "hint_partial": "docker cp ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-011-r181",
+      "type": "single",
+      "scenario": "Yeni acilan hostta image ID'lerini kısa formatta listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker images -q",
+          "hint_text": "Sadece image ID'leri icin `docker images -q` kullan.",
+          "hint_partial": "docker images ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-012-r182",
+      "type": "single",
+      "scenario": "Runbook adiminda queue-182 container'inin detayli bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker inspect queue-182",
+          "hint_text": "Container detaylari icin `docker inspect` kullan.",
+          "hint_partial": "docker inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-013-r183",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde bastion-183 container loglarini canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker logs -f bastion-183",
+          "hint_text": "Canli log takibi icin `docker logs -f` kullan.",
+          "hint_partial": "docker logs -f ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-014-r184",
+      "type": "single",
+      "scenario": "Incident sonrasinda proxy-184 container'ini yeniden baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker restart proxy-184",
+          "hint_text": "Container yeniden baslatmak icin `docker restart` kullan.",
+          "hint_partial": "docker restart ..."
+        }
+      ]
+    },
+    {
+      "id": "jctr-015-r185",
+      "type": "single",
+      "scenario": "Bakim oncesi tek seferlik alpine container calistirip `echo hello` komutunu kos.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker run --rm alpine echo hello",
+          "hint_text": "Gecici container icin `docker run --rm` kullan.",
+          "hint_partial": "docker run --rm ..."
+        }
+      ]
+    }
+  ]
+}

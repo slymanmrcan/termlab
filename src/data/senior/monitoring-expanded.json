@@ -1,0 +1,2606 @@
+{
+  "level": "senior",
+  "topic": "monitoring",
+  "questions": [
+    {
+      "id": "smon-011",
+      "type": "single",
+      "scenario": "Network interface metriklerini 5 ornek boyunca topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sar -n DEV 1 5",
+          "hint_text": "Network device istatistigi icin `sar -n DEV` kullan.",
+          "hint_partial": "sar -n ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-012",
+      "type": "single",
+      "scenario": "Run queue ve load bilgilerini `sar` ile izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sar -q 1 5",
+          "hint_text": "Queue/load icin `sar -q` kullan.",
+          "hint_partial": "sar -q ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-013",
+      "type": "single",
+      "scenario": "Process bazinda disk I/O metriklerini izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pidstat -d 1",
+          "hint_text": "Process I/O icin `pidstat -d` kullan.",
+          "hint_partial": "pidstat -d ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-014",
+      "type": "single",
+      "scenario": "CPU, memory ve disk I/O'yu process bazinda ayni anda izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pidstat -u -r -d 1",
+          "hint_text": "Birden fazla metrik icin ilgili pidstat flag'lerini birlestir.",
+          "hint_partial": "pidstat -u ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-015",
+      "type": "single",
+      "scenario": "Disk latency ve util oranlarini detayli izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iostat -xz 1",
+          "hint_text": "Genis disk metrikleri icin `iostat -xz` kullan.",
+          "hint_partial": "iostat -xz ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-016",
+      "type": "single",
+      "scenario": "Canli kernel-level CPU profiling baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "perf top",
+          "hint_text": "Canli profiling icin `perf top` kullan.",
+          "hint_partial": "perf ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-017",
+      "type": "single",
+      "scenario": "PID 1234 uzerinde performans sayaçlarini topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "perf stat -p 1234",
+          "hint_text": "Belirli PID icin `perf stat -p` kullan.",
+          "hint_partial": "perf stat ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-018",
+      "type": "single",
+      "scenario": "TCP socket detaylarini internal timer bilgileriyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ss -ti",
+          "hint_text": "TCP ic detaylar icin `ss -ti` kullan.",
+          "hint_partial": "ss -ti"
+        }
+      ]
+    },
+    {
+      "id": "smon-019",
+      "type": "single",
+      "scenario": "Listening TCP socket'leri numeric ve process bilgisiyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof -iTCP -sTCP:LISTEN -P -n",
+          "hint_text": "Listening TCP filtrelemesi icin `lsof` flag'lerini kullan.",
+          "hint_partial": "lsof -iTCP ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-020",
+      "type": "single",
+      "scenario": "Tum CPU core'larin ayri ayri istatistiklerini izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mpstat -P ALL 1",
+          "hint_text": "Core bazli CPU icin `mpstat -P ALL` kullan.",
+          "hint_partial": "mpstat -P ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-021",
+      "type": "single",
+      "scenario": "10 ornek boyunca VM ve scheduler istatistiklerini topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "vmstat 1 10",
+          "hint_text": "Belirli sayida ornek icin `vmstat interval count` kullan.",
+          "hint_partial": "vmstat ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-022",
+      "type": "single",
+      "scenario": "Page fault ve paging metriklerini `sar` ile izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sar -B 1 5",
+          "hint_text": "Paging istatistikleri icin `sar -B` kullan.",
+          "hint_partial": "sar -B ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-023",
+      "type": "single",
+      "scenario": "Son 50 kernel mesajini insan-okunur zaman damgasiyla goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dmesg -T | tail -50",
+          "hint_text": "Readable time icin `dmesg -T` kullan.",
+          "hint_partial": "dmesg -T ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-024",
+      "type": "single",
+      "scenario": "Son 1 saatin warning ve ustu journal kayitlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "journalctl --since '1 hour ago' -p warning",
+          "hint_text": "Sure ve priority filtresini birlestir.",
+          "hint_partial": "journalctl --since ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-025",
+      "type": "single",
+      "scenario": "Memory pressure bilgisini her saniye yenileyerek izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "watch -n 1 \"cat /proc/pressure/memory\"",
+          "hint_text": "PSI memory icin `/proc/pressure/memory` izle.",
+          "hint_partial": "watch -n 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-011-r1",
+      "type": "single",
+      "scenario": "Bakim oncesi network interface metriklerini 5 ornek boyunca topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sar -n DEV 1 5",
+          "hint_text": "Network device istatistigi icin `sar -n DEV` kullan.",
+          "hint_partial": "sar -n ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-012-r2",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda run queue ve load bilgilerini `sar` ile izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sar -q 1 5",
+          "hint_text": "Queue/load icin `sar -q` kullan.",
+          "hint_partial": "sar -q ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-013-r3",
+      "type": "single",
+      "scenario": "Deploy sonrasi process bazinda disk I/O metriklerini izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pidstat -d 1",
+          "hint_text": "Process I/O icin `pidstat -d` kullan.",
+          "hint_partial": "pidstat -d ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-014-r4",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde cPU, memory ve disk I/O'yu process bazinda ayni anda izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pidstat -u -r -d 1",
+          "hint_text": "Birden fazla metrik icin ilgili pidstat flag'lerini birlestir.",
+          "hint_partial": "pidstat -u ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-015-r5",
+      "type": "single",
+      "scenario": "Yeni acilan hostta disk latency ve util oranlarini detayli izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iostat -xz 1",
+          "hint_text": "Genis disk metrikleri icin `iostat -xz` kullan.",
+          "hint_partial": "iostat -xz ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-016-r6",
+      "type": "single",
+      "scenario": "Runbook adiminda canli kernel-level CPU profiling baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "perf top",
+          "hint_text": "Canli profiling icin `perf top` kullan.",
+          "hint_partial": "perf ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-017-r7",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde pID 1234 uzerinde performans sayaçlarini topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "perf stat -p 1234",
+          "hint_text": "Belirli PID icin `perf stat -p` kullan.",
+          "hint_partial": "perf stat ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-018-r8",
+      "type": "single",
+      "scenario": "Incident sonrasinda tCP socket detaylarini internal timer bilgileriyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ss -ti",
+          "hint_text": "TCP ic detaylar icin `ss -ti` kullan.",
+          "hint_partial": "ss -ti"
+        }
+      ]
+    },
+    {
+      "id": "smon-019-r9",
+      "type": "single",
+      "scenario": "Bakim oncesi listening TCP socket'leri numeric ve process bilgisiyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof -iTCP -sTCP:LISTEN -P -n",
+          "hint_text": "Listening TCP filtrelemesi icin `lsof` flag'lerini kullan.",
+          "hint_partial": "lsof -iTCP ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-020-r10",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda tum CPU core'larin ayri ayri istatistiklerini izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mpstat -P ALL 1",
+          "hint_text": "Core bazli CPU icin `mpstat -P ALL` kullan.",
+          "hint_partial": "mpstat -P ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-021-r11",
+      "type": "single",
+      "scenario": "Deploy sonrasi 10 ornek boyunca VM ve scheduler istatistiklerini topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "vmstat 1 10",
+          "hint_text": "Belirli sayida ornek icin `vmstat interval count` kullan.",
+          "hint_partial": "vmstat ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-022-r12",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde page fault ve paging metriklerini `sar` ile izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sar -B 1 5",
+          "hint_text": "Paging istatistikleri icin `sar -B` kullan.",
+          "hint_partial": "sar -B ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-023-r13",
+      "type": "single",
+      "scenario": "Yeni acilan hostta son 50 kernel mesajini insan-okunur zaman damgasiyla goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dmesg -T | tail -5",
+          "hint_text": "Readable time icin `dmesg -T` kullan.",
+          "hint_partial": "dmesg -T ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-024-r14",
+      "type": "single",
+      "scenario": "Runbook adiminda son 1 saatin warning ve ustu journal kayitlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "journalctl --since '1 hour ago' -p warning",
+          "hint_text": "Sure ve priority filtresini birlestir.",
+          "hint_partial": "journalctl --since ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-025-r15",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde memory pressure bilgisini her saniye yenileyerek izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "watch -n 1 \"cat /proc/pressure/memory\"",
+          "hint_text": "PSI memory icin `/proc/pressure/memory` izle.",
+          "hint_partial": "watch -n 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-011-r16",
+      "type": "single",
+      "scenario": "Incident sonrasinda network interface metriklerini 5 ornek boyunca topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sar -n DEV 1 5",
+          "hint_text": "Network device istatistigi icin `sar -n DEV` kullan.",
+          "hint_partial": "sar -n ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-012-r17",
+      "type": "single",
+      "scenario": "Bakim oncesi run queue ve load bilgilerini `sar` ile izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sar -q 1 5",
+          "hint_text": "Queue/load icin `sar -q` kullan.",
+          "hint_partial": "sar -q ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-013-r18",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda process bazinda disk I/O metriklerini izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pidstat -d 1",
+          "hint_text": "Process I/O icin `pidstat -d` kullan.",
+          "hint_partial": "pidstat -d ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-014-r19",
+      "type": "single",
+      "scenario": "Deploy sonrasi cPU, memory ve disk I/O'yu process bazinda ayni anda izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pidstat -u -r -d 1",
+          "hint_text": "Birden fazla metrik icin ilgili pidstat flag'lerini birlestir.",
+          "hint_partial": "pidstat -u ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-015-r20",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde disk latency ve util oranlarini detayli izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iostat -xz 1",
+          "hint_text": "Genis disk metrikleri icin `iostat -xz` kullan.",
+          "hint_partial": "iostat -xz ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-016-r21",
+      "type": "single",
+      "scenario": "Yeni acilan hostta canli kernel-level CPU profiling baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "perf top",
+          "hint_text": "Canli profiling icin `perf top` kullan.",
+          "hint_partial": "perf ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-017-r22",
+      "type": "single",
+      "scenario": "Runbook adiminda pID 1234 uzerinde performans sayaçlarini topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "perf stat -p 1234",
+          "hint_text": "Belirli PID icin `perf stat -p` kullan.",
+          "hint_partial": "perf stat ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-018-r23",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde tCP socket detaylarini internal timer bilgileriyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ss -ti",
+          "hint_text": "TCP ic detaylar icin `ss -ti` kullan.",
+          "hint_partial": "ss -ti"
+        }
+      ]
+    },
+    {
+      "id": "smon-019-r24",
+      "type": "single",
+      "scenario": "Incident sonrasinda listening TCP socket'leri numeric ve process bilgisiyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof -iTCP -sTCP:LISTEN -P -n",
+          "hint_text": "Listening TCP filtrelemesi icin `lsof` flag'lerini kullan.",
+          "hint_partial": "lsof -iTCP ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-020-r25",
+      "type": "single",
+      "scenario": "Bakim oncesi tum CPU core'larin ayri ayri istatistiklerini izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mpstat -P ALL 1",
+          "hint_text": "Core bazli CPU icin `mpstat -P ALL` kullan.",
+          "hint_partial": "mpstat -P ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-021-r26",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda 10 ornek boyunca VM ve scheduler istatistiklerini topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "vmstat 1 10",
+          "hint_text": "Belirli sayida ornek icin `vmstat interval count` kullan.",
+          "hint_partial": "vmstat ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-022-r27",
+      "type": "single",
+      "scenario": "Deploy sonrasi page fault ve paging metriklerini `sar` ile izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sar -B 1 5",
+          "hint_text": "Paging istatistikleri icin `sar -B` kullan.",
+          "hint_partial": "sar -B ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-023-r28",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde son 50 kernel mesajini insan-okunur zaman damgasiyla goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dmesg -T | tail -5",
+          "hint_text": "Readable time icin `dmesg -T` kullan.",
+          "hint_partial": "dmesg -T ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-024-r29",
+      "type": "single",
+      "scenario": "Yeni acilan hostta son 1 saatin warning ve ustu journal kayitlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "journalctl --since '1 hour ago' -p warning",
+          "hint_text": "Sure ve priority filtresini birlestir.",
+          "hint_partial": "journalctl --since ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-025-r30",
+      "type": "single",
+      "scenario": "Runbook adiminda memory pressure bilgisini her saniye yenileyerek izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "watch -n 1 \"cat /proc/pressure/memory\"",
+          "hint_text": "PSI memory icin `/proc/pressure/memory` izle.",
+          "hint_partial": "watch -n 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-011-r31",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde network interface metriklerini 5 ornek boyunca topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sar -n DEV 1 5",
+          "hint_text": "Network device istatistigi icin `sar -n DEV` kullan.",
+          "hint_partial": "sar -n ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-012-r32",
+      "type": "single",
+      "scenario": "Incident sonrasinda run queue ve load bilgilerini `sar` ile izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sar -q 1 5",
+          "hint_text": "Queue/load icin `sar -q` kullan.",
+          "hint_partial": "sar -q ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-013-r33",
+      "type": "single",
+      "scenario": "Bakim oncesi process bazinda disk I/O metriklerini izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pidstat -d 1",
+          "hint_text": "Process I/O icin `pidstat -d` kullan.",
+          "hint_partial": "pidstat -d ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-014-r34",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda cPU, memory ve disk I/O'yu process bazinda ayni anda izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pidstat -u -r -d 1",
+          "hint_text": "Birden fazla metrik icin ilgili pidstat flag'lerini birlestir.",
+          "hint_partial": "pidstat -u ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-015-r35",
+      "type": "single",
+      "scenario": "Deploy sonrasi disk latency ve util oranlarini detayli izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iostat -xz 1",
+          "hint_text": "Genis disk metrikleri icin `iostat -xz` kullan.",
+          "hint_partial": "iostat -xz ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-016-r36",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde canli kernel-level CPU profiling baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "perf top",
+          "hint_text": "Canli profiling icin `perf top` kullan.",
+          "hint_partial": "perf ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-017-r37",
+      "type": "single",
+      "scenario": "Yeni acilan hostta pID 1234 uzerinde performans sayaçlarini topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "perf stat -p 1234",
+          "hint_text": "Belirli PID icin `perf stat -p` kullan.",
+          "hint_partial": "perf stat ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-018-r38",
+      "type": "single",
+      "scenario": "Runbook adiminda tCP socket detaylarini internal timer bilgileriyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ss -ti",
+          "hint_text": "TCP ic detaylar icin `ss -ti` kullan.",
+          "hint_partial": "ss -ti"
+        }
+      ]
+    },
+    {
+      "id": "smon-019-r39",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde listening TCP socket'leri numeric ve process bilgisiyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof -iTCP -sTCP:LISTEN -P -n",
+          "hint_text": "Listening TCP filtrelemesi icin `lsof` flag'lerini kullan.",
+          "hint_partial": "lsof -iTCP ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-020-r40",
+      "type": "single",
+      "scenario": "Incident sonrasinda tum CPU core'larin ayri ayri istatistiklerini izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mpstat -P ALL 1",
+          "hint_text": "Core bazli CPU icin `mpstat -P ALL` kullan.",
+          "hint_partial": "mpstat -P ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-021-r41",
+      "type": "single",
+      "scenario": "Bakim oncesi 10 ornek boyunca VM ve scheduler istatistiklerini topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "vmstat 1 10",
+          "hint_text": "Belirli sayida ornek icin `vmstat interval count` kullan.",
+          "hint_partial": "vmstat ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-022-r42",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda page fault ve paging metriklerini `sar` ile izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sar -B 1 5",
+          "hint_text": "Paging istatistikleri icin `sar -B` kullan.",
+          "hint_partial": "sar -B ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-023-r43",
+      "type": "single",
+      "scenario": "Deploy sonrasi son 50 kernel mesajini insan-okunur zaman damgasiyla goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dmesg -T | tail -5",
+          "hint_text": "Readable time icin `dmesg -T` kullan.",
+          "hint_partial": "dmesg -T ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-024-r44",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde son 1 saatin warning ve ustu journal kayitlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "journalctl --since '1 hour ago' -p warning",
+          "hint_text": "Sure ve priority filtresini birlestir.",
+          "hint_partial": "journalctl --since ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-025-r45",
+      "type": "single",
+      "scenario": "Yeni acilan hostta memory pressure bilgisini her saniye yenileyerek izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "watch -n 1 \"cat /proc/pressure/memory\"",
+          "hint_text": "PSI memory icin `/proc/pressure/memory` izle.",
+          "hint_partial": "watch -n 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-011-r46",
+      "type": "single",
+      "scenario": "Runbook adiminda network interface metriklerini 5 ornek boyunca topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sar -n DEV 1 5",
+          "hint_text": "Network device istatistigi icin `sar -n DEV` kullan.",
+          "hint_partial": "sar -n ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-012-r47",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde run queue ve load bilgilerini `sar` ile izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sar -q 1 5",
+          "hint_text": "Queue/load icin `sar -q` kullan.",
+          "hint_partial": "sar -q ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-013-r48",
+      "type": "single",
+      "scenario": "Incident sonrasinda process bazinda disk I/O metriklerini izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pidstat -d 1",
+          "hint_text": "Process I/O icin `pidstat -d` kullan.",
+          "hint_partial": "pidstat -d ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-014-r49",
+      "type": "single",
+      "scenario": "Bakim oncesi cPU, memory ve disk I/O'yu process bazinda ayni anda izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pidstat -u -r -d 1",
+          "hint_text": "Birden fazla metrik icin ilgili pidstat flag'lerini birlestir.",
+          "hint_partial": "pidstat -u ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-015-r50",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda disk latency ve util oranlarini detayli izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iostat -xz 1",
+          "hint_text": "Genis disk metrikleri icin `iostat -xz` kullan.",
+          "hint_partial": "iostat -xz ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-016-r51",
+      "type": "single",
+      "scenario": "Deploy sonrasi canli kernel-level CPU profiling baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "perf top",
+          "hint_text": "Canli profiling icin `perf top` kullan.",
+          "hint_partial": "perf ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-017-r52",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde pID 1234 uzerinde performans sayaçlarini topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "perf stat -p 1234",
+          "hint_text": "Belirli PID icin `perf stat -p` kullan.",
+          "hint_partial": "perf stat ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-018-r53",
+      "type": "single",
+      "scenario": "Yeni acilan hostta tCP socket detaylarini internal timer bilgileriyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ss -ti",
+          "hint_text": "TCP ic detaylar icin `ss -ti` kullan.",
+          "hint_partial": "ss -ti"
+        }
+      ]
+    },
+    {
+      "id": "smon-019-r54",
+      "type": "single",
+      "scenario": "Runbook adiminda listening TCP socket'leri numeric ve process bilgisiyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof -iTCP -sTCP:LISTEN -P -n",
+          "hint_text": "Listening TCP filtrelemesi icin `lsof` flag'lerini kullan.",
+          "hint_partial": "lsof -iTCP ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-020-r55",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde tum CPU core'larin ayri ayri istatistiklerini izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mpstat -P ALL 1",
+          "hint_text": "Core bazli CPU icin `mpstat -P ALL` kullan.",
+          "hint_partial": "mpstat -P ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-021-r56",
+      "type": "single",
+      "scenario": "Incident sonrasinda 10 ornek boyunca VM ve scheduler istatistiklerini topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "vmstat 1 10",
+          "hint_text": "Belirli sayida ornek icin `vmstat interval count` kullan.",
+          "hint_partial": "vmstat ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-022-r57",
+      "type": "single",
+      "scenario": "Bakim oncesi page fault ve paging metriklerini `sar` ile izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sar -B 1 5",
+          "hint_text": "Paging istatistikleri icin `sar -B` kullan.",
+          "hint_partial": "sar -B ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-023-r58",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda son 50 kernel mesajini insan-okunur zaman damgasiyla goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dmesg -T | tail -5",
+          "hint_text": "Readable time icin `dmesg -T` kullan.",
+          "hint_partial": "dmesg -T ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-024-r59",
+      "type": "single",
+      "scenario": "Deploy sonrasi son 1 saatin warning ve ustu journal kayitlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "journalctl --since '1 hour ago' -p warning",
+          "hint_text": "Sure ve priority filtresini birlestir.",
+          "hint_partial": "journalctl --since ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-025-r60",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde memory pressure bilgisini her saniye yenileyerek izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "watch -n 1 \"cat /proc/pressure/memory\"",
+          "hint_text": "PSI memory icin `/proc/pressure/memory` izle.",
+          "hint_partial": "watch -n 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-011-r61",
+      "type": "single",
+      "scenario": "Yeni acilan hostta network interface metriklerini 5 ornek boyunca topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sar -n DEV 1 5",
+          "hint_text": "Network device istatistigi icin `sar -n DEV` kullan.",
+          "hint_partial": "sar -n ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-012-r62",
+      "type": "single",
+      "scenario": "Runbook adiminda run queue ve load bilgilerini `sar` ile izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sar -q 1 5",
+          "hint_text": "Queue/load icin `sar -q` kullan.",
+          "hint_partial": "sar -q ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-013-r63",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde process bazinda disk I/O metriklerini izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pidstat -d 1",
+          "hint_text": "Process I/O icin `pidstat -d` kullan.",
+          "hint_partial": "pidstat -d ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-014-r64",
+      "type": "single",
+      "scenario": "Incident sonrasinda cPU, memory ve disk I/O'yu process bazinda ayni anda izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pidstat -u -r -d 1",
+          "hint_text": "Birden fazla metrik icin ilgili pidstat flag'lerini birlestir.",
+          "hint_partial": "pidstat -u ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-015-r65",
+      "type": "single",
+      "scenario": "Bakim oncesi disk latency ve util oranlarini detayli izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iostat -xz 1",
+          "hint_text": "Genis disk metrikleri icin `iostat -xz` kullan.",
+          "hint_partial": "iostat -xz ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-016-r66",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda canli kernel-level CPU profiling baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "perf top",
+          "hint_text": "Canli profiling icin `perf top` kullan.",
+          "hint_partial": "perf ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-017-r67",
+      "type": "single",
+      "scenario": "Deploy sonrasi pID 1234 uzerinde performans sayaçlarini topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "perf stat -p 1234",
+          "hint_text": "Belirli PID icin `perf stat -p` kullan.",
+          "hint_partial": "perf stat ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-018-r68",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde tCP socket detaylarini internal timer bilgileriyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ss -ti",
+          "hint_text": "TCP ic detaylar icin `ss -ti` kullan.",
+          "hint_partial": "ss -ti"
+        }
+      ]
+    },
+    {
+      "id": "smon-019-r69",
+      "type": "single",
+      "scenario": "Yeni acilan hostta listening TCP socket'leri numeric ve process bilgisiyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof -iTCP -sTCP:LISTEN -P -n",
+          "hint_text": "Listening TCP filtrelemesi icin `lsof` flag'lerini kullan.",
+          "hint_partial": "lsof -iTCP ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-020-r70",
+      "type": "single",
+      "scenario": "Runbook adiminda tum CPU core'larin ayri ayri istatistiklerini izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mpstat -P ALL 1",
+          "hint_text": "Core bazli CPU icin `mpstat -P ALL` kullan.",
+          "hint_partial": "mpstat -P ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-021-r71",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde 10 ornek boyunca VM ve scheduler istatistiklerini topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "vmstat 1 10",
+          "hint_text": "Belirli sayida ornek icin `vmstat interval count` kullan.",
+          "hint_partial": "vmstat ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-022-r72",
+      "type": "single",
+      "scenario": "Incident sonrasinda page fault ve paging metriklerini `sar` ile izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sar -B 1 5",
+          "hint_text": "Paging istatistikleri icin `sar -B` kullan.",
+          "hint_partial": "sar -B ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-023-r73",
+      "type": "single",
+      "scenario": "Bakim oncesi son 50 kernel mesajini insan-okunur zaman damgasiyla goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dmesg -T | tail -5",
+          "hint_text": "Readable time icin `dmesg -T` kullan.",
+          "hint_partial": "dmesg -T ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-024-r74",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda son 1 saatin warning ve ustu journal kayitlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "journalctl --since '1 hour ago' -p warning",
+          "hint_text": "Sure ve priority filtresini birlestir.",
+          "hint_partial": "journalctl --since ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-025-r75",
+      "type": "single",
+      "scenario": "Deploy sonrasi memory pressure bilgisini her saniye yenileyerek izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "watch -n 1 \"cat /proc/pressure/memory\"",
+          "hint_text": "PSI memory icin `/proc/pressure/memory` izle.",
+          "hint_partial": "watch -n 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-011-r76",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde network interface metriklerini 5 ornek boyunca topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sar -n DEV 1 5",
+          "hint_text": "Network device istatistigi icin `sar -n DEV` kullan.",
+          "hint_partial": "sar -n ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-012-r77",
+      "type": "single",
+      "scenario": "Yeni acilan hostta run queue ve load bilgilerini `sar` ile izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sar -q 1 5",
+          "hint_text": "Queue/load icin `sar -q` kullan.",
+          "hint_partial": "sar -q ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-013-r78",
+      "type": "single",
+      "scenario": "Runbook adiminda process bazinda disk I/O metriklerini izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pidstat -d 1",
+          "hint_text": "Process I/O icin `pidstat -d` kullan.",
+          "hint_partial": "pidstat -d ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-014-r79",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde cPU, memory ve disk I/O'yu process bazinda ayni anda izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pidstat -u -r -d 1",
+          "hint_text": "Birden fazla metrik icin ilgili pidstat flag'lerini birlestir.",
+          "hint_partial": "pidstat -u ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-015-r80",
+      "type": "single",
+      "scenario": "Incident sonrasinda disk latency ve util oranlarini detayli izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iostat -xz 1",
+          "hint_text": "Genis disk metrikleri icin `iostat -xz` kullan.",
+          "hint_partial": "iostat -xz ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-016-r81",
+      "type": "single",
+      "scenario": "Bakim oncesi canli kernel-level CPU profiling baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "perf top",
+          "hint_text": "Canli profiling icin `perf top` kullan.",
+          "hint_partial": "perf ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-017-r82",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda pID 1234 uzerinde performans sayaçlarini topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "perf stat -p 1234",
+          "hint_text": "Belirli PID icin `perf stat -p` kullan.",
+          "hint_partial": "perf stat ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-018-r83",
+      "type": "single",
+      "scenario": "Deploy sonrasi tCP socket detaylarini internal timer bilgileriyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ss -ti",
+          "hint_text": "TCP ic detaylar icin `ss -ti` kullan.",
+          "hint_partial": "ss -ti"
+        }
+      ]
+    },
+    {
+      "id": "smon-019-r84",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde listening TCP socket'leri numeric ve process bilgisiyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof -iTCP -sTCP:LISTEN -P -n",
+          "hint_text": "Listening TCP filtrelemesi icin `lsof` flag'lerini kullan.",
+          "hint_partial": "lsof -iTCP ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-020-r85",
+      "type": "single",
+      "scenario": "Yeni acilan hostta tum CPU core'larin ayri ayri istatistiklerini izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mpstat -P ALL 1",
+          "hint_text": "Core bazli CPU icin `mpstat -P ALL` kullan.",
+          "hint_partial": "mpstat -P ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-021-r86",
+      "type": "single",
+      "scenario": "Runbook adiminda 10 ornek boyunca VM ve scheduler istatistiklerini topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "vmstat 1 10",
+          "hint_text": "Belirli sayida ornek icin `vmstat interval count` kullan.",
+          "hint_partial": "vmstat ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-022-r87",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde page fault ve paging metriklerini `sar` ile izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sar -B 1 5",
+          "hint_text": "Paging istatistikleri icin `sar -B` kullan.",
+          "hint_partial": "sar -B ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-023-r88",
+      "type": "single",
+      "scenario": "Incident sonrasinda son 50 kernel mesajini insan-okunur zaman damgasiyla goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dmesg -T | tail -5",
+          "hint_text": "Readable time icin `dmesg -T` kullan.",
+          "hint_partial": "dmesg -T ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-024-r89",
+      "type": "single",
+      "scenario": "Bakim oncesi son 1 saatin warning ve ustu journal kayitlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "journalctl --since '1 hour ago' -p warning",
+          "hint_text": "Sure ve priority filtresini birlestir.",
+          "hint_partial": "journalctl --since ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-025-r90",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda memory pressure bilgisini her saniye yenileyerek izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "watch -n 1 \"cat /proc/pressure/memory\"",
+          "hint_text": "PSI memory icin `/proc/pressure/memory` izle.",
+          "hint_partial": "watch -n 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-011-r91",
+      "type": "single",
+      "scenario": "Deploy sonrasi network interface metriklerini 5 ornek boyunca topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sar -n DEV 1 5",
+          "hint_text": "Network device istatistigi icin `sar -n DEV` kullan.",
+          "hint_partial": "sar -n ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-012-r92",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde run queue ve load bilgilerini `sar` ile izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sar -q 1 5",
+          "hint_text": "Queue/load icin `sar -q` kullan.",
+          "hint_partial": "sar -q ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-013-r93",
+      "type": "single",
+      "scenario": "Yeni acilan hostta process bazinda disk I/O metriklerini izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pidstat -d 1",
+          "hint_text": "Process I/O icin `pidstat -d` kullan.",
+          "hint_partial": "pidstat -d ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-014-r94",
+      "type": "single",
+      "scenario": "Runbook adiminda cPU, memory ve disk I/O'yu process bazinda ayni anda izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pidstat -u -r -d 1",
+          "hint_text": "Birden fazla metrik icin ilgili pidstat flag'lerini birlestir.",
+          "hint_partial": "pidstat -u ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-015-r95",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde disk latency ve util oranlarini detayli izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iostat -xz 1",
+          "hint_text": "Genis disk metrikleri icin `iostat -xz` kullan.",
+          "hint_partial": "iostat -xz ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-016-r96",
+      "type": "single",
+      "scenario": "Incident sonrasinda canli kernel-level CPU profiling baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "perf top",
+          "hint_text": "Canli profiling icin `perf top` kullan.",
+          "hint_partial": "perf ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-017-r97",
+      "type": "single",
+      "scenario": "Bakim oncesi pID 1234 uzerinde performans sayaçlarini topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "perf stat -p 1234",
+          "hint_text": "Belirli PID icin `perf stat -p` kullan.",
+          "hint_partial": "perf stat ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-018-r98",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda tCP socket detaylarini internal timer bilgileriyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ss -ti",
+          "hint_text": "TCP ic detaylar icin `ss -ti` kullan.",
+          "hint_partial": "ss -ti"
+        }
+      ]
+    },
+    {
+      "id": "smon-019-r99",
+      "type": "single",
+      "scenario": "Deploy sonrasi listening TCP socket'leri numeric ve process bilgisiyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof -iTCP -sTCP:LISTEN -P -n",
+          "hint_text": "Listening TCP filtrelemesi icin `lsof` flag'lerini kullan.",
+          "hint_partial": "lsof -iTCP ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-020-r100",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde tum CPU core'larin ayri ayri istatistiklerini izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mpstat -P ALL 1",
+          "hint_text": "Core bazli CPU icin `mpstat -P ALL` kullan.",
+          "hint_partial": "mpstat -P ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-021-r101",
+      "type": "single",
+      "scenario": "Yeni acilan hostta 10 ornek boyunca VM ve scheduler istatistiklerini topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "vmstat 1 10",
+          "hint_text": "Belirli sayida ornek icin `vmstat interval count` kullan.",
+          "hint_partial": "vmstat ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-022-r102",
+      "type": "single",
+      "scenario": "Runbook adiminda page fault ve paging metriklerini `sar` ile izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sar -B 1 5",
+          "hint_text": "Paging istatistikleri icin `sar -B` kullan.",
+          "hint_partial": "sar -B ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-023-r103",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde son 50 kernel mesajini insan-okunur zaman damgasiyla goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dmesg -T | tail -5",
+          "hint_text": "Readable time icin `dmesg -T` kullan.",
+          "hint_partial": "dmesg -T ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-024-r104",
+      "type": "single",
+      "scenario": "Incident sonrasinda son 1 saatin warning ve ustu journal kayitlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "journalctl --since '1 hour ago' -p warning",
+          "hint_text": "Sure ve priority filtresini birlestir.",
+          "hint_partial": "journalctl --since ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-025-r105",
+      "type": "single",
+      "scenario": "Bakim oncesi memory pressure bilgisini her saniye yenileyerek izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "watch -n 1 \"cat /proc/pressure/memory\"",
+          "hint_text": "PSI memory icin `/proc/pressure/memory` izle.",
+          "hint_partial": "watch -n 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-011-r106",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda network interface metriklerini 5 ornek boyunca topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sar -n DEV 1 5",
+          "hint_text": "Network device istatistigi icin `sar -n DEV` kullan.",
+          "hint_partial": "sar -n ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-012-r107",
+      "type": "single",
+      "scenario": "Deploy sonrasi run queue ve load bilgilerini `sar` ile izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sar -q 1 5",
+          "hint_text": "Queue/load icin `sar -q` kullan.",
+          "hint_partial": "sar -q ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-013-r108",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde process bazinda disk I/O metriklerini izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pidstat -d 1",
+          "hint_text": "Process I/O icin `pidstat -d` kullan.",
+          "hint_partial": "pidstat -d ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-014-r109",
+      "type": "single",
+      "scenario": "Yeni acilan hostta cPU, memory ve disk I/O'yu process bazinda ayni anda izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pidstat -u -r -d 1",
+          "hint_text": "Birden fazla metrik icin ilgili pidstat flag'lerini birlestir.",
+          "hint_partial": "pidstat -u ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-015-r110",
+      "type": "single",
+      "scenario": "Runbook adiminda disk latency ve util oranlarini detayli izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iostat -xz 1",
+          "hint_text": "Genis disk metrikleri icin `iostat -xz` kullan.",
+          "hint_partial": "iostat -xz ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-016-r111",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde canli kernel-level CPU profiling baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "perf top",
+          "hint_text": "Canli profiling icin `perf top` kullan.",
+          "hint_partial": "perf ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-017-r112",
+      "type": "single",
+      "scenario": "Incident sonrasinda pID 1234 uzerinde performans sayaçlarini topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "perf stat -p 1234",
+          "hint_text": "Belirli PID icin `perf stat -p` kullan.",
+          "hint_partial": "perf stat ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-018-r113",
+      "type": "single",
+      "scenario": "Bakim oncesi tCP socket detaylarini internal timer bilgileriyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ss -ti",
+          "hint_text": "TCP ic detaylar icin `ss -ti` kullan.",
+          "hint_partial": "ss -ti"
+        }
+      ]
+    },
+    {
+      "id": "smon-019-r114",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda listening TCP socket'leri numeric ve process bilgisiyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof -iTCP -sTCP:LISTEN -P -n",
+          "hint_text": "Listening TCP filtrelemesi icin `lsof` flag'lerini kullan.",
+          "hint_partial": "lsof -iTCP ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-020-r115",
+      "type": "single",
+      "scenario": "Deploy sonrasi tum CPU core'larin ayri ayri istatistiklerini izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mpstat -P ALL 1",
+          "hint_text": "Core bazli CPU icin `mpstat -P ALL` kullan.",
+          "hint_partial": "mpstat -P ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-021-r116",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde 10 ornek boyunca VM ve scheduler istatistiklerini topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "vmstat 1 10",
+          "hint_text": "Belirli sayida ornek icin `vmstat interval count` kullan.",
+          "hint_partial": "vmstat ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-022-r117",
+      "type": "single",
+      "scenario": "Yeni acilan hostta page fault ve paging metriklerini `sar` ile izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sar -B 1 5",
+          "hint_text": "Paging istatistikleri icin `sar -B` kullan.",
+          "hint_partial": "sar -B ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-023-r118",
+      "type": "single",
+      "scenario": "Runbook adiminda son 50 kernel mesajini insan-okunur zaman damgasiyla goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dmesg -T | tail -5",
+          "hint_text": "Readable time icin `dmesg -T` kullan.",
+          "hint_partial": "dmesg -T ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-024-r119",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde son 1 saatin warning ve ustu journal kayitlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "journalctl --since '1 hour ago' -p warning",
+          "hint_text": "Sure ve priority filtresini birlestir.",
+          "hint_partial": "journalctl --since ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-025-r120",
+      "type": "single",
+      "scenario": "Incident sonrasinda memory pressure bilgisini her saniye yenileyerek izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "watch -n 1 \"cat /proc/pressure/memory\"",
+          "hint_text": "PSI memory icin `/proc/pressure/memory` izle.",
+          "hint_partial": "watch -n 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-011-r121",
+      "type": "single",
+      "scenario": "Bakim oncesi network interface metriklerini 5 ornek boyunca topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sar -n DEV 1 5",
+          "hint_text": "Network device istatistigi icin `sar -n DEV` kullan.",
+          "hint_partial": "sar -n ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-012-r122",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda run queue ve load bilgilerini `sar` ile izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sar -q 1 5",
+          "hint_text": "Queue/load icin `sar -q` kullan.",
+          "hint_partial": "sar -q ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-013-r123",
+      "type": "single",
+      "scenario": "Deploy sonrasi process bazinda disk I/O metriklerini izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pidstat -d 1",
+          "hint_text": "Process I/O icin `pidstat -d` kullan.",
+          "hint_partial": "pidstat -d ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-014-r124",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde cPU, memory ve disk I/O'yu process bazinda ayni anda izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pidstat -u -r -d 1",
+          "hint_text": "Birden fazla metrik icin ilgili pidstat flag'lerini birlestir.",
+          "hint_partial": "pidstat -u ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-015-r125",
+      "type": "single",
+      "scenario": "Yeni acilan hostta disk latency ve util oranlarini detayli izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iostat -xz 1",
+          "hint_text": "Genis disk metrikleri icin `iostat -xz` kullan.",
+          "hint_partial": "iostat -xz ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-016-r126",
+      "type": "single",
+      "scenario": "Runbook adiminda canli kernel-level CPU profiling baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "perf top",
+          "hint_text": "Canli profiling icin `perf top` kullan.",
+          "hint_partial": "perf ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-017-r127",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde pID 1234 uzerinde performans sayaçlarini topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "perf stat -p 1234",
+          "hint_text": "Belirli PID icin `perf stat -p` kullan.",
+          "hint_partial": "perf stat ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-018-r128",
+      "type": "single",
+      "scenario": "Incident sonrasinda tCP socket detaylarini internal timer bilgileriyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ss -ti",
+          "hint_text": "TCP ic detaylar icin `ss -ti` kullan.",
+          "hint_partial": "ss -ti"
+        }
+      ]
+    },
+    {
+      "id": "smon-019-r129",
+      "type": "single",
+      "scenario": "Bakim oncesi listening TCP socket'leri numeric ve process bilgisiyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof -iTCP -sTCP:LISTEN -P -n",
+          "hint_text": "Listening TCP filtrelemesi icin `lsof` flag'lerini kullan.",
+          "hint_partial": "lsof -iTCP ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-020-r130",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda tum CPU core'larin ayri ayri istatistiklerini izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mpstat -P ALL 1",
+          "hint_text": "Core bazli CPU icin `mpstat -P ALL` kullan.",
+          "hint_partial": "mpstat -P ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-021-r131",
+      "type": "single",
+      "scenario": "Deploy sonrasi 10 ornek boyunca VM ve scheduler istatistiklerini topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "vmstat 1 10",
+          "hint_text": "Belirli sayida ornek icin `vmstat interval count` kullan.",
+          "hint_partial": "vmstat ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-022-r132",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde page fault ve paging metriklerini `sar` ile izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sar -B 1 5",
+          "hint_text": "Paging istatistikleri icin `sar -B` kullan.",
+          "hint_partial": "sar -B ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-023-r133",
+      "type": "single",
+      "scenario": "Yeni acilan hostta son 50 kernel mesajini insan-okunur zaman damgasiyla goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dmesg -T | tail -5",
+          "hint_text": "Readable time icin `dmesg -T` kullan.",
+          "hint_partial": "dmesg -T ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-024-r134",
+      "type": "single",
+      "scenario": "Runbook adiminda son 1 saatin warning ve ustu journal kayitlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "journalctl --since '1 hour ago' -p warning",
+          "hint_text": "Sure ve priority filtresini birlestir.",
+          "hint_partial": "journalctl --since ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-025-r135",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde memory pressure bilgisini her saniye yenileyerek izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "watch -n 1 \"cat /proc/pressure/memory\"",
+          "hint_text": "PSI memory icin `/proc/pressure/memory` izle.",
+          "hint_partial": "watch -n 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-011-r136",
+      "type": "single",
+      "scenario": "Incident sonrasinda network interface metriklerini 5 ornek boyunca topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sar -n DEV 1 5",
+          "hint_text": "Network device istatistigi icin `sar -n DEV` kullan.",
+          "hint_partial": "sar -n ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-012-r137",
+      "type": "single",
+      "scenario": "Bakim oncesi run queue ve load bilgilerini `sar` ile izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sar -q 1 5",
+          "hint_text": "Queue/load icin `sar -q` kullan.",
+          "hint_partial": "sar -q ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-013-r138",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda process bazinda disk I/O metriklerini izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pidstat -d 1",
+          "hint_text": "Process I/O icin `pidstat -d` kullan.",
+          "hint_partial": "pidstat -d ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-014-r139",
+      "type": "single",
+      "scenario": "Deploy sonrasi cPU, memory ve disk I/O'yu process bazinda ayni anda izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pidstat -u -r -d 1",
+          "hint_text": "Birden fazla metrik icin ilgili pidstat flag'lerini birlestir.",
+          "hint_partial": "pidstat -u ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-015-r140",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde disk latency ve util oranlarini detayli izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iostat -xz 1",
+          "hint_text": "Genis disk metrikleri icin `iostat -xz` kullan.",
+          "hint_partial": "iostat -xz ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-016-r141",
+      "type": "single",
+      "scenario": "Yeni acilan hostta canli kernel-level CPU profiling baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "perf top",
+          "hint_text": "Canli profiling icin `perf top` kullan.",
+          "hint_partial": "perf ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-017-r142",
+      "type": "single",
+      "scenario": "Runbook adiminda pID 1234 uzerinde performans sayaçlarini topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "perf stat -p 1234",
+          "hint_text": "Belirli PID icin `perf stat -p` kullan.",
+          "hint_partial": "perf stat ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-018-r143",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde tCP socket detaylarini internal timer bilgileriyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ss -ti",
+          "hint_text": "TCP ic detaylar icin `ss -ti` kullan.",
+          "hint_partial": "ss -ti"
+        }
+      ]
+    },
+    {
+      "id": "smon-019-r144",
+      "type": "single",
+      "scenario": "Incident sonrasinda listening TCP socket'leri numeric ve process bilgisiyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof -iTCP -sTCP:LISTEN -P -n",
+          "hint_text": "Listening TCP filtrelemesi icin `lsof` flag'lerini kullan.",
+          "hint_partial": "lsof -iTCP ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-020-r145",
+      "type": "single",
+      "scenario": "Bakim oncesi tum CPU core'larin ayri ayri istatistiklerini izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mpstat -P ALL 1",
+          "hint_text": "Core bazli CPU icin `mpstat -P ALL` kullan.",
+          "hint_partial": "mpstat -P ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-021-r146",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda 10 ornek boyunca VM ve scheduler istatistiklerini topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "vmstat 1 10",
+          "hint_text": "Belirli sayida ornek icin `vmstat interval count` kullan.",
+          "hint_partial": "vmstat ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-022-r147",
+      "type": "single",
+      "scenario": "Deploy sonrasi page fault ve paging metriklerini `sar` ile izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sar -B 1 5",
+          "hint_text": "Paging istatistikleri icin `sar -B` kullan.",
+          "hint_partial": "sar -B ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-023-r148",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde son 50 kernel mesajini insan-okunur zaman damgasiyla goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dmesg -T | tail -5",
+          "hint_text": "Readable time icin `dmesg -T` kullan.",
+          "hint_partial": "dmesg -T ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-024-r149",
+      "type": "single",
+      "scenario": "Yeni acilan hostta son 1 saatin warning ve ustu journal kayitlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "journalctl --since '1 hour ago' -p warning",
+          "hint_text": "Sure ve priority filtresini birlestir.",
+          "hint_partial": "journalctl --since ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-025-r150",
+      "type": "single",
+      "scenario": "Runbook adiminda memory pressure bilgisini her saniye yenileyerek izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "watch -n 1 \"cat /proc/pressure/memory\"",
+          "hint_text": "PSI memory icin `/proc/pressure/memory` izle.",
+          "hint_partial": "watch -n 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-011-r151",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde network interface metriklerini 5 ornek boyunca topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sar -n DEV 1 5",
+          "hint_text": "Network device istatistigi icin `sar -n DEV` kullan.",
+          "hint_partial": "sar -n ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-012-r152",
+      "type": "single",
+      "scenario": "Incident sonrasinda run queue ve load bilgilerini `sar` ile izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sar -q 1 5",
+          "hint_text": "Queue/load icin `sar -q` kullan.",
+          "hint_partial": "sar -q ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-013-r153",
+      "type": "single",
+      "scenario": "Bakim oncesi process bazinda disk I/O metriklerini izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pidstat -d 1",
+          "hint_text": "Process I/O icin `pidstat -d` kullan.",
+          "hint_partial": "pidstat -d ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-014-r154",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda cPU, memory ve disk I/O'yu process bazinda ayni anda izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pidstat -u -r -d 1",
+          "hint_text": "Birden fazla metrik icin ilgili pidstat flag'lerini birlestir.",
+          "hint_partial": "pidstat -u ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-015-r155",
+      "type": "single",
+      "scenario": "Deploy sonrasi disk latency ve util oranlarini detayli izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iostat -xz 1",
+          "hint_text": "Genis disk metrikleri icin `iostat -xz` kullan.",
+          "hint_partial": "iostat -xz ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-016-r156",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde canli kernel-level CPU profiling baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "perf top",
+          "hint_text": "Canli profiling icin `perf top` kullan.",
+          "hint_partial": "perf ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-017-r157",
+      "type": "single",
+      "scenario": "Yeni acilan hostta pID 1234 uzerinde performans sayaçlarini topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "perf stat -p 1234",
+          "hint_text": "Belirli PID icin `perf stat -p` kullan.",
+          "hint_partial": "perf stat ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-018-r158",
+      "type": "single",
+      "scenario": "Runbook adiminda tCP socket detaylarini internal timer bilgileriyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ss -ti",
+          "hint_text": "TCP ic detaylar icin `ss -ti` kullan.",
+          "hint_partial": "ss -ti"
+        }
+      ]
+    },
+    {
+      "id": "smon-019-r159",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde listening TCP socket'leri numeric ve process bilgisiyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof -iTCP -sTCP:LISTEN -P -n",
+          "hint_text": "Listening TCP filtrelemesi icin `lsof` flag'lerini kullan.",
+          "hint_partial": "lsof -iTCP ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-020-r160",
+      "type": "single",
+      "scenario": "Incident sonrasinda tum CPU core'larin ayri ayri istatistiklerini izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mpstat -P ALL 1",
+          "hint_text": "Core bazli CPU icin `mpstat -P ALL` kullan.",
+          "hint_partial": "mpstat -P ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-021-r161",
+      "type": "single",
+      "scenario": "Bakim oncesi 10 ornek boyunca VM ve scheduler istatistiklerini topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "vmstat 1 10",
+          "hint_text": "Belirli sayida ornek icin `vmstat interval count` kullan.",
+          "hint_partial": "vmstat ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-022-r162",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda page fault ve paging metriklerini `sar` ile izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sar -B 1 5",
+          "hint_text": "Paging istatistikleri icin `sar -B` kullan.",
+          "hint_partial": "sar -B ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-023-r163",
+      "type": "single",
+      "scenario": "Deploy sonrasi son 50 kernel mesajini insan-okunur zaman damgasiyla goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dmesg -T | tail -5",
+          "hint_text": "Readable time icin `dmesg -T` kullan.",
+          "hint_partial": "dmesg -T ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-024-r164",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde son 1 saatin warning ve ustu journal kayitlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "journalctl --since '1 hour ago' -p warning",
+          "hint_text": "Sure ve priority filtresini birlestir.",
+          "hint_partial": "journalctl --since ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-025-r165",
+      "type": "single",
+      "scenario": "Yeni acilan hostta memory pressure bilgisini her saniye yenileyerek izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "watch -n 1 \"cat /proc/pressure/memory\"",
+          "hint_text": "PSI memory icin `/proc/pressure/memory` izle.",
+          "hint_partial": "watch -n 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-011-r166",
+      "type": "single",
+      "scenario": "Runbook adiminda network interface metriklerini 5 ornek boyunca topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sar -n DEV 1 5",
+          "hint_text": "Network device istatistigi icin `sar -n DEV` kullan.",
+          "hint_partial": "sar -n ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-012-r167",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde run queue ve load bilgilerini `sar` ile izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sar -q 1 5",
+          "hint_text": "Queue/load icin `sar -q` kullan.",
+          "hint_partial": "sar -q ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-013-r168",
+      "type": "single",
+      "scenario": "Incident sonrasinda process bazinda disk I/O metriklerini izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pidstat -d 1",
+          "hint_text": "Process I/O icin `pidstat -d` kullan.",
+          "hint_partial": "pidstat -d ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-014-r169",
+      "type": "single",
+      "scenario": "Bakim oncesi cPU, memory ve disk I/O'yu process bazinda ayni anda izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pidstat -u -r -d 1",
+          "hint_text": "Birden fazla metrik icin ilgili pidstat flag'lerini birlestir.",
+          "hint_partial": "pidstat -u ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-015-r170",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda disk latency ve util oranlarini detayli izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iostat -xz 1",
+          "hint_text": "Genis disk metrikleri icin `iostat -xz` kullan.",
+          "hint_partial": "iostat -xz ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-016-r171",
+      "type": "single",
+      "scenario": "Deploy sonrasi canli kernel-level CPU profiling baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "perf top",
+          "hint_text": "Canli profiling icin `perf top` kullan.",
+          "hint_partial": "perf ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-017-r172",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde pID 1234 uzerinde performans sayaçlarini topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "perf stat -p 1234",
+          "hint_text": "Belirli PID icin `perf stat -p` kullan.",
+          "hint_partial": "perf stat ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-018-r173",
+      "type": "single",
+      "scenario": "Yeni acilan hostta tCP socket detaylarini internal timer bilgileriyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ss -ti",
+          "hint_text": "TCP ic detaylar icin `ss -ti` kullan.",
+          "hint_partial": "ss -ti"
+        }
+      ]
+    },
+    {
+      "id": "smon-019-r174",
+      "type": "single",
+      "scenario": "Runbook adiminda listening TCP socket'leri numeric ve process bilgisiyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof -iTCP -sTCP:LISTEN -P -n",
+          "hint_text": "Listening TCP filtrelemesi icin `lsof` flag'lerini kullan.",
+          "hint_partial": "lsof -iTCP ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-020-r175",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde tum CPU core'larin ayri ayri istatistiklerini izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "mpstat -P ALL 1",
+          "hint_text": "Core bazli CPU icin `mpstat -P ALL` kullan.",
+          "hint_partial": "mpstat -P ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-021-r176",
+      "type": "single",
+      "scenario": "Incident sonrasinda 10 ornek boyunca VM ve scheduler istatistiklerini topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "vmstat 1 10",
+          "hint_text": "Belirli sayida ornek icin `vmstat interval count` kullan.",
+          "hint_partial": "vmstat ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-022-r177",
+      "type": "single",
+      "scenario": "Bakim oncesi page fault ve paging metriklerini `sar` ile izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sar -B 1 5",
+          "hint_text": "Paging istatistikleri icin `sar -B` kullan.",
+          "hint_partial": "sar -B ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-023-r178",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda son 50 kernel mesajini insan-okunur zaman damgasiyla goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dmesg -T | tail -5",
+          "hint_text": "Readable time icin `dmesg -T` kullan.",
+          "hint_partial": "dmesg -T ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-024-r179",
+      "type": "single",
+      "scenario": "Deploy sonrasi son 1 saatin warning ve ustu journal kayitlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "journalctl --since '1 hour ago' -p warning",
+          "hint_text": "Sure ve priority filtresini birlestir.",
+          "hint_partial": "journalctl --since ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-025-r180",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde memory pressure bilgisini her saniye yenileyerek izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "watch -n 1 \"cat /proc/pressure/memory\"",
+          "hint_text": "PSI memory icin `/proc/pressure/memory` izle.",
+          "hint_partial": "watch -n 1 ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-011-r181",
+      "type": "single",
+      "scenario": "Yeni acilan hostta network interface metriklerini 5 ornek boyunca topla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sar -n DEV 1 5",
+          "hint_text": "Network device istatistigi icin `sar -n DEV` kullan.",
+          "hint_partial": "sar -n ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-012-r182",
+      "type": "single",
+      "scenario": "Runbook adiminda run queue ve load bilgilerini `sar` ile izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sar -q 1 5",
+          "hint_text": "Queue/load icin `sar -q` kullan.",
+          "hint_partial": "sar -q ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-013-r183",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde process bazinda disk I/O metriklerini izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pidstat -d 1",
+          "hint_text": "Process I/O icin `pidstat -d` kullan.",
+          "hint_partial": "pidstat -d ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-014-r184",
+      "type": "single",
+      "scenario": "Incident sonrasinda cPU, memory ve disk I/O'yu process bazinda ayni anda izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pidstat -u -r -d 1",
+          "hint_text": "Birden fazla metrik icin ilgili pidstat flag'lerini birlestir.",
+          "hint_partial": "pidstat -u ..."
+        }
+      ]
+    },
+    {
+      "id": "smon-015-r185",
+      "type": "single",
+      "scenario": "Bakim oncesi disk latency ve util oranlarini detayli izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iostat -xz 1",
+          "hint_text": "Genis disk metrikleri icin `iostat -xz` kullan.",
+          "hint_partial": "iostat -xz ..."
+        }
+      ]
+    }
+  ]
+}

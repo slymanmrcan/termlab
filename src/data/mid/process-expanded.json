@@ -1,0 +1,2606 @@
+{
+  "level": "mid",
+  "topic": "process",
+  "questions": [
+    {
+      "id": "mproc-016",
+      "type": "single",
+      "scenario": "Memory kullanimina gore en agir 10 process'i goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps aux --sort=-%mem | head -10",
+          "hint_text": "Memory siralamasi icin `%mem` kullan.",
+          "hint_partial": "ps aux --sort=..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-017",
+      "type": "single",
+      "scenario": "PID 1234 process'inin agac yapisini PID'leriyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pstree -p 1234",
+          "hint_text": "Belirli PID agaci icin `pstree -p PID` kullan.",
+          "hint_partial": "pstree -p ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-018",
+      "type": "single",
+      "scenario": "Mevcut kullanicinin crontab kayitlarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "crontab -l",
+          "hint_text": "Crontab listeleme icin `crontab -l` kullan.",
+          "hint_partial": "crontab ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-019",
+      "type": "single",
+      "scenario": "`myapp` process'ini nazikce sonlandir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pkill -15 myapp",
+          "hint_text": "Graceful signal icin `pkill -15` kullan.",
+          "hint_partial": "pkill -15 ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-020",
+      "type": "single",
+      "scenario": "`worker.sh` script'ini yeni bir tmux session'inda detached calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tmux new -d -s worker './worker.sh'",
+          "hint_text": "Detached tmux session icin `tmux new -d -s` kullan.",
+          "hint_partial": "tmux new -d ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-021",
+      "type": "single",
+      "scenario": "`myapp` systemd unit loglarini canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "journalctl -u myapp -f",
+          "hint_text": "Unit log takibi icin `journalctl -u unit -f` kullan.",
+          "hint_partial": "journalctl -u ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-022",
+      "type": "single",
+      "scenario": "3000/tcp portunu kullanan PID'leri `fuser` ile bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fuser 3000/tcp",
+          "hint_text": "Port sahibi PID icin `fuser port/proto` kullan.",
+          "hint_partial": "fuser ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-023",
+      "type": "single",
+      "scenario": "PID 4242 process'ini gecici olarak durdur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill -STOP 4242",
+          "hint_text": "Process dondurmak icin `SIGSTOP` gonder.",
+          "hint_partial": "kill -STOP ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-024",
+      "type": "single",
+      "scenario": "PID 4242 process'ini tekrar devam ettir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill -CONT 4242",
+          "hint_text": "Devam sinyali icin `SIGCONT` kullan.",
+          "hint_partial": "kill -CONT ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-025",
+      "type": "single",
+      "scenario": "PID 4242 process'i icin gecen sure ve komut bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps -p 4242 -o pid,etime,cmd",
+          "hint_text": "Ozel kolonlar icin `ps -o` kullan.",
+          "hint_partial": "ps -p 4242 ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-016-r1",
+      "type": "single",
+      "scenario": "Bakim oncesi memory kullanimina gore en agir 10 process'i goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps aux --sort=-%mem | head -3",
+          "hint_text": "Memory siralamasi icin `%mem` kullan.",
+          "hint_partial": "ps aux --sort=..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-017-r2",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda pID 1234 process'inin agac yapisini PID'leriyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pstree -p 1234",
+          "hint_text": "Belirli PID agaci icin `pstree -p PID` kullan.",
+          "hint_partial": "pstree -p ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-018-r3",
+      "type": "single",
+      "scenario": "Deploy sonrasi mevcut kullanicinin crontab kayitlarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "crontab -l",
+          "hint_text": "Crontab listeleme icin `crontab -l` kullan.",
+          "hint_partial": "crontab ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-019-r4",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `myapp` process'ini nazikce sonlandir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pkill -15 myapp",
+          "hint_text": "Graceful signal icin `pkill -15` kullan.",
+          "hint_partial": "pkill -15 ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-020-r5",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `proxy-5.sh` script'ini yeni bir tmux session'inda detached calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tmux new -d -s proxy-5 './proxy-5.sh'",
+          "hint_text": "Detached tmux session icin `tmux new -d -s` kullan.",
+          "hint_partial": "tmux new -d ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-021-r6",
+      "type": "single",
+      "scenario": "Runbook adiminda `myapp` systemd unit loglarini canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "journalctl -u myapp -f",
+          "hint_text": "Unit log takibi icin `journalctl -u unit -f` kullan.",
+          "hint_partial": "journalctl -u ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-022-r7",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde 3000/tcp portunu kullanan PID'leri `fuser` ile bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fuser 3000/tcp",
+          "hint_text": "Port sahibi PID icin `fuser port/proto` kullan.",
+          "hint_partial": "fuser ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-023-r8",
+      "type": "single",
+      "scenario": "Incident sonrasinda pID 4242 process'ini gecici olarak durdur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill -STOP 4242",
+          "hint_text": "Process dondurmak icin `SIGSTOP` gonder.",
+          "hint_partial": "kill -STOP ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-024-r9",
+      "type": "single",
+      "scenario": "Bakim oncesi pID 4242 process'ini tekrar devam ettir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill -CONT 4242",
+          "hint_text": "Devam sinyali icin `SIGCONT` kullan.",
+          "hint_partial": "kill -CONT ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-025-r10",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda pID 4242 process'i icin gecen sure ve komut bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps -p 4242 -o pid,etime,cmd",
+          "hint_text": "Ozel kolonlar icin `ps -o` kullan.",
+          "hint_partial": "ps -p 4242 ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-016-r11",
+      "type": "single",
+      "scenario": "Deploy sonrasi memory kullanimina gore en agir 10 process'i goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps aux --sort=-%mem | head -3",
+          "hint_text": "Memory siralamasi icin `%mem` kullan.",
+          "hint_partial": "ps aux --sort=..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-017-r12",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde pID 1234 process'inin agac yapisini PID'leriyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pstree -p 1234",
+          "hint_text": "Belirli PID agaci icin `pstree -p PID` kullan.",
+          "hint_partial": "pstree -p ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-018-r13",
+      "type": "single",
+      "scenario": "Yeni acilan hostta mevcut kullanicinin crontab kayitlarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "crontab -l",
+          "hint_text": "Crontab listeleme icin `crontab -l` kullan.",
+          "hint_partial": "crontab ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-019-r14",
+      "type": "single",
+      "scenario": "Runbook adiminda `myapp` process'ini nazikce sonlandir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pkill -15 myapp",
+          "hint_text": "Graceful signal icin `pkill -15` kullan.",
+          "hint_partial": "pkill -15 ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-020-r15",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `api-15-15.sh` script'ini yeni bir tmux session'inda detached calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tmux new -d -s api-15-15 './api-15-15.sh'",
+          "hint_text": "Detached tmux session icin `tmux new -d -s` kullan.",
+          "hint_partial": "tmux new -d ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-021-r16",
+      "type": "single",
+      "scenario": "Incident sonrasinda `myapp` systemd unit loglarini canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "journalctl -u myapp -f",
+          "hint_text": "Unit log takibi icin `journalctl -u unit -f` kullan.",
+          "hint_partial": "journalctl -u ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-022-r17",
+      "type": "single",
+      "scenario": "Bakim oncesi 3000/tcp portunu kullanan PID'leri `fuser` ile bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fuser 3000/tcp",
+          "hint_text": "Port sahibi PID icin `fuser port/proto` kullan.",
+          "hint_partial": "fuser ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-023-r18",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda pID 4242 process'ini gecici olarak durdur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill -STOP 4242",
+          "hint_text": "Process dondurmak icin `SIGSTOP` gonder.",
+          "hint_partial": "kill -STOP ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-024-r19",
+      "type": "single",
+      "scenario": "Deploy sonrasi pID 4242 process'ini tekrar devam ettir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill -CONT 4242",
+          "hint_text": "Devam sinyali icin `SIGCONT` kullan.",
+          "hint_partial": "kill -CONT ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-025-r20",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde pID 4242 process'i icin gecen sure ve komut bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps -p 4242 -o pid,etime,cmd",
+          "hint_text": "Ozel kolonlar icin `ps -o` kullan.",
+          "hint_partial": "ps -p 4242 ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-016-r21",
+      "type": "single",
+      "scenario": "Yeni acilan hostta memory kullanimina gore en agir 10 process'i goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps aux --sort=-%mem | head -3",
+          "hint_text": "Memory siralamasi icin `%mem` kullan.",
+          "hint_partial": "ps aux --sort=..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-017-r22",
+      "type": "single",
+      "scenario": "Runbook adiminda pID 1234 process'inin agac yapisini PID'leriyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pstree -p 1234",
+          "hint_text": "Belirli PID agaci icin `pstree -p PID` kullan.",
+          "hint_partial": "pstree -p ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-018-r23",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde mevcut kullanicinin crontab kayitlarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "crontab -l",
+          "hint_text": "Crontab listeleme icin `crontab -l` kullan.",
+          "hint_partial": "crontab ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-019-r24",
+      "type": "single",
+      "scenario": "Incident sonrasinda `myapp` process'ini nazikce sonlandir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pkill -15 myapp",
+          "hint_text": "Graceful signal icin `pkill -15` kullan.",
+          "hint_partial": "pkill -15 ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-020-r25",
+      "type": "single",
+      "scenario": "Bakim oncesi `db-25-25.sh` script'ini yeni bir tmux session'inda detached calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tmux new -d -s db-25-25 './db-25-25.sh'",
+          "hint_text": "Detached tmux session icin `tmux new -d -s` kullan.",
+          "hint_partial": "tmux new -d ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-021-r26",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `myapp` systemd unit loglarini canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "journalctl -u myapp -f",
+          "hint_text": "Unit log takibi icin `journalctl -u unit -f` kullan.",
+          "hint_partial": "journalctl -u ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-022-r27",
+      "type": "single",
+      "scenario": "Deploy sonrasi 3000/tcp portunu kullanan PID'leri `fuser` ile bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fuser 3000/tcp",
+          "hint_text": "Port sahibi PID icin `fuser port/proto` kullan.",
+          "hint_partial": "fuser ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-023-r28",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde pID 4242 process'ini gecici olarak durdur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill -STOP 4242",
+          "hint_text": "Process dondurmak icin `SIGSTOP` gonder.",
+          "hint_partial": "kill -STOP ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-024-r29",
+      "type": "single",
+      "scenario": "Yeni acilan hostta pID 4242 process'ini tekrar devam ettir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill -CONT 4242",
+          "hint_text": "Devam sinyali icin `SIGCONT` kullan.",
+          "hint_partial": "kill -CONT ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-025-r30",
+      "type": "single",
+      "scenario": "Runbook adiminda pID 4242 process'i icin gecen sure ve komut bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps -p 4242 -o pid,etime,cmd",
+          "hint_text": "Ozel kolonlar icin `ps -o` kullan.",
+          "hint_partial": "ps -p 4242 ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-016-r31",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde memory kullanimina gore en agir 10 process'i goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps aux --sort=-%mem | head -3",
+          "hint_text": "Memory siralamasi icin `%mem` kullan.",
+          "hint_partial": "ps aux --sort=..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-017-r32",
+      "type": "single",
+      "scenario": "Incident sonrasinda pID 1234 process'inin agac yapisini PID'leriyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pstree -p 1234",
+          "hint_text": "Belirli PID agaci icin `pstree -p PID` kullan.",
+          "hint_partial": "pstree -p ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-018-r33",
+      "type": "single",
+      "scenario": "Bakim oncesi mevcut kullanicinin crontab kayitlarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "crontab -l",
+          "hint_text": "Crontab listeleme icin `crontab -l` kullan.",
+          "hint_partial": "crontab ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-019-r34",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `myapp` process'ini nazikce sonlandir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pkill -15 myapp",
+          "hint_text": "Graceful signal icin `pkill -15` kullan.",
+          "hint_partial": "pkill -15 ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-020-r35",
+      "type": "single",
+      "scenario": "Deploy sonrasi `queue-35.sh` script'ini yeni bir tmux session'inda detached calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tmux new -d -s queue-35 './queue-35.sh'",
+          "hint_text": "Detached tmux session icin `tmux new -d -s` kullan.",
+          "hint_partial": "tmux new -d ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-021-r36",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `myapp` systemd unit loglarini canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "journalctl -u myapp -f",
+          "hint_text": "Unit log takibi icin `journalctl -u unit -f` kullan.",
+          "hint_partial": "journalctl -u ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-022-r37",
+      "type": "single",
+      "scenario": "Yeni acilan hostta 3000/tcp portunu kullanan PID'leri `fuser` ile bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fuser 3000/tcp",
+          "hint_text": "Port sahibi PID icin `fuser port/proto` kullan.",
+          "hint_partial": "fuser ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-023-r38",
+      "type": "single",
+      "scenario": "Runbook adiminda pID 4242 process'ini gecici olarak durdur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill -STOP 4242",
+          "hint_text": "Process dondurmak icin `SIGSTOP` gonder.",
+          "hint_partial": "kill -STOP ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-024-r39",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde pID 4242 process'ini tekrar devam ettir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill -CONT 4242",
+          "hint_text": "Devam sinyali icin `SIGCONT` kullan.",
+          "hint_partial": "kill -CONT ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-025-r40",
+      "type": "single",
+      "scenario": "Incident sonrasinda pID 4242 process'i icin gecen sure ve komut bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps -p 4242 -o pid,etime,cmd",
+          "hint_text": "Ozel kolonlar icin `ps -o` kullan.",
+          "hint_partial": "ps -p 4242 ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-016-r41",
+      "type": "single",
+      "scenario": "Bakim oncesi memory kullanimina gore en agir 10 process'i goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps aux --sort=-%mem | head -3",
+          "hint_text": "Memory siralamasi icin `%mem` kullan.",
+          "hint_partial": "ps aux --sort=..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-017-r42",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda pID 1234 process'inin agac yapisini PID'leriyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pstree -p 1234",
+          "hint_text": "Belirli PID agaci icin `pstree -p PID` kullan.",
+          "hint_partial": "pstree -p ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-018-r43",
+      "type": "single",
+      "scenario": "Deploy sonrasi mevcut kullanicinin crontab kayitlarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "crontab -l",
+          "hint_text": "Crontab listeleme icin `crontab -l` kullan.",
+          "hint_partial": "crontab ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-019-r44",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `myapp` process'ini nazikce sonlandir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pkill -15 myapp",
+          "hint_text": "Graceful signal icin `pkill -15` kullan.",
+          "hint_partial": "pkill -15 ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-020-r45",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `proxy-45.sh` script'ini yeni bir tmux session'inda detached calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tmux new -d -s proxy-45 './proxy-45.sh'",
+          "hint_text": "Detached tmux session icin `tmux new -d -s` kullan.",
+          "hint_partial": "tmux new -d ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-021-r46",
+      "type": "single",
+      "scenario": "Runbook adiminda `myapp` systemd unit loglarini canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "journalctl -u myapp -f",
+          "hint_text": "Unit log takibi icin `journalctl -u unit -f` kullan.",
+          "hint_partial": "journalctl -u ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-022-r47",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde 3000/tcp portunu kullanan PID'leri `fuser` ile bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fuser 3000/tcp",
+          "hint_text": "Port sahibi PID icin `fuser port/proto` kullan.",
+          "hint_partial": "fuser ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-023-r48",
+      "type": "single",
+      "scenario": "Incident sonrasinda pID 4242 process'ini gecici olarak durdur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill -STOP 4242",
+          "hint_text": "Process dondurmak icin `SIGSTOP` gonder.",
+          "hint_partial": "kill -STOP ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-024-r49",
+      "type": "single",
+      "scenario": "Bakim oncesi pID 4242 process'ini tekrar devam ettir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill -CONT 4242",
+          "hint_text": "Devam sinyali icin `SIGCONT` kullan.",
+          "hint_partial": "kill -CONT ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-025-r50",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda pID 4242 process'i icin gecen sure ve komut bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps -p 4242 -o pid,etime,cmd",
+          "hint_text": "Ozel kolonlar icin `ps -o` kullan.",
+          "hint_partial": "ps -p 4242 ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-016-r51",
+      "type": "single",
+      "scenario": "Deploy sonrasi memory kullanimina gore en agir 10 process'i goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps aux --sort=-%mem | head -3",
+          "hint_text": "Memory siralamasi icin `%mem` kullan.",
+          "hint_partial": "ps aux --sort=..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-017-r52",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde pID 1234 process'inin agac yapisini PID'leriyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pstree -p 1234",
+          "hint_text": "Belirli PID agaci icin `pstree -p PID` kullan.",
+          "hint_partial": "pstree -p ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-018-r53",
+      "type": "single",
+      "scenario": "Yeni acilan hostta mevcut kullanicinin crontab kayitlarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "crontab -l",
+          "hint_text": "Crontab listeleme icin `crontab -l` kullan.",
+          "hint_partial": "crontab ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-019-r54",
+      "type": "single",
+      "scenario": "Runbook adiminda `myapp` process'ini nazikce sonlandir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pkill -15 myapp",
+          "hint_text": "Graceful signal icin `pkill -15` kullan.",
+          "hint_partial": "pkill -15 ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-020-r55",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `api-55-55.sh` script'ini yeni bir tmux session'inda detached calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tmux new -d -s api-55-55 './api-55-55.sh'",
+          "hint_text": "Detached tmux session icin `tmux new -d -s` kullan.",
+          "hint_partial": "tmux new -d ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-021-r56",
+      "type": "single",
+      "scenario": "Incident sonrasinda `myapp` systemd unit loglarini canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "journalctl -u myapp -f",
+          "hint_text": "Unit log takibi icin `journalctl -u unit -f` kullan.",
+          "hint_partial": "journalctl -u ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-022-r57",
+      "type": "single",
+      "scenario": "Bakim oncesi 3000/tcp portunu kullanan PID'leri `fuser` ile bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fuser 3000/tcp",
+          "hint_text": "Port sahibi PID icin `fuser port/proto` kullan.",
+          "hint_partial": "fuser ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-023-r58",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda pID 4242 process'ini gecici olarak durdur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill -STOP 4242",
+          "hint_text": "Process dondurmak icin `SIGSTOP` gonder.",
+          "hint_partial": "kill -STOP ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-024-r59",
+      "type": "single",
+      "scenario": "Deploy sonrasi pID 4242 process'ini tekrar devam ettir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill -CONT 4242",
+          "hint_text": "Devam sinyali icin `SIGCONT` kullan.",
+          "hint_partial": "kill -CONT ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-025-r60",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde pID 4242 process'i icin gecen sure ve komut bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps -p 4242 -o pid,etime,cmd",
+          "hint_text": "Ozel kolonlar icin `ps -o` kullan.",
+          "hint_partial": "ps -p 4242 ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-016-r61",
+      "type": "single",
+      "scenario": "Yeni acilan hostta memory kullanimina gore en agir 10 process'i goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps aux --sort=-%mem | head -3",
+          "hint_text": "Memory siralamasi icin `%mem` kullan.",
+          "hint_partial": "ps aux --sort=..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-017-r62",
+      "type": "single",
+      "scenario": "Runbook adiminda pID 1234 process'inin agac yapisini PID'leriyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pstree -p 1234",
+          "hint_text": "Belirli PID agaci icin `pstree -p PID` kullan.",
+          "hint_partial": "pstree -p ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-018-r63",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde mevcut kullanicinin crontab kayitlarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "crontab -l",
+          "hint_text": "Crontab listeleme icin `crontab -l` kullan.",
+          "hint_partial": "crontab ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-019-r64",
+      "type": "single",
+      "scenario": "Incident sonrasinda `myapp` process'ini nazikce sonlandir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pkill -15 myapp",
+          "hint_text": "Graceful signal icin `pkill -15` kullan.",
+          "hint_partial": "pkill -15 ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-020-r65",
+      "type": "single",
+      "scenario": "Bakim oncesi `db-65-65.sh` script'ini yeni bir tmux session'inda detached calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tmux new -d -s db-65-65 './db-65-65.sh'",
+          "hint_text": "Detached tmux session icin `tmux new -d -s` kullan.",
+          "hint_partial": "tmux new -d ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-021-r66",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `myapp` systemd unit loglarini canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "journalctl -u myapp -f",
+          "hint_text": "Unit log takibi icin `journalctl -u unit -f` kullan.",
+          "hint_partial": "journalctl -u ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-022-r67",
+      "type": "single",
+      "scenario": "Deploy sonrasi 3000/tcp portunu kullanan PID'leri `fuser` ile bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fuser 3000/tcp",
+          "hint_text": "Port sahibi PID icin `fuser port/proto` kullan.",
+          "hint_partial": "fuser ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-023-r68",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde pID 4242 process'ini gecici olarak durdur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill -STOP 4242",
+          "hint_text": "Process dondurmak icin `SIGSTOP` gonder.",
+          "hint_partial": "kill -STOP ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-024-r69",
+      "type": "single",
+      "scenario": "Yeni acilan hostta pID 4242 process'ini tekrar devam ettir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill -CONT 4242",
+          "hint_text": "Devam sinyali icin `SIGCONT` kullan.",
+          "hint_partial": "kill -CONT ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-025-r70",
+      "type": "single",
+      "scenario": "Runbook adiminda pID 4242 process'i icin gecen sure ve komut bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps -p 4242 -o pid,etime,cmd",
+          "hint_text": "Ozel kolonlar icin `ps -o` kullan.",
+          "hint_partial": "ps -p 4242 ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-016-r71",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde memory kullanimina gore en agir 10 process'i goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps aux --sort=-%mem | head -3",
+          "hint_text": "Memory siralamasi icin `%mem` kullan.",
+          "hint_partial": "ps aux --sort=..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-017-r72",
+      "type": "single",
+      "scenario": "Incident sonrasinda pID 1234 process'inin agac yapisini PID'leriyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pstree -p 1234",
+          "hint_text": "Belirli PID agaci icin `pstree -p PID` kullan.",
+          "hint_partial": "pstree -p ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-018-r73",
+      "type": "single",
+      "scenario": "Bakim oncesi mevcut kullanicinin crontab kayitlarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "crontab -l",
+          "hint_text": "Crontab listeleme icin `crontab -l` kullan.",
+          "hint_partial": "crontab ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-019-r74",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `myapp` process'ini nazikce sonlandir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pkill -15 myapp",
+          "hint_text": "Graceful signal icin `pkill -15` kullan.",
+          "hint_partial": "pkill -15 ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-020-r75",
+      "type": "single",
+      "scenario": "Deploy sonrasi `queue-75.sh` script'ini yeni bir tmux session'inda detached calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tmux new -d -s queue-75 './queue-75.sh'",
+          "hint_text": "Detached tmux session icin `tmux new -d -s` kullan.",
+          "hint_partial": "tmux new -d ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-021-r76",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `myapp` systemd unit loglarini canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "journalctl -u myapp -f",
+          "hint_text": "Unit log takibi icin `journalctl -u unit -f` kullan.",
+          "hint_partial": "journalctl -u ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-022-r77",
+      "type": "single",
+      "scenario": "Yeni acilan hostta 3000/tcp portunu kullanan PID'leri `fuser` ile bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fuser 3000/tcp",
+          "hint_text": "Port sahibi PID icin `fuser port/proto` kullan.",
+          "hint_partial": "fuser ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-023-r78",
+      "type": "single",
+      "scenario": "Runbook adiminda pID 4242 process'ini gecici olarak durdur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill -STOP 4242",
+          "hint_text": "Process dondurmak icin `SIGSTOP` gonder.",
+          "hint_partial": "kill -STOP ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-024-r79",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde pID 4242 process'ini tekrar devam ettir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill -CONT 4242",
+          "hint_text": "Devam sinyali icin `SIGCONT` kullan.",
+          "hint_partial": "kill -CONT ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-025-r80",
+      "type": "single",
+      "scenario": "Incident sonrasinda pID 4242 process'i icin gecen sure ve komut bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps -p 4242 -o pid,etime,cmd",
+          "hint_text": "Ozel kolonlar icin `ps -o` kullan.",
+          "hint_partial": "ps -p 4242 ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-016-r81",
+      "type": "single",
+      "scenario": "Bakim oncesi memory kullanimina gore en agir 10 process'i goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps aux --sort=-%mem | head -3",
+          "hint_text": "Memory siralamasi icin `%mem` kullan.",
+          "hint_partial": "ps aux --sort=..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-017-r82",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda pID 1234 process'inin agac yapisini PID'leriyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pstree -p 1234",
+          "hint_text": "Belirli PID agaci icin `pstree -p PID` kullan.",
+          "hint_partial": "pstree -p ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-018-r83",
+      "type": "single",
+      "scenario": "Deploy sonrasi mevcut kullanicinin crontab kayitlarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "crontab -l",
+          "hint_text": "Crontab listeleme icin `crontab -l` kullan.",
+          "hint_partial": "crontab ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-019-r84",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `myapp` process'ini nazikce sonlandir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pkill -15 myapp",
+          "hint_text": "Graceful signal icin `pkill -15` kullan.",
+          "hint_partial": "pkill -15 ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-020-r85",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `proxy-85.sh` script'ini yeni bir tmux session'inda detached calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tmux new -d -s proxy-85 './proxy-85.sh'",
+          "hint_text": "Detached tmux session icin `tmux new -d -s` kullan.",
+          "hint_partial": "tmux new -d ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-021-r86",
+      "type": "single",
+      "scenario": "Runbook adiminda `myapp` systemd unit loglarini canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "journalctl -u myapp -f",
+          "hint_text": "Unit log takibi icin `journalctl -u unit -f` kullan.",
+          "hint_partial": "journalctl -u ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-022-r87",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde 3000/tcp portunu kullanan PID'leri `fuser` ile bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fuser 3000/tcp",
+          "hint_text": "Port sahibi PID icin `fuser port/proto` kullan.",
+          "hint_partial": "fuser ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-023-r88",
+      "type": "single",
+      "scenario": "Incident sonrasinda pID 4242 process'ini gecici olarak durdur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill -STOP 4242",
+          "hint_text": "Process dondurmak icin `SIGSTOP` gonder.",
+          "hint_partial": "kill -STOP ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-024-r89",
+      "type": "single",
+      "scenario": "Bakim oncesi pID 4242 process'ini tekrar devam ettir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill -CONT 4242",
+          "hint_text": "Devam sinyali icin `SIGCONT` kullan.",
+          "hint_partial": "kill -CONT ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-025-r90",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda pID 4242 process'i icin gecen sure ve komut bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps -p 4242 -o pid,etime,cmd",
+          "hint_text": "Ozel kolonlar icin `ps -o` kullan.",
+          "hint_partial": "ps -p 4242 ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-016-r91",
+      "type": "single",
+      "scenario": "Deploy sonrasi memory kullanimina gore en agir 10 process'i goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps aux --sort=-%mem | head -3",
+          "hint_text": "Memory siralamasi icin `%mem` kullan.",
+          "hint_partial": "ps aux --sort=..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-017-r92",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde pID 1234 process'inin agac yapisini PID'leriyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pstree -p 1234",
+          "hint_text": "Belirli PID agaci icin `pstree -p PID` kullan.",
+          "hint_partial": "pstree -p ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-018-r93",
+      "type": "single",
+      "scenario": "Yeni acilan hostta mevcut kullanicinin crontab kayitlarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "crontab -l",
+          "hint_text": "Crontab listeleme icin `crontab -l` kullan.",
+          "hint_partial": "crontab ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-019-r94",
+      "type": "single",
+      "scenario": "Runbook adiminda `myapp` process'ini nazikce sonlandir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pkill -15 myapp",
+          "hint_text": "Graceful signal icin `pkill -15` kullan.",
+          "hint_partial": "pkill -15 ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-020-r95",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `api-95-95.sh` script'ini yeni bir tmux session'inda detached calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tmux new -d -s api-95-95 './api-95-95.sh'",
+          "hint_text": "Detached tmux session icin `tmux new -d -s` kullan.",
+          "hint_partial": "tmux new -d ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-021-r96",
+      "type": "single",
+      "scenario": "Incident sonrasinda `myapp` systemd unit loglarini canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "journalctl -u myapp -f",
+          "hint_text": "Unit log takibi icin `journalctl -u unit -f` kullan.",
+          "hint_partial": "journalctl -u ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-022-r97",
+      "type": "single",
+      "scenario": "Bakim oncesi 3000/tcp portunu kullanan PID'leri `fuser` ile bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fuser 3000/tcp",
+          "hint_text": "Port sahibi PID icin `fuser port/proto` kullan.",
+          "hint_partial": "fuser ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-023-r98",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda pID 4242 process'ini gecici olarak durdur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill -STOP 4242",
+          "hint_text": "Process dondurmak icin `SIGSTOP` gonder.",
+          "hint_partial": "kill -STOP ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-024-r99",
+      "type": "single",
+      "scenario": "Deploy sonrasi pID 4242 process'ini tekrar devam ettir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill -CONT 4242",
+          "hint_text": "Devam sinyali icin `SIGCONT` kullan.",
+          "hint_partial": "kill -CONT ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-025-r100",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde pID 4242 process'i icin gecen sure ve komut bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps -p 4242 -o pid,etime,cmd",
+          "hint_text": "Ozel kolonlar icin `ps -o` kullan.",
+          "hint_partial": "ps -p 4242 ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-016-r101",
+      "type": "single",
+      "scenario": "Yeni acilan hostta memory kullanimina gore en agir 10 process'i goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps aux --sort=-%mem | head -3",
+          "hint_text": "Memory siralamasi icin `%mem` kullan.",
+          "hint_partial": "ps aux --sort=..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-017-r102",
+      "type": "single",
+      "scenario": "Runbook adiminda pID 1234 process'inin agac yapisini PID'leriyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pstree -p 1234",
+          "hint_text": "Belirli PID agaci icin `pstree -p PID` kullan.",
+          "hint_partial": "pstree -p ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-018-r103",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde mevcut kullanicinin crontab kayitlarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "crontab -l",
+          "hint_text": "Crontab listeleme icin `crontab -l` kullan.",
+          "hint_partial": "crontab ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-019-r104",
+      "type": "single",
+      "scenario": "Incident sonrasinda `myapp` process'ini nazikce sonlandir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pkill -15 myapp",
+          "hint_text": "Graceful signal icin `pkill -15` kullan.",
+          "hint_partial": "pkill -15 ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-020-r105",
+      "type": "single",
+      "scenario": "Bakim oncesi `db-105-105.sh` script'ini yeni bir tmux session'inda detached calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tmux new -d -s db-105-105 './db-105-105.sh'",
+          "hint_text": "Detached tmux session icin `tmux new -d -s` kullan.",
+          "hint_partial": "tmux new -d ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-021-r106",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `myapp` systemd unit loglarini canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "journalctl -u myapp -f",
+          "hint_text": "Unit log takibi icin `journalctl -u unit -f` kullan.",
+          "hint_partial": "journalctl -u ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-022-r107",
+      "type": "single",
+      "scenario": "Deploy sonrasi 3000/tcp portunu kullanan PID'leri `fuser` ile bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fuser 3000/tcp",
+          "hint_text": "Port sahibi PID icin `fuser port/proto` kullan.",
+          "hint_partial": "fuser ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-023-r108",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde pID 4242 process'ini gecici olarak durdur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill -STOP 4242",
+          "hint_text": "Process dondurmak icin `SIGSTOP` gonder.",
+          "hint_partial": "kill -STOP ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-024-r109",
+      "type": "single",
+      "scenario": "Yeni acilan hostta pID 4242 process'ini tekrar devam ettir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill -CONT 4242",
+          "hint_text": "Devam sinyali icin `SIGCONT` kullan.",
+          "hint_partial": "kill -CONT ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-025-r110",
+      "type": "single",
+      "scenario": "Runbook adiminda pID 4242 process'i icin gecen sure ve komut bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps -p 4242 -o pid,etime,cmd",
+          "hint_text": "Ozel kolonlar icin `ps -o` kullan.",
+          "hint_partial": "ps -p 4242 ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-016-r111",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde memory kullanimina gore en agir 10 process'i goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps aux --sort=-%mem | head -3",
+          "hint_text": "Memory siralamasi icin `%mem` kullan.",
+          "hint_partial": "ps aux --sort=..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-017-r112",
+      "type": "single",
+      "scenario": "Incident sonrasinda pID 1234 process'inin agac yapisini PID'leriyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pstree -p 1234",
+          "hint_text": "Belirli PID agaci icin `pstree -p PID` kullan.",
+          "hint_partial": "pstree -p ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-018-r113",
+      "type": "single",
+      "scenario": "Bakim oncesi mevcut kullanicinin crontab kayitlarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "crontab -l",
+          "hint_text": "Crontab listeleme icin `crontab -l` kullan.",
+          "hint_partial": "crontab ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-019-r114",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `myapp` process'ini nazikce sonlandir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pkill -15 myapp",
+          "hint_text": "Graceful signal icin `pkill -15` kullan.",
+          "hint_partial": "pkill -15 ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-020-r115",
+      "type": "single",
+      "scenario": "Deploy sonrasi `queue-115.sh` script'ini yeni bir tmux session'inda detached calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tmux new -d -s queue-115 './queue-115.sh'",
+          "hint_text": "Detached tmux session icin `tmux new -d -s` kullan.",
+          "hint_partial": "tmux new -d ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-021-r116",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `myapp` systemd unit loglarini canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "journalctl -u myapp -f",
+          "hint_text": "Unit log takibi icin `journalctl -u unit -f` kullan.",
+          "hint_partial": "journalctl -u ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-022-r117",
+      "type": "single",
+      "scenario": "Yeni acilan hostta 3000/tcp portunu kullanan PID'leri `fuser` ile bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fuser 3000/tcp",
+          "hint_text": "Port sahibi PID icin `fuser port/proto` kullan.",
+          "hint_partial": "fuser ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-023-r118",
+      "type": "single",
+      "scenario": "Runbook adiminda pID 4242 process'ini gecici olarak durdur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill -STOP 4242",
+          "hint_text": "Process dondurmak icin `SIGSTOP` gonder.",
+          "hint_partial": "kill -STOP ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-024-r119",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde pID 4242 process'ini tekrar devam ettir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill -CONT 4242",
+          "hint_text": "Devam sinyali icin `SIGCONT` kullan.",
+          "hint_partial": "kill -CONT ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-025-r120",
+      "type": "single",
+      "scenario": "Incident sonrasinda pID 4242 process'i icin gecen sure ve komut bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps -p 4242 -o pid,etime,cmd",
+          "hint_text": "Ozel kolonlar icin `ps -o` kullan.",
+          "hint_partial": "ps -p 4242 ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-016-r121",
+      "type": "single",
+      "scenario": "Bakim oncesi memory kullanimina gore en agir 10 process'i goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps aux --sort=-%mem | head -3",
+          "hint_text": "Memory siralamasi icin `%mem` kullan.",
+          "hint_partial": "ps aux --sort=..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-017-r122",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda pID 1234 process'inin agac yapisini PID'leriyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pstree -p 1234",
+          "hint_text": "Belirli PID agaci icin `pstree -p PID` kullan.",
+          "hint_partial": "pstree -p ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-018-r123",
+      "type": "single",
+      "scenario": "Deploy sonrasi mevcut kullanicinin crontab kayitlarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "crontab -l",
+          "hint_text": "Crontab listeleme icin `crontab -l` kullan.",
+          "hint_partial": "crontab ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-019-r124",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `myapp` process'ini nazikce sonlandir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pkill -15 myapp",
+          "hint_text": "Graceful signal icin `pkill -15` kullan.",
+          "hint_partial": "pkill -15 ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-020-r125",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `proxy-125.sh` script'ini yeni bir tmux session'inda detached calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tmux new -d -s proxy-125 './proxy-125.sh'",
+          "hint_text": "Detached tmux session icin `tmux new -d -s` kullan.",
+          "hint_partial": "tmux new -d ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-021-r126",
+      "type": "single",
+      "scenario": "Runbook adiminda `myapp` systemd unit loglarini canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "journalctl -u myapp -f",
+          "hint_text": "Unit log takibi icin `journalctl -u unit -f` kullan.",
+          "hint_partial": "journalctl -u ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-022-r127",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde 3000/tcp portunu kullanan PID'leri `fuser` ile bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fuser 3000/tcp",
+          "hint_text": "Port sahibi PID icin `fuser port/proto` kullan.",
+          "hint_partial": "fuser ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-023-r128",
+      "type": "single",
+      "scenario": "Incident sonrasinda pID 4242 process'ini gecici olarak durdur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill -STOP 4242",
+          "hint_text": "Process dondurmak icin `SIGSTOP` gonder.",
+          "hint_partial": "kill -STOP ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-024-r129",
+      "type": "single",
+      "scenario": "Bakim oncesi pID 4242 process'ini tekrar devam ettir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill -CONT 4242",
+          "hint_text": "Devam sinyali icin `SIGCONT` kullan.",
+          "hint_partial": "kill -CONT ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-025-r130",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda pID 4242 process'i icin gecen sure ve komut bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps -p 4242 -o pid,etime,cmd",
+          "hint_text": "Ozel kolonlar icin `ps -o` kullan.",
+          "hint_partial": "ps -p 4242 ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-016-r131",
+      "type": "single",
+      "scenario": "Deploy sonrasi memory kullanimina gore en agir 10 process'i goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps aux --sort=-%mem | head -3",
+          "hint_text": "Memory siralamasi icin `%mem` kullan.",
+          "hint_partial": "ps aux --sort=..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-017-r132",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde pID 1234 process'inin agac yapisini PID'leriyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pstree -p 1234",
+          "hint_text": "Belirli PID agaci icin `pstree -p PID` kullan.",
+          "hint_partial": "pstree -p ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-018-r133",
+      "type": "single",
+      "scenario": "Yeni acilan hostta mevcut kullanicinin crontab kayitlarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "crontab -l",
+          "hint_text": "Crontab listeleme icin `crontab -l` kullan.",
+          "hint_partial": "crontab ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-019-r134",
+      "type": "single",
+      "scenario": "Runbook adiminda `myapp` process'ini nazikce sonlandir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pkill -15 myapp",
+          "hint_text": "Graceful signal icin `pkill -15` kullan.",
+          "hint_partial": "pkill -15 ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-020-r135",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `api-135-135.sh` script'ini yeni bir tmux session'inda detached calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tmux new -d -s api-135-135 './api-135-135.sh'",
+          "hint_text": "Detached tmux session icin `tmux new -d -s` kullan.",
+          "hint_partial": "tmux new -d ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-021-r136",
+      "type": "single",
+      "scenario": "Incident sonrasinda `myapp` systemd unit loglarini canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "journalctl -u myapp -f",
+          "hint_text": "Unit log takibi icin `journalctl -u unit -f` kullan.",
+          "hint_partial": "journalctl -u ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-022-r137",
+      "type": "single",
+      "scenario": "Bakim oncesi 3000/tcp portunu kullanan PID'leri `fuser` ile bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fuser 3000/tcp",
+          "hint_text": "Port sahibi PID icin `fuser port/proto` kullan.",
+          "hint_partial": "fuser ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-023-r138",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda pID 4242 process'ini gecici olarak durdur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill -STOP 4242",
+          "hint_text": "Process dondurmak icin `SIGSTOP` gonder.",
+          "hint_partial": "kill -STOP ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-024-r139",
+      "type": "single",
+      "scenario": "Deploy sonrasi pID 4242 process'ini tekrar devam ettir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill -CONT 4242",
+          "hint_text": "Devam sinyali icin `SIGCONT` kullan.",
+          "hint_partial": "kill -CONT ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-025-r140",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde pID 4242 process'i icin gecen sure ve komut bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps -p 4242 -o pid,etime,cmd",
+          "hint_text": "Ozel kolonlar icin `ps -o` kullan.",
+          "hint_partial": "ps -p 4242 ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-016-r141",
+      "type": "single",
+      "scenario": "Yeni acilan hostta memory kullanimina gore en agir 10 process'i goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps aux --sort=-%mem | head -3",
+          "hint_text": "Memory siralamasi icin `%mem` kullan.",
+          "hint_partial": "ps aux --sort=..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-017-r142",
+      "type": "single",
+      "scenario": "Runbook adiminda pID 1234 process'inin agac yapisini PID'leriyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pstree -p 1234",
+          "hint_text": "Belirli PID agaci icin `pstree -p PID` kullan.",
+          "hint_partial": "pstree -p ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-018-r143",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde mevcut kullanicinin crontab kayitlarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "crontab -l",
+          "hint_text": "Crontab listeleme icin `crontab -l` kullan.",
+          "hint_partial": "crontab ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-019-r144",
+      "type": "single",
+      "scenario": "Incident sonrasinda `myapp` process'ini nazikce sonlandir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pkill -15 myapp",
+          "hint_text": "Graceful signal icin `pkill -15` kullan.",
+          "hint_partial": "pkill -15 ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-020-r145",
+      "type": "single",
+      "scenario": "Bakim oncesi `db-145-145.sh` script'ini yeni bir tmux session'inda detached calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tmux new -d -s db-145-145 './db-145-145.sh'",
+          "hint_text": "Detached tmux session icin `tmux new -d -s` kullan.",
+          "hint_partial": "tmux new -d ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-021-r146",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `myapp` systemd unit loglarini canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "journalctl -u myapp -f",
+          "hint_text": "Unit log takibi icin `journalctl -u unit -f` kullan.",
+          "hint_partial": "journalctl -u ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-022-r147",
+      "type": "single",
+      "scenario": "Deploy sonrasi 3000/tcp portunu kullanan PID'leri `fuser` ile bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fuser 3000/tcp",
+          "hint_text": "Port sahibi PID icin `fuser port/proto` kullan.",
+          "hint_partial": "fuser ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-023-r148",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde pID 4242 process'ini gecici olarak durdur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill -STOP 4242",
+          "hint_text": "Process dondurmak icin `SIGSTOP` gonder.",
+          "hint_partial": "kill -STOP ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-024-r149",
+      "type": "single",
+      "scenario": "Yeni acilan hostta pID 4242 process'ini tekrar devam ettir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill -CONT 4242",
+          "hint_text": "Devam sinyali icin `SIGCONT` kullan.",
+          "hint_partial": "kill -CONT ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-025-r150",
+      "type": "single",
+      "scenario": "Runbook adiminda pID 4242 process'i icin gecen sure ve komut bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps -p 4242 -o pid,etime,cmd",
+          "hint_text": "Ozel kolonlar icin `ps -o` kullan.",
+          "hint_partial": "ps -p 4242 ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-016-r151",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde memory kullanimina gore en agir 10 process'i goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps aux --sort=-%mem | head -3",
+          "hint_text": "Memory siralamasi icin `%mem` kullan.",
+          "hint_partial": "ps aux --sort=..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-017-r152",
+      "type": "single",
+      "scenario": "Incident sonrasinda pID 1234 process'inin agac yapisini PID'leriyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pstree -p 1234",
+          "hint_text": "Belirli PID agaci icin `pstree -p PID` kullan.",
+          "hint_partial": "pstree -p ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-018-r153",
+      "type": "single",
+      "scenario": "Bakim oncesi mevcut kullanicinin crontab kayitlarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "crontab -l",
+          "hint_text": "Crontab listeleme icin `crontab -l` kullan.",
+          "hint_partial": "crontab ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-019-r154",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `myapp` process'ini nazikce sonlandir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pkill -15 myapp",
+          "hint_text": "Graceful signal icin `pkill -15` kullan.",
+          "hint_partial": "pkill -15 ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-020-r155",
+      "type": "single",
+      "scenario": "Deploy sonrasi `queue-155.sh` script'ini yeni bir tmux session'inda detached calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tmux new -d -s queue-155 './queue-155.sh'",
+          "hint_text": "Detached tmux session icin `tmux new -d -s` kullan.",
+          "hint_partial": "tmux new -d ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-021-r156",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `myapp` systemd unit loglarini canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "journalctl -u myapp -f",
+          "hint_text": "Unit log takibi icin `journalctl -u unit -f` kullan.",
+          "hint_partial": "journalctl -u ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-022-r157",
+      "type": "single",
+      "scenario": "Yeni acilan hostta 3000/tcp portunu kullanan PID'leri `fuser` ile bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fuser 3000/tcp",
+          "hint_text": "Port sahibi PID icin `fuser port/proto` kullan.",
+          "hint_partial": "fuser ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-023-r158",
+      "type": "single",
+      "scenario": "Runbook adiminda pID 4242 process'ini gecici olarak durdur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill -STOP 4242",
+          "hint_text": "Process dondurmak icin `SIGSTOP` gonder.",
+          "hint_partial": "kill -STOP ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-024-r159",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde pID 4242 process'ini tekrar devam ettir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill -CONT 4242",
+          "hint_text": "Devam sinyali icin `SIGCONT` kullan.",
+          "hint_partial": "kill -CONT ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-025-r160",
+      "type": "single",
+      "scenario": "Incident sonrasinda pID 4242 process'i icin gecen sure ve komut bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps -p 4242 -o pid,etime,cmd",
+          "hint_text": "Ozel kolonlar icin `ps -o` kullan.",
+          "hint_partial": "ps -p 4242 ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-016-r161",
+      "type": "single",
+      "scenario": "Bakim oncesi memory kullanimina gore en agir 10 process'i goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps aux --sort=-%mem | head -3",
+          "hint_text": "Memory siralamasi icin `%mem` kullan.",
+          "hint_partial": "ps aux --sort=..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-017-r162",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda pID 1234 process'inin agac yapisini PID'leriyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pstree -p 1234",
+          "hint_text": "Belirli PID agaci icin `pstree -p PID` kullan.",
+          "hint_partial": "pstree -p ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-018-r163",
+      "type": "single",
+      "scenario": "Deploy sonrasi mevcut kullanicinin crontab kayitlarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "crontab -l",
+          "hint_text": "Crontab listeleme icin `crontab -l` kullan.",
+          "hint_partial": "crontab ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-019-r164",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `myapp` process'ini nazikce sonlandir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pkill -15 myapp",
+          "hint_text": "Graceful signal icin `pkill -15` kullan.",
+          "hint_partial": "pkill -15 ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-020-r165",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `proxy-165.sh` script'ini yeni bir tmux session'inda detached calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tmux new -d -s proxy-165 './proxy-165.sh'",
+          "hint_text": "Detached tmux session icin `tmux new -d -s` kullan.",
+          "hint_partial": "tmux new -d ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-021-r166",
+      "type": "single",
+      "scenario": "Runbook adiminda `myapp` systemd unit loglarini canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "journalctl -u myapp -f",
+          "hint_text": "Unit log takibi icin `journalctl -u unit -f` kullan.",
+          "hint_partial": "journalctl -u ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-022-r167",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde 3000/tcp portunu kullanan PID'leri `fuser` ile bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fuser 3000/tcp",
+          "hint_text": "Port sahibi PID icin `fuser port/proto` kullan.",
+          "hint_partial": "fuser ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-023-r168",
+      "type": "single",
+      "scenario": "Incident sonrasinda pID 4242 process'ini gecici olarak durdur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill -STOP 4242",
+          "hint_text": "Process dondurmak icin `SIGSTOP` gonder.",
+          "hint_partial": "kill -STOP ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-024-r169",
+      "type": "single",
+      "scenario": "Bakim oncesi pID 4242 process'ini tekrar devam ettir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill -CONT 4242",
+          "hint_text": "Devam sinyali icin `SIGCONT` kullan.",
+          "hint_partial": "kill -CONT ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-025-r170",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda pID 4242 process'i icin gecen sure ve komut bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps -p 4242 -o pid,etime,cmd",
+          "hint_text": "Ozel kolonlar icin `ps -o` kullan.",
+          "hint_partial": "ps -p 4242 ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-016-r171",
+      "type": "single",
+      "scenario": "Deploy sonrasi memory kullanimina gore en agir 10 process'i goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps aux --sort=-%mem | head -3",
+          "hint_text": "Memory siralamasi icin `%mem` kullan.",
+          "hint_partial": "ps aux --sort=..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-017-r172",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde pID 1234 process'inin agac yapisini PID'leriyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pstree -p 1234",
+          "hint_text": "Belirli PID agaci icin `pstree -p PID` kullan.",
+          "hint_partial": "pstree -p ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-018-r173",
+      "type": "single",
+      "scenario": "Yeni acilan hostta mevcut kullanicinin crontab kayitlarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "crontab -l",
+          "hint_text": "Crontab listeleme icin `crontab -l` kullan.",
+          "hint_partial": "crontab ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-019-r174",
+      "type": "single",
+      "scenario": "Runbook adiminda `myapp` process'ini nazikce sonlandir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pkill -15 myapp",
+          "hint_text": "Graceful signal icin `pkill -15` kullan.",
+          "hint_partial": "pkill -15 ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-020-r175",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `api-175-175.sh` script'ini yeni bir tmux session'inda detached calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tmux new -d -s api-175-175 './api-175-175.sh'",
+          "hint_text": "Detached tmux session icin `tmux new -d -s` kullan.",
+          "hint_partial": "tmux new -d ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-021-r176",
+      "type": "single",
+      "scenario": "Incident sonrasinda `myapp` systemd unit loglarini canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "journalctl -u myapp -f",
+          "hint_text": "Unit log takibi icin `journalctl -u unit -f` kullan.",
+          "hint_partial": "journalctl -u ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-022-r177",
+      "type": "single",
+      "scenario": "Bakim oncesi 3000/tcp portunu kullanan PID'leri `fuser` ile bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fuser 3000/tcp",
+          "hint_text": "Port sahibi PID icin `fuser port/proto` kullan.",
+          "hint_partial": "fuser ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-023-r178",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda pID 4242 process'ini gecici olarak durdur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill -STOP 4242",
+          "hint_text": "Process dondurmak icin `SIGSTOP` gonder.",
+          "hint_partial": "kill -STOP ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-024-r179",
+      "type": "single",
+      "scenario": "Deploy sonrasi pID 4242 process'ini tekrar devam ettir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill -CONT 4242",
+          "hint_text": "Devam sinyali icin `SIGCONT` kullan.",
+          "hint_partial": "kill -CONT ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-025-r180",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde pID 4242 process'i icin gecen sure ve komut bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps -p 4242 -o pid,etime,cmd",
+          "hint_text": "Ozel kolonlar icin `ps -o` kullan.",
+          "hint_partial": "ps -p 4242 ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-016-r181",
+      "type": "single",
+      "scenario": "Yeni acilan hostta memory kullanimina gore en agir 10 process'i goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps aux --sort=-%mem | head -3",
+          "hint_text": "Memory siralamasi icin `%mem` kullan.",
+          "hint_partial": "ps aux --sort=..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-017-r182",
+      "type": "single",
+      "scenario": "Runbook adiminda pID 1234 process'inin agac yapisini PID'leriyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pstree -p 1234",
+          "hint_text": "Belirli PID agaci icin `pstree -p PID` kullan.",
+          "hint_partial": "pstree -p ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-018-r183",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde mevcut kullanicinin crontab kayitlarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "crontab -l",
+          "hint_text": "Crontab listeleme icin `crontab -l` kullan.",
+          "hint_partial": "crontab ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-019-r184",
+      "type": "single",
+      "scenario": "Incident sonrasinda `myapp` process'ini nazikce sonlandir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pkill -15 myapp",
+          "hint_text": "Graceful signal icin `pkill -15` kullan.",
+          "hint_partial": "pkill -15 ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-020-r185",
+      "type": "single",
+      "scenario": "Bakim oncesi `db-185-185.sh` script'ini yeni bir tmux session'inda detached calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tmux new -d -s db-185-185 './db-185-185.sh'",
+          "hint_text": "Detached tmux session icin `tmux new -d -s` kullan.",
+          "hint_partial": "tmux new -d ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-021-r186",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `myapp` systemd unit loglarini canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "journalctl -u myapp -f",
+          "hint_text": "Unit log takibi icin `journalctl -u unit -f` kullan.",
+          "hint_partial": "journalctl -u ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-022-r187",
+      "type": "single",
+      "scenario": "Deploy sonrasi 3000/tcp portunu kullanan PID'leri `fuser` ile bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fuser 3000/tcp",
+          "hint_text": "Port sahibi PID icin `fuser port/proto` kullan.",
+          "hint_partial": "fuser ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-023-r188",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde pID 4242 process'ini gecici olarak durdur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill -STOP 4242",
+          "hint_text": "Process dondurmak icin `SIGSTOP` gonder.",
+          "hint_partial": "kill -STOP ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-024-r189",
+      "type": "single",
+      "scenario": "Yeni acilan hostta pID 4242 process'ini tekrar devam ettir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill -CONT 4242",
+          "hint_text": "Devam sinyali icin `SIGCONT` kullan.",
+          "hint_partial": "kill -CONT ..."
+        }
+      ]
+    },
+    {
+      "id": "mproc-025-r190",
+      "type": "single",
+      "scenario": "Runbook adiminda pID 4242 process'i icin gecen sure ve komut bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps -p 4242 -o pid,etime,cmd",
+          "hint_text": "Ozel kolonlar icin `ps -o` kullan.",
+          "hint_partial": "ps -p 4242 ..."
+        }
+      ]
+    }
+  ]
+}

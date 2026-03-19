@@ -1,0 +1,180 @@
+{
+  "level": "mid",
+  "topic": "permissions",
+  "questions": [
+    {
+      "id": "mperm-001",
+      "type": "multi-step",
+      "scenario": "deploy user /opt/app/ directory'sini yönetebilsin ama root group'u korunsun. Ownership'i ayarla, sonra doğrula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chown -R deploy:root /opt/app/",
+          "hint_text": "chown -R user:group recursive",
+          "hint_partial": "chown -R deploy:root ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "ls -ld /opt/app/",
+          "hint_text": "ls -ld directory bilgisini gösterir",
+          "hint_partial": "ls -ld ..."
+        }
+      ]
+    },
+    {
+      "id": "mperm-002",
+      "type": "single",
+      "scenario": "setuid bit'i ile bir binary çalıştırılabilsin (file owner privilege'larıyla). chmod ile ayarla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod u+s mybinary",
+          "hint_text": "setuid için u+s",
+          "hint_partial": "chmod u+s ..."
+        }
+      ]
+    },
+    {
+      "id": "mperm-003",
+      "type": "single",
+      "scenario": "/shared/ directory'sine sticky bit ekle — sadece file owner kendi file'ını silebilsin.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod +t /shared/",
+          "hint_text": "sticky bit için +t",
+          "hint_partial": "chmod +t ..."
+        }
+      ]
+    },
+    {
+      "id": "mperm-004",
+      "type": "single",
+      "scenario": "deploy user'ı docker group'una ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "usermod -aG docker deploy",
+          "hint_text": "usermod -aG gruba ekler, -a append eski group'ları korur",
+          "hint_partial": "usermod -aG docker ..."
+        }
+      ]
+    },
+    {
+      "id": "mperm-005",
+      "type": "multi-step",
+      "scenario": "appuser adında yeni bir user oluştur, home directory ile birlikte ekle, sonra sudo group'una al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "useradd -m appuser",
+          "hint_text": "useradd -m home directory oluşturur",
+          "hint_partial": "useradd -m ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "usermod -aG sudo appuser",
+          "hint_text": "usermod -aG sudo group'una ekle",
+          "hint_partial": "usermod -aG sudo ..."
+        }
+      ]
+    },
+    {
+      "id": "mperm-006",
+      "type": "single",
+      "scenario": "deploy icin yazilmis sudoers drop-in dosyasinin syntax'ini guvenli sekilde dogrula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "visudo -cf /etc/sudoers.d/deploy",
+          "hint_text": "Interaktif acmadan kontrol etmek icin `visudo -cf` kullan.",
+          "hint_partial": "visudo -cf ..."
+        }
+      ]
+    },
+    {
+      "id": "mperm-007",
+      "type": "single",
+      "scenario": "/opt/app/ directory altındaki tüm .sh file'larına çalıştırma izni ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /opt/app/ -name '*.sh' -exec chmod +x {} \\;",
+          "hint_text": "find ile -exec kullanarak her file'a chmod uygula",
+          "hint_partial": "find /opt/app/ -name '*.sh' -exec chmod +x {} ..."
+        }
+      ]
+    },
+    {
+      "id": "mperm-009",
+      "type": "single",
+      "scenario": "developer user'a myfile.txt üzerinde okuma ve yazma ACL privilege ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setfacl -m u:developer:rw myfile.txt",
+          "hint_text": "setfacl -m u:user:permissions formatı",
+          "hint_partial": "setfacl -m u:developer:rw ..."
+        }
+      ]
+    },
+    {
+      "id": "mperm-011",
+      "type": "single",
+      "scenario": "public directory'sine sticky bit ekle",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chmod +t public",
+          "hint_text": "Sticky bit icin chmod kullan",
+          "hint_partial": "chmod ... public"
+        }
+      ]
+    },
+    {
+      "id": "mperm-012",
+      "type": "single",
+      "scenario": "Calisma directory'sinde setuid bitli file'lari bul",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find . -type f -perm -4000",
+          "hint_text": "Ozel permission bitine gore find ile arama yap",
+          "hint_partial": "find . -type f ..."
+        }
+      ]
+    },
+    {
+      "id": "mperm-013",
+      "type": "single",
+      "scenario": "deploy user'ı docker group'una ekle",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "usermod -aG docker deploy",
+          "hint_text": "Ek gruba eklemek icin usermod -aG kullan",
+          "hint_partial": "usermod -aG ... ..."
+        }
+      ]
+    },
+    {
+      "id": "mperm-015",
+      "type": "multi-step",
+      "scenario": "shared directory'sine bob user için sadece okuma ACL'i ver ve sonra ACL'leri listele",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "setfacl -m u:bob:r-- shared",
+          "hint_text": "Ilk adimda ACL kuralini ekle",
+          "hint_partial": "setfacl -m ... shared"
+        },
+        {
+          "prompt": "$ ",
+          "answer": "getfacl shared",
+          "hint_text": "Ikinci adimda ACL kaydini kontrol et",
+          "hint_partial": "getfacl ..."
+        }
+      ]
+    }
+  ]
+}

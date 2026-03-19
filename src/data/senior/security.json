@@ -1,0 +1,129 @@
+{
+  "level": "senior",
+  "topic": "security",
+  "questions": [
+    {
+      "id": "ssec-001",
+      "type": "single",
+      "scenario": "UFW firewall status'unu verbose format'ta göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ufw status verbose",
+          "hint_text": "Detaylı UFW durumu için `verbose` ekle.",
+          "hint_partial": "ufw status ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-002",
+      "type": "single",
+      "scenario": "Fail2ban içinde sshd jail status'unu kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fail2ban-client status sshd",
+          "hint_text": "`fail2ban-client status jail` formatını kullan.",
+          "hint_partial": "fail2ban-client status ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-003",
+      "type": "single",
+      "scenario": "server.crt certificate'ının tarih ve subject bilgisini `openssl` ile göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "openssl x509 -in server.crt -noout -dates -subject",
+          "hint_text": "`openssl x509` ile certificate metadata çek.",
+          "hint_partial": "openssl x509 -in ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-004",
+      "type": "single",
+      "scenario": "sshd effective config içinde `PermitRootLogin` ayarını kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sshd -T | grep permitrootlogin",
+          "hint_text": "`sshd -T` effective config verir.",
+          "hint_partial": "sshd -T | grep ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-006",
+      "type": "single",
+      "scenario": "Remote certificate zincirini SNI ile test et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "openssl s_client -connect example.com:443 -servername example.com",
+          "hint_text": "SNI için `-servername` ekle.",
+          "hint_partial": "openssl s_client -connect ... -servername ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-007",
+      "type": "single",
+      "scenario": "OpenSSH server'ın effective config'inde password auth durumunu kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sshd -T | grep passwordauthentication",
+          "hint_text": "Effective SSH config için `sshd -T` kullan.",
+          "hint_partial": "sshd -T | grep ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-008",
+      "type": "multi-step",
+      "scenario": "Brute-force şüphesinde önce auth log'da failed password denemelerini filtrele, sonra sshd jail'indeki ban durumunu kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "grep 'Failed password' /var/log/auth.log",
+          "hint_text": "Auth log'u `grep` ile filtrele.",
+          "hint_partial": "grep 'Failed password' ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "fail2ban-client status sshd",
+          "hint_text": "Sonra ilgili jail durumunu kontrol et.",
+          "hint_partial": "fail2ban-client status ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-009",
+      "type": "single",
+      "scenario": "SSH host key fingerprint'ini göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ssh-keygen -lf /etc/ssh/ssh_host_ed25519_key.pub",
+          "hint_text": "Host key fingerprint için `ssh-keygen -lf` kullan.",
+          "hint_partial": "ssh-keygen -lf ..."
+        }
+      ]
+    },
+    {
+      "id": "ssec-010",
+      "type": "single",
+      "scenario": "Audit log içinde `sudo` ile ilgili event'leri ara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ausearch -k sudo",
+          "hint_text": "Audit anahtarına göre sorgu için `ausearch -k` kullan.",
+          "hint_partial": "ausearch -k ..."
+        }
+      ]
+    }
+  ]
+}

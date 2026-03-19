@@ -1,0 +1,2606 @@
+{
+  "level": "senior",
+  "topic": "kubernetes",
+  "questions": [
+    {
+      "id": "sk8s-001-exp-001",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `web-201` deployment'i bir onceki rollout'a geri al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl rollout undo deployment/web-201",
+          "hint_text": "Rollback icin `kubectl rollout undo` kullan.",
+          "hint_partial": "kubectl rollout ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-002-exp-002",
+      "type": "single",
+      "scenario": "Audit sirasinda `cache-202-202-202` deployment loglarini canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl logs -f deployment/cache-202-202-202",
+          "hint_text": "Deployment log takibi icin `kubectl logs -f deployment/name` kullan.",
+          "hint_partial": "kubectl logs ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-003-exp-003",
+      "type": "single",
+      "scenario": "Bakim penceresinde event'leri olusma zamanina gore sirala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get events --sort-by=.metadata.creationTimestamp",
+          "hint_text": "Siralama icin `--sort-by` kullan.",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-004-exp-004",
+      "type": "single",
+      "scenario": "Incident triajinda `manifests/` altindaki degisiklikleri apply etmeden diff olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl diff -f manifests/",
+          "hint_text": "Dry diff icin `kubectl diff -f` kullan.",
+          "hint_partial": "kubectl diff ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-005-exp-005",
+      "type": "single",
+      "scenario": "Release kontrolunde cluster'da pod olusturma yetkin var mi kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl auth can-i create pods",
+          "hint_text": "RBAC kontrolu icin `kubectl auth can-i` kullan.",
+          "hint_partial": "kubectl auth ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-006-exp-006",
+      "type": "single",
+      "scenario": "Operasyon devrinde `worker1` node'unu drain et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl drain worker1 --ignore-daemonsets",
+          "hint_text": "Drain icin `kubectl drain` kullan.",
+          "hint_partial": "kubectl drain ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-007-exp-007",
+      "type": "single",
+      "scenario": "On-call gorevinde `worker1` node'unu schedulable olmaktan cikar.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl cordon worker1",
+          "hint_text": "Yeni pod alinmasin diye `kubectl cordon` kullan.",
+          "hint_partial": "kubectl cordon ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-008-exp-008",
+      "type": "single",
+      "scenario": "Kesinti sonrasi `worker1` node'unu tekrar schedulable yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl uncordon worker1",
+          "hint_text": "Node'u geri acmak icin `kubectl uncordon` kullan.",
+          "hint_partial": "kubectl uncordon ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-009-exp-009",
+      "type": "single",
+      "scenario": "Gece vardiyasinda tum namespace'lerde calisan pod'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get pods -A --field-selector status.phase=Running",
+          "hint_text": "Field selector ile phase filtrele.",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-010-exp-010",
+      "type": "single",
+      "scenario": "Audit sirasinda kullanilabilir API kaynaklarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl cache-210-210-resources",
+          "hint_text": "Kaynak tipleri icin `kubectl cache-210-210-resources` kullan.",
+          "hint_partial": "kubectl cache-210-210-resources"
+        }
+      ]
+    },
+    {
+      "id": "sk8s-001-r1-exp-011",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi `queue-211-211-1` deployment'i bir onceki rollout'a geri al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl rollout undo deployment/queue-211-211-1",
+          "hint_text": "Rollback icin `kubectl rollout undo` kullan.",
+          "hint_partial": "kubectl rollout ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-002-r2-exp-012",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda `cache-212-2-2-2` deployment loglarini canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl logs -f deployment/cache-212-2-2-2",
+          "hint_text": "Deployment log takibi icin `kubectl logs -f deployment/name` kullan.",
+          "hint_partial": "kubectl logs ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-003-r3-exp-013",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi event'leri olusma zamanina gore sirala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get events --sort-by=.metadata.creationTimestamp",
+          "hint_text": "Siralama icin `--sort-by` kullan.",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-004-r4-exp-014",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde `manifests/` altindaki degisiklikleri apply etmeden diff olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl diff -f manifests/",
+          "hint_text": "Dry diff icin `kubectl diff -f` kullan.",
+          "hint_partial": "kubectl diff ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-005-r5-exp-015",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta cluster'da pod olusturma yetkin var mi kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl auth can-i create pods",
+          "hint_text": "RBAC kontrolu icin `kubectl auth can-i` kullan.",
+          "hint_partial": "kubectl auth ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-006-r6-exp-016",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda `worker1` node'unu drain et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl drain worker1 --ignore-daemonsets",
+          "hint_text": "Drain icin `kubectl drain` kullan.",
+          "hint_partial": "kubectl drain ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-007-r7-exp-017",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde `worker1` node'unu schedulable olmaktan cikar.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl cordon worker1",
+          "hint_text": "Yeni pod alinmasin diye `kubectl cordon` kullan.",
+          "hint_partial": "kubectl cordon ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-008-r8-exp-018",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda `worker1` node'unu tekrar schedulable yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl uncordon worker1",
+          "hint_text": "Node'u geri acmak icin `kubectl uncordon` kullan.",
+          "hint_partial": "kubectl uncordon ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-009-r9-exp-019",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi tum namespace'lerde calisan pod'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get pods -A --field-selector status.phase=Running",
+          "hint_text": "Field selector ile phase filtrele.",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-010-r10-exp-020",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda kullanilabilir API kaynaklarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl cache-220-10-10-resources",
+          "hint_text": "Kaynak tipleri icin `kubectl cache-220-10-10-resources` kullan.",
+          "hint_partial": "kubectl cache-220-10-10-resources"
+        }
+      ]
+    },
+    {
+      "id": "sk8s-001-r11-exp-021",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi `bastion-221-11` deployment'i bir onceki rollout'a geri al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl rollout undo deployment/bastion-221-11",
+          "hint_text": "Rollback icin `kubectl rollout undo` kullan.",
+          "hint_partial": "kubectl rollout ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-002-r12-exp-022",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde `db-222-12-12` deployment loglarini canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl logs -f deployment/db-222-12-12",
+          "hint_text": "Deployment log takibi icin `kubectl logs -f deployment/name` kullan.",
+          "hint_partial": "kubectl logs ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-003-r13-exp-023",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta event'leri olusma zamanina gore sirala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get events --sort-by=.metadata.creationTimestamp",
+          "hint_text": "Siralama icin `--sort-by` kullan.",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-004-r14-exp-024",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda `manifests/` altindaki degisiklikleri apply etmeden diff olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl diff -f manifests/",
+          "hint_text": "Dry diff icin `kubectl diff -f` kullan.",
+          "hint_partial": "kubectl diff ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-005-r15-exp-025",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde cluster'da pod olusturma yetkin var mi kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl auth can-i create pods",
+          "hint_text": "RBAC kontrolu icin `kubectl auth can-i` kullan.",
+          "hint_partial": "kubectl auth ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-006-r16-exp-026",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda `worker1` node'unu drain et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl drain worker1 --ignore-daemonsets",
+          "hint_text": "Drain icin `kubectl drain` kullan.",
+          "hint_partial": "kubectl drain ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-007-r17-exp-027",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi `worker1` node'unu schedulable olmaktan cikar.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl cordon worker1",
+          "hint_text": "Yeni pod alinmasin diye `kubectl cordon` kullan.",
+          "hint_partial": "kubectl cordon ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-008-r18-exp-028",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda `worker1` node'unu tekrar schedulable yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl uncordon worker1",
+          "hint_text": "Node'u geri acmak icin `kubectl uncordon` kullan.",
+          "hint_partial": "kubectl uncordon ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-009-r19-exp-029",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi tum namespace'lerde calisan pod'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get pods -A --field-selector status.phase=Running",
+          "hint_text": "Field selector ile phase filtrele.",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-010-r20-exp-030",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde kullanilabilir API kaynaklarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl bastion-20-resources",
+          "hint_text": "Kaynak tipleri icin `kubectl bastion-20-resources` kullan.",
+          "hint_partial": "kubectl bastion-20-resources"
+        }
+      ]
+    },
+    {
+      "id": "sk8s-001-r21-exp-031",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta `cache-231-21-21` deployment'i bir onceki rollout'a geri al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl rollout undo deployment/cache-231-21-21",
+          "hint_text": "Rollback icin `kubectl rollout undo` kullan.",
+          "hint_partial": "kubectl rollout ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-002-r22-exp-032",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda `queue-22` deployment loglarini canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl logs -f deployment/queue-22",
+          "hint_text": "Deployment log takibi icin `kubectl logs -f deployment/name` kullan.",
+          "hint_partial": "kubectl logs ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-003-r23-exp-033",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde event'leri olusma zamanina gore sirala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get events --sort-by=.metadata.creationTimestamp",
+          "hint_text": "Siralama icin `--sort-by` kullan.",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-004-r24-exp-034",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda `manifests/` altindaki degisiklikleri apply etmeden diff olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl diff -f manifests/",
+          "hint_text": "Dry diff icin `kubectl diff -f` kullan.",
+          "hint_partial": "kubectl diff ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-005-r25-exp-035",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi cluster'da pod olusturma yetkin var mi kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl auth can-i create pods",
+          "hint_text": "RBAC kontrolu icin `kubectl auth can-i` kullan.",
+          "hint_partial": "kubectl auth ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-006-r26-exp-036",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda `worker1` node'unu drain et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl drain worker1 --ignore-daemonsets",
+          "hint_text": "Drain icin `kubectl drain` kullan.",
+          "hint_partial": "kubectl drain ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-007-r27-exp-037",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi `worker1` node'unu schedulable olmaktan cikar.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl cordon worker1",
+          "hint_text": "Yeni pod alinmasin diye `kubectl cordon` kullan.",
+          "hint_partial": "kubectl cordon ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-008-r28-exp-038",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde `worker1` node'unu tekrar schedulable yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl uncordon worker1",
+          "hint_text": "Node'u geri acmak icin `kubectl uncordon` kullan.",
+          "hint_partial": "kubectl uncordon ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-009-r29-exp-039",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta tum namespace'lerde calisan pod'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get pods -A --field-selector status.phase=Running",
+          "hint_text": "Field selector ile phase filtrele.",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-010-r30-exp-040",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda kullanilabilir API kaynaklarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl bastion-240-30-resources",
+          "hint_text": "Kaynak tipleri icin `kubectl bastion-240-30-resources` kullan.",
+          "hint_partial": "kubectl bastion-240-30-resources"
+        }
+      ]
+    },
+    {
+      "id": "sk8s-001-r31-exp-041",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde `bastion-31` deployment'i bir onceki rollout'a geri al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl rollout undo deployment/bastion-31",
+          "hint_text": "Rollback icin `kubectl rollout undo` kullan.",
+          "hint_partial": "kubectl rollout ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-002-r32-exp-042",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda `proxy-32` deployment loglarini canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl logs -f deployment/proxy-32",
+          "hint_text": "Deployment log takibi icin `kubectl logs -f deployment/name` kullan.",
+          "hint_partial": "kubectl logs ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-003-r33-exp-043",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi event'leri olusma zamanina gore sirala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get events --sort-by=.metadata.creationTimestamp",
+          "hint_text": "Siralama icin `--sort-by` kullan.",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-004-r34-exp-044",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda `manifests/` altindaki degisiklikleri apply etmeden diff olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl diff -f manifests/",
+          "hint_text": "Dry diff icin `kubectl diff -f` kullan.",
+          "hint_partial": "kubectl diff ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-005-r35-exp-045",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi cluster'da pod olusturma yetkin var mi kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl auth can-i create pods",
+          "hint_text": "RBAC kontrolu icin `kubectl auth can-i` kullan.",
+          "hint_partial": "kubectl auth ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-006-r36-exp-046",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde `worker1` node'unu drain et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl drain worker1 --ignore-daemonsets",
+          "hint_text": "Drain icin `kubectl drain` kullan.",
+          "hint_partial": "kubectl drain ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-007-r37-exp-047",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta `worker1` node'unu schedulable olmaktan cikar.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl cordon worker1",
+          "hint_text": "Yeni pod alinmasin diye `kubectl cordon` kullan.",
+          "hint_partial": "kubectl cordon ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-008-r38-exp-048",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda `worker1` node'unu tekrar schedulable yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl uncordon worker1",
+          "hint_text": "Node'u geri acmak icin `kubectl uncordon` kullan.",
+          "hint_partial": "kubectl uncordon ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-009-r39-exp-049",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde tum namespace'lerde calisan pod'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get pods -A --field-selector status.phase=Running",
+          "hint_text": "Field selector ile phase filtrele.",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-010-r40-exp-050",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda kullanilabilir API kaynaklarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl cache-250-250-40-resources",
+          "hint_text": "Kaynak tipleri icin `kubectl cache-250-250-40-resources` kullan.",
+          "hint_partial": "kubectl cache-250-250-40-resources"
+        }
+      ]
+    },
+    {
+      "id": "sk8s-001-r41-exp-051",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi `queue-251-251-41` deployment'i bir onceki rollout'a geri al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl rollout undo deployment/queue-251-251-41",
+          "hint_text": "Rollback icin `kubectl rollout undo` kullan.",
+          "hint_partial": "kubectl rollout ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-002-r42-exp-052",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda `cache-252-42-42-42` deployment loglarini canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl logs -f deployment/cache-252-42-42-42",
+          "hint_text": "Deployment log takibi icin `kubectl logs -f deployment/name` kullan.",
+          "hint_partial": "kubectl logs ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-003-r43-exp-053",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi event'leri olusma zamanina gore sirala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get events --sort-by=.metadata.creationTimestamp",
+          "hint_text": "Siralama icin `--sort-by` kullan.",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-004-r44-exp-054",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde `manifests/` altindaki degisiklikleri apply etmeden diff olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl diff -f manifests/",
+          "hint_text": "Dry diff icin `kubectl diff -f` kullan.",
+          "hint_partial": "kubectl diff ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-005-r45-exp-055",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta cluster'da pod olusturma yetkin var mi kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl auth can-i create pods",
+          "hint_text": "RBAC kontrolu icin `kubectl auth can-i` kullan.",
+          "hint_partial": "kubectl auth ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-006-r46-exp-056",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda `worker1` node'unu drain et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl drain worker1 --ignore-daemonsets",
+          "hint_text": "Drain icin `kubectl drain` kullan.",
+          "hint_partial": "kubectl drain ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-007-r47-exp-057",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde `worker1` node'unu schedulable olmaktan cikar.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl cordon worker1",
+          "hint_text": "Yeni pod alinmasin diye `kubectl cordon` kullan.",
+          "hint_partial": "kubectl cordon ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-008-r48-exp-058",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda `worker1` node'unu tekrar schedulable yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl uncordon worker1",
+          "hint_text": "Node'u geri acmak icin `kubectl uncordon` kullan.",
+          "hint_partial": "kubectl uncordon ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-009-r49-exp-059",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi tum namespace'lerde calisan pod'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get pods -A --field-selector status.phase=Running",
+          "hint_text": "Field selector ile phase filtrele.",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-010-r50-exp-060",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda kullanilabilir API kaynaklarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl cache-260-50-50-resources",
+          "hint_text": "Kaynak tipleri icin `kubectl cache-260-50-50-resources` kullan.",
+          "hint_partial": "kubectl cache-260-50-50-resources"
+        }
+      ]
+    },
+    {
+      "id": "sk8s-001-r51-exp-061",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi `bastion-261-51` deployment'i bir onceki rollout'a geri al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl rollout undo deployment/bastion-261-51",
+          "hint_text": "Rollback icin `kubectl rollout undo` kullan.",
+          "hint_partial": "kubectl rollout ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-002-r52-exp-062",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde `db-262-52-52` deployment loglarini canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl logs -f deployment/db-262-52-52",
+          "hint_text": "Deployment log takibi icin `kubectl logs -f deployment/name` kullan.",
+          "hint_partial": "kubectl logs ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-003-r53-exp-063",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta event'leri olusma zamanina gore sirala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get events --sort-by=.metadata.creationTimestamp",
+          "hint_text": "Siralama icin `--sort-by` kullan.",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-004-r54-exp-064",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda `manifests/` altindaki degisiklikleri apply etmeden diff olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl diff -f manifests/",
+          "hint_text": "Dry diff icin `kubectl diff -f` kullan.",
+          "hint_partial": "kubectl diff ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-005-r55-exp-065",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde cluster'da pod olusturma yetkin var mi kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl auth can-i create pods",
+          "hint_text": "RBAC kontrolu icin `kubectl auth can-i` kullan.",
+          "hint_partial": "kubectl auth ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-006-r56-exp-066",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda `worker1` node'unu drain et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl drain worker1 --ignore-daemonsets",
+          "hint_text": "Drain icin `kubectl drain` kullan.",
+          "hint_partial": "kubectl drain ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-007-r57-exp-067",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi `worker1` node'unu schedulable olmaktan cikar.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl cordon worker1",
+          "hint_text": "Yeni pod alinmasin diye `kubectl cordon` kullan.",
+          "hint_partial": "kubectl cordon ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-008-r58-exp-068",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda `worker1` node'unu tekrar schedulable yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl uncordon worker1",
+          "hint_text": "Node'u geri acmak icin `kubectl uncordon` kullan.",
+          "hint_partial": "kubectl uncordon ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-009-r59-exp-069",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi tum namespace'lerde calisan pod'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get pods -A --field-selector status.phase=Running",
+          "hint_text": "Field selector ile phase filtrele.",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-010-r60-exp-070",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde kullanilabilir API kaynaklarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl bastion-60-resources",
+          "hint_text": "Kaynak tipleri icin `kubectl bastion-60-resources` kullan.",
+          "hint_partial": "kubectl bastion-60-resources"
+        }
+      ]
+    },
+    {
+      "id": "sk8s-001-r61-exp-071",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta `cache-271-61-61` deployment'i bir onceki rollout'a geri al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl rollout undo deployment/cache-271-61-61",
+          "hint_text": "Rollback icin `kubectl rollout undo` kullan.",
+          "hint_partial": "kubectl rollout ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-002-r62-exp-072",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda `queue-62` deployment loglarini canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl logs -f deployment/queue-62",
+          "hint_text": "Deployment log takibi icin `kubectl logs -f deployment/name` kullan.",
+          "hint_partial": "kubectl logs ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-003-r63-exp-073",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde event'leri olusma zamanina gore sirala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get events --sort-by=.metadata.creationTimestamp",
+          "hint_text": "Siralama icin `--sort-by` kullan.",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-004-r64-exp-074",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda `manifests/` altindaki degisiklikleri apply etmeden diff olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl diff -f manifests/",
+          "hint_text": "Dry diff icin `kubectl diff -f` kullan.",
+          "hint_partial": "kubectl diff ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-005-r65-exp-075",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi cluster'da pod olusturma yetkin var mi kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl auth can-i create pods",
+          "hint_text": "RBAC kontrolu icin `kubectl auth can-i` kullan.",
+          "hint_partial": "kubectl auth ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-006-r66-exp-076",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda `worker1` node'unu drain et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl drain worker1 --ignore-daemonsets",
+          "hint_text": "Drain icin `kubectl drain` kullan.",
+          "hint_partial": "kubectl drain ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-007-r67-exp-077",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi `worker1` node'unu schedulable olmaktan cikar.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl cordon worker1",
+          "hint_text": "Yeni pod alinmasin diye `kubectl cordon` kullan.",
+          "hint_partial": "kubectl cordon ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-008-r68-exp-078",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde `worker1` node'unu tekrar schedulable yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl uncordon worker1",
+          "hint_text": "Node'u geri acmak icin `kubectl uncordon` kullan.",
+          "hint_partial": "kubectl uncordon ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-009-r69-exp-079",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta tum namespace'lerde calisan pod'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get pods -A --field-selector status.phase=Running",
+          "hint_text": "Field selector ile phase filtrele.",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-010-r70-exp-080",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda kullanilabilir API kaynaklarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl bastion-280-70-resources",
+          "hint_text": "Kaynak tipleri icin `kubectl bastion-280-70-resources` kullan.",
+          "hint_partial": "kubectl bastion-280-70-resources"
+        }
+      ]
+    },
+    {
+      "id": "sk8s-001-r71-exp-081",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde `bastion-71` deployment'i bir onceki rollout'a geri al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl rollout undo deployment/bastion-71",
+          "hint_text": "Rollback icin `kubectl rollout undo` kullan.",
+          "hint_partial": "kubectl rollout ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-002-r72-exp-082",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda `proxy-72` deployment loglarini canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl logs -f deployment/proxy-72",
+          "hint_text": "Deployment log takibi icin `kubectl logs -f deployment/name` kullan.",
+          "hint_partial": "kubectl logs ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-003-r73-exp-083",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi event'leri olusma zamanina gore sirala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get events --sort-by=.metadata.creationTimestamp",
+          "hint_text": "Siralama icin `--sort-by` kullan.",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-004-r74-exp-084",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda `manifests/` altindaki degisiklikleri apply etmeden diff olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl diff -f manifests/",
+          "hint_text": "Dry diff icin `kubectl diff -f` kullan.",
+          "hint_partial": "kubectl diff ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-005-r75-exp-085",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi cluster'da pod olusturma yetkin var mi kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl auth can-i create pods",
+          "hint_text": "RBAC kontrolu icin `kubectl auth can-i` kullan.",
+          "hint_partial": "kubectl auth ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-006-r76-exp-086",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde `worker1` node'unu drain et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl drain worker1 --ignore-daemonsets",
+          "hint_text": "Drain icin `kubectl drain` kullan.",
+          "hint_partial": "kubectl drain ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-007-r77-exp-087",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta `worker1` node'unu schedulable olmaktan cikar.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl cordon worker1",
+          "hint_text": "Yeni pod alinmasin diye `kubectl cordon` kullan.",
+          "hint_partial": "kubectl cordon ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-008-r78-exp-088",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda `worker1` node'unu tekrar schedulable yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl uncordon worker1",
+          "hint_text": "Node'u geri acmak icin `kubectl uncordon` kullan.",
+          "hint_partial": "kubectl uncordon ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-009-r79-exp-089",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde tum namespace'lerde calisan pod'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get pods -A --field-selector status.phase=Running",
+          "hint_text": "Field selector ile phase filtrele.",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-010-r80-exp-090",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda kullanilabilir API kaynaklarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl cache-290-290-80-resources",
+          "hint_text": "Kaynak tipleri icin `kubectl cache-290-290-80-resources` kullan.",
+          "hint_partial": "kubectl cache-290-290-80-resources"
+        }
+      ]
+    },
+    {
+      "id": "sk8s-001-r81-exp-091",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi `queue-291-291-81` deployment'i bir onceki rollout'a geri al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl rollout undo deployment/queue-291-291-81",
+          "hint_text": "Rollback icin `kubectl rollout undo` kullan.",
+          "hint_partial": "kubectl rollout ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-002-r82-exp-092",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda `cache-292-82-82-82` deployment loglarini canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl logs -f deployment/cache-292-82-82-82",
+          "hint_text": "Deployment log takibi icin `kubectl logs -f deployment/name` kullan.",
+          "hint_partial": "kubectl logs ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-003-r83-exp-093",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi event'leri olusma zamanina gore sirala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get events --sort-by=.metadata.creationTimestamp",
+          "hint_text": "Siralama icin `--sort-by` kullan.",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-004-r84-exp-094",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde `manifests/` altindaki degisiklikleri apply etmeden diff olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl diff -f manifests/",
+          "hint_text": "Dry diff icin `kubectl diff -f` kullan.",
+          "hint_partial": "kubectl diff ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-005-r85-exp-095",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta cluster'da pod olusturma yetkin var mi kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl auth can-i create pods",
+          "hint_text": "RBAC kontrolu icin `kubectl auth can-i` kullan.",
+          "hint_partial": "kubectl auth ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-006-r86-exp-096",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda `worker1` node'unu drain et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl drain worker1 --ignore-daemonsets",
+          "hint_text": "Drain icin `kubectl drain` kullan.",
+          "hint_partial": "kubectl drain ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-007-r87-exp-097",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde `worker1` node'unu schedulable olmaktan cikar.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl cordon worker1",
+          "hint_text": "Yeni pod alinmasin diye `kubectl cordon` kullan.",
+          "hint_partial": "kubectl cordon ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-008-r88-exp-098",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda `worker1` node'unu tekrar schedulable yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl uncordon worker1",
+          "hint_text": "Node'u geri acmak icin `kubectl uncordon` kullan.",
+          "hint_partial": "kubectl uncordon ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-009-r89-exp-099",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi tum namespace'lerde calisan pod'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get pods -A --field-selector status.phase=Running",
+          "hint_text": "Field selector ile phase filtrele.",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-010-r90-exp-100",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda kullanilabilir API kaynaklarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl cache-300-90-90-resources",
+          "hint_text": "Kaynak tipleri icin `kubectl cache-300-90-90-resources` kullan.",
+          "hint_partial": "kubectl cache-300-90-90-resources"
+        }
+      ]
+    },
+    {
+      "id": "sk8s-001-r91-exp-101",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi `bastion-301-91` deployment'i bir onceki rollout'a geri al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl rollout undo deployment/bastion-301-91",
+          "hint_text": "Rollback icin `kubectl rollout undo` kullan.",
+          "hint_partial": "kubectl rollout ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-002-r92-exp-102",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde `db-302-92-92` deployment loglarini canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl logs -f deployment/db-302-92-92",
+          "hint_text": "Deployment log takibi icin `kubectl logs -f deployment/name` kullan.",
+          "hint_partial": "kubectl logs ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-003-r93-exp-103",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta event'leri olusma zamanina gore sirala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get events --sort-by=.metadata.creationTimestamp",
+          "hint_text": "Siralama icin `--sort-by` kullan.",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-004-r94-exp-104",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda `manifests/` altindaki degisiklikleri apply etmeden diff olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl diff -f manifests/",
+          "hint_text": "Dry diff icin `kubectl diff -f` kullan.",
+          "hint_partial": "kubectl diff ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-005-r95-exp-105",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde cluster'da pod olusturma yetkin var mi kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl auth can-i create pods",
+          "hint_text": "RBAC kontrolu icin `kubectl auth can-i` kullan.",
+          "hint_partial": "kubectl auth ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-006-r96-exp-106",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda `worker1` node'unu drain et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl drain worker1 --ignore-daemonsets",
+          "hint_text": "Drain icin `kubectl drain` kullan.",
+          "hint_partial": "kubectl drain ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-007-r97-exp-107",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi `worker1` node'unu schedulable olmaktan cikar.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl cordon worker1",
+          "hint_text": "Yeni pod alinmasin diye `kubectl cordon` kullan.",
+          "hint_partial": "kubectl cordon ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-008-r98-exp-108",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda `worker1` node'unu tekrar schedulable yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl uncordon worker1",
+          "hint_text": "Node'u geri acmak icin `kubectl uncordon` kullan.",
+          "hint_partial": "kubectl uncordon ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-009-r99-exp-109",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi tum namespace'lerde calisan pod'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get pods -A --field-selector status.phase=Running",
+          "hint_text": "Field selector ile phase filtrele.",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-010-r100-exp-110",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde kullanilabilir API kaynaklarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl bastion-100-resources",
+          "hint_text": "Kaynak tipleri icin `kubectl bastion-100-resources` kullan.",
+          "hint_partial": "kubectl bastion-100-resources"
+        }
+      ]
+    },
+    {
+      "id": "sk8s-001-r101-exp-111",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta `cache-311-101-101` deployment'i bir onceki rollout'a geri al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl rollout undo deployment/cache-311-101-101",
+          "hint_text": "Rollback icin `kubectl rollout undo` kullan.",
+          "hint_partial": "kubectl rollout ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-002-r102-exp-112",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda `queue-102` deployment loglarini canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl logs -f deployment/queue-102",
+          "hint_text": "Deployment log takibi icin `kubectl logs -f deployment/name` kullan.",
+          "hint_partial": "kubectl logs ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-003-r103-exp-113",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde event'leri olusma zamanina gore sirala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get events --sort-by=.metadata.creationTimestamp",
+          "hint_text": "Siralama icin `--sort-by` kullan.",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-004-r104-exp-114",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda `manifests/` altindaki degisiklikleri apply etmeden diff olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl diff -f manifests/",
+          "hint_text": "Dry diff icin `kubectl diff -f` kullan.",
+          "hint_partial": "kubectl diff ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-005-r105-exp-115",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi cluster'da pod olusturma yetkin var mi kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl auth can-i create pods",
+          "hint_text": "RBAC kontrolu icin `kubectl auth can-i` kullan.",
+          "hint_partial": "kubectl auth ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-006-r106-exp-116",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda `worker1` node'unu drain et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl drain worker1 --ignore-daemonsets",
+          "hint_text": "Drain icin `kubectl drain` kullan.",
+          "hint_partial": "kubectl drain ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-007-r107-exp-117",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi `worker1` node'unu schedulable olmaktan cikar.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl cordon worker1",
+          "hint_text": "Yeni pod alinmasin diye `kubectl cordon` kullan.",
+          "hint_partial": "kubectl cordon ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-008-r108-exp-118",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde `worker1` node'unu tekrar schedulable yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl uncordon worker1",
+          "hint_text": "Node'u geri acmak icin `kubectl uncordon` kullan.",
+          "hint_partial": "kubectl uncordon ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-009-r109-exp-119",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta tum namespace'lerde calisan pod'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get pods -A --field-selector status.phase=Running",
+          "hint_text": "Field selector ile phase filtrele.",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-010-r110-exp-120",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda kullanilabilir API kaynaklarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl bastion-320-110-resources",
+          "hint_text": "Kaynak tipleri icin `kubectl bastion-320-110-resources` kullan.",
+          "hint_partial": "kubectl bastion-320-110-resources"
+        }
+      ]
+    },
+    {
+      "id": "sk8s-001-r111-exp-121",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde `bastion-111` deployment'i bir onceki rollout'a geri al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl rollout undo deployment/bastion-111",
+          "hint_text": "Rollback icin `kubectl rollout undo` kullan.",
+          "hint_partial": "kubectl rollout ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-002-r112-exp-122",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda `proxy-112` deployment loglarini canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl logs -f deployment/proxy-112",
+          "hint_text": "Deployment log takibi icin `kubectl logs -f deployment/name` kullan.",
+          "hint_partial": "kubectl logs ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-003-r113-exp-123",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi event'leri olusma zamanina gore sirala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get events --sort-by=.metadata.creationTimestamp",
+          "hint_text": "Siralama icin `--sort-by` kullan.",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-004-r114-exp-124",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda `manifests/` altindaki degisiklikleri apply etmeden diff olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl diff -f manifests/",
+          "hint_text": "Dry diff icin `kubectl diff -f` kullan.",
+          "hint_partial": "kubectl diff ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-005-r115-exp-125",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi cluster'da pod olusturma yetkin var mi kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl auth can-i create pods",
+          "hint_text": "RBAC kontrolu icin `kubectl auth can-i` kullan.",
+          "hint_partial": "kubectl auth ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-006-r116-exp-126",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde `worker1` node'unu drain et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl drain worker1 --ignore-daemonsets",
+          "hint_text": "Drain icin `kubectl drain` kullan.",
+          "hint_partial": "kubectl drain ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-007-r117-exp-127",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta `worker1` node'unu schedulable olmaktan cikar.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl cordon worker1",
+          "hint_text": "Yeni pod alinmasin diye `kubectl cordon` kullan.",
+          "hint_partial": "kubectl cordon ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-008-r118-exp-128",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda `worker1` node'unu tekrar schedulable yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl uncordon worker1",
+          "hint_text": "Node'u geri acmak icin `kubectl uncordon` kullan.",
+          "hint_partial": "kubectl uncordon ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-009-r119-exp-129",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde tum namespace'lerde calisan pod'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get pods -A --field-selector status.phase=Running",
+          "hint_text": "Field selector ile phase filtrele.",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-010-r120-exp-130",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda kullanilabilir API kaynaklarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl cache-330-330-120-resources",
+          "hint_text": "Kaynak tipleri icin `kubectl cache-330-330-120-resources` kullan.",
+          "hint_partial": "kubectl cache-330-330-120-resources"
+        }
+      ]
+    },
+    {
+      "id": "sk8s-001-r121-exp-131",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi `queue-331-331-121` deployment'i bir onceki rollout'a geri al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl rollout undo deployment/queue-331-331-121",
+          "hint_text": "Rollback icin `kubectl rollout undo` kullan.",
+          "hint_partial": "kubectl rollout ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-002-r122-exp-132",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda `cache-332-122-122-122` deployment loglarini canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl logs -f deployment/cache-332-122-122-122",
+          "hint_text": "Deployment log takibi icin `kubectl logs -f deployment/name` kullan.",
+          "hint_partial": "kubectl logs ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-003-r123-exp-133",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi event'leri olusma zamanina gore sirala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get events --sort-by=.metadata.creationTimestamp",
+          "hint_text": "Siralama icin `--sort-by` kullan.",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-004-r124-exp-134",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde `manifests/` altindaki degisiklikleri apply etmeden diff olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl diff -f manifests/",
+          "hint_text": "Dry diff icin `kubectl diff -f` kullan.",
+          "hint_partial": "kubectl diff ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-005-r125-exp-135",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta cluster'da pod olusturma yetkin var mi kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl auth can-i create pods",
+          "hint_text": "RBAC kontrolu icin `kubectl auth can-i` kullan.",
+          "hint_partial": "kubectl auth ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-006-r126-exp-136",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda `worker1` node'unu drain et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl drain worker1 --ignore-daemonsets",
+          "hint_text": "Drain icin `kubectl drain` kullan.",
+          "hint_partial": "kubectl drain ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-007-r127-exp-137",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde `worker1` node'unu schedulable olmaktan cikar.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl cordon worker1",
+          "hint_text": "Yeni pod alinmasin diye `kubectl cordon` kullan.",
+          "hint_partial": "kubectl cordon ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-008-r128-exp-138",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda `worker1` node'unu tekrar schedulable yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl uncordon worker1",
+          "hint_text": "Node'u geri acmak icin `kubectl uncordon` kullan.",
+          "hint_partial": "kubectl uncordon ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-009-r129-exp-139",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi tum namespace'lerde calisan pod'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get pods -A --field-selector status.phase=Running",
+          "hint_text": "Field selector ile phase filtrele.",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-010-r130-exp-140",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda kullanilabilir API kaynaklarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl cache-340-130-130-resources",
+          "hint_text": "Kaynak tipleri icin `kubectl cache-340-130-130-resources` kullan.",
+          "hint_partial": "kubectl cache-340-130-130-resources"
+        }
+      ]
+    },
+    {
+      "id": "sk8s-001-r131-exp-141",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi `bastion-341-131` deployment'i bir onceki rollout'a geri al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl rollout undo deployment/bastion-341-131",
+          "hint_text": "Rollback icin `kubectl rollout undo` kullan.",
+          "hint_partial": "kubectl rollout ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-002-r132-exp-142",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde `db-342-132-132` deployment loglarini canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl logs -f deployment/db-342-132-132",
+          "hint_text": "Deployment log takibi icin `kubectl logs -f deployment/name` kullan.",
+          "hint_partial": "kubectl logs ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-003-r133-exp-143",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta event'leri olusma zamanina gore sirala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get events --sort-by=.metadata.creationTimestamp",
+          "hint_text": "Siralama icin `--sort-by` kullan.",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-004-r134-exp-144",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda `manifests/` altindaki degisiklikleri apply etmeden diff olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl diff -f manifests/",
+          "hint_text": "Dry diff icin `kubectl diff -f` kullan.",
+          "hint_partial": "kubectl diff ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-005-r135-exp-145",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde cluster'da pod olusturma yetkin var mi kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl auth can-i create pods",
+          "hint_text": "RBAC kontrolu icin `kubectl auth can-i` kullan.",
+          "hint_partial": "kubectl auth ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-006-r136-exp-146",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda `worker1` node'unu drain et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl drain worker1 --ignore-daemonsets",
+          "hint_text": "Drain icin `kubectl drain` kullan.",
+          "hint_partial": "kubectl drain ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-007-r137-exp-147",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi `worker1` node'unu schedulable olmaktan cikar.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl cordon worker1",
+          "hint_text": "Yeni pod alinmasin diye `kubectl cordon` kullan.",
+          "hint_partial": "kubectl cordon ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-008-r138-exp-148",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda `worker1` node'unu tekrar schedulable yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl uncordon worker1",
+          "hint_text": "Node'u geri acmak icin `kubectl uncordon` kullan.",
+          "hint_partial": "kubectl uncordon ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-009-r139-exp-149",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi tum namespace'lerde calisan pod'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get pods -A --field-selector status.phase=Running",
+          "hint_text": "Field selector ile phase filtrele.",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-010-r140-exp-150",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde kullanilabilir API kaynaklarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl bastion-140-resources",
+          "hint_text": "Kaynak tipleri icin `kubectl bastion-140-resources` kullan.",
+          "hint_partial": "kubectl bastion-140-resources"
+        }
+      ]
+    },
+    {
+      "id": "sk8s-001-r141-exp-151",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta `cache-351-141-141` deployment'i bir onceki rollout'a geri al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl rollout undo deployment/cache-351-141-141",
+          "hint_text": "Rollback icin `kubectl rollout undo` kullan.",
+          "hint_partial": "kubectl rollout ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-002-r142-exp-152",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda `queue-142` deployment loglarini canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl logs -f deployment/queue-142",
+          "hint_text": "Deployment log takibi icin `kubectl logs -f deployment/name` kullan.",
+          "hint_partial": "kubectl logs ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-003-r143-exp-153",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde event'leri olusma zamanina gore sirala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get events --sort-by=.metadata.creationTimestamp",
+          "hint_text": "Siralama icin `--sort-by` kullan.",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-004-r144-exp-154",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda `manifests/` altindaki degisiklikleri apply etmeden diff olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl diff -f manifests/",
+          "hint_text": "Dry diff icin `kubectl diff -f` kullan.",
+          "hint_partial": "kubectl diff ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-005-r145-exp-155",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi cluster'da pod olusturma yetkin var mi kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl auth can-i create pods",
+          "hint_text": "RBAC kontrolu icin `kubectl auth can-i` kullan.",
+          "hint_partial": "kubectl auth ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-006-r146-exp-156",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda `worker1` node'unu drain et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl drain worker1 --ignore-daemonsets",
+          "hint_text": "Drain icin `kubectl drain` kullan.",
+          "hint_partial": "kubectl drain ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-007-r147-exp-157",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi `worker1` node'unu schedulable olmaktan cikar.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl cordon worker1",
+          "hint_text": "Yeni pod alinmasin diye `kubectl cordon` kullan.",
+          "hint_partial": "kubectl cordon ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-008-r148-exp-158",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde `worker1` node'unu tekrar schedulable yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl uncordon worker1",
+          "hint_text": "Node'u geri acmak icin `kubectl uncordon` kullan.",
+          "hint_partial": "kubectl uncordon ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-009-r149-exp-159",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta tum namespace'lerde calisan pod'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get pods -A --field-selector status.phase=Running",
+          "hint_text": "Field selector ile phase filtrele.",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-010-r150-exp-160",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda kullanilabilir API kaynaklarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl bastion-360-150-resources",
+          "hint_text": "Kaynak tipleri icin `kubectl bastion-360-150-resources` kullan.",
+          "hint_partial": "kubectl bastion-360-150-resources"
+        }
+      ]
+    },
+    {
+      "id": "sk8s-001-r151-exp-161",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde `bastion-151` deployment'i bir onceki rollout'a geri al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl rollout undo deployment/bastion-151",
+          "hint_text": "Rollback icin `kubectl rollout undo` kullan.",
+          "hint_partial": "kubectl rollout ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-002-r152-exp-162",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda `proxy-152` deployment loglarini canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl logs -f deployment/proxy-152",
+          "hint_text": "Deployment log takibi icin `kubectl logs -f deployment/name` kullan.",
+          "hint_partial": "kubectl logs ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-003-r153-exp-163",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi event'leri olusma zamanina gore sirala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get events --sort-by=.metadata.creationTimestamp",
+          "hint_text": "Siralama icin `--sort-by` kullan.",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-004-r154-exp-164",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda `manifests/` altindaki degisiklikleri apply etmeden diff olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl diff -f manifests/",
+          "hint_text": "Dry diff icin `kubectl diff -f` kullan.",
+          "hint_partial": "kubectl diff ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-005-r155-exp-165",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi cluster'da pod olusturma yetkin var mi kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl auth can-i create pods",
+          "hint_text": "RBAC kontrolu icin `kubectl auth can-i` kullan.",
+          "hint_partial": "kubectl auth ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-006-r156-exp-166",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde `worker1` node'unu drain et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl drain worker1 --ignore-daemonsets",
+          "hint_text": "Drain icin `kubectl drain` kullan.",
+          "hint_partial": "kubectl drain ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-007-r157-exp-167",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta `worker1` node'unu schedulable olmaktan cikar.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl cordon worker1",
+          "hint_text": "Yeni pod alinmasin diye `kubectl cordon` kullan.",
+          "hint_partial": "kubectl cordon ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-008-r158-exp-168",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda `worker1` node'unu tekrar schedulable yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl uncordon worker1",
+          "hint_text": "Node'u geri acmak icin `kubectl uncordon` kullan.",
+          "hint_partial": "kubectl uncordon ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-009-r159-exp-169",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde tum namespace'lerde calisan pod'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get pods -A --field-selector status.phase=Running",
+          "hint_text": "Field selector ile phase filtrele.",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-010-r160-exp-170",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda kullanilabilir API kaynaklarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl cache-370-370-160-resources",
+          "hint_text": "Kaynak tipleri icin `kubectl cache-370-370-160-resources` kullan.",
+          "hint_partial": "kubectl cache-370-370-160-resources"
+        }
+      ]
+    },
+    {
+      "id": "sk8s-001-r161-exp-171",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi `queue-371-371-161` deployment'i bir onceki rollout'a geri al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl rollout undo deployment/queue-371-371-161",
+          "hint_text": "Rollback icin `kubectl rollout undo` kullan.",
+          "hint_partial": "kubectl rollout ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-002-r162-exp-172",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda `cache-372-162-162-162` deployment loglarini canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl logs -f deployment/cache-372-162-162-162",
+          "hint_text": "Deployment log takibi icin `kubectl logs -f deployment/name` kullan.",
+          "hint_partial": "kubectl logs ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-003-r163-exp-173",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi event'leri olusma zamanina gore sirala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get events --sort-by=.metadata.creationTimestamp",
+          "hint_text": "Siralama icin `--sort-by` kullan.",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-004-r164-exp-174",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde `manifests/` altindaki degisiklikleri apply etmeden diff olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl diff -f manifests/",
+          "hint_text": "Dry diff icin `kubectl diff -f` kullan.",
+          "hint_partial": "kubectl diff ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-005-r165-exp-175",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta cluster'da pod olusturma yetkin var mi kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl auth can-i create pods",
+          "hint_text": "RBAC kontrolu icin `kubectl auth can-i` kullan.",
+          "hint_partial": "kubectl auth ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-006-r166-exp-176",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda `worker1` node'unu drain et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl drain worker1 --ignore-daemonsets",
+          "hint_text": "Drain icin `kubectl drain` kullan.",
+          "hint_partial": "kubectl drain ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-007-r167-exp-177",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde `worker1` node'unu schedulable olmaktan cikar.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl cordon worker1",
+          "hint_text": "Yeni pod alinmasin diye `kubectl cordon` kullan.",
+          "hint_partial": "kubectl cordon ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-008-r168-exp-178",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda `worker1` node'unu tekrar schedulable yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl uncordon worker1",
+          "hint_text": "Node'u geri acmak icin `kubectl uncordon` kullan.",
+          "hint_partial": "kubectl uncordon ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-009-r169-exp-179",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi tum namespace'lerde calisan pod'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get pods -A --field-selector status.phase=Running",
+          "hint_text": "Field selector ile phase filtrele.",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-010-r170-exp-180",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda kullanilabilir API kaynaklarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl cache-380-170-170-resources",
+          "hint_text": "Kaynak tipleri icin `kubectl cache-380-170-170-resources` kullan.",
+          "hint_partial": "kubectl cache-380-170-170-resources"
+        }
+      ]
+    },
+    {
+      "id": "sk8s-001-r171-exp-181",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi `bastion-381-171` deployment'i bir onceki rollout'a geri al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl rollout undo deployment/bastion-381-171",
+          "hint_text": "Rollback icin `kubectl rollout undo` kullan.",
+          "hint_partial": "kubectl rollout ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-002-r172-exp-182",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde `db-382-172-172` deployment loglarini canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl logs -f deployment/db-382-172-172",
+          "hint_text": "Deployment log takibi icin `kubectl logs -f deployment/name` kullan.",
+          "hint_partial": "kubectl logs ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-003-r173-exp-183",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta event'leri olusma zamanina gore sirala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get events --sort-by=.metadata.creationTimestamp",
+          "hint_text": "Siralama icin `--sort-by` kullan.",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-004-r174-exp-184",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda `manifests/` altindaki degisiklikleri apply etmeden diff olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl diff -f manifests/",
+          "hint_text": "Dry diff icin `kubectl diff -f` kullan.",
+          "hint_partial": "kubectl diff ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-005-r175-exp-185",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde cluster'da pod olusturma yetkin var mi kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl auth can-i create pods",
+          "hint_text": "RBAC kontrolu icin `kubectl auth can-i` kullan.",
+          "hint_partial": "kubectl auth ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-006-r176-exp-186",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda `worker1` node'unu drain et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl drain worker1 --ignore-daemonsets",
+          "hint_text": "Drain icin `kubectl drain` kullan.",
+          "hint_partial": "kubectl drain ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-007-r177-exp-187",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi `worker1` node'unu schedulable olmaktan cikar.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl cordon worker1",
+          "hint_text": "Yeni pod alinmasin diye `kubectl cordon` kullan.",
+          "hint_partial": "kubectl cordon ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-008-r178-exp-188",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda `worker1` node'unu tekrar schedulable yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl uncordon worker1",
+          "hint_text": "Node'u geri acmak icin `kubectl uncordon` kullan.",
+          "hint_partial": "kubectl uncordon ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-009-r179-exp-189",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi tum namespace'lerde calisan pod'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get pods -A --field-selector status.phase=Running",
+          "hint_text": "Field selector ile phase filtrele.",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-010-r180-exp-190",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde kullanilabilir API kaynaklarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl bastion-180-resources",
+          "hint_text": "Kaynak tipleri icin `kubectl bastion-180-resources` kullan.",
+          "hint_partial": "kubectl bastion-180-resources"
+        }
+      ]
+    },
+    {
+      "id": "sk8s-001-r181-exp-191",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta `cache-391-181-181` deployment'i bir onceki rollout'a geri al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl rollout undo deployment/cache-391-181-181",
+          "hint_text": "Rollback icin `kubectl rollout undo` kullan.",
+          "hint_partial": "kubectl rollout ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-002-r182-exp-192",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda `queue-182` deployment loglarini canli takip et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl logs -f deployment/queue-182",
+          "hint_text": "Deployment log takibi icin `kubectl logs -f deployment/name` kullan.",
+          "hint_partial": "kubectl logs ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-003-r183-exp-193",
+      "type": "single",
+      "scenario": "Gece vardiyasinda operasyon kontrolunde event'leri olusma zamanina gore sirala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get events --sort-by=.metadata.creationTimestamp",
+          "hint_text": "Siralama icin `--sort-by` kullan.",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-004-r184-exp-194",
+      "type": "single",
+      "scenario": "Audit sirasinda incident sonrasinda `manifests/` altindaki degisiklikleri apply etmeden diff olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl diff -f manifests/",
+          "hint_text": "Dry diff icin `kubectl diff -f` kullan.",
+          "hint_partial": "kubectl diff ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-005-r185-exp-195",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi cluster'da pod olusturma yetkin var mi kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl auth can-i create pods",
+          "hint_text": "RBAC kontrolu icin `kubectl auth can-i` kullan.",
+          "hint_partial": "kubectl auth ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-006-r186-exp-196",
+      "type": "single",
+      "scenario": "Incident triajinda troubleshooting sirasinda `worker1` node'unu drain et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl drain worker1 --ignore-daemonsets",
+          "hint_text": "Drain icin `kubectl drain` kullan.",
+          "hint_partial": "kubectl drain ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-007-r187-exp-197",
+      "type": "single",
+      "scenario": "Release kontrolunde deploy sonrasi `worker1` node'unu schedulable olmaktan cikar.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl cordon worker1",
+          "hint_text": "Yeni pod alinmasin diye `kubectl cordon` kullan.",
+          "hint_partial": "kubectl cordon ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-008-r188-exp-198",
+      "type": "single",
+      "scenario": "Operasyon devrinde kesinti incelemesinde `worker1` node'unu tekrar schedulable yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl uncordon worker1",
+          "hint_text": "Node'u geri acmak icin `kubectl uncordon` kullan.",
+          "hint_partial": "kubectl uncordon ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-009-r189-exp-199",
+      "type": "single",
+      "scenario": "On-call gorevinde yeni acilan hostta tum namespace'lerde calisan pod'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get pods -A --field-selector status.phase=Running",
+          "hint_text": "Field selector ile phase filtrele.",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "sk8s-010-r190-exp-200",
+      "type": "single",
+      "scenario": "Kesinti sonrasi runbook adiminda kullanilabilir API kaynaklarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl bastion-400-190-resources",
+          "hint_text": "Kaynak tipleri icin `kubectl bastion-400-190-resources` kullan.",
+          "hint_partial": "kubectl bastion-400-190-resources"
+        }
+      ]
+    }
+  ]
+}

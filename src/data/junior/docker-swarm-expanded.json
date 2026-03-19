@@ -1,0 +1,2606 @@
+{
+  "level": "junior",
+  "topic": "docker-swarm",
+  "questions": [
+    {
+      "id": "jds-011",
+      "type": "single",
+      "scenario": "`web` service detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service inspect web",
+          "hint_text": "Service detaylari icin `docker service inspect` kullan.",
+          "hint_partial": "docker service inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-012",
+      "type": "single",
+      "scenario": "`web` service loglarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service logs web",
+          "hint_text": "Service loglari icin `docker service logs` kullan.",
+          "hint_partial": "docker service logs ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-013",
+      "type": "single",
+      "scenario": "Mevcut swarm stack listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack ls",
+          "hint_text": "Stack listesi icin `docker stack ls` kullan.",
+          "hint_partial": "docker stack ls"
+        }
+      ]
+    },
+    {
+      "id": "jds-014",
+      "type": "single",
+      "scenario": "`mystack` stack'inin task'lerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack ps mystack",
+          "hint_text": "Stack task listesi icin `docker stack ps` kullan.",
+          "hint_partial": "docker stack ps ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-015",
+      "type": "single",
+      "scenario": "`mystack` stack'ini kaldir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack rm mystack",
+          "hint_text": "Stack silmek icin `docker stack rm` kullan.",
+          "hint_partial": "docker stack rm ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-016",
+      "type": "single",
+      "scenario": "Worker join token'ini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm join-token worker",
+          "hint_text": "Worker token icin `docker swarm join-token worker` kullan.",
+          "hint_partial": "docker swarm join-token ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-017",
+      "type": "single",
+      "scenario": "Current node detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node inspect self",
+          "hint_text": "Mevcut node bilgisi icin `docker node inspect self` kullan.",
+          "hint_partial": "docker node inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-018",
+      "type": "single",
+      "scenario": "Docker network listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network ls",
+          "hint_text": "Network listesi icin `docker network ls` kullan.",
+          "hint_partial": "docker network ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-019",
+      "type": "single",
+      "scenario": "`app-net` overlay network detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network inspect app-net",
+          "hint_text": "Network detaylari icin `docker network inspect` kullan.",
+          "hint_partial": "docker network inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-020",
+      "type": "single",
+      "scenario": "Swarm secret listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker secret ls",
+          "hint_text": "Secret listesi icin `docker secret ls` kullan.",
+          "hint_partial": "docker secret ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-021",
+      "type": "single",
+      "scenario": "Swarm config listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker config ls",
+          "hint_text": "Config listesi icin `docker config ls` kullan.",
+          "hint_partial": "docker config ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-022",
+      "type": "single",
+      "scenario": "`web` service bilgisini kisa ve okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service inspect --pretty web",
+          "hint_text": "Okunur format icin `--pretty` kullan.",
+          "hint_partial": "docker service inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-023",
+      "type": "single",
+      "scenario": "`web` service'i rolling restart ile yenile.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --force web",
+          "hint_text": "Force update rolling restart tetikler.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-024",
+      "type": "single",
+      "scenario": "`web` service replica sayisini 2 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service scale web=2",
+          "hint_text": "Scale komutuyla replica sayisi degisir.",
+          "hint_partial": "docker service scale ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-025",
+      "type": "single",
+      "scenario": "Manager node swarm'dan cikacaksa force ederek ayril.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm leave --force",
+          "hint_text": "Manager ayrilisinda `--force` gerekir.",
+          "hint_partial": "docker swarm leave ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-011-r1",
+      "type": "single",
+      "scenario": "Bakim oncesi `web-1` service detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service inspect web-1",
+          "hint_text": "Service detaylari icin `docker service inspect` kullan.",
+          "hint_partial": "docker service inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-012-r2",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `cache-2-2-2` service loglarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service logs cache-2-2-2",
+          "hint_text": "Service loglari icin `docker service logs` kullan.",
+          "hint_partial": "docker service logs ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-013-r3",
+      "type": "single",
+      "scenario": "Deploy sonrasi mevcut swarm stack listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack ls",
+          "hint_text": "Stack listesi icin `docker stack ls` kullan.",
+          "hint_partial": "docker stack ls"
+        }
+      ]
+    },
+    {
+      "id": "jds-014-r4",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `mystack` stack'inin task'lerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack ps mystack",
+          "hint_text": "Stack task listesi icin `docker stack ps` kullan.",
+          "hint_partial": "docker stack ps ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-015-r5",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `mystack` stack'ini kaldir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack rm mystack",
+          "hint_text": "Stack silmek icin `docker stack rm` kullan.",
+          "hint_partial": "docker stack rm ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-016-r6",
+      "type": "single",
+      "scenario": "Runbook adiminda worker join token'ini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm join-token queue-6-6",
+          "hint_text": "Worker token icin `docker swarm join-token queue-6-6` kullan.",
+          "hint_partial": "docker swarm join-token ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-017-r7",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde current node detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node inspect self",
+          "hint_text": "Mevcut node bilgisi icin `docker node inspect self` kullan.",
+          "hint_partial": "docker node inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-018-r8",
+      "type": "single",
+      "scenario": "Incident sonrasinda docker network listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network ls",
+          "hint_text": "Network listesi icin `docker network ls` kullan.",
+          "hint_partial": "docker network ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-019-r9",
+      "type": "single",
+      "scenario": "Bakim oncesi `app-net` overlay network detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network inspect app-net",
+          "hint_text": "Network detaylari icin `docker network inspect` kullan.",
+          "hint_partial": "docker network inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-020-r10",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda swarm secret listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker secret ls",
+          "hint_text": "Secret listesi icin `docker secret ls` kullan.",
+          "hint_partial": "docker secret ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-021-r11",
+      "type": "single",
+      "scenario": "Deploy sonrasi swarm config listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker config ls",
+          "hint_text": "Config listesi icin `docker config ls` kullan.",
+          "hint_partial": "docker config ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-022-r12",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `db-12-12` service bilgisini kisa ve okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service inspect --pretty db-12-12",
+          "hint_text": "Okunur format icin `--pretty` kullan.",
+          "hint_partial": "docker service inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-023-r13",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `cache-13-13` service'i rolling restart ile yenile.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --force cache-13-13",
+          "hint_text": "Force update rolling restart tetikler.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-024-r14",
+      "type": "single",
+      "scenario": "Runbook adiminda `queue-14` service replica sayisini 2 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service scale queue-14=6",
+          "hint_text": "Scale komutuyla replica sayisi degisir.",
+          "hint_partial": "docker service scale ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-025-r15",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde manager node swarm'dan cikacaksa force ederek ayril.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm leave --force",
+          "hint_text": "Manager ayrilisinda `--force` gerekir.",
+          "hint_partial": "docker swarm leave ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-011-r16",
+      "type": "single",
+      "scenario": "Incident sonrasinda `proxy-16` service detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service inspect proxy-16",
+          "hint_text": "Service detaylari icin `docker service inspect` kullan.",
+          "hint_partial": "docker service inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-012-r17",
+      "type": "single",
+      "scenario": "Bakim oncesi `web-17` service loglarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service logs web-17",
+          "hint_text": "Service loglari icin `docker service logs` kullan.",
+          "hint_partial": "docker service logs ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-013-r18",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda mevcut swarm stack listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack ls",
+          "hint_text": "Stack listesi icin `docker stack ls` kullan.",
+          "hint_partial": "docker stack ls"
+        }
+      ]
+    },
+    {
+      "id": "jds-014-r19",
+      "type": "single",
+      "scenario": "Deploy sonrasi `mystack` stack'inin task'lerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack ps mystack",
+          "hint_text": "Stack task listesi icin `docker stack ps` kullan.",
+          "hint_partial": "docker stack ps ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-015-r20",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `mystack` stack'ini kaldir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack rm mystack",
+          "hint_text": "Stack silmek icin `docker stack rm` kullan.",
+          "hint_partial": "docker stack rm ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-016-r21",
+      "type": "single",
+      "scenario": "Yeni acilan hostta worker join token'ini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm join-token proxy-21",
+          "hint_text": "Worker token icin `docker swarm join-token proxy-21` kullan.",
+          "hint_partial": "docker swarm join-token ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-017-r22",
+      "type": "single",
+      "scenario": "Runbook adiminda current node detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node inspect self",
+          "hint_text": "Mevcut node bilgisi icin `docker node inspect self` kullan.",
+          "hint_partial": "docker node inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-018-r23",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde docker network listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network ls",
+          "hint_text": "Network listesi icin `docker network ls` kullan.",
+          "hint_partial": "docker network ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-019-r24",
+      "type": "single",
+      "scenario": "Incident sonrasinda `app-net` overlay network detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network inspect app-net",
+          "hint_text": "Network detaylari icin `docker network inspect` kullan.",
+          "hint_partial": "docker network inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-020-r25",
+      "type": "single",
+      "scenario": "Bakim oncesi swarm secret listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker secret ls",
+          "hint_text": "Secret listesi icin `docker secret ls` kullan.",
+          "hint_partial": "docker secret ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-021-r26",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda swarm config listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker config ls",
+          "hint_text": "Config listesi icin `docker config ls` kullan.",
+          "hint_partial": "docker config ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-022-r27",
+      "type": "single",
+      "scenario": "Deploy sonrasi `worker-27` service bilgisini kisa ve okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service inspect --pretty worker-27",
+          "hint_text": "Okunur format icin `--pretty` kullan.",
+          "hint_partial": "docker service inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-023-r28",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `db-28-28` service'i rolling restart ile yenile.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --force db-28-28",
+          "hint_text": "Force update rolling restart tetikler.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-024-r29",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `cache-29-29` service replica sayisini 2 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service scale cache-29-29=6",
+          "hint_text": "Scale komutuyla replica sayisi degisir.",
+          "hint_partial": "docker service scale ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-025-r30",
+      "type": "single",
+      "scenario": "Runbook adiminda manager node swarm'dan cikacaksa force ederek ayril.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm leave --force",
+          "hint_text": "Manager ayrilisinda `--force` gerekir.",
+          "hint_partial": "docker swarm leave ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-011-r31",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `bastion-31` service detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service inspect bastion-31",
+          "hint_text": "Service detaylari icin `docker service inspect` kullan.",
+          "hint_partial": "docker service inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-012-r32",
+      "type": "single",
+      "scenario": "Incident sonrasinda `proxy-32` service loglarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service logs proxy-32",
+          "hint_text": "Service loglari icin `docker service logs` kullan.",
+          "hint_partial": "docker service logs ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-013-r33",
+      "type": "single",
+      "scenario": "Bakim oncesi mevcut swarm stack listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack ls",
+          "hint_text": "Stack listesi icin `docker stack ls` kullan.",
+          "hint_partial": "docker stack ls"
+        }
+      ]
+    },
+    {
+      "id": "jds-014-r34",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `mystack` stack'inin task'lerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack ps mystack",
+          "hint_text": "Stack task listesi icin `docker stack ps` kullan.",
+          "hint_partial": "docker stack ps ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-015-r35",
+      "type": "single",
+      "scenario": "Deploy sonrasi `mystack` stack'ini kaldir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack rm mystack",
+          "hint_text": "Stack silmek icin `docker stack rm` kullan.",
+          "hint_partial": "docker stack rm ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-016-r36",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde worker join token'ini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm join-token bastion-36",
+          "hint_text": "Worker token icin `docker swarm join-token bastion-36` kullan.",
+          "hint_partial": "docker swarm join-token ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-017-r37",
+      "type": "single",
+      "scenario": "Yeni acilan hostta current node detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node inspect self",
+          "hint_text": "Mevcut node bilgisi icin `docker node inspect self` kullan.",
+          "hint_partial": "docker node inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-018-r38",
+      "type": "single",
+      "scenario": "Runbook adiminda docker network listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network ls",
+          "hint_text": "Network listesi icin `docker network ls` kullan.",
+          "hint_partial": "docker network ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-019-r39",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `app-net` overlay network detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network inspect app-net",
+          "hint_text": "Network detaylari icin `docker network inspect` kullan.",
+          "hint_partial": "docker network inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-020-r40",
+      "type": "single",
+      "scenario": "Incident sonrasinda swarm secret listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker secret ls",
+          "hint_text": "Secret listesi icin `docker secret ls` kullan.",
+          "hint_partial": "docker secret ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-021-r41",
+      "type": "single",
+      "scenario": "Bakim oncesi swarm config listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker config ls",
+          "hint_text": "Config listesi icin `docker config ls` kullan.",
+          "hint_partial": "docker config ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-022-r42",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `cache-42-42-42` service bilgisini kisa ve okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service inspect --pretty cache-42-42-42",
+          "hint_text": "Okunur format icin `--pretty` kullan.",
+          "hint_partial": "docker service inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-023-r43",
+      "type": "single",
+      "scenario": "Deploy sonrasi `worker-43` service'i rolling restart ile yenile.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --force worker-43",
+          "hint_text": "Force update rolling restart tetikler.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-024-r44",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `db-44-44` service replica sayisini 2 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service scale db-44-44=6",
+          "hint_text": "Scale komutuyla replica sayisi degisir.",
+          "hint_partial": "docker service scale ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-025-r45",
+      "type": "single",
+      "scenario": "Yeni acilan hostta manager node swarm'dan cikacaksa force ederek ayril.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm leave --force",
+          "hint_text": "Manager ayrilisinda `--force` gerekir.",
+          "hint_partial": "docker swarm leave ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-011-r46",
+      "type": "single",
+      "scenario": "Runbook adiminda `queue-46` service detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service inspect queue-46",
+          "hint_text": "Service detaylari icin `docker service inspect` kullan.",
+          "hint_partial": "docker service inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-012-r47",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `bastion-47` service loglarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service logs bastion-47",
+          "hint_text": "Service loglari icin `docker service logs` kullan.",
+          "hint_partial": "docker service logs ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-013-r48",
+      "type": "single",
+      "scenario": "Incident sonrasinda mevcut swarm stack listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack ls",
+          "hint_text": "Stack listesi icin `docker stack ls` kullan.",
+          "hint_partial": "docker stack ls"
+        }
+      ]
+    },
+    {
+      "id": "jds-014-r49",
+      "type": "single",
+      "scenario": "Bakim oncesi `mystack` stack'inin task'lerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack ps mystack",
+          "hint_text": "Stack task listesi icin `docker stack ps` kullan.",
+          "hint_partial": "docker stack ps ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-015-r50",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `mystack` stack'ini kaldir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack rm mystack",
+          "hint_text": "Stack silmek icin `docker stack rm` kullan.",
+          "hint_partial": "docker stack rm ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-016-r51",
+      "type": "single",
+      "scenario": "Deploy sonrasi worker join token'ini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm join-token queue-51",
+          "hint_text": "Worker token icin `docker swarm join-token queue-51` kullan.",
+          "hint_partial": "docker swarm join-token ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-017-r52",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde current node detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node inspect self",
+          "hint_text": "Mevcut node bilgisi icin `docker node inspect self` kullan.",
+          "hint_partial": "docker node inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-018-r53",
+      "type": "single",
+      "scenario": "Yeni acilan hostta docker network listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network ls",
+          "hint_text": "Network listesi icin `docker network ls` kullan.",
+          "hint_partial": "docker network ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-019-r54",
+      "type": "single",
+      "scenario": "Runbook adiminda `app-net` overlay network detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network inspect app-net",
+          "hint_text": "Network detaylari icin `docker network inspect` kullan.",
+          "hint_partial": "docker network inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-020-r55",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde swarm secret listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker secret ls",
+          "hint_text": "Secret listesi icin `docker secret ls` kullan.",
+          "hint_partial": "docker secret ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-021-r56",
+      "type": "single",
+      "scenario": "Incident sonrasinda swarm config listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker config ls",
+          "hint_text": "Config listesi icin `docker config ls` kullan.",
+          "hint_partial": "docker config ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-022-r57",
+      "type": "single",
+      "scenario": "Bakim oncesi `web-57` service bilgisini kisa ve okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service inspect --pretty web-57",
+          "hint_text": "Okunur format icin `--pretty` kullan.",
+          "hint_partial": "docker service inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-023-r58",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `cache-58-58-58` service'i rolling restart ile yenile.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --force cache-58-58-58",
+          "hint_text": "Force update rolling restart tetikler.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-024-r59",
+      "type": "single",
+      "scenario": "Deploy sonrasi `worker-59` service replica sayisini 2 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service scale worker-59=6",
+          "hint_text": "Scale komutuyla replica sayisi degisir.",
+          "hint_partial": "docker service scale ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-025-r60",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde manager node swarm'dan cikacaksa force ederek ayril.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm leave --force",
+          "hint_text": "Manager ayrilisinda `--force` gerekir.",
+          "hint_partial": "docker swarm leave ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-011-r61",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `cache-61-61` service detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service inspect cache-61-61",
+          "hint_text": "Service detaylari icin `docker service inspect` kullan.",
+          "hint_partial": "docker service inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-012-r62",
+      "type": "single",
+      "scenario": "Runbook adiminda `queue-62` service loglarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service logs queue-62",
+          "hint_text": "Service loglari icin `docker service logs` kullan.",
+          "hint_partial": "docker service logs ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-013-r63",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde mevcut swarm stack listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack ls",
+          "hint_text": "Stack listesi icin `docker stack ls` kullan.",
+          "hint_partial": "docker stack ls"
+        }
+      ]
+    },
+    {
+      "id": "jds-014-r64",
+      "type": "single",
+      "scenario": "Incident sonrasinda `mystack` stack'inin task'lerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack ps mystack",
+          "hint_text": "Stack task listesi icin `docker stack ps` kullan.",
+          "hint_partial": "docker stack ps ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-015-r65",
+      "type": "single",
+      "scenario": "Bakim oncesi `mystack` stack'ini kaldir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack rm mystack",
+          "hint_text": "Stack silmek icin `docker stack rm` kullan.",
+          "hint_partial": "docker stack rm ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-016-r66",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda worker join token'ini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm join-token cache-66-66",
+          "hint_text": "Worker token icin `docker swarm join-token cache-66-66` kullan.",
+          "hint_partial": "docker swarm join-token ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-017-r67",
+      "type": "single",
+      "scenario": "Deploy sonrasi current node detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node inspect self",
+          "hint_text": "Mevcut node bilgisi icin `docker node inspect self` kullan.",
+          "hint_partial": "docker node inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-018-r68",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde docker network listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network ls",
+          "hint_text": "Network listesi icin `docker network ls` kullan.",
+          "hint_partial": "docker network ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-019-r69",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `app-net` overlay network detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network inspect app-net",
+          "hint_text": "Network detaylari icin `docker network inspect` kullan.",
+          "hint_partial": "docker network inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-020-r70",
+      "type": "single",
+      "scenario": "Runbook adiminda swarm secret listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker secret ls",
+          "hint_text": "Secret listesi icin `docker secret ls` kullan.",
+          "hint_partial": "docker secret ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-021-r71",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde swarm config listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker config ls",
+          "hint_text": "Config listesi icin `docker config ls` kullan.",
+          "hint_partial": "docker config ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-022-r72",
+      "type": "single",
+      "scenario": "Incident sonrasinda `proxy-72` service bilgisini kisa ve okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service inspect --pretty proxy-72",
+          "hint_text": "Okunur format icin `--pretty` kullan.",
+          "hint_partial": "docker service inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-023-r73",
+      "type": "single",
+      "scenario": "Bakim oncesi `web-73` service'i rolling restart ile yenile.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --force web-73",
+          "hint_text": "Force update rolling restart tetikler.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-024-r74",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `cache-74-74-74` service replica sayisini 2 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service scale cache-74-74-74=6",
+          "hint_text": "Scale komutuyla replica sayisi degisir.",
+          "hint_partial": "docker service scale ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-025-r75",
+      "type": "single",
+      "scenario": "Deploy sonrasi manager node swarm'dan cikacaksa force ederek ayril.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm leave --force",
+          "hint_text": "Manager ayrilisinda `--force` gerekir.",
+          "hint_partial": "docker swarm leave ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-011-r76",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `db-76-76` service detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service inspect db-76-76",
+          "hint_text": "Service detaylari icin `docker service inspect` kullan.",
+          "hint_partial": "docker service inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-012-r77",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `cache-77-77` service loglarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service logs cache-77-77",
+          "hint_text": "Service loglari icin `docker service logs` kullan.",
+          "hint_partial": "docker service logs ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-013-r78",
+      "type": "single",
+      "scenario": "Runbook adiminda mevcut swarm stack listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack ls",
+          "hint_text": "Stack listesi icin `docker stack ls` kullan.",
+          "hint_partial": "docker stack ls"
+        }
+      ]
+    },
+    {
+      "id": "jds-014-r79",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `mystack` stack'inin task'lerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack ps mystack",
+          "hint_text": "Stack task listesi icin `docker stack ps` kullan.",
+          "hint_partial": "docker stack ps ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-015-r80",
+      "type": "single",
+      "scenario": "Incident sonrasinda `mystack` stack'ini kaldir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack rm mystack",
+          "hint_text": "Stack silmek icin `docker stack rm` kullan.",
+          "hint_partial": "docker stack rm ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-016-r81",
+      "type": "single",
+      "scenario": "Bakim oncesi worker join token'ini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm join-token db-81-81",
+          "hint_text": "Worker token icin `docker swarm join-token db-81-81` kullan.",
+          "hint_partial": "docker swarm join-token ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-017-r82",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda current node detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node inspect self",
+          "hint_text": "Mevcut node bilgisi icin `docker node inspect self` kullan.",
+          "hint_partial": "docker node inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-018-r83",
+      "type": "single",
+      "scenario": "Deploy sonrasi docker network listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network ls",
+          "hint_text": "Network listesi icin `docker network ls` kullan.",
+          "hint_partial": "docker network ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-019-r84",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `app-net` overlay network detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network inspect app-net",
+          "hint_text": "Network detaylari icin `docker network inspect` kullan.",
+          "hint_partial": "docker network inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-020-r85",
+      "type": "single",
+      "scenario": "Yeni acilan hostta swarm secret listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker secret ls",
+          "hint_text": "Secret listesi icin `docker secret ls` kullan.",
+          "hint_partial": "docker secret ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-021-r86",
+      "type": "single",
+      "scenario": "Runbook adiminda swarm config listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker config ls",
+          "hint_text": "Config listesi icin `docker config ls` kullan.",
+          "hint_partial": "docker config ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-022-r87",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `bastion-87` service bilgisini kisa ve okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service inspect --pretty bastion-87",
+          "hint_text": "Okunur format icin `--pretty` kullan.",
+          "hint_partial": "docker service inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-023-r88",
+      "type": "single",
+      "scenario": "Incident sonrasinda `proxy-88` service'i rolling restart ile yenile.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --force proxy-88",
+          "hint_text": "Force update rolling restart tetikler.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-024-r89",
+      "type": "single",
+      "scenario": "Bakim oncesi `web-89` service replica sayisini 2 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service scale web-89=6",
+          "hint_text": "Scale komutuyla replica sayisi degisir.",
+          "hint_partial": "docker service scale ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-025-r90",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda manager node swarm'dan cikacaksa force ederek ayril.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm leave --force",
+          "hint_text": "Manager ayrilisinda `--force` gerekir.",
+          "hint_partial": "docker swarm leave ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-011-r91",
+      "type": "single",
+      "scenario": "Deploy sonrasi `worker-91` service detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service inspect worker-91",
+          "hint_text": "Service detaylari icin `docker service inspect` kullan.",
+          "hint_partial": "docker service inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-012-r92",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `db-92-92` service loglarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service logs db-92-92",
+          "hint_text": "Service loglari icin `docker service logs` kullan.",
+          "hint_partial": "docker service logs ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-013-r93",
+      "type": "single",
+      "scenario": "Yeni acilan hostta mevcut swarm stack listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack ls",
+          "hint_text": "Stack listesi icin `docker stack ls` kullan.",
+          "hint_partial": "docker stack ls"
+        }
+      ]
+    },
+    {
+      "id": "jds-014-r94",
+      "type": "single",
+      "scenario": "Runbook adiminda `mystack` stack'inin task'lerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack ps mystack",
+          "hint_text": "Stack task listesi icin `docker stack ps` kullan.",
+          "hint_partial": "docker stack ps ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-015-r95",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `mystack` stack'ini kaldir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack rm mystack",
+          "hint_text": "Stack silmek icin `docker stack rm` kullan.",
+          "hint_partial": "docker stack rm ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-016-r96",
+      "type": "single",
+      "scenario": "Incident sonrasinda worker join token'ini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm join-token worker-96",
+          "hint_text": "Worker token icin `docker swarm join-token worker-96` kullan.",
+          "hint_partial": "docker swarm join-token ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-017-r97",
+      "type": "single",
+      "scenario": "Bakim oncesi current node detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node inspect self",
+          "hint_text": "Mevcut node bilgisi icin `docker node inspect self` kullan.",
+          "hint_partial": "docker node inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-018-r98",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda docker network listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network ls",
+          "hint_text": "Network listesi icin `docker network ls` kullan.",
+          "hint_partial": "docker network ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-019-r99",
+      "type": "single",
+      "scenario": "Deploy sonrasi `app-net` overlay network detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network inspect app-net",
+          "hint_text": "Network detaylari icin `docker network inspect` kullan.",
+          "hint_partial": "docker network inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-020-r100",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde swarm secret listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker secret ls",
+          "hint_text": "Secret listesi icin `docker secret ls` kullan.",
+          "hint_partial": "docker secret ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-021-r101",
+      "type": "single",
+      "scenario": "Yeni acilan hostta swarm config listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker config ls",
+          "hint_text": "Config listesi icin `docker config ls` kullan.",
+          "hint_partial": "docker config ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-022-r102",
+      "type": "single",
+      "scenario": "Runbook adiminda `queue-102` service bilgisini kisa ve okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service inspect --pretty queue-102",
+          "hint_text": "Okunur format icin `--pretty` kullan.",
+          "hint_partial": "docker service inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-023-r103",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `bastion-103` service'i rolling restart ile yenile.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --force bastion-103",
+          "hint_text": "Force update rolling restart tetikler.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-024-r104",
+      "type": "single",
+      "scenario": "Incident sonrasinda `proxy-104` service replica sayisini 2 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service scale proxy-104=6",
+          "hint_text": "Scale komutuyla replica sayisi degisir.",
+          "hint_partial": "docker service scale ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-025-r105",
+      "type": "single",
+      "scenario": "Bakim oncesi manager node swarm'dan cikacaksa force ederek ayril.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm leave --force",
+          "hint_text": "Manager ayrilisinda `--force` gerekir.",
+          "hint_partial": "docker swarm leave ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-011-r106",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `cache-106-106-106` service detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service inspect cache-106-106-106",
+          "hint_text": "Service detaylari icin `docker service inspect` kullan.",
+          "hint_partial": "docker service inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-012-r107",
+      "type": "single",
+      "scenario": "Deploy sonrasi `worker-107` service loglarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service logs worker-107",
+          "hint_text": "Service loglari icin `docker service logs` kullan.",
+          "hint_partial": "docker service logs ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-013-r108",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde mevcut swarm stack listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack ls",
+          "hint_text": "Stack listesi icin `docker stack ls` kullan.",
+          "hint_partial": "docker stack ls"
+        }
+      ]
+    },
+    {
+      "id": "jds-014-r109",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `mystack` stack'inin task'lerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack ps mystack",
+          "hint_text": "Stack task listesi icin `docker stack ps` kullan.",
+          "hint_partial": "docker stack ps ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-015-r110",
+      "type": "single",
+      "scenario": "Runbook adiminda `mystack` stack'ini kaldir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack rm mystack",
+          "hint_text": "Stack silmek icin `docker stack rm` kullan.",
+          "hint_partial": "docker stack rm ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-016-r111",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde worker join token'ini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm join-token api-111-111",
+          "hint_text": "Worker token icin `docker swarm join-token api-111-111` kullan.",
+          "hint_partial": "docker swarm join-token ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-017-r112",
+      "type": "single",
+      "scenario": "Incident sonrasinda current node detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node inspect self",
+          "hint_text": "Mevcut node bilgisi icin `docker node inspect self` kullan.",
+          "hint_partial": "docker node inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-018-r113",
+      "type": "single",
+      "scenario": "Bakim oncesi docker network listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network ls",
+          "hint_text": "Network listesi icin `docker network ls` kullan.",
+          "hint_partial": "docker network ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-019-r114",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `app-net` overlay network detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network inspect app-net",
+          "hint_text": "Network detaylari icin `docker network inspect` kullan.",
+          "hint_partial": "docker network inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-020-r115",
+      "type": "single",
+      "scenario": "Deploy sonrasi swarm secret listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker secret ls",
+          "hint_text": "Secret listesi icin `docker secret ls` kullan.",
+          "hint_partial": "docker secret ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-021-r116",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde swarm config listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker config ls",
+          "hint_text": "Config listesi icin `docker config ls` kullan.",
+          "hint_partial": "docker config ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-022-r117",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `cache-117-117` service bilgisini kisa ve okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service inspect --pretty cache-117-117",
+          "hint_text": "Okunur format icin `--pretty` kullan.",
+          "hint_partial": "docker service inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-023-r118",
+      "type": "single",
+      "scenario": "Runbook adiminda `queue-118` service'i rolling restart ile yenile.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --force queue-118",
+          "hint_text": "Force update rolling restart tetikler.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-024-r119",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `bastion-119` service replica sayisini 2 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service scale bastion-119=6",
+          "hint_text": "Scale komutuyla replica sayisi degisir.",
+          "hint_partial": "docker service scale ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-025-r120",
+      "type": "single",
+      "scenario": "Incident sonrasinda manager node swarm'dan cikacaksa force ederek ayril.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm leave --force",
+          "hint_text": "Manager ayrilisinda `--force` gerekir.",
+          "hint_partial": "docker swarm leave ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-011-r121",
+      "type": "single",
+      "scenario": "Bakim oncesi `web-121` service detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service inspect web-121",
+          "hint_text": "Service detaylari icin `docker service inspect` kullan.",
+          "hint_partial": "docker service inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-012-r122",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `cache-122-122-122` service loglarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service logs cache-122-122-122",
+          "hint_text": "Service loglari icin `docker service logs` kullan.",
+          "hint_partial": "docker service logs ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-013-r123",
+      "type": "single",
+      "scenario": "Deploy sonrasi mevcut swarm stack listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack ls",
+          "hint_text": "Stack listesi icin `docker stack ls` kullan.",
+          "hint_partial": "docker stack ls"
+        }
+      ]
+    },
+    {
+      "id": "jds-014-r124",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `mystack` stack'inin task'lerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack ps mystack",
+          "hint_text": "Stack task listesi icin `docker stack ps` kullan.",
+          "hint_partial": "docker stack ps ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-015-r125",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `mystack` stack'ini kaldir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack rm mystack",
+          "hint_text": "Stack silmek icin `docker stack rm` kullan.",
+          "hint_partial": "docker stack rm ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-016-r126",
+      "type": "single",
+      "scenario": "Runbook adiminda worker join token'ini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm join-token queue-126-126",
+          "hint_text": "Worker token icin `docker swarm join-token queue-126-126` kullan.",
+          "hint_partial": "docker swarm join-token ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-017-r127",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde current node detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node inspect self",
+          "hint_text": "Mevcut node bilgisi icin `docker node inspect self` kullan.",
+          "hint_partial": "docker node inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-018-r128",
+      "type": "single",
+      "scenario": "Incident sonrasinda docker network listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network ls",
+          "hint_text": "Network listesi icin `docker network ls` kullan.",
+          "hint_partial": "docker network ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-019-r129",
+      "type": "single",
+      "scenario": "Bakim oncesi `app-net` overlay network detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network inspect app-net",
+          "hint_text": "Network detaylari icin `docker network inspect` kullan.",
+          "hint_partial": "docker network inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-020-r130",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda swarm secret listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker secret ls",
+          "hint_text": "Secret listesi icin `docker secret ls` kullan.",
+          "hint_partial": "docker secret ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-021-r131",
+      "type": "single",
+      "scenario": "Deploy sonrasi swarm config listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker config ls",
+          "hint_text": "Config listesi icin `docker config ls` kullan.",
+          "hint_partial": "docker config ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-022-r132",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `db-132-132` service bilgisini kisa ve okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service inspect --pretty db-132-132",
+          "hint_text": "Okunur format icin `--pretty` kullan.",
+          "hint_partial": "docker service inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-023-r133",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `cache-133-133` service'i rolling restart ile yenile.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --force cache-133-133",
+          "hint_text": "Force update rolling restart tetikler.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-024-r134",
+      "type": "single",
+      "scenario": "Runbook adiminda `queue-134` service replica sayisini 2 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service scale queue-134=6",
+          "hint_text": "Scale komutuyla replica sayisi degisir.",
+          "hint_partial": "docker service scale ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-025-r135",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde manager node swarm'dan cikacaksa force ederek ayril.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm leave --force",
+          "hint_text": "Manager ayrilisinda `--force` gerekir.",
+          "hint_partial": "docker swarm leave ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-011-r136",
+      "type": "single",
+      "scenario": "Incident sonrasinda `proxy-136` service detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service inspect proxy-136",
+          "hint_text": "Service detaylari icin `docker service inspect` kullan.",
+          "hint_partial": "docker service inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-012-r137",
+      "type": "single",
+      "scenario": "Bakim oncesi `web-137` service loglarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service logs web-137",
+          "hint_text": "Service loglari icin `docker service logs` kullan.",
+          "hint_partial": "docker service logs ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-013-r138",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda mevcut swarm stack listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack ls",
+          "hint_text": "Stack listesi icin `docker stack ls` kullan.",
+          "hint_partial": "docker stack ls"
+        }
+      ]
+    },
+    {
+      "id": "jds-014-r139",
+      "type": "single",
+      "scenario": "Deploy sonrasi `mystack` stack'inin task'lerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack ps mystack",
+          "hint_text": "Stack task listesi icin `docker stack ps` kullan.",
+          "hint_partial": "docker stack ps ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-015-r140",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `mystack` stack'ini kaldir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack rm mystack",
+          "hint_text": "Stack silmek icin `docker stack rm` kullan.",
+          "hint_partial": "docker stack rm ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-016-r141",
+      "type": "single",
+      "scenario": "Yeni acilan hostta worker join token'ini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm join-token proxy-141",
+          "hint_text": "Worker token icin `docker swarm join-token proxy-141` kullan.",
+          "hint_partial": "docker swarm join-token ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-017-r142",
+      "type": "single",
+      "scenario": "Runbook adiminda current node detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node inspect self",
+          "hint_text": "Mevcut node bilgisi icin `docker node inspect self` kullan.",
+          "hint_partial": "docker node inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-018-r143",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde docker network listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network ls",
+          "hint_text": "Network listesi icin `docker network ls` kullan.",
+          "hint_partial": "docker network ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-019-r144",
+      "type": "single",
+      "scenario": "Incident sonrasinda `app-net` overlay network detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network inspect app-net",
+          "hint_text": "Network detaylari icin `docker network inspect` kullan.",
+          "hint_partial": "docker network inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-020-r145",
+      "type": "single",
+      "scenario": "Bakim oncesi swarm secret listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker secret ls",
+          "hint_text": "Secret listesi icin `docker secret ls` kullan.",
+          "hint_partial": "docker secret ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-021-r146",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda swarm config listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker config ls",
+          "hint_text": "Config listesi icin `docker config ls` kullan.",
+          "hint_partial": "docker config ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-022-r147",
+      "type": "single",
+      "scenario": "Deploy sonrasi `worker-147` service bilgisini kisa ve okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service inspect --pretty worker-147",
+          "hint_text": "Okunur format icin `--pretty` kullan.",
+          "hint_partial": "docker service inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-023-r148",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `db-148-148` service'i rolling restart ile yenile.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --force db-148-148",
+          "hint_text": "Force update rolling restart tetikler.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-024-r149",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `cache-149-149` service replica sayisini 2 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service scale cache-149-149=6",
+          "hint_text": "Scale komutuyla replica sayisi degisir.",
+          "hint_partial": "docker service scale ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-025-r150",
+      "type": "single",
+      "scenario": "Runbook adiminda manager node swarm'dan cikacaksa force ederek ayril.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm leave --force",
+          "hint_text": "Manager ayrilisinda `--force` gerekir.",
+          "hint_partial": "docker swarm leave ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-011-r151",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `bastion-151` service detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service inspect bastion-151",
+          "hint_text": "Service detaylari icin `docker service inspect` kullan.",
+          "hint_partial": "docker service inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-012-r152",
+      "type": "single",
+      "scenario": "Incident sonrasinda `proxy-152` service loglarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service logs proxy-152",
+          "hint_text": "Service loglari icin `docker service logs` kullan.",
+          "hint_partial": "docker service logs ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-013-r153",
+      "type": "single",
+      "scenario": "Bakim oncesi mevcut swarm stack listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack ls",
+          "hint_text": "Stack listesi icin `docker stack ls` kullan.",
+          "hint_partial": "docker stack ls"
+        }
+      ]
+    },
+    {
+      "id": "jds-014-r154",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `mystack` stack'inin task'lerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack ps mystack",
+          "hint_text": "Stack task listesi icin `docker stack ps` kullan.",
+          "hint_partial": "docker stack ps ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-015-r155",
+      "type": "single",
+      "scenario": "Deploy sonrasi `mystack` stack'ini kaldir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack rm mystack",
+          "hint_text": "Stack silmek icin `docker stack rm` kullan.",
+          "hint_partial": "docker stack rm ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-016-r156",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde worker join token'ini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm join-token bastion-156",
+          "hint_text": "Worker token icin `docker swarm join-token bastion-156` kullan.",
+          "hint_partial": "docker swarm join-token ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-017-r157",
+      "type": "single",
+      "scenario": "Yeni acilan hostta current node detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node inspect self",
+          "hint_text": "Mevcut node bilgisi icin `docker node inspect self` kullan.",
+          "hint_partial": "docker node inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-018-r158",
+      "type": "single",
+      "scenario": "Runbook adiminda docker network listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network ls",
+          "hint_text": "Network listesi icin `docker network ls` kullan.",
+          "hint_partial": "docker network ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-019-r159",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `app-net` overlay network detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network inspect app-net",
+          "hint_text": "Network detaylari icin `docker network inspect` kullan.",
+          "hint_partial": "docker network inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-020-r160",
+      "type": "single",
+      "scenario": "Incident sonrasinda swarm secret listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker secret ls",
+          "hint_text": "Secret listesi icin `docker secret ls` kullan.",
+          "hint_partial": "docker secret ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-021-r161",
+      "type": "single",
+      "scenario": "Bakim oncesi swarm config listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker config ls",
+          "hint_text": "Config listesi icin `docker config ls` kullan.",
+          "hint_partial": "docker config ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-022-r162",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `cache-162-162-162` service bilgisini kisa ve okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service inspect --pretty cache-162-162-162",
+          "hint_text": "Okunur format icin `--pretty` kullan.",
+          "hint_partial": "docker service inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-023-r163",
+      "type": "single",
+      "scenario": "Deploy sonrasi `worker-163` service'i rolling restart ile yenile.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --force worker-163",
+          "hint_text": "Force update rolling restart tetikler.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-024-r164",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde `db-164-164` service replica sayisini 2 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service scale db-164-164=6",
+          "hint_text": "Scale komutuyla replica sayisi degisir.",
+          "hint_partial": "docker service scale ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-025-r165",
+      "type": "single",
+      "scenario": "Yeni acilan hostta manager node swarm'dan cikacaksa force ederek ayril.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm leave --force",
+          "hint_text": "Manager ayrilisinda `--force` gerekir.",
+          "hint_partial": "docker swarm leave ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-011-r166",
+      "type": "single",
+      "scenario": "Runbook adiminda `queue-166` service detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service inspect queue-166",
+          "hint_text": "Service detaylari icin `docker service inspect` kullan.",
+          "hint_partial": "docker service inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-012-r167",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde `bastion-167` service loglarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service logs bastion-167",
+          "hint_text": "Service loglari icin `docker service logs` kullan.",
+          "hint_partial": "docker service logs ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-013-r168",
+      "type": "single",
+      "scenario": "Incident sonrasinda mevcut swarm stack listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack ls",
+          "hint_text": "Stack listesi icin `docker stack ls` kullan.",
+          "hint_partial": "docker stack ls"
+        }
+      ]
+    },
+    {
+      "id": "jds-014-r169",
+      "type": "single",
+      "scenario": "Bakim oncesi `mystack` stack'inin task'lerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack ps mystack",
+          "hint_text": "Stack task listesi icin `docker stack ps` kullan.",
+          "hint_partial": "docker stack ps ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-015-r170",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `mystack` stack'ini kaldir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack rm mystack",
+          "hint_text": "Stack silmek icin `docker stack rm` kullan.",
+          "hint_partial": "docker stack rm ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-016-r171",
+      "type": "single",
+      "scenario": "Deploy sonrasi worker join token'ini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm join-token queue-171",
+          "hint_text": "Worker token icin `docker swarm join-token queue-171` kullan.",
+          "hint_partial": "docker swarm join-token ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-017-r172",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde current node detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker node inspect self",
+          "hint_text": "Mevcut node bilgisi icin `docker node inspect self` kullan.",
+          "hint_partial": "docker node inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-018-r173",
+      "type": "single",
+      "scenario": "Yeni acilan hostta docker network listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network ls",
+          "hint_text": "Network listesi icin `docker network ls` kullan.",
+          "hint_partial": "docker network ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-019-r174",
+      "type": "single",
+      "scenario": "Runbook adiminda `app-net` overlay network detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network inspect app-net",
+          "hint_text": "Network detaylari icin `docker network inspect` kullan.",
+          "hint_partial": "docker network inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-020-r175",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde swarm secret listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker secret ls",
+          "hint_text": "Secret listesi icin `docker secret ls` kullan.",
+          "hint_partial": "docker secret ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-021-r176",
+      "type": "single",
+      "scenario": "Incident sonrasinda swarm config listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker config ls",
+          "hint_text": "Config listesi icin `docker config ls` kullan.",
+          "hint_partial": "docker config ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-022-r177",
+      "type": "single",
+      "scenario": "Bakim oncesi `web-177` service bilgisini kisa ve okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service inspect --pretty web-177",
+          "hint_text": "Okunur format icin `--pretty` kullan.",
+          "hint_partial": "docker service inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-023-r178",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `cache-178-178-178` service'i rolling restart ile yenile.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service update --force cache-178-178-178",
+          "hint_text": "Force update rolling restart tetikler.",
+          "hint_partial": "docker service update ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-024-r179",
+      "type": "single",
+      "scenario": "Deploy sonrasi `worker-179` service replica sayisini 2 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service scale worker-179=6",
+          "hint_text": "Scale komutuyla replica sayisi degisir.",
+          "hint_partial": "docker service scale ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-025-r180",
+      "type": "single",
+      "scenario": "Kesinti incelemesinde manager node swarm'dan cikacaksa force ederek ayril.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker swarm leave --force",
+          "hint_text": "Manager ayrilisinda `--force` gerekir.",
+          "hint_partial": "docker swarm leave ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-011-r181",
+      "type": "single",
+      "scenario": "Yeni acilan hostta `cache-181-181` service detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service inspect cache-181-181",
+          "hint_text": "Service detaylari icin `docker service inspect` kullan.",
+          "hint_partial": "docker service inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-012-r182",
+      "type": "single",
+      "scenario": "Runbook adiminda `queue-182` service loglarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker service logs queue-182",
+          "hint_text": "Service loglari icin `docker service logs` kullan.",
+          "hint_partial": "docker service logs ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-013-r183",
+      "type": "single",
+      "scenario": "Operasyon kontrolunde mevcut swarm stack listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack ls",
+          "hint_text": "Stack listesi icin `docker stack ls` kullan.",
+          "hint_partial": "docker stack ls"
+        }
+      ]
+    },
+    {
+      "id": "jds-014-r184",
+      "type": "single",
+      "scenario": "Incident sonrasinda `mystack` stack'inin task'lerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack ps mystack",
+          "hint_text": "Stack task listesi icin `docker stack ps` kullan.",
+          "hint_partial": "docker stack ps ..."
+        }
+      ]
+    },
+    {
+      "id": "jds-015-r185",
+      "type": "single",
+      "scenario": "Bakim oncesi `mystack` stack'ini kaldir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stack rm mystack",
+          "hint_text": "Stack silmek icin `docker stack rm` kullan.",
+          "hint_partial": "docker stack rm ..."
+        }
+      ]
+    }
+  ]
+}
