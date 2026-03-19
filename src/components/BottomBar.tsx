@@ -28,14 +28,16 @@ export function BottomBar({
           type="button"
           onClick={onHint}
           disabled={disabled}
+          title="Shortcut: ,"
           className="rounded-full border border-zinc-800 px-4 py-2 text-zinc-300 transition enabled:hover:border-emerald-500/40 enabled:hover:text-emerald-200 disabled:cursor-not-allowed disabled:text-zinc-700"
         >
-          [hint {Math.min(hintStage + 1, 2)}/2]
+          [hint {Math.min(hintStage + 1, 2)}/2 (,)]
         </button>
         <button
           type="button"
           onClick={onSkip}
           disabled={disabled}
+          title="No keyboard shortcut"
           className="rounded-full border border-zinc-800 px-4 py-2 text-zinc-300 transition enabled:hover:border-amber-500/40 enabled:hover:text-amber-200 disabled:cursor-not-allowed disabled:text-zinc-700"
         >
           [skip]
@@ -44,13 +46,14 @@ export function BottomBar({
           type="button"
           onClick={onToggleAnswer}
           disabled={disabled}
+          title="Shortcut: ."
           className={`rounded-full border px-4 py-2 transition disabled:cursor-not-allowed disabled:text-zinc-700 ${
             showAnswer
               ? "border-emerald-500/40 text-emerald-300"
               : "border-zinc-800 text-zinc-300 enabled:hover:border-emerald-500/40 enabled:hover:text-emerald-200"
           }`}
         >
-          [{showAnswer ? "hide answer" : "show answer"}]
+          [{showAnswer ? "hide answer" : "show answer"} (.)]
         </button>
       </div>
 

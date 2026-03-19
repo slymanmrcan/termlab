@@ -225,6 +225,13 @@ export function Terminal({
             />
             <span className="min-w-0 flex-1 bg-transparent text-emerald-200 outline-none placeholder:text-zinc-700 disabled:cursor-wait caret-transparent" />
           </label>
+          <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 text-[0.72rem] text-zinc-500">
+            <span>shortcuts:</span>
+            <span>. answer</span>
+            <span>, hint</span>
+            <span>tab topic</span>
+          </div>
+          <p className="mt-2 text-[0.72rem] text-zinc-600">Skip sadece butondan calisir. Kisayollar input bosken aktif olur.</p>
         </form>
       ) : null}
     </section>
