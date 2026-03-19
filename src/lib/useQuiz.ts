@@ -121,6 +121,8 @@ export function useQuiz() {
   const finished = totalQuestions > 0 && questionIndex >= totalQuestions;
   const currentQuestion = finished ? null : questionSet[questionIndex] ?? null;
   const currentStep = currentQuestion?.steps[stepIndex] ?? null;
+  const sessionClockKey = `${level}:${topic}:${sessionSeed}`;
+  const questionClockKey = `${level}:${topic}:${sessionSeed}:${questionIndex}`;
   const questionCursorKey = currentQuestion && currentStep
     ? `${level}:${topic}:${sessionSeed}:${questionIndex}:${stepIndex}:${currentStep.answer}`
     : null;
@@ -301,6 +303,8 @@ export function useQuiz() {
     progressCurrent: totalQuestions === 0 ? 0 : finished ? totalQuestions : questionIndex + 1,
     questionNumber: questionIndex + 1,
     stepNumber: stepIndex + 1,
+    sessionClockKey,
+    questionClockKey,
     questionCursorKey,
     topicCounts,
   };

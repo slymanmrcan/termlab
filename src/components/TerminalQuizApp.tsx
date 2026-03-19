@@ -77,9 +77,7 @@ export function TerminalQuizApp() {
         <Terminal
           level={quiz.level}
           topic={quiz.topic}
-          questionNumber={quiz.questionNumber}
           totalQuestions={quiz.totalQuestions}
-          stepNumber={quiz.stepNumber}
           currentQuestion={quiz.currentQuestion}
           currentStep={quiz.currentStep}
           transcript={quiz.transcript}
@@ -100,9 +98,11 @@ export function TerminalQuizApp() {
         />
 
         <BottomBar
+          key={quiz.questionClockKey}
           onHint={quiz.revealHint}
           onSkip={quiz.skipQuestion}
           onToggleAnswer={toggleAnswer}
+          timerRunning={!quiz.finished && !quiz.isLoading && !quiz.isEmpty && !quiz.loadError}
           progressCurrent={quiz.progressCurrent}
           progressTotal={quiz.totalQuestions}
           score={quiz.score}

@@ -4,14 +4,14 @@
 :root {
   --font-space-grotesk: "Space Grotesk";
   --font-ibm-plex-mono: "IBM Plex Mono";
-  --background: #020402;
-  --foreground: #d4d4d8;
-  --panel: #09090b;
-  --terminal-grid: rgba(34, 197, 94, 0.08);
-  --terminal-green: #86efac;
-  --terminal-green-strong: #4ade80;
-  --terminal-muted: #71717a;
-  --terminal-amber: #facc15;
+  --background: #070b0d;
+  --foreground: #dce2e6;
+  --panel: #0d1115;
+  --terminal-grid: rgba(94, 234, 212, 0.036);
+  --terminal-green: #9ae6b4;
+  --terminal-green-strong: #34d399;
+  --terminal-muted: #7f8592;
+  --terminal-amber: #f5c96c;
 }
 
 @theme inline {
@@ -35,9 +35,10 @@ body {
   color: var(--foreground);
   font-family: var(--font-space-grotesk), sans-serif;
   background-image:
-    radial-gradient(circle at top, rgba(34, 197, 94, 0.2), transparent 24%),
-    radial-gradient(circle at bottom right, rgba(20, 83, 45, 0.16), transparent 20%),
-    linear-gradient(180deg, rgba(6, 10, 8, 0.98), rgba(2, 4, 2, 1));
+    radial-gradient(circle at top left, rgba(16, 185, 129, 0.16), transparent 20%),
+    radial-gradient(circle at top right, rgba(56, 189, 248, 0.11), transparent 18%),
+    radial-gradient(circle at bottom, rgba(15, 23, 42, 0.28), transparent 30%),
+    linear-gradient(180deg, rgba(11, 15, 18, 0.98), rgba(7, 10, 12, 1));
 }
 
 code,
@@ -83,14 +84,25 @@ pre,
 
 .terminal-grid {
   background-image:
-    linear-gradient(rgba(34, 197, 94, 0.045) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(34, 197, 94, 0.04) 1px, transparent 1px);
+    linear-gradient(rgba(52, 211, 153, 0.028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(125, 211, 252, 0.02) 1px, transparent 1px);
   background-position: center;
-  background-size: 100% 28px, 28px 100%;
+  background-size: 100% 30px, 32px 100%;
 }
 
 .terminal-shell {
   position: relative;
+}
+
+.terminal-shell::before {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    inset 0 0 0 1px rgba(16, 185, 129, 0.03),
+    inset 0 -80px 100px rgba(0, 0, 0, 0.22);
 }
 
 .terminal-shell::after {
@@ -100,11 +112,12 @@ pre,
   content: "";
   background: linear-gradient(
     180deg,
-    rgba(255, 255, 255, 0.02),
-    transparent 16%,
-    transparent 84%,
-    rgba(16, 185, 129, 0.04)
+    rgba(255, 255, 255, 0.03),
+    transparent 12%,
+    transparent 88%,
+    rgba(16, 185, 129, 0.05)
   );
+  opacity: 0.9;
 }
 
 #root {
