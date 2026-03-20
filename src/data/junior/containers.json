@@ -3,2602 +3,327 @@
   "topic": "docker",
   "questions": [
     {
-      "id": "jctr-001",
+      "id": "jdkr2-001",
       "type": "single",
-      "scenario": "Çalışan container'ları listele.",
+      "scenario": "Image ID'lerini kısa formatta listele.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker ps",
-          "hint_text": "Aktif container listesi için `docker ps` kullan.",
-          "hint_partial": "docker ..."
+          "answer": "docker images -q",
+          "hint_text": "Sadece image ID'leri için `docker images -q` kullan.",
+          "hint_partial": "docker images ..."
         }
       ]
     },
     {
-      "id": "jctr-002",
+      "id": "jdkr2-002",
       "type": "single",
-      "scenario": "Local image listesini göster.",
+      "scenario": "web container'ının detaylı bilgisini göster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker images",
-          "hint_text": "Image listesini görmek için `docker images` kullan.",
-          "hint_partial": "docker ima..."
+          "answer": "docker inspect web",
+          "hint_text": "Container detaylarını görmek için `docker inspect <container>` kullan.",
+          "hint_partial": "docker inspect ..."
         }
       ]
     },
     {
-      "id": "jctr-003",
+      "id": "jdkr2-003",
       "type": "single",
-      "scenario": "web container'ının log output'unu göster.",
+      "scenario": "api container'ının detaylı bilgisini göster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker logs web",
-          "hint_text": "`docker logs` container log'larını verir.",
-          "hint_partial": "docker logs ..."
+          "answer": "docker inspect api",
+          "hint_text": "Container detaylarını görmek için `docker inspect <container>` kullan.",
+          "hint_partial": "docker inspect ..."
         }
       ]
     },
     {
-      "id": "jctr-004",
+      "id": "jdkr2-004",
       "type": "single",
-      "scenario": "web container'ını durdur.",
+      "scenario": "web container logs'unu canlı takip et.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker stop web",
-          "hint_text": "Container durdurmak için `docker stop` kullan.",
-          "hint_partial": "docker stop ..."
+          "answer": "docker logs -f web",
+          "hint_text": "Logs'u canlı izlemek için `docker logs -f <container>` kullan.",
+          "hint_partial": "docker logs -f ..."
         }
       ]
     },
     {
-      "id": "jctr-005",
+      "id": "jdkr2-005",
       "type": "single",
-      "scenario": "web container'ı içinde shell aç.",
+      "scenario": "worker container logs'unu canlı takip et.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker exec -it web sh",
-          "hint_text": "Container içine girmek için `docker exec -it` kullan.",
-          "hint_partial": "docker exec -it ..."
+          "answer": "docker logs -f worker",
+          "hint_text": "Logs'u canlı izlemek için `docker logs -f <container>` kullan.",
+          "hint_partial": "docker logs -f ..."
         }
       ]
     },
     {
-      "id": "jctr-006",
+      "id": "jdkr2-006",
       "type": "single",
-      "scenario": "Duran container'lar dahil tüm container'ları listele.",
+      "scenario": "web container'ını restart et.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker ps -a",
-          "hint_text": "Tüm container'lar için `docker ps -a` kullan.",
-          "hint_partial": "docker ps -a"
+          "answer": "docker restart web",
+          "hint_text": "Bir container'ı yeniden başlatmak için `docker restart <container>` kullan.",
+          "hint_partial": "docker restart ..."
         }
       ]
     },
     {
-      "id": "jctr-007",
+      "id": "jdkr2-007",
       "type": "single",
-      "scenario": "Docker versiyonunu göster.",
+      "scenario": "api container'ını restart et.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker version",
-          "hint_text": "Client ve server sürümü için `docker version` kullan.",
-          "hint_partial": "docker version"
+          "answer": "docker restart api",
+          "hint_text": "Bir container'ı yeniden başlatmak için `docker restart <container>` kullan.",
+          "hint_partial": "docker restart ..."
         }
       ]
     },
     {
-      "id": "jctr-008",
+      "id": "jdkr2-008",
       "type": "single",
-      "scenario": "hello-world image'ını indir.",
+      "scenario": "Geçici bir alpine container çalıştırıp `echo hello` komutunu koştur.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker pull hello-world",
-          "hint_text": "Image indirmek için `docker pull` kullan.",
+          "answer": "docker run --rm alpine echo hello",
+          "hint_text": "Tek kullanımlık container için `docker run --rm <image> <command>` kullan.",
+          "hint_partial": "docker run --rm ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr2-009",
+      "type": "single",
+      "scenario": "nginx:alpine image'ını pull et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker pull nginx:alpine",
+          "hint_text": "Tag'li image indirmek için `docker pull <image>:<tag>` kullan.",
           "hint_partial": "docker pull ..."
         }
       ]
     },
     {
-      "id": "jctr-009",
+      "id": "jdkr2-010",
       "type": "single",
-      "scenario": "web container'ını başlat.",
+      "scenario": "redis:alpine image'ını pull et.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker start web",
-          "hint_text": "Durdurulmuş container'ı başlatmak için `docker start` kullan.",
-          "hint_partial": "docker start ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-010",
-      "type": "single",
-      "scenario": "web container'ını sil.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker rm web",
-          "hint_text": "Container silmek için `docker rm` kullan.",
-          "hint_partial": "docker rm ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-001-r1",
-      "type": "single",
-      "scenario": "Bakim oncesi çalışan container'ları listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker ps",
-          "hint_text": "Aktif container listesi için `docker ps` kullan.",
-          "hint_partial": "docker ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-002-r2",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda local image listesini göster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker images",
-          "hint_text": "Image listesini görmek için `docker images` kullan.",
-          "hint_partial": "docker ima..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-003-r3",
-      "type": "single",
-      "scenario": "Deploy sonrasi worker-3 container'ının log output'unu göster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker logs worker-3",
-          "hint_text": "`docker logs` container log'larını verir.",
-          "hint_partial": "docker logs ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-004-r4",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde db-4-4 container'ını durdur.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker stop db-4-4",
-          "hint_text": "Container durdurmak için `docker stop` kullan.",
-          "hint_partial": "docker stop ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-005-r5",
-      "type": "single",
-      "scenario": "Yeni acilan hostta cache-5-5 container'ı içinde shell aç.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker exec -it cache-5-5 sh",
-          "hint_text": "Container içine girmek için `docker exec -it` kullan.",
-          "hint_partial": "docker exec -it ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-006-r6",
-      "type": "single",
-      "scenario": "Runbook adiminda duran container'lar dahil tüm container'ları listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker ps -a",
-          "hint_text": "Tüm container'lar için `docker ps -a` kullan.",
-          "hint_partial": "docker ps -a"
-        }
-      ]
-    },
-    {
-      "id": "jctr-007-r7",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde docker versiyonunu göster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker version",
-          "hint_text": "Client ve server sürümü için `docker version` kullan.",
-          "hint_partial": "docker version"
-        }
-      ]
-    },
-    {
-      "id": "jctr-008-r8",
-      "type": "single",
-      "scenario": "Incident sonrasinda hello-world image'ını indir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker pull hello-world",
-          "hint_text": "Image indirmek için `docker pull` kullan.",
+          "answer": "docker pull redis:alpine",
+          "hint_text": "Tag'li image indirmek için `docker pull <image>:<tag>` kullan.",
           "hint_partial": "docker pull ..."
         }
       ]
     },
     {
-      "id": "jctr-009-r9",
+      "id": "jdkr2-011",
       "type": "single",
-      "scenario": "Bakim oncesi web-9 container'ını başlat.",
+      "scenario": "`demo` adında detached nginx container başlat.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker start web-9",
-          "hint_text": "Durdurulmuş container'ı başlatmak için `docker start` kullan.",
-          "hint_partial": "docker start ..."
+          "answer": "docker run -d --name demo nginx",
+          "hint_text": "Detached başlatmak için `docker run -d --name <name> <image>` kullan.",
+          "hint_partial": "docker run -d ..."
         }
       ]
     },
     {
-      "id": "jctr-010-r10",
+      "id": "jdkr2-012",
       "type": "single",
-      "scenario": "Troubleshooting sirasinda cache-10-10-10 container'ını sil.",
+      "scenario": "`cache` adında detached redis container başlat.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker rm cache-10-10-10",
-          "hint_text": "Container silmek için `docker rm` kullan.",
-          "hint_partial": "docker rm ..."
+          "answer": "docker run -d --name cache redis",
+          "hint_text": "Detached başlatmak için `docker run -d --name <name> <image>` kullan.",
+          "hint_partial": "docker run -d ..."
         }
       ]
     },
     {
-      "id": "jctr-001-r11",
+      "id": "jdkr2-013",
       "type": "single",
-      "scenario": "Deploy sonrasi çalışan container'ları listele.",
+      "scenario": "Docker network listesini göster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker ps",
-          "hint_text": "Aktif container listesi için `docker ps` kullan.",
-          "hint_partial": "docker ..."
+          "answer": "docker network ls",
+          "hint_text": "Network listesini görmek için `docker network ls` kullan.",
+          "hint_partial": "docker network ..."
         }
       ]
     },
     {
-      "id": "jctr-002-r12",
+      "id": "jdkr2-014",
       "type": "single",
-      "scenario": "Kesinti incelemesinde local image listesini göster.",
+      "scenario": "Docker volume listesini göster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker images",
-          "hint_text": "Image listesini görmek için `docker images` kullan.",
-          "hint_partial": "docker ima..."
+          "answer": "docker volume ls",
+          "hint_text": "Volume listesini görmek için `docker volume ls` kullan.",
+          "hint_partial": "docker volume ..."
         }
       ]
     },
     {
-      "id": "jctr-003-r13",
+      "id": "jdkr2-015",
       "type": "single",
-      "scenario": "Yeni acilan hostta cache-13-13 container'ının log output'unu göster.",
+      "scenario": "web container'ının port mapping bilgisini göster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker logs cache-13-13",
-          "hint_text": "`docker logs` container log'larını verir.",
-          "hint_partial": "docker logs ..."
+          "answer": "docker port web",
+          "hint_text": "Port mapping bilgisini görmek için `docker port <container>` kullan.",
+          "hint_partial": "docker port ..."
         }
       ]
     },
     {
-      "id": "jctr-004-r14",
+      "id": "jdkr2-016",
       "type": "single",
-      "scenario": "Runbook adiminda queue-14 container'ını durdur.",
+      "scenario": "api container'ının port mapping bilgisini göster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker stop queue-14",
-          "hint_text": "Container durdurmak için `docker stop` kullan.",
-          "hint_partial": "docker stop ..."
+          "answer": "docker port api",
+          "hint_text": "Port mapping bilgisini görmek için `docker port <container>` kullan.",
+          "hint_partial": "docker port ..."
         }
       ]
     },
     {
-      "id": "jctr-005-r15",
+      "id": "jdkr2-017",
       "type": "single",
-      "scenario": "Operasyon kontrolunde bastion-15 container'ı içinde shell aç.",
+      "scenario": "web container'ı içinde `/app` klasörünü listele.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker exec -it bastion-15 sh",
-          "hint_text": "Container içine girmek için `docker exec -it` kullan.",
-          "hint_partial": "docker exec -it ..."
+          "answer": "docker exec web ls /app",
+          "hint_text": "Container içinde komut çalıştırmak için `docker exec <container> <command>` kullan.",
+          "hint_partial": "docker exec ..."
         }
       ]
     },
     {
-      "id": "jctr-006-r16",
+      "id": "jdkr2-018",
       "type": "single",
-      "scenario": "Incident sonrasinda duran container'lar dahil tüm container'ları listele.",
+      "scenario": "api container'ı içinde `/usr/src/app` klasörünü listele.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker ps -a",
-          "hint_text": "Tüm container'lar için `docker ps -a` kullan.",
-          "hint_partial": "docker ps -a"
+          "answer": "docker exec api ls /usr/src/app",
+          "hint_text": "Container içinde komut çalıştırmak için `docker exec <container> <command>` kullan.",
+          "hint_partial": "docker exec ..."
         }
       ]
     },
     {
-      "id": "jctr-007-r17",
+      "id": "jdkr2-019",
       "type": "single",
-      "scenario": "Bakim oncesi docker versiyonunu göster.",
+      "scenario": "`demo-old` container'ının adını `demo` yap.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker version",
-          "hint_text": "Client ve server sürümü için `docker version` kullan.",
-          "hint_partial": "docker version"
+          "answer": "docker rename demo-old demo",
+          "hint_text": "Container adını değiştirmek için `docker rename <old> <new>` kullan.",
+          "hint_partial": "docker rename ..."
         }
       ]
     },
     {
-      "id": "jctr-008-r18",
+      "id": "jdkr2-020",
       "type": "single",
-      "scenario": "Troubleshooting sirasinda hello-world image'ını indir.",
+      "scenario": "hello-world image'ını sil.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker pull hello-world",
-          "hint_text": "Image indirmek için `docker pull` kullan.",
-          "hint_partial": "docker pull ..."
+          "answer": "docker rmi hello-world",
+          "hint_text": "Bir image'ı silmek için `docker rmi <image>` kullan.",
+          "hint_partial": "docker rmi ..."
         }
       ]
     },
     {
-      "id": "jctr-009-r19",
+      "id": "jdkr2-021",
       "type": "single",
-      "scenario": "Deploy sonrasi worker-19 container'ını başlat.",
+      "scenario": "Local `index.html` dosyasını web container'ı içinde `/usr/share/nginx/html/index.html` yoluna kopyala.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker start worker-19",
-          "hint_text": "Durdurulmuş container'ı başlatmak için `docker start` kullan.",
-          "hint_partial": "docker start ..."
+          "answer": "docker cp index.html web:/usr/share/nginx/html/index.html",
+          "hint_text": "Host'tan container'a dosya kopyalamak için `docker cp <src> <container>:<dest>` kullan.",
+          "hint_partial": "docker cp ..."
         }
       ]
     },
     {
-      "id": "jctr-010-r20",
+      "id": "jdkr2-022",
       "type": "single",
-      "scenario": "Kesinti incelemesinde db-20-20 container'ını sil.",
+      "scenario": "web container'ı içindeki `/var/log/nginx/access.log` dosyasını current directory'ye `./access.log` olarak kopyala.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker rm db-20-20",
-          "hint_text": "Container silmek için `docker rm` kullan.",
-          "hint_partial": "docker rm ..."
+          "answer": "docker cp web:/var/log/nginx/access.log ./access.log",
+          "hint_text": "Container'dan host'a dosya kopyalamak için `docker cp <container>:<src> <dest>` kullan.",
+          "hint_partial": "docker cp ..."
         }
       ]
     },
     {
-      "id": "jctr-001-r21",
+      "id": "jdkr2-023",
       "type": "single",
-      "scenario": "Yeni acilan hostta çalışan container'ları listele.",
+      "scenario": "Local `config.json` dosyasını api container'ı içinde `/app/config.json` yoluna kopyala.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker ps",
-          "hint_text": "Aktif container listesi için `docker ps` kullan.",
-          "hint_partial": "docker ..."
+          "answer": "docker cp config.json api:/app/config.json",
+          "hint_text": "Host'tan container'a dosya kopyalamak için `docker cp <src> <container>:<dest>` kullan.",
+          "hint_partial": "docker cp ..."
         }
       ]
     },
     {
-      "id": "jctr-002-r22",
+      "id": "jdkr2-024",
       "type": "single",
-      "scenario": "Runbook adiminda local image listesini göster.",
+      "scenario": "api container'ı içindeki `/app/logs/app.log` dosyasını current directory'ye `./app.log` olarak kopyala.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker images",
-          "hint_text": "Image listesini görmek için `docker images` kullan.",
-          "hint_partial": "docker ima..."
+          "answer": "docker cp api:/app/logs/app.log ./app.log",
+          "hint_text": "Container'dan host'a dosya kopyalamak için `docker cp <container>:<src> <dest>` kullan.",
+          "hint_partial": "docker cp ..."
         }
       ]
     },
     {
-      "id": "jctr-003-r23",
+      "id": "jdkr2-025",
       "type": "single",
-      "scenario": "Operasyon kontrolunde bastion-23 container'ının log output'unu göster.",
+      "scenario": "Review için image ID'lerini tekrar kısa formatta listele.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker logs bastion-23",
-          "hint_text": "`docker logs` container log'larını verir.",
-          "hint_partial": "docker logs ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-004-r24",
-      "type": "single",
-      "scenario": "Incident sonrasinda proxy-24 container'ını durdur.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker stop proxy-24",
-          "hint_text": "Container durdurmak için `docker stop` kullan.",
-          "hint_partial": "docker stop ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-005-r25",
-      "type": "single",
-      "scenario": "Bakim oncesi web-25 container'ı içinde shell aç.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker exec -it web-25 sh",
-          "hint_text": "Container içine girmek için `docker exec -it` kullan.",
-          "hint_partial": "docker exec -it ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-006-r26",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda duran container'lar dahil tüm container'ları listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker ps -a",
-          "hint_text": "Tüm container'lar için `docker ps -a` kullan.",
-          "hint_partial": "docker ps -a"
-        }
-      ]
-    },
-    {
-      "id": "jctr-007-r27",
-      "type": "single",
-      "scenario": "Deploy sonrasi docker versiyonunu göster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker version",
-          "hint_text": "Client ve server sürümü için `docker version` kullan.",
-          "hint_partial": "docker version"
-        }
-      ]
-    },
-    {
-      "id": "jctr-008-r28",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde hello-world image'ını indir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker pull hello-world",
-          "hint_text": "Image indirmek için `docker pull` kullan.",
-          "hint_partial": "docker pull ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-009-r29",
-      "type": "single",
-      "scenario": "Yeni acilan hostta cache-29-29 container'ını başlat.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker start cache-29-29",
-          "hint_text": "Durdurulmuş container'ı başlatmak için `docker start` kullan.",
-          "hint_partial": "docker start ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-010-r30",
-      "type": "single",
-      "scenario": "Runbook adiminda queue-30 container'ını sil.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker rm queue-30",
-          "hint_text": "Container silmek için `docker rm` kullan.",
-          "hint_partial": "docker rm ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-001-r31",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde çalışan container'ları listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker ps",
-          "hint_text": "Aktif container listesi için `docker ps` kullan.",
-          "hint_partial": "docker ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-002-r32",
-      "type": "single",
-      "scenario": "Incident sonrasinda local image listesini göster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker images",
-          "hint_text": "Image listesini görmek için `docker images` kullan.",
-          "hint_partial": "docker ima..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-003-r33",
-      "type": "single",
-      "scenario": "Bakim oncesi web-33 container'ının log output'unu göster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker logs web-33",
-          "hint_text": "`docker logs` container log'larını verir.",
-          "hint_partial": "docker logs ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-004-r34",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda cache-34-34-34 container'ını durdur.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker stop cache-34-34-34",
-          "hint_text": "Container durdurmak için `docker stop` kullan.",
-          "hint_partial": "docker stop ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-005-r35",
-      "type": "single",
-      "scenario": "Deploy sonrasi worker-35 container'ı içinde shell aç.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker exec -it worker-35 sh",
-          "hint_text": "Container içine girmek için `docker exec -it` kullan.",
-          "hint_partial": "docker exec -it ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-006-r36",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde duran container'lar dahil tüm container'ları listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker ps -a",
-          "hint_text": "Tüm container'lar için `docker ps -a` kullan.",
-          "hint_partial": "docker ps -a"
-        }
-      ]
-    },
-    {
-      "id": "jctr-007-r37",
-      "type": "single",
-      "scenario": "Yeni acilan hostta docker versiyonunu göster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker version",
-          "hint_text": "Client ve server sürümü için `docker version` kullan.",
-          "hint_partial": "docker version"
-        }
-      ]
-    },
-    {
-      "id": "jctr-008-r38",
-      "type": "single",
-      "scenario": "Runbook adiminda hello-world image'ını indir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker pull hello-world",
-          "hint_text": "Image indirmek için `docker pull` kullan.",
-          "hint_partial": "docker pull ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-009-r39",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde bastion-39 container'ını başlat.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker start bastion-39",
-          "hint_text": "Durdurulmuş container'ı başlatmak için `docker start` kullan.",
-          "hint_partial": "docker start ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-010-r40",
-      "type": "single",
-      "scenario": "Incident sonrasinda proxy-40 container'ını sil.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker rm proxy-40",
-          "hint_text": "Container silmek için `docker rm` kullan.",
-          "hint_partial": "docker rm ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-001-r41",
-      "type": "single",
-      "scenario": "Bakim oncesi çalışan container'ları listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker ps",
-          "hint_text": "Aktif container listesi için `docker ps` kullan.",
-          "hint_partial": "docker ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-002-r42",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda local image listesini göster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker images",
-          "hint_text": "Image listesini görmek için `docker images` kullan.",
-          "hint_partial": "docker ima..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-003-r43",
-      "type": "single",
-      "scenario": "Deploy sonrasi worker-43 container'ının log output'unu göster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker logs worker-43",
-          "hint_text": "`docker logs` container log'larını verir.",
-          "hint_partial": "docker logs ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-004-r44",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde db-44-44 container'ını durdur.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker stop db-44-44",
-          "hint_text": "Container durdurmak için `docker stop` kullan.",
-          "hint_partial": "docker stop ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-005-r45",
-      "type": "single",
-      "scenario": "Yeni acilan hostta cache-45-45 container'ı içinde shell aç.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker exec -it cache-45-45 sh",
-          "hint_text": "Container içine girmek için `docker exec -it` kullan.",
-          "hint_partial": "docker exec -it ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-006-r46",
-      "type": "single",
-      "scenario": "Runbook adiminda duran container'lar dahil tüm container'ları listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker ps -a",
-          "hint_text": "Tüm container'lar için `docker ps -a` kullan.",
-          "hint_partial": "docker ps -a"
-        }
-      ]
-    },
-    {
-      "id": "jctr-007-r47",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde docker versiyonunu göster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker version",
-          "hint_text": "Client ve server sürümü için `docker version` kullan.",
-          "hint_partial": "docker version"
-        }
-      ]
-    },
-    {
-      "id": "jctr-008-r48",
-      "type": "single",
-      "scenario": "Incident sonrasinda hello-world image'ını indir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker pull hello-world",
-          "hint_text": "Image indirmek için `docker pull` kullan.",
-          "hint_partial": "docker pull ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-009-r49",
-      "type": "single",
-      "scenario": "Bakim oncesi web-49 container'ını başlat.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker start web-49",
-          "hint_text": "Durdurulmuş container'ı başlatmak için `docker start` kullan.",
-          "hint_partial": "docker start ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-010-r50",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda cache-50-50-50 container'ını sil.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker rm cache-50-50-50",
-          "hint_text": "Container silmek için `docker rm` kullan.",
-          "hint_partial": "docker rm ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-001-r51",
-      "type": "single",
-      "scenario": "Deploy sonrasi çalışan container'ları listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker ps",
-          "hint_text": "Aktif container listesi için `docker ps` kullan.",
-          "hint_partial": "docker ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-002-r52",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde local image listesini göster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker images",
-          "hint_text": "Image listesini görmek için `docker images` kullan.",
-          "hint_partial": "docker ima..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-003-r53",
-      "type": "single",
-      "scenario": "Yeni acilan hostta cache-53-53 container'ının log output'unu göster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker logs cache-53-53",
-          "hint_text": "`docker logs` container log'larını verir.",
-          "hint_partial": "docker logs ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-004-r54",
-      "type": "single",
-      "scenario": "Runbook adiminda queue-54 container'ını durdur.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker stop queue-54",
-          "hint_text": "Container durdurmak için `docker stop` kullan.",
-          "hint_partial": "docker stop ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-005-r55",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde bastion-55 container'ı içinde shell aç.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker exec -it bastion-55 sh",
-          "hint_text": "Container içine girmek için `docker exec -it` kullan.",
-          "hint_partial": "docker exec -it ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-006-r56",
-      "type": "single",
-      "scenario": "Incident sonrasinda duran container'lar dahil tüm container'ları listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker ps -a",
-          "hint_text": "Tüm container'lar için `docker ps -a` kullan.",
-          "hint_partial": "docker ps -a"
-        }
-      ]
-    },
-    {
-      "id": "jctr-007-r57",
-      "type": "single",
-      "scenario": "Bakim oncesi docker versiyonunu göster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker version",
-          "hint_text": "Client ve server sürümü için `docker version` kullan.",
-          "hint_partial": "docker version"
-        }
-      ]
-    },
-    {
-      "id": "jctr-008-r58",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda hello-world image'ını indir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker pull hello-world",
-          "hint_text": "Image indirmek için `docker pull` kullan.",
-          "hint_partial": "docker pull ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-009-r59",
-      "type": "single",
-      "scenario": "Deploy sonrasi worker-59 container'ını başlat.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker start worker-59",
-          "hint_text": "Durdurulmuş container'ı başlatmak için `docker start` kullan.",
-          "hint_partial": "docker start ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-010-r60",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde db-60-60 container'ını sil.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker rm db-60-60",
-          "hint_text": "Container silmek için `docker rm` kullan.",
-          "hint_partial": "docker rm ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-001-r61",
-      "type": "single",
-      "scenario": "Yeni acilan hostta çalışan container'ları listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker ps",
-          "hint_text": "Aktif container listesi için `docker ps` kullan.",
-          "hint_partial": "docker ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-002-r62",
-      "type": "single",
-      "scenario": "Runbook adiminda local image listesini göster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker images",
-          "hint_text": "Image listesini görmek için `docker images` kullan.",
-          "hint_partial": "docker ima..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-003-r63",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde bastion-63 container'ının log output'unu göster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker logs bastion-63",
-          "hint_text": "`docker logs` container log'larını verir.",
-          "hint_partial": "docker logs ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-004-r64",
-      "type": "single",
-      "scenario": "Incident sonrasinda proxy-64 container'ını durdur.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker stop proxy-64",
-          "hint_text": "Container durdurmak için `docker stop` kullan.",
-          "hint_partial": "docker stop ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-005-r65",
-      "type": "single",
-      "scenario": "Bakim oncesi web-65 container'ı içinde shell aç.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker exec -it web-65 sh",
-          "hint_text": "Container içine girmek için `docker exec -it` kullan.",
-          "hint_partial": "docker exec -it ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-006-r66",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda duran container'lar dahil tüm container'ları listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker ps -a",
-          "hint_text": "Tüm container'lar için `docker ps -a` kullan.",
-          "hint_partial": "docker ps -a"
-        }
-      ]
-    },
-    {
-      "id": "jctr-007-r67",
-      "type": "single",
-      "scenario": "Deploy sonrasi docker versiyonunu göster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker version",
-          "hint_text": "Client ve server sürümü için `docker version` kullan.",
-          "hint_partial": "docker version"
-        }
-      ]
-    },
-    {
-      "id": "jctr-008-r68",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde hello-world image'ını indir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker pull hello-world",
-          "hint_text": "Image indirmek için `docker pull` kullan.",
-          "hint_partial": "docker pull ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-009-r69",
-      "type": "single",
-      "scenario": "Yeni acilan hostta cache-69-69 container'ını başlat.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker start cache-69-69",
-          "hint_text": "Durdurulmuş container'ı başlatmak için `docker start` kullan.",
-          "hint_partial": "docker start ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-010-r70",
-      "type": "single",
-      "scenario": "Runbook adiminda queue-70 container'ını sil.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker rm queue-70",
-          "hint_text": "Container silmek için `docker rm` kullan.",
-          "hint_partial": "docker rm ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-001-r71",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde çalışan container'ları listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker ps",
-          "hint_text": "Aktif container listesi için `docker ps` kullan.",
-          "hint_partial": "docker ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-002-r72",
-      "type": "single",
-      "scenario": "Incident sonrasinda local image listesini göster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker images",
-          "hint_text": "Image listesini görmek için `docker images` kullan.",
-          "hint_partial": "docker ima..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-003-r73",
-      "type": "single",
-      "scenario": "Bakim oncesi web-73 container'ının log output'unu göster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker logs web-73",
-          "hint_text": "`docker logs` container log'larını verir.",
-          "hint_partial": "docker logs ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-004-r74",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda cache-74-74-74 container'ını durdur.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker stop cache-74-74-74",
-          "hint_text": "Container durdurmak için `docker stop` kullan.",
-          "hint_partial": "docker stop ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-005-r75",
-      "type": "single",
-      "scenario": "Deploy sonrasi worker-75 container'ı içinde shell aç.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker exec -it worker-75 sh",
-          "hint_text": "Container içine girmek için `docker exec -it` kullan.",
-          "hint_partial": "docker exec -it ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-006-r76",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde duran container'lar dahil tüm container'ları listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker ps -a",
-          "hint_text": "Tüm container'lar için `docker ps -a` kullan.",
-          "hint_partial": "docker ps -a"
-        }
-      ]
-    },
-    {
-      "id": "jctr-007-r77",
-      "type": "single",
-      "scenario": "Yeni acilan hostta docker versiyonunu göster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker version",
-          "hint_text": "Client ve server sürümü için `docker version` kullan.",
-          "hint_partial": "docker version"
-        }
-      ]
-    },
-    {
-      "id": "jctr-008-r78",
-      "type": "single",
-      "scenario": "Runbook adiminda hello-world image'ını indir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker pull hello-world",
-          "hint_text": "Image indirmek için `docker pull` kullan.",
-          "hint_partial": "docker pull ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-009-r79",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde bastion-79 container'ını başlat.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker start bastion-79",
-          "hint_text": "Durdurulmuş container'ı başlatmak için `docker start` kullan.",
-          "hint_partial": "docker start ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-010-r80",
-      "type": "single",
-      "scenario": "Incident sonrasinda proxy-80 container'ını sil.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker rm proxy-80",
-          "hint_text": "Container silmek için `docker rm` kullan.",
-          "hint_partial": "docker rm ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-001-r81",
-      "type": "single",
-      "scenario": "Bakim oncesi çalışan container'ları listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker ps",
-          "hint_text": "Aktif container listesi için `docker ps` kullan.",
-          "hint_partial": "docker ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-002-r82",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda local image listesini göster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker images",
-          "hint_text": "Image listesini görmek için `docker images` kullan.",
-          "hint_partial": "docker ima..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-003-r83",
-      "type": "single",
-      "scenario": "Deploy sonrasi worker-83 container'ının log output'unu göster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker logs worker-83",
-          "hint_text": "`docker logs` container log'larını verir.",
-          "hint_partial": "docker logs ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-004-r84",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde db-84-84 container'ını durdur.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker stop db-84-84",
-          "hint_text": "Container durdurmak için `docker stop` kullan.",
-          "hint_partial": "docker stop ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-005-r85",
-      "type": "single",
-      "scenario": "Yeni acilan hostta cache-85-85 container'ı içinde shell aç.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker exec -it cache-85-85 sh",
-          "hint_text": "Container içine girmek için `docker exec -it` kullan.",
-          "hint_partial": "docker exec -it ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-006-r86",
-      "type": "single",
-      "scenario": "Runbook adiminda duran container'lar dahil tüm container'ları listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker ps -a",
-          "hint_text": "Tüm container'lar için `docker ps -a` kullan.",
-          "hint_partial": "docker ps -a"
-        }
-      ]
-    },
-    {
-      "id": "jctr-007-r87",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde docker versiyonunu göster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker version",
-          "hint_text": "Client ve server sürümü için `docker version` kullan.",
-          "hint_partial": "docker version"
-        }
-      ]
-    },
-    {
-      "id": "jctr-008-r88",
-      "type": "single",
-      "scenario": "Incident sonrasinda hello-world image'ını indir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker pull hello-world",
-          "hint_text": "Image indirmek için `docker pull` kullan.",
-          "hint_partial": "docker pull ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-009-r89",
-      "type": "single",
-      "scenario": "Bakim oncesi web-89 container'ını başlat.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker start web-89",
-          "hint_text": "Durdurulmuş container'ı başlatmak için `docker start` kullan.",
-          "hint_partial": "docker start ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-010-r90",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda cache-90-90-90 container'ını sil.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker rm cache-90-90-90",
-          "hint_text": "Container silmek için `docker rm` kullan.",
-          "hint_partial": "docker rm ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-001-r91",
-      "type": "single",
-      "scenario": "Deploy sonrasi çalışan container'ları listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker ps",
-          "hint_text": "Aktif container listesi için `docker ps` kullan.",
-          "hint_partial": "docker ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-002-r92",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde local image listesini göster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker images",
-          "hint_text": "Image listesini görmek için `docker images` kullan.",
-          "hint_partial": "docker ima..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-003-r93",
-      "type": "single",
-      "scenario": "Yeni acilan hostta cache-93-93 container'ının log output'unu göster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker logs cache-93-93",
-          "hint_text": "`docker logs` container log'larını verir.",
-          "hint_partial": "docker logs ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-004-r94",
-      "type": "single",
-      "scenario": "Runbook adiminda queue-94 container'ını durdur.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker stop queue-94",
-          "hint_text": "Container durdurmak için `docker stop` kullan.",
-          "hint_partial": "docker stop ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-005-r95",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde bastion-95 container'ı içinde shell aç.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker exec -it bastion-95 sh",
-          "hint_text": "Container içine girmek için `docker exec -it` kullan.",
-          "hint_partial": "docker exec -it ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-006-r96",
-      "type": "single",
-      "scenario": "Incident sonrasinda duran container'lar dahil tüm container'ları listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker ps -a",
-          "hint_text": "Tüm container'lar için `docker ps -a` kullan.",
-          "hint_partial": "docker ps -a"
-        }
-      ]
-    },
-    {
-      "id": "jctr-007-r97",
-      "type": "single",
-      "scenario": "Bakim oncesi docker versiyonunu göster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker version",
-          "hint_text": "Client ve server sürümü için `docker version` kullan.",
-          "hint_partial": "docker version"
-        }
-      ]
-    },
-    {
-      "id": "jctr-008-r98",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda hello-world image'ını indir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker pull hello-world",
-          "hint_text": "Image indirmek için `docker pull` kullan.",
-          "hint_partial": "docker pull ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-009-r99",
-      "type": "single",
-      "scenario": "Deploy sonrasi worker-99 container'ını başlat.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker start worker-99",
-          "hint_text": "Durdurulmuş container'ı başlatmak için `docker start` kullan.",
-          "hint_partial": "docker start ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-010-r100",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde db-100-100 container'ını sil.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker rm db-100-100",
-          "hint_text": "Container silmek için `docker rm` kullan.",
-          "hint_partial": "docker rm ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-001-r101",
-      "type": "single",
-      "scenario": "Yeni acilan hostta çalışan container'ları listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker ps",
-          "hint_text": "Aktif container listesi için `docker ps` kullan.",
-          "hint_partial": "docker ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-002-r102",
-      "type": "single",
-      "scenario": "Runbook adiminda local image listesini göster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker images",
-          "hint_text": "Image listesini görmek için `docker images` kullan.",
-          "hint_partial": "docker ima..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-003-r103",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde bastion-103 container'ının log output'unu göster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker logs bastion-103",
-          "hint_text": "`docker logs` container log'larını verir.",
-          "hint_partial": "docker logs ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-004-r104",
-      "type": "single",
-      "scenario": "Incident sonrasinda proxy-104 container'ını durdur.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker stop proxy-104",
-          "hint_text": "Container durdurmak için `docker stop` kullan.",
-          "hint_partial": "docker stop ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-005-r105",
-      "type": "single",
-      "scenario": "Bakim oncesi web-105 container'ı içinde shell aç.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker exec -it web-105 sh",
-          "hint_text": "Container içine girmek için `docker exec -it` kullan.",
-          "hint_partial": "docker exec -it ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-006-r106",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda duran container'lar dahil tüm container'ları listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker ps -a",
-          "hint_text": "Tüm container'lar için `docker ps -a` kullan.",
-          "hint_partial": "docker ps -a"
-        }
-      ]
-    },
-    {
-      "id": "jctr-007-r107",
-      "type": "single",
-      "scenario": "Deploy sonrasi docker versiyonunu göster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker version",
-          "hint_text": "Client ve server sürümü için `docker version` kullan.",
-          "hint_partial": "docker version"
-        }
-      ]
-    },
-    {
-      "id": "jctr-008-r108",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde hello-world image'ını indir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker pull hello-world",
-          "hint_text": "Image indirmek için `docker pull` kullan.",
-          "hint_partial": "docker pull ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-009-r109",
-      "type": "single",
-      "scenario": "Yeni acilan hostta cache-109-109 container'ını başlat.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker start cache-109-109",
-          "hint_text": "Durdurulmuş container'ı başlatmak için `docker start` kullan.",
-          "hint_partial": "docker start ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-010-r110",
-      "type": "single",
-      "scenario": "Runbook adiminda queue-110 container'ını sil.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker rm queue-110",
-          "hint_text": "Container silmek için `docker rm` kullan.",
-          "hint_partial": "docker rm ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-001-r111",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde çalışan container'ları listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker ps",
-          "hint_text": "Aktif container listesi için `docker ps` kullan.",
-          "hint_partial": "docker ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-002-r112",
-      "type": "single",
-      "scenario": "Incident sonrasinda local image listesini göster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker images",
-          "hint_text": "Image listesini görmek için `docker images` kullan.",
-          "hint_partial": "docker ima..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-003-r113",
-      "type": "single",
-      "scenario": "Bakim oncesi web-113 container'ının log output'unu göster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker logs web-113",
-          "hint_text": "`docker logs` container log'larını verir.",
-          "hint_partial": "docker logs ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-004-r114",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda cache-114-114-114 container'ını durdur.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker stop cache-114-114-114",
-          "hint_text": "Container durdurmak için `docker stop` kullan.",
-          "hint_partial": "docker stop ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-005-r115",
-      "type": "single",
-      "scenario": "Deploy sonrasi worker-115 container'ı içinde shell aç.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker exec -it worker-115 sh",
-          "hint_text": "Container içine girmek için `docker exec -it` kullan.",
-          "hint_partial": "docker exec -it ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-006-r116",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde duran container'lar dahil tüm container'ları listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker ps -a",
-          "hint_text": "Tüm container'lar için `docker ps -a` kullan.",
-          "hint_partial": "docker ps -a"
-        }
-      ]
-    },
-    {
-      "id": "jctr-007-r117",
-      "type": "single",
-      "scenario": "Yeni acilan hostta docker versiyonunu göster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker version",
-          "hint_text": "Client ve server sürümü için `docker version` kullan.",
-          "hint_partial": "docker version"
-        }
-      ]
-    },
-    {
-      "id": "jctr-008-r118",
-      "type": "single",
-      "scenario": "Runbook adiminda hello-world image'ını indir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker pull hello-world",
-          "hint_text": "Image indirmek için `docker pull` kullan.",
-          "hint_partial": "docker pull ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-009-r119",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde bastion-119 container'ını başlat.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker start bastion-119",
-          "hint_text": "Durdurulmuş container'ı başlatmak için `docker start` kullan.",
-          "hint_partial": "docker start ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-010-r120",
-      "type": "single",
-      "scenario": "Incident sonrasinda proxy-120 container'ını sil.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker rm proxy-120",
-          "hint_text": "Container silmek için `docker rm` kullan.",
-          "hint_partial": "docker rm ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-001-r121",
-      "type": "single",
-      "scenario": "Bakim oncesi çalışan container'ları listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker ps",
-          "hint_text": "Aktif container listesi için `docker ps` kullan.",
-          "hint_partial": "docker ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-002-r122",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda local image listesini göster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker images",
-          "hint_text": "Image listesini görmek için `docker images` kullan.",
-          "hint_partial": "docker ima..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-003-r123",
-      "type": "single",
-      "scenario": "Deploy sonrasi worker-123 container'ının log output'unu göster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker logs worker-123",
-          "hint_text": "`docker logs` container log'larını verir.",
-          "hint_partial": "docker logs ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-004-r124",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde db-124-124 container'ını durdur.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker stop db-124-124",
-          "hint_text": "Container durdurmak için `docker stop` kullan.",
-          "hint_partial": "docker stop ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-005-r125",
-      "type": "single",
-      "scenario": "Yeni acilan hostta cache-125-125 container'ı içinde shell aç.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker exec -it cache-125-125 sh",
-          "hint_text": "Container içine girmek için `docker exec -it` kullan.",
-          "hint_partial": "docker exec -it ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-006-r126",
-      "type": "single",
-      "scenario": "Runbook adiminda duran container'lar dahil tüm container'ları listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker ps -a",
-          "hint_text": "Tüm container'lar için `docker ps -a` kullan.",
-          "hint_partial": "docker ps -a"
-        }
-      ]
-    },
-    {
-      "id": "jctr-007-r127",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde docker versiyonunu göster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker version",
-          "hint_text": "Client ve server sürümü için `docker version` kullan.",
-          "hint_partial": "docker version"
-        }
-      ]
-    },
-    {
-      "id": "jctr-008-r128",
-      "type": "single",
-      "scenario": "Incident sonrasinda hello-world image'ını indir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker pull hello-world",
-          "hint_text": "Image indirmek için `docker pull` kullan.",
-          "hint_partial": "docker pull ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-009-r129",
-      "type": "single",
-      "scenario": "Bakim oncesi web-129 container'ını başlat.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker start web-129",
-          "hint_text": "Durdurulmuş container'ı başlatmak için `docker start` kullan.",
-          "hint_partial": "docker start ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-010-r130",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda cache-130-130-130 container'ını sil.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker rm cache-130-130-130",
-          "hint_text": "Container silmek için `docker rm` kullan.",
-          "hint_partial": "docker rm ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-001-r131",
-      "type": "single",
-      "scenario": "Deploy sonrasi çalışan container'ları listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker ps",
-          "hint_text": "Aktif container listesi için `docker ps` kullan.",
-          "hint_partial": "docker ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-002-r132",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde local image listesini göster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker images",
-          "hint_text": "Image listesini görmek için `docker images` kullan.",
-          "hint_partial": "docker ima..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-003-r133",
-      "type": "single",
-      "scenario": "Yeni acilan hostta cache-133-133 container'ının log output'unu göster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker logs cache-133-133",
-          "hint_text": "`docker logs` container log'larını verir.",
-          "hint_partial": "docker logs ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-004-r134",
-      "type": "single",
-      "scenario": "Runbook adiminda queue-134 container'ını durdur.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker stop queue-134",
-          "hint_text": "Container durdurmak için `docker stop` kullan.",
-          "hint_partial": "docker stop ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-005-r135",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde bastion-135 container'ı içinde shell aç.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker exec -it bastion-135 sh",
-          "hint_text": "Container içine girmek için `docker exec -it` kullan.",
-          "hint_partial": "docker exec -it ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-006-r136",
-      "type": "single",
-      "scenario": "Incident sonrasinda duran container'lar dahil tüm container'ları listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker ps -a",
-          "hint_text": "Tüm container'lar için `docker ps -a` kullan.",
-          "hint_partial": "docker ps -a"
-        }
-      ]
-    },
-    {
-      "id": "jctr-007-r137",
-      "type": "single",
-      "scenario": "Bakim oncesi docker versiyonunu göster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker version",
-          "hint_text": "Client ve server sürümü için `docker version` kullan.",
-          "hint_partial": "docker version"
-        }
-      ]
-    },
-    {
-      "id": "jctr-008-r138",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda hello-world image'ını indir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker pull hello-world",
-          "hint_text": "Image indirmek için `docker pull` kullan.",
-          "hint_partial": "docker pull ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-009-r139",
-      "type": "single",
-      "scenario": "Deploy sonrasi worker-139 container'ını başlat.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker start worker-139",
-          "hint_text": "Durdurulmuş container'ı başlatmak için `docker start` kullan.",
-          "hint_partial": "docker start ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-010-r140",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde db-140-140 container'ını sil.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker rm db-140-140",
-          "hint_text": "Container silmek için `docker rm` kullan.",
-          "hint_partial": "docker rm ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-001-r141",
-      "type": "single",
-      "scenario": "Yeni acilan hostta çalışan container'ları listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker ps",
-          "hint_text": "Aktif container listesi için `docker ps` kullan.",
-          "hint_partial": "docker ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-002-r142",
-      "type": "single",
-      "scenario": "Runbook adiminda local image listesini göster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker images",
-          "hint_text": "Image listesini görmek için `docker images` kullan.",
-          "hint_partial": "docker ima..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-003-r143",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde bastion-143 container'ının log output'unu göster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker logs bastion-143",
-          "hint_text": "`docker logs` container log'larını verir.",
-          "hint_partial": "docker logs ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-004-r144",
-      "type": "single",
-      "scenario": "Incident sonrasinda proxy-144 container'ını durdur.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker stop proxy-144",
-          "hint_text": "Container durdurmak için `docker stop` kullan.",
-          "hint_partial": "docker stop ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-005-r145",
-      "type": "single",
-      "scenario": "Bakim oncesi web-145 container'ı içinde shell aç.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker exec -it web-145 sh",
-          "hint_text": "Container içine girmek için `docker exec -it` kullan.",
-          "hint_partial": "docker exec -it ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-006-r146",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda duran container'lar dahil tüm container'ları listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker ps -a",
-          "hint_text": "Tüm container'lar için `docker ps -a` kullan.",
-          "hint_partial": "docker ps -a"
-        }
-      ]
-    },
-    {
-      "id": "jctr-007-r147",
-      "type": "single",
-      "scenario": "Deploy sonrasi docker versiyonunu göster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker version",
-          "hint_text": "Client ve server sürümü için `docker version` kullan.",
-          "hint_partial": "docker version"
-        }
-      ]
-    },
-    {
-      "id": "jctr-008-r148",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde hello-world image'ını indir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker pull hello-world",
-          "hint_text": "Image indirmek için `docker pull` kullan.",
-          "hint_partial": "docker pull ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-009-r149",
-      "type": "single",
-      "scenario": "Yeni acilan hostta cache-149-149 container'ını başlat.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker start cache-149-149",
-          "hint_text": "Durdurulmuş container'ı başlatmak için `docker start` kullan.",
-          "hint_partial": "docker start ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-010-r150",
-      "type": "single",
-      "scenario": "Runbook adiminda queue-150 container'ını sil.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker rm queue-150",
-          "hint_text": "Container silmek için `docker rm` kullan.",
-          "hint_partial": "docker rm ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-001-r151",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde çalışan container'ları listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker ps",
-          "hint_text": "Aktif container listesi için `docker ps` kullan.",
-          "hint_partial": "docker ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-002-r152",
-      "type": "single",
-      "scenario": "Incident sonrasinda local image listesini göster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker images",
-          "hint_text": "Image listesini görmek için `docker images` kullan.",
-          "hint_partial": "docker ima..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-003-r153",
-      "type": "single",
-      "scenario": "Bakim oncesi web-153 container'ının log output'unu göster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker logs web-153",
-          "hint_text": "`docker logs` container log'larını verir.",
-          "hint_partial": "docker logs ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-004-r154",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda cache-154-154-154 container'ını durdur.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker stop cache-154-154-154",
-          "hint_text": "Container durdurmak için `docker stop` kullan.",
-          "hint_partial": "docker stop ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-005-r155",
-      "type": "single",
-      "scenario": "Deploy sonrasi worker-155 container'ı içinde shell aç.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker exec -it worker-155 sh",
-          "hint_text": "Container içine girmek için `docker exec -it` kullan.",
-          "hint_partial": "docker exec -it ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-006-r156",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde duran container'lar dahil tüm container'ları listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker ps -a",
-          "hint_text": "Tüm container'lar için `docker ps -a` kullan.",
-          "hint_partial": "docker ps -a"
-        }
-      ]
-    },
-    {
-      "id": "jctr-007-r157",
-      "type": "single",
-      "scenario": "Yeni acilan hostta docker versiyonunu göster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker version",
-          "hint_text": "Client ve server sürümü için `docker version` kullan.",
-          "hint_partial": "docker version"
-        }
-      ]
-    },
-    {
-      "id": "jctr-008-r158",
-      "type": "single",
-      "scenario": "Runbook adiminda hello-world image'ını indir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker pull hello-world",
-          "hint_text": "Image indirmek için `docker pull` kullan.",
-          "hint_partial": "docker pull ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-009-r159",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde bastion-159 container'ını başlat.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker start bastion-159",
-          "hint_text": "Durdurulmuş container'ı başlatmak için `docker start` kullan.",
-          "hint_partial": "docker start ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-010-r160",
-      "type": "single",
-      "scenario": "Incident sonrasinda proxy-160 container'ını sil.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker rm proxy-160",
-          "hint_text": "Container silmek için `docker rm` kullan.",
-          "hint_partial": "docker rm ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-001-r161",
-      "type": "single",
-      "scenario": "Bakim oncesi çalışan container'ları listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker ps",
-          "hint_text": "Aktif container listesi için `docker ps` kullan.",
-          "hint_partial": "docker ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-002-r162",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda local image listesini göster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker images",
-          "hint_text": "Image listesini görmek için `docker images` kullan.",
-          "hint_partial": "docker ima..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-003-r163",
-      "type": "single",
-      "scenario": "Deploy sonrasi worker-163 container'ının log output'unu göster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker logs worker-163",
-          "hint_text": "`docker logs` container log'larını verir.",
-          "hint_partial": "docker logs ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-004-r164",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde db-164-164 container'ını durdur.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker stop db-164-164",
-          "hint_text": "Container durdurmak için `docker stop` kullan.",
-          "hint_partial": "docker stop ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-005-r165",
-      "type": "single",
-      "scenario": "Yeni acilan hostta cache-165-165 container'ı içinde shell aç.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker exec -it cache-165-165 sh",
-          "hint_text": "Container içine girmek için `docker exec -it` kullan.",
-          "hint_partial": "docker exec -it ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-006-r166",
-      "type": "single",
-      "scenario": "Runbook adiminda duran container'lar dahil tüm container'ları listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker ps -a",
-          "hint_text": "Tüm container'lar için `docker ps -a` kullan.",
-          "hint_partial": "docker ps -a"
-        }
-      ]
-    },
-    {
-      "id": "jctr-007-r167",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde docker versiyonunu göster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker version",
-          "hint_text": "Client ve server sürümü için `docker version` kullan.",
-          "hint_partial": "docker version"
-        }
-      ]
-    },
-    {
-      "id": "jctr-008-r168",
-      "type": "single",
-      "scenario": "Incident sonrasinda hello-world image'ını indir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker pull hello-world",
-          "hint_text": "Image indirmek için `docker pull` kullan.",
-          "hint_partial": "docker pull ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-009-r169",
-      "type": "single",
-      "scenario": "Bakim oncesi web-169 container'ını başlat.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker start web-169",
-          "hint_text": "Durdurulmuş container'ı başlatmak için `docker start` kullan.",
-          "hint_partial": "docker start ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-010-r170",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda cache-170-170-170 container'ını sil.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker rm cache-170-170-170",
-          "hint_text": "Container silmek için `docker rm` kullan.",
-          "hint_partial": "docker rm ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-001-r171",
-      "type": "single",
-      "scenario": "Deploy sonrasi çalışan container'ları listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker ps",
-          "hint_text": "Aktif container listesi için `docker ps` kullan.",
-          "hint_partial": "docker ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-002-r172",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde local image listesini göster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker images",
-          "hint_text": "Image listesini görmek için `docker images` kullan.",
-          "hint_partial": "docker ima..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-003-r173",
-      "type": "single",
-      "scenario": "Yeni acilan hostta cache-173-173 container'ının log output'unu göster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker logs cache-173-173",
-          "hint_text": "`docker logs` container log'larını verir.",
-          "hint_partial": "docker logs ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-004-r174",
-      "type": "single",
-      "scenario": "Runbook adiminda queue-174 container'ını durdur.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker stop queue-174",
-          "hint_text": "Container durdurmak için `docker stop` kullan.",
-          "hint_partial": "docker stop ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-005-r175",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde bastion-175 container'ı içinde shell aç.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker exec -it bastion-175 sh",
-          "hint_text": "Container içine girmek için `docker exec -it` kullan.",
-          "hint_partial": "docker exec -it ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-006-r176",
-      "type": "single",
-      "scenario": "Incident sonrasinda duran container'lar dahil tüm container'ları listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker ps -a",
-          "hint_text": "Tüm container'lar için `docker ps -a` kullan.",
-          "hint_partial": "docker ps -a"
-        }
-      ]
-    },
-    {
-      "id": "jctr-007-r177",
-      "type": "single",
-      "scenario": "Bakim oncesi docker versiyonunu göster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker version",
-          "hint_text": "Client ve server sürümü için `docker version` kullan.",
-          "hint_partial": "docker version"
-        }
-      ]
-    },
-    {
-      "id": "jctr-008-r178",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda hello-world image'ını indir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker pull hello-world",
-          "hint_text": "Image indirmek için `docker pull` kullan.",
-          "hint_partial": "docker pull ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-009-r179",
-      "type": "single",
-      "scenario": "Deploy sonrasi worker-179 container'ını başlat.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker start worker-179",
-          "hint_text": "Durdurulmuş container'ı başlatmak için `docker start` kullan.",
-          "hint_partial": "docker start ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-010-r180",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde db-180-180 container'ını sil.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker rm db-180-180",
-          "hint_text": "Container silmek için `docker rm` kullan.",
-          "hint_partial": "docker rm ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-001-r181",
-      "type": "single",
-      "scenario": "Yeni acilan hostta çalışan container'ları listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker ps",
-          "hint_text": "Aktif container listesi için `docker ps` kullan.",
-          "hint_partial": "docker ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-002-r182",
-      "type": "single",
-      "scenario": "Runbook adiminda local image listesini göster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker images",
-          "hint_text": "Image listesini görmek için `docker images` kullan.",
-          "hint_partial": "docker ima..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-003-r183",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde bastion-183 container'ının log output'unu göster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker logs bastion-183",
-          "hint_text": "`docker logs` container log'larını verir.",
-          "hint_partial": "docker logs ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-004-r184",
-      "type": "single",
-      "scenario": "Incident sonrasinda proxy-184 container'ını durdur.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker stop proxy-184",
-          "hint_text": "Container durdurmak için `docker stop` kullan.",
-          "hint_partial": "docker stop ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-005-r185",
-      "type": "single",
-      "scenario": "Bakim oncesi web-185 container'ı içinde shell aç.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker exec -it web-185 sh",
-          "hint_text": "Container içine girmek için `docker exec -it` kullan.",
-          "hint_partial": "docker exec -it ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-006-r186",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda duran container'lar dahil tüm container'ları listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker ps -a",
-          "hint_text": "Tüm container'lar için `docker ps -a` kullan.",
-          "hint_partial": "docker ps -a"
-        }
-      ]
-    },
-    {
-      "id": "jctr-007-r187",
-      "type": "single",
-      "scenario": "Deploy sonrasi docker versiyonunu göster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker version",
-          "hint_text": "Client ve server sürümü için `docker version` kullan.",
-          "hint_partial": "docker version"
-        }
-      ]
-    },
-    {
-      "id": "jctr-008-r188",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde hello-world image'ını indir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker pull hello-world",
-          "hint_text": "Image indirmek için `docker pull` kullan.",
-          "hint_partial": "docker pull ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-009-r189",
-      "type": "single",
-      "scenario": "Yeni acilan hostta cache-189-189 container'ını başlat.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker start cache-189-189",
-          "hint_text": "Durdurulmuş container'ı başlatmak için `docker start` kullan.",
-          "hint_partial": "docker start ..."
-        }
-      ]
-    },
-    {
-      "id": "jctr-010-r190",
-      "type": "single",
-      "scenario": "Runbook adiminda queue-190 container'ını sil.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker rm queue-190",
-          "hint_text": "Container silmek için `docker rm` kullan.",
-          "hint_partial": "docker rm ..."
+          "answer": "docker images -q",
+          "hint_text": "Sadece image ID'leri için yine `docker images -q` kullan.",
+          "hint_partial": "docker images ..."
         }
       ]
     }

@@ -3,2650 +3,2668 @@
   "topic": "process",
   "questions": [
     {
-      "id": "jproc-011",
+      "id": "proc-exp-001",
       "type": "single",
-      "scenario": "Tum process'leri PID ve komut bilgisiyle listele.",
+      "scenario": "Gece vardiyasında çalışan tüm process'leri PID ve komut bilgisiyle listele.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "ps -ef",
-          "hint_text": "Process listelemek veya ozet gormek icin `ps`, `top`, `htop` ya da benzer temel araci kullan.",
+          "hint_text": "Tüm process'leri klasik UNIX formatında görmek için `ps` komutunu uygun flag ile kullan.",
           "hint_partial": "ps -ef"
         }
       ]
     },
     {
-      "id": "jproc-012",
+      "id": "proc-exp-002",
       "type": "single",
-      "scenario": "Tum process'leri detayli BSD formatinda listele.",
+      "scenario": "Audit sırasında çalışan tüm process'leri user, CPU ve memory bilgisiyle listele.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "ps aux",
-          "hint_text": "Process listelemek veya ozet gormek icin `ps`, `top`, `htop` ya da benzer temel araci kullan.",
+          "hint_text": "BSD formatında detaylı process listesi için `ps` komutunu `a`, `u` ve `x` ile kullan.",
           "hint_partial": "ps aux"
         }
       ]
     },
     {
-      "id": "jproc-013",
+      "id": "proc-exp-003",
       "type": "single",
-      "scenario": "Sadece kendi kullanicinin process'lerini listele.",
+      "scenario": "Bakım penceresinde sadece kendi kullanıcının process'lerini listele.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "ps -u $USER",
-          "hint_text": "Process listelemek veya ozet gormek icin `ps`, `top`, `htop` ya da benzer temel araci kullan.",
+          "hint_text": "Belirli bir kullanıcının process'lerini görmek için `ps` komutuna user bilgisi ver.",
           "hint_partial": "ps -u $USER"
         }
       ]
     },
     {
-      "id": "jproc-014",
+      "id": "proc-exp-004",
       "type": "single",
-      "scenario": "Tum bash process'lerini listele.",
+      "scenario": "Incident triajında tüm `bash` process'lerini listele.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "ps -C bash",
-          "hint_text": "Process listelemek veya ozet gormek icin `ps`, `top`, `htop` ya da benzer temel araci kullan.",
+          "hint_text": "Belirli komut adına göre listeleme yapmak için `ps -C` kullan.",
           "hint_partial": "ps -C bash"
         }
       ]
     },
     {
-      "id": "jproc-015",
+      "id": "proc-exp-005",
       "type": "single",
-      "scenario": "Tum ssh process'lerini listele.",
+      "scenario": "Release kontrolünde tüm `dbus-daemon` process'lerini listele.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "ps -C ssh",
-          "hint_text": "Process listelemek veya ozet gormek icin `ps`, `top`, `htop` ya da benzer temel araci kullan.",
-          "hint_partial": "ps -C ssh"
+          "answer": "ps -C dbus-daemon",
+          "hint_text": "Belirli komut adına göre listeleme yapmak için `ps -C` kullan.",
+          "hint_partial": "ps -C dbus-daemon"
         }
       ]
     },
     {
-      "id": "jproc-016",
+      "id": "proc-exp-006",
       "type": "single",
-      "scenario": "Tum sleep process'lerini listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "ps -C sleep",
-          "hint_text": "Process listelemek veya ozet gormek icin `ps`, `top`, `htop` ya da benzer temel araci kullan.",
-          "hint_partial": "ps -C sleep"
-        }
-      ]
-    },
-    {
-      "id": "jproc-017",
-      "type": "single",
-      "scenario": "Tum process'leri agac gorunumunde listele.",
+      "scenario": "Operasyon devrinde tüm process'leri ağaç görünümünde listele.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "ps -ef --forest",
-          "hint_text": "Process listelemek veya ozet gormek icin `ps`, `top`, `htop` ya da benzer temel araci kullan.",
-          "hint_partial": "ps -ef --forest"
+          "hint_text": "Parent-child ilişkisini görmek için `ps` çıktısını ağaç görünümünde al.",
+          "hint_partial": "ps -ef --for..."
         }
       ]
     },
     {
-      "id": "jproc-018",
+      "id": "proc-exp-007",
       "type": "single",
-      "scenario": "Tum process'leri PID'ye gore listele.",
+      "scenario": "On-call sırasında tüm process'leri sadece PID ve komut alanlarıyla göster.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "ps -eo pid,cmd",
-          "hint_text": "Process listelemek veya ozet gormek icin `ps`, `top`, `htop` ya da benzer temel araci kullan.",
+          "hint_text": "`ps -eo` ile istediğin kolonları açıkça seçebilirsin.",
           "hint_partial": "ps -eo pid,cmd"
         }
       ]
     },
     {
-      "id": "jproc-019",
+      "id": "proc-exp-008",
       "type": "single",
-      "scenario": "Tum process'leri user, pid ve komut alanlariyla goster.",
+      "scenario": "Duman testi sırasında tüm process'leri user, PID ve komut alanlarıyla göster.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "ps -eo user,pid,cmd",
-          "hint_text": "Process listelemek veya ozet gormek icin `ps`, `top`, `htop` ya da benzer temel araci kullan.",
-          "hint_partial": "ps -eo user,pid,cmd"
+          "hint_text": "`ps -eo` ile user, pid ve komut kolonlarını birlikte gösterebilirsin.",
+          "hint_partial": "ps -eo user,..."
         }
       ]
     },
     {
-      "id": "jproc-020",
+      "id": "proc-exp-009",
       "type": "single",
-      "scenario": "Tum process'leri pid ve parent pid bilgisiyle goster.",
+      "scenario": "Gece vardiyasında tüm process'leri PID, parent PID ve komut alanlarıyla göster.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "ps -eo pid,ppid,cmd",
-          "hint_text": "Process listelemek veya ozet gormek icin `ps`, `top`, `htop` ya da benzer temel araci kullan.",
-          "hint_partial": "ps -eo pid,ppid,cmd"
+          "hint_text": "Parent-child ilişkisini kolon bazlı görmek için `ppid` alanını ekle.",
+          "hint_partial": "ps -eo pid,p..."
         }
       ]
     },
     {
-      "id": "jproc-021",
+      "id": "proc-exp-010",
       "type": "single",
-      "scenario": "Tum process'leri CPU kullanimiyla goster.",
+      "scenario": "Audit sırasında tüm process'leri CPU kullanımıyla göster.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "ps -eo pid,%cpu,cmd",
-          "hint_text": "Process listelemek veya ozet gormek icin `ps`, `top`, `htop` ya da benzer temel araci kullan.",
-          "hint_partial": "ps -eo pid,%cpu,cmd"
+          "hint_text": "CPU kullanımını görmek için `ps -eo` içinde `%cpu` kolonunu seç.",
+          "hint_partial": "ps -eo pid,%..."
         }
       ]
     },
     {
-      "id": "jproc-022",
+      "id": "proc-exp-011",
       "type": "single",
-      "scenario": "Tum process'leri memory kullanimiyla goster.",
+      "scenario": "Bakım penceresinde tüm process'leri memory kullanımıyla göster.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "ps -eo pid,%mem,cmd",
-          "hint_text": "Process listelemek veya ozet gormek icin `ps`, `top`, `htop` ya da benzer temel araci kullan.",
-          "hint_partial": "ps -eo pid,%mem,cmd"
+          "hint_text": "Memory kullanımını görmek için `ps -eo` içinde `%mem` kolonunu seç.",
+          "hint_partial": "ps -eo pid,%..."
         }
       ]
     },
     {
-      "id": "jproc-023",
+      "id": "proc-exp-012",
       "type": "single",
-      "scenario": "Tum process'leri durum kolonu ile goster.",
+      "scenario": "Incident triajında tüm process'leri durum kolonu ile göster.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "ps -eo pid,stat,cmd",
-          "hint_text": "Process listelemek veya ozet gormek icin `ps`, `top`, `htop` ya da benzer temel araci kullan.",
-          "hint_partial": "ps -eo pid,stat,cmd"
+          "hint_text": "Process durumunu görmek için `stat` kolonunu ekle.",
+          "hint_partial": "ps -eo pid,s..."
         }
       ]
     },
     {
-      "id": "jproc-024",
+      "id": "proc-exp-013",
       "type": "single",
-      "scenario": "Tum process'leri baslangic zamaniyla goster.",
+      "scenario": "Release kontrolünde tüm process'leri başlangıç zamanı ile göster.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "ps -eo pid,lstart,cmd",
-          "hint_text": "Process listelemek veya ozet gormek icin `ps`, `top`, `htop` ya da benzer temel araci kullan.",
-          "hint_partial": "ps -eo pid,lstart,cmd"
+          "hint_text": "Başlangıç zamanını görmek için `lstart` kolonunu kullan.",
+          "hint_partial": "ps -eo pid,l..."
         }
       ]
     },
     {
-      "id": "jproc-025",
+      "id": "proc-exp-014",
       "type": "single",
-      "scenario": "En cok CPU kullanan process'leri ilk sirada goster.",
+      "scenario": "Operasyon devrinde en çok CPU kullanan process'leri en üstte göster.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "ps aux --sort=-%cpu",
-          "hint_text": "Process listelemek veya ozet gormek icin `ps`, `top`, `htop` ya da benzer temel araci kullan.",
-          "hint_partial": "ps aux --sort=-%cpu"
+          "hint_text": "Sıralama için `ps` komutunda `--sort` parametresini kullan.",
+          "hint_partial": "ps aux --sor..."
         }
       ]
     },
     {
-      "id": "jproc-026",
+      "id": "proc-exp-015",
       "type": "single",
-      "scenario": "En cok memory kullanan process'leri ilk sirada goster.",
+      "scenario": "On-call sırasında en çok memory kullanan process'leri en üstte göster.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "ps aux --sort=-%mem",
-          "hint_text": "Process listelemek veya ozet gormek icin `ps`, `top`, `htop` ya da benzer temel araci kullan.",
-          "hint_partial": "ps aux --sort=-%mem"
+          "hint_text": "Sıralama için `ps` komutunda `--sort` parametresini kullan.",
+          "hint_partial": "ps aux --sor..."
         }
       ]
     },
     {
-      "id": "jproc-027",
+      "id": "proc-exp-016",
       "type": "single",
-      "scenario": "Canli process izlemesini `top` ile baslat.",
+      "scenario": "Duman testi sırasında canlı process izlemesini `top` ile başlat.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "top",
-          "hint_text": "Process listelemek veya ozet gormek icin `ps`, `top`, `htop` ya da benzer temel araci kullan.",
+          "hint_text": "Canlı process izlemek için klasik terminal aracı kullan.",
           "hint_partial": "top"
         }
       ]
     },
     {
-      "id": "jproc-028",
+      "id": "proc-exp-017",
       "type": "single",
-      "scenario": "Canli process izlemesini `htop` ile baslat.",
+      "scenario": "Gece vardiyasında canlı process izlemesini `htop` ile başlat.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "htop",
-          "hint_text": "Process listelemek veya ozet gormek icin `ps`, `top`, `htop` ya da benzer temel araci kullan.",
+          "hint_text": "Daha etkileşimli canlı process görünümü için uygun aracı başlat.",
           "hint_partial": "htop"
         }
       ]
     },
     {
-      "id": "jproc-029",
+      "id": "proc-exp-018",
       "type": "single",
-      "scenario": "Her 2 saniyede bir `ps aux` cikisini yenileyerek izle.",
+      "scenario": "Audit sırasında her 2 saniyede bir `ps aux` çıktısını yenileyerek izle.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "watch -n 2 ps aux",
-          "hint_text": "Process listelemek veya ozet gormek icin `ps`, `top`, `htop` ya da benzer temel araci kullan.",
-          "hint_partial": "watch -n 2 ps aux"
+          "hint_text": "Bir komutu belirli aralıklarla tekrar çalıştırıp izlemek için `watch` kullan.",
+          "hint_partial": "watch -n 2 p..."
         }
       ]
     },
     {
-      "id": "jproc-030",
+      "id": "proc-exp-019",
       "type": "single",
-      "scenario": "Calisan tum process sayisini hesapla.",
+      "scenario": "Bakım penceresinde çalışan toplam process sayısını hesapla.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "ps -e | wc -l",
-          "hint_text": "Process listelemek veya ozet gormek icin `ps`, `top`, `htop` ya da benzer temel araci kullan.",
+          "hint_text": "Önce process listesini al, sonra satır sayısını hesapla.",
           "hint_partial": "ps -e | wc -l"
         }
       ]
     },
     {
-      "id": "jproc-031",
+      "id": "proc-exp-020",
       "type": "single",
-      "scenario": "Tum process'lerin tam komut satirini goster.",
+      "scenario": "Incident triajında tüm process'lerin tam komut satırını göster.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "ps -eo pid,args",
-          "hint_text": "Process listelemek veya ozet gormek icin `ps`, `top`, `htop` ya da benzer temel araci kullan.",
-          "hint_partial": "ps -eo pid,args"
+          "hint_text": "Tam argümanlı komut satırını görmek için `args` kolonunu kullan.",
+          "hint_partial": "ps -eo pid,a..."
         }
       ]
     },
     {
-      "id": "jproc-032",
+      "id": "proc-exp-021",
       "type": "single",
-      "scenario": "Tum process'lerin komut adini ve PID'sini goster.",
+      "scenario": "Release kontrolünde tüm process'lerin komut adını ve PID'sini göster.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "ps -eo pid,comm",
-          "hint_text": "Process listelemek veya ozet gormek icin `ps`, `top`, `htop` ya da benzer temel araci kullan.",
-          "hint_partial": "ps -eo pid,comm"
+          "hint_text": "Sadece komut adını görmek istiyorsan `comm` kolonunu kullan.",
+          "hint_partial": "ps -eo pid,c..."
         }
       ]
     },
     {
-      "id": "jproc-033",
+      "id": "proc-exp-022",
       "type": "single",
-      "scenario": "Tum process'leri terminal bilgisiyle goster.",
+      "scenario": "Operasyon devrinde tüm process'leri terminal bilgisiyle göster.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "ps -eo pid,tty,cmd",
-          "hint_text": "Process listelemek veya ozet gormek icin `ps`, `top`, `htop` ya da benzer temel araci kullan.",
-          "hint_partial": "ps -eo pid,tty,cmd"
+          "hint_text": "Hangi terminale bağlı olduklarını görmek için `tty` kolonunu ekle.",
+          "hint_partial": "ps -eo pid,t..."
         }
       ]
     },
     {
-      "id": "jproc-034",
+      "id": "proc-exp-023",
       "type": "single",
-      "scenario": "Tum process'leri user ve durum kolonu ile goster.",
+      "scenario": "On-call sırasında tüm process'leri user ve durum bilgisiyle göster.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "ps -eo user,stat,cmd",
-          "hint_text": "Process listelemek veya ozet gormek icin `ps`, `top`, `htop` ya da benzer temel araci kullan.",
-          "hint_partial": "ps -eo user,stat,cmd"
+          "hint_text": "User ve process durumunu birlikte görmek için gerekli kolonları seç.",
+          "hint_partial": "ps -eo user,..."
         }
       ]
     },
     {
-      "id": "jproc-035",
-      "type": "multi-step",
-      "scenario": "Once tum process'leri listele, sonra en cok CPU kullananlari sirala.",
+      "id": "proc-exp-024",
+      "type": "single",
+      "scenario": "Duman testi sırasında tüm process'leri PID, user, CPU ve memory kolonlarıyla göster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "ps aux",
-          "hint_text": "Bu senaryoda once processi baslat, sonra PID, job veya durum kontrolu icin uygun ikinci komutu kullan.",
-          "hint_partial": "ps aux"
-        },
-        {
-          "prompt": "$ ",
-          "answer": "ps aux --sort=-%cpu",
-          "hint_text": "Bu senaryoda once processi baslat, sonra PID, job veya durum kontrolu icin uygun ikinci komutu kullan.",
-          "hint_partial": "ps aux --sort=-%cpu"
+          "answer": "ps -eo pid,user,%cpu,%mem,comm",
+          "hint_text": "Birden fazla performans kolonunu aynı anda göstermek için `ps -eo` kullan.",
+          "hint_partial": "ps -eo pid,u..."
         }
       ]
     },
     {
-      "id": "jproc-036",
+      "id": "proc-exp-025",
       "type": "single",
-      "scenario": "nginx process'inin PID bilgisini bul.",
+      "scenario": "Gece vardiyasında tüm process'leri niceness değeriyle göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps -eo pid,ni,cmd",
+          "hint_text": "Öncelik seviyesini görmek için `ni` kolonunu seç.",
+          "hint_partial": "ps -eo pid,n..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-026",
+      "type": "single",
+      "scenario": "Audit sırasında tüm process'leri elapsed time bilgisiyle göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps -eo pid,etime,cmd",
+          "hint_text": "Ne kadar süredir çalıştığını görmek için `etime` kolonunu kullan.",
+          "hint_partial": "ps -eo pid,e..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-027",
+      "type": "single",
+      "scenario": "Bakım penceresinde tüm process'leri CPU time bilgisiyle göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps -eo pid,time,cmd",
+          "hint_text": "Tüketilen CPU süresini görmek için `time` kolonunu ekle.",
+          "hint_partial": "ps -eo pid,t..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-028",
+      "type": "single",
+      "scenario": "Incident triajında process ağacını `pstree` ile göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pstree",
+          "hint_text": "Ağaç görünümü için process tree aracını kullan.",
+          "hint_partial": "pstree"
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-029",
+      "type": "single",
+      "scenario": "Release kontrolünde process ağacını PID bilgileriyle göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pstree -p",
+          "hint_text": "Ağaç görünümünde PID'leri de göstermek için uygun flag ekle.",
+          "hint_partial": "pstree -p"
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-030",
+      "type": "single",
+      "scenario": "Operasyon devrinde pID 1'den başlayan process ağacını PID'leriyle göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pstree -p 1",
+          "hint_text": "Belirli bir root process'ten başlayan ağaç görünümünü al.",
+          "hint_partial": "pstree -p 1"
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-031",
+      "type": "single",
+      "scenario": "On-call sırasında pID 1 process'ini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps -o pid,cmd -p 1",
+          "hint_text": "Belirli bir PID için `ps -p` kullan ve kolonları açıkça seç.",
+          "hint_partial": "ps -o pid,cm..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-032",
+      "type": "single",
+      "scenario": "Duman testi sırasında pID 1 process'inin komut adını göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps -p 1 -o comm=",
+          "hint_text": "Tek bir PID için sadece komut adını görmek istiyorsan `-o` ile alan seç.",
+          "hint_partial": "ps -p 1 -o c..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-033",
+      "type": "single",
+      "scenario": "Gece vardiyasında pID 2033 process'inin komut adını göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps -p 2033 -o comm=",
+          "hint_text": "Belirli bir PID için sadece komut adını görmek istiyorsan `-o` ile alan seç.",
+          "hint_partial": "ps -p 2033 -..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-034",
+      "type": "single",
+      "scenario": "Audit sırasında pID 2034 process'inin parent PID bilgisini göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps -p 2034 -o ppid=",
+          "hint_text": "Belirli bir PID için parent PID bilgisini `-o ppid=` ile al.",
+          "hint_partial": "ps -p 2034 -..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-035",
+      "type": "single",
+      "scenario": "Bakım penceresinde pID 2035 process'inin durumunu göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps -p 2035 -o stat=",
+          "hint_text": "Belirli bir PID için process durumunu `stat` alanıyla al.",
+          "hint_partial": "ps -p 2035 -..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-036",
+      "type": "single",
+      "scenario": "Incident triajında pID 2036 process'inin başlangıç zamanını göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps -p 2036 -o lstart=",
+          "hint_text": "Başlangıç zamanını görmek için `lstart` alanını seç.",
+          "hint_partial": "ps -p 2036 -..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-037",
+      "type": "single",
+      "scenario": "Release kontrolünde pID 2037 process'inin owner bilgisini göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps -p 2037 -o user=",
+          "hint_text": "Belirli bir PID için user bilgisini `user` alanıyla al.",
+          "hint_partial": "ps -p 2037 -..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-038",
+      "type": "single",
+      "scenario": "Operasyon devrinde pID 2038 process'inin terminal bilgisini göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps -p 2038 -o tty=",
+          "hint_text": "Belirli bir PID için terminal bilgisini `tty` alanıyla al.",
+          "hint_partial": "ps -p 2038 -..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-039",
+      "type": "single",
+      "scenario": "On-call sırasında pID 2039 process'inin CPU, memory ve komut bilgisini göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps -p 2039 -o %cpu,%mem,cmd=",
+          "hint_text": "Belirli bir PID için performans kolonlarını doğrudan seç.",
+          "hint_partial": "ps -p 2039 -..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-040",
+      "type": "single",
+      "scenario": "Duman testi sırasında pID 2040 process'ini full formatta göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps -fp 2040",
+          "hint_text": "Belirli bir PID için full format görmek istiyorsan `ps -f -p` kullan.",
+          "hint_partial": "ps -fp 2040"
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-041",
+      "type": "single",
+      "scenario": "Gece vardiyasında `nginx` process'inin PID bilgisini bul.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "pgrep nginx",
-          "hint_text": "PID veya process adi bulmak icin `pgrep`, `pidof` ya da filtreli `ps` kullan.",
+          "hint_text": "Process adından PID bulmak için `pgrep` kullan.",
           "hint_partial": "pgrep nginx"
         }
       ]
     },
     {
-      "id": "jproc-037",
+      "id": "proc-exp-042",
       "type": "single",
-      "scenario": "sshd process'inin PID bilgisini bul.",
+      "scenario": "Audit sırasında `cron` process'inin PID bilgisini bul.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "pgrep sshd",
-          "hint_text": "PID veya process adi bulmak icin `pgrep`, `pidof` ya da filtreli `ps` kullan.",
-          "hint_partial": "pgrep sshd"
+          "answer": "pgrep cron",
+          "hint_text": "Process adından PID bulmak için `pgrep` kullan.",
+          "hint_partial": "pgrep cron"
         }
       ]
     },
     {
-      "id": "jproc-038",
+      "id": "proc-exp-043",
       "type": "single",
-      "scenario": "bash process'lerinin PID bilgisini bul.",
+      "scenario": "Bakım penceresinde `sh` process'lerinin PID bilgisini bul.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "pgrep bash",
-          "hint_text": "PID veya process adi bulmak icin `pgrep`, `pidof` ya da filtreli `ps` kullan.",
-          "hint_partial": "pgrep bash"
+          "answer": "pgrep sh",
+          "hint_text": "Process adından PID bulmak için `pgrep` kullan.",
+          "hint_partial": "pgrep sh"
         }
       ]
     },
     {
-      "id": "jproc-039",
+      "id": "proc-exp-044",
       "type": "single",
-      "scenario": "sleep process'lerinin PID bilgisini bul.",
+      "scenario": "Incident triajında `sleep` process'lerinin PID bilgisini bul.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "pgrep sleep",
-          "hint_text": "PID veya process adi bulmak icin `pgrep`, `pidof` ya da filtreli `ps` kullan.",
+          "hint_text": "Process adından PID bulmak için `pgrep` kullan.",
           "hint_partial": "pgrep sleep"
         }
       ]
     },
     {
-      "id": "jproc-040",
+      "id": "proc-exp-045",
       "type": "single",
-      "scenario": "python process'lerinin PID bilgisini bul.",
+      "scenario": "Release kontrolünde `python` process'lerinin PID bilgisini bul.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "pgrep python",
-          "hint_text": "PID veya process adi bulmak icin `pgrep`, `pidof` ya da filtreli `ps` kullan.",
+          "hint_text": "Process adından PID bulmak için `pgrep` kullan.",
           "hint_partial": "pgrep python"
         }
       ]
     },
     {
-      "id": "jproc-041",
+      "id": "proc-exp-046",
       "type": "single",
-      "scenario": "node process'lerinin PID bilgisini bul.",
+      "scenario": "Operasyon devrinde `node` process'lerinin PID bilgisini bul.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "pgrep node",
-          "hint_text": "PID veya process adi bulmak icin `pgrep`, `pidof` ya da filtreli `ps` kullan.",
+          "hint_text": "Process adından PID bulmak için `pgrep` kullan.",
           "hint_partial": "pgrep node"
         }
       ]
     },
     {
-      "id": "jproc-042",
+      "id": "proc-exp-047",
       "type": "single",
-      "scenario": "Tum sleep PID'lerini `pidof` ile goster.",
+      "scenario": "On-call sırasında tüm `sleep` PID'lerini `pidof` ile göster.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "pidof sleep",
-          "hint_text": "PID veya process adi bulmak icin `pgrep`, `pidof` ya da filtreli `ps` kullan.",
+          "hint_text": "Komut adına ait PID'leri topluca görmek için `pidof` kullan.",
           "hint_partial": "pidof sleep"
         }
       ]
     },
     {
-      "id": "jproc-043",
+      "id": "proc-exp-048",
       "type": "single",
-      "scenario": "Tum bash PID'lerini `pidof` ile goster.",
+      "scenario": "Duman testi sırasında tüm `sh` PID'lerini `pidof` ile göster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "pidof bash",
-          "hint_text": "PID veya process adi bulmak icin `pgrep`, `pidof` ya da filtreli `ps` kullan.",
-          "hint_partial": "pidof bash"
+          "answer": "pidof sh",
+          "hint_text": "Komut adına ait PID'leri topluca görmek için `pidof` kullan.",
+          "hint_partial": "pidof sh"
         }
       ]
     },
     {
-      "id": "jproc-044",
+      "id": "proc-exp-049",
       "type": "single",
-      "scenario": "Tam komut satirinda `python app.py` gecen processi bul.",
+      "scenario": "Gece vardiyasında tam komut satırında `python3 collector.py` geçen process'i bul.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "pgrep -f \"python app.py\"",
-          "hint_text": "PID veya process adi bulmak icin `pgrep`, `pidof` ya da filtreli `ps` kullan.",
-          "hint_partial": "pgrep -f \"python app.py\""
+          "answer": "pgrep -f \"python3 collector.py\"",
+          "hint_text": "Tam komut satırına göre arama yapmak için `pgrep -f` kullan.",
+          "hint_partial": "pgrep -f \"py..."
         }
       ]
     },
     {
-      "id": "jproc-045",
+      "id": "proc-exp-050",
       "type": "single",
-      "scenario": "Tam komut satirinda `nginx: worker` gecen processi bul.",
+      "scenario": "Audit sırasında tam komut satırında `envoy: worker` geçen process'i bul.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "pgrep -f \"nginx: worker\"",
-          "hint_text": "PID veya process adi bulmak icin `pgrep`, `pidof` ya da filtreli `ps` kullan.",
-          "hint_partial": "pgrep -f \"nginx: worker\""
+          "answer": "pgrep -f \"envoy: worker\"",
+          "hint_text": "Tam komut satırına göre arama yapmak için `pgrep -f` kullan.",
+          "hint_partial": "pgrep -f \"ng..."
         }
       ]
     },
     {
-      "id": "jproc-046",
+      "id": "proc-exp-051",
       "type": "single",
-      "scenario": "Mevcut shell'in PID bilgisini yazdir.",
+      "scenario": "Bakım penceresinde mevcut shell'in PID bilgisini yazdır.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "echo $$",
-          "hint_text": "PID veya process adi bulmak icin `pgrep`, `pidof` ya da filtreli `ps` kullan.",
+          "hint_text": "Mevcut shell PID bilgisini özel shell değişkeniyle yazdır.",
           "hint_partial": "echo $$"
         }
       ]
     },
     {
-      "id": "jproc-047",
+      "id": "proc-exp-052",
       "type": "single",
-      "scenario": "Shell'in parent PID bilgisini yazdir.",
+      "scenario": "Incident triajında shell'in parent PID bilgisini yazdır.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "echo $PPID",
-          "hint_text": "PID veya process adi bulmak icin `pgrep`, `pidof` ya da filtreli `ps` kullan.",
+          "hint_text": "Shell'in parent PID bilgisini özel shell değişkeniyle yazdır.",
           "hint_partial": "echo $PPID"
         }
       ]
     },
     {
-      "id": "jproc-048",
+      "id": "proc-exp-053",
       "type": "single",
-      "scenario": "init/systemd process'inin PID bilgisini goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "ps -p 1",
-          "hint_text": "PID veya process adi bulmak icin `pgrep`, `pidof` ya da filtreli `ps` kullan.",
-          "hint_partial": "ps -p 1"
-        }
-      ]
-    },
-    {
-      "id": "jproc-049",
-      "type": "single",
-      "scenario": "PID 1 process'inin komutunu goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "ps -p 1 -o cmd=",
-          "hint_text": "PID veya process adi bulmak icin `pgrep`, `pidof` ya da filtreli `ps` kullan.",
-          "hint_partial": "ps -p 1 -o cmd="
-        }
-      ]
-    },
-    {
-      "id": "jproc-050",
-      "type": "single",
-      "scenario": "Belirli PID'nin komut adini goster: 1234.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "ps -p 1234 -o comm=",
-          "hint_text": "PID veya process adi bulmak icin `pgrep`, `pidof` ya da filtreli `ps` kullan.",
-          "hint_partial": "ps -p 1234 -o comm="
-        }
-      ]
-    },
-    {
-      "id": "jproc-051",
-      "type": "single",
-      "scenario": "Belirli PID'nin parent PID bilgisini goster: 1234.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "ps -p 1234 -o ppid=",
-          "hint_text": "PID veya process adi bulmak icin `pgrep`, `pidof` ya da filtreli `ps` kullan.",
-          "hint_partial": "ps -p 1234 -o ppid="
-        }
-      ]
-    },
-    {
-      "id": "jproc-052",
-      "type": "single",
-      "scenario": "Belirli PID'nin durumunu goster: 1234.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "ps -p 1234 -o stat=",
-          "hint_text": "PID veya process adi bulmak icin `pgrep`, `pidof` ya da filtreli `ps` kullan.",
-          "hint_partial": "ps -p 1234 -o stat="
-        }
-      ]
-    },
-    {
-      "id": "jproc-053",
-      "type": "single",
-      "scenario": "Belirli PID'nin baslangic zamanini goster: 1234.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "ps -p 1234 -o lstart=",
-          "hint_text": "PID veya process adi bulmak icin `pgrep`, `pidof` ya da filtreli `ps` kullan.",
-          "hint_partial": "ps -p 1234 -o lstart="
-        }
-      ]
-    },
-    {
-      "id": "jproc-054",
-      "type": "single",
-      "scenario": "Belirli PID'nin user bilgisini goster: 1234.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "ps -p 1234 -o user=",
-          "hint_text": "PID veya process adi bulmak icin `pgrep`, `pidof` ya da filtreli `ps` kullan.",
-          "hint_partial": "ps -p 1234 -o user="
-        }
-      ]
-    },
-    {
-      "id": "jproc-055",
-      "type": "single",
-      "scenario": "Belirli PID'nin terminal bilgisini goster: 1234.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "ps -p 1234 -o tty=",
-          "hint_text": "PID veya process adi bulmak icin `pgrep`, `pidof` ya da filtreli `ps` kullan.",
-          "hint_partial": "ps -p 1234 -o tty="
-        }
-      ]
-    },
-    {
-      "id": "jproc-056",
-      "type": "single",
-      "scenario": "Tum process'ler arasinda `ssh` gecen satirlari filtrele.",
+      "scenario": "Release kontrolünde çalışan process'ler içinde `ssh` geçen satırları filtrele.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "ps aux | grep ssh",
-          "hint_text": "PID veya process adi bulmak icin `pgrep`, `pidof` ya da filtreli `ps` kullan.",
-          "hint_partial": "ps aux | grep ssh"
+          "hint_text": "Process listesini alıp çıktıyı `grep` ile filtreleyebilirsin.",
+          "hint_partial": "ps aux | gre..."
         }
       ]
     },
     {
-      "id": "jproc-057",
+      "id": "proc-exp-054",
       "type": "single",
-      "scenario": "Tum process'ler arasinda `cron` gecen satirlari filtrele.",
+      "scenario": "Operasyon devrinde çalışan process'ler içinde `cron` geçen satırları filtrele.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "ps aux | grep cron",
-          "hint_text": "PID veya process adi bulmak icin `pgrep`, `pidof` ya da filtreli `ps` kullan.",
-          "hint_partial": "ps aux | grep cron"
+          "hint_text": "Process listesini alıp çıktıyı `grep` ile filtreleyebilirsin.",
+          "hint_partial": "ps aux | gre..."
         }
       ]
     },
     {
-      "id": "jproc-058",
+      "id": "proc-exp-055",
       "type": "single",
-      "scenario": "Tum process'ler arasinda `java` gecen satirlari filtrele.",
+      "scenario": "On-call sırasında çalışan process'ler içinde `java` geçen satırları filtrele.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "ps aux | grep java",
-          "hint_text": "PID veya process adi bulmak icin `pgrep`, `pidof` ya da filtreli `ps` kullan.",
-          "hint_partial": "ps aux | grep java"
+          "hint_text": "Process listesini alıp çıktıyı `grep` ile filtreleyebilirsin.",
+          "hint_partial": "ps aux | gre..."
         }
       ]
     },
     {
-      "id": "jproc-059",
+      "id": "proc-exp-056",
       "type": "single",
-      "scenario": "PID'si 4321 olan process var mi kontrol et.",
+      "scenario": "Duman testi sırasında pID 5056 process'i var mı kontrol et.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "ps -p 4321",
-          "hint_text": "PID veya process adi bulmak icin `pgrep`, `pidof` ya da filtreli `ps` kullan.",
-          "hint_partial": "ps -p 4321"
+          "answer": "ps -p 5056",
+          "hint_text": "Belirli bir PID'nin varlığını `ps -p` ile kontrol edebilirsin.",
+          "hint_partial": "ps -p 5056"
         }
       ]
     },
     {
-      "id": "jproc-060",
-      "type": "multi-step",
-      "scenario": "Once `sleep 60` komutunu arka planda baslat, sonra PID'sini bul.",
+      "id": "proc-exp-057",
+      "type": "single",
+      "scenario": "Gece vardiyasında `myapp` process'inin çalışıp çalışmadığını kontrol et.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "sleep 60 &",
-          "hint_text": "Bu senaryoda once processi baslat, sonra PID, job veya durum kontrolu icin uygun ikinci komutu kullan.",
-          "hint_partial": "sleep 60 &"
-        },
-        {
-          "prompt": "$ ",
-          "answer": "pgrep sleep",
-          "hint_text": "Bu senaryoda once processi baslat, sonra PID, job veya durum kontrolu icin uygun ikinci komutu kullan.",
-          "hint_partial": "pgrep sleep"
+          "answer": "ps aux | grep myapp",
+          "hint_text": "Process listesini alıp çıktıyı `grep` ile filtreleyebilirsin.",
+          "hint_partial": "ps aux | gre..."
         }
       ]
     },
     {
-      "id": "jproc-061",
+      "id": "proc-exp-058",
       "type": "single",
-      "scenario": "PID'si 1234 olan processi sonlandir.",
+      "scenario": "Audit sırasında `vault` process'inin PID bilgisini bul.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "kill 1234",
-          "hint_text": "Process sonlandirmak veya signal gondermek icin `kill`, `pkill` veya `killall` kullan.",
-          "hint_partial": "kill 1234"
+          "answer": "pgrep vault",
+          "hint_text": "Process adından PID bulmak için `pgrep` kullan.",
+          "hint_partial": "pgrep redis-..."
         }
       ]
     },
     {
-      "id": "jproc-062",
+      "id": "proc-exp-059",
       "type": "single",
-      "scenario": "PID'si 1234 olan processe SIGTERM gonder.",
+      "scenario": "Bakım penceresinde `dockerd` process'inin PID bilgisini bul.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "kill -TERM 1234",
-          "hint_text": "Process sonlandirmak veya signal gondermek icin `kill`, `pkill` veya `killall` kullan.",
-          "hint_partial": "kill -TERM 1234"
+          "answer": "pgrep dockerd",
+          "hint_text": "Process adından PID bulmak için `pgrep` kullan.",
+          "hint_partial": "pgrep dockerd"
         }
       ]
     },
     {
-      "id": "jproc-063",
+      "id": "proc-exp-060",
       "type": "single",
-      "scenario": "PID'si 1234 olan processe SIGKILL gonder.",
+      "scenario": "Incident triajında kendi kullanıcına ait `bash` process'lerinin PID bilgisini bul.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "kill -KILL 1234",
-          "hint_text": "Process sonlandirmak veya signal gondermek icin `kill`, `pkill` veya `killall` kullan.",
-          "hint_partial": "kill -KILL 1234"
+          "answer": "pgrep -u $USER bash",
+          "hint_text": "Hem kullanıcı hem komut adına göre arama yapmak için `pgrep` kullan.",
+          "hint_partial": "pgrep -u $US..."
         }
       ]
     },
     {
-      "id": "jproc-064",
+      "id": "proc-exp-061",
       "type": "single",
-      "scenario": "PID'si 1234 olan processe SIGINT gonder.",
+      "scenario": "Release kontrolünde tam adı `nginx` olan process'leri bul.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "kill -INT 1234",
-          "hint_text": "Process sonlandirmak veya signal gondermek icin `kill`, `pkill` veya `killall` kullan.",
-          "hint_partial": "kill -INT 1234"
+          "answer": "pgrep -x nginx",
+          "hint_text": "Tam eşleşme zorunlu olsun istiyorsan `pgrep -x` kullan.",
+          "hint_partial": "pgrep -x nginx"
         }
       ]
     },
     {
-      "id": "jproc-065",
+      "id": "proc-exp-062",
       "type": "single",
-      "scenario": "PID'si 1234 olan processe SIGHUP gonder.",
+      "scenario": "Operasyon devrinde `haproxy` process'lerini PID ve ad bilgisiyle birlikte göster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "kill -HUP 1234",
-          "hint_text": "Process sonlandirmak veya signal gondermek icin `kill`, `pkill` veya `killall` kullan.",
-          "hint_partial": "kill -HUP 1234"
+          "answer": "pgrep -a haproxy",
+          "hint_text": "`pgrep -a` ile PID yanında komut adını da görebilirsin.",
+          "hint_partial": "pgrep -a haproxy"
         }
       ]
     },
     {
-      "id": "jproc-066",
+      "id": "proc-exp-063",
       "type": "single",
-      "scenario": "PID'si 1234 olan processe SIGSTOP gonder.",
+      "scenario": "On-call sırasında `rsyslogd` process'lerini PID ve ad bilgisiyle birlikte göster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "kill -STOP 1234",
-          "hint_text": "Process sonlandirmak veya signal gondermek icin `kill`, `pkill` veya `killall` kullan.",
-          "hint_partial": "kill -STOP 1234"
+          "answer": "pgrep -l rsyslogd",
+          "hint_text": "`pgrep -l` ile PID yanında eşleşen ad bilgisini de alabilirsin.",
+          "hint_partial": "pgrep -l rsyslogd"
         }
       ]
     },
     {
-      "id": "jproc-067",
+      "id": "proc-exp-064",
       "type": "single",
-      "scenario": "PID'si 1234 olan processi devam ettirmek icin SIGCONT gonder.",
+      "scenario": "Duman testi sırasında kaç adet `sleep` process'i olduğunu say.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "kill -CONT 1234",
-          "hint_text": "Process sonlandirmak veya signal gondermek icin `kill`, `pkill` veya `killall` kullan.",
-          "hint_partial": "kill -CONT 1234"
+          "answer": "pgrep -c sleep",
+          "hint_text": "Eşleşen process sayısını almak için `pgrep -c` kullan.",
+          "hint_partial": "pgrep -c sleep"
         }
       ]
     },
     {
-      "id": "jproc-068",
+      "id": "proc-exp-065",
       "type": "single",
-      "scenario": "PID'si 1234 olan processe signal 9 gonder.",
+      "scenario": "Gece vardiyasında `systemd` process'inin PID bilgisini `pidof` ile göster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "kill -9 1234",
-          "hint_text": "Process sonlandirmak veya signal gondermek icin `kill`, `pkill` veya `killall` kullan.",
-          "hint_partial": "kill -9 1234"
+          "answer": "pidof systemd",
+          "hint_text": "Komut adına ait PID'leri topluca görmek için `pidof` kullan.",
+          "hint_partial": "pidof systemd"
         }
       ]
     },
     {
-      "id": "jproc-069",
+      "id": "proc-exp-066",
       "type": "single",
-      "scenario": "Tum `sleep` process'lerini sonlandir.",
+      "scenario": "Audit sırasında `nginx` process'lerinin sadece PID bilgisini `ps` ile göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps -C nginx -o pid=",
+          "hint_text": "Belirli komut adına göre `ps -C` ile filtreleyip sadece gerekli kolonu seç.",
+          "hint_partial": "ps -C nginx..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-067",
+      "type": "single",
+      "scenario": "Bakım penceresinde `haproxy` process'lerini PID ve komut bilgisiyle `ps` üzerinden göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps -C haproxy -o pid,cmd",
+          "hint_text": "Belirli komut adına göre `ps -C` ile filtreleyip kolonları açıkça seç.",
+          "hint_partial": "ps -C haproxy..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-068",
+      "type": "single",
+      "scenario": "Incident triajında `grep` sürecini dışarıda bırakacak şekilde `traefik` araması yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps aux | grep '[n]ginx'",
+          "hint_text": "Kendi `grep` satırını eşleştirmeden aramak için desen hilesi kullan.",
+          "hint_partial": "ps aux | gre..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-069",
+      "type": "single",
+      "scenario": "Release kontrolünde tam komut satırında `node api.js` geçen process'i bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pgrep -f \"node api.js\"",
+          "hint_text": "Tam komut satırına göre arama yapmak için `pgrep -f` kullan.",
+          "hint_partial": "pgrep -f \"no..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-070",
+      "type": "single",
+      "scenario": "Operasyon devrinde tam komut satırında `gunicorn: worker` geçen process'i bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pgrep -f \"gunicorn: worker\"",
+          "hint_text": "Tam komut satırına göre arama yapmak için `pgrep -f` kullan.",
+          "hint_partial": "pgrep -f \"gu..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-071",
+      "type": "single",
+      "scenario": "On-call sırasında en eski `python` process'inin PID bilgisini bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pgrep -o python",
+          "hint_text": "En eski eşleşmeyi almak için `pgrep -o` kullan.",
+          "hint_partial": "pgrep -o pyt..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-072",
+      "type": "single",
+      "scenario": "Duman testi sırasında en yeni `python3` process'inin PID bilgisini bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pgrep -n python3",
+          "hint_text": "En yeni eşleşmeyi almak için `pgrep -n` kullan.",
+          "hint_partial": "pgrep -n pyt..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-073",
+      "type": "single",
+      "scenario": "Gece vardiyasında pID ve komut kolonlarında `redis` geçen satırları filtrele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps -eo pid,cmd | grep redis",
+          "hint_text": "İstediğin kolonları seçip sonra `grep` ile filtreleyebilirsin.",
+          "hint_partial": "ps -eo pid,c..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-074",
+      "type": "single",
+      "scenario": "Audit sırasında pID, user ve komut kolonlarında `dockerd` geçen satırları filtrele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps -eo pid,user,cmd | grep dockerd",
+          "hint_text": "İstediğin kolonları seçip sonra `grep` ile filtreleyebilirsin.",
+          "hint_partial": "ps -eo pid,u..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-075",
+      "type": "single",
+      "scenario": "Bakım penceresinde 8443 portunu hangi process'in dinlediğini `ss` ile bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ss -tlnp | grep 8443",
+          "hint_text": "Dinleyen soketleri process bilgisiyle görmek için `ss` kullan.",
+          "hint_partial": "ss -tlnp | g..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-076",
+      "type": "single",
+      "scenario": "Incident triajında 5432 portunu hangi process'in dinlediğini `ss` ile bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ss -tlnp | grep 5432",
+          "hint_text": "Dinleyen soketleri process bilgisiyle görmek için `ss` kullan.",
+          "hint_partial": "ss -tlnp | g..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-077",
+      "type": "single",
+      "scenario": "Release kontrolünde 8080 portunu kullanan process'i `lsof` ile bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof -i :8080",
+          "hint_text": "Portu kullanan process'i görmek için `lsof -i` kullan.",
+          "hint_partial": "lsof -i :8080"
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-078",
+      "type": "single",
+      "scenario": "Operasyon devrinde 22 numaralı TCP listening socket'i hangi process'in açtığını `lsof` ile bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof -iTCP:22 -sTCP:LISTEN",
+          "hint_text": "Belirli TCP durumunu filtrelemek için `lsof` parametrelerini birlikte kullan.",
+          "hint_partial": "lsof -iTCP:2..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-079",
+      "type": "single",
+      "scenario": "On-call sırasında 9000/tcp portunu kullanan process'i `fuser` ile bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fuser 9000/tcp",
+          "hint_text": "Belirli dosya veya portu kullanan process'i görmek için `fuser` kullan.",
+          "hint_partial": "fuser 9000/tcp"
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-080",
+      "type": "single",
+      "scenario": "Duman testi sırasında 22/tcp portunu kullanan process'i ayrıntılı olarak `fuser` ile bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "fuser -v 22/tcp",
+          "hint_text": "Daha ayrıntılı process bilgisi için `fuser -v` kullan.",
+          "hint_partial": "fuser -v 22/..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-081",
+      "type": "single",
+      "scenario": "Gece vardiyasında pID 2081 olan process'i sonlandır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill 2081",
+          "hint_text": "Belirli bir PID'ye varsayılan signal göndermek için `kill` kullan.",
+          "hint_partial": "kill 2081"
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-082",
+      "type": "single",
+      "scenario": "Audit sırasında pID 2082 olan process'e SIGTERM gönder.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill -TERM 2082",
+          "hint_text": "Belirli bir signal göndermek için `kill` komutuna signal adı ekle.",
+          "hint_partial": "kill -TERM 1..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-083",
+      "type": "single",
+      "scenario": "Bakım penceresinde pID 2083 olan process'e SIGKILL gönder.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill -KILL 2083",
+          "hint_text": "Belirli bir signal göndermek için `kill` komutuna signal adı ekle.",
+          "hint_partial": "kill -KILL 1..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-084",
+      "type": "single",
+      "scenario": "Incident triajında pID 2084 olan process'e SIGINT gönder.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill -INT 2084",
+          "hint_text": "Belirli bir signal göndermek için `kill` komutuna signal adı ekle.",
+          "hint_partial": "kill -INT 2084"
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-085",
+      "type": "single",
+      "scenario": "Release kontrolünde pID 2085 olan process'e SIGHUP gönder.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill -HUP 2085",
+          "hint_text": "Belirli bir signal göndermek için `kill` komutuna signal adı ekle.",
+          "hint_partial": "kill -HUP 2085"
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-086",
+      "type": "single",
+      "scenario": "Operasyon devrinde pID 2086 olan process'e SIGSTOP gönder.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill -STOP 2086",
+          "hint_text": "Belirli bir signal göndermek için `kill` komutuna signal adı ekle.",
+          "hint_partial": "kill -STOP 1..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-087",
+      "type": "single",
+      "scenario": "On-call sırasında pID 2087 olan process'i devam ettirmek için SIGCONT gönder.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill -CONT 2087",
+          "hint_text": "Durdurulmuş process'i devam ettirmek için uygun signal'i gönder.",
+          "hint_partial": "kill -CONT 1..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-088",
+      "type": "single",
+      "scenario": "Duman testi sırasında pID 2088 olan process'e signal 9 gönder.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill -9 2088",
+          "hint_text": "Signal numarasıyla göndermek istersen `kill -9` biçimini kullan.",
+          "hint_partial": "kill -9 2088"
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-089",
+      "type": "single",
+      "scenario": "Gece vardiyasında tüm `sleep` process'lerini sonlandır.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "pkill sleep",
-          "hint_text": "Process sonlandirmak veya signal gondermek icin `kill`, `pkill` veya `killall` kullan.",
+          "hint_text": "İsme göre sonlandırma için `pkill` kullan.",
           "hint_partial": "pkill sleep"
         }
       ]
     },
     {
-      "id": "jproc-070",
+      "id": "proc-exp-090",
       "type": "single",
-      "scenario": "Tum `sleep` process'lerine SIGKILL gonder.",
+      "scenario": "Audit sırasında tüm `sleep` process'lerine SIGKILL gönder.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "pkill -9 sleep",
-          "hint_text": "Process sonlandirmak veya signal gondermek icin `kill`, `pkill` veya `killall` kullan.",
+          "hint_text": "İsme göre belirli signal göndermek için `pkill` ile signal numarasını birleştir.",
           "hint_partial": "pkill -9 sleep"
         }
       ]
     },
     {
-      "id": "jproc-071",
+      "id": "proc-exp-091",
       "type": "single",
-      "scenario": "Tam komutunda `python app.py` gecen processleri sonlandir.",
+      "scenario": "Bakım penceresinde tam komutunda `python app.py` geçen process'leri sonlandır.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "pkill -f \"python app.py\"",
-          "hint_text": "Process sonlandirmak veya signal gondermek icin `kill`, `pkill` veya `killall` kullan.",
-          "hint_partial": "pkill -f \"python app.py\""
+          "hint_text": "Tam komut satırına göre sonlandırmak için `pkill -f` kullan.",
+          "hint_partial": "pkill -f \"py..."
         }
       ]
     },
     {
-      "id": "jproc-072",
+      "id": "proc-exp-092",
       "type": "single",
-      "scenario": "Tum `nginx` process'lerini ada gore sonlandir.",
+      "scenario": "Incident triajında tüm `haproxy` process'lerini ada göre sonlandır.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "killall nginx",
-          "hint_text": "Process sonlandirmak veya signal gondermek icin `kill`, `pkill` veya `killall` kullan.",
-          "hint_partial": "killall nginx"
+          "answer": "killall haproxy",
+          "hint_text": "Ada göre toplu sonlandırma için `killall` kullan.",
+          "hint_partial": "killall haproxy"
         }
       ]
     },
     {
-      "id": "jproc-073",
+      "id": "proc-exp-093",
       "type": "single",
-      "scenario": "Tum `sleep` process'lerini ada gore sonlandir.",
+      "scenario": "Release kontrolünde tüm `sleep` process'lerini ada göre sonlandır.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "killall sleep",
-          "hint_text": "Process sonlandirmak veya signal gondermek icin `kill`, `pkill` veya `killall` kullan.",
+          "hint_text": "Ada göre toplu sonlandırma için `killall` kullan.",
           "hint_partial": "killall sleep"
         }
       ]
     },
     {
-      "id": "jproc-074",
+      "id": "proc-exp-094",
       "type": "single",
-      "scenario": "Mevcut shell'in 1 numarali job'unu sonlandir.",
+      "scenario": "Operasyon devrinde mevcut shell'in 1 numaralı job'unu sonlandır.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "kill %1",
-          "hint_text": "Process sonlandirmak veya signal gondermek icin `kill`, `pkill` veya `killall` kullan.",
+          "hint_text": "Job numarasına signal göndermek için jobspec kullanabilirsin.",
           "hint_partial": "kill %1"
         }
       ]
     },
     {
-      "id": "jproc-075",
+      "id": "proc-exp-095",
       "type": "single",
-      "scenario": "PID'si 4321 olan processin canli olup olmadigini signal gondermeden kontrol et.",
+      "scenario": "On-call sırasında pID 5095 process'in canlı olup olmadığını signal göndermeden kontrol et.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "kill -0 4321",
-          "hint_text": "Process sonlandirmak veya signal gondermek icin `kill`, `pkill` veya `killall` kullan.",
-          "hint_partial": "kill -0 4321"
+          "answer": "kill -0 5095",
+          "hint_text": "Sinyal göndermeden varlık kontrolü için `kill -0` kullan.",
+          "hint_partial": "kill -0 5095"
         }
       ]
     },
     {
-      "id": "jproc-076",
+      "id": "proc-exp-096",
       "type": "single",
-      "scenario": "Desteklenen signal isimlerini listele.",
+      "scenario": "Duman testi sırasında desteklenen signal isimlerini listele.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "kill -l",
-          "hint_text": "Process sonlandirmak veya signal gondermek icin `kill`, `pkill` veya `killall` kullan.",
+          "hint_text": "Desteklenen signal listesini görmek için `kill -l` kullan.",
           "hint_partial": "kill -l"
         }
       ]
     },
     {
-      "id": "jproc-077",
+      "id": "proc-exp-097",
       "type": "single",
-      "scenario": "`yes` process'lerini ada gore sonlandir.",
+      "scenario": "Gece vardiyasında tüm `yes` process'lerini sonlandır.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "pkill yes",
-          "hint_text": "Process sonlandirmak veya signal gondermek icin `kill`, `pkill` veya `killall` kullan.",
+          "hint_text": "İsme göre sonlandırma için `pkill` kullan.",
           "hint_partial": "pkill yes"
         }
       ]
     },
     {
-      "id": "jproc-078",
+      "id": "proc-exp-098",
       "type": "single",
-      "scenario": "`tail` process'lerini ada gore sonlandir.",
+      "scenario": "Audit sırasında tüm `tail` process'lerini sonlandır.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "pkill tail",
-          "hint_text": "Process sonlandirmak veya signal gondermek icin `kill`, `pkill` veya `killall` kullan.",
+          "hint_text": "İsme göre sonlandırma için `pkill` kullan.",
           "hint_partial": "pkill tail"
         }
       ]
     },
     {
-      "id": "jproc-079",
+      "id": "proc-exp-099",
       "type": "single",
-      "scenario": "PID'si 2222 olan processe yeniden okuma icin HUP gonder.",
+      "scenario": "Bakım penceresinde pID 2299 olan process'e yeniden yükleme amacıyla HUP gönder.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "kill -HUP 2222",
-          "hint_text": "Process sonlandirmak veya signal gondermek icin `kill`, `pkill` veya `killall` kullan.",
-          "hint_partial": "kill -HUP 2222"
+          "answer": "kill -HUP 2299",
+          "hint_text": "Yeniden okuma/reload için sık kullanılan signal HUP'tur.",
+          "hint_partial": "kill -HUP 2299"
         }
       ]
     },
     {
-      "id": "jproc-080",
+      "id": "proc-exp-100",
       "type": "single",
-      "scenario": "PID'si 3333 olan processi durdur.",
+      "scenario": "Incident triajında pID 3400 olan process'i durdur.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "kill -STOP 3333",
-          "hint_text": "Process sonlandirmak veya signal gondermek icin `kill`, `pkill` veya `killall` kullan.",
-          "hint_partial": "kill -STOP 3333"
+          "answer": "kill -STOP 3400",
+          "hint_text": "Process'i geçici olarak durdurmak için `SIGSTOP` gönder.",
+          "hint_partial": "kill -STOP 3..."
         }
       ]
     },
     {
-      "id": "jproc-081",
+      "id": "proc-exp-101",
       "type": "single",
-      "scenario": "PID'si 3333 olan durmus processi devam ettir.",
+      "scenario": "Release kontrolünde pID 3401 olan durmuş process'i devam ettir.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "kill -CONT 3333",
-          "hint_text": "Process sonlandirmak veya signal gondermek icin `kill`, `pkill` veya `killall` kullan.",
-          "hint_partial": "kill -CONT 3333"
+          "answer": "kill -CONT 3401",
+          "hint_text": "Durdurulmuş process'i sürdürmek için `SIGCONT` gönder.",
+          "hint_partial": "kill -CONT 3..."
         }
       ]
     },
     {
-      "id": "jproc-082",
+      "id": "proc-exp-102",
       "type": "single",
-      "scenario": "PID'si 4444 olan processi kesme sinyaliyle durdur.",
+      "scenario": "Operasyon devrinde pID 4502 olan process'i kesme sinyaliyle durdur.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "kill -INT 4444",
-          "hint_text": "Process sonlandirmak veya signal gondermek icin `kill`, `pkill` veya `killall` kullan.",
-          "hint_partial": "kill -INT 4444"
+          "answer": "kill -INT 4502",
+          "hint_text": "Kesme sinyali için `SIGINT` gönder.",
+          "hint_partial": "kill -INT 4502"
         }
       ]
     },
     {
-      "id": "jproc-083",
+      "id": "proc-exp-103",
       "type": "single",
-      "scenario": "PID'si 5555 olan processi zorla kapat.",
+      "scenario": "On-call sırasında pID 5603 olan process'i zorla kapat.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "kill -9 5555",
-          "hint_text": "Process sonlandirmak veya signal gondermek icin `kill`, `pkill` veya `killall` kullan.",
-          "hint_partial": "kill -9 5555"
+          "answer": "kill -9 5603",
+          "hint_text": "Zorla kapatma için `SIGKILL`/signal 9 kullan.",
+          "hint_partial": "kill -9 5603"
         }
       ]
     },
     {
-      "id": "jproc-084",
+      "id": "proc-exp-104",
       "type": "single",
-      "scenario": "Tum `vim` process'lerini ada gore sonlandir.",
+      "scenario": "Duman testi sırasında tüm `tail` process'lerini ada göre sonlandır.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "killall vim",
-          "hint_text": "Process sonlandirmak veya signal gondermek icin `kill`, `pkill` veya `killall` kullan.",
-          "hint_partial": "killall vim"
+          "answer": "killall tail",
+          "hint_text": "Ada göre toplu sonlandırma için `killall` kullan.",
+          "hint_partial": "killall tail"
         }
       ]
     },
     {
-      "id": "jproc-085",
-      "type": "multi-step",
-      "scenario": "Once `sleep 120` komutunu arka planda baslat, sonra job numarasiyla kapat.",
+      "id": "proc-exp-105",
+      "type": "single",
+      "scenario": "Gece vardiyasında kendi kullanıcı hesabına ait tüm `bash` process'lerini sonlandır.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "sleep 120 &",
-          "hint_text": "Bu senaryoda once processi baslat, sonra PID, job veya durum kontrolu icin uygun ikinci komutu kullan.",
-          "hint_partial": "sleep 120 &"
-        },
-        {
-          "prompt": "$ ",
-          "answer": "kill %1",
-          "hint_text": "Bu senaryoda once processi baslat, sonra PID, job veya durum kontrolu icin uygun ikinci komutu kullan.",
-          "hint_partial": "kill %1"
+          "answer": "pkill -u $USER bash",
+          "hint_text": "Kullanıcı ve process adını birlikte vermek için `pkill -u` kullan.",
+          "hint_partial": "pkill -u $US..."
         }
       ]
     },
     {
-      "id": "jproc-086",
+      "id": "proc-exp-106",
       "type": "single",
-      "scenario": "`sleep 30` komutunu arka planda calistir.",
+      "scenario": "Audit sırasında tam adı `nginx` olan process'leri sonlandır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pkill -x nginx",
+          "hint_text": "Tam ad eşleşmesi için `pkill -x` kullan.",
+          "hint_partial": "pkill -x nginx"
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-107",
+      "type": "single",
+      "scenario": "Bakım penceresinde tam komutunda `uwsgi master` geçen process'leri sonlandır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pkill -f \"uwsgi master\"",
+          "hint_text": "Tam komut satırına göre sonlandırmak için `pkill -f` kullan.",
+          "hint_partial": "pkill -f \"gu..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-108",
+      "type": "single",
+      "scenario": "Incident triajında tüm `node` process'lerini zorla kapat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "killall -9 node",
+          "hint_text": "Ada göre ve signal numarasıyla sonlandırmak için `killall -9` kullan.",
+          "hint_partial": "killall -9 n..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-109",
+      "type": "single",
+      "scenario": "Release kontrolünde `consul` process'lerine SIGTERM gönder.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pkill -TERM consul",
+          "hint_text": "İsme göre belirli signal göndermek için `pkill -TERM` kullan.",
+          "hint_partial": "pkill -TERM..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-110",
+      "type": "single",
+      "scenario": "Operasyon devrinde pID 6710 olan process'e USR1 signal'i gönder.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill -USR1 6710",
+          "hint_text": "Uygulama özel sinyalleri için `USR1` veya `USR2` kullanabilirsin.",
+          "hint_partial": "kill -USR1 6..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-111",
+      "type": "single",
+      "scenario": "On-call sırasında pID 6711 olan process'e USR2 signal'i gönder.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill -USR2 6711",
+          "hint_text": "Uygulama özel sinyalleri için `USR1` veya `USR2` kullanabilirsin.",
+          "hint_partial": "kill -USR2 6..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-112",
+      "type": "single",
+      "scenario": "Duman testi sırasında tüm `haproxy` process'lerine HUP gönder.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pkill -HUP haproxy",
+          "hint_text": "İsme göre HUP göndermek için `pkill -HUP` kullan.",
+          "hint_partial": "pkill -HUP n..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-113",
+      "type": "single",
+      "scenario": "Gece vardiyasında tüm `sleep` process'lerini durdur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pkill -STOP sleep",
+          "hint_text": "İsme göre STOP göndermek için `pkill -STOP` kullan.",
+          "hint_partial": "pkill -STOP..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-114",
+      "type": "single",
+      "scenario": "Audit sırasında tüm durmuş `sleep` process'lerini devam ettir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pkill -CONT sleep",
+          "hint_text": "İsme göre CONT göndermek için `pkill -CONT` kullan.",
+          "hint_partial": "pkill -CONT..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-115",
+      "type": "single",
+      "scenario": "Bakım penceresinde `sleep` process'lerini sessiz modda sonlandır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "killall -q sleep",
+          "hint_text": "Çıktı üretmeden ada göre sonlandırmak için `killall -q` kullan.",
+          "hint_partial": "killall -q s..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-116",
+      "type": "single",
+      "scenario": "Incident triajında en eski `python` process'ini sonlandır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pkill -o python",
+          "hint_text": "En eski eşleşmeyi hedeflemek için `pkill -o` kullan.",
+          "hint_partial": "pkill -o pyt..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-117",
+      "type": "single",
+      "scenario": "Release kontrolünde en yeni `python3` process'ini sonlandır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pkill -n python3",
+          "hint_text": "En yeni eşleşmeyi hedeflemek için `pkill -n` kullan.",
+          "hint_partial": "pkill -n pyt..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-118",
+      "type": "single",
+      "scenario": "Operasyon devrinde pID 7818 olan process'e TERM signal'ini `-s` ile gönder.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill -s TERM 7818",
+          "hint_text": "Signal adını `-s` parametresiyle de verebilirsin.",
+          "hint_partial": "kill -s TERM..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-119",
+      "type": "single",
+      "scenario": "On-call sırasında pID 7819 olan process'e KILL signal'ini `-s` ile gönder.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill -s KILL 7819",
+          "hint_text": "Signal adını `-s` parametresiyle de verebilirsin.",
+          "hint_partial": "kill -s KILL..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-120",
+      "type": "single",
+      "scenario": "Duman testi sırasında pID 7820 olan process'e HUP signal'ini `-s` ile gönder.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kill -s HUP 7820",
+          "hint_text": "Signal adını `-s` parametresiyle de verebilirsin.",
+          "hint_partial": "kill -s HUP..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-121",
+      "type": "single",
+      "scenario": "Gece vardiyasında bir `sleep 30` job'unu arka planda başlat.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "sleep 30 &",
-          "hint_text": "Arka plan isleri icin `jobs`, `bg`, `fg`, `wait` ve `&` yapilarini kullan.",
+          "hint_text": "Bir komutu arka planda başlatmak için satır sonuna `&` ekle.",
           "hint_partial": "sleep 30 &"
         }
       ]
     },
     {
-      "id": "jproc-087",
+      "id": "proc-exp-122",
       "type": "single",
-      "scenario": "`sleep 60` komutunu arka planda calistir.",
+      "scenario": "Audit sırasında bir `sleep 60` job'unu arka planda başlat.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "sleep 60 &",
-          "hint_text": "Arka plan isleri icin `jobs`, `bg`, `fg`, `wait` ve `&` yapilarini kullan.",
+          "hint_text": "Bir komutu arka planda başlatmak için satır sonuna `&` ekle.",
           "hint_partial": "sleep 60 &"
         }
       ]
     },
     {
-      "id": "jproc-088",
+      "id": "proc-exp-123",
       "type": "single",
-      "scenario": "`tail -f /var/log/system.log` komutunu arka planda calistir.",
+      "scenario": "Bakım penceresinde `tail -f /var/log/app.log` komutunu arka planda çalıştır.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "tail -f /var/log/system.log &",
-          "hint_text": "Arka plan isleri icin `jobs`, `bg`, `fg`, `wait` ve `&` yapilarini kullan.",
-          "hint_partial": "tail -f /var/log/syst..."
+          "answer": "tail -f /var/log/app.log &",
+          "hint_text": "Bir komutu arka planda başlatmak için satır sonuna `&` ekle.",
+          "hint_partial": "tail -f /var/log/... &"
         }
       ]
     },
     {
-      "id": "jproc-089",
+      "id": "proc-exp-124",
       "type": "single",
-      "scenario": "Mevcut shell job'larini listele.",
+      "scenario": "Incident triajında mevcut shell job'larını listele.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "jobs",
-          "hint_text": "Arka plan isleri icin `jobs`, `bg`, `fg`, `wait` ve `&` yapilarini kullan.",
+          "hint_text": "Mevcut shell içindeki background/foreground job'ları görmek için `jobs` kullan.",
           "hint_partial": "jobs"
         }
       ]
     },
     {
-      "id": "jproc-090",
+      "id": "proc-exp-125",
       "type": "single",
-      "scenario": "Job'lari PID bilgisiyle listele.",
+      "scenario": "Release kontrolünde job'ları PID bilgisiyle listele.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "jobs -l",
-          "hint_text": "Arka plan isleri icin `jobs`, `bg`, `fg`, `wait` ve `&` yapilarini kullan.",
+          "hint_text": "Job listesinde PID bilgisi de görmek için `jobs -l` kullan.",
           "hint_partial": "jobs -l"
         }
       ]
     },
     {
-      "id": "jproc-091",
+      "id": "proc-exp-126",
       "type": "single",
-      "scenario": "Durdurulmus 1 numarali job'u arka planda devam ettir.",
+      "scenario": "Operasyon devrinde durdurulmuş 1 numaralı job'u arka planda devam ettir.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "bg %1",
-          "hint_text": "Arka plan isleri icin `jobs`, `bg`, `fg`, `wait` ve `&` yapilarini kullan.",
+          "hint_text": "Durdurulmuş bir job'u background'da devam ettirmek için `bg` kullan.",
           "hint_partial": "bg %1"
         }
       ]
     },
     {
-      "id": "jproc-092",
+      "id": "proc-exp-127",
       "type": "single",
-      "scenario": "1 numarali job'u one getir.",
+      "scenario": "On-call sırasında 1 numaralı job'u foreground'a al.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "fg %1",
-          "hint_text": "Arka plan isleri icin `jobs`, `bg`, `fg`, `wait` ve `&` yapilarini kullan.",
+          "hint_text": "Bir job'u foreground'a almak için `fg` kullan.",
           "hint_partial": "fg %1"
         }
       ]
     },
     {
-      "id": "jproc-093",
+      "id": "proc-exp-128",
       "type": "single",
-      "scenario": "Tum arka plan job'larinin bitmesini bekle.",
+      "scenario": "Duman testi sırasında tüm arka plan job'larının bitmesini bekle.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "wait",
-          "hint_text": "Arka plan isleri icin `jobs`, `bg`, `fg`, `wait` ve `&` yapilarini kullan.",
+          "hint_text": "Arka plandaki işlerin tamamlanmasını beklemek için `wait` kullan.",
           "hint_partial": "wait"
         }
       ]
     },
     {
-      "id": "jproc-094",
+      "id": "proc-exp-129",
       "type": "single",
-      "scenario": "Belirli PID'nin bitmesini bekle: 1234.",
+      "scenario": "Gece vardiyasında pID 2129 olan background process'in bitmesini bekle.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "wait 1234",
-          "hint_text": "Arka plan isleri icin `jobs`, `bg`, `fg`, `wait` ve `&` yapilarini kullan.",
-          "hint_partial": "wait 1234"
+          "answer": "wait 2129",
+          "hint_text": "Belirli bir PID'nin bitmesini beklemek için `wait` kullan.",
+          "hint_partial": "wait 2129"
         }
       ]
     },
     {
-      "id": "jproc-095",
+      "id": "proc-exp-130",
       "type": "single",
-      "scenario": "Bir `sleep 5` job'unu arka planda baslatip job'lari listele.",
+      "scenario": "Audit sırasında bir `sleep 5` job'unu arka planda başlatıp job listesini göster.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "sleep 5 & jobs",
-          "hint_text": "Arka plan isleri icin `jobs`, `bg`, `fg`, `wait` ve `&` yapilarini kullan.",
+          "hint_text": "Tek satırda hem background başlatıp hem de job listesini gösterebilirsin.",
           "hint_partial": "sleep 5 & jobs"
         }
       ]
     },
     {
-      "id": "jproc-096",
+      "id": "proc-exp-131",
       "type": "single",
-      "scenario": "`yes > /dev/null` komutunu arka planda calistir.",
+      "scenario": "Bakım penceresinde `yes > /dev/null` komutunu arka planda çalıştır.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "yes > /dev/null &",
-          "hint_text": "Arka plan isleri icin `jobs`, `bg`, `fg`, `wait` ve `&` yapilarini kullan.",
-          "hint_partial": "yes > /dev/null &"
+          "hint_text": "Uzun çalışan komutu background'a almak için `&` ekle.",
+          "hint_partial": "yes > /dev/n..."
         }
       ]
     },
     {
-      "id": "jproc-097",
+      "id": "proc-exp-132",
       "type": "single",
-      "scenario": "Arka plana aldigin son komutun PID'sini yazdir.",
+      "scenario": "Incident triajında arka plana aldığın son komutun PID bilgisini yazdır.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "echo $!",
-          "hint_text": "Arka plan isleri icin `jobs`, `bg`, `fg`, `wait` ve `&` yapilarini kullan.",
+          "hint_text": "Son background PID bilgisini özel shell değişkeniyle yazdırabilirsin.",
           "hint_partial": "echo $!"
         }
       ]
     },
     {
-      "id": "jproc-098",
+      "id": "proc-exp-133",
       "type": "single",
-      "scenario": "1 numarali job'un process grubunu PID ile goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "jobs -p %1",
-          "hint_text": "Arka plan isleri icin `jobs`, `bg`, `fg`, `wait` ve `&` yapilarini kullan.",
-          "hint_partial": "jobs -p %1"
-        }
-      ]
-    },
-    {
-      "id": "jproc-099",
-      "type": "single",
-      "scenario": "Tum job PID'lerini yazdir.",
+      "scenario": "Release kontrolünde tüm job PID'lerini yazdır.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "jobs -p",
-          "hint_text": "Arka plan isleri icin `jobs`, `bg`, `fg`, `wait` ve `&` yapilarini kullan.",
+          "hint_text": "Job'ların sadece PID bilgisini görmek için `jobs -p` kullan.",
           "hint_partial": "jobs -p"
         }
       ]
     },
     {
-      "id": "jproc-100",
+      "id": "proc-exp-134",
       "type": "single",
-      "scenario": "Background job bitince shell'e mesaj gelsin diye bildirimi ac.",
+      "scenario": "Operasyon devrinde background job bitince shell'e bildirim gelsin diye iş bildirimi özelliğini aç.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "set -b",
-          "hint_text": "Arka plan isleri icin `jobs`, `bg`, `fg`, `wait` ve `&` yapilarini kullan.",
+          "hint_text": "Bash job bildirimi için uygun shell ayarını aç.",
           "hint_partial": "set -b"
         }
       ]
     },
     {
-      "id": "jproc-101",
+      "id": "proc-exp-135",
       "type": "single",
-      "scenario": "Background job bildirim ayarini kapat.",
+      "scenario": "On-call sırasında background job bildirim ayarını kapat.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "set +b",
-          "hint_text": "Arka plan isleri icin `jobs`, `bg`, `fg`, `wait` ve `&` yapilarini kullan.",
+          "hint_text": "Bash job bildirimi için uygun shell ayarını kapat.",
           "hint_partial": "set +b"
         }
       ]
     },
     {
-      "id": "jproc-102",
+      "id": "proc-exp-136",
       "type": "single",
-      "scenario": "Bir shell scripti arka planda calistir.",
+      "scenario": "Duman testi sırasında bir shell scriptini arka planda çalıştır.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "./script.sh &",
-          "hint_text": "Arka plan isleri icin `jobs`, `bg`, `fg`, `wait` ve `&` yapilarini kullan.",
+          "hint_text": "Bir scripti background'da başlatmak için komut sonuna `&` ekle.",
           "hint_partial": "./script.sh &"
         }
       ]
     },
     {
-      "id": "jproc-103",
+      "id": "proc-exp-137",
       "type": "single",
-      "scenario": "Bir Python scriptini arka planda calistir.",
+      "scenario": "Gece vardiyasında bir Python scriptini arka planda çalıştır.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "python3 app.py &",
-          "hint_text": "Arka plan isleri icin `jobs`, `bg`, `fg`, `wait` ve `&` yapilarini kullan.",
-          "hint_partial": "python3 app.py &"
+          "answer": "python33 queue.py &",
+          "hint_text": "Bir scripti background'da başlatmak için komut sonuna `&` ekle.",
+          "hint_partial": "python33 app...."
         }
       ]
     },
     {
-      "id": "jproc-104",
+      "id": "proc-exp-138",
       "type": "single",
-      "scenario": "Bir komutu arka planda baslatip hemen sonra PID'sini goster.",
+      "scenario": "Audit sırasında bir komutu arka planda başlatıp hemen ardından son background PID'sini yazdır.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "sleep 20 & echo $!",
-          "hint_text": "Arka plan isleri icin `jobs`, `bg`, `fg`, `wait` ve `&` yapilarini kullan.",
-          "hint_partial": "sleep 20 & echo $!"
+          "hint_text": "Tek satırda hem başlatıp hem de son background PID bilgisini yazdırabilirsin.",
+          "hint_partial": "sleep 20 & e..."
         }
       ]
     },
     {
-      "id": "jproc-105",
+      "id": "proc-exp-139",
       "type": "single",
-      "scenario": "1 numarali job'u sonlandirmadan once one getir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "fg %1",
-          "hint_text": "Arka plan isleri icin `jobs`, `bg`, `fg`, `wait` ve `&` yapilarini kullan.",
-          "hint_partial": "fg %1"
-        }
-      ]
-    },
-    {
-      "id": "jproc-106",
-      "type": "single",
-      "scenario": "`watch date` komutunu arka planda calistir.",
+      "scenario": "Bakım penceresinde `watch date` komutunu arka planda çalıştır.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "watch date &",
-          "hint_text": "Arka plan isleri icin `jobs`, `bg`, `fg`, `wait` ve `&` yapilarini kullan.",
+          "hint_text": "Bir komutu background'da başlatmak için komut sonuna `&` ekle.",
           "hint_partial": "watch date &"
         }
       ]
     },
     {
-      "id": "jproc-107",
+      "id": "proc-exp-140",
       "type": "single",
-      "scenario": "Arka planda `ping` calistir: localhost'a 5 paket.",
+      "scenario": "Incident triajında `ping -c 5 127.0.0.1` komutunu arka planda çalıştır.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "ping -c 5 localhost &",
-          "hint_text": "Arka plan isleri icin `jobs`, `bg`, `fg`, `wait` ve `&` yapilarini kullan.",
-          "hint_partial": "ping -c 5 localhost &"
+          "answer": "ping -c 5 127.0.0.1 &",
+          "hint_text": "Bir komutu background'da başlatmak için komut sonuna `&` ekle.",
+          "hint_partial": "ping -c 5 lo..."
         }
       ]
     },
     {
-      "id": "jproc-108",
-      "type": "single",
-      "scenario": "Arka plandaki `sleep` isini bulmak icin job'lari listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "jobs",
-          "hint_text": "Arka plan isleri icin `jobs`, `bg`, `fg`, `wait` ve `&` yapilarini kullan.",
-          "hint_partial": "jobs"
-        }
-      ]
-    },
-    {
-      "id": "jproc-109",
-      "type": "single",
-      "scenario": "Bir shell scripti `nohup` olmadan dogrudan arka planda baslat.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "./backup.sh &",
-          "hint_text": "Arka plan isleri icin `jobs`, `bg`, `fg`, `wait` ve `&` yapilarini kullan.",
-          "hint_partial": "./backup.sh &"
-        }
-      ]
-    },
-    {
-      "id": "jproc-110",
+      "id": "proc-exp-141",
       "type": "multi-step",
-      "scenario": "Once `sleep 100` komutunu arka planda baslat, sonra job listesini goster.",
+      "scenario": "Release kontrolünde önce `sleep 100` komutunu arka planda başlat, sonra job listesini göster.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "sleep 100 &",
-          "hint_text": "Bu senaryoda once processi baslat, sonra PID, job veya durum kontrolu icin uygun ikinci komutu kullan.",
+          "hint_text": "İlk adımda komutu background'da başlat.",
           "hint_partial": "sleep 100 &"
         },
         {
           "prompt": "$ ",
           "answer": "jobs",
-          "hint_text": "Bu senaryoda once processi baslat, sonra PID, job veya durum kontrolu icin uygun ikinci komutu kullan.",
+          "hint_text": "Sonra shell job listesini göster.",
           "hint_partial": "jobs"
         }
       ]
     },
     {
-      "id": "jproc-011-r1",
-      "type": "single",
-      "scenario": "Bakim oncesi tum process'leri PID ve komut bilgisiyle listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "ps -ef",
-          "hint_text": "Process listelemek veya ozet gormek icin `ps`, `top`, `htop` ya da benzer temel araci kullan.",
-          "hint_partial": "ps -ef"
-        }
-      ]
-    },
-    {
-      "id": "jproc-012-r2",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda tum process'leri detayli BSD formatinda listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "ps aux",
-          "hint_text": "Process listelemek veya ozet gormek icin `ps`, `top`, `htop` ya da benzer temel araci kullan.",
-          "hint_partial": "ps aux"
-        }
-      ]
-    },
-    {
-      "id": "jproc-013-r3",
-      "type": "single",
-      "scenario": "Deploy sonrasi sadece kendi kullanicinin process'lerini listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "ps -u $USER",
-          "hint_text": "Process listelemek veya ozet gormek icin `ps`, `top`, `htop` ya da benzer temel araci kullan.",
-          "hint_partial": "ps -u $USER"
-        }
-      ]
-    },
-    {
-      "id": "jproc-014-r4",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde tum bash process'lerini listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "ps -C bash",
-          "hint_text": "Process listelemek veya ozet gormek icin `ps`, `top`, `htop` ya da benzer temel araci kullan.",
-          "hint_partial": "ps -C bash"
-        }
-      ]
-    },
-    {
-      "id": "jproc-015-r5",
-      "type": "single",
-      "scenario": "Yeni acilan hostta tum ssh process'lerini listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "ps -C ssh",
-          "hint_text": "Process listelemek veya ozet gormek icin `ps`, `top`, `htop` ya da benzer temel araci kullan.",
-          "hint_partial": "ps -C ssh"
-        }
-      ]
-    },
-    {
-      "id": "jproc-016-r6",
-      "type": "single",
-      "scenario": "Runbook adiminda tum sleep process'lerini listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "ps -C sleep",
-          "hint_text": "Process listelemek veya ozet gormek icin `ps`, `top`, `htop` ya da benzer temel araci kullan.",
-          "hint_partial": "ps -C sleep"
-        }
-      ]
-    },
-    {
-      "id": "jproc-017-r7",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde tum process'leri agac gorunumunde listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "ps -ef --forest",
-          "hint_text": "Process listelemek veya ozet gormek icin `ps`, `top`, `htop` ya da benzer temel araci kullan.",
-          "hint_partial": "ps -ef --forest"
-        }
-      ]
-    },
-    {
-      "id": "jproc-018-r8",
-      "type": "single",
-      "scenario": "Incident sonrasinda tum process'leri PID'ye gore listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "ps -eo pid,cmd",
-          "hint_text": "Process listelemek veya ozet gormek icin `ps`, `top`, `htop` ya da benzer temel araci kullan.",
-          "hint_partial": "ps -eo pid,cmd"
-        }
-      ]
-    },
-    {
-      "id": "jproc-019-r9",
-      "type": "single",
-      "scenario": "Bakim oncesi tum process'leri user, pid ve komut alanlariyla goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "ps -eo user,pid,cmd",
-          "hint_text": "Process listelemek veya ozet gormek icin `ps`, `top`, `htop` ya da benzer temel araci kullan.",
-          "hint_partial": "ps -eo user,pid,cmd"
-        }
-      ]
-    },
-    {
-      "id": "jproc-020-r10",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda tum process'leri pid ve parent pid bilgisiyle goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "ps -eo pid,ppid,cmd",
-          "hint_text": "Process listelemek veya ozet gormek icin `ps`, `top`, `htop` ya da benzer temel araci kullan.",
-          "hint_partial": "ps -eo pid,ppid,cmd"
-        }
-      ]
-    },
-    {
-      "id": "jproc-021-r11",
-      "type": "single",
-      "scenario": "Deploy sonrasi tum process'leri CPU kullanimiyla goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "ps -eo pid,%cpu,cmd",
-          "hint_text": "Process listelemek veya ozet gormek icin `ps`, `top`, `htop` ya da benzer temel araci kullan.",
-          "hint_partial": "ps -eo pid,%cpu,cmd"
-        }
-      ]
-    },
-    {
-      "id": "jproc-022-r12",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde tum process'leri memory kullanimiyla goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "ps -eo pid,%mem,cmd",
-          "hint_text": "Process listelemek veya ozet gormek icin `ps`, `top`, `htop` ya da benzer temel araci kullan.",
-          "hint_partial": "ps -eo pid,%mem,cmd"
-        }
-      ]
-    },
-    {
-      "id": "jproc-023-r13",
-      "type": "single",
-      "scenario": "Yeni acilan hostta tum process'leri durum kolonu ile goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "ps -eo pid,stat,cmd",
-          "hint_text": "Process listelemek veya ozet gormek icin `ps`, `top`, `htop` ya da benzer temel araci kullan.",
-          "hint_partial": "ps -eo pid,stat,cmd"
-        }
-      ]
-    },
-    {
-      "id": "jproc-024-r14",
-      "type": "single",
-      "scenario": "Runbook adiminda tum process'leri baslangic zamaniyla goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "ps -eo pid,lstart,cmd",
-          "hint_text": "Process listelemek veya ozet gormek icin `ps`, `top`, `htop` ya da benzer temel araci kullan.",
-          "hint_partial": "ps -eo pid,lstart,cmd"
-        }
-      ]
-    },
-    {
-      "id": "jproc-025-r15",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde en cok CPU kullanan process'leri ilk sirada goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "ps aux --sort=-%cpu",
-          "hint_text": "Process listelemek veya ozet gormek icin `ps`, `top`, `htop` ya da benzer temel araci kullan.",
-          "hint_partial": "ps aux --sort=-%cpu"
-        }
-      ]
-    },
-    {
-      "id": "jproc-026-r16",
-      "type": "single",
-      "scenario": "Incident sonrasinda en cok memory kullanan process'leri ilk sirada goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "ps aux --sort=-%mem",
-          "hint_text": "Process listelemek veya ozet gormek icin `ps`, `top`, `htop` ya da benzer temel araci kullan.",
-          "hint_partial": "ps aux --sort=-%mem"
-        }
-      ]
-    },
-    {
-      "id": "jproc-027-r17",
-      "type": "single",
-      "scenario": "Bakim oncesi canli process izlemesini `top` ile baslat.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "top",
-          "hint_text": "Process listelemek veya ozet gormek icin `ps`, `top`, `htop` ya da benzer temel araci kullan.",
-          "hint_partial": "top"
-        }
-      ]
-    },
-    {
-      "id": "jproc-028-r18",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda canli process izlemesini `htop` ile baslat.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "htop",
-          "hint_text": "Process listelemek veya ozet gormek icin `ps`, `top`, `htop` ya da benzer temel araci kullan.",
-          "hint_partial": "htop"
-        }
-      ]
-    },
-    {
-      "id": "jproc-029-r19",
-      "type": "single",
-      "scenario": "Deploy sonrasi her 2 saniyede bir `ps aux` cikisini yenileyerek izle.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "watch -n 2 ps aux",
-          "hint_text": "Process listelemek veya ozet gormek icin `ps`, `top`, `htop` ya da benzer temel araci kullan.",
-          "hint_partial": "watch -n 2 ps aux"
-        }
-      ]
-    },
-    {
-      "id": "jproc-030-r20",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde calisan tum process sayisini hesapla.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "ps -e | wc -l",
-          "hint_text": "Process listelemek veya ozet gormek icin `ps`, `top`, `htop` ya da benzer temel araci kullan.",
-          "hint_partial": "ps -e | wc -l"
-        }
-      ]
-    },
-    {
-      "id": "jproc-031-r21",
-      "type": "single",
-      "scenario": "Yeni acilan hostta tum process'lerin tam komut satirini goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "ps -eo pid,args",
-          "hint_text": "Process listelemek veya ozet gormek icin `ps`, `top`, `htop` ya da benzer temel araci kullan.",
-          "hint_partial": "ps -eo pid,args"
-        }
-      ]
-    },
-    {
-      "id": "jproc-032-r22",
-      "type": "single",
-      "scenario": "Runbook adiminda tum process'lerin komut adini ve PID'sini goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "ps -eo pid,comm",
-          "hint_text": "Process listelemek veya ozet gormek icin `ps`, `top`, `htop` ya da benzer temel araci kullan.",
-          "hint_partial": "ps -eo pid,comm"
-        }
-      ]
-    },
-    {
-      "id": "jproc-033-r23",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde tum process'leri terminal bilgisiyle goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "ps -eo pid,tty,cmd",
-          "hint_text": "Process listelemek veya ozet gormek icin `ps`, `top`, `htop` ya da benzer temel araci kullan.",
-          "hint_partial": "ps -eo pid,tty,cmd"
-        }
-      ]
-    },
-    {
-      "id": "jproc-034-r24",
-      "type": "single",
-      "scenario": "Incident sonrasinda tum process'leri user ve durum kolonu ile goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "ps -eo user,stat,cmd",
-          "hint_text": "Process listelemek veya ozet gormek icin `ps`, `top`, `htop` ya da benzer temel araci kullan.",
-          "hint_partial": "ps -eo user,stat,cmd"
-        }
-      ]
-    },
-    {
-      "id": "jproc-035-r25",
+      "id": "proc-exp-142",
       "type": "multi-step",
-      "scenario": "Bakim oncesi once tum process'leri listele, sonra en cok CPU kullananlari sirala.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "ps aux",
-          "hint_text": "Bu senaryoda once processi baslat, sonra PID, job veya durum kontrolu icin uygun ikinci komutu kullan.",
-          "hint_partial": "ps aux"
-        },
-        {
-          "prompt": "$ ",
-          "answer": "ps aux --sort=-%cpu",
-          "hint_text": "Bu senaryoda once processi baslat, sonra PID, job veya durum kontrolu icin uygun ikinci komutu kullan.",
-          "hint_partial": "ps aux --sort=-%cpu"
-        }
-      ]
-    },
-    {
-      "id": "jproc-036-r26",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda postgres-26-26 process'inin PID bilgisini bul.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "pgrep postgres-26-26",
-          "hint_text": "PID veya process adi bulmak icin `pgrep`, `pidof` ya da filtreli `ps` kullan.",
-          "hint_partial": "pgrep postgres-26-26"
-        }
-      ]
-    },
-    {
-      "id": "jproc-037-r27",
-      "type": "single",
-      "scenario": "Deploy sonrasi sshd process'inin PID bilgisini bul.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "pgrep sshd",
-          "hint_text": "PID veya process adi bulmak icin `pgrep`, `pidof` ya da filtreli `ps` kullan.",
-          "hint_partial": "pgrep sshd"
-        }
-      ]
-    },
-    {
-      "id": "jproc-038-r28",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde bash process'lerinin PID bilgisini bul.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "pgrep bash",
-          "hint_text": "PID veya process adi bulmak icin `pgrep`, `pidof` ya da filtreli `ps` kullan.",
-          "hint_partial": "pgrep bash"
-        }
-      ]
-    },
-    {
-      "id": "jproc-039-r29",
-      "type": "single",
-      "scenario": "Yeni acilan hostta sleep process'lerinin PID bilgisini bul.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "pgrep sleep",
-          "hint_text": "PID veya process adi bulmak icin `pgrep`, `pidof` ya da filtreli `ps` kullan.",
-          "hint_partial": "pgrep sleep"
-        }
-      ]
-    },
-    {
-      "id": "jproc-040-r30",
-      "type": "single",
-      "scenario": "Runbook adiminda python process'lerinin PID bilgisini bul.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "pgrep python",
-          "hint_text": "PID veya process adi bulmak icin `pgrep`, `pidof` ya da filtreli `ps` kullan.",
-          "hint_partial": "pgrep python"
-        }
-      ]
-    },
-    {
-      "id": "jproc-041-r31",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde node process'lerinin PID bilgisini bul.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "pgrep node",
-          "hint_text": "PID veya process adi bulmak icin `pgrep`, `pidof` ya da filtreli `ps` kullan.",
-          "hint_partial": "pgrep node"
-        }
-      ]
-    },
-    {
-      "id": "jproc-042-r32",
-      "type": "single",
-      "scenario": "Incident sonrasinda tum sleep PID'lerini `pidof` ile goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "pidof sleep",
-          "hint_text": "PID veya process adi bulmak icin `pgrep`, `pidof` ya da filtreli `ps` kullan.",
-          "hint_partial": "pidof sleep"
-        }
-      ]
-    },
-    {
-      "id": "jproc-043-r33",
-      "type": "single",
-      "scenario": "Bakim oncesi tum bash PID'lerini `pidof` ile goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "pidof bash",
-          "hint_text": "PID veya process adi bulmak icin `pgrep`, `pidof` ya da filtreli `ps` kullan.",
-          "hint_partial": "pidof bash"
-        }
-      ]
-    },
-    {
-      "id": "jproc-044-r34",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda tam komut satirinda `python app.py` gecen processi bul.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "pgrep -f \"python app.py\"",
-          "hint_text": "PID veya process adi bulmak icin `pgrep`, `pidof` ya da filtreli `ps` kullan.",
-          "hint_partial": "pgrep -f \"python app.py\""
-        }
-      ]
-    },
-    {
-      "id": "jproc-045-r35",
-      "type": "single",
-      "scenario": "Deploy sonrasi tam komut satirinda `haproxy-35: queue-35` gecen processi bul.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "pgrep -f \"haproxy-35: queue-35\"",
-          "hint_text": "PID veya process adi bulmak icin `pgrep`, `pidof` ya da filtreli `ps` kullan.",
-          "hint_partial": "pgrep -f \"haproxy-35: queue-35\""
-        }
-      ]
-    },
-    {
-      "id": "jproc-046-r36",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde mevcut shell'in PID bilgisini yazdir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "echo $$",
-          "hint_text": "PID veya process adi bulmak icin `pgrep`, `pidof` ya da filtreli `ps` kullan.",
-          "hint_partial": "echo $$"
-        }
-      ]
-    },
-    {
-      "id": "jproc-047-r37",
-      "type": "single",
-      "scenario": "Yeni acilan hostta shell'in parent PID bilgisini yazdir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "echo $PPID",
-          "hint_text": "PID veya process adi bulmak icin `pgrep`, `pidof` ya da filtreli `ps` kullan.",
-          "hint_partial": "echo $PPID"
-        }
-      ]
-    },
-    {
-      "id": "jproc-048-r38",
-      "type": "single",
-      "scenario": "Runbook adiminda init/systemd process'inin PID bilgisini goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "ps -p 1",
-          "hint_text": "PID veya process adi bulmak icin `pgrep`, `pidof` ya da filtreli `ps` kullan.",
-          "hint_partial": "ps -p 1"
-        }
-      ]
-    },
-    {
-      "id": "jproc-049-r39",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde pID 1 process'inin komutunu goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "ps -p 1 -o cmd=",
-          "hint_text": "PID veya process adi bulmak icin `pgrep`, `pidof` ya da filtreli `ps` kullan.",
-          "hint_partial": "ps -p 1 -o cmd="
-        }
-      ]
-    },
-    {
-      "id": "jproc-050-r40",
-      "type": "single",
-      "scenario": "Incident sonrasinda belirli PID'nin komut adini goster: 1234.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "ps -p 1234 -o comm=",
-          "hint_text": "PID veya process adi bulmak icin `pgrep`, `pidof` ya da filtreli `ps` kullan.",
-          "hint_partial": "ps -p 1234 -o comm="
-        }
-      ]
-    },
-    {
-      "id": "jproc-051-r41",
-      "type": "single",
-      "scenario": "Bakim oncesi belirli PID'nin parent PID bilgisini goster: 1234.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "ps -p 1234 -o ppid=",
-          "hint_text": "PID veya process adi bulmak icin `pgrep`, `pidof` ya da filtreli `ps` kullan.",
-          "hint_partial": "ps -p 1234 -o ppid="
-        }
-      ]
-    },
-    {
-      "id": "jproc-052-r42",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda belirli PID'nin durumunu goster: 1234.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "ps -p 1234 -o stat=",
-          "hint_text": "PID veya process adi bulmak icin `pgrep`, `pidof` ya da filtreli `ps` kullan.",
-          "hint_partial": "ps -p 1234 -o stat="
-        }
-      ]
-    },
-    {
-      "id": "jproc-053-r43",
-      "type": "single",
-      "scenario": "Deploy sonrasi belirli PID'nin baslangic zamanini goster: 1234.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "ps -p 1234 -o lstart=",
-          "hint_text": "PID veya process adi bulmak icin `pgrep`, `pidof` ya da filtreli `ps` kullan.",
-          "hint_partial": "ps -p 1234 -o lstart="
-        }
-      ]
-    },
-    {
-      "id": "jproc-054-r44",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde belirli PID'nin user bilgisini goster: 1234.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "ps -p 1234 -o user=",
-          "hint_text": "PID veya process adi bulmak icin `pgrep`, `pidof` ya da filtreli `ps` kullan.",
-          "hint_partial": "ps -p 1234 -o user="
-        }
-      ]
-    },
-    {
-      "id": "jproc-055-r45",
-      "type": "single",
-      "scenario": "Yeni acilan hostta belirli PID'nin terminal bilgisini goster: 1234.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "ps -p 1234 -o tty=",
-          "hint_text": "PID veya process adi bulmak icin `pgrep`, `pidof` ya da filtreli `ps` kullan.",
-          "hint_partial": "ps -p 1234 -o tty="
-        }
-      ]
-    },
-    {
-      "id": "jproc-056-r46",
-      "type": "single",
-      "scenario": "Runbook adiminda tum process'ler arasinda `ssh` gecen satirlari filtrele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "ps aux | grep ssh",
-          "hint_text": "PID veya process adi bulmak icin `pgrep`, `pidof` ya da filtreli `ps` kullan.",
-          "hint_partial": "ps aux | grep ssh"
-        }
-      ]
-    },
-    {
-      "id": "jproc-057-r47",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde tum process'ler arasinda `cron` gecen satirlari filtrele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "ps aux | grep cron",
-          "hint_text": "PID veya process adi bulmak icin `pgrep`, `pidof` ya da filtreli `ps` kullan.",
-          "hint_partial": "ps aux | grep cron"
-        }
-      ]
-    },
-    {
-      "id": "jproc-058-r48",
-      "type": "single",
-      "scenario": "Incident sonrasinda tum process'ler arasinda `java` gecen satirlari filtrele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "ps aux | grep java",
-          "hint_text": "PID veya process adi bulmak icin `pgrep`, `pidof` ya da filtreli `ps` kullan.",
-          "hint_partial": "ps aux | grep java"
-        }
-      ]
-    },
-    {
-      "id": "jproc-059-r49",
-      "type": "single",
-      "scenario": "Bakim oncesi pID'si 4321 olan process var mi kontrol et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "ps -p 4321",
-          "hint_text": "PID veya process adi bulmak icin `pgrep`, `pidof` ya da filtreli `ps` kullan.",
-          "hint_partial": "ps -p 4321"
-        }
-      ]
-    },
-    {
-      "id": "jproc-060-r50",
-      "type": "multi-step",
-      "scenario": "Troubleshooting sirasinda once `sleep 60` komutunu arka planda baslat, sonra PID'sini bul.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "sleep 60 &",
-          "hint_text": "Bu senaryoda once processi baslat, sonra PID, job veya durum kontrolu icin uygun ikinci komutu kullan.",
-          "hint_partial": "sleep 60 &"
-        },
-        {
-          "prompt": "$ ",
-          "answer": "pgrep sleep",
-          "hint_text": "Bu senaryoda once processi baslat, sonra PID, job veya durum kontrolu icin uygun ikinci komutu kullan.",
-          "hint_partial": "pgrep sleep"
-        }
-      ]
-    },
-    {
-      "id": "jproc-061-r51",
-      "type": "single",
-      "scenario": "Deploy sonrasi pID'si 1234 olan processi sonlandir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kill 1234",
-          "hint_text": "Process sonlandirmak veya signal gondermek icin `kill`, `pkill` veya `killall` kullan.",
-          "hint_partial": "kill 1234"
-        }
-      ]
-    },
-    {
-      "id": "jproc-062-r52",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde pID'si 1234 olan processe SIGTERM gonder.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kill -TERM 1234",
-          "hint_text": "Process sonlandirmak veya signal gondermek icin `kill`, `pkill` veya `killall` kullan.",
-          "hint_partial": "kill -TERM 1234"
-        }
-      ]
-    },
-    {
-      "id": "jproc-063-r53",
-      "type": "single",
-      "scenario": "Yeni acilan hostta pID'si 1234 olan processe SIGKILL gonder.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kill -KILL 1234",
-          "hint_text": "Process sonlandirmak veya signal gondermek icin `kill`, `pkill` veya `killall` kullan.",
-          "hint_partial": "kill -KILL 1234"
-        }
-      ]
-    },
-    {
-      "id": "jproc-064-r54",
-      "type": "single",
-      "scenario": "Runbook adiminda pID'si 1234 olan processe SIGINT gonder.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kill -INT 1234",
-          "hint_text": "Process sonlandirmak veya signal gondermek icin `kill`, `pkill` veya `killall` kullan.",
-          "hint_partial": "kill -INT 1234"
-        }
-      ]
-    },
-    {
-      "id": "jproc-065-r55",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde pID'si 1234 olan processe SIGHUP gonder.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kill -HUP 1234",
-          "hint_text": "Process sonlandirmak veya signal gondermek icin `kill`, `pkill` veya `killall` kullan.",
-          "hint_partial": "kill -HUP 1234"
-        }
-      ]
-    },
-    {
-      "id": "jproc-066-r56",
-      "type": "single",
-      "scenario": "Incident sonrasinda pID'si 1234 olan processe SIGSTOP gonder.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kill -STOP 1234",
-          "hint_text": "Process sonlandirmak veya signal gondermek icin `kill`, `pkill` veya `killall` kullan.",
-          "hint_partial": "kill -STOP 1234"
-        }
-      ]
-    },
-    {
-      "id": "jproc-067-r57",
-      "type": "single",
-      "scenario": "Bakim oncesi pID'si 1234 olan processi devam ettirmek icin SIGCONT gonder.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kill -CONT 1234",
-          "hint_text": "Process sonlandirmak veya signal gondermek icin `kill`, `pkill` veya `killall` kullan.",
-          "hint_partial": "kill -CONT 1234"
-        }
-      ]
-    },
-    {
-      "id": "jproc-068-r58",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda pID'si 1234 olan processe signal 9 gonder.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kill -9 1234",
-          "hint_text": "Process sonlandirmak veya signal gondermek icin `kill`, `pkill` veya `killall` kullan.",
-          "hint_partial": "kill -9 1234"
-        }
-      ]
-    },
-    {
-      "id": "jproc-069-r59",
-      "type": "single",
-      "scenario": "Deploy sonrasi tum `sleep` process'lerini sonlandir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "pkill sleep",
-          "hint_text": "Process sonlandirmak veya signal gondermek icin `kill`, `pkill` veya `killall` kullan.",
-          "hint_partial": "pkill sleep"
-        }
-      ]
-    },
-    {
-      "id": "jproc-070-r60",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde tum `sleep` process'lerine SIGKILL gonder.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "pkill -9 sleep",
-          "hint_text": "Process sonlandirmak veya signal gondermek icin `kill`, `pkill` veya `killall` kullan.",
-          "hint_partial": "pkill -9 sleep"
-        }
-      ]
-    },
-    {
-      "id": "jproc-071-r61",
-      "type": "single",
-      "scenario": "Yeni acilan hostta tam komutunda `python app.py` gecen processleri sonlandir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "pkill -f \"python app.py\"",
-          "hint_text": "Process sonlandirmak veya signal gondermek icin `kill`, `pkill` veya `killall` kullan.",
-          "hint_partial": "pkill -f \"python app.py\""
-        }
-      ]
-    },
-    {
-      "id": "jproc-072-r62",
-      "type": "single",
-      "scenario": "Runbook adiminda tum `postgres-62-62` process'lerini ada gore sonlandir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "killall postgres-62-62",
-          "hint_text": "Process sonlandirmak veya signal gondermek icin `kill`, `pkill` veya `killall` kullan.",
-          "hint_partial": "killall postgres-62-62"
-        }
-      ]
-    },
-    {
-      "id": "jproc-073-r63",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde tum `sleep` process'lerini ada gore sonlandir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "killall sleep",
-          "hint_text": "Process sonlandirmak veya signal gondermek icin `kill`, `pkill` veya `killall` kullan.",
-          "hint_partial": "killall sleep"
-        }
-      ]
-    },
-    {
-      "id": "jproc-074-r64",
-      "type": "single",
-      "scenario": "Incident sonrasinda mevcut shell'in 1 numarali job'unu sonlandir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kill %1",
-          "hint_text": "Process sonlandirmak veya signal gondermek icin `kill`, `pkill` veya `killall` kullan.",
-          "hint_partial": "kill %1"
-        }
-      ]
-    },
-    {
-      "id": "jproc-075-r65",
-      "type": "single",
-      "scenario": "Bakim oncesi pID'si 4321 olan processin canli olup olmadigini signal gondermeden kontrol et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kill -0 4321",
-          "hint_text": "Process sonlandirmak veya signal gondermek icin `kill`, `pkill` veya `killall` kullan.",
-          "hint_partial": "kill -0 4321"
-        }
-      ]
-    },
-    {
-      "id": "jproc-076-r66",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda desteklenen signal isimlerini listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kill -l",
-          "hint_text": "Process sonlandirmak veya signal gondermek icin `kill`, `pkill` veya `killall` kullan.",
-          "hint_partial": "kill -l"
-        }
-      ]
-    },
-    {
-      "id": "jproc-077-r67",
-      "type": "single",
-      "scenario": "Deploy sonrasi `yes` process'lerini ada gore sonlandir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "pkill yes",
-          "hint_text": "Process sonlandirmak veya signal gondermek icin `kill`, `pkill` veya `killall` kullan.",
-          "hint_partial": "pkill yes"
-        }
-      ]
-    },
-    {
-      "id": "jproc-078-r68",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde `tail` process'lerini ada gore sonlandir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "pkill tail",
-          "hint_text": "Process sonlandirmak veya signal gondermek icin `kill`, `pkill` veya `killall` kullan.",
-          "hint_partial": "pkill tail"
-        }
-      ]
-    },
-    {
-      "id": "jproc-079-r69",
-      "type": "single",
-      "scenario": "Yeni acilan hostta pID'si 2222 olan processe yeniden okuma icin HUP gonder.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kill -HUP 2222",
-          "hint_text": "Process sonlandirmak veya signal gondermek icin `kill`, `pkill` veya `killall` kullan.",
-          "hint_partial": "kill -HUP 2222"
-        }
-      ]
-    },
-    {
-      "id": "jproc-080-r70",
-      "type": "single",
-      "scenario": "Runbook adiminda pID'si 3333 olan processi durdur.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kill -STOP 3333",
-          "hint_text": "Process sonlandirmak veya signal gondermek icin `kill`, `pkill` veya `killall` kullan.",
-          "hint_partial": "kill -STOP 3333"
-        }
-      ]
-    },
-    {
-      "id": "jproc-081-r71",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde pID'si 3333 olan durmus processi devam ettir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kill -CONT 3333",
-          "hint_text": "Process sonlandirmak veya signal gondermek icin `kill`, `pkill` veya `killall` kullan.",
-          "hint_partial": "kill -CONT 3333"
-        }
-      ]
-    },
-    {
-      "id": "jproc-082-r72",
-      "type": "single",
-      "scenario": "Incident sonrasinda pID'si 4444 olan processi kesme sinyaliyle durdur.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kill -INT 4444",
-          "hint_text": "Process sonlandirmak veya signal gondermek icin `kill`, `pkill` veya `killall` kullan.",
-          "hint_partial": "kill -INT 4444"
-        }
-      ]
-    },
-    {
-      "id": "jproc-083-r73",
-      "type": "single",
-      "scenario": "Bakim oncesi pID'si 5555 olan processi zorla kapat.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kill -9 5555",
-          "hint_text": "Process sonlandirmak veya signal gondermek icin `kill`, `pkill` veya `killall` kullan.",
-          "hint_partial": "kill -9 5555"
-        }
-      ]
-    },
-    {
-      "id": "jproc-084-r74",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda tum `vim` process'lerini ada gore sonlandir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "killall vim",
-          "hint_text": "Process sonlandirmak veya signal gondermek icin `kill`, `pkill` veya `killall` kullan.",
-          "hint_partial": "killall vim"
-        }
-      ]
-    },
-    {
-      "id": "jproc-085-r75",
-      "type": "multi-step",
-      "scenario": "Deploy sonrasi once `sleep 120` komutunu arka planda baslat, sonra job numarasiyla kapat.",
+      "scenario": "Operasyon devrinde önce `sleep 120` komutunu arka planda başlat, sonra job numarasıyla sonlandır.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "sleep 120 &",
-          "hint_text": "Bu senaryoda once processi baslat, sonra PID, job veya durum kontrolu icin uygun ikinci komutu kullan.",
+          "hint_text": "İlk adımda komutu background'da başlat.",
           "hint_partial": "sleep 120 &"
         },
         {
           "prompt": "$ ",
           "answer": "kill %1",
-          "hint_text": "Bu senaryoda once processi baslat, sonra PID, job veya durum kontrolu icin uygun ikinci komutu kullan.",
+          "hint_text": "Sonra job numarasına signal gönder.",
           "hint_partial": "kill %1"
         }
       ]
     },
     {
-      "id": "jproc-086-r76",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde `sleep 30` komutunu arka planda calistir.",
+      "id": "proc-exp-143",
+      "type": "multi-step",
+      "scenario": "On-call sırasında önce `sleep 300` komutunu arka planda başlat, sonra job listesini göster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "sleep 30 &",
-          "hint_text": "Arka plan isleri icin `jobs`, `bg`, `fg`, `wait` ve `&` yapilarini kullan.",
-          "hint_partial": "sleep 30 &"
-        }
-      ]
-    },
-    {
-      "id": "jproc-087-r77",
-      "type": "single",
-      "scenario": "Yeni acilan hostta `sleep 60` komutunu arka planda calistir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "sleep 60 &",
-          "hint_text": "Arka plan isleri icin `jobs`, `bg`, `fg`, `wait` ve `&` yapilarini kullan.",
-          "hint_partial": "sleep 60 &"
-        }
-      ]
-    },
-    {
-      "id": "jproc-088-r78",
-      "type": "single",
-      "scenario": "Runbook adiminda `tail -f /var/queue-78/log/queue-78/system.log` komutunu arka planda calistir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "tail -f /var/queue-78/log/queue-78/system.log &",
-          "hint_text": "Arka plan isleri icin `jobs`, `bg`, `fg`, `wait` ve `&` yapilarini kullan.",
-          "hint_partial": "tail -f /var/queue-78/log/queue-78/syst..."
-        }
-      ]
-    },
-    {
-      "id": "jproc-089-r79",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde mevcut shell job'larini listele.",
-      "steps": [
+          "answer": "sleep 300 &",
+          "hint_text": "İlk adımda komutu background'da başlat.",
+          "hint_partial": "sleep 300 &"
+        },
         {
           "prompt": "$ ",
           "answer": "jobs",
-          "hint_text": "Arka plan isleri icin `jobs`, `bg`, `fg`, `wait` ve `&` yapilarini kullan.",
+          "hint_text": "Sonra shell job listesini göster.",
           "hint_partial": "jobs"
         }
       ]
     },
     {
-      "id": "jproc-090-r80",
-      "type": "single",
-      "scenario": "Incident sonrasinda job'lari PID bilgisiyle listele.",
+      "id": "proc-exp-144",
+      "type": "multi-step",
+      "scenario": "Duman testi sırasında önce `sleep 60` komutunu arka planda başlat, sonra PID bilgisini ada göre bul.",
       "steps": [
         {
           "prompt": "$ ",
+          "answer": "sleep 60 &",
+          "hint_text": "İlk adımda komutu background'da başlat.",
+          "hint_partial": "sleep 60 &"
+        },
+        {
+          "prompt": "$ ",
+          "answer": "pgrep sleep",
+          "hint_text": "Sonra process adından PID bul.",
+          "hint_partial": "pgrep sleep"
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-145",
+      "type": "multi-step",
+      "scenario": "Gece vardiyasında önce `sleep 120` komutunu arka planda başlat, sonra job'ları PID bilgisiyle listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sleep 120 &",
+          "hint_text": "İlk adımda komutu background'da başlat.",
+          "hint_partial": "sleep 120 &"
+        },
+        {
+          "prompt": "$ ",
           "answer": "jobs -l",
-          "hint_text": "Arka plan isleri icin `jobs`, `bg`, `fg`, `wait` ve `&` yapilarini kullan.",
+          "hint_text": "Sonra job'ları PID bilgisiyle göster.",
           "hint_partial": "jobs -l"
         }
       ]
     },
     {
-      "id": "jproc-091-r81",
+      "id": "proc-exp-146",
       "type": "single",
-      "scenario": "Bakim oncesi durdurulmus 1 numarali job'u arka planda devam ettir.",
+      "scenario": "Audit sırasında varsayılan son job'u background'da devam ettir.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "bg %1",
-          "hint_text": "Arka plan isleri icin `jobs`, `bg`, `fg`, `wait` ve `&` yapilarini kullan.",
-          "hint_partial": "bg %1"
+          "answer": "bg",
+          "hint_text": "Varsayılan son durdurulmuş job için sadece `bg` kullanabilirsin.",
+          "hint_partial": "bg"
         }
       ]
     },
     {
-      "id": "jproc-092-r82",
+      "id": "proc-exp-147",
       "type": "single",
-      "scenario": "Troubleshooting sirasinda 1 numarali job'u one getir.",
+      "scenario": "Bakım penceresinde varsayılan son job'u foreground'a al.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "fg %1",
-          "hint_text": "Arka plan isleri icin `jobs`, `bg`, `fg`, `wait` ve `&` yapilarini kullan.",
-          "hint_partial": "fg %1"
+          "answer": "fg",
+          "hint_text": "Varsayılan son job için sadece `fg` kullanabilirsin.",
+          "hint_partial": "fg"
         }
       ]
     },
     {
-      "id": "jproc-093-r83",
+      "id": "proc-exp-148",
       "type": "single",
-      "scenario": "Deploy sonrasi tum arka plan job'larinin bitmesini bekle.",
+      "scenario": "Incident triajında 1 numaralı job'u shell'den ayır.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "wait",
-          "hint_text": "Arka plan isleri icin `jobs`, `bg`, `fg`, `wait` ve `&` yapilarini kullan.",
-          "hint_partial": "wait"
+          "answer": "disown %1",
+          "hint_text": "Bir job'u shell'den ayırmak için `disown` kullan.",
+          "hint_partial": "disown %1"
         }
       ]
     },
     {
-      "id": "jproc-094-r84",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde belirli PID'nin bitmesini bekle: 1234.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "wait 1234",
-          "hint_text": "Arka plan isleri icin `jobs`, `bg`, `fg`, `wait` ve `&` yapilarini kullan.",
-          "hint_partial": "wait 1234"
-        }
-      ]
-    },
-    {
-      "id": "jproc-095-r85",
-      "type": "single",
-      "scenario": "Yeni acilan hostta bir `sleep 5` job'unu arka planda baslatip job'lari listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "sleep 5 & jobs",
-          "hint_text": "Arka plan isleri icin `jobs`, `bg`, `fg`, `wait` ve `&` yapilarini kullan.",
-          "hint_partial": "sleep 5 & jobs"
-        }
-      ]
-    },
-    {
-      "id": "jproc-096-r86",
-      "type": "single",
-      "scenario": "Runbook adiminda `yes > /dev/null` komutunu arka planda calistir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "yes > /dev/null &",
-          "hint_text": "Arka plan isleri icin `jobs`, `bg`, `fg`, `wait` ve `&` yapilarini kullan.",
-          "hint_partial": "yes > /dev/null &"
-        }
-      ]
-    },
-    {
-      "id": "jproc-097-r87",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde arka plana aldigin son komutun PID'sini yazdir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "echo $!",
-          "hint_text": "Arka plan isleri icin `jobs`, `bg`, `fg`, `wait` ve `&` yapilarini kullan.",
-          "hint_partial": "echo $!"
-        }
-      ]
-    },
-    {
-      "id": "jproc-098-r88",
-      "type": "single",
-      "scenario": "Incident sonrasinda 1 numarali job'un process grubunu PID ile goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "jobs -p %1",
-          "hint_text": "Arka plan isleri icin `jobs`, `bg`, `fg`, `wait` ve `&` yapilarini kullan.",
-          "hint_partial": "jobs -p %1"
-        }
-      ]
-    },
-    {
-      "id": "jproc-099-r89",
-      "type": "single",
-      "scenario": "Bakim oncesi tum job PID'lerini yazdir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "jobs -p",
-          "hint_text": "Arka plan isleri icin `jobs`, `bg`, `fg`, `wait` ve `&` yapilarini kullan.",
-          "hint_partial": "jobs -p"
-        }
-      ]
-    },
-    {
-      "id": "jproc-100-r90",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda background job bitince shell'e mesaj gelsin diye bildirimi ac.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "set -b",
-          "hint_text": "Arka plan isleri icin `jobs`, `bg`, `fg`, `wait` ve `&` yapilarini kullan.",
-          "hint_partial": "set -b"
-        }
-      ]
-    },
-    {
-      "id": "jproc-101-r91",
-      "type": "single",
-      "scenario": "Deploy sonrasi background job bildirim ayarini kapat.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "set +b",
-          "hint_text": "Arka plan isleri icin `jobs`, `bg`, `fg`, `wait` ve `&` yapilarini kullan.",
-          "hint_partial": "set +b"
-        }
-      ]
-    },
-    {
-      "id": "jproc-102-r92",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde bir shell scripti arka planda calistir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "./script.sh &",
-          "hint_text": "Arka plan isleri icin `jobs`, `bg`, `fg`, `wait` ve `&` yapilarini kullan.",
-          "hint_partial": "./script.sh &"
-        }
-      ]
-    },
-    {
-      "id": "jproc-103-r93",
-      "type": "single",
-      "scenario": "Yeni acilan hostta bir Python scriptini arka planda calistir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "python3 app.py &",
-          "hint_text": "Arka plan isleri icin `jobs`, `bg`, `fg`, `wait` ve `&` yapilarini kullan.",
-          "hint_partial": "python3 app.py &"
-        }
-      ]
-    },
-    {
-      "id": "jproc-104-r94",
-      "type": "single",
-      "scenario": "Runbook adiminda bir komutu arka planda baslatip hemen sonra PID'sini goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "sleep 20 & echo $!",
-          "hint_text": "Arka plan isleri icin `jobs`, `bg`, `fg`, `wait` ve `&` yapilarini kullan.",
-          "hint_partial": "sleep 20 & echo $!"
-        }
-      ]
-    },
-    {
-      "id": "jproc-105-r95",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde 1 numarali job'u sonlandirmadan once one getir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "fg %1",
-          "hint_text": "Arka plan isleri icin `jobs`, `bg`, `fg`, `wait` ve `&` yapilarini kullan.",
-          "hint_partial": "fg %1"
-        }
-      ]
-    },
-    {
-      "id": "jproc-106-r96",
-      "type": "single",
-      "scenario": "Incident sonrasinda `watch date` komutunu arka planda calistir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "watch date &",
-          "hint_text": "Arka plan isleri icin `jobs`, `bg`, `fg`, `wait` ve `&` yapilarini kullan.",
-          "hint_partial": "watch date &"
-        }
-      ]
-    },
-    {
-      "id": "jproc-107-r97",
-      "type": "single",
-      "scenario": "Bakim oncesi arka planda `ping` calistir: localhost'a 4 paket.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "ping -c 4 localhost &",
-          "hint_text": "Arka plan isleri icin `jobs`, `bg`, `fg`, `wait` ve `&` yapilarini kullan.",
-          "hint_partial": "ping -c 4 localhost &"
-        }
-      ]
-    },
-    {
-      "id": "jproc-108-r98",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda arka plandaki `sleep` isini bulmak icin job'lari listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "jobs",
-          "hint_text": "Arka plan isleri icin `jobs`, `bg`, `fg`, `wait` ve `&` yapilarini kullan.",
-          "hint_partial": "jobs"
-        }
-      ]
-    },
-    {
-      "id": "jproc-109-r99",
-      "type": "single",
-      "scenario": "Deploy sonrasi bir shell scripti `nohup` olmadan dogrudan arka planda baslat.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "./backup.sh &",
-          "hint_text": "Arka plan isleri icin `jobs`, `bg`, `fg`, `wait` ve `&` yapilarini kullan.",
-          "hint_partial": "./backup.sh &"
-        }
-      ]
-    },
-    {
-      "id": "jproc-110-r100",
+      "id": "proc-exp-149",
       "type": "multi-step",
-      "scenario": "Kesinti incelemesinde once `sleep 100` komutunu arka planda baslat, sonra job listesini goster.",
+      "scenario": "Release kontrolünde önce `sleep 90` komutunu arka planda başlat, sonra 1 numaralı job'u shell'den ayır.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "sleep 100 &",
-          "hint_text": "Bu senaryoda once processi baslat, sonra PID, job veya durum kontrolu icin uygun ikinci komutu kullan.",
-          "hint_partial": "sleep 100 &"
+          "answer": "sleep 90 &",
+          "hint_text": "İlk adımda komutu background'da başlat.",
+          "hint_partial": "sleep 90 &"
+        },
+        {
+          "prompt": "$ ",
+          "answer": "disown %1",
+          "hint_text": "Sonra job'u shell'den ayır.",
+          "hint_partial": "disown %1"
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-150",
+      "type": "single",
+      "scenario": "Operasyon devrinde `nohup` kullanarak `./rotate.sh` komutunu arka planda başlat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "nohup ./rotate.sh &",
+          "hint_text": "Terminal kapanınca da devam etmesi için `nohup` ile background başlat.",
+          "hint_partial": "nohup ./back..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-151",
+      "type": "single",
+      "scenario": "On-call sırasında `nohup` kullanarak `python3 worker.py` komutunu arka planda başlat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "nohup python3 worker.py &",
+          "hint_text": "Terminal kapanınca da devam etmesi için `nohup` ile background başlat.",
+          "hint_partial": "nohup python..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-152",
+      "type": "single",
+      "scenario": "Duman testi sırasında bir `sleep 45` job'unu arka planda başlatıp sadece job PID'lerini göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sleep 45 & jobs -p",
+          "hint_text": "Tek satırda background başlatıp job PID listesini gösterebilirsin.",
+          "hint_partial": "sleep 45 & j..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-153",
+      "type": "single",
+      "scenario": "Gece vardiyasında bir `sleep 10` job'unu arka planda başlat ve tamamlanmasını bekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sleep 10 & wait",
+          "hint_text": "Background job'u başlatıp tüm job'ların bitmesini `wait` ile bekleyebilirsin.",
+          "hint_partial": "sleep 10 & w..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-154",
+      "type": "single",
+      "scenario": "Audit sırasında bir `sleep 25` job'unu arka planda başlatıp son background PID'sini yazdır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sleep 25 & echo $!",
+          "hint_text": "Tek satırda hem başlatıp hem de son background PID bilgisini yazdırabilirsin.",
+          "hint_partial": "sleep 25 & e..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-155",
+      "type": "single",
+      "scenario": "Bakım penceresinde bir `sleep 70` job'unu arka planda başlatıp job listesini göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sleep 70 & jobs",
+          "hint_text": "Tek satırda hem background başlatıp hem de job listesini gösterebilirsin.",
+          "hint_partial": "sleep 70 & j..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-156",
+      "type": "multi-step",
+      "scenario": "Incident triajında önce `sleep 80` komutunu arka planda başlat, sonra job numarasıyla sonlandır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sleep 80 &",
+          "hint_text": "İlk adımda komutu background'da başlat.",
+          "hint_partial": "sleep 80 &"
+        },
+        {
+          "prompt": "$ ",
+          "answer": "kill %1",
+          "hint_text": "Sonra job numarasına signal gönder.",
+          "hint_partial": "kill %1"
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-157",
+      "type": "multi-step",
+      "scenario": "Release kontrolünde önce `sleep 90` komutunu arka planda başlat, sonra 1 numaralı job'u foreground'a al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sleep 90 &",
+          "hint_text": "İlk adımda komutu background'da başlat.",
+          "hint_partial": "sleep 90 &"
+        },
+        {
+          "prompt": "$ ",
+          "answer": "fg %1",
+          "hint_text": "Sonra job'u foreground'a al.",
+          "hint_partial": "fg %1"
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-158",
+      "type": "multi-step",
+      "scenario": "Operasyon devrinde önce `tail -f api.log` komutunu arka planda başlat, sonra job listesini göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tail -f api.log &",
+          "hint_text": "İlk adımda komutu background'da başlat.",
+          "hint_partial": "tail -f api.log &"
         },
         {
           "prompt": "$ ",
           "answer": "jobs",
-          "hint_text": "Bu senaryoda once processi baslat, sonra PID, job veya durum kontrolu icin uygun ikinci komutu kullan.",
+          "hint_text": "Sonra shell job listesini göster.",
           "hint_partial": "jobs"
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-159",
+      "type": "multi-step",
+      "scenario": "On-call sırasında önce `tail -f server.log` komutunu arka planda başlat, sonra job numarasıyla sonlandır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tail -f server.log &",
+          "hint_text": "İlk adımda komutu background'da başlat.",
+          "hint_partial": "tail -f server.log &"
+        },
+        {
+          "prompt": "$ ",
+          "answer": "kill %1",
+          "hint_text": "Sonra job numarasına signal gönder.",
+          "hint_partial": "kill %1"
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-160",
+      "type": "single",
+      "scenario": "Duman testi sırasında bir `sleep 15` job'unu arka planda başlatıp son background PID'si bitene kadar bekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sleep 15 & wait $!",
+          "hint_text": "Son background PID bilgisini `$!` ile alıp `wait` ile bekleyebilirsin.",
+          "hint_partial": "sleep 15 & w..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-161",
+      "type": "single",
+      "scenario": "Gece vardiyasında `tar -czf backup.tar.gz /var/log` komutunu niceness değeri 10 ile başlat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "nice -n 10 tar -czf backup.tar.gz /var/log",
+          "hint_text": "Düşük öncelikle başlatmak için komutun önüne `nice -n` ekle.",
+          "hint_partial": "nice -n 10 t..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-162",
+      "type": "single",
+      "scenario": "Audit sırasında `python33 queue.py` komutunu niceness değeri 5 ile başlat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "nice -n 5 python33 queue.py",
+          "hint_text": "Düşük öncelikle başlatmak için komutun önüne `nice -n` ekle.",
+          "hint_partial": "nice -n 5 py..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-163",
+      "type": "single",
+      "scenario": "Bakım penceresinde pID 2163 process'inin niceness değerini 10 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "renice 10 -p 2163",
+          "hint_text": "Çalışan process'in önceliğini değiştirmek için `renice` kullan.",
+          "hint_partial": "renice 10 -p..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-164",
+      "type": "single",
+      "scenario": "Incident triajında pID 2164 process'inin niceness değerini -5 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "renice -5 -p 2164",
+          "hint_text": "Çalışan process'in önceliğini değiştirmek için `renice` kullan.",
+          "hint_partial": "renice -5 -p..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-165",
+      "type": "single",
+      "scenario": "Release kontrolünde pID 2165 process'inin niceness değerini göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps -o pid,ni,cmd -p 2165",
+          "hint_text": "Belirli process'in niceness değerini görmek için `ps` ile `ni` kolonunu seç.",
+          "hint_partial": "ps -o pid,ni..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-166",
+      "type": "single",
+      "scenario": "Operasyon devrinde `nohup` kullanarak `./worker.sh` komutunu arka planda başlat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "nohup ./worker.sh &",
+          "hint_text": "Terminal kapanınca da sürmesi için `nohup` ile başlat.",
+          "hint_partial": "nohup ./work..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-167",
+      "type": "single",
+      "scenario": "On-call sırasında `nohup` kullanarak `python33 queue.py` komutunu log dosyasına yönlendirip arka planda başlat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "nohup python33 queue.py > worker.log 2>&1 &",
+          "hint_text": "Hem çıktı yönlendirmek hem de terminalden bağımsız çalıştırmak için `nohup` kullan.",
+          "hint_partial": "nohup python3..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-168",
+      "type": "single",
+      "scenario": "Duman testi sırasında 1 numaralı job'u shell'den ayır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "disown %1",
+          "hint_text": "Shell kapanınca job ile ilişkinin kopması için `disown` kullan.",
+          "hint_partial": "disown %1"
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-169",
+      "type": "multi-step",
+      "scenario": "Gece vardiyasında önce `sleep 300` komutunu arka planda başlat, sonra shell'den ayır.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sleep 300 &",
+          "hint_text": "İlk adımda komutu background'da başlat.",
+          "hint_partial": "sleep 300 &"
+        },
+        {
+          "prompt": "$ ",
+          "answer": "disown %1",
+          "hint_text": "Sonra job'u shell'den ayır.",
+          "hint_partial": "disown %1"
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-170",
+      "type": "single",
+      "scenario": "Audit sırasında `rsync -av src/ dest/` komutunu niceness değeri 19 ile başlat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "nice -n 19 rsync -av src/ dest/",
+          "hint_text": "Daha düşük öncelik için yüksek niceness değeri kullan.",
+          "hint_partial": "nice -n 19 r..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-171",
+      "type": "single",
+      "scenario": "Bakım penceresinde tüm process'leri niceness kolonuyla listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps -eo pid,ni,comm",
+          "hint_text": "Tüm process'lerin öncelik seviyesini görmek için `ni` kolonunu seç.",
+          "hint_partial": "ps -eo pid,n..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-172",
+      "type": "single",
+      "scenario": "Incident triajında tüm process'leri niceness değerine göre sırala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps aux --sort=ni",
+          "hint_text": "Niceness değerine göre sıralamak için `ps` ile `--sort` kullan.",
+          "hint_partial": "ps aux --sor..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-173",
+      "type": "single",
+      "scenario": "Release kontrolünde pID 2173 process'inin niceness değerini 15 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "renice 15 -p 2173",
+          "hint_text": "Çalışan process'in niceness değerini değiştirmek için `renice` kullan.",
+          "hint_partial": "renice 15 -p..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-174",
+      "type": "single",
+      "scenario": "Operasyon devrinde pID 2174 process'inin sadece niceness değerini göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps -p 2174 -o ni=",
+          "hint_text": "Belirli process için sadece `ni` alanını gösterebilirsin.",
+          "hint_partial": "ps -p 2174 -..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-175",
+      "type": "single",
+      "scenario": "On-call sırasında pID 2175 process'inin durum bilgisini `/proc` üzerinden göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/2175/status",
+          "hint_text": "Bir process'in çekirdekten gelen durum bilgisi için `/proc/<pid>/status` dosyasını oku.",
+          "hint_partial": "cat /proc/12..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-176",
+      "type": "single",
+      "scenario": "Duman testi sırasında pID 2176 process'inin komut satırını `/proc` üzerinden göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/2176/cmdline",
+          "hint_text": "Bir process'in komut satırı bilgisi için `/proc/<pid>/cmdline` dosyasını oku.",
+          "hint_partial": "cat /proc/12..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-177",
+      "type": "single",
+      "scenario": "Gece vardiyasında pID 2177 process'inin komut satırını null ayraçları boşluğa çevirerek okunur göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tr '\\0' ' ' < /proc/2177/cmdline",
+          "hint_text": "Null ayraçlı `/proc` çıktısını okunur hale getirmek için `tr` kullan.",
+          "hint_partial": "tr '\\0' ' '..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-178",
+      "type": "single",
+      "scenario": "Audit sırasında pID 2178 process'inin açık file descriptor'larını listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls /proc/2178/fd",
+          "hint_text": "Bir process'in açık file descriptor'larını `/proc/<pid>/fd` altında görebilirsin.",
+          "hint_partial": "ls /proc/123..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-179",
+      "type": "single",
+      "scenario": "Bakım penceresinde pID 2179 process'inin çalıştırılabilir binary yolunu göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "readlink /proc/2179/exe",
+          "hint_text": "Bir process'in executable yolunu sembolik link üzerinden öğrenebilirsin.",
+          "hint_partial": "readlink /pr..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-180",
+      "type": "single",
+      "scenario": "Incident triajında sistemin load average bilgisini göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/loadavg",
+          "hint_text": "Sistem yük bilgisini `/proc/loadavg` dosyasından okuyabilirsin.",
+          "hint_partial": "cat /proc/lo..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-181",
+      "type": "single",
+      "scenario": "Release kontrolünde sistemin uptime bilgisini göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "uptime",
+          "hint_text": "Sistem çalışma süresi ve load average bilgisini hızlı görmek için `uptime` kullan.",
+          "hint_partial": "uptime"
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-182",
+      "type": "single",
+      "scenario": "Operasyon devrinde pID 2182 process'inin `stat` bilgisini göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/2182/stat",
+          "hint_text": "Bir process'in ham çekirdek istatistiklerini `/proc/<pid>/stat` dosyasında bulursun.",
+          "hint_partial": "cat /proc/12..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-183",
+      "type": "single",
+      "scenario": "On-call sırasında pID 2183 process'inin environment değişkenlerini göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/2183/environ",
+          "hint_text": "Bir process'in environment bilgisini `/proc/<pid>/environ` dosyasında bulursun.",
+          "hint_partial": "cat /proc/12..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-184",
+      "type": "single",
+      "scenario": "Duman testi sırasında pID 2184 process'inin environment değişkenlerini satır satır göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "tr '\\0' '\\n' < /proc/2184/environ",
+          "hint_text": "Null ayraçlı environment çıktısını satırlara bölmek için `tr` kullan.",
+          "hint_partial": "tr '\\0' '\\n'..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-185",
+      "type": "single",
+      "scenario": "Gece vardiyasında pID 2185 process'inin resource limit bilgilerini göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/2185/limits",
+          "hint_text": "Bir process'in limit bilgileri için `/proc/<pid>/limits` dosyasını oku.",
+          "hint_partial": "cat /proc/12..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-186",
+      "type": "single",
+      "scenario": "Audit sırasında pID 2186 process'inin `State` satırını göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "grep State /proc/2186/status",
+          "hint_text": "`/proc/<pid>/status` içinden belirli alanı çekmek için `grep` kullan.",
+          "hint_partial": "grep State /..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-187",
+      "type": "single",
+      "scenario": "Bakım penceresinde pID 2187 process'inin `PPid` satırını göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "grep PPid /proc/2187/status",
+          "hint_text": "`/proc/<pid>/status` içinden belirli alanı çekmek için `grep` kullan.",
+          "hint_partial": "grep PPid /p..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-188",
+      "type": "single",
+      "scenario": "Incident triajında pID 2188 process'inin thread sayısını göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "grep Threads /proc/2188/status",
+          "hint_text": "Thread sayısı için `status` dosyasındaki ilgili alanı çek.",
+          "hint_partial": "grep Threads..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-189",
+      "type": "single",
+      "scenario": "Release kontrolünde pID 2189 process'inin resident memory bilgisini göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "grep VmRSS /proc/2189/status",
+          "hint_text": "Resident memory için `status` dosyasındaki `VmRSS` alanını çek.",
+          "hint_partial": "grep VmRSS /..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-190",
+      "type": "single",
+      "scenario": "Operasyon devrinde pID 2190 process'inin I/O istatistiklerini göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/2190/io",
+          "hint_text": "Bir process'in I/O sayaçları için `/proc/<pid>/io` dosyasını oku.",
+          "hint_partial": "cat /proc/12..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-191",
+      "type": "single",
+      "scenario": "On-call sırasında pID 2191 process'inin açık dosyalarını `lsof` ile göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof -p 2191",
+          "hint_text": "Bir process'in açık dosyalarını görmek için `lsof -p` kullan.",
+          "hint_partial": "lsof -p 2191"
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-192",
+      "type": "single",
+      "scenario": "Duman testi sırasında pID 2192 process'inin açık dosyalarının ilk 10 satırını göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof -p 2192 | head",
+          "hint_text": "Çok uzun `lsof` çıktısını kısaltmak için pipe ile `head` kullan.",
+          "hint_partial": "lsof -p 2192..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-193",
+      "type": "single",
+      "scenario": "Gece vardiyasında pID 2193 process'inin thread'lerini `ps -L` ile göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps -L -p 2193",
+          "hint_text": "Bir process'in thread'lerini görmek için `ps -L` kullan.",
+          "hint_partial": "ps -L -p 2193"
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-194",
+      "type": "single",
+      "scenario": "Audit sırasında pID 2194 process'inin thread'lerini `ps -T` ile göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps -T -p 2194",
+          "hint_text": "Bir process'in thread'lerini görmek için `ps -T` kullan.",
+          "hint_partial": "ps -T -p 2194"
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-195",
+      "type": "single",
+      "scenario": "Bakım penceresinde pID 2195 process'inin CPU affinity bilgisini göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "taskset -p 2195",
+          "hint_text": "Bir process'in CPU affinity bilgisini görmek için `taskset -p` kullan.",
+          "hint_partial": "taskset -p 1..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-196",
+      "type": "single",
+      "scenario": "Incident triajında pID 2196 process'inin memory map bilgisini göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pmap 2196",
+          "hint_text": "Bir process'in memory map'ini görmek için `pmap` kullan.",
+          "hint_partial": "pmap 2196"
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-197",
+      "type": "single",
+      "scenario": "Release kontrolünde pID 2197 process'inin geniş memory map bilgisini göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pmap -x 2197",
+          "hint_text": "Daha ayrıntılı memory map görmek için `pmap -x` kullan.",
+          "hint_partial": "pmap -x 2197"
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-198",
+      "type": "single",
+      "scenario": "Operasyon devrinde pID 2198 process'inin RSS, VSZ ve komut bilgisini göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ps -o pid,rss,vsz,cmd -p 2198",
+          "hint_text": "Bellek kolonlarını görmek için `ps` ile `rss` ve `vsz` alanlarını seç.",
+          "hint_partial": "ps -o pid,rs..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-199",
+      "type": "single",
+      "scenario": "On-call sırasında pID 2199 process'inin open file descriptor sayısını say.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ls /proc/2199/fd | wc -l",
+          "hint_text": "Açık file descriptor sayısını almak için `/proc/<pid>/fd` içeriğini say.",
+          "hint_partial": "ls /proc/123..."
+        }
+      ]
+    },
+    {
+      "id": "proc-exp-200",
+      "type": "single",
+      "scenario": "Duman testi sırasında pID 2200 process'inin executable binary'sini `lsof` ile ara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lsof -p 2200 | grep txt",
+          "hint_text": "Bir process'in binary ve library kayıtlarını `lsof` çıktısında filtreleyebilirsin.",
+          "hint_partial": "lsof -p 2200..."
         }
       ]
     }

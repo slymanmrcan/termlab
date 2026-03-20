@@ -44,2561 +44,1339 @@
     {
       "id": "jdc-004",
       "type": "single",
-      "scenario": "Compose loglarini canli takip et.",
+      "scenario": "Compose stack'ini durdur ama silme.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker compose logs -f",
-          "hint_text": "Log takibi icin `logs -f` kullan.",
-          "hint_partial": "docker compose logs ..."
+          "answer": "docker compose stop",
+          "hint_text": "Container'lari durdurmak icin `docker compose stop` kullan.",
+          "hint_partial": "docker compose stop"
         }
       ]
     },
     {
       "id": "jdc-005",
       "type": "single",
-      "scenario": "Compose image'larini build et.",
+      "scenario": "Durdurulmus compose servislerini tekrar baslat.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker compose build",
-          "hint_text": "Image build icin `docker compose build` kullan.",
-          "hint_partial": "docker compose build"
+          "answer": "docker compose start",
+          "hint_text": "Durdurulan stack'i geri acmak icin `docker compose start` kullan.",
+          "hint_partial": "docker compose start"
         }
       ]
     },
     {
       "id": "jdc-006",
       "type": "single",
-      "scenario": "Sadece `web` servisini detached olarak kaldir.",
+      "scenario": "`api` servisini yeniden baslat.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker compose up -d web",
-          "hint_text": "Tek servis icin servis adini sona ekle.",
-          "hint_partial": "docker compose up -d ..."
+          "answer": "docker compose restart api",
+          "hint_text": "Belirli servisi yeniden baslatmak icin `restart SERVICE` kullan.",
+          "hint_partial": "docker compose restart ..."
         }
       ]
     },
     {
       "id": "jdc-007",
       "type": "single",
-      "scenario": "`api` servisini yeniden baslat.",
+      "scenario": "`api` servisini gecici olarak pause et.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker compose restart api",
-          "hint_text": "Servis restart icin `docker compose restart service` kullan.",
-          "hint_partial": "docker compose restart ..."
+          "answer": "docker compose pause api",
+          "hint_text": "Servisi dondurmak icin `docker compose pause` kullan.",
+          "hint_partial": "docker compose pause ..."
         }
       ]
     },
     {
       "id": "jdc-008",
       "type": "single",
-      "scenario": "`web` servisi icinde shell ac.",
+      "scenario": "`api` servisinin pause durumunu kaldir.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker compose exec web sh",
-          "hint_text": "Servis icinde komut icin `docker compose exec` kullan.",
-          "hint_partial": "docker compose exec ..."
+          "answer": "docker compose unpause api",
+          "hint_text": "Dondurulmus servisi geri acmak icin `unpause` kullan.",
+          "hint_partial": "docker compose unpause ..."
         }
       ]
     },
     {
       "id": "jdc-009",
       "type": "single",
-      "scenario": "Compose config sonucunu goster.",
+      "scenario": "Tum compose loglarini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker compose config",
-          "hint_text": "Birlesmis config icin `docker compose config` kullan.",
-          "hint_partial": "docker compose config"
+          "answer": "docker compose logs",
+          "hint_text": "Toplu log icin `docker compose logs` kullan.",
+          "hint_partial": "docker compose logs"
         }
       ]
     },
     {
       "id": "jdc-010",
       "type": "single",
-      "scenario": "Compose servis image'larini registry'den cek.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose pull",
-          "hint_text": "Image cekmek icin `docker compose pull` kullan.",
-          "hint_partial": "docker compose pull"
-        }
-      ]
-    },
-    {
-      "id": "jdc-001-r1",
-      "type": "single",
-      "scenario": "Bakim oncesi compose servis durumlarini goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose ps",
-          "hint_text": "Servis listesi icin `docker compose ps` kullan.",
-          "hint_partial": "docker compose ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-002-r2",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda compose stack'ini detached modda kaldir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose up -d",
-          "hint_text": "Detached baslatmak icin `up -d` kullan.",
-          "hint_partial": "docker compose up ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-003-r3",
-      "type": "single",
-      "scenario": "Deploy sonrasi compose stack'ini kapat ve kaldir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose down",
-          "hint_text": "Stack'i indirmek icin `docker compose down` kullan.",
-          "hint_partial": "docker compose down"
-        }
-      ]
-    },
-    {
-      "id": "jdc-004-r4",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde compose loglarini canli takip et.",
+      "scenario": "Tum compose loglarini canli takip et.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "docker compose logs -f",
-          "hint_text": "Log takibi icin `logs -f` kullan.",
+          "hint_text": "Canli log takibi icin `-f` parametresi kullan.",
           "hint_partial": "docker compose logs ..."
         }
       ]
     },
     {
-      "id": "jdc-005-r5",
+      "id": "jdc-011",
       "type": "single",
-      "scenario": "Yeni acilan hostta compose image'larini build et.",
+      "scenario": "Sadece `api` servisinin loglarini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker compose build",
-          "hint_text": "Image build icin `docker compose build` kullan.",
-          "hint_partial": "docker compose build"
-        }
-      ]
-    },
-    {
-      "id": "jdc-006-r6",
-      "type": "single",
-      "scenario": "Runbook adiminda sadece `queue-6` servisini detached olarak kaldir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose up -d queue-6",
-          "hint_text": "Tek servis icin servis adini sona ekle.",
-          "hint_partial": "docker compose up -d ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-007-r7",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde `api-7` servisini yeniden baslat.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose restart api-7",
-          "hint_text": "Servis restart icin `docker compose restart service` kullan.",
-          "hint_partial": "docker compose restart ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-008-r8",
-      "type": "single",
-      "scenario": "Incident sonrasinda `proxy-8` servisi icinde shell ac.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose exec proxy-8 sh",
-          "hint_text": "Servis icinde komut icin `docker compose exec` kullan.",
-          "hint_partial": "docker compose exec ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-009-r9",
-      "type": "single",
-      "scenario": "Bakim oncesi compose config sonucunu goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose config",
-          "hint_text": "Birlesmis config icin `docker compose config` kullan.",
-          "hint_partial": "docker compose config"
-        }
-      ]
-    },
-    {
-      "id": "jdc-010-r10",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda compose servis image'larini registry'den cek.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose pull",
-          "hint_text": "Image cekmek icin `docker compose pull` kullan.",
-          "hint_partial": "docker compose pull"
-        }
-      ]
-    },
-    {
-      "id": "jdc-001-r11",
-      "type": "single",
-      "scenario": "Deploy sonrasi compose servis durumlarini goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose ps",
-          "hint_text": "Servis listesi icin `docker compose ps` kullan.",
-          "hint_partial": "docker compose ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-002-r12",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde compose stack'ini detached modda kaldir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose up -d",
-          "hint_text": "Detached baslatmak icin `up -d` kullan.",
-          "hint_partial": "docker compose up ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-003-r13",
-      "type": "single",
-      "scenario": "Yeni acilan hostta compose stack'ini kapat ve kaldir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose down",
-          "hint_text": "Stack'i indirmek icin `docker compose down` kullan.",
-          "hint_partial": "docker compose down"
-        }
-      ]
-    },
-    {
-      "id": "jdc-004-r14",
-      "type": "single",
-      "scenario": "Runbook adiminda compose loglarini canli takip et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose logs -f",
-          "hint_text": "Log takibi icin `logs -f` kullan.",
+          "answer": "docker compose logs api",
+          "hint_text": "Tek servisin loglarini almak icin servis adini ekle.",
           "hint_partial": "docker compose logs ..."
         }
       ]
     },
     {
-      "id": "jdc-005-r15",
+      "id": "jdc-012",
       "type": "single",
-      "scenario": "Operasyon kontrolunde compose image'larini build et.",
+      "scenario": "`api` servisinin loglarini canli takip et.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker compose build",
-          "hint_text": "Image build icin `docker compose build` kullan.",
-          "hint_partial": "docker compose build"
-        }
-      ]
-    },
-    {
-      "id": "jdc-006-r16",
-      "type": "single",
-      "scenario": "Incident sonrasinda sadece `proxy-16` servisini detached olarak kaldir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose up -d proxy-16",
-          "hint_text": "Tek servis icin servis adini sona ekle.",
-          "hint_partial": "docker compose up -d ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-007-r17",
-      "type": "single",
-      "scenario": "Bakim oncesi `db-17-17` servisini yeniden baslat.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose restart db-17-17",
-          "hint_text": "Servis restart icin `docker compose restart service` kullan.",
-          "hint_partial": "docker compose restart ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-008-r18",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda `cache-18-18-18` servisi icinde shell ac.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose exec cache-18-18-18 sh",
-          "hint_text": "Servis icinde komut icin `docker compose exec` kullan.",
-          "hint_partial": "docker compose exec ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-009-r19",
-      "type": "single",
-      "scenario": "Deploy sonrasi compose config sonucunu goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose config",
-          "hint_text": "Birlesmis config icin `docker compose config` kullan.",
-          "hint_partial": "docker compose config"
-        }
-      ]
-    },
-    {
-      "id": "jdc-010-r20",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde compose servis image'larini registry'den cek.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose pull",
-          "hint_text": "Image cekmek icin `docker compose pull` kullan.",
-          "hint_partial": "docker compose pull"
-        }
-      ]
-    },
-    {
-      "id": "jdc-001-r21",
-      "type": "single",
-      "scenario": "Yeni acilan hostta compose servis durumlarini goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose ps",
-          "hint_text": "Servis listesi icin `docker compose ps` kullan.",
-          "hint_partial": "docker compose ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-002-r22",
-      "type": "single",
-      "scenario": "Runbook adiminda compose stack'ini detached modda kaldir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose up -d",
-          "hint_text": "Detached baslatmak icin `up -d` kullan.",
-          "hint_partial": "docker compose up ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-003-r23",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde compose stack'ini kapat ve kaldir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose down",
-          "hint_text": "Stack'i indirmek icin `docker compose down` kullan.",
-          "hint_partial": "docker compose down"
-        }
-      ]
-    },
-    {
-      "id": "jdc-004-r24",
-      "type": "single",
-      "scenario": "Incident sonrasinda compose loglarini canli takip et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose logs -f",
-          "hint_text": "Log takibi icin `logs -f` kullan.",
+          "answer": "docker compose logs -f api",
+          "hint_text": "Canli servis logu icin `logs -f SERVICE` kullan.",
           "hint_partial": "docker compose logs ..."
         }
       ]
     },
     {
-      "id": "jdc-005-r25",
+      "id": "jdc-013",
       "type": "single",
-      "scenario": "Bakim oncesi compose image'larini build et.",
+      "scenario": "`api` servisinin sadece son 50 log satirini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker compose build",
-          "hint_text": "Image build icin `docker compose build` kullan.",
-          "hint_partial": "docker compose build"
+          "answer": "docker compose logs --tail 50 api",
+          "hint_text": "Son satirlar icin `--tail` kullan.",
+          "hint_partial": "docker compose logs --tail ..."
         }
       ]
     },
     {
-      "id": "jdc-006-r26",
+      "id": "jdc-014",
       "type": "single",
-      "scenario": "Troubleshooting sirasinda sadece `cache-26-26-26` servisini detached olarak kaldir.",
+      "scenario": "`api` servis loglarina timestamp ekleyerek goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker compose up -d cache-26-26-26",
-          "hint_text": "Tek servis icin servis adini sona ekle.",
-          "hint_partial": "docker compose up -d ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-007-r27",
-      "type": "single",
-      "scenario": "Deploy sonrasi `queue-27` servisini yeniden baslat.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose restart queue-27",
-          "hint_text": "Servis restart icin `docker compose restart service` kullan.",
-          "hint_partial": "docker compose restart ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-008-r28",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde `db-28-28` servisi icinde shell ac.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose exec db-28-28 sh",
-          "hint_text": "Servis icinde komut icin `docker compose exec` kullan.",
-          "hint_partial": "docker compose exec ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-009-r29",
-      "type": "single",
-      "scenario": "Yeni acilan hostta compose config sonucunu goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose config",
-          "hint_text": "Birlesmis config icin `docker compose config` kullan.",
-          "hint_partial": "docker compose config"
-        }
-      ]
-    },
-    {
-      "id": "jdc-010-r30",
-      "type": "single",
-      "scenario": "Runbook adiminda compose servis image'larini registry'den cek.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose pull",
-          "hint_text": "Image cekmek icin `docker compose pull` kullan.",
-          "hint_partial": "docker compose pull"
-        }
-      ]
-    },
-    {
-      "id": "jdc-001-r31",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde compose servis durumlarini goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose ps",
-          "hint_text": "Servis listesi icin `docker compose ps` kullan.",
-          "hint_partial": "docker compose ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-002-r32",
-      "type": "single",
-      "scenario": "Incident sonrasinda compose stack'ini detached modda kaldir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose up -d",
-          "hint_text": "Detached baslatmak icin `up -d` kullan.",
-          "hint_partial": "docker compose up ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-003-r33",
-      "type": "single",
-      "scenario": "Bakim oncesi compose stack'ini kapat ve kaldir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose down",
-          "hint_text": "Stack'i indirmek icin `docker compose down` kullan.",
-          "hint_partial": "docker compose down"
-        }
-      ]
-    },
-    {
-      "id": "jdc-004-r34",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda compose loglarini canli takip et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose logs -f",
-          "hint_text": "Log takibi icin `logs -f` kullan.",
+          "answer": "docker compose logs -t api",
+          "hint_text": "Zaman bilgisi icin `-t` kullan.",
           "hint_partial": "docker compose logs ..."
         }
       ]
     },
     {
-      "id": "jdc-005-r35",
+      "id": "jdc-015",
       "type": "single",
-      "scenario": "Deploy sonrasi compose image'larini build et.",
+      "scenario": "Son 10 dakikadaki `api` loglarini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker compose build",
-          "hint_text": "Image build icin `docker compose build` kullan.",
-          "hint_partial": "docker compose build"
+          "answer": "docker compose logs --since 10m api",
+          "hint_text": "Zaman filtresi icin `--since` kullan.",
+          "hint_partial": "docker compose logs --since ..."
         }
       ]
     },
     {
-      "id": "jdc-006-r36",
+      "id": "jdc-016",
       "type": "single",
-      "scenario": "Kesinti incelemesinde sadece `db-36-36` servisini detached olarak kaldir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose up -d db-36-36",
-          "hint_text": "Tek servis icin servis adini sona ekle.",
-          "hint_partial": "docker compose up -d ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-007-r37",
-      "type": "single",
-      "scenario": "Yeni acilan hostta `proxy-37` servisini yeniden baslat.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose restart proxy-37",
-          "hint_text": "Servis restart icin `docker compose restart service` kullan.",
-          "hint_partial": "docker compose restart ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-008-r38",
-      "type": "single",
-      "scenario": "Runbook adiminda `queue-38` servisi icinde shell ac.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose exec queue-38 sh",
-          "hint_text": "Servis icinde komut icin `docker compose exec` kullan.",
-          "hint_partial": "docker compose exec ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-009-r39",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde compose config sonucunu goster.",
+      "scenario": "Compose dosyasinin cozulmus halini goster.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "docker compose config",
-          "hint_text": "Birlesmis config icin `docker compose config` kullan.",
+          "hint_text": "Render edilen config'i gormek icin `config` kullan.",
           "hint_partial": "docker compose config"
         }
       ]
     },
     {
-      "id": "jdc-010-r40",
+      "id": "jdc-017",
       "type": "single",
-      "scenario": "Incident sonrasinda compose servis image'larini registry'den cek.",
+      "scenario": "Compose dosyasindaki servis adlarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose config --services",
+          "hint_text": "Sadece servisleri listelemek icin `config --services` kullan.",
+          "hint_partial": "docker compose config ..."
+        }
+      ]
+    },
+    {
+      "id": "jdc-018",
+      "type": "single",
+      "scenario": "Compose dosyasindaki volume adlarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose config --volumes",
+          "hint_text": "Sadece volume'leri gormek icin `config --volumes` kullan.",
+          "hint_partial": "docker compose config ..."
+        }
+      ]
+    },
+    {
+      "id": "jdc-019",
+      "type": "single",
+      "scenario": "Compose tarafindan kullanilan image'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose images",
+          "hint_text": "Image listesini almak icin `docker compose images` kullan.",
+          "hint_partial": "docker compose images"
+        }
+      ]
+    },
+    {
+      "id": "jdc-020",
+      "type": "single",
+      "scenario": "Calisan servislerdeki process'leri goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose top",
+          "hint_text": "Servis icindeki process'leri gormek icin `top` kullan.",
+          "hint_partial": "docker compose top"
+        }
+      ]
+    },
+    {
+      "id": "jdc-021",
+      "type": "single",
+      "scenario": "Tum servis image'larini registry'den cek.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "docker compose pull",
-          "hint_text": "Image cekmek icin `docker compose pull` kullan.",
+          "hint_text": "Servis image'larini indirmek icin `pull` kullan.",
           "hint_partial": "docker compose pull"
         }
       ]
     },
     {
-      "id": "jdc-001-r41",
+      "id": "jdc-022",
       "type": "single",
-      "scenario": "Bakim oncesi compose servis durumlarini goster.",
+      "scenario": "Sadece `api` servis image'ini cek.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker compose ps",
-          "hint_text": "Servis listesi icin `docker compose ps` kullan.",
-          "hint_partial": "docker compose ..."
+          "answer": "docker compose pull api",
+          "hint_text": "Belirli servisin image'ini cekmek icin servis adini ver.",
+          "hint_partial": "docker compose pull ..."
         }
       ]
     },
     {
-      "id": "jdc-002-r42",
+      "id": "jdc-023",
       "type": "single",
-      "scenario": "Troubleshooting sirasinda compose stack'ini detached modda kaldir.",
+      "scenario": "Tum servisleri build et.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker compose up -d",
-          "hint_text": "Detached baslatmak icin `up -d` kullan.",
+          "answer": "docker compose build",
+          "hint_text": "Servis image build'i icin `build` kullan.",
+          "hint_partial": "docker compose build"
+        }
+      ]
+    },
+    {
+      "id": "jdc-024",
+      "type": "single",
+      "scenario": "Sadece `api` servisini build et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose build api",
+          "hint_text": "Belirli servisi build etmek icin servis adini ekle.",
+          "hint_partial": "docker compose build ..."
+        }
+      ]
+    },
+    {
+      "id": "jdc-025",
+      "type": "single",
+      "scenario": "Image cache kullanmadan tum servisleri build et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose build --no-cache",
+          "hint_text": "Cache'siz build icin `--no-cache` kullan.",
+          "hint_partial": "docker compose build ..."
+        }
+      ]
+    },
+    {
+      "id": "jdc-026",
+      "type": "single",
+      "scenario": "Image'lari guncel base image ile build et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose build --pull",
+          "hint_text": "Base image'i yenilemek icin `--pull` kullan.",
+          "hint_partial": "docker compose build ..."
+        }
+      ]
+    },
+    {
+      "id": "jdc-027",
+      "type": "single",
+      "scenario": "Stack'i kaldirirken once gerekirse build et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose up --build -d",
+          "hint_text": "Baslatirken build zorlamak icin `up --build -d` kullan.",
           "hint_partial": "docker compose up ..."
         }
       ]
     },
     {
-      "id": "jdc-003-r43",
+      "id": "jdc-028",
       "type": "single",
-      "scenario": "Deploy sonrasi compose stack'ini kapat ve kaldir.",
+      "scenario": "Sadece `api` servisini detached modda kaldir.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker compose down",
-          "hint_text": "Stack'i indirmek icin `docker compose down` kullan.",
-          "hint_partial": "docker compose down"
-        }
-      ]
-    },
-    {
-      "id": "jdc-004-r44",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde compose loglarini canli takip et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose logs -f",
-          "hint_text": "Log takibi icin `logs -f` kullan.",
-          "hint_partial": "docker compose logs ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-005-r45",
-      "type": "single",
-      "scenario": "Yeni acilan hostta compose image'larini build et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose build",
-          "hint_text": "Image build icin `docker compose build` kullan.",
-          "hint_partial": "docker compose build"
-        }
-      ]
-    },
-    {
-      "id": "jdc-006-r46",
-      "type": "single",
-      "scenario": "Runbook adiminda sadece `queue-46` servisini detached olarak kaldir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose up -d queue-46",
-          "hint_text": "Tek servis icin servis adini sona ekle.",
-          "hint_partial": "docker compose up -d ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-007-r47",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde `api-47` servisini yeniden baslat.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose restart api-47",
-          "hint_text": "Servis restart icin `docker compose restart service` kullan.",
-          "hint_partial": "docker compose restart ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-008-r48",
-      "type": "single",
-      "scenario": "Incident sonrasinda `proxy-48` servisi icinde shell ac.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose exec proxy-48 sh",
-          "hint_text": "Servis icinde komut icin `docker compose exec` kullan.",
-          "hint_partial": "docker compose exec ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-009-r49",
-      "type": "single",
-      "scenario": "Bakim oncesi compose config sonucunu goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose config",
-          "hint_text": "Birlesmis config icin `docker compose config` kullan.",
-          "hint_partial": "docker compose config"
-        }
-      ]
-    },
-    {
-      "id": "jdc-010-r50",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda compose servis image'larini registry'den cek.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose pull",
-          "hint_text": "Image cekmek icin `docker compose pull` kullan.",
-          "hint_partial": "docker compose pull"
-        }
-      ]
-    },
-    {
-      "id": "jdc-001-r51",
-      "type": "single",
-      "scenario": "Deploy sonrasi compose servis durumlarini goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose ps",
-          "hint_text": "Servis listesi icin `docker compose ps` kullan.",
-          "hint_partial": "docker compose ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-002-r52",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde compose stack'ini detached modda kaldir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose up -d",
-          "hint_text": "Detached baslatmak icin `up -d` kullan.",
+          "answer": "docker compose up -d api",
+          "hint_text": "Belirli servisi baslatmak icin servis adini sona ekle.",
           "hint_partial": "docker compose up ..."
         }
       ]
     },
     {
-      "id": "jdc-003-r53",
+      "id": "jdc-029",
       "type": "single",
-      "scenario": "Yeni acilan hostta compose stack'ini kapat ve kaldir.",
+      "scenario": "`db` ve `redis` servislerini detached modda kaldir.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker compose down",
-          "hint_text": "Stack'i indirmek icin `docker compose down` kullan.",
-          "hint_partial": "docker compose down"
-        }
-      ]
-    },
-    {
-      "id": "jdc-004-r54",
-      "type": "single",
-      "scenario": "Runbook adiminda compose loglarini canli takip et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose logs -f",
-          "hint_text": "Log takibi icin `logs -f` kullan.",
-          "hint_partial": "docker compose logs ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-005-r55",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde compose image'larini build et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose build",
-          "hint_text": "Image build icin `docker compose build` kullan.",
-          "hint_partial": "docker compose build"
-        }
-      ]
-    },
-    {
-      "id": "jdc-006-r56",
-      "type": "single",
-      "scenario": "Incident sonrasinda sadece `proxy-56` servisini detached olarak kaldir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose up -d proxy-56",
-          "hint_text": "Tek servis icin servis adini sona ekle.",
-          "hint_partial": "docker compose up -d ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-007-r57",
-      "type": "single",
-      "scenario": "Bakim oncesi `db-57-57` servisini yeniden baslat.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose restart db-57-57",
-          "hint_text": "Servis restart icin `docker compose restart service` kullan.",
-          "hint_partial": "docker compose restart ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-008-r58",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda `cache-58-58-58` servisi icinde shell ac.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose exec cache-58-58-58 sh",
-          "hint_text": "Servis icinde komut icin `docker compose exec` kullan.",
-          "hint_partial": "docker compose exec ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-009-r59",
-      "type": "single",
-      "scenario": "Deploy sonrasi compose config sonucunu goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose config",
-          "hint_text": "Birlesmis config icin `docker compose config` kullan.",
-          "hint_partial": "docker compose config"
-        }
-      ]
-    },
-    {
-      "id": "jdc-010-r60",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde compose servis image'larini registry'den cek.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose pull",
-          "hint_text": "Image cekmek icin `docker compose pull` kullan.",
-          "hint_partial": "docker compose pull"
-        }
-      ]
-    },
-    {
-      "id": "jdc-001-r61",
-      "type": "single",
-      "scenario": "Yeni acilan hostta compose servis durumlarini goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose ps",
-          "hint_text": "Servis listesi icin `docker compose ps` kullan.",
-          "hint_partial": "docker compose ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-002-r62",
-      "type": "single",
-      "scenario": "Runbook adiminda compose stack'ini detached modda kaldir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose up -d",
-          "hint_text": "Detached baslatmak icin `up -d` kullan.",
+          "answer": "docker compose up -d db redis",
+          "hint_text": "Birden fazla servisi ayni komutta verebilirsin.",
           "hint_partial": "docker compose up ..."
         }
       ]
     },
     {
-      "id": "jdc-003-r63",
+      "id": "jdc-030",
       "type": "single",
-      "scenario": "Operasyon kontrolunde compose stack'ini kapat ve kaldir.",
+      "scenario": "`worker` servisini 3 replica ile detached modda kaldir.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker compose down",
-          "hint_text": "Stack'i indirmek icin `docker compose down` kullan.",
-          "hint_partial": "docker compose down"
-        }
-      ]
-    },
-    {
-      "id": "jdc-004-r64",
-      "type": "single",
-      "scenario": "Incident sonrasinda compose loglarini canli takip et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose logs -f",
-          "hint_text": "Log takibi icin `logs -f` kullan.",
-          "hint_partial": "docker compose logs ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-005-r65",
-      "type": "single",
-      "scenario": "Bakim oncesi compose image'larini build et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose build",
-          "hint_text": "Image build icin `docker compose build` kullan.",
-          "hint_partial": "docker compose build"
-        }
-      ]
-    },
-    {
-      "id": "jdc-006-r66",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda sadece `cache-66-66-66` servisini detached olarak kaldir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose up -d cache-66-66-66",
-          "hint_text": "Tek servis icin servis adini sona ekle.",
-          "hint_partial": "docker compose up -d ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-007-r67",
-      "type": "single",
-      "scenario": "Deploy sonrasi `queue-67` servisini yeniden baslat.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose restart queue-67",
-          "hint_text": "Servis restart icin `docker compose restart service` kullan.",
-          "hint_partial": "docker compose restart ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-008-r68",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde `db-68-68` servisi icinde shell ac.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose exec db-68-68 sh",
-          "hint_text": "Servis icinde komut icin `docker compose exec` kullan.",
-          "hint_partial": "docker compose exec ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-009-r69",
-      "type": "single",
-      "scenario": "Yeni acilan hostta compose config sonucunu goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose config",
-          "hint_text": "Birlesmis config icin `docker compose config` kullan.",
-          "hint_partial": "docker compose config"
-        }
-      ]
-    },
-    {
-      "id": "jdc-010-r70",
-      "type": "single",
-      "scenario": "Runbook adiminda compose servis image'larini registry'den cek.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose pull",
-          "hint_text": "Image cekmek icin `docker compose pull` kullan.",
-          "hint_partial": "docker compose pull"
-        }
-      ]
-    },
-    {
-      "id": "jdc-001-r71",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde compose servis durumlarini goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose ps",
-          "hint_text": "Servis listesi icin `docker compose ps` kullan.",
-          "hint_partial": "docker compose ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-002-r72",
-      "type": "single",
-      "scenario": "Incident sonrasinda compose stack'ini detached modda kaldir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose up -d",
-          "hint_text": "Detached baslatmak icin `up -d` kullan.",
+          "answer": "docker compose up -d --scale worker=3",
+          "hint_text": "Replica sayisi icin `--scale SERVICE=N` kullan.",
           "hint_partial": "docker compose up ..."
         }
       ]
     },
     {
-      "id": "jdc-003-r73",
+      "id": "jdc-031",
       "type": "single",
-      "scenario": "Bakim oncesi compose stack'ini kapat ve kaldir.",
+      "scenario": "Sadece `api` servisini durdur.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker compose down",
-          "hint_text": "Stack'i indirmek icin `docker compose down` kullan.",
-          "hint_partial": "docker compose down"
+          "answer": "docker compose stop api",
+          "hint_text": "Belirli servisi durdurmak icin servis adini ekle.",
+          "hint_partial": "docker compose stop ..."
         }
       ]
     },
     {
-      "id": "jdc-004-r74",
+      "id": "jdc-032",
       "type": "single",
-      "scenario": "Troubleshooting sirasinda compose loglarini canli takip et.",
+      "scenario": "`db` ve `redis` servislerini durdur.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker compose logs -f",
-          "hint_text": "Log takibi icin `logs -f` kullan.",
-          "hint_partial": "docker compose logs ..."
+          "answer": "docker compose stop db redis",
+          "hint_text": "Birden fazla servisi ayni komutta durdurabilirsin.",
+          "hint_partial": "docker compose stop ..."
         }
       ]
     },
     {
-      "id": "jdc-005-r75",
+      "id": "jdc-033",
       "type": "single",
-      "scenario": "Deploy sonrasi compose image'larini build et.",
+      "scenario": "Sadece `api` servisini tekrar baslat.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker compose build",
-          "hint_text": "Image build icin `docker compose build` kullan.",
-          "hint_partial": "docker compose build"
+          "answer": "docker compose start api",
+          "hint_text": "Belirli durdurulmus servisi baslatmak icin servis adini ekle.",
+          "hint_partial": "docker compose start ..."
         }
       ]
     },
     {
-      "id": "jdc-006-r76",
+      "id": "jdc-034",
       "type": "single",
-      "scenario": "Kesinti incelemesinde sadece `db-76-76` servisini detached olarak kaldir.",
+      "scenario": "`api` ve `worker` servislerini yeniden baslat.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker compose up -d db-76-76",
-          "hint_text": "Tek servis icin servis adini sona ekle.",
-          "hint_partial": "docker compose up -d ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-007-r77",
-      "type": "single",
-      "scenario": "Yeni acilan hostta `proxy-77` servisini yeniden baslat.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose restart proxy-77",
-          "hint_text": "Servis restart icin `docker compose restart service` kullan.",
+          "answer": "docker compose restart api worker",
+          "hint_text": "Birden fazla servisi `restart` ile yeniden baslatabilirsin.",
           "hint_partial": "docker compose restart ..."
         }
       ]
     },
     {
-      "id": "jdc-008-r78",
+      "id": "jdc-035",
       "type": "single",
-      "scenario": "Runbook adiminda `queue-78` servisi icinde shell ac.",
+      "scenario": "`api` servisine shell ile baglan.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker compose exec queue-78 sh",
-          "hint_text": "Servis icinde komut icin `docker compose exec` kullan.",
+          "answer": "docker compose exec api sh",
+          "hint_text": "Calisan container icine girmek icin `exec SERVICE sh` kullan.",
           "hint_partial": "docker compose exec ..."
         }
       ]
     },
     {
-      "id": "jdc-009-r79",
+      "id": "jdc-036",
       "type": "single",
-      "scenario": "Operasyon kontrolunde compose config sonucunu goster.",
+      "scenario": "`web` servisi icinde `/app` dizinini listele.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker compose config",
-          "hint_text": "Birlesmis config icin `docker compose config` kullan.",
-          "hint_partial": "docker compose config"
+          "answer": "docker compose exec web ls /app",
+          "hint_text": "Servis icinde tek seferlik komut icin `exec SERVICE COMMAND` kullan.",
+          "hint_partial": "docker compose exec ..."
         }
       ]
     },
     {
-      "id": "jdc-010-r80",
+      "id": "jdc-037",
       "type": "single",
-      "scenario": "Incident sonrasinda compose servis image'larini registry'den cek.",
+      "scenario": "`api` servisi icinde environment degiskenlerini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker compose pull",
-          "hint_text": "Image cekmek icin `docker compose pull` kullan.",
-          "hint_partial": "docker compose pull"
+          "answer": "docker compose exec api env",
+          "hint_text": "Container icindeki ortam degiskenlerini gormek icin `env` calistir.",
+          "hint_partial": "docker compose exec ..."
         }
       ]
     },
     {
-      "id": "jdc-001-r81",
+      "id": "jdc-038",
       "type": "single",
-      "scenario": "Bakim oncesi compose servis durumlarini goster.",
+      "scenario": "`db` servisi icinde `psql` ac.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker compose ps",
-          "hint_text": "Servis listesi icin `docker compose ps` kullan.",
-          "hint_partial": "docker compose ..."
+          "answer": "docker compose exec db psql -U postgres",
+          "hint_text": "Veritabanina servis icinden girmek icin `exec` kullan.",
+          "hint_partial": "docker compose exec ..."
         }
       ]
     },
     {
-      "id": "jdc-002-r82",
+      "id": "jdc-039",
       "type": "single",
-      "scenario": "Troubleshooting sirasinda compose stack'ini detached modda kaldir.",
+      "scenario": "TTY ayirmadan `api` icinde test komutu calistir.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker compose up -d",
-          "hint_text": "Detached baslatmak icin `up -d` kullan.",
+          "answer": "docker compose exec -T api python manage.py test",
+          "hint_text": "Script uyumu icin `-T` ile TTY kapatilabilir.",
+          "hint_partial": "docker compose exec ..."
+        }
+      ]
+    },
+    {
+      "id": "jdc-040",
+      "type": "single",
+      "scenario": "`api` servisi uzerinden tek seferlik shell container'i calistir ve bitince sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose run --rm api sh",
+          "hint_text": "Tek seferlik container icin `run --rm` kullan.",
+          "hint_partial": "docker compose run ..."
+        }
+      ]
+    },
+    {
+      "id": "jdc-041",
+      "type": "single",
+      "scenario": "Bagimli servisleri baslatmadan `api` uzerinden tek seferlik shell ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose run --rm --no-deps api sh",
+          "hint_text": "Bagimliliklari atlamak icin `--no-deps` kullan.",
+          "hint_partial": "docker compose run ..."
+        }
+      ]
+    },
+    {
+      "id": "jdc-042",
+      "type": "single",
+      "scenario": "`web` servisini kendi portlariyla tek seferlik calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose run --service-ports web bash",
+          "hint_text": "Portlari da acmak icin `--service-ports` kullan.",
+          "hint_partial": "docker compose run ..."
+        }
+      ]
+    },
+    {
+      "id": "jdc-043",
+      "type": "single",
+      "scenario": "`api` servisi icinde migration komutunu tek seferlik calistir ve container'i sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose run --rm api python manage.py migrate",
+          "hint_text": "Tek seferlik bakim komutlari icin `run --rm` kullan.",
+          "hint_partial": "docker compose run ..."
+        }
+      ]
+    },
+    {
+      "id": "jdc-044",
+      "type": "single",
+      "scenario": "`worker` servisi icinde `python job.py` komutunu tek seferlik calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose run --rm worker python job.py",
+          "hint_text": "Tek seferlik job calistirmak icin `run --rm SERVICE COMMAND` kullan.",
+          "hint_partial": "docker compose run ..."
+        }
+      ]
+    },
+    {
+      "id": "jdc-045",
+      "type": "single",
+      "scenario": "`web` servisinin hostta hangi porta map edildigini goster (container port 80).",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose port web 80",
+          "hint_text": "Port eslemesini gormek icin `port SERVICE CONTAINER_PORT` kullan.",
+          "hint_partial": "docker compose port ..."
+        }
+      ]
+    },
+    {
+      "id": "jdc-046",
+      "type": "single",
+      "scenario": "`api` servisinin hostta hangi porta map edildigini goster (container port 8080).",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose port api 8080",
+          "hint_text": "Belirli servis portunu gormek icin `port` kullan.",
+          "hint_partial": "docker compose port ..."
+        }
+      ]
+    },
+    {
+      "id": "jdc-047",
+      "type": "single",
+      "scenario": "Compose olaylarini gercek zamanli izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose events",
+          "hint_text": "Gercek zamanli compose event'leri icin `events` kullan.",
+          "hint_partial": "docker compose events"
+        }
+      ]
+    },
+    {
+      "id": "jdc-048",
+      "type": "single",
+      "scenario": "`api` container'indan lokal makineye `/app/logs` klasorunu kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose cp api:/app/logs ./logs",
+          "hint_text": "Container'dan lokala kopya icin `cp SERVICE:SRC DEST` kullan.",
+          "hint_partial": "docker compose cp ..."
+        }
+      ]
+    },
+    {
+      "id": "jdc-049",
+      "type": "single",
+      "scenario": "Lokal `./config.yml` dosyasini `api` container'indaki `/app/config.yml` yoluna kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose cp ./config.yml api:/app/config.yml",
+          "hint_text": "Lokaldeki dosyayi container'a kopyalamak icin `cp SRC SERVICE:DEST` kullan.",
+          "hint_partial": "docker compose cp ..."
+        }
+      ]
+    },
+    {
+      "id": "jdc-050",
+      "type": "single",
+      "scenario": "`api` servisini zorla sonlandir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose kill api",
+          "hint_text": "Aninda sonlandirmak icin `kill` kullan.",
+          "hint_partial": "docker compose kill ..."
+        }
+      ]
+    },
+    {
+      "id": "jdc-051",
+      "type": "single",
+      "scenario": "Durdurulmus `api` servis container'ini zorla sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose rm -f api",
+          "hint_text": "Durdurulmus container'i sormadan silmek icin `rm -f` kullan.",
+          "hint_partial": "docker compose rm ..."
+        }
+      ]
+    },
+    {
+      "id": "jdc-052",
+      "type": "single",
+      "scenario": "Tum servisler icin container'lari olustur ama baslatma.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose create",
+          "hint_text": "Sadece create islemi icin `docker compose create` kullan.",
+          "hint_partial": "docker compose create"
+        }
+      ]
+    },
+    {
+      "id": "jdc-053",
+      "type": "single",
+      "scenario": "Sadece `api` servisi icin container olustur ama baslatma.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose create api",
+          "hint_text": "Belirli servis icin `create SERVICE` kullan.",
+          "hint_partial": "docker compose create ..."
+        }
+      ]
+    },
+    {
+      "id": "jdc-054",
+      "type": "single",
+      "scenario": "Compose projelerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose ls",
+          "hint_text": "Compose project listesini gormek icin `ls` kullan.",
+          "hint_partial": "docker compose ls"
+        }
+      ]
+    },
+    {
+      "id": "jdc-055",
+      "type": "single",
+      "scenario": "Compose surum bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose version",
+          "hint_text": "CLI surumunu gormek icin `version` kullan.",
+          "hint_partial": "docker compose version"
+        }
+      ]
+    },
+    {
+      "id": "jdc-056",
+      "type": "single",
+      "scenario": "Calisan ve duran tum servis container'larini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose ps --all",
+          "hint_text": "Duranlari da gormek icin `ps --all` kullan.",
+          "hint_partial": "docker compose ps ..."
+        }
+      ]
+    },
+    {
+      "id": "jdc-057",
+      "type": "single",
+      "scenario": "Sadece `api` servisine ait container bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose ps api",
+          "hint_text": "Belirli servis bilgisi icin servis adini ekle.",
+          "hint_partial": "docker compose ps ..."
+        }
+      ]
+    },
+    {
+      "id": "jdc-058",
+      "type": "single",
+      "scenario": "Sadece servis adlarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose ps --services",
+          "hint_text": "Sadece servis isimleri icin `ps --services` kullan.",
+          "hint_partial": "docker compose ps ..."
+        }
+      ]
+    },
+    {
+      "id": "jdc-059",
+      "type": "single",
+      "scenario": "Config dosyasinin gecerli oldugunu sessizce kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose config -q",
+          "hint_text": "Sessiz dogrulama icin `config -q` kullan.",
+          "hint_partial": "docker compose config ..."
+        }
+      ]
+    },
+    {
+      "id": "jdc-060",
+      "type": "single",
+      "scenario": "Diger compose dosyasini kullanarak stack'i detached modda kaldir: compose.prod.yml.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose -f compose.prod.yml up -d",
+          "hint_text": "Farkli compose dosyasi icin `-f` kullan.",
+          "hint_partial": "docker compose -f ..."
+        }
+      ]
+    },
+    {
+      "id": "jdc-061",
+      "type": "single",
+      "scenario": "Iki compose dosyasini birlikte kullanarak stack'i detached modda kaldir: compose.yml ve compose.prod.yml.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose -f compose.yml -f compose.prod.yml up -d",
+          "hint_text": "Birden fazla dosya icin `-f` birden fazla verilebilir.",
+          "hint_partial": "docker compose -f ..."
+        }
+      ]
+    },
+    {
+      "id": "jdc-062",
+      "type": "single",
+      "scenario": "Project adini `myapp` yaparak stack'i detached modda kaldir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose -p myapp up -d",
+          "hint_text": "Project adini degistirmek icin `-p` kullan.",
+          "hint_partial": "docker compose -p ..."
+        }
+      ]
+    },
+    {
+      "id": "jdc-063",
+      "type": "single",
+      "scenario": "`.env.prod` dosyasini kullanarak stack'i detached modda kaldir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose --env-file .env.prod up -d",
+          "hint_text": "Ortam dosyasi belirtmek icin `--env-file` kullan.",
+          "hint_partial": "docker compose --env-file ..."
+        }
+      ]
+    },
+    {
+      "id": "jdc-064",
+      "type": "single",
+      "scenario": "`debug` profilindeki servisleri de acarak stack'i detached modda kaldir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose --profile debug up -d",
+          "hint_text": "Profile bazli servis acmak icin `--profile` kullan.",
+          "hint_partial": "docker compose --profile ..."
+        }
+      ]
+    },
+    {
+      "id": "jdc-065",
+      "type": "single",
+      "scenario": "Sadece `api` servisini dependency'lerini yeniden olusturmadan detached modda kaldir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose up -d --no-deps api",
+          "hint_text": "Bagimli servisleri atlamak icin `--no-deps` kullan.",
           "hint_partial": "docker compose up ..."
         }
       ]
     },
     {
-      "id": "jdc-003-r83",
+      "id": "jdc-066",
       "type": "single",
-      "scenario": "Deploy sonrasi compose stack'ini kapat ve kaldir.",
+      "scenario": "Tum servisleri zorunlu olarak yeniden olusturarak detached modda kaldir.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker compose down",
-          "hint_text": "Stack'i indirmek icin `docker compose down` kullan.",
-          "hint_partial": "docker compose down"
-        }
-      ]
-    },
-    {
-      "id": "jdc-004-r84",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde compose loglarini canli takip et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose logs -f",
-          "hint_text": "Log takibi icin `logs -f` kullan.",
-          "hint_partial": "docker compose logs ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-005-r85",
-      "type": "single",
-      "scenario": "Yeni acilan hostta compose image'larini build et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose build",
-          "hint_text": "Image build icin `docker compose build` kullan.",
-          "hint_partial": "docker compose build"
-        }
-      ]
-    },
-    {
-      "id": "jdc-006-r86",
-      "type": "single",
-      "scenario": "Runbook adiminda sadece `queue-86` servisini detached olarak kaldir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose up -d queue-86",
-          "hint_text": "Tek servis icin servis adini sona ekle.",
-          "hint_partial": "docker compose up -d ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-007-r87",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde `api-87` servisini yeniden baslat.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose restart api-87",
-          "hint_text": "Servis restart icin `docker compose restart service` kullan.",
-          "hint_partial": "docker compose restart ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-008-r88",
-      "type": "single",
-      "scenario": "Incident sonrasinda `proxy-88` servisi icinde shell ac.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose exec proxy-88 sh",
-          "hint_text": "Servis icinde komut icin `docker compose exec` kullan.",
-          "hint_partial": "docker compose exec ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-009-r89",
-      "type": "single",
-      "scenario": "Bakim oncesi compose config sonucunu goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose config",
-          "hint_text": "Birlesmis config icin `docker compose config` kullan.",
-          "hint_partial": "docker compose config"
-        }
-      ]
-    },
-    {
-      "id": "jdc-010-r90",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda compose servis image'larini registry'den cek.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose pull",
-          "hint_text": "Image cekmek icin `docker compose pull` kullan.",
-          "hint_partial": "docker compose pull"
-        }
-      ]
-    },
-    {
-      "id": "jdc-001-r91",
-      "type": "single",
-      "scenario": "Deploy sonrasi compose servis durumlarini goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose ps",
-          "hint_text": "Servis listesi icin `docker compose ps` kullan.",
-          "hint_partial": "docker compose ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-002-r92",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde compose stack'ini detached modda kaldir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose up -d",
-          "hint_text": "Detached baslatmak icin `up -d` kullan.",
+          "answer": "docker compose up -d --force-recreate",
+          "hint_text": "Container'lari yeniden yaratmak icin `--force-recreate` kullan.",
           "hint_partial": "docker compose up ..."
         }
       ]
     },
     {
-      "id": "jdc-003-r93",
+      "id": "jdc-067",
       "type": "single",
-      "scenario": "Yeni acilan hostta compose stack'ini kapat ve kaldir.",
+      "scenario": "Var olan container'lari yeniden olusturmadan detached modda kaldir.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker compose down",
-          "hint_text": "Stack'i indirmek icin `docker compose down` kullan.",
-          "hint_partial": "docker compose down"
-        }
-      ]
-    },
-    {
-      "id": "jdc-004-r94",
-      "type": "single",
-      "scenario": "Runbook adiminda compose loglarini canli takip et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose logs -f",
-          "hint_text": "Log takibi icin `logs -f` kullan.",
-          "hint_partial": "docker compose logs ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-005-r95",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde compose image'larini build et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose build",
-          "hint_text": "Image build icin `docker compose build` kullan.",
-          "hint_partial": "docker compose build"
-        }
-      ]
-    },
-    {
-      "id": "jdc-006-r96",
-      "type": "single",
-      "scenario": "Incident sonrasinda sadece `proxy-96` servisini detached olarak kaldir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose up -d proxy-96",
-          "hint_text": "Tek servis icin servis adini sona ekle.",
-          "hint_partial": "docker compose up -d ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-007-r97",
-      "type": "single",
-      "scenario": "Bakim oncesi `db-97-97` servisini yeniden baslat.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose restart db-97-97",
-          "hint_text": "Servis restart icin `docker compose restart service` kullan.",
-          "hint_partial": "docker compose restart ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-008-r98",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda `cache-98-98-98` servisi icinde shell ac.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose exec cache-98-98-98 sh",
-          "hint_text": "Servis icinde komut icin `docker compose exec` kullan.",
-          "hint_partial": "docker compose exec ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-009-r99",
-      "type": "single",
-      "scenario": "Deploy sonrasi compose config sonucunu goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose config",
-          "hint_text": "Birlesmis config icin `docker compose config` kullan.",
-          "hint_partial": "docker compose config"
-        }
-      ]
-    },
-    {
-      "id": "jdc-010-r100",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde compose servis image'larini registry'den cek.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose pull",
-          "hint_text": "Image cekmek icin `docker compose pull` kullan.",
-          "hint_partial": "docker compose pull"
-        }
-      ]
-    },
-    {
-      "id": "jdc-001-r101",
-      "type": "single",
-      "scenario": "Yeni acilan hostta compose servis durumlarini goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose ps",
-          "hint_text": "Servis listesi icin `docker compose ps` kullan.",
-          "hint_partial": "docker compose ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-002-r102",
-      "type": "single",
-      "scenario": "Runbook adiminda compose stack'ini detached modda kaldir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose up -d",
-          "hint_text": "Detached baslatmak icin `up -d` kullan.",
+          "answer": "docker compose up -d --no-recreate",
+          "hint_text": "Mevcut container'i korumak icin `--no-recreate` kullan.",
           "hint_partial": "docker compose up ..."
         }
       ]
     },
     {
-      "id": "jdc-003-r103",
+      "id": "jdc-068",
       "type": "single",
-      "scenario": "Operasyon kontrolunde compose stack'ini kapat ve kaldir.",
+      "scenario": "Artik compose dosyasinda olmayan container'lari da temizleyerek stack'i detached modda kaldir.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker compose down",
-          "hint_text": "Stack'i indirmek icin `docker compose down` kullan.",
-          "hint_partial": "docker compose down"
-        }
-      ]
-    },
-    {
-      "id": "jdc-004-r104",
-      "type": "single",
-      "scenario": "Incident sonrasinda compose loglarini canli takip et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose logs -f",
-          "hint_text": "Log takibi icin `logs -f` kullan.",
-          "hint_partial": "docker compose logs ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-005-r105",
-      "type": "single",
-      "scenario": "Bakim oncesi compose image'larini build et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose build",
-          "hint_text": "Image build icin `docker compose build` kullan.",
-          "hint_partial": "docker compose build"
-        }
-      ]
-    },
-    {
-      "id": "jdc-006-r106",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda sadece `cache-106-106-106` servisini detached olarak kaldir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose up -d cache-106-106-106",
-          "hint_text": "Tek servis icin servis adini sona ekle.",
-          "hint_partial": "docker compose up -d ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-007-r107",
-      "type": "single",
-      "scenario": "Deploy sonrasi `queue-107` servisini yeniden baslat.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose restart queue-107",
-          "hint_text": "Servis restart icin `docker compose restart service` kullan.",
-          "hint_partial": "docker compose restart ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-008-r108",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde `db-108-108` servisi icinde shell ac.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose exec db-108-108 sh",
-          "hint_text": "Servis icinde komut icin `docker compose exec` kullan.",
-          "hint_partial": "docker compose exec ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-009-r109",
-      "type": "single",
-      "scenario": "Yeni acilan hostta compose config sonucunu goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose config",
-          "hint_text": "Birlesmis config icin `docker compose config` kullan.",
-          "hint_partial": "docker compose config"
-        }
-      ]
-    },
-    {
-      "id": "jdc-010-r110",
-      "type": "single",
-      "scenario": "Runbook adiminda compose servis image'larini registry'den cek.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose pull",
-          "hint_text": "Image cekmek icin `docker compose pull` kullan.",
-          "hint_partial": "docker compose pull"
-        }
-      ]
-    },
-    {
-      "id": "jdc-001-r111",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde compose servis durumlarini goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose ps",
-          "hint_text": "Servis listesi icin `docker compose ps` kullan.",
-          "hint_partial": "docker compose ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-002-r112",
-      "type": "single",
-      "scenario": "Incident sonrasinda compose stack'ini detached modda kaldir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose up -d",
-          "hint_text": "Detached baslatmak icin `up -d` kullan.",
+          "answer": "docker compose up -d --remove-orphans",
+          "hint_text": "Yetim container'lari temizlemek icin `--remove-orphans` kullan.",
           "hint_partial": "docker compose up ..."
         }
       ]
     },
     {
-      "id": "jdc-003-r113",
+      "id": "jdc-069",
       "type": "single",
-      "scenario": "Bakim oncesi compose stack'ini kapat ve kaldir.",
+      "scenario": "Compose stack'ini volume'lerle birlikte kapat ve kaldir.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker compose down",
-          "hint_text": "Stack'i indirmek icin `docker compose down` kullan.",
-          "hint_partial": "docker compose down"
+          "answer": "docker compose down -v",
+          "hint_text": "Named ve anonymous volume'leri de silmek icin `down -v` kullan.",
+          "hint_partial": "docker compose down ..."
         }
       ]
     },
     {
-      "id": "jdc-004-r114",
+      "id": "jdc-070",
       "type": "single",
-      "scenario": "Troubleshooting sirasinda compose loglarini canli takip et.",
+      "scenario": "Compose stack'ini local image'lari da temizleyerek kapat.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker compose logs -f",
-          "hint_text": "Log takibi icin `logs -f` kullan.",
-          "hint_partial": "docker compose logs ..."
+          "answer": "docker compose down --rmi local",
+          "hint_text": "Compose tarafindan kullanilan local image'lari temizlemek icin `--rmi local` kullan.",
+          "hint_partial": "docker compose down ..."
         }
       ]
     },
     {
-      "id": "jdc-005-r115",
+      "id": "jdc-071",
       "type": "single",
-      "scenario": "Deploy sonrasi compose image'larini build et.",
+      "scenario": "Compose stack'ini 30 saniye bekleme suresiyle kapat.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker compose build",
-          "hint_text": "Image build icin `docker compose build` kullan.",
-          "hint_partial": "docker compose build"
+          "answer": "docker compose down -t 30",
+          "hint_text": "Kapanis bekleme suresi icin `-t` kullan.",
+          "hint_partial": "docker compose down ..."
         }
       ]
     },
     {
-      "id": "jdc-006-r116",
+      "id": "jdc-072",
       "type": "single",
-      "scenario": "Kesinti incelemesinde sadece `db-116-116` servisini detached olarak kaldir.",
+      "scenario": "`api` servisini 20 saniye timeout ile durdur.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker compose up -d db-116-116",
-          "hint_text": "Tek servis icin servis adini sona ekle.",
-          "hint_partial": "docker compose up -d ..."
+          "answer": "docker compose stop -t 20 api",
+          "hint_text": "Stop timeout'u icin `-t` kullan.",
+          "hint_partial": "docker compose stop ..."
         }
       ]
     },
     {
-      "id": "jdc-007-r117",
+      "id": "jdc-073",
       "type": "single",
-      "scenario": "Yeni acilan hostta `proxy-117` servisini yeniden baslat.",
+      "scenario": "`api` servisini 10 saniye timeout ile yeniden baslat.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker compose restart proxy-117",
-          "hint_text": "Servis restart icin `docker compose restart service` kullan.",
+          "answer": "docker compose restart -t 10 api",
+          "hint_text": "Restart timeout'u icin `-t` kullan.",
           "hint_partial": "docker compose restart ..."
         }
       ]
     },
     {
-      "id": "jdc-008-r118",
+      "id": "jdc-074",
       "type": "single",
-      "scenario": "Runbook adiminda `queue-118` servisi icinde shell ac.",
+      "scenario": "`api` servisi icinde `APP_ENV=prod` degiskeniyle tek komut calistir.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker compose exec queue-118 sh",
-          "hint_text": "Servis icinde komut icin `docker compose exec` kullan.",
+          "answer": "docker compose exec -e APP_ENV=prod api printenv APP_ENV",
+          "hint_text": "`exec` ile ortam degiskeni vermek icin `-e` kullan.",
           "hint_partial": "docker compose exec ..."
         }
       ]
     },
     {
-      "id": "jdc-009-r119",
+      "id": "jdc-075",
       "type": "single",
-      "scenario": "Operasyon kontrolunde compose config sonucunu goster.",
+      "scenario": "`api` servisi uzerinde tek seferlik container calistir ve `APP_ENV=prod` degiskenini aktar.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker compose config",
-          "hint_text": "Birlesmis config icin `docker compose config` kullan.",
-          "hint_partial": "docker compose config"
+          "answer": "docker compose run --rm -e APP_ENV=prod api printenv APP_ENV",
+          "hint_text": "`run` sirasinda env vermek icin `-e` kullan.",
+          "hint_partial": "docker compose run ..."
         }
       ]
     },
     {
-      "id": "jdc-010-r120",
+      "id": "jdc-076",
       "type": "single",
-      "scenario": "Incident sonrasinda compose servis image'larini registry'den cek.",
+      "scenario": "`api` servisini default command yerine `sh` entrypoint'iyle tek seferlik ac.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker compose pull",
-          "hint_text": "Image cekmek icin `docker compose pull` kullan.",
-          "hint_partial": "docker compose pull"
+          "answer": "docker compose run --rm --entrypoint sh api",
+          "hint_text": "Entry point override icin `--entrypoint` kullan.",
+          "hint_partial": "docker compose run ..."
         }
       ]
     },
     {
-      "id": "jdc-001-r121",
+      "id": "jdc-077",
       "type": "single",
-      "scenario": "Bakim oncesi compose servis durumlarini goster.",
+      "scenario": "Replica'lari olan `worker` servisinin 1 numarali container logunu goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker compose ps",
-          "hint_text": "Servis listesi icin `docker compose ps` kullan.",
-          "hint_partial": "docker compose ..."
+          "answer": "docker compose logs --index 1 worker",
+          "hint_text": "Replica secmek icin `logs --index` kullan.",
+          "hint_partial": "docker compose logs ..."
         }
       ]
     },
     {
-      "id": "jdc-002-r122",
+      "id": "jdc-078",
       "type": "single",
-      "scenario": "Troubleshooting sirasinda compose stack'ini detached modda kaldir.",
+      "scenario": "Replica'lari olan `worker` servisinin 1 numarali container'ina shell ile baglan.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker compose up -d",
-          "hint_text": "Detached baslatmak icin `up -d` kullan.",
+          "answer": "docker compose exec --index 1 worker sh",
+          "hint_text": "Replica secmek icin `exec --index` kullan.",
+          "hint_partial": "docker compose exec ..."
+        }
+      ]
+    },
+    {
+      "id": "jdc-079",
+      "type": "single",
+      "scenario": "`api` servis loglarini renksiz goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose logs --no-color api",
+          "hint_text": "CI veya kayit icin renksiz log gerekiyorsa `--no-color` kullan.",
+          "hint_partial": "docker compose logs ..."
+        }
+      ]
+    },
+    {
+      "id": "jdc-080",
+      "type": "single",
+      "scenario": "`api` servis loglarini sadece son 20 satir ve canli takip ile goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose logs -f --tail 20 api",
+          "hint_text": "Takip ve son satir limiti icin `-f --tail` beraber kullanilabilir.",
+          "hint_partial": "docker compose logs ..."
+        }
+      ]
+    },
+    {
+      "id": "jdc-081",
+      "type": "single",
+      "scenario": "Tum servisler durana kadar bekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose wait",
+          "hint_text": "Servislerin bitmesini beklemek icin `wait` kullan.",
+          "hint_partial": "docker compose wait"
+        }
+      ]
+    },
+    {
+      "id": "jdc-082",
+      "type": "single",
+      "scenario": "Sadece `api` servisi durana kadar bekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose wait api",
+          "hint_text": "Belirli servis icin `wait SERVICE` kullan.",
+          "hint_partial": "docker compose wait ..."
+        }
+      ]
+    },
+    {
+      "id": "jdc-083",
+      "type": "single",
+      "scenario": "Sadece `db` ve `redis` servisleri durana kadar bekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose wait db redis",
+          "hint_text": "Birden fazla servis icin `wait` ile isimleri sirala.",
+          "hint_partial": "docker compose wait ..."
+        }
+      ]
+    },
+    {
+      "id": "jdc-084",
+      "type": "single",
+      "scenario": "Tum servisleri paralel build et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose build --parallel",
+          "hint_text": "Build surecini paralellestirmek icin `--parallel` kullan.",
+          "hint_partial": "docker compose build ..."
+        }
+      ]
+    },
+    {
+      "id": "jdc-085",
+      "type": "single",
+      "scenario": "`web` ve `api` servislerini birlikte build et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose build web api",
+          "hint_text": "Birden fazla servisi build etmek icin isimleri sona ekle.",
+          "hint_partial": "docker compose build ..."
+        }
+      ]
+    },
+    {
+      "id": "jdc-086",
+      "type": "single",
+      "scenario": "`web` ve `api` servis image'larini birlikte cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose pull web api",
+          "hint_text": "Birden fazla servisi tek komutta pull edebilirsin.",
+          "hint_partial": "docker compose pull ..."
+        }
+      ]
+    },
+    {
+      "id": "jdc-087",
+      "type": "single",
+      "scenario": "Sadece `api` servisini detached modda, dependency'lerini de yeniden olusturarak kaldir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose up -d --always-recreate-deps api",
+          "hint_text": "Bagimli servisleri de yeniden yaratmak icin `--always-recreate-deps` kullan.",
           "hint_partial": "docker compose up ..."
         }
       ]
     },
     {
-      "id": "jdc-003-r123",
+      "id": "jdc-088",
       "type": "single",
-      "scenario": "Deploy sonrasi compose stack'ini kapat ve kaldir.",
+      "scenario": "Sadece `api` ve `worker` servislerini detached modda kaldir.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker compose down",
-          "hint_text": "Stack'i indirmek icin `docker compose down` kullan.",
-          "hint_partial": "docker compose down"
-        }
-      ]
-    },
-    {
-      "id": "jdc-004-r124",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde compose loglarini canli takip et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose logs -f",
-          "hint_text": "Log takibi icin `logs -f` kullan.",
-          "hint_partial": "docker compose logs ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-005-r125",
-      "type": "single",
-      "scenario": "Yeni acilan hostta compose image'larini build et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose build",
-          "hint_text": "Image build icin `docker compose build` kullan.",
-          "hint_partial": "docker compose build"
-        }
-      ]
-    },
-    {
-      "id": "jdc-006-r126",
-      "type": "single",
-      "scenario": "Runbook adiminda sadece `queue-126` servisini detached olarak kaldir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose up -d queue-126",
-          "hint_text": "Tek servis icin servis adini sona ekle.",
-          "hint_partial": "docker compose up -d ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-007-r127",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde `api-127` servisini yeniden baslat.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose restart api-127",
-          "hint_text": "Servis restart icin `docker compose restart service` kullan.",
-          "hint_partial": "docker compose restart ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-008-r128",
-      "type": "single",
-      "scenario": "Incident sonrasinda `proxy-128` servisi icinde shell ac.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose exec proxy-128 sh",
-          "hint_text": "Servis icinde komut icin `docker compose exec` kullan.",
-          "hint_partial": "docker compose exec ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-009-r129",
-      "type": "single",
-      "scenario": "Bakim oncesi compose config sonucunu goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose config",
-          "hint_text": "Birlesmis config icin `docker compose config` kullan.",
-          "hint_partial": "docker compose config"
-        }
-      ]
-    },
-    {
-      "id": "jdc-010-r130",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda compose servis image'larini registry'den cek.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose pull",
-          "hint_text": "Image cekmek icin `docker compose pull` kullan.",
-          "hint_partial": "docker compose pull"
-        }
-      ]
-    },
-    {
-      "id": "jdc-001-r131",
-      "type": "single",
-      "scenario": "Deploy sonrasi compose servis durumlarini goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose ps",
-          "hint_text": "Servis listesi icin `docker compose ps` kullan.",
-          "hint_partial": "docker compose ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-002-r132",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde compose stack'ini detached modda kaldir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose up -d",
-          "hint_text": "Detached baslatmak icin `up -d` kullan.",
+          "answer": "docker compose up -d api worker",
+          "hint_text": "Belirli iki servisi secerek kaldirabilirsin.",
           "hint_partial": "docker compose up ..."
         }
       ]
     },
     {
-      "id": "jdc-003-r133",
+      "id": "jdc-089",
       "type": "single",
-      "scenario": "Yeni acilan hostta compose stack'ini kapat ve kaldir.",
+      "scenario": "Sadece `api` servisinin image'ini cek ama stack'i baslatma.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker compose down",
-          "hint_text": "Stack'i indirmek icin `docker compose down` kullan.",
-          "hint_partial": "docker compose down"
+          "answer": "docker compose pull api",
+          "hint_text": "Image guncellemek icin `pull` yeterlidir, baslatmaz.",
+          "hint_partial": "docker compose pull ..."
         }
       ]
     },
     {
-      "id": "jdc-004-r134",
+      "id": "jdc-090",
       "type": "single",
-      "scenario": "Runbook adiminda compose loglarini canli takip et.",
+      "scenario": "Sadece `api` servisinin container'ini olustur, baslatma.",
       "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose create api",
+          "hint_text": "`create` sadece olusturur, `start` etmez.",
+          "hint_partial": "docker compose create ..."
+        }
+      ]
+    },
+    {
+      "id": "jdc-091",
+      "type": "multi-step",
+      "scenario": "`api` servisini build edip detached modda kaldir, sonra durumunu kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose build api",
+          "hint_text": "Once servisi build et.",
+          "hint_partial": "docker compose build ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "docker compose up -d api",
+          "hint_text": "Sonra servisi detached modda kaldir.",
+          "hint_partial": "docker compose up ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "docker compose ps api",
+          "hint_text": "Durumu dogrulamak icin `ps` kullan.",
+          "hint_partial": "docker compose ps ..."
+        }
+      ]
+    },
+    {
+      "id": "jdc-092",
+      "type": "multi-step",
+      "scenario": "Tum stack'i kaldir, loglari canli izle, sonra servis durumlarini kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose up -d",
+          "hint_text": "Once stack'i detached modda baslat.",
+          "hint_partial": "docker compose up ..."
+        },
         {
           "prompt": "$ ",
           "answer": "docker compose logs -f",
-          "hint_text": "Log takibi icin `logs -f` kullan.",
+          "hint_text": "Sonra loglari takip et.",
           "hint_partial": "docker compose logs ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-005-r135",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde compose image'larini build et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose build",
-          "hint_text": "Image build icin `docker compose build` kullan.",
-          "hint_partial": "docker compose build"
-        }
-      ]
-    },
-    {
-      "id": "jdc-006-r136",
-      "type": "single",
-      "scenario": "Incident sonrasinda sadece `proxy-136` servisini detached olarak kaldir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose up -d proxy-136",
-          "hint_text": "Tek servis icin servis adini sona ekle.",
-          "hint_partial": "docker compose up -d ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-007-r137",
-      "type": "single",
-      "scenario": "Bakim oncesi `db-137-137` servisini yeniden baslat.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose restart db-137-137",
-          "hint_text": "Servis restart icin `docker compose restart service` kullan.",
-          "hint_partial": "docker compose restart ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-008-r138",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda `cache-138-138-138` servisi icinde shell ac.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose exec cache-138-138-138 sh",
-          "hint_text": "Servis icinde komut icin `docker compose exec` kullan.",
-          "hint_partial": "docker compose exec ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-009-r139",
-      "type": "single",
-      "scenario": "Deploy sonrasi compose config sonucunu goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose config",
-          "hint_text": "Birlesmis config icin `docker compose config` kullan.",
-          "hint_partial": "docker compose config"
-        }
-      ]
-    },
-    {
-      "id": "jdc-010-r140",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde compose servis image'larini registry'den cek.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose pull",
-          "hint_text": "Image cekmek icin `docker compose pull` kullan.",
-          "hint_partial": "docker compose pull"
-        }
-      ]
-    },
-    {
-      "id": "jdc-001-r141",
-      "type": "single",
-      "scenario": "Yeni acilan hostta compose servis durumlarini goster.",
-      "steps": [
+        },
         {
           "prompt": "$ ",
           "answer": "docker compose ps",
-          "hint_text": "Servis listesi icin `docker compose ps` kullan.",
+          "hint_text": "Son olarak servis durumlarini kontrol et.",
           "hint_partial": "docker compose ..."
         }
       ]
     },
     {
-      "id": "jdc-002-r142",
-      "type": "single",
-      "scenario": "Runbook adiminda compose stack'ini detached modda kaldir.",
+      "id": "jdc-093",
+      "type": "multi-step",
+      "scenario": "`api` servisi icine gir, `/app` altini listele, sonra container'dan cik.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker compose up -d",
-          "hint_text": "Detached baslatmak icin `up -d` kullan.",
+          "answer": "docker compose exec api sh",
+          "hint_text": "Shell acmak icin `exec` kullan.",
+          "hint_partial": "docker compose exec ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "ls /app",
+          "hint_text": "Container icinde dosya listele.",
+          "hint_partial": "ls /a..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "exit",
+          "hint_text": "Shell'den cik.",
+          "hint_partial": "ex..."
+        }
+      ]
+    },
+    {
+      "id": "jdc-094",
+      "type": "multi-step",
+      "scenario": "`worker` servisini 2 replica ile kaldir, sonra replica loglarindan ilk container'i izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker compose up -d --scale worker=2 worker",
+          "hint_text": "Replica sayisini ayarla ve servisi kaldir.",
           "hint_partial": "docker compose up ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-003-r143",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde compose stack'ini kapat ve kaldir.",
-      "steps": [
+        },
         {
           "prompt": "$ ",
-          "answer": "docker compose down",
-          "hint_text": "Stack'i indirmek icin `docker compose down` kullan.",
-          "hint_partial": "docker compose down"
-        }
-      ]
-    },
-    {
-      "id": "jdc-004-r144",
-      "type": "single",
-      "scenario": "Incident sonrasinda compose loglarini canli takip et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose logs -f",
-          "hint_text": "Log takibi icin `logs -f` kullan.",
+          "answer": "docker compose logs --index 1 worker",
+          "hint_text": "Belirli replica logunu incele.",
           "hint_partial": "docker compose logs ..."
         }
       ]
     },
     {
-      "id": "jdc-005-r145",
-      "type": "single",
-      "scenario": "Bakim oncesi compose image'larini build et.",
+      "id": "jdc-095",
+      "type": "multi-step",
+      "scenario": "Stack'i durdur, sonra ayni stack'i tekrar baslat.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker compose build",
-          "hint_text": "Image build icin `docker compose build` kullan.",
-          "hint_partial": "docker compose build"
+          "answer": "docker compose stop",
+          "hint_text": "Once stack'i durdur.",
+          "hint_partial": "docker compose stop"
+        },
+        {
+          "prompt": "$ ",
+          "answer": "docker compose start",
+          "hint_text": "Sonra tekrar baslat.",
+          "hint_partial": "docker compose start"
         }
       ]
     },
     {
-      "id": "jdc-006-r146",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda sadece `cache-146-146-146` servisini detached olarak kaldir.",
+      "id": "jdc-096",
+      "type": "multi-step",
+      "scenario": "`api` icin tek seferlik migration calistir, sonra `api` loglarini incele.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker compose up -d cache-146-146-146",
-          "hint_text": "Tek servis icin servis adini sona ekle.",
-          "hint_partial": "docker compose up -d ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-007-r147",
-      "type": "single",
-      "scenario": "Deploy sonrasi `queue-147` servisini yeniden baslat.",
-      "steps": [
+          "answer": "docker compose run --rm api python manage.py migrate",
+          "hint_text": "Migration icin tek seferlik container calistir.",
+          "hint_partial": "docker compose run ..."
+        },
         {
           "prompt": "$ ",
-          "answer": "docker compose restart queue-147",
-          "hint_text": "Servis restart icin `docker compose restart service` kullan.",
-          "hint_partial": "docker compose restart ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-008-r148",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde `db-148-148` servisi icinde shell ac.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose exec db-148-148 sh",
-          "hint_text": "Servis icinde komut icin `docker compose exec` kullan.",
-          "hint_partial": "docker compose exec ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-009-r149",
-      "type": "single",
-      "scenario": "Yeni acilan hostta compose config sonucunu goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose config",
-          "hint_text": "Birlesmis config icin `docker compose config` kullan.",
-          "hint_partial": "docker compose config"
-        }
-      ]
-    },
-    {
-      "id": "jdc-010-r150",
-      "type": "single",
-      "scenario": "Runbook adiminda compose servis image'larini registry'den cek.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose pull",
-          "hint_text": "Image cekmek icin `docker compose pull` kullan.",
-          "hint_partial": "docker compose pull"
-        }
-      ]
-    },
-    {
-      "id": "jdc-001-r151",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde compose servis durumlarini goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose ps",
-          "hint_text": "Servis listesi icin `docker compose ps` kullan.",
-          "hint_partial": "docker compose ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-002-r152",
-      "type": "single",
-      "scenario": "Incident sonrasinda compose stack'ini detached modda kaldir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose up -d",
-          "hint_text": "Detached baslatmak icin `up -d` kullan.",
-          "hint_partial": "docker compose up ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-003-r153",
-      "type": "single",
-      "scenario": "Bakim oncesi compose stack'ini kapat ve kaldir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose down",
-          "hint_text": "Stack'i indirmek icin `docker compose down` kullan.",
-          "hint_partial": "docker compose down"
-        }
-      ]
-    },
-    {
-      "id": "jdc-004-r154",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda compose loglarini canli takip et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose logs -f",
-          "hint_text": "Log takibi icin `logs -f` kullan.",
+          "answer": "docker compose logs api",
+          "hint_text": "Sonrasinda servis loglarini kontrol et.",
           "hint_partial": "docker compose logs ..."
         }
       ]
     },
     {
-      "id": "jdc-005-r155",
-      "type": "single",
-      "scenario": "Deploy sonrasi compose image'larini build et.",
+      "id": "jdc-097",
+      "type": "multi-step",
+      "scenario": "Compose config'i dogrula, sonra `db` ve `redis` servislerini detached modda kaldir.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker compose build",
-          "hint_text": "Image build icin `docker compose build` kullan.",
-          "hint_partial": "docker compose build"
-        }
-      ]
-    },
-    {
-      "id": "jdc-006-r156",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde sadece `db-156-156` servisini detached olarak kaldir.",
-      "steps": [
+          "answer": "docker compose config -q",
+          "hint_text": "Once config'in gecerli oldugunu kontrol et.",
+          "hint_partial": "docker compose config ..."
+        },
         {
           "prompt": "$ ",
-          "answer": "docker compose up -d db-156-156",
-          "hint_text": "Tek servis icin servis adini sona ekle.",
-          "hint_partial": "docker compose up -d ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-007-r157",
-      "type": "single",
-      "scenario": "Yeni acilan hostta `proxy-157` servisini yeniden baslat.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose restart proxy-157",
-          "hint_text": "Servis restart icin `docker compose restart service` kullan.",
-          "hint_partial": "docker compose restart ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-008-r158",
-      "type": "single",
-      "scenario": "Runbook adiminda `queue-158` servisi icinde shell ac.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose exec queue-158 sh",
-          "hint_text": "Servis icinde komut icin `docker compose exec` kullan.",
-          "hint_partial": "docker compose exec ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-009-r159",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde compose config sonucunu goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose config",
-          "hint_text": "Birlesmis config icin `docker compose config` kullan.",
-          "hint_partial": "docker compose config"
-        }
-      ]
-    },
-    {
-      "id": "jdc-010-r160",
-      "type": "single",
-      "scenario": "Incident sonrasinda compose servis image'larini registry'den cek.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose pull",
-          "hint_text": "Image cekmek icin `docker compose pull` kullan.",
-          "hint_partial": "docker compose pull"
-        }
-      ]
-    },
-    {
-      "id": "jdc-001-r161",
-      "type": "single",
-      "scenario": "Bakim oncesi compose servis durumlarini goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose ps",
-          "hint_text": "Servis listesi icin `docker compose ps` kullan.",
-          "hint_partial": "docker compose ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-002-r162",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda compose stack'ini detached modda kaldir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose up -d",
-          "hint_text": "Detached baslatmak icin `up -d` kullan.",
+          "answer": "docker compose up -d db redis",
+          "hint_text": "Sonra secili servisleri kaldir.",
           "hint_partial": "docker compose up ..."
         }
       ]
     },
     {
-      "id": "jdc-003-r163",
-      "type": "single",
-      "scenario": "Deploy sonrasi compose stack'ini kapat ve kaldir.",
+      "id": "jdc-098",
+      "type": "multi-step",
+      "scenario": "`api` container'indan lokal makineye log klasorunu kopyala ve sonra lokal klasoru listele.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker compose down",
-          "hint_text": "Stack'i indirmek icin `docker compose down` kullan.",
-          "hint_partial": "docker compose down"
+          "answer": "docker compose cp api:/app/logs ./logs",
+          "hint_text": "Container'dan lokala kopyala.",
+          "hint_partial": "docker compose cp ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "ls ./logs",
+          "hint_text": "Kopyalanan klasoru kontrol et.",
+          "hint_partial": "ls ./..."
         }
       ]
     },
     {
-      "id": "jdc-004-r164",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde compose loglarini canli takip et.",
+      "id": "jdc-099",
+      "type": "multi-step",
+      "scenario": "Stack'i volume'lerle birlikte kapat, sonra temizce yeniden detached modda kaldir.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker compose logs -f",
-          "hint_text": "Log takibi icin `logs -f` kullan.",
-          "hint_partial": "docker compose logs ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-005-r165",
-      "type": "single",
-      "scenario": "Yeni acilan hostta compose image'larini build et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose build",
-          "hint_text": "Image build icin `docker compose build` kullan.",
-          "hint_partial": "docker compose build"
-        }
-      ]
-    },
-    {
-      "id": "jdc-006-r166",
-      "type": "single",
-      "scenario": "Runbook adiminda sadece `queue-166` servisini detached olarak kaldir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose up -d queue-166",
-          "hint_text": "Tek servis icin servis adini sona ekle.",
-          "hint_partial": "docker compose up -d ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-007-r167",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde `api-167` servisini yeniden baslat.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose restart api-167",
-          "hint_text": "Servis restart icin `docker compose restart service` kullan.",
-          "hint_partial": "docker compose restart ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-008-r168",
-      "type": "single",
-      "scenario": "Incident sonrasinda `proxy-168` servisi icinde shell ac.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose exec proxy-168 sh",
-          "hint_text": "Servis icinde komut icin `docker compose exec` kullan.",
-          "hint_partial": "docker compose exec ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-009-r169",
-      "type": "single",
-      "scenario": "Bakim oncesi compose config sonucunu goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose config",
-          "hint_text": "Birlesmis config icin `docker compose config` kullan.",
-          "hint_partial": "docker compose config"
-        }
-      ]
-    },
-    {
-      "id": "jdc-010-r170",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda compose servis image'larini registry'den cek.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose pull",
-          "hint_text": "Image cekmek icin `docker compose pull` kullan.",
-          "hint_partial": "docker compose pull"
-        }
-      ]
-    },
-    {
-      "id": "jdc-001-r171",
-      "type": "single",
-      "scenario": "Deploy sonrasi compose servis durumlarini goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose ps",
-          "hint_text": "Servis listesi icin `docker compose ps` kullan.",
-          "hint_partial": "docker compose ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-002-r172",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde compose stack'ini detached modda kaldir.",
-      "steps": [
+          "answer": "docker compose down -v",
+          "hint_text": "Once tum stack'i ve volume'leri indir.",
+          "hint_partial": "docker compose down ..."
+        },
         {
           "prompt": "$ ",
           "answer": "docker compose up -d",
-          "hint_text": "Detached baslatmak icin `up -d` kullan.",
+          "hint_text": "Sonra stack'i yeniden kaldir.",
           "hint_partial": "docker compose up ..."
         }
       ]
     },
     {
-      "id": "jdc-003-r173",
-      "type": "single",
-      "scenario": "Yeni acilan hostta compose stack'ini kapat ve kaldir.",
+      "id": "jdc-100",
+      "type": "multi-step",
+      "scenario": "Farkli proje adi kullanarak stack'i detached modda kaldir, sonra proje listesini kontrol et.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker compose down",
-          "hint_text": "Stack'i indirmek icin `docker compose down` kullan.",
-          "hint_partial": "docker compose down"
-        }
-      ]
-    },
-    {
-      "id": "jdc-004-r174",
-      "type": "single",
-      "scenario": "Runbook adiminda compose loglarini canli takip et.",
-      "steps": [
+          "answer": "docker compose -p myapp up -d",
+          "hint_text": "Project adini belirterek kaldir.",
+          "hint_partial": "docker compose -p ..."
+        },
         {
           "prompt": "$ ",
-          "answer": "docker compose logs -f",
-          "hint_text": "Log takibi icin `logs -f` kullan.",
-          "hint_partial": "docker compose logs ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-005-r175",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde compose image'larini build et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose build",
-          "hint_text": "Image build icin `docker compose build` kullan.",
-          "hint_partial": "docker compose build"
-        }
-      ]
-    },
-    {
-      "id": "jdc-006-r176",
-      "type": "single",
-      "scenario": "Incident sonrasinda sadece `proxy-176` servisini detached olarak kaldir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose up -d proxy-176",
-          "hint_text": "Tek servis icin servis adini sona ekle.",
-          "hint_partial": "docker compose up -d ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-007-r177",
-      "type": "single",
-      "scenario": "Bakim oncesi `db-177-177` servisini yeniden baslat.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose restart db-177-177",
-          "hint_text": "Servis restart icin `docker compose restart service` kullan.",
-          "hint_partial": "docker compose restart ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-008-r178",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda `cache-178-178-178` servisi icinde shell ac.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose exec cache-178-178-178 sh",
-          "hint_text": "Servis icinde komut icin `docker compose exec` kullan.",
-          "hint_partial": "docker compose exec ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-009-r179",
-      "type": "single",
-      "scenario": "Deploy sonrasi compose config sonucunu goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose config",
-          "hint_text": "Birlesmis config icin `docker compose config` kullan.",
-          "hint_partial": "docker compose config"
-        }
-      ]
-    },
-    {
-      "id": "jdc-010-r180",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde compose servis image'larini registry'den cek.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose pull",
-          "hint_text": "Image cekmek icin `docker compose pull` kullan.",
-          "hint_partial": "docker compose pull"
-        }
-      ]
-    },
-    {
-      "id": "jdc-001-r181",
-      "type": "single",
-      "scenario": "Yeni acilan hostta compose servis durumlarini goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose ps",
-          "hint_text": "Servis listesi icin `docker compose ps` kullan.",
-          "hint_partial": "docker compose ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-002-r182",
-      "type": "single",
-      "scenario": "Runbook adiminda compose stack'ini detached modda kaldir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose up -d",
-          "hint_text": "Detached baslatmak icin `up -d` kullan.",
-          "hint_partial": "docker compose up ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-003-r183",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde compose stack'ini kapat ve kaldir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose down",
-          "hint_text": "Stack'i indirmek icin `docker compose down` kullan.",
-          "hint_partial": "docker compose down"
-        }
-      ]
-    },
-    {
-      "id": "jdc-004-r184",
-      "type": "single",
-      "scenario": "Incident sonrasinda compose loglarini canli takip et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose logs -f",
-          "hint_text": "Log takibi icin `logs -f` kullan.",
-          "hint_partial": "docker compose logs ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-005-r185",
-      "type": "single",
-      "scenario": "Bakim oncesi compose image'larini build et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose build",
-          "hint_text": "Image build icin `docker compose build` kullan.",
-          "hint_partial": "docker compose build"
-        }
-      ]
-    },
-    {
-      "id": "jdc-006-r186",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda sadece `cache-186-186-186` servisini detached olarak kaldir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose up -d cache-186-186-186",
-          "hint_text": "Tek servis icin servis adini sona ekle.",
-          "hint_partial": "docker compose up -d ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-007-r187",
-      "type": "single",
-      "scenario": "Deploy sonrasi `queue-187` servisini yeniden baslat.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose restart queue-187",
-          "hint_text": "Servis restart icin `docker compose restart service` kullan.",
-          "hint_partial": "docker compose restart ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-008-r188",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde `db-188-188` servisi icinde shell ac.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose exec db-188-188 sh",
-          "hint_text": "Servis icinde komut icin `docker compose exec` kullan.",
-          "hint_partial": "docker compose exec ..."
-        }
-      ]
-    },
-    {
-      "id": "jdc-009-r189",
-      "type": "single",
-      "scenario": "Yeni acilan hostta compose config sonucunu goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose config",
-          "hint_text": "Birlesmis config icin `docker compose config` kullan.",
-          "hint_partial": "docker compose config"
-        }
-      ]
-    },
-    {
-      "id": "jdc-010-r190",
-      "type": "single",
-      "scenario": "Runbook adiminda compose servis image'larini registry'den cek.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker compose pull",
-          "hint_text": "Image cekmek icin `docker compose pull` kullan.",
-          "hint_partial": "docker compose pull"
+          "answer": "docker compose ls",
+          "hint_text": "Compose project listesini kontrol et.",
+          "hint_partial": "docker compose ls"
         }
       ]
     }
