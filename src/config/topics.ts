@@ -22,6 +22,7 @@ const TOPIC_DEFINITIONS = [
   { id: "ansible", label: "Ansible", section: "iac" },
   { id: "terraform", label: "Terraform", section: "iac" },
   { id: "user", label: "User", section: "core" },
+  { id: "gitflow", label: "Gitflow", section: "infra" },
 ] as const;
 
 const TOPIC_SECTION_DEFINITIONS = [

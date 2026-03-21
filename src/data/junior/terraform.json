@@ -10,2595 +10,1457 @@
         {
           "prompt": "$ ",
           "answer": "terraform version",
-          "hint_text": "Surum bilgisini gormek icin `terraform version` komutunu kullan.",
-          "hint_partial": "terraform version"
+          "hint_text": "Terraform surum bilgisini gosterir",
+          "hint_partial": "terraform version ..."
         }
       ]
     },
     {
       "id": "jtf-002",
       "type": "single",
-      "scenario": "Terraform calisma dizinini initialize et.",
+      "scenario": "Calisma dizinini initialize et.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "terraform init",
-          "hint_text": "Calisma dizinini initialize etmek icin `terraform init` komutunu kullan.",
-          "hint_partial": "terraform init"
+          "hint_text": "Calisma dizinini ve provider bagimliliklarini hazirlar",
+          "hint_partial": "terraform init ..."
         }
       ]
     },
     {
       "id": "jtf-003",
       "type": "single",
-      "scenario": "Execution plan olustur.",
+      "scenario": "Terraform dosyalarini formatla.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "terraform plan",
-          "hint_text": "Execution plan olusturmak icin `terraform plan` komutunu kullan.",
-          "hint_partial": "terraform plan"
+          "answer": "terraform fmt",
+          "hint_text": "Terraform dosyalarini formatlar",
+          "hint_partial": "terraform fmt ..."
         }
       ]
     },
     {
       "id": "jtf-004",
       "type": "single",
-      "scenario": "Execution plani uygula.",
+      "scenario": "Tum Terraform dosyalarini recursive formatla.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "terraform apply",
-          "hint_text": "Plan degisikliklerini uygulamak icin `terraform apply` komutunu kullan.",
-          "hint_partial": "terraform apply"
+          "answer": "terraform fmt -recursive",
+          "hint_text": "Alt klasorlerle birlikte formatlama yapar",
+          "hint_partial": "terraform fmt ..."
         }
       ]
     },
     {
       "id": "jtf-005",
       "type": "single",
-      "scenario": "Olusturulan kaynaklari sil.",
+      "scenario": "Config dogrulamasi yap.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "terraform destroy",
-          "hint_text": "Kaynaklari silmek icin `terraform destroy` komutunu kullan.",
-          "hint_partial": "terraform destroy"
+          "answer": "terraform validate",
+          "hint_text": "Terraform config dogrulamasi yapar",
+          "hint_partial": "terraform validate ..."
         }
       ]
     },
     {
       "id": "jtf-006",
       "type": "single",
-      "scenario": "Terraform dosyalarini formatla.",
+      "scenario": "Calisma dizini provider'larini guncelleyecek sekilde initialize et.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "terraform fmt",
-          "hint_text": "Terraform dosyalarini formatlamak icin `terraform fmt` komutunu kullan.",
-          "hint_partial": "terraform fmt"
+          "answer": "terraform init -upgrade",
+          "hint_text": "Provider ve module'leri guncelleyerek init yapar",
+          "hint_partial": "terraform init ..."
         }
       ]
     },
     {
       "id": "jtf-007",
       "type": "single",
-      "scenario": "Config dogrulamasi yap.",
+      "scenario": "Execution plan olustur.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "terraform validate",
-          "hint_text": "Config dogrulamasi yapmak icin `terraform validate` komutunu kullan.",
-          "hint_partial": "terraform validate"
+          "answer": "terraform plan",
+          "hint_text": "Execution plan olusturur",
+          "hint_partial": "terraform plan ..."
         }
       ]
     },
     {
       "id": "jtf-008",
       "type": "single",
-      "scenario": "Terraform state bilgisini okunur formatta goster.",
+      "scenario": "Plani out.tfplan dosyasina kaydet.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "terraform show",
-          "hint_text": "State bilgisini okunur formatta gormek icin `terraform show` komutunu kullan.",
-          "hint_partial": "terraform show"
+          "answer": "terraform plan -out=out.tfplan",
+          "hint_text": "Olusan plani dosyaya kaydeder",
+          "hint_partial": "terraform plan ..."
         }
       ]
     },
     {
       "id": "jtf-009",
       "type": "single",
-      "scenario": "Output degerlerini goruntule.",
+      "scenario": "dev.tfvars degisken dosyasiyla plan olustur.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "terraform output",
-          "hint_text": "Output degerlerini gormek icin `terraform output` komutunu kullan.",
-          "hint_partial": "terraform output"
+          "answer": "terraform plan -var-file=dev.tfvars",
+          "hint_text": "Degisken dosyasi kullanarak plan olusturur",
+          "hint_partial": "terraform plan ..."
         }
       ]
     },
     {
       "id": "jtf-010",
       "type": "single",
+      "scenario": "instance_count degerini 3 vererek plan olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform plan -var='instance_count=3'",
+          "hint_text": "Komut satirindan degisken vererek plan olusturur",
+          "hint_partial": "terraform plan ..."
+        }
+      ]
+    },
+    {
+      "id": "jtf-011",
+      "type": "single",
+      "scenario": "Kayitli plani uygula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform apply out.tfplan",
+          "hint_text": "Kayitli plan dosyasini uygular",
+          "hint_partial": "terraform apply ..."
+        }
+      ]
+    },
+    {
+      "id": "jtf-012",
+      "type": "single",
+      "scenario": "Degisiklikleri onay sormadan uygula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform apply -auto-approve",
+          "hint_text": "Onay sormadan apply yapar",
+          "hint_partial": "terraform apply ..."
+        }
+      ]
+    },
+    {
+      "id": "jtf-013",
+      "type": "single",
+      "scenario": "Olusturulan kaynaklari sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform destroy",
+          "hint_text": "Olusturulan kaynaklari siler",
+          "hint_partial": "terraform destroy ..."
+        }
+      ]
+    },
+    {
+      "id": "jtf-014",
+      "type": "single",
+      "scenario": "Kaynaklari onay sormadan sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform destroy -auto-approve",
+          "hint_text": "Onay sormadan destroy yapar",
+          "hint_partial": "terraform destroy ..."
+        }
+      ]
+    },
+    {
+      "id": "jtf-015",
+      "type": "single",
+      "scenario": "State bilgisini okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform show",
+          "hint_text": "State veya plan bilgisini okunur formatta gosterir",
+          "hint_partial": "terraform show ..."
+        }
+      ]
+    },
+    {
+      "id": "jtf-016",
+      "type": "single",
+      "scenario": "Kayitli plani JSON formatinda goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform show -json out.tfplan",
+          "hint_text": "Plan dosyasini JSON olarak gosterir",
+          "hint_partial": "terraform show ..."
+        }
+      ]
+    },
+    {
+      "id": "jtf-017",
+      "type": "single",
+      "scenario": "Output degerlerini goruntule.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform output",
+          "hint_text": "Output degerlerini listeler",
+          "hint_partial": "terraform output ..."
+        }
+      ]
+    },
+    {
+      "id": "jtf-018",
+      "type": "single",
+      "scenario": "lb_dns_name output degerini goruntule.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform output lb_dns_name",
+          "hint_text": "Belirli bir output degerini gosterir",
+          "hint_partial": "terraform output ..."
+        }
+      ]
+    },
+    {
+      "id": "jtf-019",
+      "type": "single",
+      "scenario": "lb_dns_name output degerini raw olarak goruntule.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform output -raw lb_dns_name",
+          "hint_text": "Tek bir output degerini raw formatta verir",
+          "hint_partial": "terraform output ..."
+        }
+      ]
+    },
+    {
+      "id": "jtf-020",
+      "type": "single",
       "scenario": "State icindeki kaynaklari listele.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "terraform state list",
-          "hint_text": "State icindeki kaynaklari listelemek icin `terraform state list` komutunu kullan.",
-          "hint_partial": "terraform state list"
+          "hint_text": "State icindeki kaynaklari listeler",
+          "hint_partial": "terraform state ..."
         }
       ]
     },
     {
-      "id": "jtf-001-r1",
+      "id": "jtf-021",
       "type": "single",
-      "scenario": "Bakim oncesi, Terraform surumunu kontrol et.",
+      "scenario": "Belirli bir kaynagin state detayini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "terraform version",
-          "hint_text": "Surum bilgisini gormek icin `terraform version` komutunu kullan.",
-          "hint_partial": "terraform version"
+          "answer": "terraform state show aws_instance.web",
+          "hint_text": "Kaynagin state detaylarini gosterir",
+          "hint_partial": "terraform state ..."
         }
       ]
     },
     {
-      "id": "jtf-002-r2",
+      "id": "jtf-022",
       "type": "single",
-      "scenario": "Troubleshooting sirasinda, Terraform calisma dizinini initialize et.",
+      "scenario": "workspace'leri listele.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "terraform init",
-          "hint_text": "Calisma dizinini initialize etmek icin `terraform init` komutunu kullan.",
-          "hint_partial": "terraform init"
+          "answer": "terraform workspace list",
+          "hint_text": "Workspace listesini gosterir",
+          "hint_partial": "terraform workspace ..."
         }
       ]
     },
     {
-      "id": "jtf-003-r3",
+      "id": "jtf-023",
       "type": "single",
-      "scenario": "Deploy sonrasi, Execution plan olustur.",
+      "scenario": "dev adinda yeni bir workspace olustur.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "terraform plan",
-          "hint_text": "Execution plan olusturmak icin `terraform plan` komutunu kullan.",
-          "hint_partial": "terraform plan"
+          "answer": "terraform workspace new dev",
+          "hint_text": "Yeni workspace olusturur",
+          "hint_partial": "terraform workspace ..."
         }
       ]
     },
     {
-      "id": "jtf-004-r4",
+      "id": "jtf-024",
       "type": "single",
-      "scenario": "Kesinti incelemesinde, Execution plani uygula.",
+      "scenario": "dev workspace'ine gec.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "terraform apply",
-          "hint_text": "Plan degisikliklerini uygulamak icin `terraform apply` komutunu kullan.",
-          "hint_partial": "terraform apply"
+          "answer": "terraform workspace select dev",
+          "hint_text": "Belirli workspace'e gecis yapar",
+          "hint_partial": "terraform workspace ..."
         }
       ]
     },
     {
-      "id": "jtf-005-r5",
+      "id": "jtf-025",
       "type": "single",
-      "scenario": "Yeni acilan hostta, Olusturulan kaynaklari sil.",
+      "scenario": "Mevcut workspace adini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "terraform destroy",
-          "hint_text": "Kaynaklari silmek icin `terraform destroy` komutunu kullan.",
-          "hint_partial": "terraform destroy"
+          "answer": "terraform workspace show",
+          "hint_text": "Mevcut workspace adini gosterir",
+          "hint_partial": "terraform workspace ..."
         }
       ]
     },
     {
-      "id": "jtf-006-r6",
+      "id": "jtf-026",
       "type": "single",
-      "scenario": "Runbook adiminda, Terraform dosyalarini formatla.",
+      "scenario": "prod workspace'ine gec.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "terraform fmt",
-          "hint_text": "Terraform dosyalarini formatlamak icin `terraform fmt` komutunu kullan.",
-          "hint_partial": "terraform fmt"
+          "answer": "terraform workspace select prod",
+          "hint_text": "Belirli workspace'e gecis yapar",
+          "hint_partial": "terraform workspace ..."
         }
       ]
     },
     {
-      "id": "jtf-007-r7",
+      "id": "jtf-027",
       "type": "single",
-      "scenario": "Operasyon kontrolunde, Config dogrulamasi yap.",
+      "scenario": "dev workspace'ini sil.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "terraform validate",
-          "hint_text": "Config dogrulamasi yapmak icin `terraform validate` komutunu kullan.",
-          "hint_partial": "terraform validate"
+          "answer": "terraform workspace delete dev",
+          "hint_text": "Workspace'i siler",
+          "hint_partial": "terraform workspace ..."
         }
       ]
     },
     {
-      "id": "jtf-008-r8",
+      "id": "jtf-028",
       "type": "single",
-      "scenario": "Incident sonrasinda, Terraform state bilgisini okunur formatta goster.",
+      "scenario": "Kullanilan provider'lari goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "terraform show",
-          "hint_text": "State bilgisini okunur formatta gormek icin `terraform show` komutunu kullan.",
-          "hint_partial": "terraform show"
+          "answer": "terraform providers",
+          "hint_text": "Kullanilan provider'lari listeler",
+          "hint_partial": "terraform providers ..."
         }
       ]
     },
     {
-      "id": "jtf-009-r9",
+      "id": "jtf-029",
       "type": "single",
-      "scenario": "Bakim oncesi, Output degerlerini goruntule.",
+      "scenario": "Provider semalarini JSON olarak goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "terraform output",
-          "hint_text": "Output degerlerini gormek icin `terraform output` komutunu kullan.",
-          "hint_partial": "terraform output"
+          "answer": "terraform providers schema -json",
+          "hint_text": "Provider semalarini JSON olarak verir",
+          "hint_partial": "terraform providers ..."
         }
       ]
     },
     {
-      "id": "jtf-010-r10",
+      "id": "jtf-030",
       "type": "single",
-      "scenario": "Troubleshooting sirasinda, State icindeki kaynaklari listele.",
+      "scenario": "terraform.lock.hcl dosyasini guncelle.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "terraform state list",
-          "hint_text": "State icindeki kaynaklari listelemek icin `terraform state list` komutunu kullan.",
-          "hint_partial": "terraform state list"
+          "answer": "terraform providers lock",
+          "hint_text": "Provider lock dosyasini gunceller",
+          "hint_partial": "terraform providers ..."
         }
       ]
     },
     {
-      "id": "jtf-001-r11",
+      "id": "jtf-031",
       "type": "single",
-      "scenario": "Deploy sonrasi, Terraform surumunu kontrol et.",
+      "scenario": "Kullanimda olmayan provider ve module cache'lerini temizle.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "terraform version",
-          "hint_text": "Surum bilgisini gormek icin `terraform version` komutunu kullan.",
-          "hint_partial": "terraform version"
+          "answer": "terraform init -reconfigure",
+          "hint_text": "Backend ayarlarini yeniden okuyarak init yapar",
+          "hint_partial": "terraform init ..."
         }
       ]
     },
     {
-      "id": "jtf-002-r12",
+      "id": "jtf-032",
       "type": "single",
-      "scenario": "Kesinti incelemesinde, Terraform calisma dizinini initialize et.",
+      "scenario": "Variable tanimlarini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "terraform init",
-          "hint_text": "Calisma dizinini initialize etmek icin `terraform init` komutunu kullan.",
-          "hint_partial": "terraform init"
+          "answer": "terraform-config-inspect .",
+          "hint_text": "Module ve degisken bilgilerini ozetler",
+          "hint_partial": "terraform-config-inspect ..."
         }
       ]
     },
     {
-      "id": "jtf-003-r13",
+      "id": "jtf-033",
       "type": "single",
-      "scenario": "Yeni acilan hostta, Execution plan olustur.",
+      "scenario": "Resource graph'ini DOT formatinda olustur.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "terraform plan",
-          "hint_text": "Execution plan olusturmak icin `terraform plan` komutunu kullan.",
-          "hint_partial": "terraform plan"
+          "answer": "terraform graph",
+          "hint_text": "Kaynak bagimlilik grafigi cikarir",
+          "hint_partial": "terraform graph ..."
         }
       ]
     },
     {
-      "id": "jtf-004-r14",
+      "id": "jtf-034",
       "type": "single",
-      "scenario": "Runbook adiminda, Execution plani uygula.",
+      "scenario": "Plan sirasinda state'i yenilemeden calis.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "terraform apply",
-          "hint_text": "Plan degisikliklerini uygulamak icin `terraform apply` komutunu kullan.",
-          "hint_partial": "terraform apply"
+          "answer": "terraform plan -refresh=false",
+          "hint_text": "State yenilemeden plan alir",
+          "hint_partial": "terraform plan ..."
         }
       ]
     },
     {
-      "id": "jtf-005-r15",
+      "id": "jtf-035",
       "type": "single",
-      "scenario": "Operasyon kontrolunde, Olusturulan kaynaklari sil.",
+      "scenario": "Sadece aws_instance.web kaynagi icin plan olustur.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "terraform destroy",
-          "hint_text": "Kaynaklari silmek icin `terraform destroy` komutunu kullan.",
-          "hint_partial": "terraform destroy"
+          "answer": "terraform plan -target=aws_instance.web",
+          "hint_text": "Sadece hedef kaynaga odakli plan alir",
+          "hint_partial": "terraform plan ..."
         }
       ]
     },
     {
-      "id": "jtf-006-r16",
+      "id": "jtf-036",
       "type": "single",
-      "scenario": "Incident sonrasinda, Terraform dosyalarini formatla.",
+      "scenario": "Sadece aws_instance.web kaynagini uygula.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "terraform fmt",
-          "hint_text": "Terraform dosyalarini formatlamak icin `terraform fmt` komutunu kullan.",
-          "hint_partial": "terraform fmt"
+          "answer": "terraform apply -target=aws_instance.web",
+          "hint_text": "Sadece hedef kaynagi uygular",
+          "hint_partial": "terraform apply ..."
         }
       ]
     },
     {
-      "id": "jtf-007-r17",
+      "id": "jtf-037",
       "type": "single",
-      "scenario": "Bakim oncesi, Config dogrulamasi yap.",
+      "scenario": "Sadece aws_instance.web kaynagini state'ten kaldir.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "terraform validate",
-          "hint_text": "Config dogrulamasi yapmak icin `terraform validate` komutunu kullan.",
-          "hint_partial": "terraform validate"
+          "answer": "terraform state rm aws_instance.web",
+          "hint_text": "Kaynagi state'ten kaldirir",
+          "hint_partial": "terraform state ..."
         }
       ]
     },
     {
-      "id": "jtf-008-r18",
+      "id": "jtf-038",
       "type": "single",
-      "scenario": "Troubleshooting sirasinda, Terraform state bilgisini okunur formatta goster.",
+      "scenario": "old_bucket kaynagini state'te yeniden adlandir.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "terraform show",
-          "hint_text": "State bilgisini okunur formatta gormek icin `terraform show` komutunu kullan.",
-          "hint_partial": "terraform show"
+          "answer": "terraform state mv aws_s3_bucket.old_bucket aws_s3_bucket.new_bucket",
+          "hint_text": "State icindeki kaynak adresini tasir",
+          "hint_partial": "terraform state ..."
         }
       ]
     },
     {
-      "id": "jtf-009-r19",
+      "id": "jtf-039",
       "type": "single",
-      "scenario": "Deploy sonrasi, Output degerlerini goruntule.",
+      "scenario": "Modul altindaki kaynagin state detayini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "terraform output",
-          "hint_text": "Output degerlerini gormek icin `terraform output` komutunu kullan.",
-          "hint_partial": "terraform output"
+          "answer": "terraform state show module.network.aws_vpc.main",
+          "hint_text": "Kaynagin state detaylarini gosterir",
+          "hint_partial": "terraform state ..."
         }
       ]
     },
     {
-      "id": "jtf-010-r20",
+      "id": "jtf-040",
       "type": "single",
-      "scenario": "Kesinti incelemesinde, State icindeki kaynaklari listele.",
+      "scenario": "Terraform konsolunu ac.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "terraform state list",
-          "hint_text": "State icindeki kaynaklari listelemek icin `terraform state list` komutunu kullan.",
-          "hint_partial": "terraform state list"
+          "answer": "terraform console",
+          "hint_text": "Etkilesimli Terraform console acar",
+          "hint_partial": "terraform console ..."
         }
       ]
     },
     {
-      "id": "jtf-001-r21",
+      "id": "jtf-041",
       "type": "single",
-      "scenario": "Yeni acilan hostta, Terraform surumunu kontrol et.",
+      "scenario": "moduller klasorunde lock file olusturmadan init yap.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "terraform version",
-          "hint_text": "Surum bilgisini gormek icin `terraform version` komutunu kullan.",
-          "hint_partial": "terraform version"
+          "answer": "terraform init -lockfile=readonly",
+          "hint_text": "Lock file'i degistirmeden init calistirir",
+          "hint_partial": "terraform init ..."
         }
       ]
     },
     {
-      "id": "jtf-002-r22",
+      "id": "jtf-042",
       "type": "single",
-      "scenario": "Runbook adiminda, Terraform calisma dizinini initialize et.",
+      "scenario": "main.tf dosyasindaki formatter farklarini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "terraform init",
-          "hint_text": "Calisma dizinini initialize etmek icin `terraform init` komutunu kullan.",
-          "hint_partial": "terraform init"
+          "answer": "terraform fmt -diff main.tf",
+          "hint_text": "Format farklarini diff olarak gosterir",
+          "hint_partial": "terraform fmt ..."
         }
       ]
     },
     {
-      "id": "jtf-003-r23",
+      "id": "jtf-043",
       "type": "single",
-      "scenario": "Operasyon kontrolunde, Execution plan olustur.",
+      "scenario": "Tum resource adreslerini compact listede goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "terraform plan",
-          "hint_text": "Execution plan olusturmak icin `terraform plan` komutunu kullan.",
-          "hint_partial": "terraform plan"
+          "answer": "terraform state list | sort",
+          "hint_text": "State kaynaklarini sirali gostermek icin pipe kullanir",
+          "hint_partial": "terraform state ..."
         }
       ]
     },
     {
-      "id": "jtf-004-r24",
+      "id": "jtf-044",
       "type": "single",
-      "scenario": "Incident sonrasinda, Execution plani uygula.",
+      "scenario": "Varsayilan backend'i yeniden ayarlayarak init yap.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "terraform apply",
-          "hint_text": "Plan degisikliklerini uygulamak icin `terraform apply` komutunu kullan.",
-          "hint_partial": "terraform apply"
+          "answer": "terraform init -reconfigure",
+          "hint_text": "Backend ayarlarini yeniden okuyarak init yapar",
+          "hint_partial": "terraform init ..."
         }
       ]
     },
     {
-      "id": "jtf-005-r25",
+      "id": "jtf-045",
       "type": "single",
-      "scenario": "Bakim oncesi, Olusturulan kaynaklari sil.",
+      "scenario": "Yeni provider versiyonlarini indirerek init yap.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "terraform destroy",
-          "hint_text": "Kaynaklari silmek icin `terraform destroy` komutunu kullan.",
-          "hint_partial": "terraform destroy"
+          "answer": "terraform init -upgrade",
+          "hint_text": "Provider ve module'leri guncelleyerek init yapar",
+          "hint_partial": "terraform init ..."
         }
       ]
     },
     {
-      "id": "jtf-006-r26",
+      "id": "jtf-046",
       "type": "single",
-      "scenario": "Troubleshooting sirasinda, Terraform dosyalarini formatla.",
+      "scenario": "Plan sirasinda lock bekleme suresini 30 saniye yap.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "terraform fmt",
-          "hint_text": "Terraform dosyalarini formatlamak icin `terraform fmt` komutunu kullan.",
-          "hint_partial": "terraform fmt"
+          "answer": "terraform plan -lock-timeout=30s",
+          "hint_text": "Plan sirasinda state lock'u icin bekleme suresi tanimlar",
+          "hint_partial": "terraform plan ..."
         }
       ]
     },
     {
-      "id": "jtf-007-r27",
+      "id": "jtf-047",
       "type": "single",
-      "scenario": "Deploy sonrasi, Config dogrulamasi yap.",
+      "scenario": "Apply sirasinda lock bekleme suresini 30 saniye yap.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "terraform validate",
-          "hint_text": "Config dogrulamasi yapmak icin `terraform validate` komutunu kullan.",
-          "hint_partial": "terraform validate"
+          "answer": "terraform apply -lock-timeout=30s",
+          "hint_text": "Apply sirasinda lock bekleme suresi tanimlar",
+          "hint_partial": "terraform apply ..."
         }
       ]
     },
     {
-      "id": "jtf-008-r28",
+      "id": "jtf-048",
       "type": "single",
-      "scenario": "Kesinti incelemesinde, Terraform state bilgisini okunur formatta goster.",
+      "scenario": "Destroy sirasinda dev.tfvars dosyasini kullan.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "terraform show",
-          "hint_text": "State bilgisini okunur formatta gormek icin `terraform show` komutunu kullan.",
-          "hint_partial": "terraform show"
+          "answer": "terraform destroy -var-file=dev.tfvars",
+          "hint_text": "Degisken dosyasi kullanarak destroy yapar",
+          "hint_partial": "terraform destroy ..."
         }
       ]
     },
     {
-      "id": "jtf-009-r29",
+      "id": "jtf-049",
       "type": "single",
-      "scenario": "Yeni acilan hostta, Output degerlerini goruntule.",
+      "scenario": "terraform.tfstate dosyasini okunur sekilde goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "terraform output",
-          "hint_text": "Output degerlerini gormek icin `terraform output` komutunu kullan.",
-          "hint_partial": "terraform output"
+          "answer": "terraform show terraform.tfstate",
+          "hint_text": "Belirli state dosyasini okunur sekilde gosterir",
+          "hint_partial": "terraform show ..."
         }
       ]
     },
     {
-      "id": "jtf-010-r30",
+      "id": "jtf-050",
       "type": "single",
-      "scenario": "Runbook adiminda, State icindeki kaynaklari listele.",
+      "scenario": "Module'leri de dahil ederek provider bagimliliklarini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "terraform state list",
-          "hint_text": "State icindeki kaynaklari listelemek icin `terraform state list` komutunu kullan.",
-          "hint_partial": "terraform state list"
+          "answer": "terraform providers",
+          "hint_text": "Kullanilan provider'lari listeler",
+          "hint_partial": "terraform providers ..."
         }
       ]
     },
     {
-      "id": "jtf-001-r31",
+      "id": "jtf-051",
       "type": "single",
-      "scenario": "Operasyon kontrolunde, Terraform surumunu kontrol et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform version",
-          "hint_text": "Surum bilgisini gormek icin `terraform version` komutunu kullan.",
-          "hint_partial": "terraform version"
-        }
-      ]
-    },
-    {
-      "id": "jtf-002-r32",
-      "type": "single",
-      "scenario": "Incident sonrasinda, Terraform calisma dizinini initialize et.",
+      "scenario": "Calisma dizinindeki module'leri indirerek init yap.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "terraform init",
-          "hint_text": "Calisma dizinini initialize etmek icin `terraform init` komutunu kullan.",
-          "hint_partial": "terraform init"
+          "hint_text": "Calisma dizinini ve provider bagimliliklarini hazirlar",
+          "hint_partial": "terraform init ..."
         }
       ]
     },
     {
-      "id": "jtf-003-r33",
+      "id": "jtf-052",
       "type": "single",
-      "scenario": "Bakim oncesi, Execution plan olustur.",
+      "scenario": "workspace degistirmeden once mevcut workspace'i kontrol et.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "terraform plan",
-          "hint_text": "Execution plan olusturmak icin `terraform plan` komutunu kullan.",
-          "hint_partial": "terraform plan"
+          "answer": "terraform workspace show",
+          "hint_text": "Mevcut workspace adini gosterir",
+          "hint_partial": "terraform workspace ..."
         }
       ]
     },
     {
-      "id": "jtf-004-r34",
+      "id": "jtf-053",
       "type": "single",
-      "scenario": "Troubleshooting sirasinda, Execution plani uygula.",
+      "scenario": "State'i yenileyerek plan al.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "terraform apply",
-          "hint_text": "Plan degisikliklerini uygulamak icin `terraform apply` komutunu kullan.",
-          "hint_partial": "terraform apply"
+          "answer": "terraform plan -refresh=true",
+          "hint_text": "State'i yenileyerek plan alir",
+          "hint_partial": "terraform plan ..."
         }
       ]
     },
     {
-      "id": "jtf-005-r35",
+      "id": "jtf-054",
       "type": "single",
-      "scenario": "Deploy sonrasi, Olusturulan kaynaklari sil.",
+      "scenario": "Output'lari JSON formatinda goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "terraform destroy",
-          "hint_text": "Kaynaklari silmek icin `terraform destroy` komutunu kullan.",
-          "hint_partial": "terraform destroy"
+          "answer": "terraform output -json",
+          "hint_text": "Output degerlerini JSON olarak gosterir",
+          "hint_partial": "terraform output ..."
         }
       ]
     },
     {
-      "id": "jtf-006-r36",
+      "id": "jtf-055",
       "type": "single",
-      "scenario": "Kesinti incelemesinde, Terraform dosyalarini formatla.",
+      "scenario": "Show komutunu no-color ile calistir.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "terraform fmt",
-          "hint_text": "Terraform dosyalarini formatlamak icin `terraform fmt` komutunu kullan.",
-          "hint_partial": "terraform fmt"
+          "answer": "terraform show -no-color",
+          "hint_text": "Show ciktisini renk kodu olmadan verir",
+          "hint_partial": "terraform show ..."
         }
       ]
     },
     {
-      "id": "jtf-007-r37",
+      "id": "jtf-056",
       "type": "single",
-      "scenario": "Yeni acilan hostta, Config dogrulamasi yap.",
+      "scenario": "Plan komutunu no-color ile calistir.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "terraform validate",
-          "hint_text": "Config dogrulamasi yapmak icin `terraform validate` komutunu kullan.",
-          "hint_partial": "terraform validate"
+          "answer": "terraform plan -no-color",
+          "hint_text": "Renk kodu olmadan plan ciktisi verir",
+          "hint_partial": "terraform plan ..."
         }
       ]
     },
     {
-      "id": "jtf-008-r38",
+      "id": "jtf-057",
       "type": "single",
-      "scenario": "Runbook adiminda, Terraform state bilgisini okunur formatta goster.",
+      "scenario": "Apply komutunu no-color ile calistir.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "terraform show",
-          "hint_text": "State bilgisini okunur formatta gormek icin `terraform show` komutunu kullan.",
-          "hint_partial": "terraform show"
+          "answer": "terraform apply -no-color",
+          "hint_text": "Renk kodu olmadan apply ciktisi verir",
+          "hint_partial": "terraform apply ..."
         }
       ]
     },
     {
-      "id": "jtf-009-r39",
+      "id": "jtf-058",
       "type": "single",
-      "scenario": "Operasyon kontrolunde, Output degerlerini goruntule.",
+      "scenario": "Destroy komutunu no-color ile calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform destroy -no-color",
+          "hint_text": "Renk kodu olmadan destroy ciktisi verir",
+          "hint_partial": "terraform destroy ..."
+        }
+      ]
+    },
+    {
+      "id": "jtf-059",
+      "type": "single",
+      "scenario": "aws_instance.web kaynagini import et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform import aws_instance.web i-1234567890abcdef0",
+          "hint_text": "Mevcut kaynagi Terraform state'ine alir",
+          "hint_partial": "terraform import ..."
+        }
+      ]
+    },
+    {
+      "id": "jtf-060",
+      "type": "single",
+      "scenario": "S3 bucket kaynagini import et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform import aws_s3_bucket.logs my-app-logs",
+          "hint_text": "Mevcut kaynagi Terraform state'ine alir",
+          "hint_partial": "terraform import ..."
+        }
+      ]
+    },
+    {
+      "id": "jtf-061",
+      "type": "single",
+      "scenario": "Belirli provider'i kullanacak sekilde init yapma kilidini readonly ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform init -lockfile=readonly",
+          "hint_text": "Lock file'i degistirmeden init calistirir",
+          "hint_partial": "terraform init ..."
+        }
+      ]
+    },
+    {
+      "id": "jtf-062",
+      "type": "single",
+      "scenario": "State kilidi almadan plan al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform plan -lock=false",
+          "hint_text": "State lock almadan plan calistirir",
+          "hint_partial": "terraform plan ..."
+        }
+      ]
+    },
+    {
+      "id": "jtf-063",
+      "type": "single",
+      "scenario": "State kilidi almadan output degerlerini gor.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "terraform output",
-          "hint_text": "Output degerlerini gormek icin `terraform output` komutunu kullan.",
-          "hint_partial": "terraform output"
+          "hint_text": "Output degerlerini listeler",
+          "hint_partial": "terraform output ..."
         }
       ]
     },
     {
-      "id": "jtf-010-r40",
+      "id": "jtf-064",
       "type": "single",
-      "scenario": "Incident sonrasinda, State icindeki kaynaklari listele.",
+      "scenario": "Plan dosyasini uygulamadan once okunur formatta incele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform show out.tfplan",
+          "hint_text": "Kayitli plani okunur formatta gosterir",
+          "hint_partial": "terraform show ..."
+        }
+      ]
+    },
+    {
+      "id": "jtf-065",
+      "type": "single",
+      "scenario": "Modul listesi ve provider bagimliliklarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform providers",
+          "hint_text": "Kullanilan provider'lari listeler",
+          "hint_partial": "terraform providers ..."
+        }
+      ]
+    },
+    {
+      "id": "jtf-066",
+      "type": "single",
+      "scenario": "dev.tfvars ile onay sormadan apply yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform apply -var-file=dev.tfvars -auto-approve",
+          "hint_text": "Degisken dosyasiyla onay sormadan apply yapar",
+          "hint_partial": "terraform apply ..."
+        }
+      ]
+    },
+    {
+      "id": "jtf-067",
+      "type": "single",
+      "scenario": "dev.tfvars ile onay sormadan destroy yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform destroy -var-file=dev.tfvars -auto-approve",
+          "hint_text": "Degisken dosyasiyla onay sormadan destroy yapar",
+          "hint_partial": "terraform destroy ..."
+        }
+      ]
+    },
+    {
+      "id": "jtf-068",
+      "type": "single",
+      "scenario": "Sadece format kontrolu yap, dosyalari degistirme.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform fmt -check",
+          "hint_text": "Sadece format uygunlugunu kontrol eder",
+          "hint_partial": "terraform fmt ..."
+        }
+      ]
+    },
+    {
+      "id": "jtf-069",
+      "type": "single",
+      "scenario": "Recursive format kontrolu yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform fmt -check -recursive",
+          "hint_text": "Recursive sekilde format kontrolu yapar",
+          "hint_partial": "terraform fmt ..."
+        }
+      ]
+    },
+    {
+      "id": "jtf-070",
+      "type": "single",
+      "scenario": "Plan cikisini detayli cikis koduyla al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform plan -detailed-exitcode",
+          "hint_text": "Plan sonucunu cikis koduyla ayirt etmeyi saglar",
+          "hint_partial": "terraform plan ..."
+        }
+      ]
+    },
+    {
+      "id": "jtf-071",
+      "type": "single",
+      "scenario": "main.tf dosyasini formatla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform fmt main.tf",
+          "hint_text": "Belirli dosyayi formatlar",
+          "hint_partial": "terraform fmt ..."
+        }
+      ]
+    },
+    {
+      "id": "jtf-072",
+      "type": "single",
+      "scenario": "terraform console acmadan once output'lari kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform output",
+          "hint_text": "Output degerlerini listeler",
+          "hint_partial": "terraform output ..."
+        }
+      ]
+    },
+    {
+      "id": "jtf-073",
+      "type": "single",
+      "scenario": "terraform state icindeki kaynaklari tekrar listele.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "terraform state list",
-          "hint_text": "State icindeki kaynaklari listelemek icin `terraform state list` komutunu kullan.",
-          "hint_partial": "terraform state list"
+          "hint_text": "State icindeki kaynaklari listeler",
+          "hint_partial": "terraform state ..."
         }
       ]
     },
     {
-      "id": "jtf-001-r41",
+      "id": "jtf-074",
       "type": "single",
-      "scenario": "Bakim oncesi, Terraform surumunu kontrol et.",
+      "scenario": "Belirli bir workspace olusturup hemen sec.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "terraform version",
-          "hint_text": "Surum bilgisini gormek icin `terraform version` komutunu kullan.",
-          "hint_partial": "terraform version"
+          "answer": "terraform workspace new staging",
+          "hint_text": "Yeni workspace olusturur",
+          "hint_partial": "terraform workspace ..."
         }
       ]
     },
     {
-      "id": "jtf-002-r42",
+      "id": "jtf-075",
       "type": "single",
-      "scenario": "Troubleshooting sirasinda, Terraform calisma dizinini initialize et.",
+      "scenario": "staging workspace'ine gec.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform workspace select staging",
+          "hint_text": "Belirli workspace'e gecis yapar",
+          "hint_partial": "terraform workspace ..."
+        }
+      ]
+    },
+    {
+      "id": "jtf-076",
+      "type": "single",
+      "scenario": "staging workspace'ini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform workspace delete staging",
+          "hint_text": "Workspace'i siler",
+          "hint_partial": "terraform workspace ..."
+        }
+      ]
+    },
+    {
+      "id": "jtf-077",
+      "type": "single",
+      "scenario": "aws_instance.web kaynagini hedefleyerek destroy plan'i olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform plan -destroy -target=aws_instance.web",
+          "hint_text": "Hedef kaynaga ozel destroy plan'i olusturur",
+          "hint_partial": "terraform plan ..."
+        }
+      ]
+    },
+    {
+      "id": "jtf-078",
+      "type": "single",
+      "scenario": "Tum kaynaklar icin destroy plan'i olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform plan -destroy",
+          "hint_text": "Tum kaynaklar icin destroy plan'i olusturur",
+          "hint_partial": "terraform plan ..."
+        }
+      ]
+    },
+    {
+      "id": "jtf-079",
+      "type": "single",
+      "scenario": "main.tf dosyasini diff gosterecek sekilde formatla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform fmt -diff main.tf",
+          "hint_text": "Format farklarini diff olarak gosterir",
+          "hint_partial": "terraform fmt ..."
+        }
+      ]
+    },
+    {
+      "id": "jtf-080",
+      "type": "single",
+      "scenario": "Plan sonrasi kayitli dosyayi JSON olarak tekrar incele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform show -json out.tfplan",
+          "hint_text": "Plan dosyasini JSON olarak gosterir",
+          "hint_partial": "terraform show ..."
+        }
+      ]
+    },
+    {
+      "id": "jtf-081",
+      "type": "multi-step",
+      "scenario": "Calisma dizinini hazirla: init yap, formatla ve validate et.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "terraform init",
-          "hint_text": "Calisma dizinini initialize etmek icin `terraform init` komutunu kullan.",
-          "hint_partial": "terraform init"
-        }
-      ]
-    },
-    {
-      "id": "jtf-003-r43",
-      "type": "single",
-      "scenario": "Deploy sonrasi, Execution plan olustur.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform plan",
-          "hint_text": "Execution plan olusturmak icin `terraform plan` komutunu kullan.",
-          "hint_partial": "terraform plan"
-        }
-      ]
-    },
-    {
-      "id": "jtf-004-r44",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde, Execution plani uygula.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform apply",
-          "hint_text": "Plan degisikliklerini uygulamak icin `terraform apply` komutunu kullan.",
-          "hint_partial": "terraform apply"
-        }
-      ]
-    },
-    {
-      "id": "jtf-005-r45",
-      "type": "single",
-      "scenario": "Yeni acilan hostta, Olusturulan kaynaklari sil.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform destroy",
-          "hint_text": "Kaynaklari silmek icin `terraform destroy` komutunu kullan.",
-          "hint_partial": "terraform destroy"
-        }
-      ]
-    },
-    {
-      "id": "jtf-006-r46",
-      "type": "single",
-      "scenario": "Runbook adiminda, Terraform dosyalarini formatla.",
-      "steps": [
+          "hint_text": "Calisma dizinini ve provider bagimliliklarini hazirlar",
+          "hint_partial": "terraform init ..."
+        },
         {
           "prompt": "$ ",
           "answer": "terraform fmt",
-          "hint_text": "Terraform dosyalarini formatlamak icin `terraform fmt` komutunu kullan.",
-          "hint_partial": "terraform fmt"
-        }
-      ]
-    },
-    {
-      "id": "jtf-007-r47",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde, Config dogrulamasi yap.",
-      "steps": [
+          "hint_text": "Terraform dosyalarini formatlar",
+          "hint_partial": "terraform fmt ..."
+        },
         {
           "prompt": "$ ",
           "answer": "terraform validate",
-          "hint_text": "Config dogrulamasi yapmak icin `terraform validate` komutunu kullan.",
-          "hint_partial": "terraform validate"
+          "hint_text": "Terraform config dogrulamasi yapar",
+          "hint_partial": "terraform validate ..."
         }
       ]
     },
     {
-      "id": "jtf-008-r48",
-      "type": "single",
-      "scenario": "Incident sonrasinda, Terraform state bilgisini okunur formatta goster.",
+      "id": "jtf-082",
+      "type": "multi-step",
+      "scenario": "dev ortaminda plan alip kaydet, sonra plani incele.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "terraform show",
-          "hint_text": "State bilgisini okunur formatta gormek icin `terraform show` komutunu kullan.",
-          "hint_partial": "terraform show"
+          "answer": "terraform plan -var-file=dev.tfvars -out=out.tfplan",
+          "hint_text": "Degisken dosyasi kullanarak plan olusturur",
+          "hint_partial": "terraform plan ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "terraform show out.tfplan",
+          "hint_text": "Kayitli plani okunur formatta gosterir",
+          "hint_partial": "terraform show ..."
         }
       ]
     },
     {
-      "id": "jtf-009-r49",
-      "type": "single",
-      "scenario": "Bakim oncesi, Output degerlerini goruntule.",
+      "id": "jtf-083",
+      "type": "multi-step",
+      "scenario": "Kayitli plani uygula ve output'lari kontrol et.",
       "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform apply out.tfplan",
+          "hint_text": "Kayitli plan dosyasini uygular",
+          "hint_partial": "terraform apply ..."
+        },
         {
           "prompt": "$ ",
           "answer": "terraform output",
-          "hint_text": "Output degerlerini gormek icin `terraform output` komutunu kullan.",
-          "hint_partial": "terraform output"
+          "hint_text": "Output degerlerini listeler",
+          "hint_partial": "terraform output ..."
         }
       ]
     },
     {
-      "id": "jtf-010-r50",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda, State icindeki kaynaklari listele.",
+      "id": "jtf-084",
+      "type": "multi-step",
+      "scenario": "Workspace akisini uygula: dev workspace olustur, sec ve aktif workspace'i goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform workspace new dev",
+          "hint_text": "Yeni workspace olusturur",
+          "hint_partial": "terraform workspace ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "terraform workspace select dev",
+          "hint_text": "Belirli workspace'e gecis yapar",
+          "hint_partial": "terraform workspace ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "terraform workspace show",
+          "hint_text": "Mevcut workspace adini gosterir",
+          "hint_partial": "terraform workspace ..."
+        }
+      ]
+    },
+    {
+      "id": "jtf-085",
+      "type": "multi-step",
+      "scenario": "Bir kaynagi incelemek icin state listesini gor ve ilgili kaynagin state detayini ac.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "terraform state list",
-          "hint_text": "State icindeki kaynaklari listelemek icin `terraform state list` komutunu kullan.",
-          "hint_partial": "terraform state list"
+          "hint_text": "State icindeki kaynaklari listeler",
+          "hint_partial": "terraform state ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "terraform state show aws_instance.web",
+          "hint_text": "Kaynagin state detaylarini gosterir",
+          "hint_partial": "terraform state ..."
         }
       ]
     },
     {
-      "id": "jtf-001-r51",
-      "type": "single",
-      "scenario": "Deploy sonrasi, Terraform surumunu kontrol et.",
+      "id": "jtf-086",
+      "type": "multi-step",
+      "scenario": "Kod kalitesini kontrol etmek icin recursive fmt check yap ve ardindan validate et.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "terraform version",
-          "hint_text": "Surum bilgisini gormek icin `terraform version` komutunu kullan.",
-          "hint_partial": "terraform version"
-        }
-      ]
-    },
-    {
-      "id": "jtf-002-r52",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde, Terraform calisma dizinini initialize et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform init",
-          "hint_text": "Calisma dizinini initialize etmek icin `terraform init` komutunu kullan.",
-          "hint_partial": "terraform init"
-        }
-      ]
-    },
-    {
-      "id": "jtf-003-r53",
-      "type": "single",
-      "scenario": "Yeni acilan hostta, Execution plan olustur.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform plan",
-          "hint_text": "Execution plan olusturmak icin `terraform plan` komutunu kullan.",
-          "hint_partial": "terraform plan"
-        }
-      ]
-    },
-    {
-      "id": "jtf-004-r54",
-      "type": "single",
-      "scenario": "Runbook adiminda, Execution plani uygula.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform apply",
-          "hint_text": "Plan degisikliklerini uygulamak icin `terraform apply` komutunu kullan.",
-          "hint_partial": "terraform apply"
-        }
-      ]
-    },
-    {
-      "id": "jtf-005-r55",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde, Olusturulan kaynaklari sil.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform destroy",
-          "hint_text": "Kaynaklari silmek icin `terraform destroy` komutunu kullan.",
-          "hint_partial": "terraform destroy"
-        }
-      ]
-    },
-    {
-      "id": "jtf-006-r56",
-      "type": "single",
-      "scenario": "Incident sonrasinda, Terraform dosyalarini formatla.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform fmt",
-          "hint_text": "Terraform dosyalarini formatlamak icin `terraform fmt` komutunu kullan.",
-          "hint_partial": "terraform fmt"
-        }
-      ]
-    },
-    {
-      "id": "jtf-007-r57",
-      "type": "single",
-      "scenario": "Bakim oncesi, Config dogrulamasi yap.",
-      "steps": [
+          "answer": "terraform fmt -check -recursive",
+          "hint_text": "Recursive sekilde format kontrolu yapar",
+          "hint_partial": "terraform fmt ..."
+        },
         {
           "prompt": "$ ",
           "answer": "terraform validate",
-          "hint_text": "Config dogrulamasi yapmak icin `terraform validate` komutunu kullan.",
-          "hint_partial": "terraform validate"
+          "hint_text": "Terraform config dogrulamasi yapar",
+          "hint_partial": "terraform validate ..."
         }
       ]
     },
     {
-      "id": "jtf-008-r58",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda, Terraform state bilgisini okunur formatta goster.",
+      "id": "jtf-087",
+      "type": "multi-step",
+      "scenario": "Apply oncesi plan al, plani dosyaya kaydet ve JSON olarak goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "terraform show",
-          "hint_text": "State bilgisini okunur formatta gormek icin `terraform show` komutunu kullan.",
-          "hint_partial": "terraform show"
+          "answer": "terraform plan -out=out.tfplan",
+          "hint_text": "Olusan plani dosyaya kaydeder",
+          "hint_partial": "terraform plan ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "terraform show -json out.tfplan",
+          "hint_text": "Plan dosyasini JSON olarak gosterir",
+          "hint_partial": "terraform show ..."
         }
       ]
     },
     {
-      "id": "jtf-009-r59",
-      "type": "single",
-      "scenario": "Deploy sonrasi, Output degerlerini goruntule.",
+      "id": "jtf-088",
+      "type": "multi-step",
+      "scenario": "Import sonrasi kaynagi dogrulamak icin import et, state list al ve state show calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform import aws_instance.web i-1234567890abcdef0",
+          "hint_text": "Mevcut kaynagi Terraform state'ine alir",
+          "hint_partial": "terraform import ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "terraform state list",
+          "hint_text": "State icindeki kaynaklari listeler",
+          "hint_partial": "terraform state ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "terraform state show aws_instance.web",
+          "hint_text": "Kaynagin state detaylarini gosterir",
+          "hint_partial": "terraform state ..."
+        }
+      ]
+    },
+    {
+      "id": "jtf-089",
+      "type": "multi-step",
+      "scenario": "Bir kaynagi yeniden adlandirmak icin state mv yap ve sonra state list ile kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform state mv aws_s3_bucket.old_bucket aws_s3_bucket.new_bucket",
+          "hint_text": "State icindeki kaynak adresini tasir",
+          "hint_partial": "terraform state ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "terraform state list",
+          "hint_text": "State icindeki kaynaklari listeler",
+          "hint_partial": "terraform state ..."
+        }
+      ]
+    },
+    {
+      "id": "jtf-090",
+      "type": "multi-step",
+      "scenario": "Target apply akisi icin once hedefe plan al sonra uygula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform plan -target=aws_instance.web",
+          "hint_text": "Sadece hedef kaynaga odakli plan alir",
+          "hint_partial": "terraform plan ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "terraform apply -target=aws_instance.web",
+          "hint_text": "Sadece hedef kaynagi uygular",
+          "hint_partial": "terraform apply ..."
+        }
+      ]
+    },
+    {
+      "id": "jtf-091",
+      "type": "multi-step",
+      "scenario": "Destroy oncesi destroy plan'i olustur ve sonra kaynaklari sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform plan -destroy",
+          "hint_text": "Tum kaynaklar icin destroy plan'i olusturur",
+          "hint_partial": "terraform plan ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "terraform destroy -auto-approve",
+          "hint_text": "Onay sormadan destroy yapar",
+          "hint_partial": "terraform destroy ..."
+        }
+      ]
+    },
+    {
+      "id": "jtf-092",
+      "type": "multi-step",
+      "scenario": "Workspace degistirmeden once mevcut workspace'i gor, staging'e gec ve tekrar kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform workspace show",
+          "hint_text": "Mevcut workspace adini gosterir",
+          "hint_partial": "terraform workspace ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "terraform workspace select staging",
+          "hint_text": "Belirli workspace'e gecis yapar",
+          "hint_partial": "terraform workspace ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "terraform workspace show",
+          "hint_text": "Mevcut workspace adini gosterir",
+          "hint_partial": "terraform workspace ..."
+        }
+      ]
+    },
+    {
+      "id": "jtf-093",
+      "type": "multi-step",
+      "scenario": "Provider bilgisini gozden gecirmek icin provider listesini ve provider schema JSON'unu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform providers",
+          "hint_text": "Kullanilan provider'lari listeler",
+          "hint_partial": "terraform providers ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "terraform providers schema -json",
+          "hint_text": "Provider semalarini JSON olarak verir",
+          "hint_partial": "terraform providers ..."
+        }
+      ]
+    },
+    {
+      "id": "jtf-094",
+      "type": "multi-step",
+      "scenario": "Lockfile ve provider guncelleme akisi icin upgrade ile init yap ve lock dosyasini guncelle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform init -upgrade",
+          "hint_text": "Provider ve module'leri guncelleyerek init yapar",
+          "hint_partial": "terraform init ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "terraform providers lock",
+          "hint_text": "Provider lock dosyasini gunceller",
+          "hint_partial": "terraform providers ..."
+        }
+      ]
+    },
+    {
+      "id": "jtf-095",
+      "type": "multi-step",
+      "scenario": "dev.tfvars ile plan al, auto-approve apply yap ve output'lari JSON formatinda kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform plan -var-file=dev.tfvars",
+          "hint_text": "Degisken dosyasi kullanarak plan olusturur",
+          "hint_partial": "terraform plan ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "terraform apply -var-file=dev.tfvars -auto-approve",
+          "hint_text": "Degisken dosyasiyla onay sormadan apply yapar",
+          "hint_partial": "terraform apply ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "terraform output -json",
+          "hint_text": "Output degerlerini JSON olarak gosterir",
+          "hint_partial": "terraform output ..."
+        }
+      ]
+    },
+    {
+      "id": "jtf-096",
+      "type": "multi-step",
+      "scenario": "Format diff ve dosya format akisini birlikte uygula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform fmt -diff main.tf",
+          "hint_text": "Format farklarini diff olarak gosterir",
+          "hint_partial": "terraform fmt ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "terraform fmt main.tf",
+          "hint_text": "Belirli dosyayi formatlar",
+          "hint_partial": "terraform fmt ..."
+        }
+      ]
+    },
+    {
+      "id": "jtf-097",
+      "type": "multi-step",
+      "scenario": "Resource graph'ini olustur, provider'lari listele ve state kaynaklarini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform graph",
+          "hint_text": "Kaynak bagimlilik grafigi cikarir",
+          "hint_partial": "terraform graph ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "terraform providers",
+          "hint_text": "Kullanilan provider'lari listeler",
+          "hint_partial": "terraform providers ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "terraform state list",
+          "hint_text": "State icindeki kaynaklari listeler",
+          "hint_partial": "terraform state ..."
+        }
+      ]
+    },
+    {
+      "id": "jtf-098",
+      "type": "multi-step",
+      "scenario": "Bir plani kaydet, okunur formatta incele ve sonra uygula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform plan -out=out.tfplan",
+          "hint_text": "Olusan plani dosyaya kaydeder",
+          "hint_partial": "terraform plan ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "terraform show out.tfplan",
+          "hint_text": "Kayitli plani okunur formatta gosterir",
+          "hint_partial": "terraform show ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "terraform apply out.tfplan",
+          "hint_text": "Kayitli plan dosyasini uygular",
+          "hint_partial": "terraform apply ..."
+        }
+      ]
+    },
+    {
+      "id": "jtf-099",
+      "type": "multi-step",
+      "scenario": "Destroy icin degisken dosyasi kullan, sonra workspace'i kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "terraform destroy -var-file=dev.tfvars -auto-approve",
+          "hint_text": "Degisken dosyasiyla onay sormadan destroy yapar",
+          "hint_partial": "terraform destroy ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "terraform workspace show",
+          "hint_text": "Mevcut workspace adini gosterir",
+          "hint_partial": "terraform workspace ..."
+        }
+      ]
+    },
+    {
+      "id": "jtf-100",
+      "type": "multi-step",
+      "scenario": "Console kullanmadan once output'lari gor, sonra console'u ac.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "terraform output",
-          "hint_text": "Output degerlerini gormek icin `terraform output` komutunu kullan.",
-          "hint_partial": "terraform output"
-        }
-      ]
-    },
-    {
-      "id": "jtf-010-r60",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde, State icindeki kaynaklari listele.",
-      "steps": [
+          "hint_text": "Output degerlerini listeler",
+          "hint_partial": "terraform output ..."
+        },
         {
           "prompt": "$ ",
-          "answer": "terraform state list",
-          "hint_text": "State icindeki kaynaklari listelemek icin `terraform state list` komutunu kullan.",
-          "hint_partial": "terraform state list"
-        }
-      ]
-    },
-    {
-      "id": "jtf-001-r61",
-      "type": "single",
-      "scenario": "Yeni acilan hostta, Terraform surumunu kontrol et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform version",
-          "hint_text": "Surum bilgisini gormek icin `terraform version` komutunu kullan.",
-          "hint_partial": "terraform version"
-        }
-      ]
-    },
-    {
-      "id": "jtf-002-r62",
-      "type": "single",
-      "scenario": "Runbook adiminda, Terraform calisma dizinini initialize et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform init",
-          "hint_text": "Calisma dizinini initialize etmek icin `terraform init` komutunu kullan.",
-          "hint_partial": "terraform init"
-        }
-      ]
-    },
-    {
-      "id": "jtf-003-r63",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde, Execution plan olustur.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform plan",
-          "hint_text": "Execution plan olusturmak icin `terraform plan` komutunu kullan.",
-          "hint_partial": "terraform plan"
-        }
-      ]
-    },
-    {
-      "id": "jtf-004-r64",
-      "type": "single",
-      "scenario": "Incident sonrasinda, Execution plani uygula.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform apply",
-          "hint_text": "Plan degisikliklerini uygulamak icin `terraform apply` komutunu kullan.",
-          "hint_partial": "terraform apply"
-        }
-      ]
-    },
-    {
-      "id": "jtf-005-r65",
-      "type": "single",
-      "scenario": "Bakim oncesi, Olusturulan kaynaklari sil.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform destroy",
-          "hint_text": "Kaynaklari silmek icin `terraform destroy` komutunu kullan.",
-          "hint_partial": "terraform destroy"
-        }
-      ]
-    },
-    {
-      "id": "jtf-006-r66",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda, Terraform dosyalarini formatla.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform fmt",
-          "hint_text": "Terraform dosyalarini formatlamak icin `terraform fmt` komutunu kullan.",
-          "hint_partial": "terraform fmt"
-        }
-      ]
-    },
-    {
-      "id": "jtf-007-r67",
-      "type": "single",
-      "scenario": "Deploy sonrasi, Config dogrulamasi yap.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform validate",
-          "hint_text": "Config dogrulamasi yapmak icin `terraform validate` komutunu kullan.",
-          "hint_partial": "terraform validate"
-        }
-      ]
-    },
-    {
-      "id": "jtf-008-r68",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde, Terraform state bilgisini okunur formatta goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform show",
-          "hint_text": "State bilgisini okunur formatta gormek icin `terraform show` komutunu kullan.",
-          "hint_partial": "terraform show"
-        }
-      ]
-    },
-    {
-      "id": "jtf-009-r69",
-      "type": "single",
-      "scenario": "Yeni acilan hostta, Output degerlerini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform output",
-          "hint_text": "Output degerlerini gormek icin `terraform output` komutunu kullan.",
-          "hint_partial": "terraform output"
-        }
-      ]
-    },
-    {
-      "id": "jtf-010-r70",
-      "type": "single",
-      "scenario": "Runbook adiminda, State icindeki kaynaklari listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform state list",
-          "hint_text": "State icindeki kaynaklari listelemek icin `terraform state list` komutunu kullan.",
-          "hint_partial": "terraform state list"
-        }
-      ]
-    },
-    {
-      "id": "jtf-001-r71",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde, Terraform surumunu kontrol et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform version",
-          "hint_text": "Surum bilgisini gormek icin `terraform version` komutunu kullan.",
-          "hint_partial": "terraform version"
-        }
-      ]
-    },
-    {
-      "id": "jtf-002-r72",
-      "type": "single",
-      "scenario": "Incident sonrasinda, Terraform calisma dizinini initialize et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform init",
-          "hint_text": "Calisma dizinini initialize etmek icin `terraform init` komutunu kullan.",
-          "hint_partial": "terraform init"
-        }
-      ]
-    },
-    {
-      "id": "jtf-003-r73",
-      "type": "single",
-      "scenario": "Bakim oncesi, Execution plan olustur.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform plan",
-          "hint_text": "Execution plan olusturmak icin `terraform plan` komutunu kullan.",
-          "hint_partial": "terraform plan"
-        }
-      ]
-    },
-    {
-      "id": "jtf-004-r74",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda, Execution plani uygula.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform apply",
-          "hint_text": "Plan degisikliklerini uygulamak icin `terraform apply` komutunu kullan.",
-          "hint_partial": "terraform apply"
-        }
-      ]
-    },
-    {
-      "id": "jtf-005-r75",
-      "type": "single",
-      "scenario": "Deploy sonrasi, Olusturulan kaynaklari sil.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform destroy",
-          "hint_text": "Kaynaklari silmek icin `terraform destroy` komutunu kullan.",
-          "hint_partial": "terraform destroy"
-        }
-      ]
-    },
-    {
-      "id": "jtf-006-r76",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde, Terraform dosyalarini formatla.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform fmt",
-          "hint_text": "Terraform dosyalarini formatlamak icin `terraform fmt` komutunu kullan.",
-          "hint_partial": "terraform fmt"
-        }
-      ]
-    },
-    {
-      "id": "jtf-007-r77",
-      "type": "single",
-      "scenario": "Yeni acilan hostta, Config dogrulamasi yap.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform validate",
-          "hint_text": "Config dogrulamasi yapmak icin `terraform validate` komutunu kullan.",
-          "hint_partial": "terraform validate"
-        }
-      ]
-    },
-    {
-      "id": "jtf-008-r78",
-      "type": "single",
-      "scenario": "Runbook adiminda, Terraform state bilgisini okunur formatta goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform show",
-          "hint_text": "State bilgisini okunur formatta gormek icin `terraform show` komutunu kullan.",
-          "hint_partial": "terraform show"
-        }
-      ]
-    },
-    {
-      "id": "jtf-009-r79",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde, Output degerlerini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform output",
-          "hint_text": "Output degerlerini gormek icin `terraform output` komutunu kullan.",
-          "hint_partial": "terraform output"
-        }
-      ]
-    },
-    {
-      "id": "jtf-010-r80",
-      "type": "single",
-      "scenario": "Incident sonrasinda, State icindeki kaynaklari listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform state list",
-          "hint_text": "State icindeki kaynaklari listelemek icin `terraform state list` komutunu kullan.",
-          "hint_partial": "terraform state list"
-        }
-      ]
-    },
-    {
-      "id": "jtf-001-r81",
-      "type": "single",
-      "scenario": "Bakim oncesi, Terraform surumunu kontrol et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform version",
-          "hint_text": "Surum bilgisini gormek icin `terraform version` komutunu kullan.",
-          "hint_partial": "terraform version"
-        }
-      ]
-    },
-    {
-      "id": "jtf-002-r82",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda, Terraform calisma dizinini initialize et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform init",
-          "hint_text": "Calisma dizinini initialize etmek icin `terraform init` komutunu kullan.",
-          "hint_partial": "terraform init"
-        }
-      ]
-    },
-    {
-      "id": "jtf-003-r83",
-      "type": "single",
-      "scenario": "Deploy sonrasi, Execution plan olustur.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform plan",
-          "hint_text": "Execution plan olusturmak icin `terraform plan` komutunu kullan.",
-          "hint_partial": "terraform plan"
-        }
-      ]
-    },
-    {
-      "id": "jtf-004-r84",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde, Execution plani uygula.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform apply",
-          "hint_text": "Plan degisikliklerini uygulamak icin `terraform apply` komutunu kullan.",
-          "hint_partial": "terraform apply"
-        }
-      ]
-    },
-    {
-      "id": "jtf-005-r85",
-      "type": "single",
-      "scenario": "Yeni acilan hostta, Olusturulan kaynaklari sil.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform destroy",
-          "hint_text": "Kaynaklari silmek icin `terraform destroy` komutunu kullan.",
-          "hint_partial": "terraform destroy"
-        }
-      ]
-    },
-    {
-      "id": "jtf-006-r86",
-      "type": "single",
-      "scenario": "Runbook adiminda, Terraform dosyalarini formatla.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform fmt",
-          "hint_text": "Terraform dosyalarini formatlamak icin `terraform fmt` komutunu kullan.",
-          "hint_partial": "terraform fmt"
-        }
-      ]
-    },
-    {
-      "id": "jtf-007-r87",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde, Config dogrulamasi yap.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform validate",
-          "hint_text": "Config dogrulamasi yapmak icin `terraform validate` komutunu kullan.",
-          "hint_partial": "terraform validate"
-        }
-      ]
-    },
-    {
-      "id": "jtf-008-r88",
-      "type": "single",
-      "scenario": "Incident sonrasinda, Terraform state bilgisini okunur formatta goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform show",
-          "hint_text": "State bilgisini okunur formatta gormek icin `terraform show` komutunu kullan.",
-          "hint_partial": "terraform show"
-        }
-      ]
-    },
-    {
-      "id": "jtf-009-r89",
-      "type": "single",
-      "scenario": "Bakim oncesi, Output degerlerini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform output",
-          "hint_text": "Output degerlerini gormek icin `terraform output` komutunu kullan.",
-          "hint_partial": "terraform output"
-        }
-      ]
-    },
-    {
-      "id": "jtf-010-r90",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda, State icindeki kaynaklari listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform state list",
-          "hint_text": "State icindeki kaynaklari listelemek icin `terraform state list` komutunu kullan.",
-          "hint_partial": "terraform state list"
-        }
-      ]
-    },
-    {
-      "id": "jtf-001-r91",
-      "type": "single",
-      "scenario": "Deploy sonrasi, Terraform surumunu kontrol et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform version",
-          "hint_text": "Surum bilgisini gormek icin `terraform version` komutunu kullan.",
-          "hint_partial": "terraform version"
-        }
-      ]
-    },
-    {
-      "id": "jtf-002-r92",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde, Terraform calisma dizinini initialize et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform init",
-          "hint_text": "Calisma dizinini initialize etmek icin `terraform init` komutunu kullan.",
-          "hint_partial": "terraform init"
-        }
-      ]
-    },
-    {
-      "id": "jtf-003-r93",
-      "type": "single",
-      "scenario": "Yeni acilan hostta, Execution plan olustur.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform plan",
-          "hint_text": "Execution plan olusturmak icin `terraform plan` komutunu kullan.",
-          "hint_partial": "terraform plan"
-        }
-      ]
-    },
-    {
-      "id": "jtf-004-r94",
-      "type": "single",
-      "scenario": "Runbook adiminda, Execution plani uygula.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform apply",
-          "hint_text": "Plan degisikliklerini uygulamak icin `terraform apply` komutunu kullan.",
-          "hint_partial": "terraform apply"
-        }
-      ]
-    },
-    {
-      "id": "jtf-005-r95",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde, Olusturulan kaynaklari sil.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform destroy",
-          "hint_text": "Kaynaklari silmek icin `terraform destroy` komutunu kullan.",
-          "hint_partial": "terraform destroy"
-        }
-      ]
-    },
-    {
-      "id": "jtf-006-r96",
-      "type": "single",
-      "scenario": "Incident sonrasinda, Terraform dosyalarini formatla.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform fmt",
-          "hint_text": "Terraform dosyalarini formatlamak icin `terraform fmt` komutunu kullan.",
-          "hint_partial": "terraform fmt"
-        }
-      ]
-    },
-    {
-      "id": "jtf-007-r97",
-      "type": "single",
-      "scenario": "Bakim oncesi, Config dogrulamasi yap.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform validate",
-          "hint_text": "Config dogrulamasi yapmak icin `terraform validate` komutunu kullan.",
-          "hint_partial": "terraform validate"
-        }
-      ]
-    },
-    {
-      "id": "jtf-008-r98",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda, Terraform state bilgisini okunur formatta goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform show",
-          "hint_text": "State bilgisini okunur formatta gormek icin `terraform show` komutunu kullan.",
-          "hint_partial": "terraform show"
-        }
-      ]
-    },
-    {
-      "id": "jtf-009-r99",
-      "type": "single",
-      "scenario": "Deploy sonrasi, Output degerlerini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform output",
-          "hint_text": "Output degerlerini gormek icin `terraform output` komutunu kullan.",
-          "hint_partial": "terraform output"
-        }
-      ]
-    },
-    {
-      "id": "jtf-010-r100",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde, State icindeki kaynaklari listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform state list",
-          "hint_text": "State icindeki kaynaklari listelemek icin `terraform state list` komutunu kullan.",
-          "hint_partial": "terraform state list"
-        }
-      ]
-    },
-    {
-      "id": "jtf-001-r101",
-      "type": "single",
-      "scenario": "Yeni acilan hostta, Terraform surumunu kontrol et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform version",
-          "hint_text": "Surum bilgisini gormek icin `terraform version` komutunu kullan.",
-          "hint_partial": "terraform version"
-        }
-      ]
-    },
-    {
-      "id": "jtf-002-r102",
-      "type": "single",
-      "scenario": "Runbook adiminda, Terraform calisma dizinini initialize et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform init",
-          "hint_text": "Calisma dizinini initialize etmek icin `terraform init` komutunu kullan.",
-          "hint_partial": "terraform init"
-        }
-      ]
-    },
-    {
-      "id": "jtf-003-r103",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde, Execution plan olustur.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform plan",
-          "hint_text": "Execution plan olusturmak icin `terraform plan` komutunu kullan.",
-          "hint_partial": "terraform plan"
-        }
-      ]
-    },
-    {
-      "id": "jtf-004-r104",
-      "type": "single",
-      "scenario": "Incident sonrasinda, Execution plani uygula.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform apply",
-          "hint_text": "Plan degisikliklerini uygulamak icin `terraform apply` komutunu kullan.",
-          "hint_partial": "terraform apply"
-        }
-      ]
-    },
-    {
-      "id": "jtf-005-r105",
-      "type": "single",
-      "scenario": "Bakim oncesi, Olusturulan kaynaklari sil.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform destroy",
-          "hint_text": "Kaynaklari silmek icin `terraform destroy` komutunu kullan.",
-          "hint_partial": "terraform destroy"
-        }
-      ]
-    },
-    {
-      "id": "jtf-006-r106",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda, Terraform dosyalarini formatla.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform fmt",
-          "hint_text": "Terraform dosyalarini formatlamak icin `terraform fmt` komutunu kullan.",
-          "hint_partial": "terraform fmt"
-        }
-      ]
-    },
-    {
-      "id": "jtf-007-r107",
-      "type": "single",
-      "scenario": "Deploy sonrasi, Config dogrulamasi yap.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform validate",
-          "hint_text": "Config dogrulamasi yapmak icin `terraform validate` komutunu kullan.",
-          "hint_partial": "terraform validate"
-        }
-      ]
-    },
-    {
-      "id": "jtf-008-r108",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde, Terraform state bilgisini okunur formatta goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform show",
-          "hint_text": "State bilgisini okunur formatta gormek icin `terraform show` komutunu kullan.",
-          "hint_partial": "terraform show"
-        }
-      ]
-    },
-    {
-      "id": "jtf-009-r109",
-      "type": "single",
-      "scenario": "Yeni acilan hostta, Output degerlerini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform output",
-          "hint_text": "Output degerlerini gormek icin `terraform output` komutunu kullan.",
-          "hint_partial": "terraform output"
-        }
-      ]
-    },
-    {
-      "id": "jtf-010-r110",
-      "type": "single",
-      "scenario": "Runbook adiminda, State icindeki kaynaklari listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform state list",
-          "hint_text": "State icindeki kaynaklari listelemek icin `terraform state list` komutunu kullan.",
-          "hint_partial": "terraform state list"
-        }
-      ]
-    },
-    {
-      "id": "jtf-001-r111",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde, Terraform surumunu kontrol et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform version",
-          "hint_text": "Surum bilgisini gormek icin `terraform version` komutunu kullan.",
-          "hint_partial": "terraform version"
-        }
-      ]
-    },
-    {
-      "id": "jtf-002-r112",
-      "type": "single",
-      "scenario": "Incident sonrasinda, Terraform calisma dizinini initialize et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform init",
-          "hint_text": "Calisma dizinini initialize etmek icin `terraform init` komutunu kullan.",
-          "hint_partial": "terraform init"
-        }
-      ]
-    },
-    {
-      "id": "jtf-003-r113",
-      "type": "single",
-      "scenario": "Bakim oncesi, Execution plan olustur.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform plan",
-          "hint_text": "Execution plan olusturmak icin `terraform plan` komutunu kullan.",
-          "hint_partial": "terraform plan"
-        }
-      ]
-    },
-    {
-      "id": "jtf-004-r114",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda, Execution plani uygula.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform apply",
-          "hint_text": "Plan degisikliklerini uygulamak icin `terraform apply` komutunu kullan.",
-          "hint_partial": "terraform apply"
-        }
-      ]
-    },
-    {
-      "id": "jtf-005-r115",
-      "type": "single",
-      "scenario": "Deploy sonrasi, Olusturulan kaynaklari sil.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform destroy",
-          "hint_text": "Kaynaklari silmek icin `terraform destroy` komutunu kullan.",
-          "hint_partial": "terraform destroy"
-        }
-      ]
-    },
-    {
-      "id": "jtf-006-r116",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde, Terraform dosyalarini formatla.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform fmt",
-          "hint_text": "Terraform dosyalarini formatlamak icin `terraform fmt` komutunu kullan.",
-          "hint_partial": "terraform fmt"
-        }
-      ]
-    },
-    {
-      "id": "jtf-007-r117",
-      "type": "single",
-      "scenario": "Yeni acilan hostta, Config dogrulamasi yap.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform validate",
-          "hint_text": "Config dogrulamasi yapmak icin `terraform validate` komutunu kullan.",
-          "hint_partial": "terraform validate"
-        }
-      ]
-    },
-    {
-      "id": "jtf-008-r118",
-      "type": "single",
-      "scenario": "Runbook adiminda, Terraform state bilgisini okunur formatta goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform show",
-          "hint_text": "State bilgisini okunur formatta gormek icin `terraform show` komutunu kullan.",
-          "hint_partial": "terraform show"
-        }
-      ]
-    },
-    {
-      "id": "jtf-009-r119",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde, Output degerlerini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform output",
-          "hint_text": "Output degerlerini gormek icin `terraform output` komutunu kullan.",
-          "hint_partial": "terraform output"
-        }
-      ]
-    },
-    {
-      "id": "jtf-010-r120",
-      "type": "single",
-      "scenario": "Incident sonrasinda, State icindeki kaynaklari listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform state list",
-          "hint_text": "State icindeki kaynaklari listelemek icin `terraform state list` komutunu kullan.",
-          "hint_partial": "terraform state list"
-        }
-      ]
-    },
-    {
-      "id": "jtf-001-r121",
-      "type": "single",
-      "scenario": "Bakim oncesi, Terraform surumunu kontrol et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform version",
-          "hint_text": "Surum bilgisini gormek icin `terraform version` komutunu kullan.",
-          "hint_partial": "terraform version"
-        }
-      ]
-    },
-    {
-      "id": "jtf-002-r122",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda, Terraform calisma dizinini initialize et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform init",
-          "hint_text": "Calisma dizinini initialize etmek icin `terraform init` komutunu kullan.",
-          "hint_partial": "terraform init"
-        }
-      ]
-    },
-    {
-      "id": "jtf-003-r123",
-      "type": "single",
-      "scenario": "Deploy sonrasi, Execution plan olustur.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform plan",
-          "hint_text": "Execution plan olusturmak icin `terraform plan` komutunu kullan.",
-          "hint_partial": "terraform plan"
-        }
-      ]
-    },
-    {
-      "id": "jtf-004-r124",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde, Execution plani uygula.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform apply",
-          "hint_text": "Plan degisikliklerini uygulamak icin `terraform apply` komutunu kullan.",
-          "hint_partial": "terraform apply"
-        }
-      ]
-    },
-    {
-      "id": "jtf-005-r125",
-      "type": "single",
-      "scenario": "Yeni acilan hostta, Olusturulan kaynaklari sil.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform destroy",
-          "hint_text": "Kaynaklari silmek icin `terraform destroy` komutunu kullan.",
-          "hint_partial": "terraform destroy"
-        }
-      ]
-    },
-    {
-      "id": "jtf-006-r126",
-      "type": "single",
-      "scenario": "Runbook adiminda, Terraform dosyalarini formatla.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform fmt",
-          "hint_text": "Terraform dosyalarini formatlamak icin `terraform fmt` komutunu kullan.",
-          "hint_partial": "terraform fmt"
-        }
-      ]
-    },
-    {
-      "id": "jtf-007-r127",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde, Config dogrulamasi yap.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform validate",
-          "hint_text": "Config dogrulamasi yapmak icin `terraform validate` komutunu kullan.",
-          "hint_partial": "terraform validate"
-        }
-      ]
-    },
-    {
-      "id": "jtf-008-r128",
-      "type": "single",
-      "scenario": "Incident sonrasinda, Terraform state bilgisini okunur formatta goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform show",
-          "hint_text": "State bilgisini okunur formatta gormek icin `terraform show` komutunu kullan.",
-          "hint_partial": "terraform show"
-        }
-      ]
-    },
-    {
-      "id": "jtf-009-r129",
-      "type": "single",
-      "scenario": "Bakim oncesi, Output degerlerini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform output",
-          "hint_text": "Output degerlerini gormek icin `terraform output` komutunu kullan.",
-          "hint_partial": "terraform output"
-        }
-      ]
-    },
-    {
-      "id": "jtf-010-r130",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda, State icindeki kaynaklari listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform state list",
-          "hint_text": "State icindeki kaynaklari listelemek icin `terraform state list` komutunu kullan.",
-          "hint_partial": "terraform state list"
-        }
-      ]
-    },
-    {
-      "id": "jtf-001-r131",
-      "type": "single",
-      "scenario": "Deploy sonrasi, Terraform surumunu kontrol et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform version",
-          "hint_text": "Surum bilgisini gormek icin `terraform version` komutunu kullan.",
-          "hint_partial": "terraform version"
-        }
-      ]
-    },
-    {
-      "id": "jtf-002-r132",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde, Terraform calisma dizinini initialize et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform init",
-          "hint_text": "Calisma dizinini initialize etmek icin `terraform init` komutunu kullan.",
-          "hint_partial": "terraform init"
-        }
-      ]
-    },
-    {
-      "id": "jtf-003-r133",
-      "type": "single",
-      "scenario": "Yeni acilan hostta, Execution plan olustur.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform plan",
-          "hint_text": "Execution plan olusturmak icin `terraform plan` komutunu kullan.",
-          "hint_partial": "terraform plan"
-        }
-      ]
-    },
-    {
-      "id": "jtf-004-r134",
-      "type": "single",
-      "scenario": "Runbook adiminda, Execution plani uygula.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform apply",
-          "hint_text": "Plan degisikliklerini uygulamak icin `terraform apply` komutunu kullan.",
-          "hint_partial": "terraform apply"
-        }
-      ]
-    },
-    {
-      "id": "jtf-005-r135",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde, Olusturulan kaynaklari sil.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform destroy",
-          "hint_text": "Kaynaklari silmek icin `terraform destroy` komutunu kullan.",
-          "hint_partial": "terraform destroy"
-        }
-      ]
-    },
-    {
-      "id": "jtf-006-r136",
-      "type": "single",
-      "scenario": "Incident sonrasinda, Terraform dosyalarini formatla.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform fmt",
-          "hint_text": "Terraform dosyalarini formatlamak icin `terraform fmt` komutunu kullan.",
-          "hint_partial": "terraform fmt"
-        }
-      ]
-    },
-    {
-      "id": "jtf-007-r137",
-      "type": "single",
-      "scenario": "Bakim oncesi, Config dogrulamasi yap.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform validate",
-          "hint_text": "Config dogrulamasi yapmak icin `terraform validate` komutunu kullan.",
-          "hint_partial": "terraform validate"
-        }
-      ]
-    },
-    {
-      "id": "jtf-008-r138",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda, Terraform state bilgisini okunur formatta goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform show",
-          "hint_text": "State bilgisini okunur formatta gormek icin `terraform show` komutunu kullan.",
-          "hint_partial": "terraform show"
-        }
-      ]
-    },
-    {
-      "id": "jtf-009-r139",
-      "type": "single",
-      "scenario": "Deploy sonrasi, Output degerlerini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform output",
-          "hint_text": "Output degerlerini gormek icin `terraform output` komutunu kullan.",
-          "hint_partial": "terraform output"
-        }
-      ]
-    },
-    {
-      "id": "jtf-010-r140",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde, State icindeki kaynaklari listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform state list",
-          "hint_text": "State icindeki kaynaklari listelemek icin `terraform state list` komutunu kullan.",
-          "hint_partial": "terraform state list"
-        }
-      ]
-    },
-    {
-      "id": "jtf-001-r141",
-      "type": "single",
-      "scenario": "Yeni acilan hostta, Terraform surumunu kontrol et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform version",
-          "hint_text": "Surum bilgisini gormek icin `terraform version` komutunu kullan.",
-          "hint_partial": "terraform version"
-        }
-      ]
-    },
-    {
-      "id": "jtf-002-r142",
-      "type": "single",
-      "scenario": "Runbook adiminda, Terraform calisma dizinini initialize et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform init",
-          "hint_text": "Calisma dizinini initialize etmek icin `terraform init` komutunu kullan.",
-          "hint_partial": "terraform init"
-        }
-      ]
-    },
-    {
-      "id": "jtf-003-r143",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde, Execution plan olustur.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform plan",
-          "hint_text": "Execution plan olusturmak icin `terraform plan` komutunu kullan.",
-          "hint_partial": "terraform plan"
-        }
-      ]
-    },
-    {
-      "id": "jtf-004-r144",
-      "type": "single",
-      "scenario": "Incident sonrasinda, Execution plani uygula.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform apply",
-          "hint_text": "Plan degisikliklerini uygulamak icin `terraform apply` komutunu kullan.",
-          "hint_partial": "terraform apply"
-        }
-      ]
-    },
-    {
-      "id": "jtf-005-r145",
-      "type": "single",
-      "scenario": "Bakim oncesi, Olusturulan kaynaklari sil.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform destroy",
-          "hint_text": "Kaynaklari silmek icin `terraform destroy` komutunu kullan.",
-          "hint_partial": "terraform destroy"
-        }
-      ]
-    },
-    {
-      "id": "jtf-006-r146",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda, Terraform dosyalarini formatla.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform fmt",
-          "hint_text": "Terraform dosyalarini formatlamak icin `terraform fmt` komutunu kullan.",
-          "hint_partial": "terraform fmt"
-        }
-      ]
-    },
-    {
-      "id": "jtf-007-r147",
-      "type": "single",
-      "scenario": "Deploy sonrasi, Config dogrulamasi yap.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform validate",
-          "hint_text": "Config dogrulamasi yapmak icin `terraform validate` komutunu kullan.",
-          "hint_partial": "terraform validate"
-        }
-      ]
-    },
-    {
-      "id": "jtf-008-r148",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde, Terraform state bilgisini okunur formatta goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform show",
-          "hint_text": "State bilgisini okunur formatta gormek icin `terraform show` komutunu kullan.",
-          "hint_partial": "terraform show"
-        }
-      ]
-    },
-    {
-      "id": "jtf-009-r149",
-      "type": "single",
-      "scenario": "Yeni acilan hostta, Output degerlerini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform output",
-          "hint_text": "Output degerlerini gormek icin `terraform output` komutunu kullan.",
-          "hint_partial": "terraform output"
-        }
-      ]
-    },
-    {
-      "id": "jtf-010-r150",
-      "type": "single",
-      "scenario": "Runbook adiminda, State icindeki kaynaklari listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform state list",
-          "hint_text": "State icindeki kaynaklari listelemek icin `terraform state list` komutunu kullan.",
-          "hint_partial": "terraform state list"
-        }
-      ]
-    },
-    {
-      "id": "jtf-001-r151",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde, Terraform surumunu kontrol et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform version",
-          "hint_text": "Surum bilgisini gormek icin `terraform version` komutunu kullan.",
-          "hint_partial": "terraform version"
-        }
-      ]
-    },
-    {
-      "id": "jtf-002-r152",
-      "type": "single",
-      "scenario": "Incident sonrasinda, Terraform calisma dizinini initialize et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform init",
-          "hint_text": "Calisma dizinini initialize etmek icin `terraform init` komutunu kullan.",
-          "hint_partial": "terraform init"
-        }
-      ]
-    },
-    {
-      "id": "jtf-003-r153",
-      "type": "single",
-      "scenario": "Bakim oncesi, Execution plan olustur.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform plan",
-          "hint_text": "Execution plan olusturmak icin `terraform plan` komutunu kullan.",
-          "hint_partial": "terraform plan"
-        }
-      ]
-    },
-    {
-      "id": "jtf-004-r154",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda, Execution plani uygula.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform apply",
-          "hint_text": "Plan degisikliklerini uygulamak icin `terraform apply` komutunu kullan.",
-          "hint_partial": "terraform apply"
-        }
-      ]
-    },
-    {
-      "id": "jtf-005-r155",
-      "type": "single",
-      "scenario": "Deploy sonrasi, Olusturulan kaynaklari sil.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform destroy",
-          "hint_text": "Kaynaklari silmek icin `terraform destroy` komutunu kullan.",
-          "hint_partial": "terraform destroy"
-        }
-      ]
-    },
-    {
-      "id": "jtf-006-r156",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde, Terraform dosyalarini formatla.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform fmt",
-          "hint_text": "Terraform dosyalarini formatlamak icin `terraform fmt` komutunu kullan.",
-          "hint_partial": "terraform fmt"
-        }
-      ]
-    },
-    {
-      "id": "jtf-007-r157",
-      "type": "single",
-      "scenario": "Yeni acilan hostta, Config dogrulamasi yap.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform validate",
-          "hint_text": "Config dogrulamasi yapmak icin `terraform validate` komutunu kullan.",
-          "hint_partial": "terraform validate"
-        }
-      ]
-    },
-    {
-      "id": "jtf-008-r158",
-      "type": "single",
-      "scenario": "Runbook adiminda, Terraform state bilgisini okunur formatta goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform show",
-          "hint_text": "State bilgisini okunur formatta gormek icin `terraform show` komutunu kullan.",
-          "hint_partial": "terraform show"
-        }
-      ]
-    },
-    {
-      "id": "jtf-009-r159",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde, Output degerlerini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform output",
-          "hint_text": "Output degerlerini gormek icin `terraform output` komutunu kullan.",
-          "hint_partial": "terraform output"
-        }
-      ]
-    },
-    {
-      "id": "jtf-010-r160",
-      "type": "single",
-      "scenario": "Incident sonrasinda, State icindeki kaynaklari listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform state list",
-          "hint_text": "State icindeki kaynaklari listelemek icin `terraform state list` komutunu kullan.",
-          "hint_partial": "terraform state list"
-        }
-      ]
-    },
-    {
-      "id": "jtf-001-r161",
-      "type": "single",
-      "scenario": "Bakim oncesi, Terraform surumunu kontrol et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform version",
-          "hint_text": "Surum bilgisini gormek icin `terraform version` komutunu kullan.",
-          "hint_partial": "terraform version"
-        }
-      ]
-    },
-    {
-      "id": "jtf-002-r162",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda, Terraform calisma dizinini initialize et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform init",
-          "hint_text": "Calisma dizinini initialize etmek icin `terraform init` komutunu kullan.",
-          "hint_partial": "terraform init"
-        }
-      ]
-    },
-    {
-      "id": "jtf-003-r163",
-      "type": "single",
-      "scenario": "Deploy sonrasi, Execution plan olustur.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform plan",
-          "hint_text": "Execution plan olusturmak icin `terraform plan` komutunu kullan.",
-          "hint_partial": "terraform plan"
-        }
-      ]
-    },
-    {
-      "id": "jtf-004-r164",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde, Execution plani uygula.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform apply",
-          "hint_text": "Plan degisikliklerini uygulamak icin `terraform apply` komutunu kullan.",
-          "hint_partial": "terraform apply"
-        }
-      ]
-    },
-    {
-      "id": "jtf-005-r165",
-      "type": "single",
-      "scenario": "Yeni acilan hostta, Olusturulan kaynaklari sil.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform destroy",
-          "hint_text": "Kaynaklari silmek icin `terraform destroy` komutunu kullan.",
-          "hint_partial": "terraform destroy"
-        }
-      ]
-    },
-    {
-      "id": "jtf-006-r166",
-      "type": "single",
-      "scenario": "Runbook adiminda, Terraform dosyalarini formatla.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform fmt",
-          "hint_text": "Terraform dosyalarini formatlamak icin `terraform fmt` komutunu kullan.",
-          "hint_partial": "terraform fmt"
-        }
-      ]
-    },
-    {
-      "id": "jtf-007-r167",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde, Config dogrulamasi yap.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform validate",
-          "hint_text": "Config dogrulamasi yapmak icin `terraform validate` komutunu kullan.",
-          "hint_partial": "terraform validate"
-        }
-      ]
-    },
-    {
-      "id": "jtf-008-r168",
-      "type": "single",
-      "scenario": "Incident sonrasinda, Terraform state bilgisini okunur formatta goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform show",
-          "hint_text": "State bilgisini okunur formatta gormek icin `terraform show` komutunu kullan.",
-          "hint_partial": "terraform show"
-        }
-      ]
-    },
-    {
-      "id": "jtf-009-r169",
-      "type": "single",
-      "scenario": "Bakim oncesi, Output degerlerini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform output",
-          "hint_text": "Output degerlerini gormek icin `terraform output` komutunu kullan.",
-          "hint_partial": "terraform output"
-        }
-      ]
-    },
-    {
-      "id": "jtf-010-r170",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda, State icindeki kaynaklari listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform state list",
-          "hint_text": "State icindeki kaynaklari listelemek icin `terraform state list` komutunu kullan.",
-          "hint_partial": "terraform state list"
-        }
-      ]
-    },
-    {
-      "id": "jtf-001-r171",
-      "type": "single",
-      "scenario": "Deploy sonrasi, Terraform surumunu kontrol et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform version",
-          "hint_text": "Surum bilgisini gormek icin `terraform version` komutunu kullan.",
-          "hint_partial": "terraform version"
-        }
-      ]
-    },
-    {
-      "id": "jtf-002-r172",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde, Terraform calisma dizinini initialize et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform init",
-          "hint_text": "Calisma dizinini initialize etmek icin `terraform init` komutunu kullan.",
-          "hint_partial": "terraform init"
-        }
-      ]
-    },
-    {
-      "id": "jtf-003-r173",
-      "type": "single",
-      "scenario": "Yeni acilan hostta, Execution plan olustur.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform plan",
-          "hint_text": "Execution plan olusturmak icin `terraform plan` komutunu kullan.",
-          "hint_partial": "terraform plan"
-        }
-      ]
-    },
-    {
-      "id": "jtf-004-r174",
-      "type": "single",
-      "scenario": "Runbook adiminda, Execution plani uygula.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform apply",
-          "hint_text": "Plan degisikliklerini uygulamak icin `terraform apply` komutunu kullan.",
-          "hint_partial": "terraform apply"
-        }
-      ]
-    },
-    {
-      "id": "jtf-005-r175",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde, Olusturulan kaynaklari sil.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform destroy",
-          "hint_text": "Kaynaklari silmek icin `terraform destroy` komutunu kullan.",
-          "hint_partial": "terraform destroy"
-        }
-      ]
-    },
-    {
-      "id": "jtf-006-r176",
-      "type": "single",
-      "scenario": "Incident sonrasinda, Terraform dosyalarini formatla.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform fmt",
-          "hint_text": "Terraform dosyalarini formatlamak icin `terraform fmt` komutunu kullan.",
-          "hint_partial": "terraform fmt"
-        }
-      ]
-    },
-    {
-      "id": "jtf-007-r177",
-      "type": "single",
-      "scenario": "Bakim oncesi, Config dogrulamasi yap.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform validate",
-          "hint_text": "Config dogrulamasi yapmak icin `terraform validate` komutunu kullan.",
-          "hint_partial": "terraform validate"
-        }
-      ]
-    },
-    {
-      "id": "jtf-008-r178",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda, Terraform state bilgisini okunur formatta goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform show",
-          "hint_text": "State bilgisini okunur formatta gormek icin `terraform show` komutunu kullan.",
-          "hint_partial": "terraform show"
-        }
-      ]
-    },
-    {
-      "id": "jtf-009-r179",
-      "type": "single",
-      "scenario": "Deploy sonrasi, Output degerlerini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform output",
-          "hint_text": "Output degerlerini gormek icin `terraform output` komutunu kullan.",
-          "hint_partial": "terraform output"
-        }
-      ]
-    },
-    {
-      "id": "jtf-010-r180",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde, State icindeki kaynaklari listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform state list",
-          "hint_text": "State icindeki kaynaklari listelemek icin `terraform state list` komutunu kullan.",
-          "hint_partial": "terraform state list"
-        }
-      ]
-    },
-    {
-      "id": "jtf-001-r181",
-      "type": "single",
-      "scenario": "Yeni acilan hostta, Terraform surumunu kontrol et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform version",
-          "hint_text": "Surum bilgisini gormek icin `terraform version` komutunu kullan.",
-          "hint_partial": "terraform version"
-        }
-      ]
-    },
-    {
-      "id": "jtf-002-r182",
-      "type": "single",
-      "scenario": "Runbook adiminda, Terraform calisma dizinini initialize et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform init",
-          "hint_text": "Calisma dizinini initialize etmek icin `terraform init` komutunu kullan.",
-          "hint_partial": "terraform init"
-        }
-      ]
-    },
-    {
-      "id": "jtf-003-r183",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde, Execution plan olustur.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform plan",
-          "hint_text": "Execution plan olusturmak icin `terraform plan` komutunu kullan.",
-          "hint_partial": "terraform plan"
-        }
-      ]
-    },
-    {
-      "id": "jtf-004-r184",
-      "type": "single",
-      "scenario": "Incident sonrasinda, Execution plani uygula.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform apply",
-          "hint_text": "Plan degisikliklerini uygulamak icin `terraform apply` komutunu kullan.",
-          "hint_partial": "terraform apply"
-        }
-      ]
-    },
-    {
-      "id": "jtf-005-r185",
-      "type": "single",
-      "scenario": "Bakim oncesi, Olusturulan kaynaklari sil.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform destroy",
-          "hint_text": "Kaynaklari silmek icin `terraform destroy` komutunu kullan.",
-          "hint_partial": "terraform destroy"
-        }
-      ]
-    },
-    {
-      "id": "jtf-006-r186",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda, Terraform dosyalarini formatla.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform fmt",
-          "hint_text": "Terraform dosyalarini formatlamak icin `terraform fmt` komutunu kullan.",
-          "hint_partial": "terraform fmt"
-        }
-      ]
-    },
-    {
-      "id": "jtf-007-r187",
-      "type": "single",
-      "scenario": "Deploy sonrasi, Config dogrulamasi yap.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform validate",
-          "hint_text": "Config dogrulamasi yapmak icin `terraform validate` komutunu kullan.",
-          "hint_partial": "terraform validate"
-        }
-      ]
-    },
-    {
-      "id": "jtf-008-r188",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde, Terraform state bilgisini okunur formatta goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform show",
-          "hint_text": "State bilgisini okunur formatta gormek icin `terraform show` komutunu kullan.",
-          "hint_partial": "terraform show"
-        }
-      ]
-    },
-    {
-      "id": "jtf-009-r189",
-      "type": "single",
-      "scenario": "Yeni acilan hostta, Output degerlerini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform output",
-          "hint_text": "Output degerlerini gormek icin `terraform output` komutunu kullan.",
-          "hint_partial": "terraform output"
-        }
-      ]
-    },
-    {
-      "id": "jtf-010-r190",
-      "type": "single",
-      "scenario": "Runbook adiminda, State icindeki kaynaklari listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "terraform state list",
-          "hint_text": "State icindeki kaynaklari listelemek icin `terraform state list` komutunu kullan.",
-          "hint_partial": "terraform state list"
+          "answer": "terraform console",
+          "hint_text": "Etkilesimli Terraform console acar",
+          "hint_partial": "terraform console ..."
         }
       ]
     }

@@ -3,2602 +3,2198 @@
   "topic": "kubernetes",
   "questions": [
     {
-      "id": "jk8s-001-exp-001",
+      "id": "jk8s-exp-001",
       "type": "single",
-      "scenario": "Gece vardiyasinda cluster'daki pod'lari listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get pods",
-          "hint_text": "Pod listesi icin `kubectl get pods` kullan.",
-          "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-002-exp-002",
-      "type": "single",
-      "scenario": "Audit sirasinda service'leri listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get services",
-          "hint_text": "Service listesi icin `kubectl get services` kullan.",
-          "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-003-exp-003",
-      "type": "single",
-      "scenario": "Bakim penceresinde node'lari listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get nodes",
-          "hint_text": "Node listesi icin `kubectl get nodes` kullan.",
-          "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-004-exp-004",
-      "type": "single",
-      "scenario": "Incident triajinda aktif kubectl context bilgisini goster.",
+      "scenario": "Sprint baslangicinda aktif kubectl context bilgisini goster.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "kubectl config current-context",
-          "hint_text": "Current context icin `kubectl config current-context` kullan.",
+          "hint_text": "Aktif context bilgisini gosterir",
           "hint_partial": "kubectl config ..."
         }
       ]
     },
     {
-      "id": "jk8s-005-exp-005",
+      "id": "jk8s-exp-002",
       "type": "single",
-      "scenario": "Release kontrolunde `cache-205-205-123` pod detayini goster.",
+      "scenario": "Deploy oncesi tum kubectl context'lerini listele.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "kubectl describe pod cache-205-205-123",
-          "hint_text": "Pod detayi icin `kubectl describe pod` kullan.",
-          "hint_partial": "kubectl describe ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-006-exp-006",
-      "type": "single",
-      "scenario": "Operasyon devrinde `queue-206-123` pod loglarini goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl logs queue-206-123",
-          "hint_text": "Pod loglari icin `kubectl logs` kullan.",
-          "hint_partial": "kubectl logs ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-007-exp-007",
-      "type": "single",
-      "scenario": "On-call gorevinde namespace'leri listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get namespaces",
-          "hint_text": "Namespace listesi icin `kubectl get namespaces` kullan.",
-          "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-008-exp-008",
-      "type": "single",
-      "scenario": "Kesinti sonrasi deployment'leri listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get deployments",
-          "hint_text": "Deployment listesi icin `kubectl get deployments` kullan.",
-          "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-009-exp-009",
-      "type": "single",
-      "scenario": "Gece vardiyasinda `web-209` deployment replica sayisini 3 yap.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl scale deployment web-209 --replicas=6",
-          "hint_text": "Replica ayari icin `kubectl scale deployment` kullan.",
-          "hint_partial": "kubectl scale ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-010-exp-010",
-      "type": "single",
-      "scenario": "Audit sirasinda `deployment.yml` manifest'ini uygula.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl apply -f deployment.yml",
-          "hint_text": "Manifest uygulamak icin `kubectl apply -f` kullan.",
-          "hint_partial": "kubectl apply ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-001-r1-exp-011",
-      "type": "single",
-      "scenario": "Bakim penceresinde bakim oncesi cluster'daki pod'lari listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get pods",
-          "hint_text": "Pod listesi icin `kubectl get pods` kullan.",
-          "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-002-r2-exp-012",
-      "type": "single",
-      "scenario": "Incident triajinda troubleshooting sirasinda service'leri listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get services",
-          "hint_text": "Service listesi icin `kubectl get services` kullan.",
-          "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-003-r3-exp-013",
-      "type": "single",
-      "scenario": "Release kontrolunde deploy sonrasi node'lari listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get nodes",
-          "hint_text": "Node listesi icin `kubectl get nodes` kullan.",
-          "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-004-r4-exp-014",
-      "type": "single",
-      "scenario": "Operasyon devrinde kesinti incelemesinde aktif kubectl context bilgisini goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl config current-context",
-          "hint_text": "Current context icin `kubectl config current-context` kullan.",
+          "answer": "kubectl config get-contexts",
+          "hint_text": "Tum context'leri listeler",
           "hint_partial": "kubectl config ..."
         }
       ]
     },
     {
-      "id": "jk8s-005-r5-exp-015",
+      "id": "jk8s-exp-003",
       "type": "single",
-      "scenario": "On-call gorevinde yeni acilan hostta `cache-215-5-5-123` pod detayini goster.",
+      "scenario": "Code review oncesi staging-cluster context'ine gec.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "kubectl describe pod cache-215-5-5-123",
-          "hint_text": "Pod detayi icin `kubectl describe pod` kullan.",
-          "hint_partial": "kubectl describe ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-006-r6-exp-016",
-      "type": "single",
-      "scenario": "Kesinti sonrasi runbook adiminda `queue-6-123` pod loglarini goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl logs queue-6-123",
-          "hint_text": "Pod loglari icin `kubectl logs` kullan.",
-          "hint_partial": "kubectl logs ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-007-r7-exp-017",
-      "type": "single",
-      "scenario": "Gece vardiyasinda operasyon kontrolunde namespace'leri listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get namespaces",
-          "hint_text": "Namespace listesi icin `kubectl get namespaces` kullan.",
-          "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-008-r8-exp-018",
-      "type": "single",
-      "scenario": "Audit sirasinda incident sonrasinda deployment'leri listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get deployments",
-          "hint_text": "Deployment listesi icin `kubectl get deployments` kullan.",
-          "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-009-r9-exp-019",
-      "type": "single",
-      "scenario": "Bakim penceresinde bakim oncesi `queue-219-219-9` deployment replica sayisini 3 yap.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl scale deployment queue-219-219-9 --replicas=4",
-          "hint_text": "Replica ayari icin `kubectl scale deployment` kullan.",
-          "hint_partial": "kubectl scale ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-010-r10-exp-020",
-      "type": "single",
-      "scenario": "Incident triajinda troubleshooting sirasinda `deployment.yml` manifest'ini uygula.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl apply -f deployment.yml",
-          "hint_text": "Manifest uygulamak icin `kubectl apply -f` kullan.",
-          "hint_partial": "kubectl apply ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-001-r11-exp-021",
-      "type": "single",
-      "scenario": "Release kontrolunde deploy sonrasi cluster'daki pod'lari listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get pods",
-          "hint_text": "Pod listesi icin `kubectl get pods` kullan.",
-          "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-002-r12-exp-022",
-      "type": "single",
-      "scenario": "Operasyon devrinde kesinti incelemesinde service'leri listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get services",
-          "hint_text": "Service listesi icin `kubectl get services` kullan.",
-          "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-003-r13-exp-023",
-      "type": "single",
-      "scenario": "On-call gorevinde yeni acilan hostta node'lari listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get nodes",
-          "hint_text": "Node listesi icin `kubectl get nodes` kullan.",
-          "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-004-r14-exp-024",
-      "type": "single",
-      "scenario": "Kesinti sonrasi runbook adiminda aktif kubectl context bilgisini goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl config current-context",
-          "hint_text": "Current context icin `kubectl config current-context` kullan.",
+          "answer": "kubectl config use-context staging-cluster",
+          "hint_text": "Belirli bir context'e gecis yapar",
           "hint_partial": "kubectl config ..."
         }
       ]
     },
     {
-      "id": "jk8s-005-r15-exp-025",
+      "id": "jk8s-exp-004",
       "type": "single",
-      "scenario": "Gece vardiyasinda operasyon kontrolunde `bastion-15-123` pod detayini goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl describe pod bastion-15-123",
-          "hint_text": "Pod detayi icin `kubectl describe pod` kullan.",
-          "hint_partial": "kubectl describe ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-006-r16-exp-026",
-      "type": "single",
-      "scenario": "Audit sirasinda incident sonrasinda `proxy-16-123` pod loglarini goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl logs proxy-16-123",
-          "hint_text": "Pod loglari icin `kubectl logs` kullan.",
-          "hint_partial": "kubectl logs ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-007-r17-exp-027",
-      "type": "single",
-      "scenario": "Bakim penceresinde bakim oncesi namespace'leri listele.",
+      "scenario": "Bakim penceresinde namespace'leri listele.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "kubectl get namespaces",
-          "hint_text": "Namespace listesi icin `kubectl get namespaces` kullan.",
+          "hint_text": "Namespace listesini gosterir",
           "hint_partial": "kubectl get ..."
         }
       ]
     },
     {
-      "id": "jk8s-008-r18-exp-028",
+      "id": "jk8s-exp-005",
       "type": "single",
-      "scenario": "Incident triajinda troubleshooting sirasinda deployment'leri listele.",
+      "scenario": "On-call sirasinda dev adinda bir namespace olustur.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "kubectl get deployments",
-          "hint_text": "Deployment listesi icin `kubectl get deployments` kullan.",
-          "hint_partial": "kubectl get ..."
+          "answer": "kubectl create namespace dev",
+          "hint_text": "Yeni namespace olusturur",
+          "hint_partial": "kubectl create ..."
         }
       ]
     },
     {
-      "id": "jk8s-009-r19-exp-029",
+      "id": "jk8s-exp-006",
       "type": "single",
-      "scenario": "Release kontrolunde deploy sonrasi `bastion-229-19` deployment replica sayisini 3 yap.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl scale deployment bastion-229-19 --replicas=2",
-          "hint_text": "Replica ayari icin `kubectl scale deployment` kullan.",
-          "hint_partial": "kubectl scale ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-010-r20-exp-030",
-      "type": "single",
-      "scenario": "Operasyon devrinde kesinti incelemesinde `deployment.yml` manifest'ini uygula.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl apply -f deployment.yml",
-          "hint_text": "Manifest uygulamak icin `kubectl apply -f` kullan.",
-          "hint_partial": "kubectl apply ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-001-r21-exp-031",
-      "type": "single",
-      "scenario": "On-call gorevinde yeni acilan hostta cluster'daki pod'lari listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get pods",
-          "hint_text": "Pod listesi icin `kubectl get pods` kullan.",
-          "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-002-r22-exp-032",
-      "type": "single",
-      "scenario": "Kesinti sonrasi runbook adiminda service'leri listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get services",
-          "hint_text": "Service listesi icin `kubectl get services` kullan.",
-          "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-003-r23-exp-033",
-      "type": "single",
-      "scenario": "Gece vardiyasinda operasyon kontrolunde node'lari listele.",
+      "scenario": "Release gununde cluster node'larini listele.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "kubectl get nodes",
-          "hint_text": "Node listesi icin `kubectl get nodes` kullan.",
+          "hint_text": "Node listesini gosterir",
           "hint_partial": "kubectl get ..."
         }
       ]
     },
     {
-      "id": "jk8s-004-r24-exp-034",
+      "id": "jk8s-exp-007",
       "type": "single",
-      "scenario": "Audit sirasinda incident sonrasinda aktif kubectl context bilgisini goster.",
+      "scenario": "Takim devir tesliminde cluster bilgilerini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "kubectl config current-context",
-          "hint_text": "Current context icin `kubectl config current-context` kullan.",
+          "answer": "kubectl cluster-info",
+          "hint_text": "Cluster endpoint bilgilerini gosterir",
+          "hint_partial": "kubectl cluster-info ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-008",
+      "type": "single",
+      "scenario": "Pratik turunda mevcut context icin varsayilan namespace'i dev yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl config set-context --current --namespace=dev",
+          "hint_text": "Mevcut context icin varsayilan namespace ayarlar",
           "hint_partial": "kubectl config ..."
         }
       ]
     },
     {
-      "id": "jk8s-005-r25-exp-035",
+      "id": "jk8s-exp-009",
       "type": "single",
-      "scenario": "Bakim penceresinde bakim oncesi `queue-235-235-25-123` pod detayini goster.",
+      "scenario": "Sprint baslangicinda pod'lari listele.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "kubectl describe pod queue-235-235-25-123",
-          "hint_text": "Pod detayi icin `kubectl describe pod` kullan.",
+          "answer": "kubectl get pods",
+          "hint_text": "Pod listesini gosterir",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-010",
+      "type": "single",
+      "scenario": "Deploy oncesi tum namespace'lerdeki pod'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get pods -A",
+          "hint_text": "Tum namespace'lerdeki pod'lari listeler",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-011",
+      "type": "single",
+      "scenario": "Code review oncesi dev namespace'indeki pod'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get pods -n dev",
+          "hint_text": "Belirli namespace'teki pod'lari listeler",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-012",
+      "type": "single",
+      "scenario": "Bakim penceresinde pod'lari node ve IP bilgileriyle listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get pods -o wide",
+          "hint_text": "Pod'lari ek kolonlarla gosterir",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-013",
+      "type": "single",
+      "scenario": "On-call sirasinda web-abc123 pod detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl describe pod web-abc123",
+          "hint_text": "Pod detaylarini gosterir",
           "hint_partial": "kubectl describe ..."
         }
       ]
     },
     {
-      "id": "jk8s-006-r26-exp-036",
+      "id": "jk8s-exp-014",
       "type": "single",
-      "scenario": "Incident triajinda troubleshooting sirasinda `cache-236-26-26-26-123` pod loglarini goster.",
+      "scenario": "Release gununde web-abc123 pod loglarini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "kubectl logs cache-236-26-26-26-123",
-          "hint_text": "Pod loglari icin `kubectl logs` kullan.",
+          "answer": "kubectl logs web-abc123",
+          "hint_text": "Pod loglarini gosterir",
           "hint_partial": "kubectl logs ..."
         }
       ]
     },
     {
-      "id": "jk8s-007-r27-exp-037",
+      "id": "jk8s-exp-015",
       "type": "single",
-      "scenario": "Release kontrolunde deploy sonrasi namespace'leri listele.",
+      "scenario": "Takim devir tesliminde web-abc123 pod loglarini canli takip et.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "kubectl get namespaces",
-          "hint_text": "Namespace listesi icin `kubectl get namespaces` kullan.",
+          "answer": "kubectl logs -f web-abc123",
+          "hint_text": "Log akisini canli izler",
+          "hint_partial": "kubectl logs ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-016",
+      "type": "single",
+      "scenario": "Pratik turunda api-7d9c pod'unun onceki container loglarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl logs api-7d9c --previous",
+          "hint_text": "Onceki container loglarini gosterir",
+          "hint_partial": "kubectl logs ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-017",
+      "type": "single",
+      "scenario": "Sprint baslangicinda web-abc123 pod icinde shell ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl exec -it web-abc123 -- sh",
+          "hint_text": "Pod icinde interaktif komut calistirir",
+          "hint_partial": "kubectl exec ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-018",
+      "type": "single",
+      "scenario": "Deploy oncesi web-abc123 pod'unu sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl delete pod web-abc123",
+          "hint_text": "Pod'u siler",
+          "hint_partial": "kubectl delete ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-019",
+      "type": "single",
+      "scenario": "Code review oncesi web-abc123 pod manifestini YAML olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get pod web-abc123 -o yaml",
+          "hint_text": "Pod manifestini YAML olarak verir",
           "hint_partial": "kubectl get ..."
         }
       ]
     },
     {
-      "id": "jk8s-008-r28-exp-038",
+      "id": "jk8s-exp-020",
       "type": "single",
-      "scenario": "Operasyon devrinde kesinti incelemesinde deployment'leri listele.",
+      "scenario": "Bakim penceresinde pod kaynak kullanimlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl top pods",
+          "hint_text": "Pod kaynak kullanimlarini gosterir",
+          "hint_partial": "kubectl top ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-021",
+      "type": "single",
+      "scenario": "On-call sirasinda event'leri olusma zamanina gore sirali goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get events --sort-by=.metadata.creationTimestamp",
+          "hint_text": "Event kayitlarini listeler",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-022",
+      "type": "single",
+      "scenario": "Release gununde dev namespace'indeki tum temel kaynaklari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get all -n dev",
+          "hint_text": "Temel kaynaklari birlikte listeler",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-023",
+      "type": "single",
+      "scenario": "Takim devir tesliminde deployment'leri listele.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "kubectl get deployments",
-          "hint_text": "Deployment listesi icin `kubectl get deployments` kullan.",
+          "hint_text": "Deployment listesini gosterir",
           "hint_partial": "kubectl get ..."
         }
       ]
     },
     {
-      "id": "jk8s-009-r29-exp-039",
+      "id": "jk8s-exp-024",
       "type": "single",
-      "scenario": "On-call gorevinde yeni acilan hostta `cache-239-29-29` deployment replica sayisini 3 yap.",
+      "scenario": "Pratik turunda dev namespace'indeki deployment'leri listele.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "kubectl scale deployment cache-239-29-29 --replicas=6",
-          "hint_text": "Replica ayari icin `kubectl scale deployment` kullan.",
+          "answer": "kubectl get deployments -n dev",
+          "hint_text": "Namespace bazli deployment listesini gosterir",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-025",
+      "type": "single",
+      "scenario": "Sprint baslangicinda web deployment detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl describe deployment web",
+          "hint_text": "Deployment detaylarini gosterir",
+          "hint_partial": "kubectl describe ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-026",
+      "type": "single",
+      "scenario": "Deploy oncesi web deployment replica sayisini 3 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl scale deployment web --replicas=3",
+          "hint_text": "Deployment replica sayisini degistirir",
           "hint_partial": "kubectl scale ..."
         }
       ]
     },
     {
-      "id": "jk8s-010-r30-exp-040",
+      "id": "jk8s-exp-027",
       "type": "single",
-      "scenario": "Kesinti sonrasi runbook adiminda `deployment.yml` manifest'ini uygula.",
+      "scenario": "Code review oncesi web deployment rollout durumunu izle.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "kubectl apply -f deployment.yml",
-          "hint_text": "Manifest uygulamak icin `kubectl apply -f` kullan.",
+          "answer": "kubectl rollout status deployment/web",
+          "hint_text": "Rollout durumunu takip eder",
+          "hint_partial": "kubectl rollout ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-028",
+      "type": "single",
+      "scenario": "Bakim penceresinde web deployment rollout gecmisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl rollout history deployment/web",
+          "hint_text": "Rollout gecmisini gosterir",
+          "hint_partial": "kubectl rollout ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-029",
+      "type": "single",
+      "scenario": "On-call sirasinda web deployment'ini yeniden baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl rollout restart deployment/web",
+          "hint_text": "Deployment'i yeniden baslatir",
+          "hint_partial": "kubectl rollout ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-030",
+      "type": "single",
+      "scenario": "Release gununde web deployment'indeki image'i nginx:1.25 olarak guncelle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl set image deployment/web web=nginx:1.25",
+          "hint_text": "Container image bilgisini gunceller",
+          "hint_partial": "kubectl set ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-031",
+      "type": "single",
+      "scenario": "Takim devir tesliminde web deployment'ini onceki surume geri al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl rollout undo deployment/web",
+          "hint_text": "Onceki rollout'a geri doner",
+          "hint_partial": "kubectl rollout ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-032",
+      "type": "single",
+      "scenario": "Pratik turunda deployment.yaml manifestini uygula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl apply -f deployment.yaml",
+          "hint_text": "Manifest veya klasor uygular",
           "hint_partial": "kubectl apply ..."
         }
       ]
     },
     {
-      "id": "jk8s-001-r31-exp-041",
+      "id": "jk8s-exp-033",
       "type": "single",
-      "scenario": "Gece vardiyasinda operasyon kontrolunde cluster'daki pod'lari listele.",
+      "scenario": "Sprint baslangicinda k8s/ klasorundeki tum manifestleri uygula.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "kubectl get pods",
-          "hint_text": "Pod listesi icin `kubectl get pods` kullan.",
-          "hint_partial": "kubectl get ..."
+          "answer": "kubectl apply -f k8s/",
+          "hint_text": "Manifest veya klasor uygular",
+          "hint_partial": "kubectl apply ..."
         }
       ]
     },
     {
-      "id": "jk8s-002-r32-exp-042",
+      "id": "jk8s-exp-034",
       "type": "single",
-      "scenario": "Audit sirasinda incident sonrasinda service'leri listele.",
+      "scenario": "Deploy oncesi deployment.yaml ile olusan kaynaklari sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl delete -f deployment.yaml",
+          "hint_text": "Manifest ile olusan kaynaklari siler",
+          "hint_partial": "kubectl delete ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-035",
+      "type": "single",
+      "scenario": "Code review oncesi web deployment'ini 80 portuyla web-svc adinda service olarak expose et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl expose deployment web --port=80 --target-port=8080 --name=web-svc",
+          "hint_text": "Deployment'i service olarak aciga cikarir",
+          "hint_partial": "kubectl expose ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-036",
+      "type": "single",
+      "scenario": "Bakim penceresinde service'leri listele.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "kubectl get services",
-          "hint_text": "Service listesi icin `kubectl get services` kullan.",
+          "hint_text": "Service listesini gosterir",
           "hint_partial": "kubectl get ..."
         }
       ]
     },
     {
-      "id": "jk8s-003-r33-exp-043",
+      "id": "jk8s-exp-037",
       "type": "single",
-      "scenario": "Bakim penceresinde bakim oncesi node'lari listele.",
+      "scenario": "On-call sirasinda web-svc service detayini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "kubectl get nodes",
-          "hint_text": "Node listesi icin `kubectl get nodes` kullan.",
+          "answer": "kubectl describe service web-svc",
+          "hint_text": "Service detaylarini gosterir",
+          "hint_partial": "kubectl describe ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-038",
+      "type": "single",
+      "scenario": "Release gununde web-svc service'ine local 8080 portundan eris.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl port-forward service/web-svc 8080:80",
+          "hint_text": "Local portu cluster kaynagina baglar",
+          "hint_partial": "kubectl port-forward ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-039",
+      "type": "single",
+      "scenario": "Takim devir tesliminde web-svc service endpoint'lerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get endpoints web-svc",
+          "hint_text": "Service endpoint'lerini gosterir",
           "hint_partial": "kubectl get ..."
         }
       ]
     },
     {
-      "id": "jk8s-004-r34-exp-044",
+      "id": "jk8s-exp-040",
       "type": "single",
-      "scenario": "Incident triajinda troubleshooting sirasinda aktif kubectl context bilgisini goster.",
+      "scenario": "Pratik turunda replicaSet'leri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get replicasets",
+          "hint_text": "ReplicaSet listesini gosterir",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-041",
+      "type": "single",
+      "scenario": "Sprint baslangicinda configMap'leri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get configmaps",
+          "hint_text": "ConfigMap listesini gosterir",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-042",
+      "type": "single",
+      "scenario": "Deploy oncesi aPP_ENV=dev degeriyle app-config adinda ConfigMap olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl create configmap app-config --from-literal=APP_ENV=dev",
+          "hint_text": "Literal degerlerden ConfigMap olusturur",
+          "hint_partial": "kubectl create ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-043",
+      "type": "single",
+      "scenario": "Code review oncesi app-config ConfigMap detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl describe configmap app-config",
+          "hint_text": "ConfigMap detaylarini gosterir",
+          "hint_partial": "kubectl describe ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-044",
+      "type": "single",
+      "scenario": "Bakim penceresinde secret'leri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get secrets",
+          "hint_text": "Secret listesini gosterir",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-045",
+      "type": "single",
+      "scenario": "On-call sirasinda db-secret adinda generic secret olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl create secret generic db-secret --from-literal=username=admin --from-literal=password=secret123",
+          "hint_text": "Generic secret olusturur",
+          "hint_partial": "kubectl create ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-046",
+      "type": "single",
+      "scenario": "Release gununde db-secret secret detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl describe secret db-secret",
+          "hint_text": "Secret detaylarini gosterir",
+          "hint_partial": "kubectl describe ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-047",
+      "type": "single",
+      "scenario": "Takim devir tesliminde ingress kaynaklarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get ingress",
+          "hint_text": "Ingress listesini gosterir",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-048",
+      "type": "single",
+      "scenario": "Pratik turunda web-ingress ingress detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl describe ingress web-ingress",
+          "hint_text": "Ingress detaylarini gosterir",
+          "hint_partial": "kubectl describe ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-049",
+      "type": "single",
+      "scenario": "Sprint baslangicinda persistentVolumeClaim'leri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get pvc",
+          "hint_text": "PVC listesini gosterir",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-050",
+      "type": "single",
+      "scenario": "Deploy oncesi persistentVolume'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get pv",
+          "hint_text": "PV listesini gosterir",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-051",
+      "type": "single",
+      "scenario": "Code review oncesi serviceAccount'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get serviceaccounts",
+          "hint_text": "ServiceAccount listesini gosterir",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-052",
+      "type": "single",
+      "scenario": "Bakim penceresinde job'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get jobs",
+          "hint_text": "Job listesini gosterir",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-053",
+      "type": "single",
+      "scenario": "On-call sirasinda cronJob'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get cronjobs",
+          "hint_text": "CronJob listesini gosterir",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-054",
+      "type": "single",
+      "scenario": "Release gununde backup CronJob'undan backup-now adinda bir Job olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl create job backup-now --from=cronjob/backup",
+          "hint_text": "CronJob'dan tek seferlik Job olusturur",
+          "hint_partial": "kubectl create ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-055",
+      "type": "single",
+      "scenario": "Takim devir tesliminde daemonSet'leri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get daemonsets",
+          "hint_text": "DaemonSet listesini gosterir",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-056",
+      "type": "single",
+      "scenario": "Pratik turunda statefulSet'leri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get statefulsets",
+          "hint_text": "StatefulSet listesini gosterir",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-057",
+      "type": "single",
+      "scenario": "Sprint baslangicinda mysql StatefulSet detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl describe statefulset mysql",
+          "hint_text": "StatefulSet detaylarini gosterir",
+          "hint_partial": "kubectl describe ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-058",
+      "type": "single",
+      "scenario": "Deploy oncesi mysql StatefulSet replica sayisini 3 yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl scale statefulset mysql --replicas=3",
+          "hint_text": "StatefulSet replica sayisini degistirir",
+          "hint_partial": "kubectl scale ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-059",
+      "type": "single",
+      "scenario": "Code review oncesi dev namespace'ine team=platform label'i ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl label namespace dev team=platform",
+          "hint_text": "Namespace'e label ekler",
+          "hint_partial": "kubectl label ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-060",
+      "type": "single",
+      "scenario": "Bakim penceresinde web-abc123 pod'una tier=frontend label'i ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl label pod web-abc123 tier=frontend",
+          "hint_text": "Pod'a label ekler",
+          "hint_partial": "kubectl label ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-061",
+      "type": "single",
+      "scenario": "On-call sirasinda web deployment'ine owner=team-a annotation'i ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl annotate deployment web owner=team-a",
+          "hint_text": "Deployment'e annotation ekler",
+          "hint_partial": "kubectl annotate ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-062",
+      "type": "single",
+      "scenario": "Release gununde app=web label'ina sahip pod'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get pods -l app=web",
+          "hint_text": "Label seciciyle pod listesi gosterir",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-063",
+      "type": "single",
+      "scenario": "Takim devir tesliminde dev namespace'indeki service'leri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get services -n dev",
+          "hint_text": "Namespace bazli service listesini gosterir",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-064",
+      "type": "single",
+      "scenario": "Pratik turunda dev namespace'indeki ingress kaynaklarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get ingress -n dev",
+          "hint_text": "Namespace bazli ingress listesini gosterir",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-065",
+      "type": "single",
+      "scenario": "Sprint baslangicinda worker-1 node detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl describe node worker-1",
+          "hint_text": "Node detaylarini gosterir",
+          "hint_partial": "kubectl describe ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-066",
+      "type": "single",
+      "scenario": "Deploy oncesi node kaynak kullanimlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl top nodes",
+          "hint_text": "Node kaynak kullanimlarini gosterir",
+          "hint_partial": "kubectl top ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-067",
+      "type": "single",
+      "scenario": "Code review oncesi kullanilabilir API kaynaklarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl api-resources",
+          "hint_text": "Kullanilabilir API kaynaklarini listeler",
+          "hint_partial": "kubectl api-resources ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-068",
+      "type": "single",
+      "scenario": "Bakim penceresinde deployment kaynagi icin yardim bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl explain deployment",
+          "hint_text": "Kaynak semasini aciklar",
+          "hint_partial": "kubectl explain ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-069",
+      "type": "single",
+      "scenario": "On-call sirasinda deployment container alaninin aciklamasini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl explain deployment.spec.template.spec.containers",
+          "hint_text": "Container alaninin semasini aciklar",
+          "hint_partial": "kubectl explain ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-070",
+      "type": "single",
+      "scenario": "Release gununde web-abc123 pod IP bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get pod web-abc123 -o jsonpath='{.status.podIP}'",
+          "hint_text": "Alan degerini jsonpath ile cikarir",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-071",
+      "type": "single",
+      "scenario": "Takim devir tesliminde app.conf dosyasini web-abc123 pod'u icindeki /tmp altina kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl cp app.conf web-abc123:/tmp/app.conf",
+          "hint_text": "Dosya kopyalama icin kubectl cp kullanilir",
+          "hint_partial": "kubectl cp ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-072",
+      "type": "single",
+      "scenario": "Pratik turunda web-abc123 pod'undaki /var/log/app.log dosyasini lokale kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl cp web-abc123:/var/log/app.log ./app.log",
+          "hint_text": "Dosya kopyalama icin kubectl cp kullanilir",
+          "hint_partial": "kubectl cp ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-073",
+      "type": "single",
+      "scenario": "Sprint baslangicinda busybox image'i ile tmp-shell adinda gecici bir pod calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl run tmp-shell --image=busybox --restart=Never -- sleep 3600",
+          "hint_text": "Gecici bir pod calistirir",
+          "hint_partial": "kubectl run ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-074",
+      "type": "single",
+      "scenario": "Deploy oncesi tmp-shell pod'unu sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl delete pod tmp-shell",
+          "hint_text": "Pod'u siler",
+          "hint_partial": "kubectl delete ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-075",
+      "type": "single",
+      "scenario": "Code review oncesi web-abc123 pod'unun hazir olmasini en fazla 60 saniye bekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl wait --for=condition=Ready pod/web-abc123 --timeout=60s",
+          "hint_text": "Kaynak durumunu belirli bir sure bekler",
+          "hint_partial": "kubectl wait ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-076",
+      "type": "single",
+      "scenario": "Bakim penceresinde pod'lari olusma zamanina gore sirali listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get pods --sort-by=.metadata.creationTimestamp",
+          "hint_text": "Pod'lari bir alana gore siralar",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-077",
+      "type": "single",
+      "scenario": "On-call sirasinda node'lari detayli gorunumle listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get nodes -o wide",
+          "hint_text": "Node'lari ek detaylarla listeler",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-078",
+      "type": "single",
+      "scenario": "Release gununde dev namespace'indeki web deployment rollout durumunu izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl rollout status deployment/web -n dev",
+          "hint_text": "Rollout durumunu takip eder",
+          "hint_partial": "kubectl rollout ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-079",
+      "type": "single",
+      "scenario": "Takim devir tesliminde dev namespace'indeki web-abc123 pod loglarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl logs web-abc123 -n dev",
+          "hint_text": "Pod loglarini gosterir",
+          "hint_partial": "kubectl logs ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-080",
+      "type": "single",
+      "scenario": "Pratik turunda dev namespace'indeki web-abc123 pod icinde shell ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl exec -it web-abc123 -n dev -- sh",
+          "hint_text": "Pod icinde interaktif komut calistirir",
+          "hint_partial": "kubectl exec ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-081",
+      "type": "multi-step",
+      "scenario": "Sprint baslangicinda dev namespace'ini olustur, varsayilan namespace yap ve namespace'leri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl create namespace dev",
+          "hint_text": "Yeni namespace olusturur",
+          "hint_partial": "kubectl create ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "kubectl config set-context --current --namespace=dev",
+          "hint_text": "Mevcut context icin varsayilan namespace ayarlar",
+          "hint_partial": "kubectl config ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get namespaces",
+          "hint_text": "Namespace listesini gosterir",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-082",
+      "type": "multi-step",
+      "scenario": "Deploy oncesi deployment.yaml manifestini uygula, deployment'leri ve pod'lari kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl apply -f deployment.yaml",
+          "hint_text": "Manifest veya klasor uygular",
+          "hint_partial": "kubectl apply ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get deployments",
+          "hint_text": "Deployment listesini gosterir",
+          "hint_partial": "kubectl get ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get pods",
+          "hint_text": "Pod listesini gosterir",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-083",
+      "type": "multi-step",
+      "scenario": "Code review oncesi web deployment'ini 3 replica'ya cek, rollout'u izle ve ilgili pod'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl scale deployment web --replicas=3",
+          "hint_text": "Deployment replica sayisini degistirir",
+          "hint_partial": "kubectl scale ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "kubectl rollout status deployment/web",
+          "hint_text": "Rollout durumunu takip eder",
+          "hint_partial": "kubectl rollout ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get pods -l app=web",
+          "hint_text": "Label seciciyle pod listesi gosterir",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-084",
+      "type": "multi-step",
+      "scenario": "Bakim penceresinde web deployment image'ini guncelle, rollout'u izle ve rollout gecmisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl set image deployment/web web=nginx:1.25",
+          "hint_text": "Container image bilgisini gunceller",
+          "hint_partial": "kubectl set ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "kubectl rollout status deployment/web",
+          "hint_text": "Rollout durumunu takip eder",
+          "hint_partial": "kubectl rollout ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "kubectl rollout history deployment/web",
+          "hint_text": "Rollout gecmisini gosterir",
+          "hint_partial": "kubectl rollout ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-085",
+      "type": "multi-step",
+      "scenario": "On-call sirasinda web deployment'ini yeniden baslat, rollout durumunu kontrol et ve pod'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl rollout restart deployment/web",
+          "hint_text": "Deployment'i yeniden baslatir",
+          "hint_partial": "kubectl rollout ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "kubectl rollout status deployment/web",
+          "hint_text": "Rollout durumunu takip eder",
+          "hint_partial": "kubectl rollout ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get pods -l app=web",
+          "hint_text": "Label seciciyle pod listesi gosterir",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-086",
+      "type": "multi-step",
+      "scenario": "Release gununde sorunlu web-abc123 pod'unu incelemek icin detay, log ve event bilgilerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl describe pod web-abc123",
+          "hint_text": "Pod detaylarini gosterir",
+          "hint_partial": "kubectl describe ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "kubectl logs web-abc123",
+          "hint_text": "Pod loglarini gosterir",
+          "hint_partial": "kubectl logs ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get events --sort-by=.metadata.creationTimestamp",
+          "hint_text": "Event kayitlarini listeler",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-087",
+      "type": "multi-step",
+      "scenario": "Takim devir tesliminde web deployment'ini service olarak expose et, service'i kontrol et ve localden eris.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl expose deployment web --port=80 --target-port=8080 --name=web-svc",
+          "hint_text": "Deployment'i service olarak aciga cikarir",
+          "hint_partial": "kubectl expose ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get service web-svc",
+          "hint_text": "Belirli bir service bilgisini gosterir",
+          "hint_partial": "kubectl get ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "kubectl port-forward service/web-svc 8080:80",
+          "hint_text": "Local portu cluster kaynagina baglar",
+          "hint_partial": "kubectl port-forward ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-088",
+      "type": "multi-step",
+      "scenario": "Pratik turunda configMap ve Secret olustur, sonra ikisini de listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl create configmap app-config --from-literal=APP_ENV=dev",
+          "hint_text": "Literal degerlerden ConfigMap olusturur",
+          "hint_partial": "kubectl create ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "kubectl create secret generic db-secret --from-literal=username=admin --from-literal=password=secret123",
+          "hint_text": "Generic secret olusturur",
+          "hint_partial": "kubectl create ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get configmaps",
+          "hint_text": "ConfigMap listesini gosterir",
+          "hint_partial": "kubectl get ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get secrets",
+          "hint_text": "Secret listesini gosterir",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-089",
+      "type": "multi-step",
+      "scenario": "Sprint baslangicinda dev namespace'indeki pod, service ve ingress kaynaklarini birlikte kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get pods -n dev",
+          "hint_text": "Belirli namespace'teki pod'lari listeler",
+          "hint_partial": "kubectl get ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get services -n dev",
+          "hint_text": "Namespace bazli service listesini gosterir",
+          "hint_partial": "kubectl get ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get ingress -n dev",
+          "hint_text": "Namespace bazli ingress listesini gosterir",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-090",
+      "type": "multi-step",
+      "scenario": "Deploy oncesi gecici bir busybox pod calistir, icine gir ve sonra sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl run tmp-shell --image=busybox --restart=Never -- sleep 3600",
+          "hint_text": "Gecici bir pod calistirir",
+          "hint_partial": "kubectl run ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "kubectl exec -it tmp-shell -- sh",
+          "hint_text": "Pod icinde interaktif komut calistirir",
+          "hint_partial": "kubectl exec ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "kubectl delete pod tmp-shell",
+          "hint_text": "Pod'u siler",
+          "hint_partial": "kubectl delete ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-091",
+      "type": "multi-step",
+      "scenario": "Code review oncesi k8s/ klasorundeki manifestleri uygula, dev namespace'indeki kaynaklari ve PVC'leri kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl apply -f k8s/",
+          "hint_text": "Manifest veya klasor uygular",
+          "hint_partial": "kubectl apply ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get all -n dev",
+          "hint_text": "Temel kaynaklari birlikte listeler",
+          "hint_partial": "kubectl get ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get pvc -n dev",
+          "hint_text": "PVC listesini gosterir",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-092",
+      "type": "multi-step",
+      "scenario": "Bakim penceresinde backup CronJob'undan bir Job olustur, Job'lari listele ve olusan Job detayini incele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl create job backup-now --from=cronjob/backup",
+          "hint_text": "CronJob'dan tek seferlik Job olusturur",
+          "hint_partial": "kubectl create ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get jobs",
+          "hint_text": "Job listesini gosterir",
+          "hint_partial": "kubectl get ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "kubectl describe job backup-now",
+          "hint_text": "Job detaylarini gosterir",
+          "hint_partial": "kubectl describe ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-093",
+      "type": "multi-step",
+      "scenario": "On-call sirasinda hatali image guncellemesinden sonra web deployment'ini geri al ve rollout durumunu kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl set image deployment/web web=nginx:1.26",
+          "hint_text": "Container image bilgisini gunceller",
+          "hint_partial": "kubectl set ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "kubectl rollout undo deployment/web",
+          "hint_text": "Onceki rollout'a geri doner",
+          "hint_partial": "kubectl rollout ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "kubectl rollout status deployment/web",
+          "hint_text": "Rollout durumunu takip eder",
+          "hint_partial": "kubectl rollout ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-094",
+      "type": "multi-step",
+      "scenario": "Release gununde bir dosyayi pod'a kopyala, pod icinden dogrula ve dosyayi geri cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl cp app.conf web-abc123:/tmp/app.conf",
+          "hint_text": "Dosya kopyalama icin kubectl cp kullanilir",
+          "hint_partial": "kubectl cp ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "kubectl exec web-abc123 -- ls /tmp",
+          "hint_text": "Pod icinde komut calistirir",
+          "hint_partial": "kubectl exec ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "kubectl cp web-abc123:/tmp/app.conf ./app.conf.backup",
+          "hint_text": "Dosya kopyalama icin kubectl cp kullanilir",
+          "hint_partial": "kubectl cp ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-095",
+      "type": "multi-step",
+      "scenario": "Takim devir tesliminde context ve cluster bilgilerini birlikte kontrol et.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "kubectl config current-context",
-          "hint_text": "Current context icin `kubectl config current-context` kullan.",
+          "hint_text": "Aktif context bilgisini gosterir",
+          "hint_partial": "kubectl config ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "kubectl config get-contexts",
+          "hint_text": "Tum context'leri listeler",
+          "hint_partial": "kubectl config ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "kubectl cluster-info",
+          "hint_text": "Cluster endpoint bilgilerini gosterir",
+          "hint_partial": "kubectl cluster-info ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-096",
+      "type": "multi-step",
+      "scenario": "Pratik turunda mysql StatefulSet'i incele, replica sayisini artir ve ilgili pod'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl describe statefulset mysql",
+          "hint_text": "StatefulSet detaylarini gosterir",
+          "hint_partial": "kubectl describe ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "kubectl scale statefulset mysql --replicas=3",
+          "hint_text": "StatefulSet replica sayisini degistirir",
+          "hint_partial": "kubectl scale ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get pods -l app=mysql",
+          "hint_text": "Label seciciyle pod listesi gosterir",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-097",
+      "type": "multi-step",
+      "scenario": "Sprint baslangicinda node durumunu anlamak icin node listesini, node detayini ve kaynak kullanimini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get nodes -o wide",
+          "hint_text": "Node'lari ek detaylarla listeler",
+          "hint_partial": "kubectl get ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "kubectl describe node worker-1",
+          "hint_text": "Node detaylarini gosterir",
+          "hint_partial": "kubectl describe ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "kubectl top nodes",
+          "hint_text": "Node kaynak kullanimlarini gosterir",
+          "hint_partial": "kubectl top ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-098",
+      "type": "multi-step",
+      "scenario": "Deploy oncesi deployment.yaml ile olusan kaynaklari sil ve deployment listesini tekrar kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl delete -f deployment.yaml",
+          "hint_text": "Manifest ile olusan kaynaklari siler",
+          "hint_partial": "kubectl delete ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get deployments",
+          "hint_text": "Deployment listesini gosterir",
+          "hint_partial": "kubectl get ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get pods",
+          "hint_text": "Pod listesini gosterir",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-099",
+      "type": "multi-step",
+      "scenario": "Code review oncesi dev namespace'indeki web service'ini incele ve localden test et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get services -n dev",
+          "hint_text": "Namespace bazli service listesini gosterir",
+          "hint_partial": "kubectl get ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "kubectl describe service web-svc -n dev",
+          "hint_text": "Service detaylarini gosterir",
+          "hint_partial": "kubectl describe ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "kubectl port-forward service/web-svc 8080:80 -n dev",
+          "hint_text": "Local portu cluster kaynagina baglar",
+          "hint_partial": "kubectl port-forward ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-100",
+      "type": "multi-step",
+      "scenario": "Bakim penceresinde deployment semasini incele, container alanini ac ve mevcut web deployment YAML'ini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl explain deployment",
+          "hint_text": "Kaynak semasini aciklar",
+          "hint_partial": "kubectl explain ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "kubectl explain deployment.spec.template.spec.containers",
+          "hint_text": "Container alaninin semasini aciklar",
+          "hint_partial": "kubectl explain ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get deployment web -o yaml",
+          "hint_text": "Deployment manifestini YAML olarak gosterir",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-101",
+      "type": "single",
+      "scenario": "Tekrar amacli olarak aktif kubectl context bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl config current-context",
+          "hint_text": "Aktif context bilgisini gosterir",
           "hint_partial": "kubectl config ..."
         }
       ]
     },
     {
-      "id": "jk8s-005-r35-exp-045",
+      "id": "jk8s-exp-102",
       "type": "single",
-      "scenario": "Release kontrolunde deploy sonrasi `bastion-245-35-123` pod detayini goster.",
+      "scenario": "Hizli denemede tum kubectl context'lerini listele.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "kubectl describe pod bastion-245-35-123",
-          "hint_text": "Pod detayi icin `kubectl describe pod` kullan.",
-          "hint_partial": "kubectl describe ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-006-r36-exp-046",
-      "type": "single",
-      "scenario": "Operasyon devrinde kesinti incelemesinde `db-246-36-36-123` pod loglarini goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl logs db-246-36-36-123",
-          "hint_text": "Pod loglari icin `kubectl logs` kullan.",
-          "hint_partial": "kubectl logs ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-007-r37-exp-047",
-      "type": "single",
-      "scenario": "On-call gorevinde yeni acilan hostta namespace'leri listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get namespaces",
-          "hint_text": "Namespace listesi icin `kubectl get namespaces` kullan.",
-          "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-008-r38-exp-048",
-      "type": "single",
-      "scenario": "Kesinti sonrasi runbook adiminda deployment'leri listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get deployments",
-          "hint_text": "Deployment listesi icin `kubectl get deployments` kullan.",
-          "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-009-r39-exp-049",
-      "type": "single",
-      "scenario": "Gece vardiyasinda operasyon kontrolunde `bastion-39` deployment replica sayisini 3 yap.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl scale deployment bastion-39 --replicas=4",
-          "hint_text": "Replica ayari icin `kubectl scale deployment` kullan.",
-          "hint_partial": "kubectl scale ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-010-r40-exp-050",
-      "type": "single",
-      "scenario": "Audit sirasinda incident sonrasinda `deployment.yml` manifest'ini uygula.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl apply -f deployment.yml",
-          "hint_text": "Manifest uygulamak icin `kubectl apply -f` kullan.",
-          "hint_partial": "kubectl apply ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-001-r41-exp-051",
-      "type": "single",
-      "scenario": "Bakim penceresinde bakim oncesi cluster'daki pod'lari listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get pods",
-          "hint_text": "Pod listesi icin `kubectl get pods` kullan.",
-          "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-002-r42-exp-052",
-      "type": "single",
-      "scenario": "Incident triajinda troubleshooting sirasinda service'leri listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get services",
-          "hint_text": "Service listesi icin `kubectl get services` kullan.",
-          "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-003-r43-exp-053",
-      "type": "single",
-      "scenario": "Release kontrolunde deploy sonrasi node'lari listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get nodes",
-          "hint_text": "Node listesi icin `kubectl get nodes` kullan.",
-          "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-004-r44-exp-054",
-      "type": "single",
-      "scenario": "Operasyon devrinde kesinti incelemesinde aktif kubectl context bilgisini goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl config current-context",
-          "hint_text": "Current context icin `kubectl config current-context` kullan.",
+          "answer": "kubectl config get-contexts",
+          "hint_text": "Tum context'leri listeler",
           "hint_partial": "kubectl config ..."
         }
       ]
     },
     {
-      "id": "jk8s-005-r45-exp-055",
+      "id": "jk8s-exp-103",
       "type": "single",
-      "scenario": "On-call gorevinde yeni acilan hostta `cache-255-45-45-123` pod detayini goster.",
+      "scenario": "Junior alistirmasinda staging-cluster context'ine gec.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "kubectl describe pod cache-255-45-45-123",
-          "hint_text": "Pod detayi icin `kubectl describe pod` kullan.",
-          "hint_partial": "kubectl describe ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-006-r46-exp-056",
-      "type": "single",
-      "scenario": "Kesinti sonrasi runbook adiminda `queue-46-123` pod loglarini goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl logs queue-46-123",
-          "hint_text": "Pod loglari icin `kubectl logs` kullan.",
-          "hint_partial": "kubectl logs ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-007-r47-exp-057",
-      "type": "single",
-      "scenario": "Gece vardiyasinda operasyon kontrolunde namespace'leri listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get namespaces",
-          "hint_text": "Namespace listesi icin `kubectl get namespaces` kullan.",
-          "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-008-r48-exp-058",
-      "type": "single",
-      "scenario": "Audit sirasinda incident sonrasinda deployment'leri listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get deployments",
-          "hint_text": "Deployment listesi icin `kubectl get deployments` kullan.",
-          "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-009-r49-exp-059",
-      "type": "single",
-      "scenario": "Bakim penceresinde bakim oncesi `queue-259-259-49` deployment replica sayisini 3 yap.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl scale deployment queue-259-259-49 --replicas=2",
-          "hint_text": "Replica ayari icin `kubectl scale deployment` kullan.",
-          "hint_partial": "kubectl scale ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-010-r50-exp-060",
-      "type": "single",
-      "scenario": "Incident triajinda troubleshooting sirasinda `deployment.yml` manifest'ini uygula.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl apply -f deployment.yml",
-          "hint_text": "Manifest uygulamak icin `kubectl apply -f` kullan.",
-          "hint_partial": "kubectl apply ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-001-r51-exp-061",
-      "type": "single",
-      "scenario": "Release kontrolunde deploy sonrasi cluster'daki pod'lari listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get pods",
-          "hint_text": "Pod listesi icin `kubectl get pods` kullan.",
-          "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-002-r52-exp-062",
-      "type": "single",
-      "scenario": "Operasyon devrinde kesinti incelemesinde service'leri listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get services",
-          "hint_text": "Service listesi icin `kubectl get services` kullan.",
-          "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-003-r53-exp-063",
-      "type": "single",
-      "scenario": "On-call gorevinde yeni acilan hostta node'lari listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get nodes",
-          "hint_text": "Node listesi icin `kubectl get nodes` kullan.",
-          "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-004-r54-exp-064",
-      "type": "single",
-      "scenario": "Kesinti sonrasi runbook adiminda aktif kubectl context bilgisini goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl config current-context",
-          "hint_text": "Current context icin `kubectl config current-context` kullan.",
+          "answer": "kubectl config use-context staging-cluster",
+          "hint_text": "Belirli bir context'e gecis yapar",
           "hint_partial": "kubectl config ..."
         }
       ]
     },
     {
-      "id": "jk8s-005-r55-exp-065",
+      "id": "jk8s-exp-104",
       "type": "single",
-      "scenario": "Gece vardiyasinda operasyon kontrolunde `bastion-55-123` pod detayini goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl describe pod bastion-55-123",
-          "hint_text": "Pod detayi icin `kubectl describe pod` kullan.",
-          "hint_partial": "kubectl describe ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-006-r56-exp-066",
-      "type": "single",
-      "scenario": "Audit sirasinda incident sonrasinda `proxy-56-123` pod loglarini goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl logs proxy-56-123",
-          "hint_text": "Pod loglari icin `kubectl logs` kullan.",
-          "hint_partial": "kubectl logs ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-007-r57-exp-067",
-      "type": "single",
-      "scenario": "Bakim penceresinde bakim oncesi namespace'leri listele.",
+      "scenario": "Komut pratigi sirasinda namespace'leri listele.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "kubectl get namespaces",
-          "hint_text": "Namespace listesi icin `kubectl get namespaces` kullan.",
+          "hint_text": "Namespace listesini gosterir",
           "hint_partial": "kubectl get ..."
         }
       ]
     },
     {
-      "id": "jk8s-008-r58-exp-068",
+      "id": "jk8s-exp-105",
       "type": "single",
-      "scenario": "Incident triajinda troubleshooting sirasinda deployment'leri listele.",
+      "scenario": "Hazirlik asamasinda dev adinda bir namespace olustur.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "kubectl get deployments",
-          "hint_text": "Deployment listesi icin `kubectl get deployments` kullan.",
-          "hint_partial": "kubectl get ..."
+          "answer": "kubectl create namespace dev",
+          "hint_text": "Yeni namespace olusturur",
+          "hint_partial": "kubectl create ..."
         }
       ]
     },
     {
-      "id": "jk8s-009-r59-exp-069",
+      "id": "jk8s-exp-106",
       "type": "single",
-      "scenario": "Release kontrolunde deploy sonrasi `bastion-269-59` deployment replica sayisini 3 yap.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl scale deployment bastion-269-59 --replicas=6",
-          "hint_text": "Replica ayari icin `kubectl scale deployment` kullan.",
-          "hint_partial": "kubectl scale ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-010-r60-exp-070",
-      "type": "single",
-      "scenario": "Operasyon devrinde kesinti incelemesinde `deployment.yml` manifest'ini uygula.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl apply -f deployment.yml",
-          "hint_text": "Manifest uygulamak icin `kubectl apply -f` kullan.",
-          "hint_partial": "kubectl apply ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-001-r61-exp-071",
-      "type": "single",
-      "scenario": "On-call gorevinde yeni acilan hostta cluster'daki pod'lari listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get pods",
-          "hint_text": "Pod listesi icin `kubectl get pods` kullan.",
-          "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-002-r62-exp-072",
-      "type": "single",
-      "scenario": "Kesinti sonrasi runbook adiminda service'leri listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get services",
-          "hint_text": "Service listesi icin `kubectl get services` kullan.",
-          "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-003-r63-exp-073",
-      "type": "single",
-      "scenario": "Gece vardiyasinda operasyon kontrolunde node'lari listele.",
+      "scenario": "Tekrar amacli olarak cluster node'larini listele.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "kubectl get nodes",
-          "hint_text": "Node listesi icin `kubectl get nodes` kullan.",
+          "hint_text": "Node listesini gosterir",
           "hint_partial": "kubectl get ..."
         }
       ]
     },
     {
-      "id": "jk8s-004-r64-exp-074",
+      "id": "jk8s-exp-107",
       "type": "single",
-      "scenario": "Audit sirasinda incident sonrasinda aktif kubectl context bilgisini goster.",
+      "scenario": "Hizli denemede cluster bilgilerini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "kubectl config current-context",
-          "hint_text": "Current context icin `kubectl config current-context` kullan.",
+          "answer": "kubectl cluster-info",
+          "hint_text": "Cluster endpoint bilgilerini gosterir",
+          "hint_partial": "kubectl cluster-info ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-108",
+      "type": "single",
+      "scenario": "Junior alistirmasinda mevcut context icin varsayilan namespace'i dev yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl config set-context --current --namespace=dev",
+          "hint_text": "Mevcut context icin varsayilan namespace ayarlar",
           "hint_partial": "kubectl config ..."
         }
       ]
     },
     {
-      "id": "jk8s-005-r65-exp-075",
+      "id": "jk8s-exp-109",
       "type": "single",
-      "scenario": "Bakim penceresinde bakim oncesi `queue-275-275-65-123` pod detayini goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl describe pod queue-275-275-65-123",
-          "hint_text": "Pod detayi icin `kubectl describe pod` kullan.",
-          "hint_partial": "kubectl describe ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-006-r66-exp-076",
-      "type": "single",
-      "scenario": "Incident triajinda troubleshooting sirasinda `cache-276-66-66-66-123` pod loglarini goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl logs cache-276-66-66-66-123",
-          "hint_text": "Pod loglari icin `kubectl logs` kullan.",
-          "hint_partial": "kubectl logs ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-007-r67-exp-077",
-      "type": "single",
-      "scenario": "Release kontrolunde deploy sonrasi namespace'leri listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get namespaces",
-          "hint_text": "Namespace listesi icin `kubectl get namespaces` kullan.",
-          "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-008-r68-exp-078",
-      "type": "single",
-      "scenario": "Operasyon devrinde kesinti incelemesinde deployment'leri listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get deployments",
-          "hint_text": "Deployment listesi icin `kubectl get deployments` kullan.",
-          "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-009-r69-exp-079",
-      "type": "single",
-      "scenario": "On-call gorevinde yeni acilan hostta `cache-279-69-69` deployment replica sayisini 3 yap.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl scale deployment cache-279-69-69 --replicas=4",
-          "hint_text": "Replica ayari icin `kubectl scale deployment` kullan.",
-          "hint_partial": "kubectl scale ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-010-r70-exp-080",
-      "type": "single",
-      "scenario": "Kesinti sonrasi runbook adiminda `deployment.yml` manifest'ini uygula.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl apply -f deployment.yml",
-          "hint_text": "Manifest uygulamak icin `kubectl apply -f` kullan.",
-          "hint_partial": "kubectl apply ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-001-r71-exp-081",
-      "type": "single",
-      "scenario": "Gece vardiyasinda operasyon kontrolunde cluster'daki pod'lari listele.",
+      "scenario": "Komut pratigi sirasinda pod'lari listele.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "kubectl get pods",
-          "hint_text": "Pod listesi icin `kubectl get pods` kullan.",
+          "hint_text": "Pod listesini gosterir",
           "hint_partial": "kubectl get ..."
         }
       ]
     },
     {
-      "id": "jk8s-002-r72-exp-082",
+      "id": "jk8s-exp-110",
       "type": "single",
-      "scenario": "Audit sirasinda incident sonrasinda service'leri listele.",
+      "scenario": "Hazirlik asamasinda tum namespace'lerdeki pod'lari listele.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "kubectl get services",
-          "hint_text": "Service listesi icin `kubectl get services` kullan.",
+          "answer": "kubectl get pods -A",
+          "hint_text": "Tum namespace'lerdeki pod'lari listeler",
           "hint_partial": "kubectl get ..."
         }
       ]
     },
     {
-      "id": "jk8s-003-r73-exp-083",
+      "id": "jk8s-exp-111",
       "type": "single",
-      "scenario": "Bakim penceresinde bakim oncesi node'lari listele.",
+      "scenario": "Tekrar amacli olarak dev namespace'indeki pod'lari listele.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "kubectl get nodes",
-          "hint_text": "Node listesi icin `kubectl get nodes` kullan.",
+          "answer": "kubectl get pods -n dev",
+          "hint_text": "Belirli namespace'teki pod'lari listeler",
           "hint_partial": "kubectl get ..."
         }
       ]
     },
     {
-      "id": "jk8s-004-r74-exp-084",
+      "id": "jk8s-exp-112",
       "type": "single",
-      "scenario": "Incident triajinda troubleshooting sirasinda aktif kubectl context bilgisini goster.",
+      "scenario": "Hizli denemede pod'lari node ve IP bilgileriyle listele.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "kubectl config current-context",
-          "hint_text": "Current context icin `kubectl config current-context` kullan.",
-          "hint_partial": "kubectl config ..."
+          "answer": "kubectl get pods -o wide",
+          "hint_text": "Pod'lari ek kolonlarla gosterir",
+          "hint_partial": "kubectl get ..."
         }
       ]
     },
     {
-      "id": "jk8s-005-r75-exp-085",
+      "id": "jk8s-exp-113",
       "type": "single",
-      "scenario": "Release kontrolunde deploy sonrasi `bastion-285-75-123` pod detayini goster.",
+      "scenario": "Junior alistirmasinda web-abc123 pod detayini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "kubectl describe pod bastion-285-75-123",
-          "hint_text": "Pod detayi icin `kubectl describe pod` kullan.",
+          "answer": "kubectl describe pod web-abc123",
+          "hint_text": "Pod detaylarini gosterir",
           "hint_partial": "kubectl describe ..."
         }
       ]
     },
     {
-      "id": "jk8s-006-r76-exp-086",
+      "id": "jk8s-exp-114",
       "type": "single",
-      "scenario": "Operasyon devrinde kesinti incelemesinde `db-286-76-76-123` pod loglarini goster.",
+      "scenario": "Komut pratigi sirasinda web-abc123 pod loglarini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "kubectl logs db-286-76-76-123",
-          "hint_text": "Pod loglari icin `kubectl logs` kullan.",
+          "answer": "kubectl logs web-abc123",
+          "hint_text": "Pod loglarini gosterir",
           "hint_partial": "kubectl logs ..."
         }
       ]
     },
     {
-      "id": "jk8s-007-r77-exp-087",
+      "id": "jk8s-exp-115",
       "type": "single",
-      "scenario": "On-call gorevinde yeni acilan hostta namespace'leri listele.",
+      "scenario": "Hazirlik asamasinda web-abc123 pod loglarini canli takip et.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "kubectl get namespaces",
-          "hint_text": "Namespace listesi icin `kubectl get namespaces` kullan.",
+          "answer": "kubectl logs -f web-abc123",
+          "hint_text": "Log akisini canli izler",
+          "hint_partial": "kubectl logs ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-116",
+      "type": "single",
+      "scenario": "Tekrar amacli olarak api-7d9c pod'unun onceki container loglarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl logs api-7d9c --previous",
+          "hint_text": "Onceki container loglarini gosterir",
+          "hint_partial": "kubectl logs ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-117",
+      "type": "single",
+      "scenario": "Hizli denemede web-abc123 pod icinde shell ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl exec -it web-abc123 -- sh",
+          "hint_text": "Pod icinde interaktif komut calistirir",
+          "hint_partial": "kubectl exec ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-118",
+      "type": "single",
+      "scenario": "Junior alistirmasinda web-abc123 pod'unu sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl delete pod web-abc123",
+          "hint_text": "Pod'u siler",
+          "hint_partial": "kubectl delete ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-119",
+      "type": "single",
+      "scenario": "Komut pratigi sirasinda web-abc123 pod manifestini YAML olarak goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get pod web-abc123 -o yaml",
+          "hint_text": "Pod manifestini YAML olarak verir",
           "hint_partial": "kubectl get ..."
         }
       ]
     },
     {
-      "id": "jk8s-008-r78-exp-088",
+      "id": "jk8s-exp-120",
       "type": "single",
-      "scenario": "Kesinti sonrasi runbook adiminda deployment'leri listele.",
+      "scenario": "Hazirlik asamasinda pod kaynak kullanimlarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl top pods",
+          "hint_text": "Pod kaynak kullanimlarini gosterir",
+          "hint_partial": "kubectl top ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-121",
+      "type": "single",
+      "scenario": "Tekrar amacli olarak event'leri olusma zamanina gore sirali goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get events --sort-by=.metadata.creationTimestamp",
+          "hint_text": "Event kayitlarini listeler",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-122",
+      "type": "single",
+      "scenario": "Hizli denemede dev namespace'indeki tum temel kaynaklari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl get all -n dev",
+          "hint_text": "Temel kaynaklari birlikte listeler",
+          "hint_partial": "kubectl get ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-123",
+      "type": "single",
+      "scenario": "Junior alistirmasinda deployment'leri listele.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "kubectl get deployments",
-          "hint_text": "Deployment listesi icin `kubectl get deployments` kullan.",
+          "hint_text": "Deployment listesini gosterir",
           "hint_partial": "kubectl get ..."
         }
       ]
     },
     {
-      "id": "jk8s-009-r79-exp-089",
+      "id": "jk8s-exp-124",
       "type": "single",
-      "scenario": "Gece vardiyasinda operasyon kontrolunde `bastion-79` deployment replica sayisini 3 yap.",
+      "scenario": "Komut pratigi sirasinda dev namespace'indeki deployment'leri listele.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "kubectl scale deployment bastion-79 --replicas=2",
-          "hint_text": "Replica ayari icin `kubectl scale deployment` kullan.",
-          "hint_partial": "kubectl scale ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-010-r80-exp-090",
-      "type": "single",
-      "scenario": "Audit sirasinda incident sonrasinda `deployment.yml` manifest'ini uygula.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl apply -f deployment.yml",
-          "hint_text": "Manifest uygulamak icin `kubectl apply -f` kullan.",
-          "hint_partial": "kubectl apply ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-001-r81-exp-091",
-      "type": "single",
-      "scenario": "Bakim penceresinde bakim oncesi cluster'daki pod'lari listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get pods",
-          "hint_text": "Pod listesi icin `kubectl get pods` kullan.",
+          "answer": "kubectl get deployments -n dev",
+          "hint_text": "Namespace bazli deployment listesini gosterir",
           "hint_partial": "kubectl get ..."
         }
       ]
     },
     {
-      "id": "jk8s-002-r82-exp-092",
+      "id": "jk8s-exp-125",
       "type": "single",
-      "scenario": "Incident triajinda troubleshooting sirasinda service'leri listele.",
+      "scenario": "Hazirlik asamasinda web deployment detayini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "kubectl get services",
-          "hint_text": "Service listesi icin `kubectl get services` kullan.",
-          "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-003-r83-exp-093",
-      "type": "single",
-      "scenario": "Release kontrolunde deploy sonrasi node'lari listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get nodes",
-          "hint_text": "Node listesi icin `kubectl get nodes` kullan.",
-          "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-004-r84-exp-094",
-      "type": "single",
-      "scenario": "Operasyon devrinde kesinti incelemesinde aktif kubectl context bilgisini goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl config current-context",
-          "hint_text": "Current context icin `kubectl config current-context` kullan.",
-          "hint_partial": "kubectl config ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-005-r85-exp-095",
-      "type": "single",
-      "scenario": "On-call gorevinde yeni acilan hostta `cache-295-85-85-123` pod detayini goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl describe pod cache-295-85-85-123",
-          "hint_text": "Pod detayi icin `kubectl describe pod` kullan.",
+          "answer": "kubectl describe deployment web",
+          "hint_text": "Deployment detaylarini gosterir",
           "hint_partial": "kubectl describe ..."
         }
       ]
     },
     {
-      "id": "jk8s-006-r86-exp-096",
+      "id": "jk8s-exp-126",
       "type": "single",
-      "scenario": "Kesinti sonrasi runbook adiminda `queue-86-123` pod loglarini goster.",
+      "scenario": "Tekrar amacli olarak web deployment replica sayisini 3 yap.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "kubectl logs queue-86-123",
-          "hint_text": "Pod loglari icin `kubectl logs` kullan.",
-          "hint_partial": "kubectl logs ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-007-r87-exp-097",
-      "type": "single",
-      "scenario": "Gece vardiyasinda operasyon kontrolunde namespace'leri listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get namespaces",
-          "hint_text": "Namespace listesi icin `kubectl get namespaces` kullan.",
-          "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-008-r88-exp-098",
-      "type": "single",
-      "scenario": "Audit sirasinda incident sonrasinda deployment'leri listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get deployments",
-          "hint_text": "Deployment listesi icin `kubectl get deployments` kullan.",
-          "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-009-r89-exp-099",
-      "type": "single",
-      "scenario": "Bakim penceresinde bakim oncesi `queue-299-299-89` deployment replica sayisini 3 yap.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl scale deployment queue-299-299-89 --replicas=6",
-          "hint_text": "Replica ayari icin `kubectl scale deployment` kullan.",
+          "answer": "kubectl scale deployment web --replicas=3",
+          "hint_text": "Deployment replica sayisini degistirir",
           "hint_partial": "kubectl scale ..."
         }
       ]
     },
     {
-      "id": "jk8s-010-r90-exp-100",
+      "id": "jk8s-exp-127",
       "type": "single",
-      "scenario": "Incident triajinda troubleshooting sirasinda `deployment.yml` manifest'ini uygula.",
+      "scenario": "Hizli denemede web deployment rollout durumunu izle.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "kubectl apply -f deployment.yml",
-          "hint_text": "Manifest uygulamak icin `kubectl apply -f` kullan.",
+          "answer": "kubectl rollout status deployment/web",
+          "hint_text": "Rollout durumunu takip eder",
+          "hint_partial": "kubectl rollout ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-128",
+      "type": "single",
+      "scenario": "Junior alistirmasinda web deployment rollout gecmisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl rollout history deployment/web",
+          "hint_text": "Rollout gecmisini gosterir",
+          "hint_partial": "kubectl rollout ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-129",
+      "type": "single",
+      "scenario": "Komut pratigi sirasinda web deployment'ini yeniden baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl rollout restart deployment/web",
+          "hint_text": "Deployment'i yeniden baslatir",
+          "hint_partial": "kubectl rollout ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-130",
+      "type": "single",
+      "scenario": "Hazirlik asamasinda web deployment'indeki image'i nginx:1.25 olarak guncelle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl set image deployment/web web=nginx:1.25",
+          "hint_text": "Container image bilgisini gunceller",
+          "hint_partial": "kubectl set ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-131",
+      "type": "single",
+      "scenario": "Tekrar amacli olarak web deployment'ini onceki surume geri al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl rollout undo deployment/web",
+          "hint_text": "Onceki rollout'a geri doner",
+          "hint_partial": "kubectl rollout ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-132",
+      "type": "single",
+      "scenario": "Hizli denemede deployment.yaml manifestini uygula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl apply -f deployment.yaml",
+          "hint_text": "Manifest veya klasor uygular",
           "hint_partial": "kubectl apply ..."
         }
       ]
     },
     {
-      "id": "jk8s-001-r91-exp-101",
+      "id": "jk8s-exp-133",
       "type": "single",
-      "scenario": "Release kontrolunde deploy sonrasi cluster'daki pod'lari listele.",
+      "scenario": "Junior alistirmasinda k8s/ klasorundeki tum manifestleri uygula.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "kubectl get pods",
-          "hint_text": "Pod listesi icin `kubectl get pods` kullan.",
-          "hint_partial": "kubectl get ..."
+          "answer": "kubectl apply -f k8s/",
+          "hint_text": "Manifest veya klasor uygular",
+          "hint_partial": "kubectl apply ..."
         }
       ]
     },
     {
-      "id": "jk8s-002-r92-exp-102",
+      "id": "jk8s-exp-134",
       "type": "single",
-      "scenario": "Operasyon devrinde kesinti incelemesinde service'leri listele.",
+      "scenario": "Komut pratigi sirasinda deployment.yaml ile olusan kaynaklari sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl delete -f deployment.yaml",
+          "hint_text": "Manifest ile olusan kaynaklari siler",
+          "hint_partial": "kubectl delete ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-135",
+      "type": "single",
+      "scenario": "Hazirlik asamasinda web deployment'ini 80 portuyla web-svc adinda service olarak expose et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "kubectl expose deployment web --port=80 --target-port=8080 --name=web-svc",
+          "hint_text": "Deployment'i service olarak aciga cikarir",
+          "hint_partial": "kubectl expose ..."
+        }
+      ]
+    },
+    {
+      "id": "jk8s-exp-136",
+      "type": "single",
+      "scenario": "Tekrar amacli olarak service'leri listele.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "kubectl get services",
-          "hint_text": "Service listesi icin `kubectl get services` kullan.",
+          "hint_text": "Service listesini gosterir",
           "hint_partial": "kubectl get ..."
         }
       ]
     },
     {
-      "id": "jk8s-003-r93-exp-103",
+      "id": "jk8s-exp-137",
       "type": "single",
-      "scenario": "On-call gorevinde yeni acilan hostta node'lari listele.",
+      "scenario": "Hizli denemede web-svc service detayini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "kubectl get nodes",
-          "hint_text": "Node listesi icin `kubectl get nodes` kullan.",
-          "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-004-r94-exp-104",
-      "type": "single",
-      "scenario": "Kesinti sonrasi runbook adiminda aktif kubectl context bilgisini goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl config current-context",
-          "hint_text": "Current context icin `kubectl config current-context` kullan.",
-          "hint_partial": "kubectl config ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-005-r95-exp-105",
-      "type": "single",
-      "scenario": "Gece vardiyasinda operasyon kontrolunde `bastion-95-123` pod detayini goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl describe pod bastion-95-123",
-          "hint_text": "Pod detayi icin `kubectl describe pod` kullan.",
+          "answer": "kubectl describe service web-svc",
+          "hint_text": "Service detaylarini gosterir",
           "hint_partial": "kubectl describe ..."
         }
       ]
     },
     {
-      "id": "jk8s-006-r96-exp-106",
+      "id": "jk8s-exp-138",
       "type": "single",
-      "scenario": "Audit sirasinda incident sonrasinda `proxy-96-123` pod loglarini goster.",
+      "scenario": "Junior alistirmasinda web-svc service'ine local 8080 portundan eris.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "kubectl logs proxy-96-123",
-          "hint_text": "Pod loglari icin `kubectl logs` kullan.",
-          "hint_partial": "kubectl logs ..."
+          "answer": "kubectl port-forward service/web-svc 8080:80",
+          "hint_text": "Local portu cluster kaynagina baglar",
+          "hint_partial": "kubectl port-forward ..."
         }
       ]
     },
     {
-      "id": "jk8s-007-r97-exp-107",
+      "id": "jk8s-exp-139",
       "type": "single",
-      "scenario": "Bakim penceresinde bakim oncesi namespace'leri listele.",
+      "scenario": "Komut pratigi sirasinda web-svc service endpoint'lerini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "kubectl get namespaces",
-          "hint_text": "Namespace listesi icin `kubectl get namespaces` kullan.",
+          "answer": "kubectl get endpoints web-svc",
+          "hint_text": "Service endpoint'lerini gosterir",
           "hint_partial": "kubectl get ..."
         }
       ]
     },
     {
-      "id": "jk8s-008-r98-exp-108",
+      "id": "jk8s-exp-140",
       "type": "single",
-      "scenario": "Incident triajinda troubleshooting sirasinda deployment'leri listele.",
+      "scenario": "Hazirlik asamasinda replicaSet'leri listele.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "kubectl get deployments",
-          "hint_text": "Deployment listesi icin `kubectl get deployments` kullan.",
+          "answer": "kubectl get replicasets",
+          "hint_text": "ReplicaSet listesini gosterir",
           "hint_partial": "kubectl get ..."
         }
       ]
     },
     {
-      "id": "jk8s-009-r99-exp-109",
+      "id": "jk8s-exp-141",
       "type": "single",
-      "scenario": "Release kontrolunde deploy sonrasi `bastion-309-99` deployment replica sayisini 3 yap.",
+      "scenario": "Tekrar amacli olarak configMap'leri listele.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "kubectl scale deployment bastion-309-99 --replicas=4",
-          "hint_text": "Replica ayari icin `kubectl scale deployment` kullan.",
-          "hint_partial": "kubectl scale ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-010-r100-exp-110",
-      "type": "single",
-      "scenario": "Operasyon devrinde kesinti incelemesinde `deployment.yml` manifest'ini uygula.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl apply -f deployment.yml",
-          "hint_text": "Manifest uygulamak icin `kubectl apply -f` kullan.",
-          "hint_partial": "kubectl apply ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-001-r101-exp-111",
-      "type": "single",
-      "scenario": "On-call gorevinde yeni acilan hostta cluster'daki pod'lari listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get pods",
-          "hint_text": "Pod listesi icin `kubectl get pods` kullan.",
+          "answer": "kubectl get configmaps",
+          "hint_text": "ConfigMap listesini gosterir",
           "hint_partial": "kubectl get ..."
         }
       ]
     },
     {
-      "id": "jk8s-002-r102-exp-112",
+      "id": "jk8s-exp-142",
       "type": "single",
-      "scenario": "Kesinti sonrasi runbook adiminda service'leri listele.",
+      "scenario": "Hizli denemede aPP_ENV=dev degeriyle app-config adinda ConfigMap olustur.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "kubectl get services",
-          "hint_text": "Service listesi icin `kubectl get services` kullan.",
-          "hint_partial": "kubectl get ..."
+          "answer": "kubectl create configmap app-config --from-literal=APP_ENV=dev",
+          "hint_text": "Literal degerlerden ConfigMap olusturur",
+          "hint_partial": "kubectl create ..."
         }
       ]
     },
     {
-      "id": "jk8s-003-r103-exp-113",
+      "id": "jk8s-exp-143",
       "type": "single",
-      "scenario": "Gece vardiyasinda operasyon kontrolunde node'lari listele.",
+      "scenario": "Junior alistirmasinda app-config ConfigMap detayini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "kubectl get nodes",
-          "hint_text": "Node listesi icin `kubectl get nodes` kullan.",
-          "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-004-r104-exp-114",
-      "type": "single",
-      "scenario": "Audit sirasinda incident sonrasinda aktif kubectl context bilgisini goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl config current-context",
-          "hint_text": "Current context icin `kubectl config current-context` kullan.",
-          "hint_partial": "kubectl config ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-005-r105-exp-115",
-      "type": "single",
-      "scenario": "Bakim penceresinde bakim oncesi `queue-315-315-105-123` pod detayini goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl describe pod queue-315-315-105-123",
-          "hint_text": "Pod detayi icin `kubectl describe pod` kullan.",
+          "answer": "kubectl describe configmap app-config",
+          "hint_text": "ConfigMap detaylarini gosterir",
           "hint_partial": "kubectl describe ..."
         }
       ]
     },
     {
-      "id": "jk8s-006-r106-exp-116",
+      "id": "jk8s-exp-144",
       "type": "single",
-      "scenario": "Incident triajinda troubleshooting sirasinda `cache-316-106-106-106-123` pod loglarini goster.",
+      "scenario": "Komut pratigi sirasinda secret'leri listele.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "kubectl logs cache-316-106-106-106-123",
-          "hint_text": "Pod loglari icin `kubectl logs` kullan.",
-          "hint_partial": "kubectl logs ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-007-r107-exp-117",
-      "type": "single",
-      "scenario": "Release kontrolunde deploy sonrasi namespace'leri listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get namespaces",
-          "hint_text": "Namespace listesi icin `kubectl get namespaces` kullan.",
+          "answer": "kubectl get secrets",
+          "hint_text": "Secret listesini gosterir",
           "hint_partial": "kubectl get ..."
         }
       ]
     },
     {
-      "id": "jk8s-008-r108-exp-118",
+      "id": "jk8s-exp-145",
       "type": "single",
-      "scenario": "Operasyon devrinde kesinti incelemesinde deployment'leri listele.",
+      "scenario": "Hazirlik asamasinda db-secret adinda generic secret olustur.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "kubectl get deployments",
-          "hint_text": "Deployment listesi icin `kubectl get deployments` kullan.",
-          "hint_partial": "kubectl get ..."
+          "answer": "kubectl create secret generic db-secret --from-literal=username=admin --from-literal=password=secret123",
+          "hint_text": "Generic secret olusturur",
+          "hint_partial": "kubectl create ..."
         }
       ]
     },
     {
-      "id": "jk8s-009-r109-exp-119",
+      "id": "jk8s-exp-146",
       "type": "single",
-      "scenario": "On-call gorevinde yeni acilan hostta `cache-319-109-109` deployment replica sayisini 3 yap.",
+      "scenario": "Tekrar amacli olarak db-secret secret detayini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "kubectl scale deployment cache-319-109-109 --replicas=2",
-          "hint_text": "Replica ayari icin `kubectl scale deployment` kullan.",
-          "hint_partial": "kubectl scale ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-010-r110-exp-120",
-      "type": "single",
-      "scenario": "Kesinti sonrasi runbook adiminda `deployment.yml` manifest'ini uygula.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl apply -f deployment.yml",
-          "hint_text": "Manifest uygulamak icin `kubectl apply -f` kullan.",
-          "hint_partial": "kubectl apply ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-001-r111-exp-121",
-      "type": "single",
-      "scenario": "Gece vardiyasinda operasyon kontrolunde cluster'daki pod'lari listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get pods",
-          "hint_text": "Pod listesi icin `kubectl get pods` kullan.",
-          "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-002-r112-exp-122",
-      "type": "single",
-      "scenario": "Audit sirasinda incident sonrasinda service'leri listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get services",
-          "hint_text": "Service listesi icin `kubectl get services` kullan.",
-          "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-003-r113-exp-123",
-      "type": "single",
-      "scenario": "Bakim penceresinde bakim oncesi node'lari listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get nodes",
-          "hint_text": "Node listesi icin `kubectl get nodes` kullan.",
-          "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-004-r114-exp-124",
-      "type": "single",
-      "scenario": "Incident triajinda troubleshooting sirasinda aktif kubectl context bilgisini goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl config current-context",
-          "hint_text": "Current context icin `kubectl config current-context` kullan.",
-          "hint_partial": "kubectl config ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-005-r115-exp-125",
-      "type": "single",
-      "scenario": "Release kontrolunde deploy sonrasi `bastion-325-115-123` pod detayini goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl describe pod bastion-325-115-123",
-          "hint_text": "Pod detayi icin `kubectl describe pod` kullan.",
+          "answer": "kubectl describe secret db-secret",
+          "hint_text": "Secret detaylarini gosterir",
           "hint_partial": "kubectl describe ..."
         }
       ]
     },
     {
-      "id": "jk8s-006-r116-exp-126",
+      "id": "jk8s-exp-147",
       "type": "single",
-      "scenario": "Operasyon devrinde kesinti incelemesinde `db-326-116-116-123` pod loglarini goster.",
+      "scenario": "Hizli denemede ingress kaynaklarini listele.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "kubectl logs db-326-116-116-123",
-          "hint_text": "Pod loglari icin `kubectl logs` kullan.",
-          "hint_partial": "kubectl logs ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-007-r117-exp-127",
-      "type": "single",
-      "scenario": "On-call gorevinde yeni acilan hostta namespace'leri listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get namespaces",
-          "hint_text": "Namespace listesi icin `kubectl get namespaces` kullan.",
+          "answer": "kubectl get ingress",
+          "hint_text": "Ingress listesini gosterir",
           "hint_partial": "kubectl get ..."
         }
       ]
     },
     {
-      "id": "jk8s-008-r118-exp-128",
+      "id": "jk8s-exp-148",
       "type": "single",
-      "scenario": "Kesinti sonrasi runbook adiminda deployment'leri listele.",
+      "scenario": "Junior alistirmasinda web-ingress ingress detayini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "kubectl get deployments",
-          "hint_text": "Deployment listesi icin `kubectl get deployments` kullan.",
-          "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-009-r119-exp-129",
-      "type": "single",
-      "scenario": "Gece vardiyasinda operasyon kontrolunde `bastion-119` deployment replica sayisini 3 yap.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl scale deployment bastion-119 --replicas=6",
-          "hint_text": "Replica ayari icin `kubectl scale deployment` kullan.",
-          "hint_partial": "kubectl scale ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-010-r120-exp-130",
-      "type": "single",
-      "scenario": "Audit sirasinda incident sonrasinda `deployment.yml` manifest'ini uygula.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl apply -f deployment.yml",
-          "hint_text": "Manifest uygulamak icin `kubectl apply -f` kullan.",
-          "hint_partial": "kubectl apply ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-001-r121-exp-131",
-      "type": "single",
-      "scenario": "Bakim penceresinde bakim oncesi cluster'daki pod'lari listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get pods",
-          "hint_text": "Pod listesi icin `kubectl get pods` kullan.",
-          "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-002-r122-exp-132",
-      "type": "single",
-      "scenario": "Incident triajinda troubleshooting sirasinda service'leri listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get services",
-          "hint_text": "Service listesi icin `kubectl get services` kullan.",
-          "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-003-r123-exp-133",
-      "type": "single",
-      "scenario": "Release kontrolunde deploy sonrasi node'lari listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get nodes",
-          "hint_text": "Node listesi icin `kubectl get nodes` kullan.",
-          "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-004-r124-exp-134",
-      "type": "single",
-      "scenario": "Operasyon devrinde kesinti incelemesinde aktif kubectl context bilgisini goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl config current-context",
-          "hint_text": "Current context icin `kubectl config current-context` kullan.",
-          "hint_partial": "kubectl config ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-005-r125-exp-135",
-      "type": "single",
-      "scenario": "On-call gorevinde yeni acilan hostta `cache-335-125-125-123` pod detayini goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl describe pod cache-335-125-125-123",
-          "hint_text": "Pod detayi icin `kubectl describe pod` kullan.",
+          "answer": "kubectl describe ingress web-ingress",
+          "hint_text": "Ingress detaylarini gosterir",
           "hint_partial": "kubectl describe ..."
         }
       ]
     },
     {
-      "id": "jk8s-006-r126-exp-136",
+      "id": "jk8s-exp-149",
       "type": "single",
-      "scenario": "Kesinti sonrasi runbook adiminda `queue-126-123` pod loglarini goster.",
+      "scenario": "Komut pratigi sirasinda persistentVolumeClaim'leri listele.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "kubectl logs queue-126-123",
-          "hint_text": "Pod loglari icin `kubectl logs` kullan.",
-          "hint_partial": "kubectl logs ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-007-r127-exp-137",
-      "type": "single",
-      "scenario": "Gece vardiyasinda operasyon kontrolunde namespace'leri listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get namespaces",
-          "hint_text": "Namespace listesi icin `kubectl get namespaces` kullan.",
+          "answer": "kubectl get pvc",
+          "hint_text": "PVC listesini gosterir",
           "hint_partial": "kubectl get ..."
         }
       ]
     },
     {
-      "id": "jk8s-008-r128-exp-138",
+      "id": "jk8s-exp-150",
       "type": "single",
-      "scenario": "Audit sirasinda incident sonrasinda deployment'leri listele.",
+      "scenario": "Hazirlik asamasinda persistentVolume'lari listele.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "kubectl get deployments",
-          "hint_text": "Deployment listesi icin `kubectl get deployments` kullan.",
+          "answer": "kubectl get pv",
+          "hint_text": "PV listesini gosterir",
           "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-009-r129-exp-139",
-      "type": "single",
-      "scenario": "Bakim penceresinde bakim oncesi `queue-339-339-129` deployment replica sayisini 3 yap.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl scale deployment queue-339-339-129 --replicas=4",
-          "hint_text": "Replica ayari icin `kubectl scale deployment` kullan.",
-          "hint_partial": "kubectl scale ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-010-r130-exp-140",
-      "type": "single",
-      "scenario": "Incident triajinda troubleshooting sirasinda `deployment.yml` manifest'ini uygula.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl apply -f deployment.yml",
-          "hint_text": "Manifest uygulamak icin `kubectl apply -f` kullan.",
-          "hint_partial": "kubectl apply ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-001-r131-exp-141",
-      "type": "single",
-      "scenario": "Release kontrolunde deploy sonrasi cluster'daki pod'lari listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get pods",
-          "hint_text": "Pod listesi icin `kubectl get pods` kullan.",
-          "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-002-r132-exp-142",
-      "type": "single",
-      "scenario": "Operasyon devrinde kesinti incelemesinde service'leri listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get services",
-          "hint_text": "Service listesi icin `kubectl get services` kullan.",
-          "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-003-r133-exp-143",
-      "type": "single",
-      "scenario": "On-call gorevinde yeni acilan hostta node'lari listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get nodes",
-          "hint_text": "Node listesi icin `kubectl get nodes` kullan.",
-          "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-004-r134-exp-144",
-      "type": "single",
-      "scenario": "Kesinti sonrasi runbook adiminda aktif kubectl context bilgisini goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl config current-context",
-          "hint_text": "Current context icin `kubectl config current-context` kullan.",
-          "hint_partial": "kubectl config ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-005-r135-exp-145",
-      "type": "single",
-      "scenario": "Gece vardiyasinda operasyon kontrolunde `bastion-135-123` pod detayini goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl describe pod bastion-135-123",
-          "hint_text": "Pod detayi icin `kubectl describe pod` kullan.",
-          "hint_partial": "kubectl describe ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-006-r136-exp-146",
-      "type": "single",
-      "scenario": "Audit sirasinda incident sonrasinda `proxy-136-123` pod loglarini goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl logs proxy-136-123",
-          "hint_text": "Pod loglari icin `kubectl logs` kullan.",
-          "hint_partial": "kubectl logs ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-007-r137-exp-147",
-      "type": "single",
-      "scenario": "Bakim penceresinde bakim oncesi namespace'leri listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get namespaces",
-          "hint_text": "Namespace listesi icin `kubectl get namespaces` kullan.",
-          "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-008-r138-exp-148",
-      "type": "single",
-      "scenario": "Incident triajinda troubleshooting sirasinda deployment'leri listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get deployments",
-          "hint_text": "Deployment listesi icin `kubectl get deployments` kullan.",
-          "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-009-r139-exp-149",
-      "type": "single",
-      "scenario": "Release kontrolunde deploy sonrasi `bastion-349-139` deployment replica sayisini 3 yap.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl scale deployment bastion-349-139 --replicas=2",
-          "hint_text": "Replica ayari icin `kubectl scale deployment` kullan.",
-          "hint_partial": "kubectl scale ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-010-r140-exp-150",
-      "type": "single",
-      "scenario": "Operasyon devrinde kesinti incelemesinde `deployment.yml` manifest'ini uygula.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl apply -f deployment.yml",
-          "hint_text": "Manifest uygulamak icin `kubectl apply -f` kullan.",
-          "hint_partial": "kubectl apply ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-001-r141-exp-151",
-      "type": "single",
-      "scenario": "On-call gorevinde yeni acilan hostta cluster'daki pod'lari listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get pods",
-          "hint_text": "Pod listesi icin `kubectl get pods` kullan.",
-          "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-002-r142-exp-152",
-      "type": "single",
-      "scenario": "Kesinti sonrasi runbook adiminda service'leri listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get services",
-          "hint_text": "Service listesi icin `kubectl get services` kullan.",
-          "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-003-r143-exp-153",
-      "type": "single",
-      "scenario": "Gece vardiyasinda operasyon kontrolunde node'lari listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get nodes",
-          "hint_text": "Node listesi icin `kubectl get nodes` kullan.",
-          "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-004-r144-exp-154",
-      "type": "single",
-      "scenario": "Audit sirasinda incident sonrasinda aktif kubectl context bilgisini goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl config current-context",
-          "hint_text": "Current context icin `kubectl config current-context` kullan.",
-          "hint_partial": "kubectl config ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-005-r145-exp-155",
-      "type": "single",
-      "scenario": "Bakim penceresinde bakim oncesi `queue-355-355-145-123` pod detayini goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl describe pod queue-355-355-145-123",
-          "hint_text": "Pod detayi icin `kubectl describe pod` kullan.",
-          "hint_partial": "kubectl describe ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-006-r146-exp-156",
-      "type": "single",
-      "scenario": "Incident triajinda troubleshooting sirasinda `cache-356-146-146-146-123` pod loglarini goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl logs cache-356-146-146-146-123",
-          "hint_text": "Pod loglari icin `kubectl logs` kullan.",
-          "hint_partial": "kubectl logs ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-007-r147-exp-157",
-      "type": "single",
-      "scenario": "Release kontrolunde deploy sonrasi namespace'leri listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get namespaces",
-          "hint_text": "Namespace listesi icin `kubectl get namespaces` kullan.",
-          "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-008-r148-exp-158",
-      "type": "single",
-      "scenario": "Operasyon devrinde kesinti incelemesinde deployment'leri listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get deployments",
-          "hint_text": "Deployment listesi icin `kubectl get deployments` kullan.",
-          "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-009-r149-exp-159",
-      "type": "single",
-      "scenario": "On-call gorevinde yeni acilan hostta `cache-359-149-149` deployment replica sayisini 3 yap.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl scale deployment cache-359-149-149 --replicas=6",
-          "hint_text": "Replica ayari icin `kubectl scale deployment` kullan.",
-          "hint_partial": "kubectl scale ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-010-r150-exp-160",
-      "type": "single",
-      "scenario": "Kesinti sonrasi runbook adiminda `deployment.yml` manifest'ini uygula.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl apply -f deployment.yml",
-          "hint_text": "Manifest uygulamak icin `kubectl apply -f` kullan.",
-          "hint_partial": "kubectl apply ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-001-r151-exp-161",
-      "type": "single",
-      "scenario": "Gece vardiyasinda operasyon kontrolunde cluster'daki pod'lari listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get pods",
-          "hint_text": "Pod listesi icin `kubectl get pods` kullan.",
-          "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-002-r152-exp-162",
-      "type": "single",
-      "scenario": "Audit sirasinda incident sonrasinda service'leri listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get services",
-          "hint_text": "Service listesi icin `kubectl get services` kullan.",
-          "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-003-r153-exp-163",
-      "type": "single",
-      "scenario": "Bakim penceresinde bakim oncesi node'lari listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get nodes",
-          "hint_text": "Node listesi icin `kubectl get nodes` kullan.",
-          "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-004-r154-exp-164",
-      "type": "single",
-      "scenario": "Incident triajinda troubleshooting sirasinda aktif kubectl context bilgisini goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl config current-context",
-          "hint_text": "Current context icin `kubectl config current-context` kullan.",
-          "hint_partial": "kubectl config ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-005-r155-exp-165",
-      "type": "single",
-      "scenario": "Release kontrolunde deploy sonrasi `bastion-365-155-123` pod detayini goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl describe pod bastion-365-155-123",
-          "hint_text": "Pod detayi icin `kubectl describe pod` kullan.",
-          "hint_partial": "kubectl describe ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-006-r156-exp-166",
-      "type": "single",
-      "scenario": "Operasyon devrinde kesinti incelemesinde `db-366-156-156-123` pod loglarini goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl logs db-366-156-156-123",
-          "hint_text": "Pod loglari icin `kubectl logs` kullan.",
-          "hint_partial": "kubectl logs ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-007-r157-exp-167",
-      "type": "single",
-      "scenario": "On-call gorevinde yeni acilan hostta namespace'leri listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get namespaces",
-          "hint_text": "Namespace listesi icin `kubectl get namespaces` kullan.",
-          "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-008-r158-exp-168",
-      "type": "single",
-      "scenario": "Kesinti sonrasi runbook adiminda deployment'leri listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get deployments",
-          "hint_text": "Deployment listesi icin `kubectl get deployments` kullan.",
-          "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-009-r159-exp-169",
-      "type": "single",
-      "scenario": "Gece vardiyasinda operasyon kontrolunde `bastion-159` deployment replica sayisini 3 yap.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl scale deployment bastion-159 --replicas=4",
-          "hint_text": "Replica ayari icin `kubectl scale deployment` kullan.",
-          "hint_partial": "kubectl scale ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-010-r160-exp-170",
-      "type": "single",
-      "scenario": "Audit sirasinda incident sonrasinda `deployment.yml` manifest'ini uygula.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl apply -f deployment.yml",
-          "hint_text": "Manifest uygulamak icin `kubectl apply -f` kullan.",
-          "hint_partial": "kubectl apply ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-001-r161-exp-171",
-      "type": "single",
-      "scenario": "Bakim penceresinde bakim oncesi cluster'daki pod'lari listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get pods",
-          "hint_text": "Pod listesi icin `kubectl get pods` kullan.",
-          "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-002-r162-exp-172",
-      "type": "single",
-      "scenario": "Incident triajinda troubleshooting sirasinda service'leri listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get services",
-          "hint_text": "Service listesi icin `kubectl get services` kullan.",
-          "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-003-r163-exp-173",
-      "type": "single",
-      "scenario": "Release kontrolunde deploy sonrasi node'lari listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get nodes",
-          "hint_text": "Node listesi icin `kubectl get nodes` kullan.",
-          "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-004-r164-exp-174",
-      "type": "single",
-      "scenario": "Operasyon devrinde kesinti incelemesinde aktif kubectl context bilgisini goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl config current-context",
-          "hint_text": "Current context icin `kubectl config current-context` kullan.",
-          "hint_partial": "kubectl config ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-005-r165-exp-175",
-      "type": "single",
-      "scenario": "On-call gorevinde yeni acilan hostta `cache-375-165-165-123` pod detayini goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl describe pod cache-375-165-165-123",
-          "hint_text": "Pod detayi icin `kubectl describe pod` kullan.",
-          "hint_partial": "kubectl describe ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-006-r166-exp-176",
-      "type": "single",
-      "scenario": "Kesinti sonrasi runbook adiminda `queue-166-123` pod loglarini goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl logs queue-166-123",
-          "hint_text": "Pod loglari icin `kubectl logs` kullan.",
-          "hint_partial": "kubectl logs ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-007-r167-exp-177",
-      "type": "single",
-      "scenario": "Gece vardiyasinda operasyon kontrolunde namespace'leri listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get namespaces",
-          "hint_text": "Namespace listesi icin `kubectl get namespaces` kullan.",
-          "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-008-r168-exp-178",
-      "type": "single",
-      "scenario": "Audit sirasinda incident sonrasinda deployment'leri listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get deployments",
-          "hint_text": "Deployment listesi icin `kubectl get deployments` kullan.",
-          "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-009-r169-exp-179",
-      "type": "single",
-      "scenario": "Bakim penceresinde bakim oncesi `queue-379-379-169` deployment replica sayisini 3 yap.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl scale deployment queue-379-379-169 --replicas=2",
-          "hint_text": "Replica ayari icin `kubectl scale deployment` kullan.",
-          "hint_partial": "kubectl scale ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-010-r170-exp-180",
-      "type": "single",
-      "scenario": "Incident triajinda troubleshooting sirasinda `deployment.yml` manifest'ini uygula.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl apply -f deployment.yml",
-          "hint_text": "Manifest uygulamak icin `kubectl apply -f` kullan.",
-          "hint_partial": "kubectl apply ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-001-r171-exp-181",
-      "type": "single",
-      "scenario": "Release kontrolunde deploy sonrasi cluster'daki pod'lari listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get pods",
-          "hint_text": "Pod listesi icin `kubectl get pods` kullan.",
-          "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-002-r172-exp-182",
-      "type": "single",
-      "scenario": "Operasyon devrinde kesinti incelemesinde service'leri listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get services",
-          "hint_text": "Service listesi icin `kubectl get services` kullan.",
-          "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-003-r173-exp-183",
-      "type": "single",
-      "scenario": "On-call gorevinde yeni acilan hostta node'lari listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get nodes",
-          "hint_text": "Node listesi icin `kubectl get nodes` kullan.",
-          "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-004-r174-exp-184",
-      "type": "single",
-      "scenario": "Kesinti sonrasi runbook adiminda aktif kubectl context bilgisini goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl config current-context",
-          "hint_text": "Current context icin `kubectl config current-context` kullan.",
-          "hint_partial": "kubectl config ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-005-r175-exp-185",
-      "type": "single",
-      "scenario": "Gece vardiyasinda operasyon kontrolunde `bastion-175-123` pod detayini goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl describe pod bastion-175-123",
-          "hint_text": "Pod detayi icin `kubectl describe pod` kullan.",
-          "hint_partial": "kubectl describe ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-006-r176-exp-186",
-      "type": "single",
-      "scenario": "Audit sirasinda incident sonrasinda `proxy-176-123` pod loglarini goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl logs proxy-176-123",
-          "hint_text": "Pod loglari icin `kubectl logs` kullan.",
-          "hint_partial": "kubectl logs ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-007-r177-exp-187",
-      "type": "single",
-      "scenario": "Bakim penceresinde bakim oncesi namespace'leri listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get namespaces",
-          "hint_text": "Namespace listesi icin `kubectl get namespaces` kullan.",
-          "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-008-r178-exp-188",
-      "type": "single",
-      "scenario": "Incident triajinda troubleshooting sirasinda deployment'leri listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get deployments",
-          "hint_text": "Deployment listesi icin `kubectl get deployments` kullan.",
-          "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-009-r179-exp-189",
-      "type": "single",
-      "scenario": "Release kontrolunde deploy sonrasi `bastion-389-179` deployment replica sayisini 3 yap.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl scale deployment bastion-389-179 --replicas=6",
-          "hint_text": "Replica ayari icin `kubectl scale deployment` kullan.",
-          "hint_partial": "kubectl scale ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-010-r180-exp-190",
-      "type": "single",
-      "scenario": "Operasyon devrinde kesinti incelemesinde `deployment.yml` manifest'ini uygula.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl apply -f deployment.yml",
-          "hint_text": "Manifest uygulamak icin `kubectl apply -f` kullan.",
-          "hint_partial": "kubectl apply ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-001-r181-exp-191",
-      "type": "single",
-      "scenario": "On-call gorevinde yeni acilan hostta cluster'daki pod'lari listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get pods",
-          "hint_text": "Pod listesi icin `kubectl get pods` kullan.",
-          "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-002-r182-exp-192",
-      "type": "single",
-      "scenario": "Kesinti sonrasi runbook adiminda service'leri listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get services",
-          "hint_text": "Service listesi icin `kubectl get services` kullan.",
-          "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-003-r183-exp-193",
-      "type": "single",
-      "scenario": "Gece vardiyasinda operasyon kontrolunde node'lari listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get nodes",
-          "hint_text": "Node listesi icin `kubectl get nodes` kullan.",
-          "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-004-r184-exp-194",
-      "type": "single",
-      "scenario": "Audit sirasinda incident sonrasinda aktif kubectl context bilgisini goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl config current-context",
-          "hint_text": "Current context icin `kubectl config current-context` kullan.",
-          "hint_partial": "kubectl config ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-005-r185-exp-195",
-      "type": "single",
-      "scenario": "Bakim penceresinde bakim oncesi `queue-395-395-185-123` pod detayini goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl describe pod queue-395-395-185-123",
-          "hint_text": "Pod detayi icin `kubectl describe pod` kullan.",
-          "hint_partial": "kubectl describe ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-006-r186-exp-196",
-      "type": "single",
-      "scenario": "Incident triajinda troubleshooting sirasinda `cache-396-186-186-186-123` pod loglarini goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl logs cache-396-186-186-186-123",
-          "hint_text": "Pod loglari icin `kubectl logs` kullan.",
-          "hint_partial": "kubectl logs ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-007-r187-exp-197",
-      "type": "single",
-      "scenario": "Release kontrolunde deploy sonrasi namespace'leri listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get namespaces",
-          "hint_text": "Namespace listesi icin `kubectl get namespaces` kullan.",
-          "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-008-r188-exp-198",
-      "type": "single",
-      "scenario": "Operasyon devrinde kesinti incelemesinde deployment'leri listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl get deployments",
-          "hint_text": "Deployment listesi icin `kubectl get deployments` kullan.",
-          "hint_partial": "kubectl get ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-009-r189-exp-199",
-      "type": "single",
-      "scenario": "On-call gorevinde yeni acilan hostta `cache-399-189-189` deployment replica sayisini 3 yap.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl scale deployment cache-399-189-189 --replicas=4",
-          "hint_text": "Replica ayari icin `kubectl scale deployment` kullan.",
-          "hint_partial": "kubectl scale ..."
-        }
-      ]
-    },
-    {
-      "id": "jk8s-010-r190-exp-200",
-      "type": "single",
-      "scenario": "Kesinti sonrasi runbook adiminda `deployment.yml` manifest'ini uygula.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "kubectl apply -f deployment.yml",
-          "hint_text": "Manifest uygulamak icin `kubectl apply -f` kullan.",
-          "hint_partial": "kubectl apply ..."
         }
       ]
     }
