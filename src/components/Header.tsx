@@ -3,10 +3,9 @@ import { TOPIC_LABELS, TOPIC_SECTIONS, type QuizTopic } from "../types/quiz";
 interface HeaderProps {
   topic: QuizTopic;
   onTopicChange: (topic: QuizTopic) => void;
-  topicCounts: Record<QuizTopic, number>;
 }
 
-export function Header({ topic, onTopicChange, topicCounts }: HeaderProps) {
+export function Header({ topic, onTopicChange }: HeaderProps) {
   return (
     <header className="rounded-[1.25rem] border border-emerald-400/10 bg-[linear-gradient(180deg,rgba(13,17,20,0.96),rgba(10,13,16,0.95))] px-3 py-2.5 shadow-[0_18px_50px_rgba(0,0,0,0.2)] sm:px-4 sm:py-3">
       <div className="grid gap-1.5 md:grid-cols-2">
@@ -15,7 +14,6 @@ export function Header({ topic, onTopicChange, topicCounts }: HeaderProps) {
             key={section.id}
             className="rounded-[0.85rem] border border-white/[0.05] bg-[linear-gradient(180deg,rgba(10,13,16,0.7),rgba(7,10,12,0.65))] px-3 py-2 sm:px-3.5"
           >
-            {/* Section label — ince divider ile güçlendirildi */}
             <div className="mb-2 flex items-center gap-2">
               <span className="font-mono text-[0.55rem] uppercase tracking-[0.22em] text-zinc-500">
                 {section.name}
@@ -39,16 +37,6 @@ export function Header({ topic, onTopicChange, topicCounts }: HeaderProps) {
                     }`}
                   >
                     <span>[{TOPIC_LABELS[currentTopic]}]</span>
-                    {/* Count badge — daha belirgin */}
-                    <span
-                      className={`rounded px-1 py-0.5 text-[0.58rem] leading-none ${
-                        active
-                          ? "bg-emerald-400/15 text-emerald-400"
-                          : "bg-white/[0.05] text-zinc-500"
-                      }`}
-                    >
-                      {topicCounts[currentTopic]}
-                    </span>
                   </button>
                 );
               })}

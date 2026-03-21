@@ -44,7 +44,7 @@ export function useQuiz() {
   const [dataset, setDataset] = useState<QuizDataset>(createEmptyQuizDataset);
   const [level, setLevel] = useState<QuizLevel>("junior");
   const [topic, setTopic] = useState<QuizTopic>("filesystem");
-  const [sessionSeed, setSessionSeed] = useState(0);
+  const [sessionSeed, setSessionSeed] = useState(() => Date.now()); ////linepoint
   const [questionIndex, setQuestionIndex] = useState(0);
   const [stepIndex, setStepIndex] = useState(0);
   const [score, setScore] = useState(0);
@@ -113,6 +113,7 @@ export function useQuiz() {
     setIsAdvancing(false);
   }, [clearPendingAdvance]);
 
+  /////linebreak 2
   const questionSet = useMemo(() => {
     return shuffle(dataset[level][topic].questions, `${level}:${topic}:${sessionSeed}`);
   }, [dataset, level, topic, sessionSeed]);

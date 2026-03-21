@@ -71,7 +71,6 @@ export function TerminalQuizApp() {
         <Header
           topic={quiz.topic}
           onTopicChange={quiz.setTopic}
-          topicCounts={quiz.topicCounts}
         />
 
         <Terminal

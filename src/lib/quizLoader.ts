@@ -8,7 +8,7 @@ import {
   type QuizStep,
 } from "../types/quiz";
 
-const quizModules = import.meta.glob(["../data/**/*.json", "!../data/**/*-expanded.json"], {
+const quizModules = import.meta.glob(["../data/**/*.json"], {
   import: "default",
 }) as Record<string, () => Promise<unknown>>;
 
