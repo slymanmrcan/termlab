@@ -12,7 +12,7 @@ const CONTEXTS = [
   "Audit sırasında",
   "Troubleshooting sırasında",
   "Release kontrolünde",
-  "Operasyon devrinde",
+  "Ops handover'da",
   "On-call görevinde",
   "Kesinti sonrasında",
 ];
