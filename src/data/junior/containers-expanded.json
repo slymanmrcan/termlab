@@ -3,327 +3,2662 @@
   "topic": "docker",
   "questions": [
     {
-      "id": "jdkr1-001",
+      "id": "jdkr-exp-001",
       "type": "single",
-      "scenario": "Running container'ları listele.",
+      "scenario": "Gece vardiyasinda `web` container detaylarini incele.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker ps",
-          "hint_text": "Running container listesi için `docker ps` kullan.",
-          "hint_partial": "docker ps"
+          "answer": "docker inspect web",
+          "hint_text": "Container metadata'sini gormek icin `docker inspect` kullan.",
+          "hint_partial": "docker inspect ..."
         }
       ]
     },
     {
-      "id": "jdkr1-002",
+      "id": "jdkr-exp-002",
       "type": "single",
-      "scenario": "Stopped olanlar dahil tüm container'ları listele.",
+      "scenario": "Gece vardiyasinda `web` container'inin son 50 log satirini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker ps -a",
-          "hint_text": "Tüm container listesi için `docker ps -a` kullan.",
-          "hint_partial": "docker ps -a"
+          "answer": "docker logs --tail 50 web",
+          "hint_text": "Tum akisi okumak yerine son satirlari `--tail` ile gor.",
+          "hint_partial": "docker logs --tail ..."
         }
       ]
     },
     {
-      "id": "jdkr1-003",
+      "id": "jdkr-exp-003",
       "type": "single",
-      "scenario": "Local image listesini göster.",
+      "scenario": "Gece vardiyasinda `web` container loglarini canli izle.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker images",
-          "hint_text": "Local image listesi için `docker images` kullan.",
-          "hint_partial": "docker images"
+          "answer": "docker logs -f web",
+          "hint_text": "Canli log takibi icin `docker logs -f` kullan.",
+          "hint_partial": "docker logs -f ..."
         }
       ]
     },
     {
-      "id": "jdkr1-004",
+      "id": "jdkr-exp-004",
       "type": "single",
-      "scenario": "Docker version bilgisini göster.",
+      "scenario": "Gece vardiyasinda `web` container'i icinde shell ac.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker version",
-          "hint_text": "Client ve server version bilgisi için `docker version` kullan.",
-          "hint_partial": "docker version"
+          "answer": "docker exec -it web sh",
+          "hint_text": "Container icine interaktif girmek icin `docker exec -it` kullan.",
+          "hint_partial": "docker exec -it ..."
         }
       ]
     },
     {
-      "id": "jdkr1-005",
+      "id": "jdkr-exp-005",
       "type": "single",
-      "scenario": "web container'ının logs output'unu göster.",
+      "scenario": "Gece vardiyasinda `web` container'inda `/usr/share/nginx/html` klasorunu listele.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker logs web",
-          "hint_text": "Bir container'ın logs'unu görmek için `docker logs <container>` kullan.",
-          "hint_partial": "docker logs ..."
+          "answer": "docker exec web ls /usr/share/nginx/html",
+          "hint_text": "Tek seferlik komut icin `docker exec <container> <command>` kullan.",
+          "hint_partial": "docker exec ..."
         }
       ]
     },
     {
-      "id": "jdkr1-006",
+      "id": "jdkr-exp-006",
       "type": "single",
-      "scenario": "api container'ının logs output'unu göster.",
+      "scenario": "Gece vardiyasinda `web` container'inin port mapping bilgisini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker logs api",
-          "hint_text": "Bir container'ın logs'unu görmek için `docker logs <container>` kullan.",
-          "hint_partial": "docker logs ..."
+          "answer": "docker port web",
+          "hint_text": "Host-port eslesmesini `docker port` ile gor.",
+          "hint_partial": "docker port ..."
         }
       ]
     },
     {
-      "id": "jdkr1-007",
+      "id": "jdkr-exp-007",
       "type": "single",
-      "scenario": "web container'ını stop et.",
+      "scenario": "Gece vardiyasinda yalnizca `web` container'inin kaynak kullanimini tek seferlik goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stats --no-stream web",
+          "hint_text": "Tek container snapshot'i icin `docker stats --no-stream <container>` kullan.",
+          "hint_partial": "docker stats --no-stream ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-008",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `web` container'ini yeniden baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker restart web",
+          "hint_text": "Log veya config degisimi sonrasi `docker restart` kullan.",
+          "hint_partial": "docker restart ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-009",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `web` container'ini durdur.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "docker stop web",
-          "hint_text": "Bir container'ı durdurmak için `docker stop <container>` kullan.",
+          "hint_text": "Ayakta olan container'i durdurmak icin `docker stop` kullan.",
           "hint_partial": "docker stop ..."
         }
       ]
     },
     {
-      "id": "jdkr1-008",
+      "id": "jdkr-exp-010",
       "type": "single",
-      "scenario": "worker container'ını stop et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker stop worker",
-          "hint_text": "Bir container'ı durdurmak için `docker stop <container>` kullan.",
-          "hint_partial": "docker stop ..."
-        }
-      ]
-    },
-    {
-      "id": "jdkr1-009",
-      "type": "single",
-      "scenario": "web container'ını start et.",
+      "scenario": "Gece vardiyasinda `web` container'ini tekrar baslat.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "docker start web",
-          "hint_text": "Stopped bir container'ı başlatmak için `docker start <container>` kullan.",
+          "hint_text": "Stopped container'i ayağa kaldirmak icin `docker start` kullan.",
           "hint_partial": "docker start ..."
         }
       ]
     },
     {
-      "id": "jdkr1-010",
+      "id": "jdkr-exp-011",
       "type": "single",
-      "scenario": "worker container'ını start et.",
+      "scenario": "Gece vardiyasinda `nginx:alpine` image'ini indir.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker start worker",
-          "hint_text": "Stopped bir container'ı başlatmak için `docker start <container>` kullan.",
-          "hint_partial": "docker start ..."
-        }
-      ]
-    },
-    {
-      "id": "jdkr1-011",
-      "type": "single",
-      "scenario": "old-web container'ını sil.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker rm old-web",
-          "hint_text": "Bir container'ı silmek için `docker rm <container>` kullan.",
-          "hint_partial": "docker rm ..."
-        }
-      ]
-    },
-    {
-      "id": "jdkr1-012",
-      "type": "single",
-      "scenario": "temp-api container'ını sil.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker rm temp-api",
-          "hint_text": "Bir container'ı silmek için `docker rm <container>` kullan.",
-          "hint_partial": "docker rm ..."
-        }
-      ]
-    },
-    {
-      "id": "jdkr1-013",
-      "type": "single",
-      "scenario": "hello-world image'ını pull et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker pull hello-world",
-          "hint_text": "Bir image indirmek için `docker pull <image>` kullan.",
+          "answer": "docker pull nginx:alpine",
+          "hint_text": "Image'i host'a almak icin `docker pull` kullan.",
           "hint_partial": "docker pull ..."
         }
       ]
     },
     {
-      "id": "jdkr1-014",
+      "id": "jdkr-exp-012",
       "type": "single",
-      "scenario": "web container'ı içinde shell aç.",
+      "scenario": "Gece vardiyasinda tek kullanimlik `nginx:alpine` container'inda `echo ok` komutunu calistir.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker exec -it web sh",
-          "hint_text": "Container içine interaktif girmek için `docker exec -it <container> sh` kullan.",
-          "hint_partial": "docker exec -it ..."
+          "answer": "docker run --rm nginx:alpine sh -c 'echo ok'",
+          "hint_text": "Komutu calistirip container'i silmek icin `docker run --rm` kullan.",
+          "hint_partial": "docker run --rm ..."
         }
       ]
     },
     {
-      "id": "jdkr1-015",
+      "id": "jdkr-exp-013",
       "type": "single",
-      "scenario": "api container'ı içinde shell aç.",
+      "scenario": "Gece vardiyasinda `web-demo` adinda detached container'i `8080:80` port mapping ile baslat.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker exec -it api sh",
-          "hint_text": "Container içine interaktif girmek için `docker exec -it <container> sh` kullan.",
-          "hint_partial": "docker exec -it ..."
+          "answer": "docker run -d --name web-demo -p 8080:80 nginx:alpine",
+          "hint_text": "Detached ve port map'li baslatmak icin `docker run -d --name -p` kullan.",
+          "hint_partial": "docker run -d ..."
         }
       ]
     },
     {
-      "id": "jdkr1-016",
+      "id": "jdkr-exp-014",
       "type": "single",
-      "scenario": "Deploy sonrası running container'ları tekrar kontrol et.",
+      "scenario": "Gece vardiyasinda eski `web-old` container kaydini sil.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker ps",
-          "hint_text": "Running container listesi için yine `docker ps` kullan.",
-          "hint_partial": "docker ps"
-        }
-      ]
-    },
-    {
-      "id": "jdkr1-017",
-      "type": "single",
-      "scenario": "Cleanup öncesi tüm container'ları, stopped olanlar dahil, listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker ps -a",
-          "hint_text": "Tüm container listesi için yine `docker ps -a` kullan.",
-          "hint_partial": "docker ps -a"
-        }
-      ]
-    },
-    {
-      "id": "jdkr1-018",
-      "type": "single",
-      "scenario": "Image cache'ini kontrol etmek için local image listesini göster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker images",
-          "hint_text": "Local image listesi için yine `docker images` kullan.",
-          "hint_partial": "docker images"
-        }
-      ]
-    },
-    {
-      "id": "jdkr1-019",
-      "type": "single",
-      "scenario": "db container'ının logs output'unu göster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker logs db",
-          "hint_text": "Bir container'ın logs'unu görmek için `docker logs <container>` kullan.",
-          "hint_partial": "docker logs ..."
-        }
-      ]
-    },
-    {
-      "id": "jdkr1-020",
-      "type": "single",
-      "scenario": "db container'ını stop et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker stop db",
-          "hint_text": "Bir container'ı durdurmak için `docker stop <container>` kullan.",
-          "hint_partial": "docker stop ..."
-        }
-      ]
-    },
-    {
-      "id": "jdkr1-021",
-      "type": "single",
-      "scenario": "db container'ını tekrar start et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker start db",
-          "hint_text": "Stopped bir container'ı başlatmak için `docker start <container>` kullan.",
-          "hint_partial": "docker start ..."
-        }
-      ]
-    },
-    {
-      "id": "jdkr1-022",
-      "type": "single",
-      "scenario": "temp-db container'ını sil.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker rm temp-db",
-          "hint_text": "Bir container'ı silmek için `docker rm <container>` kullan.",
+          "answer": "docker rm web-old",
+          "hint_text": "Stopped eski kaydi temizlemek icin `docker rm` kullan.",
           "hint_partial": "docker rm ..."
         }
       ]
     },
     {
-      "id": "jdkr1-023",
+      "id": "jdkr-exp-015",
       "type": "single",
-      "scenario": "cache container'ı içinde shell aç.",
+      "scenario": "Gece vardiyasinda `web-old` container adini `web-demo` yap.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker exec -it cache sh",
-          "hint_text": "Container içine interaktif girmek için `docker exec -it <container> sh` kullan.",
+          "answer": "docker rename web-old web-demo",
+          "hint_text": "Container adini degistirmek icin `docker rename` kullan.",
+          "hint_partial": "docker rename ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-016",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `./index.html` dosyasini `web` container'indaki `/usr/share/nginx/html/index.html` yoluna kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker cp ./index.html web:/usr/share/nginx/html/index.html",
+          "hint_text": "Host'tan container'a dosya atmak icin `docker cp` kullan.",
+          "hint_partial": "docker cp ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-017",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `web` container'indaki `/etc/nginx/nginx.conf` dosyasini bulundugun dizine al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker cp web:/etc/nginx/nginx.conf ./",
+          "hint_text": "Container'dan host'a dosya cekmek icin `docker cp` kullan.",
+          "hint_partial": "docker cp ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-018",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `frontend` Docker network'ini incele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network inspect frontend",
+          "hint_text": "Bagli container ve subnet bilgisini gormek icin `docker network inspect` kullan.",
+          "hint_partial": "docker network inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-019",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `web-data` Docker volume detaylarini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker volume inspect web-data",
+          "hint_text": "Mountpoint ve driver bilgisini gormek icin `docker volume inspect` kullan.",
+          "hint_partial": "docker volume inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-020",
+      "type": "multi-step",
+      "scenario": "Gece vardiyasinda `nginx:alpine` image'ini indir, sonra `web-demo` adinda detached container'i `8080:80` port mapping ile baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker pull nginx:alpine",
+          "hint_text": "Ilk adimda gereken image'i host'a indir.",
+          "hint_partial": "docker pull ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "docker run -d --name web-demo -p 8080:80 nginx:alpine",
+          "hint_text": "Ikinci adimda container'i isim ve port map ile ayağa kaldir.",
+          "hint_partial": "docker run -d ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-021",
+      "type": "single",
+      "scenario": "Bakim penceresinde `api` container detaylarini incele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker inspect api",
+          "hint_text": "Container metadata'sini gormek icin `docker inspect` kullan.",
+          "hint_partial": "docker inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-022",
+      "type": "single",
+      "scenario": "Bakim penceresinde `api` container'inin son 50 log satirini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker logs --tail 50 api",
+          "hint_text": "Tum akisi okumak yerine son satirlari `--tail` ile gor.",
+          "hint_partial": "docker logs --tail ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-023",
+      "type": "single",
+      "scenario": "Bakim penceresinde `api` container loglarini canli izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker logs -f api",
+          "hint_text": "Canli log takibi icin `docker logs -f` kullan.",
+          "hint_partial": "docker logs -f ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-024",
+      "type": "single",
+      "scenario": "Bakim penceresinde `api` container'i icinde shell ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker exec -it api sh",
+          "hint_text": "Container icine interaktif girmek icin `docker exec -it` kullan.",
           "hint_partial": "docker exec -it ..."
         }
       ]
     },
     {
-      "id": "jdkr1-024",
+      "id": "jdkr-exp-025",
       "type": "single",
-      "scenario": "Environment kontrolü için Docker version bilgisini tekrar göster.",
+      "scenario": "Bakim penceresinde `api` container'inda `/usr/src/app` klasorunu listele.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker version",
-          "hint_text": "Client ve server version bilgisi için yine `docker version` kullan.",
-          "hint_partial": "docker version"
+          "answer": "docker exec api ls /usr/src/app",
+          "hint_text": "Tek seferlik komut icin `docker exec <container> <command>` kullan.",
+          "hint_partial": "docker exec ..."
         }
       ]
     },
     {
-      "id": "jdkr1-025",
+      "id": "jdkr-exp-026",
       "type": "single",
-      "scenario": "Smoke test öncesi running container'ları listele.",
+      "scenario": "Bakim penceresinde `api` container'inin port mapping bilgisini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker ps",
-          "hint_text": "Running container listesi için `docker ps` kullan.",
-          "hint_partial": "docker ps"
+          "answer": "docker port api",
+          "hint_text": "Host-port eslesmesini `docker port` ile gor.",
+          "hint_partial": "docker port ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-027",
+      "type": "single",
+      "scenario": "Bakim penceresinde yalnizca `api` container'inin kaynak kullanimini tek seferlik goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stats --no-stream api",
+          "hint_text": "Tek container snapshot'i icin `docker stats --no-stream <container>` kullan.",
+          "hint_partial": "docker stats --no-stream ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-028",
+      "type": "single",
+      "scenario": "Bakim penceresinde `api` container'ini yeniden baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker restart api",
+          "hint_text": "Log veya config degisimi sonrasi `docker restart` kullan.",
+          "hint_partial": "docker restart ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-029",
+      "type": "single",
+      "scenario": "Bakim penceresinde `api` container'ini durdur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stop api",
+          "hint_text": "Ayakta olan container'i durdurmak icin `docker stop` kullan.",
+          "hint_partial": "docker stop ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-030",
+      "type": "single",
+      "scenario": "Bakim penceresinde `api` container'ini tekrar baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker start api",
+          "hint_text": "Stopped container'i ayağa kaldirmak icin `docker start` kullan.",
+          "hint_partial": "docker start ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-031",
+      "type": "single",
+      "scenario": "Bakim penceresinde `node:20-alpine` image'ini indir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker pull node:20-alpine",
+          "hint_text": "Image'i host'a almak icin `docker pull` kullan.",
+          "hint_partial": "docker pull ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-032",
+      "type": "single",
+      "scenario": "Bakim penceresinde tek kullanimlik `node:20-alpine` container'inda `echo ok` komutunu calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker run --rm node:20-alpine sh -c 'echo ok'",
+          "hint_text": "Komutu calistirip container'i silmek icin `docker run --rm` kullan.",
+          "hint_partial": "docker run --rm ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-033",
+      "type": "single",
+      "scenario": "Bakim penceresinde `api-demo` adinda detached container'i `3000:3000` port mapping ile baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker run -d --name api-demo -p 3000:3000 node:20-alpine",
+          "hint_text": "Detached ve port map'li baslatmak icin `docker run -d --name -p` kullan.",
+          "hint_partial": "docker run -d ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-034",
+      "type": "single",
+      "scenario": "Bakim penceresinde eski `api-old` container kaydini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker rm api-old",
+          "hint_text": "Stopped eski kaydi temizlemek icin `docker rm` kullan.",
+          "hint_partial": "docker rm ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-035",
+      "type": "single",
+      "scenario": "Bakim penceresinde `api-old` container adini `api-demo` yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker rename api-old api-demo",
+          "hint_text": "Container adini degistirmek icin `docker rename` kullan.",
+          "hint_partial": "docker rename ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-036",
+      "type": "single",
+      "scenario": "Bakim penceresinde `./config.json` dosyasini `api` container'indaki `/usr/src/app/config.json` yoluna kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker cp ./config.json api:/usr/src/app/config.json",
+          "hint_text": "Host'tan container'a dosya atmak icin `docker cp` kullan.",
+          "hint_partial": "docker cp ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-037",
+      "type": "single",
+      "scenario": "Bakim penceresinde `api` container'indaki `/usr/src/app/package.json` dosyasini bulundugun dizine al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker cp api:/usr/src/app/package.json ./",
+          "hint_text": "Container'dan host'a dosya cekmek icin `docker cp` kullan.",
+          "hint_partial": "docker cp ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-038",
+      "type": "single",
+      "scenario": "Bakim penceresinde `backend` Docker network'ini incele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network inspect backend",
+          "hint_text": "Bagli container ve subnet bilgisini gormek icin `docker network inspect` kullan.",
+          "hint_partial": "docker network inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-039",
+      "type": "single",
+      "scenario": "Bakim penceresinde `api-cache` Docker volume detaylarini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker volume inspect api-cache",
+          "hint_text": "Mountpoint ve driver bilgisini gormek icin `docker volume inspect` kullan.",
+          "hint_partial": "docker volume inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-040",
+      "type": "multi-step",
+      "scenario": "Bakim penceresinde `node:20-alpine` image'ini indir, sonra `api-demo` adinda detached container'i `3000:3000` port mapping ile baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker pull node:20-alpine",
+          "hint_text": "Ilk adimda gereken image'i host'a indir.",
+          "hint_partial": "docker pull ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "docker run -d --name api-demo -p 3000:3000 node:20-alpine",
+          "hint_text": "Ikinci adimda container'i isim ve port map ile ayağa kaldir.",
+          "hint_partial": "docker run -d ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-041",
+      "type": "single",
+      "scenario": "Incident sonrasinda `worker` container detaylarini incele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker inspect worker",
+          "hint_text": "Container metadata'sini gormek icin `docker inspect` kullan.",
+          "hint_partial": "docker inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-042",
+      "type": "single",
+      "scenario": "Incident sonrasinda `worker` container'inin son 50 log satirini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker logs --tail 50 worker",
+          "hint_text": "Tum akisi okumak yerine son satirlari `--tail` ile gor.",
+          "hint_partial": "docker logs --tail ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-043",
+      "type": "single",
+      "scenario": "Incident sonrasinda `worker` container loglarini canli izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker logs -f worker",
+          "hint_text": "Canli log takibi icin `docker logs -f` kullan.",
+          "hint_partial": "docker logs -f ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-044",
+      "type": "single",
+      "scenario": "Incident sonrasinda `worker` container'i icinde shell ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker exec -it worker sh",
+          "hint_text": "Container icine interaktif girmek icin `docker exec -it` kullan.",
+          "hint_partial": "docker exec -it ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-045",
+      "type": "single",
+      "scenario": "Incident sonrasinda `worker` container'inda `/app` klasorunu listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker exec worker ls /app",
+          "hint_text": "Tek seferlik komut icin `docker exec <container> <command>` kullan.",
+          "hint_partial": "docker exec ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-046",
+      "type": "single",
+      "scenario": "Incident sonrasinda `worker` container'inin port mapping bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker port worker",
+          "hint_text": "Host-port eslesmesini `docker port` ile gor.",
+          "hint_partial": "docker port ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-047",
+      "type": "single",
+      "scenario": "Incident sonrasinda yalnizca `worker` container'inin kaynak kullanimini tek seferlik goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stats --no-stream worker",
+          "hint_text": "Tek container snapshot'i icin `docker stats --no-stream <container>` kullan.",
+          "hint_partial": "docker stats --no-stream ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-048",
+      "type": "single",
+      "scenario": "Incident sonrasinda `worker` container'ini yeniden baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker restart worker",
+          "hint_text": "Log veya config degisimi sonrasi `docker restart` kullan.",
+          "hint_partial": "docker restart ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-049",
+      "type": "single",
+      "scenario": "Incident sonrasinda `worker` container'ini durdur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stop worker",
+          "hint_text": "Ayakta olan container'i durdurmak icin `docker stop` kullan.",
+          "hint_partial": "docker stop ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-050",
+      "type": "single",
+      "scenario": "Incident sonrasinda `worker` container'ini tekrar baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker start worker",
+          "hint_text": "Stopped container'i ayağa kaldirmak icin `docker start` kullan.",
+          "hint_partial": "docker start ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-051",
+      "type": "single",
+      "scenario": "Incident sonrasinda `python:3.12-alpine` image'ini indir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker pull python:3.12-alpine",
+          "hint_text": "Image'i host'a almak icin `docker pull` kullan.",
+          "hint_partial": "docker pull ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-052",
+      "type": "single",
+      "scenario": "Incident sonrasinda tek kullanimlik `python:3.12-alpine` container'inda `echo ok` komutunu calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker run --rm python:3.12-alpine sh -c 'echo ok'",
+          "hint_text": "Komutu calistirip container'i silmek icin `docker run --rm` kullan.",
+          "hint_partial": "docker run --rm ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-053",
+      "type": "single",
+      "scenario": "Incident sonrasinda `worker-demo` adinda detached container'i `5000:5000` port mapping ile baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker run -d --name worker-demo -p 5000:5000 python:3.12-alpine",
+          "hint_text": "Detached ve port map'li baslatmak icin `docker run -d --name -p` kullan.",
+          "hint_partial": "docker run -d ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-054",
+      "type": "single",
+      "scenario": "Incident sonrasinda eski `worker-old` container kaydini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker rm worker-old",
+          "hint_text": "Stopped eski kaydi temizlemek icin `docker rm` kullan.",
+          "hint_partial": "docker rm ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-055",
+      "type": "single",
+      "scenario": "Incident sonrasinda `worker-old` container adini `worker-demo` yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker rename worker-old worker-demo",
+          "hint_text": "Container adini degistirmek icin `docker rename` kullan.",
+          "hint_partial": "docker rename ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-056",
+      "type": "single",
+      "scenario": "Incident sonrasinda `./worker.env` dosyasini `worker` container'indaki `/app/.env` yoluna kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker cp ./worker.env worker:/app/.env",
+          "hint_text": "Host'tan container'a dosya atmak icin `docker cp` kullan.",
+          "hint_partial": "docker cp ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-057",
+      "type": "single",
+      "scenario": "Incident sonrasinda `worker` container'indaki `/app/requirements.txt` dosyasini bulundugun dizine al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker cp worker:/app/requirements.txt ./",
+          "hint_text": "Container'dan host'a dosya cekmek icin `docker cp` kullan.",
+          "hint_partial": "docker cp ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-058",
+      "type": "single",
+      "scenario": "Incident sonrasinda `jobs` Docker network'ini incele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network inspect jobs",
+          "hint_text": "Bagli container ve subnet bilgisini gormek icin `docker network inspect` kullan.",
+          "hint_partial": "docker network inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-059",
+      "type": "single",
+      "scenario": "Incident sonrasinda `worker-tmp` Docker volume detaylarini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker volume inspect worker-tmp",
+          "hint_text": "Mountpoint ve driver bilgisini gormek icin `docker volume inspect` kullan.",
+          "hint_partial": "docker volume inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-060",
+      "type": "multi-step",
+      "scenario": "Incident sonrasinda `python:3.12-alpine` image'ini indir, sonra `worker-demo` adinda detached container'i `5000:5000` port mapping ile baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker pull python:3.12-alpine",
+          "hint_text": "Ilk adimda gereken image'i host'a indir.",
+          "hint_partial": "docker pull ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "docker run -d --name worker-demo -p 5000:5000 python:3.12-alpine",
+          "hint_text": "Ikinci adimda container'i isim ve port map ile ayağa kaldir.",
+          "hint_partial": "docker run -d ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-061",
+      "type": "single",
+      "scenario": "Deploy oncesi `cache` container detaylarini incele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker inspect cache",
+          "hint_text": "Container metadata'sini gormek icin `docker inspect` kullan.",
+          "hint_partial": "docker inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-062",
+      "type": "single",
+      "scenario": "Deploy oncesi `cache` container'inin son 50 log satirini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker logs --tail 50 cache",
+          "hint_text": "Tum akisi okumak yerine son satirlari `--tail` ile gor.",
+          "hint_partial": "docker logs --tail ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-063",
+      "type": "single",
+      "scenario": "Deploy oncesi `cache` container loglarini canli izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker logs -f cache",
+          "hint_text": "Canli log takibi icin `docker logs -f` kullan.",
+          "hint_partial": "docker logs -f ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-064",
+      "type": "single",
+      "scenario": "Deploy oncesi `cache` container'i icinde shell ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker exec -it cache sh",
+          "hint_text": "Container icine interaktif girmek icin `docker exec -it` kullan.",
+          "hint_partial": "docker exec -it ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-065",
+      "type": "single",
+      "scenario": "Deploy oncesi `cache` container'inda `/data` klasorunu listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker exec cache ls /data",
+          "hint_text": "Tek seferlik komut icin `docker exec <container> <command>` kullan.",
+          "hint_partial": "docker exec ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-066",
+      "type": "single",
+      "scenario": "Deploy oncesi `cache` container'inin port mapping bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker port cache",
+          "hint_text": "Host-port eslesmesini `docker port` ile gor.",
+          "hint_partial": "docker port ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-067",
+      "type": "single",
+      "scenario": "Deploy oncesi yalnizca `cache` container'inin kaynak kullanimini tek seferlik goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stats --no-stream cache",
+          "hint_text": "Tek container snapshot'i icin `docker stats --no-stream <container>` kullan.",
+          "hint_partial": "docker stats --no-stream ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-068",
+      "type": "single",
+      "scenario": "Deploy oncesi `cache` container'ini yeniden baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker restart cache",
+          "hint_text": "Log veya config degisimi sonrasi `docker restart` kullan.",
+          "hint_partial": "docker restart ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-069",
+      "type": "single",
+      "scenario": "Deploy oncesi `cache` container'ini durdur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stop cache",
+          "hint_text": "Ayakta olan container'i durdurmak icin `docker stop` kullan.",
+          "hint_partial": "docker stop ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-070",
+      "type": "single",
+      "scenario": "Deploy oncesi `cache` container'ini tekrar baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker start cache",
+          "hint_text": "Stopped container'i ayağa kaldirmak icin `docker start` kullan.",
+          "hint_partial": "docker start ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-071",
+      "type": "single",
+      "scenario": "Deploy oncesi `redis:7-alpine` image'ini indir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker pull redis:7-alpine",
+          "hint_text": "Image'i host'a almak icin `docker pull` kullan.",
+          "hint_partial": "docker pull ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-072",
+      "type": "single",
+      "scenario": "Deploy oncesi tek kullanimlik `redis:7-alpine` container'inda `echo ok` komutunu calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker run --rm redis:7-alpine sh -c 'echo ok'",
+          "hint_text": "Komutu calistirip container'i silmek icin `docker run --rm` kullan.",
+          "hint_partial": "docker run --rm ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-073",
+      "type": "single",
+      "scenario": "Deploy oncesi `cache-demo` adinda detached container'i `6379:6379` port mapping ile baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker run -d --name cache-demo -p 6379:6379 redis:7-alpine",
+          "hint_text": "Detached ve port map'li baslatmak icin `docker run -d --name -p` kullan.",
+          "hint_partial": "docker run -d ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-074",
+      "type": "single",
+      "scenario": "Deploy oncesi eski `cache-old` container kaydini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker rm cache-old",
+          "hint_text": "Stopped eski kaydi temizlemek icin `docker rm` kullan.",
+          "hint_partial": "docker rm ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-075",
+      "type": "single",
+      "scenario": "Deploy oncesi `cache-old` container adini `cache-demo` yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker rename cache-old cache-demo",
+          "hint_text": "Container adini degistirmek icin `docker rename` kullan.",
+          "hint_partial": "docker rename ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-076",
+      "type": "single",
+      "scenario": "Deploy oncesi `./redis.conf` dosyasini `cache` container'indaki `/usr/local/etc/redis/redis.conf` yoluna kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker cp ./redis.conf cache:/usr/local/etc/redis/redis.conf",
+          "hint_text": "Host'tan container'a dosya atmak icin `docker cp` kullan.",
+          "hint_partial": "docker cp ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-077",
+      "type": "single",
+      "scenario": "Deploy oncesi `cache` container'indaki `/data/dump.rdb` dosyasini bulundugun dizine al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker cp cache:/data/dump.rdb ./",
+          "hint_text": "Container'dan host'a dosya cekmek icin `docker cp` kullan.",
+          "hint_partial": "docker cp ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-078",
+      "type": "single",
+      "scenario": "Deploy oncesi `cache-net` Docker network'ini incele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network inspect cache-net",
+          "hint_text": "Bagli container ve subnet bilgisini gormek icin `docker network inspect` kullan.",
+          "hint_partial": "docker network inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-079",
+      "type": "single",
+      "scenario": "Deploy oncesi `redis-data` Docker volume detaylarini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker volume inspect redis-data",
+          "hint_text": "Mountpoint ve driver bilgisini gormek icin `docker volume inspect` kullan.",
+          "hint_partial": "docker volume inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-080",
+      "type": "multi-step",
+      "scenario": "Deploy oncesi `redis:7-alpine` image'ini indir, sonra `cache-demo` adinda detached container'i `6379:6379` port mapping ile baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker pull redis:7-alpine",
+          "hint_text": "Ilk adimda gereken image'i host'a indir.",
+          "hint_partial": "docker pull ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "docker run -d --name cache-demo -p 6379:6379 redis:7-alpine",
+          "hint_text": "Ikinci adimda container'i isim ve port map ile ayağa kaldir.",
+          "hint_partial": "docker run -d ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-081",
+      "type": "single",
+      "scenario": "Audit sirasinda `db` container detaylarini incele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker inspect db",
+          "hint_text": "Container metadata'sini gormek icin `docker inspect` kullan.",
+          "hint_partial": "docker inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-082",
+      "type": "single",
+      "scenario": "Audit sirasinda `db` container'inin son 50 log satirini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker logs --tail 50 db",
+          "hint_text": "Tum akisi okumak yerine son satirlari `--tail` ile gor.",
+          "hint_partial": "docker logs --tail ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-083",
+      "type": "single",
+      "scenario": "Audit sirasinda `db` container loglarini canli izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker logs -f db",
+          "hint_text": "Canli log takibi icin `docker logs -f` kullan.",
+          "hint_partial": "docker logs -f ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-084",
+      "type": "single",
+      "scenario": "Audit sirasinda `db` container'i icinde shell ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker exec -it db sh",
+          "hint_text": "Container icine interaktif girmek icin `docker exec -it` kullan.",
+          "hint_partial": "docker exec -it ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-085",
+      "type": "single",
+      "scenario": "Audit sirasinda `db` container'inda `/var/lib/postgresql/data` klasorunu listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker exec db ls /var/lib/postgresql/data",
+          "hint_text": "Tek seferlik komut icin `docker exec <container> <command>` kullan.",
+          "hint_partial": "docker exec ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-086",
+      "type": "single",
+      "scenario": "Audit sirasinda `db` container'inin port mapping bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker port db",
+          "hint_text": "Host-port eslesmesini `docker port` ile gor.",
+          "hint_partial": "docker port ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-087",
+      "type": "single",
+      "scenario": "Audit sirasinda yalnizca `db` container'inin kaynak kullanimini tek seferlik goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stats --no-stream db",
+          "hint_text": "Tek container snapshot'i icin `docker stats --no-stream <container>` kullan.",
+          "hint_partial": "docker stats --no-stream ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-088",
+      "type": "single",
+      "scenario": "Audit sirasinda `db` container'ini yeniden baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker restart db",
+          "hint_text": "Log veya config degisimi sonrasi `docker restart` kullan.",
+          "hint_partial": "docker restart ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-089",
+      "type": "single",
+      "scenario": "Audit sirasinda `db` container'ini durdur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stop db",
+          "hint_text": "Ayakta olan container'i durdurmak icin `docker stop` kullan.",
+          "hint_partial": "docker stop ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-090",
+      "type": "single",
+      "scenario": "Audit sirasinda `db` container'ini tekrar baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker start db",
+          "hint_text": "Stopped container'i ayağa kaldirmak icin `docker start` kullan.",
+          "hint_partial": "docker start ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-091",
+      "type": "single",
+      "scenario": "Audit sirasinda `postgres:16-alpine` image'ini indir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker pull postgres:16-alpine",
+          "hint_text": "Image'i host'a almak icin `docker pull` kullan.",
+          "hint_partial": "docker pull ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-092",
+      "type": "single",
+      "scenario": "Audit sirasinda tek kullanimlik `postgres:16-alpine` container'inda `echo ok` komutunu calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker run --rm postgres:16-alpine sh -c 'echo ok'",
+          "hint_text": "Komutu calistirip container'i silmek icin `docker run --rm` kullan.",
+          "hint_partial": "docker run --rm ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-093",
+      "type": "single",
+      "scenario": "Audit sirasinda `db-demo` adinda detached container'i `5432:5432` port mapping ile baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker run -d --name db-demo -p 5432:5432 postgres:16-alpine",
+          "hint_text": "Detached ve port map'li baslatmak icin `docker run -d --name -p` kullan.",
+          "hint_partial": "docker run -d ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-094",
+      "type": "single",
+      "scenario": "Audit sirasinda eski `db-old` container kaydini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker rm db-old",
+          "hint_text": "Stopped eski kaydi temizlemek icin `docker rm` kullan.",
+          "hint_partial": "docker rm ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-095",
+      "type": "single",
+      "scenario": "Audit sirasinda `db-old` container adini `db-demo` yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker rename db-old db-demo",
+          "hint_text": "Container adini degistirmek icin `docker rename` kullan.",
+          "hint_partial": "docker rename ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-096",
+      "type": "single",
+      "scenario": "Audit sirasinda `./postgresql.conf` dosyasini `db` container'indaki `/etc/postgresql/postgresql.conf` yoluna kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker cp ./postgresql.conf db:/etc/postgresql/postgresql.conf",
+          "hint_text": "Host'tan container'a dosya atmak icin `docker cp` kullan.",
+          "hint_partial": "docker cp ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-097",
+      "type": "single",
+      "scenario": "Audit sirasinda `db` container'indaki `/var/lib/postgresql/data/PG_VERSION` dosyasini bulundugun dizine al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker cp db:/var/lib/postgresql/data/PG_VERSION ./",
+          "hint_text": "Container'dan host'a dosya cekmek icin `docker cp` kullan.",
+          "hint_partial": "docker cp ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-098",
+      "type": "single",
+      "scenario": "Audit sirasinda `db-net` Docker network'ini incele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network inspect db-net",
+          "hint_text": "Bagli container ve subnet bilgisini gormek icin `docker network inspect` kullan.",
+          "hint_partial": "docker network inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-099",
+      "type": "single",
+      "scenario": "Audit sirasinda `pg-data` Docker volume detaylarini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker volume inspect pg-data",
+          "hint_text": "Mountpoint ve driver bilgisini gormek icin `docker volume inspect` kullan.",
+          "hint_partial": "docker volume inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-100",
+      "type": "multi-step",
+      "scenario": "Audit sirasinda `postgres:16-alpine` image'ini indir, sonra `db-demo` adinda detached container'i `5432:5432` port mapping ile baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker pull postgres:16-alpine",
+          "hint_text": "Ilk adimda gereken image'i host'a indir.",
+          "hint_partial": "docker pull ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "docker run -d --name db-demo -p 5432:5432 postgres:16-alpine",
+          "hint_text": "Ikinci adimda container'i isim ve port map ile ayağa kaldir.",
+          "hint_partial": "docker run -d ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-101",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `queue` container detaylarini incele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker inspect queue",
+          "hint_text": "Container metadata'sini gormek icin `docker inspect` kullan.",
+          "hint_partial": "docker inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-102",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `queue` container'inin son 50 log satirini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker logs --tail 50 queue",
+          "hint_text": "Tum akisi okumak yerine son satirlari `--tail` ile gor.",
+          "hint_partial": "docker logs --tail ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-103",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `queue` container loglarini canli izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker logs -f queue",
+          "hint_text": "Canli log takibi icin `docker logs -f` kullan.",
+          "hint_partial": "docker logs -f ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-104",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `queue` container'i icinde shell ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker exec -it queue sh",
+          "hint_text": "Container icine interaktif girmek icin `docker exec -it` kullan.",
+          "hint_partial": "docker exec -it ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-105",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `queue` container'inda `/etc/rabbitmq` klasorunu listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker exec queue ls /etc/rabbitmq",
+          "hint_text": "Tek seferlik komut icin `docker exec <container> <command>` kullan.",
+          "hint_partial": "docker exec ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-106",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `queue` container'inin port mapping bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker port queue",
+          "hint_text": "Host-port eslesmesini `docker port` ile gor.",
+          "hint_partial": "docker port ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-107",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda yalnizca `queue` container'inin kaynak kullanimini tek seferlik goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stats --no-stream queue",
+          "hint_text": "Tek container snapshot'i icin `docker stats --no-stream <container>` kullan.",
+          "hint_partial": "docker stats --no-stream ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-108",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `queue` container'ini yeniden baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker restart queue",
+          "hint_text": "Log veya config degisimi sonrasi `docker restart` kullan.",
+          "hint_partial": "docker restart ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-109",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `queue` container'ini durdur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stop queue",
+          "hint_text": "Ayakta olan container'i durdurmak icin `docker stop` kullan.",
+          "hint_partial": "docker stop ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-110",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `queue` container'ini tekrar baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker start queue",
+          "hint_text": "Stopped container'i ayağa kaldirmak icin `docker start` kullan.",
+          "hint_partial": "docker start ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-111",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `rabbitmq:3-management-alpine` image'ini indir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker pull rabbitmq:3-management-alpine",
+          "hint_text": "Image'i host'a almak icin `docker pull` kullan.",
+          "hint_partial": "docker pull ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-112",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda tek kullanimlik `rabbitmq:3-management-alpine` container'inda `echo ok` komutunu calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker run --rm rabbitmq:3-management-alpine sh -c 'echo ok'",
+          "hint_text": "Komutu calistirip container'i silmek icin `docker run --rm` kullan.",
+          "hint_partial": "docker run --rm ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-113",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `queue-demo` adinda detached container'i `15672:15672` port mapping ile baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker run -d --name queue-demo -p 15672:15672 rabbitmq:3-management-alpine",
+          "hint_text": "Detached ve port map'li baslatmak icin `docker run -d --name -p` kullan.",
+          "hint_partial": "docker run -d ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-114",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda eski `queue-old` container kaydini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker rm queue-old",
+          "hint_text": "Stopped eski kaydi temizlemek icin `docker rm` kullan.",
+          "hint_partial": "docker rm ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-115",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `queue-old` container adini `queue-demo` yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker rename queue-old queue-demo",
+          "hint_text": "Container adini degistirmek icin `docker rename` kullan.",
+          "hint_partial": "docker rename ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-116",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `./rabbitmq.conf` dosyasini `queue` container'indaki `/etc/rabbitmq/rabbitmq.conf` yoluna kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker cp ./rabbitmq.conf queue:/etc/rabbitmq/rabbitmq.conf",
+          "hint_text": "Host'tan container'a dosya atmak icin `docker cp` kullan.",
+          "hint_partial": "docker cp ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-117",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `queue` container'indaki `/etc/rabbitmq/enabled_plugins` dosyasini bulundugun dizine al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker cp queue:/etc/rabbitmq/enabled_plugins ./",
+          "hint_text": "Container'dan host'a dosya cekmek icin `docker cp` kullan.",
+          "hint_partial": "docker cp ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-118",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `queue-net` Docker network'ini incele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network inspect queue-net",
+          "hint_text": "Bagli container ve subnet bilgisini gormek icin `docker network inspect` kullan.",
+          "hint_partial": "docker network inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-119",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `rabbit-data` Docker volume detaylarini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker volume inspect rabbit-data",
+          "hint_text": "Mountpoint ve driver bilgisini gormek icin `docker volume inspect` kullan.",
+          "hint_partial": "docker volume inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-120",
+      "type": "multi-step",
+      "scenario": "Troubleshooting sirasinda `rabbitmq:3-management-alpine` image'ini indir, sonra `queue-demo` adinda detached container'i `15672:15672` port mapping ile baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker pull rabbitmq:3-management-alpine",
+          "hint_text": "Ilk adimda gereken image'i host'a indir.",
+          "hint_partial": "docker pull ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "docker run -d --name queue-demo -p 15672:15672 rabbitmq:3-management-alpine",
+          "hint_text": "Ikinci adimda container'i isim ve port map ile ayağa kaldir.",
+          "hint_partial": "docker run -d ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-121",
+      "type": "single",
+      "scenario": "Release kontrolunde `scheduler` container detaylarini incele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker inspect scheduler",
+          "hint_text": "Container metadata'sini gormek icin `docker inspect` kullan.",
+          "hint_partial": "docker inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-122",
+      "type": "single",
+      "scenario": "Release kontrolunde `scheduler` container'inin son 50 log satirini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker logs --tail 50 scheduler",
+          "hint_text": "Tum akisi okumak yerine son satirlari `--tail` ile gor.",
+          "hint_partial": "docker logs --tail ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-123",
+      "type": "single",
+      "scenario": "Release kontrolunde `scheduler` container loglarini canli izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker logs -f scheduler",
+          "hint_text": "Canli log takibi icin `docker logs -f` kullan.",
+          "hint_partial": "docker logs -f ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-124",
+      "type": "single",
+      "scenario": "Release kontrolunde `scheduler` container'i icinde shell ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker exec -it scheduler sh",
+          "hint_text": "Container icine interaktif girmek icin `docker exec -it` kullan.",
+          "hint_partial": "docker exec -it ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-125",
+      "type": "single",
+      "scenario": "Release kontrolunde `scheduler` container'inda `/opt/jobs` klasorunu listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker exec scheduler ls /opt/jobs",
+          "hint_text": "Tek seferlik komut icin `docker exec <container> <command>` kullan.",
+          "hint_partial": "docker exec ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-126",
+      "type": "single",
+      "scenario": "Release kontrolunde `scheduler` container'inin port mapping bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker port scheduler",
+          "hint_text": "Host-port eslesmesini `docker port` ile gor.",
+          "hint_partial": "docker port ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-127",
+      "type": "single",
+      "scenario": "Release kontrolunde yalnizca `scheduler` container'inin kaynak kullanimini tek seferlik goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stats --no-stream scheduler",
+          "hint_text": "Tek container snapshot'i icin `docker stats --no-stream <container>` kullan.",
+          "hint_partial": "docker stats --no-stream ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-128",
+      "type": "single",
+      "scenario": "Release kontrolunde `scheduler` container'ini yeniden baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker restart scheduler",
+          "hint_text": "Log veya config degisimi sonrasi `docker restart` kullan.",
+          "hint_partial": "docker restart ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-129",
+      "type": "single",
+      "scenario": "Release kontrolunde `scheduler` container'ini durdur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stop scheduler",
+          "hint_text": "Ayakta olan container'i durdurmak icin `docker stop` kullan.",
+          "hint_partial": "docker stop ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-130",
+      "type": "single",
+      "scenario": "Release kontrolunde `scheduler` container'ini tekrar baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker start scheduler",
+          "hint_text": "Stopped container'i ayağa kaldirmak icin `docker start` kullan.",
+          "hint_partial": "docker start ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-131",
+      "type": "single",
+      "scenario": "Release kontrolunde `alpine:3.20` image'ini indir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker pull alpine:3.20",
+          "hint_text": "Image'i host'a almak icin `docker pull` kullan.",
+          "hint_partial": "docker pull ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-132",
+      "type": "single",
+      "scenario": "Release kontrolunde tek kullanimlik `alpine:3.20` container'inda `echo ok` komutunu calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker run --rm alpine:3.20 sh -c 'echo ok'",
+          "hint_text": "Komutu calistirip container'i silmek icin `docker run --rm` kullan.",
+          "hint_partial": "docker run --rm ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-133",
+      "type": "single",
+      "scenario": "Release kontrolunde `scheduler-demo` adinda detached container'i `9000:9000` port mapping ile baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker run -d --name scheduler-demo -p 9000:9000 alpine:3.20",
+          "hint_text": "Detached ve port map'li baslatmak icin `docker run -d --name -p` kullan.",
+          "hint_partial": "docker run -d ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-134",
+      "type": "single",
+      "scenario": "Release kontrolunde eski `scheduler-old` container kaydini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker rm scheduler-old",
+          "hint_text": "Stopped eski kaydi temizlemek icin `docker rm` kullan.",
+          "hint_partial": "docker rm ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-135",
+      "type": "single",
+      "scenario": "Release kontrolunde `scheduler-old` container adini `scheduler-demo` yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker rename scheduler-old scheduler-demo",
+          "hint_text": "Container adini degistirmek icin `docker rename` kullan.",
+          "hint_partial": "docker rename ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-136",
+      "type": "single",
+      "scenario": "Release kontrolunde `./jobs.txt` dosyasini `scheduler` container'indaki `/opt/jobs/jobs.txt` yoluna kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker cp ./jobs.txt scheduler:/opt/jobs/jobs.txt",
+          "hint_text": "Host'tan container'a dosya atmak icin `docker cp` kullan.",
+          "hint_partial": "docker cp ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-137",
+      "type": "single",
+      "scenario": "Release kontrolunde `scheduler` container'indaki `/etc/os-release` dosyasini bulundugun dizine al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker cp scheduler:/etc/os-release ./",
+          "hint_text": "Container'dan host'a dosya cekmek icin `docker cp` kullan.",
+          "hint_partial": "docker cp ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-138",
+      "type": "single",
+      "scenario": "Release kontrolunde `ops-net` Docker network'ini incele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network inspect ops-net",
+          "hint_text": "Bagli container ve subnet bilgisini gormek icin `docker network inspect` kullan.",
+          "hint_partial": "docker network inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-139",
+      "type": "single",
+      "scenario": "Release kontrolunde `scheduler-data` Docker volume detaylarini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker volume inspect scheduler-data",
+          "hint_text": "Mountpoint ve driver bilgisini gormek icin `docker volume inspect` kullan.",
+          "hint_partial": "docker volume inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-140",
+      "type": "multi-step",
+      "scenario": "Release kontrolunde `alpine:3.20` image'ini indir, sonra `scheduler-demo` adinda detached container'i `9000:9000` port mapping ile baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker pull alpine:3.20",
+          "hint_text": "Ilk adimda gereken image'i host'a indir.",
+          "hint_partial": "docker pull ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "docker run -d --name scheduler-demo -p 9000:9000 alpine:3.20",
+          "hint_text": "Ikinci adimda container'i isim ve port map ile ayağa kaldir.",
+          "hint_partial": "docker run -d ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-141",
+      "type": "single",
+      "scenario": "Operasyon devrinde `proxy` container detaylarini incele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker inspect proxy",
+          "hint_text": "Container metadata'sini gormek icin `docker inspect` kullan.",
+          "hint_partial": "docker inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-142",
+      "type": "single",
+      "scenario": "Operasyon devrinde `proxy` container'inin son 50 log satirini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker logs --tail 50 proxy",
+          "hint_text": "Tum akisi okumak yerine son satirlari `--tail` ile gor.",
+          "hint_partial": "docker logs --tail ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-143",
+      "type": "single",
+      "scenario": "Operasyon devrinde `proxy` container loglarini canli izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker logs -f proxy",
+          "hint_text": "Canli log takibi icin `docker logs -f` kullan.",
+          "hint_partial": "docker logs -f ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-144",
+      "type": "single",
+      "scenario": "Operasyon devrinde `proxy` container'i icinde shell ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker exec -it proxy sh",
+          "hint_text": "Container icine interaktif girmek icin `docker exec -it` kullan.",
+          "hint_partial": "docker exec -it ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-145",
+      "type": "single",
+      "scenario": "Operasyon devrinde `proxy` container'inda `/usr/local/etc/haproxy` klasorunu listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker exec proxy ls /usr/local/etc/haproxy",
+          "hint_text": "Tek seferlik komut icin `docker exec <container> <command>` kullan.",
+          "hint_partial": "docker exec ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-146",
+      "type": "single",
+      "scenario": "Operasyon devrinde `proxy` container'inin port mapping bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker port proxy",
+          "hint_text": "Host-port eslesmesini `docker port` ile gor.",
+          "hint_partial": "docker port ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-147",
+      "type": "single",
+      "scenario": "Operasyon devrinde yalnizca `proxy` container'inin kaynak kullanimini tek seferlik goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stats --no-stream proxy",
+          "hint_text": "Tek container snapshot'i icin `docker stats --no-stream <container>` kullan.",
+          "hint_partial": "docker stats --no-stream ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-148",
+      "type": "single",
+      "scenario": "Operasyon devrinde `proxy` container'ini yeniden baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker restart proxy",
+          "hint_text": "Log veya config degisimi sonrasi `docker restart` kullan.",
+          "hint_partial": "docker restart ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-149",
+      "type": "single",
+      "scenario": "Operasyon devrinde `proxy` container'ini durdur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stop proxy",
+          "hint_text": "Ayakta olan container'i durdurmak icin `docker stop` kullan.",
+          "hint_partial": "docker stop ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-150",
+      "type": "single",
+      "scenario": "Operasyon devrinde `proxy` container'ini tekrar baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker start proxy",
+          "hint_text": "Stopped container'i ayağa kaldirmak icin `docker start` kullan.",
+          "hint_partial": "docker start ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-151",
+      "type": "single",
+      "scenario": "Operasyon devrinde `haproxy:alpine` image'ini indir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker pull haproxy:alpine",
+          "hint_text": "Image'i host'a almak icin `docker pull` kullan.",
+          "hint_partial": "docker pull ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-152",
+      "type": "single",
+      "scenario": "Operasyon devrinde tek kullanimlik `haproxy:alpine` container'inda `echo ok` komutunu calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker run --rm haproxy:alpine sh -c 'echo ok'",
+          "hint_text": "Komutu calistirip container'i silmek icin `docker run --rm` kullan.",
+          "hint_partial": "docker run --rm ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-153",
+      "type": "single",
+      "scenario": "Operasyon devrinde `proxy-demo` adinda detached container'i `8404:8404` port mapping ile baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker run -d --name proxy-demo -p 8404:8404 haproxy:alpine",
+          "hint_text": "Detached ve port map'li baslatmak icin `docker run -d --name -p` kullan.",
+          "hint_partial": "docker run -d ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-154",
+      "type": "single",
+      "scenario": "Operasyon devrinde eski `proxy-old` container kaydini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker rm proxy-old",
+          "hint_text": "Stopped eski kaydi temizlemek icin `docker rm` kullan.",
+          "hint_partial": "docker rm ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-155",
+      "type": "single",
+      "scenario": "Operasyon devrinde `proxy-old` container adini `proxy-demo` yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker rename proxy-old proxy-demo",
+          "hint_text": "Container adini degistirmek icin `docker rename` kullan.",
+          "hint_partial": "docker rename ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-156",
+      "type": "single",
+      "scenario": "Operasyon devrinde `./haproxy.cfg` dosyasini `proxy` container'indaki `/usr/local/etc/haproxy/haproxy.cfg` yoluna kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker cp ./haproxy.cfg proxy:/usr/local/etc/haproxy/haproxy.cfg",
+          "hint_text": "Host'tan container'a dosya atmak icin `docker cp` kullan.",
+          "hint_partial": "docker cp ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-157",
+      "type": "single",
+      "scenario": "Operasyon devrinde `proxy` container'indaki `/usr/local/etc/haproxy/haproxy.cfg` dosyasini bulundugun dizine al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker cp proxy:/usr/local/etc/haproxy/haproxy.cfg ./",
+          "hint_text": "Container'dan host'a dosya cekmek icin `docker cp` kullan.",
+          "hint_partial": "docker cp ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-158",
+      "type": "single",
+      "scenario": "Operasyon devrinde `edge` Docker network'ini incele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network inspect edge",
+          "hint_text": "Bagli container ve subnet bilgisini gormek icin `docker network inspect` kullan.",
+          "hint_partial": "docker network inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-159",
+      "type": "single",
+      "scenario": "Operasyon devrinde `proxy-data` Docker volume detaylarini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker volume inspect proxy-data",
+          "hint_text": "Mountpoint ve driver bilgisini gormek icin `docker volume inspect` kullan.",
+          "hint_partial": "docker volume inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-160",
+      "type": "multi-step",
+      "scenario": "Operasyon devrinde `haproxy:alpine` image'ini indir, sonra `proxy-demo` adinda detached container'i `8404:8404` port mapping ile baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker pull haproxy:alpine",
+          "hint_text": "Ilk adimda gereken image'i host'a indir.",
+          "hint_partial": "docker pull ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "docker run -d --name proxy-demo -p 8404:8404 haproxy:alpine",
+          "hint_text": "Ikinci adimda container'i isim ve port map ile ayağa kaldir.",
+          "hint_partial": "docker run -d ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-161",
+      "type": "single",
+      "scenario": "On-call gorevinde `metrics` container detaylarini incele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker inspect metrics",
+          "hint_text": "Container metadata'sini gormek icin `docker inspect` kullan.",
+          "hint_partial": "docker inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-162",
+      "type": "single",
+      "scenario": "On-call gorevinde `metrics` container'inin son 50 log satirini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker logs --tail 50 metrics",
+          "hint_text": "Tum akisi okumak yerine son satirlari `--tail` ile gor.",
+          "hint_partial": "docker logs --tail ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-163",
+      "type": "single",
+      "scenario": "On-call gorevinde `metrics` container loglarini canli izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker logs -f metrics",
+          "hint_text": "Canli log takibi icin `docker logs -f` kullan.",
+          "hint_partial": "docker logs -f ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-164",
+      "type": "single",
+      "scenario": "On-call gorevinde `metrics` container'i icinde shell ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker exec -it metrics sh",
+          "hint_text": "Container icine interaktif girmek icin `docker exec -it` kullan.",
+          "hint_partial": "docker exec -it ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-165",
+      "type": "single",
+      "scenario": "On-call gorevinde `metrics` container'inda `/etc/prometheus` klasorunu listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker exec metrics ls /etc/prometheus",
+          "hint_text": "Tek seferlik komut icin `docker exec <container> <command>` kullan.",
+          "hint_partial": "docker exec ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-166",
+      "type": "single",
+      "scenario": "On-call gorevinde `metrics` container'inin port mapping bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker port metrics",
+          "hint_text": "Host-port eslesmesini `docker port` ile gor.",
+          "hint_partial": "docker port ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-167",
+      "type": "single",
+      "scenario": "On-call gorevinde yalnizca `metrics` container'inin kaynak kullanimini tek seferlik goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stats --no-stream metrics",
+          "hint_text": "Tek container snapshot'i icin `docker stats --no-stream <container>` kullan.",
+          "hint_partial": "docker stats --no-stream ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-168",
+      "type": "single",
+      "scenario": "On-call gorevinde `metrics` container'ini yeniden baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker restart metrics",
+          "hint_text": "Log veya config degisimi sonrasi `docker restart` kullan.",
+          "hint_partial": "docker restart ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-169",
+      "type": "single",
+      "scenario": "On-call gorevinde `metrics` container'ini durdur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stop metrics",
+          "hint_text": "Ayakta olan container'i durdurmak icin `docker stop` kullan.",
+          "hint_partial": "docker stop ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-170",
+      "type": "single",
+      "scenario": "On-call gorevinde `metrics` container'ini tekrar baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker start metrics",
+          "hint_text": "Stopped container'i ayağa kaldirmak icin `docker start` kullan.",
+          "hint_partial": "docker start ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-171",
+      "type": "single",
+      "scenario": "On-call gorevinde `prom/prometheus:v2.54.1` image'ini indir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker pull prom/prometheus:v2.54.1",
+          "hint_text": "Image'i host'a almak icin `docker pull` kullan.",
+          "hint_partial": "docker pull ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-172",
+      "type": "single",
+      "scenario": "On-call gorevinde tek kullanimlik `prom/prometheus:v2.54.1` container'inda `echo ok` komutunu calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker run --rm prom/prometheus:v2.54.1 sh -c 'echo ok'",
+          "hint_text": "Komutu calistirip container'i silmek icin `docker run --rm` kullan.",
+          "hint_partial": "docker run --rm ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-173",
+      "type": "single",
+      "scenario": "On-call gorevinde `metrics-demo` adinda detached container'i `9090:9090` port mapping ile baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker run -d --name metrics-demo -p 9090:9090 prom/prometheus:v2.54.1",
+          "hint_text": "Detached ve port map'li baslatmak icin `docker run -d --name -p` kullan.",
+          "hint_partial": "docker run -d ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-174",
+      "type": "single",
+      "scenario": "On-call gorevinde eski `metrics-old` container kaydini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker rm metrics-old",
+          "hint_text": "Stopped eski kaydi temizlemek icin `docker rm` kullan.",
+          "hint_partial": "docker rm ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-175",
+      "type": "single",
+      "scenario": "On-call gorevinde `metrics-old` container adini `metrics-demo` yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker rename metrics-old metrics-demo",
+          "hint_text": "Container adini degistirmek icin `docker rename` kullan.",
+          "hint_partial": "docker rename ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-176",
+      "type": "single",
+      "scenario": "On-call gorevinde `./prometheus.yml` dosyasini `metrics` container'indaki `/etc/prometheus/prometheus.yml` yoluna kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker cp ./prometheus.yml metrics:/etc/prometheus/prometheus.yml",
+          "hint_text": "Host'tan container'a dosya atmak icin `docker cp` kullan.",
+          "hint_partial": "docker cp ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-177",
+      "type": "single",
+      "scenario": "On-call gorevinde `metrics` container'indaki `/etc/prometheus/prometheus.yml` dosyasini bulundugun dizine al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker cp metrics:/etc/prometheus/prometheus.yml ./",
+          "hint_text": "Container'dan host'a dosya cekmek icin `docker cp` kullan.",
+          "hint_partial": "docker cp ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-178",
+      "type": "single",
+      "scenario": "On-call gorevinde `monitoring` Docker network'ini incele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network inspect monitoring",
+          "hint_text": "Bagli container ve subnet bilgisini gormek icin `docker network inspect` kullan.",
+          "hint_partial": "docker network inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-179",
+      "type": "single",
+      "scenario": "On-call gorevinde `prom-data` Docker volume detaylarini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker volume inspect prom-data",
+          "hint_text": "Mountpoint ve driver bilgisini gormek icin `docker volume inspect` kullan.",
+          "hint_partial": "docker volume inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-180",
+      "type": "multi-step",
+      "scenario": "On-call gorevinde `prom/prometheus:v2.54.1` image'ini indir, sonra `metrics-demo` adinda detached container'i `9090:9090` port mapping ile baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker pull prom/prometheus:v2.54.1",
+          "hint_text": "Ilk adimda gereken image'i host'a indir.",
+          "hint_partial": "docker pull ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "docker run -d --name metrics-demo -p 9090:9090 prom/prometheus:v2.54.1",
+          "hint_text": "Ikinci adimda container'i isim ve port map ile ayağa kaldir.",
+          "hint_partial": "docker run -d ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-181",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `grafana` container detaylarini incele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker inspect grafana",
+          "hint_text": "Container metadata'sini gormek icin `docker inspect` kullan.",
+          "hint_partial": "docker inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-182",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `grafana` container'inin son 50 log satirini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker logs --tail 50 grafana",
+          "hint_text": "Tum akisi okumak yerine son satirlari `--tail` ile gor.",
+          "hint_partial": "docker logs --tail ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-183",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `grafana` container loglarini canli izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker logs -f grafana",
+          "hint_text": "Canli log takibi icin `docker logs -f` kullan.",
+          "hint_partial": "docker logs -f ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-184",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `grafana` container'i icinde shell ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker exec -it grafana sh",
+          "hint_text": "Container icine interaktif girmek icin `docker exec -it` kullan.",
+          "hint_partial": "docker exec -it ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-185",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `grafana` container'inda `/etc/grafana` klasorunu listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker exec grafana ls /etc/grafana",
+          "hint_text": "Tek seferlik komut icin `docker exec <container> <command>` kullan.",
+          "hint_partial": "docker exec ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-186",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `grafana` container'inin port mapping bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker port grafana",
+          "hint_text": "Host-port eslesmesini `docker port` ile gor.",
+          "hint_partial": "docker port ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-187",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda yalnizca `grafana` container'inin kaynak kullanimini tek seferlik goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stats --no-stream grafana",
+          "hint_text": "Tek container snapshot'i icin `docker stats --no-stream <container>` kullan.",
+          "hint_partial": "docker stats --no-stream ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-188",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `grafana` container'ini yeniden baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker restart grafana",
+          "hint_text": "Log veya config degisimi sonrasi `docker restart` kullan.",
+          "hint_partial": "docker restart ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-189",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `grafana` container'ini durdur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker stop grafana",
+          "hint_text": "Ayakta olan container'i durdurmak icin `docker stop` kullan.",
+          "hint_partial": "docker stop ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-190",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `grafana` container'ini tekrar baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker start grafana",
+          "hint_text": "Stopped container'i ayağa kaldirmak icin `docker start` kullan.",
+          "hint_partial": "docker start ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-191",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `grafana/grafana-oss:11.1.0` image'ini indir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker pull grafana/grafana-oss:11.1.0",
+          "hint_text": "Image'i host'a almak icin `docker pull` kullan.",
+          "hint_partial": "docker pull ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-192",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda tek kullanimlik `grafana/grafana-oss:11.1.0` container'inda `echo ok` komutunu calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker run --rm grafana/grafana-oss:11.1.0 sh -c 'echo ok'",
+          "hint_text": "Komutu calistirip container'i silmek icin `docker run --rm` kullan.",
+          "hint_partial": "docker run --rm ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-193",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `grafana-demo` adinda detached container'i `3001:3000` port mapping ile baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker run -d --name grafana-demo -p 3001:3000 grafana/grafana-oss:11.1.0",
+          "hint_text": "Detached ve port map'li baslatmak icin `docker run -d --name -p` kullan.",
+          "hint_partial": "docker run -d ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-194",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda eski `grafana-old` container kaydini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker rm grafana-old",
+          "hint_text": "Stopped eski kaydi temizlemek icin `docker rm` kullan.",
+          "hint_partial": "docker rm ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-195",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `grafana-old` container adini `grafana-demo` yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker rename grafana-old grafana-demo",
+          "hint_text": "Container adini degistirmek icin `docker rename` kullan.",
+          "hint_partial": "docker rename ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-196",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `./grafana.ini` dosyasini `grafana` container'indaki `/etc/grafana/grafana.ini` yoluna kopyala.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker cp ./grafana.ini grafana:/etc/grafana/grafana.ini",
+          "hint_text": "Host'tan container'a dosya atmak icin `docker cp` kullan.",
+          "hint_partial": "docker cp ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-197",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `grafana` container'indaki `/etc/grafana/grafana.ini` dosyasini bulundugun dizine al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker cp grafana:/etc/grafana/grafana.ini ./",
+          "hint_text": "Container'dan host'a dosya cekmek icin `docker cp` kullan.",
+          "hint_partial": "docker cp ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-198",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `monitoring` Docker network'ini incele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network inspect monitoring",
+          "hint_text": "Bagli container ve subnet bilgisini gormek icin `docker network inspect` kullan.",
+          "hint_partial": "docker network inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-199",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `grafana-data` Docker volume detaylarini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker volume inspect grafana-data",
+          "hint_text": "Mountpoint ve driver bilgisini gormek icin `docker volume inspect` kullan.",
+          "hint_partial": "docker volume inspect ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-exp-200",
+      "type": "multi-step",
+      "scenario": "Kesinti sonrasinda `grafana/grafana-oss:11.1.0` image'ini indir, sonra `grafana-demo` adinda detached container'i `3001:3000` port mapping ile baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker pull grafana/grafana-oss:11.1.0",
+          "hint_text": "Ilk adimda gereken image'i host'a indir.",
+          "hint_partial": "docker pull ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "docker run -d --name grafana-demo -p 3001:3000 grafana/grafana-oss:11.1.0",
+          "hint_text": "Ikinci adimda container'i isim ve port map ile ayağa kaldir.",
+          "hint_partial": "docker run -d ..."
         }
       ]
     }

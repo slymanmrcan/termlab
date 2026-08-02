@@ -1,0 +1,2666 @@
+{
+  "level": "mid",
+  "topic": "user",
+  "questions": [
+    {
+      "id": "musr-exp-001",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `deploy` kullanicisinin passwd kaydini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getent passwd deploy",
+          "hint_text": "Sistem hesap kaydini gormek icin `getent passwd` kullan.",
+          "hint_partial": "getent passwd ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-002",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `deploy` kullanicisinin UID, GID ve group bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "id deploy",
+          "hint_text": "Belirli bir kullanicinin kimlik bilgisini `id` ile gor.",
+          "hint_partial": "id ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-003",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `deploy` kullanicisinin group uyeliklerini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "groups deploy",
+          "hint_text": "Kullanicinin ikincil gruplarini `groups` ile listele.",
+          "hint_partial": "groups ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-004",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `docker` grubunun kaydini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getent group docker",
+          "hint_text": "Bir grubun sistem kaydini `getent group` ile sorgula.",
+          "hint_partial": "getent group ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-005",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `deploy` kullanicisini home dizini ve bash shell ile olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "useradd -m -s /bin/bash deploy",
+          "hint_text": "Login shell ve home ile yeni bir kullanici ac.",
+          "hint_partial": "useradd -m -s ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-006",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `deploy` kullanicisi icin parola belirle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd deploy",
+          "hint_text": "Hesaba parola atamak icin `passwd` kullan.",
+          "hint_partial": "passwd ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-007",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `deploy` kullanicisini `docker` grubuna ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "usermod -aG docker deploy",
+          "hint_text": "Bir kullaniciyi ek gruba katmak icin `usermod -aG` kullan.",
+          "hint_partial": "usermod -aG ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-008",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `deploy` kullanicisini `docker` grubundan cikar.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gpasswd -d deploy docker",
+          "hint_text": "Kullaniciyi belirli bir gruptan cikarmak icin `gpasswd -d` kullan.",
+          "hint_partial": "gpasswd -d ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-009",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `deploy` kullanicisinin parolasini kilitle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -l deploy",
+          "hint_text": "Hesabi silmeden parola login'ini kapat.",
+          "hint_partial": "passwd -l ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-010",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `deploy` kullanicisinin parola kilidini ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -u deploy",
+          "hint_text": "Kilitli parolayi tekrar aktif et.",
+          "hint_partial": "passwd -u ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-011",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `deploy` kullanicisinin parola durumunu gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -S deploy",
+          "hint_text": "Hesabin parola durumunu `passwd -S` ile denetle.",
+          "hint_partial": "passwd -S ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-012",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `deploy` kullanicisinin parola aging bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -l deploy",
+          "hint_text": "Expiry ve warning politikasini `chage -l` ile gor.",
+          "hint_partial": "chage -l ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-013",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `deploy` kullanicisi icin parola maksimum yasini 90 gun yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -M 90 deploy",
+          "hint_text": "Parola maksimum yasini gun cinsinden ayarla.",
+          "hint_partial": "chage -M ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-014",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `deploy` kullanicisinin hesap bitis tarihini `2026-12-31` yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -E 2026-12-31 deploy",
+          "hint_text": "Hesaba son gecerlilik tarihi vermek icin `chage -E` kullan.",
+          "hint_partial": "chage -E ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-015",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `deploy` kullanicisinin shell'ini `nologin` yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "usermod -s /usr/sbin/nologin deploy",
+          "hint_text": "Interaktif login'i kapatmak icin shell'i degistir.",
+          "hint_partial": "usermod -s ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-016",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `deploy` kullanicisinin sudo yetkilerini kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sudo -l -U deploy",
+          "hint_text": "Bir hesabin sudo kapsamini denetle.",
+          "hint_partial": "sudo -l -U ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-017",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `deploy` kullanicisinin son login bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lastlog -u deploy",
+          "hint_text": "Son login zamanini `lastlog` ile denetle.",
+          "hint_partial": "lastlog -u ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-018",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `deploy` ve `docker` sahibi olacak sekilde `/srv/deploy` dizinini olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "install -d -o deploy -g docker /srv/deploy",
+          "hint_text": "Sahiplik vererek dizin olusturmak icin `install -d` kullan.",
+          "hint_partial": "install -d ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-019",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `deploy` kullanicisini home diziniyle birlikte sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "userdel -r deploy",
+          "hint_text": "Offboarding icin kullaniciyi home'u ile birlikte kaldir.",
+          "hint_partial": "userdel -r ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-020",
+      "type": "multi-step",
+      "scenario": "Gece vardiyasinda `deploy` kullanicisini olustur, sonra `docker` grubuna ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "useradd -m -s /bin/bash deploy",
+          "hint_text": "Ilk adimda login shell ve home ile hesap ac.",
+          "hint_partial": "useradd -m -s ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "usermod -aG docker deploy",
+          "hint_text": "Ikinci adimda kullaniciyi gerekli gruba dahil et.",
+          "hint_partial": "usermod -aG ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-021",
+      "type": "single",
+      "scenario": "Bakim penceresinde `app` kullanicisinin passwd kaydini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getent passwd app",
+          "hint_text": "Sistem hesap kaydini gormek icin `getent passwd` kullan.",
+          "hint_partial": "getent passwd ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-022",
+      "type": "single",
+      "scenario": "Bakim penceresinde `app` kullanicisinin UID, GID ve group bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "id app",
+          "hint_text": "Belirli bir kullanicinin kimlik bilgisini `id` ile gor.",
+          "hint_partial": "id ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-023",
+      "type": "single",
+      "scenario": "Bakim penceresinde `app` kullanicisinin group uyeliklerini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "groups app",
+          "hint_text": "Kullanicinin ikincil gruplarini `groups` ile listele.",
+          "hint_partial": "groups ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-024",
+      "type": "single",
+      "scenario": "Bakim penceresinde `developers` grubunun kaydini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getent group developers",
+          "hint_text": "Bir grubun sistem kaydini `getent group` ile sorgula.",
+          "hint_partial": "getent group ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-025",
+      "type": "single",
+      "scenario": "Bakim penceresinde `app` kullanicisini home dizini ve bash shell ile olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "useradd -m -s /bin/bash app",
+          "hint_text": "Login shell ve home ile yeni bir kullanici ac.",
+          "hint_partial": "useradd -m -s ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-026",
+      "type": "single",
+      "scenario": "Bakim penceresinde `app` kullanicisi icin parola belirle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd app",
+          "hint_text": "Hesaba parola atamak icin `passwd` kullan.",
+          "hint_partial": "passwd ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-027",
+      "type": "single",
+      "scenario": "Bakim penceresinde `app` kullanicisini `developers` grubuna ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "usermod -aG developers app",
+          "hint_text": "Bir kullaniciyi ek gruba katmak icin `usermod -aG` kullan.",
+          "hint_partial": "usermod -aG ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-028",
+      "type": "single",
+      "scenario": "Bakim penceresinde `app` kullanicisini `developers` grubundan cikar.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gpasswd -d app developers",
+          "hint_text": "Kullaniciyi belirli bir gruptan cikarmak icin `gpasswd -d` kullan.",
+          "hint_partial": "gpasswd -d ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-029",
+      "type": "single",
+      "scenario": "Bakim penceresinde `app` kullanicisinin parolasini kilitle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -l app",
+          "hint_text": "Hesabi silmeden parola login'ini kapat.",
+          "hint_partial": "passwd -l ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-030",
+      "type": "single",
+      "scenario": "Bakim penceresinde `app` kullanicisinin parola kilidini ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -u app",
+          "hint_text": "Kilitli parolayi tekrar aktif et.",
+          "hint_partial": "passwd -u ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-031",
+      "type": "single",
+      "scenario": "Bakim penceresinde `app` kullanicisinin parola durumunu gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -S app",
+          "hint_text": "Hesabin parola durumunu `passwd -S` ile denetle.",
+          "hint_partial": "passwd -S ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-032",
+      "type": "single",
+      "scenario": "Bakim penceresinde `app` kullanicisinin parola aging bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -l app",
+          "hint_text": "Expiry ve warning politikasini `chage -l` ile gor.",
+          "hint_partial": "chage -l ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-033",
+      "type": "single",
+      "scenario": "Bakim penceresinde `app` kullanicisi icin parola maksimum yasini 90 gun yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -M 90 app",
+          "hint_text": "Parola maksimum yasini gun cinsinden ayarla.",
+          "hint_partial": "chage -M ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-034",
+      "type": "single",
+      "scenario": "Bakim penceresinde `app` kullanicisinin hesap bitis tarihini `2026-11-30` yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -E 2026-11-30 app",
+          "hint_text": "Hesaba son gecerlilik tarihi vermek icin `chage -E` kullan.",
+          "hint_partial": "chage -E ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-035",
+      "type": "single",
+      "scenario": "Bakim penceresinde `app` kullanicisinin shell'ini `nologin` yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "usermod -s /usr/sbin/nologin app",
+          "hint_text": "Interaktif login'i kapatmak icin shell'i degistir.",
+          "hint_partial": "usermod -s ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-036",
+      "type": "single",
+      "scenario": "Bakim penceresinde `app` kullanicisinin sudo yetkilerini kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sudo -l -U app",
+          "hint_text": "Bir hesabin sudo kapsamini denetle.",
+          "hint_partial": "sudo -l -U ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-037",
+      "type": "single",
+      "scenario": "Bakim penceresinde `app` kullanicisinin son login bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lastlog -u app",
+          "hint_text": "Son login zamanini `lastlog` ile denetle.",
+          "hint_partial": "lastlog -u ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-038",
+      "type": "single",
+      "scenario": "Bakim penceresinde `app` ve `developers` sahibi olacak sekilde `/srv/app` dizinini olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "install -d -o app -g developers /srv/app",
+          "hint_text": "Sahiplik vererek dizin olusturmak icin `install -d` kullan.",
+          "hint_partial": "install -d ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-039",
+      "type": "single",
+      "scenario": "Bakim penceresinde `app` kullanicisini home diziniyle birlikte sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "userdel -r app",
+          "hint_text": "Offboarding icin kullaniciyi home'u ile birlikte kaldir.",
+          "hint_partial": "userdel -r ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-040",
+      "type": "multi-step",
+      "scenario": "Bakim penceresinde `app` kullanicisini olustur, sonra `developers` grubuna ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "useradd -m -s /bin/bash app",
+          "hint_text": "Ilk adimda login shell ve home ile hesap ac.",
+          "hint_partial": "useradd -m -s ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "usermod -aG developers app",
+          "hint_text": "Ikinci adimda kullaniciyi gerekli gruba dahil et.",
+          "hint_partial": "usermod -aG ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-041",
+      "type": "single",
+      "scenario": "Incident sonrasinda `backup` kullanicisinin passwd kaydini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getent passwd backup",
+          "hint_text": "Sistem hesap kaydini gormek icin `getent passwd` kullan.",
+          "hint_partial": "getent passwd ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-042",
+      "type": "single",
+      "scenario": "Incident sonrasinda `backup` kullanicisinin UID, GID ve group bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "id backup",
+          "hint_text": "Belirli bir kullanicinin kimlik bilgisini `id` ile gor.",
+          "hint_partial": "id ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-043",
+      "type": "single",
+      "scenario": "Incident sonrasinda `backup` kullanicisinin group uyeliklerini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "groups backup",
+          "hint_text": "Kullanicinin ikincil gruplarini `groups` ile listele.",
+          "hint_partial": "groups ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-044",
+      "type": "single",
+      "scenario": "Incident sonrasinda `analytics` grubunun kaydini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getent group analytics",
+          "hint_text": "Bir grubun sistem kaydini `getent group` ile sorgula.",
+          "hint_partial": "getent group ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-045",
+      "type": "single",
+      "scenario": "Incident sonrasinda `backup` kullanicisini home dizini ve bash shell ile olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "useradd -m -s /bin/bash backup",
+          "hint_text": "Login shell ve home ile yeni bir kullanici ac.",
+          "hint_partial": "useradd -m -s ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-046",
+      "type": "single",
+      "scenario": "Incident sonrasinda `backup` kullanicisi icin parola belirle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd backup",
+          "hint_text": "Hesaba parola atamak icin `passwd` kullan.",
+          "hint_partial": "passwd ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-047",
+      "type": "single",
+      "scenario": "Incident sonrasinda `backup` kullanicisini `analytics` grubuna ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "usermod -aG analytics backup",
+          "hint_text": "Bir kullaniciyi ek gruba katmak icin `usermod -aG` kullan.",
+          "hint_partial": "usermod -aG ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-048",
+      "type": "single",
+      "scenario": "Incident sonrasinda `backup` kullanicisini `analytics` grubundan cikar.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gpasswd -d backup analytics",
+          "hint_text": "Kullaniciyi belirli bir gruptan cikarmak icin `gpasswd -d` kullan.",
+          "hint_partial": "gpasswd -d ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-049",
+      "type": "single",
+      "scenario": "Incident sonrasinda `backup` kullanicisinin parolasini kilitle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -l backup",
+          "hint_text": "Hesabi silmeden parola login'ini kapat.",
+          "hint_partial": "passwd -l ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-050",
+      "type": "single",
+      "scenario": "Incident sonrasinda `backup` kullanicisinin parola kilidini ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -u backup",
+          "hint_text": "Kilitli parolayi tekrar aktif et.",
+          "hint_partial": "passwd -u ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-051",
+      "type": "single",
+      "scenario": "Incident sonrasinda `backup` kullanicisinin parola durumunu gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -S backup",
+          "hint_text": "Hesabin parola durumunu `passwd -S` ile denetle.",
+          "hint_partial": "passwd -S ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-052",
+      "type": "single",
+      "scenario": "Incident sonrasinda `backup` kullanicisinin parola aging bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -l backup",
+          "hint_text": "Expiry ve warning politikasini `chage -l` ile gor.",
+          "hint_partial": "chage -l ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-053",
+      "type": "single",
+      "scenario": "Incident sonrasinda `backup` kullanicisi icin parola maksimum yasini 90 gun yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -M 90 backup",
+          "hint_text": "Parola maksimum yasini gun cinsinden ayarla.",
+          "hint_partial": "chage -M ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-054",
+      "type": "single",
+      "scenario": "Incident sonrasinda `backup` kullanicisinin hesap bitis tarihini `2026-10-31` yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -E 2026-10-31 backup",
+          "hint_text": "Hesaba son gecerlilik tarihi vermek icin `chage -E` kullan.",
+          "hint_partial": "chage -E ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-055",
+      "type": "single",
+      "scenario": "Incident sonrasinda `backup` kullanicisinin shell'ini `nologin` yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "usermod -s /usr/sbin/nologin backup",
+          "hint_text": "Interaktif login'i kapatmak icin shell'i degistir.",
+          "hint_partial": "usermod -s ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-056",
+      "type": "single",
+      "scenario": "Incident sonrasinda `backup` kullanicisinin sudo yetkilerini kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sudo -l -U backup",
+          "hint_text": "Bir hesabin sudo kapsamini denetle.",
+          "hint_partial": "sudo -l -U ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-057",
+      "type": "single",
+      "scenario": "Incident sonrasinda `backup` kullanicisinin son login bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lastlog -u backup",
+          "hint_text": "Son login zamanini `lastlog` ile denetle.",
+          "hint_partial": "lastlog -u ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-058",
+      "type": "single",
+      "scenario": "Incident sonrasinda `backup` ve `analytics` sahibi olacak sekilde `/srv/backup` dizinini olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "install -d -o backup -g analytics /srv/backup",
+          "hint_text": "Sahiplik vererek dizin olusturmak icin `install -d` kullan.",
+          "hint_partial": "install -d ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-059",
+      "type": "single",
+      "scenario": "Incident sonrasinda `backup` kullanicisini home diziniyle birlikte sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "userdel -r backup",
+          "hint_text": "Offboarding icin kullaniciyi home'u ile birlikte kaldir.",
+          "hint_partial": "userdel -r ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-060",
+      "type": "multi-step",
+      "scenario": "Incident sonrasinda `backup` kullanicisini olustur, sonra `analytics` grubuna ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "useradd -m -s /bin/bash backup",
+          "hint_text": "Ilk adimda login shell ve home ile hesap ac.",
+          "hint_partial": "useradd -m -s ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "usermod -aG analytics backup",
+          "hint_text": "Ikinci adimda kullaniciyi gerekli gruba dahil et.",
+          "hint_partial": "usermod -aG ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-061",
+      "type": "single",
+      "scenario": "Deploy oncesi `reporting` kullanicisinin passwd kaydini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getent passwd reporting",
+          "hint_text": "Sistem hesap kaydini gormek icin `getent passwd` kullan.",
+          "hint_partial": "getent passwd ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-062",
+      "type": "single",
+      "scenario": "Deploy oncesi `reporting` kullanicisinin UID, GID ve group bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "id reporting",
+          "hint_text": "Belirli bir kullanicinin kimlik bilgisini `id` ile gor.",
+          "hint_partial": "id ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-063",
+      "type": "single",
+      "scenario": "Deploy oncesi `reporting` kullanicisinin group uyeliklerini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "groups reporting",
+          "hint_text": "Kullanicinin ikincil gruplarini `groups` ile listele.",
+          "hint_partial": "groups ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-064",
+      "type": "single",
+      "scenario": "Deploy oncesi `support` grubunun kaydini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getent group support",
+          "hint_text": "Bir grubun sistem kaydini `getent group` ile sorgula.",
+          "hint_partial": "getent group ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-065",
+      "type": "single",
+      "scenario": "Deploy oncesi `reporting` kullanicisini home dizini ve bash shell ile olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "useradd -m -s /bin/bash reporting",
+          "hint_text": "Login shell ve home ile yeni bir kullanici ac.",
+          "hint_partial": "useradd -m -s ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-066",
+      "type": "single",
+      "scenario": "Deploy oncesi `reporting` kullanicisi icin parola belirle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd reporting",
+          "hint_text": "Hesaba parola atamak icin `passwd` kullan.",
+          "hint_partial": "passwd ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-067",
+      "type": "single",
+      "scenario": "Deploy oncesi `reporting` kullanicisini `support` grubuna ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "usermod -aG support reporting",
+          "hint_text": "Bir kullaniciyi ek gruba katmak icin `usermod -aG` kullan.",
+          "hint_partial": "usermod -aG ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-068",
+      "type": "single",
+      "scenario": "Deploy oncesi `reporting` kullanicisini `support` grubundan cikar.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gpasswd -d reporting support",
+          "hint_text": "Kullaniciyi belirli bir gruptan cikarmak icin `gpasswd -d` kullan.",
+          "hint_partial": "gpasswd -d ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-069",
+      "type": "single",
+      "scenario": "Deploy oncesi `reporting` kullanicisinin parolasini kilitle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -l reporting",
+          "hint_text": "Hesabi silmeden parola login'ini kapat.",
+          "hint_partial": "passwd -l ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-070",
+      "type": "single",
+      "scenario": "Deploy oncesi `reporting` kullanicisinin parola kilidini ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -u reporting",
+          "hint_text": "Kilitli parolayi tekrar aktif et.",
+          "hint_partial": "passwd -u ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-071",
+      "type": "single",
+      "scenario": "Deploy oncesi `reporting` kullanicisinin parola durumunu gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -S reporting",
+          "hint_text": "Hesabin parola durumunu `passwd -S` ile denetle.",
+          "hint_partial": "passwd -S ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-072",
+      "type": "single",
+      "scenario": "Deploy oncesi `reporting` kullanicisinin parola aging bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -l reporting",
+          "hint_text": "Expiry ve warning politikasini `chage -l` ile gor.",
+          "hint_partial": "chage -l ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-073",
+      "type": "single",
+      "scenario": "Deploy oncesi `reporting` kullanicisi icin parola maksimum yasini 90 gun yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -M 90 reporting",
+          "hint_text": "Parola maksimum yasini gun cinsinden ayarla.",
+          "hint_partial": "chage -M ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-074",
+      "type": "single",
+      "scenario": "Deploy oncesi `reporting` kullanicisinin hesap bitis tarihini `2026-09-30` yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -E 2026-09-30 reporting",
+          "hint_text": "Hesaba son gecerlilik tarihi vermek icin `chage -E` kullan.",
+          "hint_partial": "chage -E ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-075",
+      "type": "single",
+      "scenario": "Deploy oncesi `reporting` kullanicisinin shell'ini `nologin` yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "usermod -s /usr/sbin/nologin reporting",
+          "hint_text": "Interaktif login'i kapatmak icin shell'i degistir.",
+          "hint_partial": "usermod -s ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-076",
+      "type": "single",
+      "scenario": "Deploy oncesi `reporting` kullanicisinin sudo yetkilerini kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sudo -l -U reporting",
+          "hint_text": "Bir hesabin sudo kapsamini denetle.",
+          "hint_partial": "sudo -l -U ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-077",
+      "type": "single",
+      "scenario": "Deploy oncesi `reporting` kullanicisinin son login bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lastlog -u reporting",
+          "hint_text": "Son login zamanini `lastlog` ile denetle.",
+          "hint_partial": "lastlog -u ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-078",
+      "type": "single",
+      "scenario": "Deploy oncesi `reporting` ve `support` sahibi olacak sekilde `/srv/reporting` dizinini olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "install -d -o reporting -g support /srv/reporting",
+          "hint_text": "Sahiplik vererek dizin olusturmak icin `install -d` kullan.",
+          "hint_partial": "install -d ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-079",
+      "type": "single",
+      "scenario": "Deploy oncesi `reporting` kullanicisini home diziniyle birlikte sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "userdel -r reporting",
+          "hint_text": "Offboarding icin kullaniciyi home'u ile birlikte kaldir.",
+          "hint_partial": "userdel -r ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-080",
+      "type": "multi-step",
+      "scenario": "Deploy oncesi `reporting` kullanicisini olustur, sonra `support` grubuna ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "useradd -m -s /bin/bash reporting",
+          "hint_text": "Ilk adimda login shell ve home ile hesap ac.",
+          "hint_partial": "useradd -m -s ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "usermod -aG support reporting",
+          "hint_text": "Ikinci adimda kullaniciyi gerekli gruba dahil et.",
+          "hint_partial": "usermod -aG ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-081",
+      "type": "single",
+      "scenario": "Audit sirasinda `analytics` kullanicisinin passwd kaydini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getent passwd analytics",
+          "hint_text": "Sistem hesap kaydini gormek icin `getent passwd` kullan.",
+          "hint_partial": "getent passwd ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-082",
+      "type": "single",
+      "scenario": "Audit sirasinda `analytics` kullanicisinin UID, GID ve group bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "id analytics",
+          "hint_text": "Belirli bir kullanicinin kimlik bilgisini `id` ile gor.",
+          "hint_partial": "id ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-083",
+      "type": "single",
+      "scenario": "Audit sirasinda `analytics` kullanicisinin group uyeliklerini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "groups analytics",
+          "hint_text": "Kullanicinin ikincil gruplarini `groups` ile listele.",
+          "hint_partial": "groups ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-084",
+      "type": "single",
+      "scenario": "Audit sirasinda `ops` grubunun kaydini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getent group ops",
+          "hint_text": "Bir grubun sistem kaydini `getent group` ile sorgula.",
+          "hint_partial": "getent group ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-085",
+      "type": "single",
+      "scenario": "Audit sirasinda `analytics` kullanicisini home dizini ve bash shell ile olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "useradd -m -s /bin/bash analytics",
+          "hint_text": "Login shell ve home ile yeni bir kullanici ac.",
+          "hint_partial": "useradd -m -s ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-086",
+      "type": "single",
+      "scenario": "Audit sirasinda `analytics` kullanicisi icin parola belirle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd analytics",
+          "hint_text": "Hesaba parola atamak icin `passwd` kullan.",
+          "hint_partial": "passwd ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-087",
+      "type": "single",
+      "scenario": "Audit sirasinda `analytics` kullanicisini `ops` grubuna ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "usermod -aG ops analytics",
+          "hint_text": "Bir kullaniciyi ek gruba katmak icin `usermod -aG` kullan.",
+          "hint_partial": "usermod -aG ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-088",
+      "type": "single",
+      "scenario": "Audit sirasinda `analytics` kullanicisini `ops` grubundan cikar.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gpasswd -d analytics ops",
+          "hint_text": "Kullaniciyi belirli bir gruptan cikarmak icin `gpasswd -d` kullan.",
+          "hint_partial": "gpasswd -d ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-089",
+      "type": "single",
+      "scenario": "Audit sirasinda `analytics` kullanicisinin parolasini kilitle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -l analytics",
+          "hint_text": "Hesabi silmeden parola login'ini kapat.",
+          "hint_partial": "passwd -l ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-090",
+      "type": "single",
+      "scenario": "Audit sirasinda `analytics` kullanicisinin parola kilidini ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -u analytics",
+          "hint_text": "Kilitli parolayi tekrar aktif et.",
+          "hint_partial": "passwd -u ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-091",
+      "type": "single",
+      "scenario": "Audit sirasinda `analytics` kullanicisinin parola durumunu gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -S analytics",
+          "hint_text": "Hesabin parola durumunu `passwd -S` ile denetle.",
+          "hint_partial": "passwd -S ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-092",
+      "type": "single",
+      "scenario": "Audit sirasinda `analytics` kullanicisinin parola aging bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -l analytics",
+          "hint_text": "Expiry ve warning politikasini `chage -l` ile gor.",
+          "hint_partial": "chage -l ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-093",
+      "type": "single",
+      "scenario": "Audit sirasinda `analytics` kullanicisi icin parola maksimum yasini 90 gun yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -M 90 analytics",
+          "hint_text": "Parola maksimum yasini gun cinsinden ayarla.",
+          "hint_partial": "chage -M ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-094",
+      "type": "single",
+      "scenario": "Audit sirasinda `analytics` kullanicisinin hesap bitis tarihini `2026-08-31` yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -E 2026-08-31 analytics",
+          "hint_text": "Hesaba son gecerlilik tarihi vermek icin `chage -E` kullan.",
+          "hint_partial": "chage -E ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-095",
+      "type": "single",
+      "scenario": "Audit sirasinda `analytics` kullanicisinin shell'ini `nologin` yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "usermod -s /usr/sbin/nologin analytics",
+          "hint_text": "Interaktif login'i kapatmak icin shell'i degistir.",
+          "hint_partial": "usermod -s ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-096",
+      "type": "single",
+      "scenario": "Audit sirasinda `analytics` kullanicisinin sudo yetkilerini kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sudo -l -U analytics",
+          "hint_text": "Bir hesabin sudo kapsamini denetle.",
+          "hint_partial": "sudo -l -U ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-097",
+      "type": "single",
+      "scenario": "Audit sirasinda `analytics` kullanicisinin son login bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lastlog -u analytics",
+          "hint_text": "Son login zamanini `lastlog` ile denetle.",
+          "hint_partial": "lastlog -u ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-098",
+      "type": "single",
+      "scenario": "Audit sirasinda `analytics` ve `ops` sahibi olacak sekilde `/srv/analytics` dizinini olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "install -d -o analytics -g ops /srv/analytics",
+          "hint_text": "Sahiplik vererek dizin olusturmak icin `install -d` kullan.",
+          "hint_partial": "install -d ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-099",
+      "type": "single",
+      "scenario": "Audit sirasinda `analytics` kullanicisini home diziniyle birlikte sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "userdel -r analytics",
+          "hint_text": "Offboarding icin kullaniciyi home'u ile birlikte kaldir.",
+          "hint_partial": "userdel -r ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-100",
+      "type": "multi-step",
+      "scenario": "Audit sirasinda `analytics` kullanicisini olustur, sonra `ops` grubuna ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "useradd -m -s /bin/bash analytics",
+          "hint_text": "Ilk adimda login shell ve home ile hesap ac.",
+          "hint_partial": "useradd -m -s ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "usermod -aG ops analytics",
+          "hint_text": "Ikinci adimda kullaniciyi gerekli gruba dahil et.",
+          "hint_partial": "usermod -aG ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-101",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `ops` kullanicisinin passwd kaydini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getent passwd ops",
+          "hint_text": "Sistem hesap kaydini gormek icin `getent passwd` kullan.",
+          "hint_partial": "getent passwd ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-102",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `ops` kullanicisinin UID, GID ve group bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "id ops",
+          "hint_text": "Belirli bir kullanicinin kimlik bilgisini `id` ile gor.",
+          "hint_partial": "id ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-103",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `ops` kullanicisinin group uyeliklerini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "groups ops",
+          "hint_text": "Kullanicinin ikincil gruplarini `groups` ile listele.",
+          "hint_partial": "groups ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-104",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `infra` grubunun kaydini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getent group infra",
+          "hint_text": "Bir grubun sistem kaydini `getent group` ile sorgula.",
+          "hint_partial": "getent group ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-105",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `ops` kullanicisini home dizini ve bash shell ile olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "useradd -m -s /bin/bash ops",
+          "hint_text": "Login shell ve home ile yeni bir kullanici ac.",
+          "hint_partial": "useradd -m -s ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-106",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `ops` kullanicisi icin parola belirle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd ops",
+          "hint_text": "Hesaba parola atamak icin `passwd` kullan.",
+          "hint_partial": "passwd ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-107",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `ops` kullanicisini `infra` grubuna ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "usermod -aG infra ops",
+          "hint_text": "Bir kullaniciyi ek gruba katmak icin `usermod -aG` kullan.",
+          "hint_partial": "usermod -aG ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-108",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `ops` kullanicisini `infra` grubundan cikar.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gpasswd -d ops infra",
+          "hint_text": "Kullaniciyi belirli bir gruptan cikarmak icin `gpasswd -d` kullan.",
+          "hint_partial": "gpasswd -d ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-109",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `ops` kullanicisinin parolasini kilitle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -l ops",
+          "hint_text": "Hesabi silmeden parola login'ini kapat.",
+          "hint_partial": "passwd -l ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-110",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `ops` kullanicisinin parola kilidini ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -u ops",
+          "hint_text": "Kilitli parolayi tekrar aktif et.",
+          "hint_partial": "passwd -u ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-111",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `ops` kullanicisinin parola durumunu gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -S ops",
+          "hint_text": "Hesabin parola durumunu `passwd -S` ile denetle.",
+          "hint_partial": "passwd -S ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-112",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `ops` kullanicisinin parola aging bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -l ops",
+          "hint_text": "Expiry ve warning politikasini `chage -l` ile gor.",
+          "hint_partial": "chage -l ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-113",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `ops` kullanicisi icin parola maksimum yasini 90 gun yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -M 90 ops",
+          "hint_text": "Parola maksimum yasini gun cinsinden ayarla.",
+          "hint_partial": "chage -M ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-114",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `ops` kullanicisinin hesap bitis tarihini `2026-07-31` yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -E 2026-07-31 ops",
+          "hint_text": "Hesaba son gecerlilik tarihi vermek icin `chage -E` kullan.",
+          "hint_partial": "chage -E ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-115",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `ops` kullanicisinin shell'ini `nologin` yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "usermod -s /usr/sbin/nologin ops",
+          "hint_text": "Interaktif login'i kapatmak icin shell'i degistir.",
+          "hint_partial": "usermod -s ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-116",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `ops` kullanicisinin sudo yetkilerini kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sudo -l -U ops",
+          "hint_text": "Bir hesabin sudo kapsamini denetle.",
+          "hint_partial": "sudo -l -U ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-117",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `ops` kullanicisinin son login bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lastlog -u ops",
+          "hint_text": "Son login zamanini `lastlog` ile denetle.",
+          "hint_partial": "lastlog -u ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-118",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `ops` ve `infra` sahibi olacak sekilde `/srv/ops` dizinini olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "install -d -o ops -g infra /srv/ops",
+          "hint_text": "Sahiplik vererek dizin olusturmak icin `install -d` kullan.",
+          "hint_partial": "install -d ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-119",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `ops` kullanicisini home diziniyle birlikte sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "userdel -r ops",
+          "hint_text": "Offboarding icin kullaniciyi home'u ile birlikte kaldir.",
+          "hint_partial": "userdel -r ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-120",
+      "type": "multi-step",
+      "scenario": "Troubleshooting sirasinda `ops` kullanicisini olustur, sonra `infra` grubuna ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "useradd -m -s /bin/bash ops",
+          "hint_text": "Ilk adimda login shell ve home ile hesap ac.",
+          "hint_partial": "useradd -m -s ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "usermod -aG infra ops",
+          "hint_text": "Ikinci adimda kullaniciyi gerekli gruba dahil et.",
+          "hint_partial": "usermod -aG ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-121",
+      "type": "single",
+      "scenario": "Release kontrolunde `api` kullanicisinin passwd kaydini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getent passwd api",
+          "hint_text": "Sistem hesap kaydini gormek icin `getent passwd` kullan.",
+          "hint_partial": "getent passwd ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-122",
+      "type": "single",
+      "scenario": "Release kontrolunde `api` kullanicisinin UID, GID ve group bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "id api",
+          "hint_text": "Belirli bir kullanicinin kimlik bilgisini `id` ile gor.",
+          "hint_partial": "id ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-123",
+      "type": "single",
+      "scenario": "Release kontrolunde `api` kullanicisinin group uyeliklerini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "groups api",
+          "hint_text": "Kullanicinin ikincil gruplarini `groups` ile listele.",
+          "hint_partial": "groups ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-124",
+      "type": "single",
+      "scenario": "Release kontrolunde `ci` grubunun kaydini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getent group ci",
+          "hint_text": "Bir grubun sistem kaydini `getent group` ile sorgula.",
+          "hint_partial": "getent group ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-125",
+      "type": "single",
+      "scenario": "Release kontrolunde `api` kullanicisini home dizini ve bash shell ile olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "useradd -m -s /bin/bash api",
+          "hint_text": "Login shell ve home ile yeni bir kullanici ac.",
+          "hint_partial": "useradd -m -s ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-126",
+      "type": "single",
+      "scenario": "Release kontrolunde `api` kullanicisi icin parola belirle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd api",
+          "hint_text": "Hesaba parola atamak icin `passwd` kullan.",
+          "hint_partial": "passwd ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-127",
+      "type": "single",
+      "scenario": "Release kontrolunde `api` kullanicisini `ci` grubuna ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "usermod -aG ci api",
+          "hint_text": "Bir kullaniciyi ek gruba katmak icin `usermod -aG` kullan.",
+          "hint_partial": "usermod -aG ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-128",
+      "type": "single",
+      "scenario": "Release kontrolunde `api` kullanicisini `ci` grubundan cikar.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gpasswd -d api ci",
+          "hint_text": "Kullaniciyi belirli bir gruptan cikarmak icin `gpasswd -d` kullan.",
+          "hint_partial": "gpasswd -d ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-129",
+      "type": "single",
+      "scenario": "Release kontrolunde `api` kullanicisinin parolasini kilitle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -l api",
+          "hint_text": "Hesabi silmeden parola login'ini kapat.",
+          "hint_partial": "passwd -l ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-130",
+      "type": "single",
+      "scenario": "Release kontrolunde `api` kullanicisinin parola kilidini ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -u api",
+          "hint_text": "Kilitli parolayi tekrar aktif et.",
+          "hint_partial": "passwd -u ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-131",
+      "type": "single",
+      "scenario": "Release kontrolunde `api` kullanicisinin parola durumunu gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -S api",
+          "hint_text": "Hesabin parola durumunu `passwd -S` ile denetle.",
+          "hint_partial": "passwd -S ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-132",
+      "type": "single",
+      "scenario": "Release kontrolunde `api` kullanicisinin parola aging bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -l api",
+          "hint_text": "Expiry ve warning politikasini `chage -l` ile gor.",
+          "hint_partial": "chage -l ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-133",
+      "type": "single",
+      "scenario": "Release kontrolunde `api` kullanicisi icin parola maksimum yasini 90 gun yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -M 90 api",
+          "hint_text": "Parola maksimum yasini gun cinsinden ayarla.",
+          "hint_partial": "chage -M ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-134",
+      "type": "single",
+      "scenario": "Release kontrolunde `api` kullanicisinin hesap bitis tarihini `2026-06-30` yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -E 2026-06-30 api",
+          "hint_text": "Hesaba son gecerlilik tarihi vermek icin `chage -E` kullan.",
+          "hint_partial": "chage -E ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-135",
+      "type": "single",
+      "scenario": "Release kontrolunde `api` kullanicisinin shell'ini `nologin` yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "usermod -s /usr/sbin/nologin api",
+          "hint_text": "Interaktif login'i kapatmak icin shell'i degistir.",
+          "hint_partial": "usermod -s ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-136",
+      "type": "single",
+      "scenario": "Release kontrolunde `api` kullanicisinin sudo yetkilerini kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sudo -l -U api",
+          "hint_text": "Bir hesabin sudo kapsamini denetle.",
+          "hint_partial": "sudo -l -U ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-137",
+      "type": "single",
+      "scenario": "Release kontrolunde `api` kullanicisinin son login bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lastlog -u api",
+          "hint_text": "Son login zamanini `lastlog` ile denetle.",
+          "hint_partial": "lastlog -u ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-138",
+      "type": "single",
+      "scenario": "Release kontrolunde `api` ve `ci` sahibi olacak sekilde `/srv/api` dizinini olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "install -d -o api -g ci /srv/api",
+          "hint_text": "Sahiplik vererek dizin olusturmak icin `install -d` kullan.",
+          "hint_partial": "install -d ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-139",
+      "type": "single",
+      "scenario": "Release kontrolunde `api` kullanicisini home diziniyle birlikte sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "userdel -r api",
+          "hint_text": "Offboarding icin kullaniciyi home'u ile birlikte kaldir.",
+          "hint_partial": "userdel -r ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-140",
+      "type": "multi-step",
+      "scenario": "Release kontrolunde `api` kullanicisini olustur, sonra `ci` grubuna ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "useradd -m -s /bin/bash api",
+          "hint_text": "Ilk adimda login shell ve home ile hesap ac.",
+          "hint_partial": "useradd -m -s ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "usermod -aG ci api",
+          "hint_text": "Ikinci adimda kullaniciyi gerekli gruba dahil et.",
+          "hint_partial": "usermod -aG ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-141",
+      "type": "single",
+      "scenario": "Operasyon devrinde `worker` kullanicisinin passwd kaydini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getent passwd worker",
+          "hint_text": "Sistem hesap kaydini gormek icin `getent passwd` kullan.",
+          "hint_partial": "getent passwd ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-142",
+      "type": "single",
+      "scenario": "Operasyon devrinde `worker` kullanicisinin UID, GID ve group bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "id worker",
+          "hint_text": "Belirli bir kullanicinin kimlik bilgisini `id` ile gor.",
+          "hint_partial": "id ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-143",
+      "type": "single",
+      "scenario": "Operasyon devrinde `worker` kullanicisinin group uyeliklerini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "groups worker",
+          "hint_text": "Kullanicinin ikincil gruplarini `groups` ile listele.",
+          "hint_partial": "groups ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-144",
+      "type": "single",
+      "scenario": "Operasyon devrinde `backup` grubunun kaydini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getent group backup",
+          "hint_text": "Bir grubun sistem kaydini `getent group` ile sorgula.",
+          "hint_partial": "getent group ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-145",
+      "type": "single",
+      "scenario": "Operasyon devrinde `worker` kullanicisini home dizini ve bash shell ile olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "useradd -m -s /bin/bash worker",
+          "hint_text": "Login shell ve home ile yeni bir kullanici ac.",
+          "hint_partial": "useradd -m -s ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-146",
+      "type": "single",
+      "scenario": "Operasyon devrinde `worker` kullanicisi icin parola belirle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd worker",
+          "hint_text": "Hesaba parola atamak icin `passwd` kullan.",
+          "hint_partial": "passwd ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-147",
+      "type": "single",
+      "scenario": "Operasyon devrinde `worker` kullanicisini `backup` grubuna ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "usermod -aG backup worker",
+          "hint_text": "Bir kullaniciyi ek gruba katmak icin `usermod -aG` kullan.",
+          "hint_partial": "usermod -aG ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-148",
+      "type": "single",
+      "scenario": "Operasyon devrinde `worker` kullanicisini `backup` grubundan cikar.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gpasswd -d worker backup",
+          "hint_text": "Kullaniciyi belirli bir gruptan cikarmak icin `gpasswd -d` kullan.",
+          "hint_partial": "gpasswd -d ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-149",
+      "type": "single",
+      "scenario": "Operasyon devrinde `worker` kullanicisinin parolasini kilitle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -l worker",
+          "hint_text": "Hesabi silmeden parola login'ini kapat.",
+          "hint_partial": "passwd -l ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-150",
+      "type": "single",
+      "scenario": "Operasyon devrinde `worker` kullanicisinin parola kilidini ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -u worker",
+          "hint_text": "Kilitli parolayi tekrar aktif et.",
+          "hint_partial": "passwd -u ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-151",
+      "type": "single",
+      "scenario": "Operasyon devrinde `worker` kullanicisinin parola durumunu gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -S worker",
+          "hint_text": "Hesabin parola durumunu `passwd -S` ile denetle.",
+          "hint_partial": "passwd -S ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-152",
+      "type": "single",
+      "scenario": "Operasyon devrinde `worker` kullanicisinin parola aging bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -l worker",
+          "hint_text": "Expiry ve warning politikasini `chage -l` ile gor.",
+          "hint_partial": "chage -l ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-153",
+      "type": "single",
+      "scenario": "Operasyon devrinde `worker` kullanicisi icin parola maksimum yasini 90 gun yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -M 90 worker",
+          "hint_text": "Parola maksimum yasini gun cinsinden ayarla.",
+          "hint_partial": "chage -M ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-154",
+      "type": "single",
+      "scenario": "Operasyon devrinde `worker` kullanicisinin hesap bitis tarihini `2026-05-31` yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -E 2026-05-31 worker",
+          "hint_text": "Hesaba son gecerlilik tarihi vermek icin `chage -E` kullan.",
+          "hint_partial": "chage -E ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-155",
+      "type": "single",
+      "scenario": "Operasyon devrinde `worker` kullanicisinin shell'ini `nologin` yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "usermod -s /usr/sbin/nologin worker",
+          "hint_text": "Interaktif login'i kapatmak icin shell'i degistir.",
+          "hint_partial": "usermod -s ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-156",
+      "type": "single",
+      "scenario": "Operasyon devrinde `worker` kullanicisinin sudo yetkilerini kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sudo -l -U worker",
+          "hint_text": "Bir hesabin sudo kapsamini denetle.",
+          "hint_partial": "sudo -l -U ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-157",
+      "type": "single",
+      "scenario": "Operasyon devrinde `worker` kullanicisinin son login bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lastlog -u worker",
+          "hint_text": "Son login zamanini `lastlog` ile denetle.",
+          "hint_partial": "lastlog -u ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-158",
+      "type": "single",
+      "scenario": "Operasyon devrinde `worker` ve `backup` sahibi olacak sekilde `/srv/worker` dizinini olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "install -d -o worker -g backup /srv/worker",
+          "hint_text": "Sahiplik vererek dizin olusturmak icin `install -d` kullan.",
+          "hint_partial": "install -d ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-159",
+      "type": "single",
+      "scenario": "Operasyon devrinde `worker` kullanicisini home diziniyle birlikte sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "userdel -r worker",
+          "hint_text": "Offboarding icin kullaniciyi home'u ile birlikte kaldir.",
+          "hint_partial": "userdel -r ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-160",
+      "type": "multi-step",
+      "scenario": "Operasyon devrinde `worker` kullanicisini olustur, sonra `backup` grubuna ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "useradd -m -s /bin/bash worker",
+          "hint_text": "Ilk adimda login shell ve home ile hesap ac.",
+          "hint_partial": "useradd -m -s ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "usermod -aG backup worker",
+          "hint_text": "Ikinci adimda kullaniciyi gerekli gruba dahil et.",
+          "hint_partial": "usermod -aG ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-161",
+      "type": "single",
+      "scenario": "On-call gorevinde `support` kullanicisinin passwd kaydini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getent passwd support",
+          "hint_text": "Sistem hesap kaydini gormek icin `getent passwd` kullan.",
+          "hint_partial": "getent passwd ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-162",
+      "type": "single",
+      "scenario": "On-call gorevinde `support` kullanicisinin UID, GID ve group bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "id support",
+          "hint_text": "Belirli bir kullanicinin kimlik bilgisini `id` ile gor.",
+          "hint_partial": "id ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-163",
+      "type": "single",
+      "scenario": "On-call gorevinde `support` kullanicisinin group uyeliklerini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "groups support",
+          "hint_text": "Kullanicinin ikincil gruplarini `groups` ile listele.",
+          "hint_partial": "groups ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-164",
+      "type": "single",
+      "scenario": "On-call gorevinde `readonly` grubunun kaydini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getent group readonly",
+          "hint_text": "Bir grubun sistem kaydini `getent group` ile sorgula.",
+          "hint_partial": "getent group ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-165",
+      "type": "single",
+      "scenario": "On-call gorevinde `support` kullanicisini home dizini ve bash shell ile olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "useradd -m -s /bin/bash support",
+          "hint_text": "Login shell ve home ile yeni bir kullanici ac.",
+          "hint_partial": "useradd -m -s ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-166",
+      "type": "single",
+      "scenario": "On-call gorevinde `support` kullanicisi icin parola belirle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd support",
+          "hint_text": "Hesaba parola atamak icin `passwd` kullan.",
+          "hint_partial": "passwd ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-167",
+      "type": "single",
+      "scenario": "On-call gorevinde `support` kullanicisini `readonly` grubuna ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "usermod -aG readonly support",
+          "hint_text": "Bir kullaniciyi ek gruba katmak icin `usermod -aG` kullan.",
+          "hint_partial": "usermod -aG ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-168",
+      "type": "single",
+      "scenario": "On-call gorevinde `support` kullanicisini `readonly` grubundan cikar.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gpasswd -d support readonly",
+          "hint_text": "Kullaniciyi belirli bir gruptan cikarmak icin `gpasswd -d` kullan.",
+          "hint_partial": "gpasswd -d ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-169",
+      "type": "single",
+      "scenario": "On-call gorevinde `support` kullanicisinin parolasini kilitle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -l support",
+          "hint_text": "Hesabi silmeden parola login'ini kapat.",
+          "hint_partial": "passwd -l ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-170",
+      "type": "single",
+      "scenario": "On-call gorevinde `support` kullanicisinin parola kilidini ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -u support",
+          "hint_text": "Kilitli parolayi tekrar aktif et.",
+          "hint_partial": "passwd -u ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-171",
+      "type": "single",
+      "scenario": "On-call gorevinde `support` kullanicisinin parola durumunu gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -S support",
+          "hint_text": "Hesabin parola durumunu `passwd -S` ile denetle.",
+          "hint_partial": "passwd -S ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-172",
+      "type": "single",
+      "scenario": "On-call gorevinde `support` kullanicisinin parola aging bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -l support",
+          "hint_text": "Expiry ve warning politikasini `chage -l` ile gor.",
+          "hint_partial": "chage -l ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-173",
+      "type": "single",
+      "scenario": "On-call gorevinde `support` kullanicisi icin parola maksimum yasini 90 gun yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -M 90 support",
+          "hint_text": "Parola maksimum yasini gun cinsinden ayarla.",
+          "hint_partial": "chage -M ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-174",
+      "type": "single",
+      "scenario": "On-call gorevinde `support` kullanicisinin hesap bitis tarihini `2026-04-30` yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -E 2026-04-30 support",
+          "hint_text": "Hesaba son gecerlilik tarihi vermek icin `chage -E` kullan.",
+          "hint_partial": "chage -E ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-175",
+      "type": "single",
+      "scenario": "On-call gorevinde `support` kullanicisinin shell'ini `nologin` yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "usermod -s /usr/sbin/nologin support",
+          "hint_text": "Interaktif login'i kapatmak icin shell'i degistir.",
+          "hint_partial": "usermod -s ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-176",
+      "type": "single",
+      "scenario": "On-call gorevinde `support` kullanicisinin sudo yetkilerini kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sudo -l -U support",
+          "hint_text": "Bir hesabin sudo kapsamini denetle.",
+          "hint_partial": "sudo -l -U ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-177",
+      "type": "single",
+      "scenario": "On-call gorevinde `support` kullanicisinin son login bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lastlog -u support",
+          "hint_text": "Son login zamanini `lastlog` ile denetle.",
+          "hint_partial": "lastlog -u ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-178",
+      "type": "single",
+      "scenario": "On-call gorevinde `support` ve `readonly` sahibi olacak sekilde `/srv/support` dizinini olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "install -d -o support -g readonly /srv/support",
+          "hint_text": "Sahiplik vererek dizin olusturmak icin `install -d` kullan.",
+          "hint_partial": "install -d ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-179",
+      "type": "single",
+      "scenario": "On-call gorevinde `support` kullanicisini home diziniyle birlikte sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "userdel -r support",
+          "hint_text": "Offboarding icin kullaniciyi home'u ile birlikte kaldir.",
+          "hint_partial": "userdel -r ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-180",
+      "type": "multi-step",
+      "scenario": "On-call gorevinde `support` kullanicisini olustur, sonra `readonly` grubuna ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "useradd -m -s /bin/bash support",
+          "hint_text": "Ilk adimda login shell ve home ile hesap ac.",
+          "hint_partial": "useradd -m -s ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "usermod -aG readonly support",
+          "hint_text": "Ikinci adimda kullaniciyi gerekli gruba dahil et.",
+          "hint_partial": "usermod -aG ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-181",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `build` kullanicisinin passwd kaydini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getent passwd build",
+          "hint_text": "Sistem hesap kaydini gormek icin `getent passwd` kullan.",
+          "hint_partial": "getent passwd ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-182",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `build` kullanicisinin UID, GID ve group bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "id build",
+          "hint_text": "Belirli bir kullanicinin kimlik bilgisini `id` ile gor.",
+          "hint_partial": "id ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-183",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `build` kullanicisinin group uyeliklerini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "groups build",
+          "hint_text": "Kullanicinin ikincil gruplarini `groups` ile listele.",
+          "hint_partial": "groups ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-184",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `dbops` grubunun kaydini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getent group dbops",
+          "hint_text": "Bir grubun sistem kaydini `getent group` ile sorgula.",
+          "hint_partial": "getent group ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-185",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `build` kullanicisini home dizini ve bash shell ile olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "useradd -m -s /bin/bash build",
+          "hint_text": "Login shell ve home ile yeni bir kullanici ac.",
+          "hint_partial": "useradd -m -s ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-186",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `build` kullanicisi icin parola belirle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd build",
+          "hint_text": "Hesaba parola atamak icin `passwd` kullan.",
+          "hint_partial": "passwd ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-187",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `build` kullanicisini `dbops` grubuna ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "usermod -aG dbops build",
+          "hint_text": "Bir kullaniciyi ek gruba katmak icin `usermod -aG` kullan.",
+          "hint_partial": "usermod -aG ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-188",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `build` kullanicisini `dbops` grubundan cikar.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gpasswd -d build dbops",
+          "hint_text": "Kullaniciyi belirli bir gruptan cikarmak icin `gpasswd -d` kullan.",
+          "hint_partial": "gpasswd -d ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-189",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `build` kullanicisinin parolasini kilitle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -l build",
+          "hint_text": "Hesabi silmeden parola login'ini kapat.",
+          "hint_partial": "passwd -l ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-190",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `build` kullanicisinin parola kilidini ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -u build",
+          "hint_text": "Kilitli parolayi tekrar aktif et.",
+          "hint_partial": "passwd -u ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-191",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `build` kullanicisinin parola durumunu gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -S build",
+          "hint_text": "Hesabin parola durumunu `passwd -S` ile denetle.",
+          "hint_partial": "passwd -S ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-192",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `build` kullanicisinin parola aging bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -l build",
+          "hint_text": "Expiry ve warning politikasini `chage -l` ile gor.",
+          "hint_partial": "chage -l ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-193",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `build` kullanicisi icin parola maksimum yasini 90 gun yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -M 90 build",
+          "hint_text": "Parola maksimum yasini gun cinsinden ayarla.",
+          "hint_partial": "chage -M ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-194",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `build` kullanicisinin hesap bitis tarihini `2026-03-31` yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -E 2026-03-31 build",
+          "hint_text": "Hesaba son gecerlilik tarihi vermek icin `chage -E` kullan.",
+          "hint_partial": "chage -E ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-195",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `build` kullanicisinin shell'ini `nologin` yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "usermod -s /usr/sbin/nologin build",
+          "hint_text": "Interaktif login'i kapatmak icin shell'i degistir.",
+          "hint_partial": "usermod -s ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-196",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `build` kullanicisinin sudo yetkilerini kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sudo -l -U build",
+          "hint_text": "Bir hesabin sudo kapsamini denetle.",
+          "hint_partial": "sudo -l -U ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-197",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `build` kullanicisinin son login bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lastlog -u build",
+          "hint_text": "Son login zamanini `lastlog` ile denetle.",
+          "hint_partial": "lastlog -u ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-198",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `build` ve `dbops` sahibi olacak sekilde `/srv/build` dizinini olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "install -d -o build -g dbops /srv/build",
+          "hint_text": "Sahiplik vererek dizin olusturmak icin `install -d` kullan.",
+          "hint_partial": "install -d ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-199",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `build` kullanicisini home diziniyle birlikte sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "userdel -r build",
+          "hint_text": "Offboarding icin kullaniciyi home'u ile birlikte kaldir.",
+          "hint_partial": "userdel -r ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-exp-200",
+      "type": "multi-step",
+      "scenario": "Kesinti sonrasinda `build` kullanicisini olustur, sonra `dbops` grubuna ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "useradd -m -s /bin/bash build",
+          "hint_text": "Ilk adimda login shell ve home ile hesap ac.",
+          "hint_partial": "useradd -m -s ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "usermod -aG dbops build",
+          "hint_text": "Ikinci adimda kullaniciyi gerekli gruba dahil et.",
+          "hint_partial": "usermod -aG ..."
+        }
+      ]
+    }
+  ]
+}

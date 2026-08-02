@@ -1,0 +1,154 @@
+{
+  "level": "mid",
+  "topic": "postgres",
+  "questions": [
+    {
+      "id": "mpg-001",
+      "type": "single",
+      "scenario": "Cluster'daki tum rolleri alfabetik olarak listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT rolname FROM pg_roles ORDER BY rolname;\"",
+          "hint_text": "Rol envanteri icin sistem kataloglarindaki rol view'unu alfabetik sirayla sorgula.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-002",
+      "type": "multi-step",
+      "scenario": "`app_user` adinda login rol olustur, sonra owner'i bu rol olan `app` database'ini ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"CREATE ROLE app_user WITH LOGIN PASSWORD 'app_user_pw2026';\"",
+          "hint_text": "Uygulama kullanicisi olustururken login ozelligini ve sifresini ayni komutta ver.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "createdb -U postgres -O app_user app",
+          "hint_text": "Database sahibini ilk olusum aninda atamak icin CLI olusturma aracinin owner parametresini kullan.",
+          "hint_partial": "createdb -U postgres -O ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-003",
+      "type": "multi-step",
+      "scenario": "`app_user` rolune public schema kullanma izni ve mevcut tablolarda tam DML yetkisi ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d app -c \"GRANT USAGE ON SCHEMA public TO app_user;\"",
+          "hint_text": "Rolun schema'yi gorebilmesi icin once schema seviyesinde kullanim izni ver.",
+          "hint_partial": "psql -U postgres -d app -c ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d app -c \"GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO app_user;\"",
+          "hint_text": "Mevcut tum public tablolar icin toplu DML yetkisini schema kapsaminda tanimla.",
+          "hint_partial": "psql -U postgres -d app -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-004",
+      "type": "single",
+      "scenario": "`app` database'indeki aktif connection'lari pid, user ve state ile goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pid, usename, state FROM pg_stat_activity WHERE datname = 'app';\"",
+          "hint_text": "Canli session gorunumu icin aktivite view'unu ilgili database adi ile filtrele.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-005",
+      "type": "single",
+      "scenario": "`app` database'indeki idle session'lari sonlandir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname = 'app' AND state = 'idle';\"",
+          "hint_text": "Bos bekleyen session'lari aktivite gorunumu uzerinden bulup backend terminate fonksiyonuna ver.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-006",
+      "type": "single",
+      "scenario": "`orders` tablosunun toplam boyutunu insan okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d app -c \"SELECT pg_size_pretty(pg_total_relation_size('orders'));\"",
+          "hint_text": "Heap ve index dahil toplam tablo boyutunu alip okunur formata cevir.",
+          "hint_partial": "psql -U postgres -d app -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-007",
+      "type": "single",
+      "scenario": "`orders` tablosunda `status = 'pending'` filtresi icin plani cost ile incele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d app -c \"EXPLAIN SELECT * FROM orders WHERE status = 'pending';\"",
+          "hint_text": "Sorguyu kosmadan planner kararini ve tahmini maliyeti gormek icin plan cikar.",
+          "hint_partial": "psql -U postgres -d app -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-008",
+      "type": "single",
+      "scenario": "`app` database'inin custom format backup'ini `app.dump` dosyasina al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pg_dump -U postgres -Fc app -f app.dump",
+          "hint_text": "Geri donusu esnek bir yedek icin custom format ve hedef dosya parametresini birlikte kullan.",
+          "hint_partial": "pg_dump -U postgres -Fc ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-009",
+      "type": "single",
+      "scenario": "`app.dump` dosyasini `app` database'ine clean restore et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pg_restore -U postgres -d app --clean --if-exists app.dump",
+          "hint_text": "Mevcut objeleri dusurup geri donmek icin restore'u temiz modda calistir.",
+          "hint_partial": "pg_restore -U postgres -d ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-010",
+      "type": "multi-step",
+      "scenario": "Config degisikligini reload et ve sonra `max_connections` degerini dogrula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pg_reload_conf();\"",
+          "hint_text": "Restart gerektirmeyen degisikligi prosese yeniden okutmak icin reload fonksiyonunu cagir.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SHOW max_connections;\"",
+          "hint_text": "Reload sonrasi hedef parametreyi dogrudan server ayari olarak oku.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    }
+  ]
+}

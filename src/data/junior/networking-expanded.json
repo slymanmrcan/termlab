@@ -3,566 +3,683 @@
   "topic": "networking",
   "questions": [
     {
-      "id": "jnet-101",
+      "id": "jnet-div-001",
       "type": "single",
-      "scenario": "eth0 interface bilgisini göster.",
+      "scenario": "Tüm interface'lerin MAC adreslerini tek satırda göster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "ip a show eth0",
-          "hint_text": "Belirli interface için `ip a show <interface>` kullan.",
-          "hint_partial": "ip a show ..."
+          "answer": "ip -br link show",
+          "accepted_answers": [
+            "ip -br link show",
+            "ip -br link"
+          ],
+          "hint_text": "Link katmanı bilgisi için `ip link` kullan, kısa format için `-br` ekle.",
+          "hint_partial": "ip -br link ..."
         }
       ]
     },
     {
-      "id": "jnet-102",
+      "id": "jnet-div-002",
       "type": "single",
-      "scenario": "eth0 link durumunu göster.",
+      "scenario": "`eth0` interface'ine atanmış IPv4 adreslerini JSON formatında göster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "ip link show eth0",
-          "hint_text": "Belirli link bilgisini görmek için `ip link show <interface>` kullan.",
-          "hint_partial": "ip link show ..."
+          "answer": "ip -j -4 addr show eth0",
+          "accepted_answers": [
+            "ip -j -4 addr show eth0",
+            "ip -json -4 address show eth0"
+          ],
+          "hint_text": "JSON çıktı için `-j`, IPv4 filtresi için `-4` ekle.",
+          "hint_partial": "ip -j -4 ..."
         }
       ]
     },
     {
-      "id": "jnet-103",
+      "id": "jnet-div-003",
       "type": "single",
-      "scenario": "Tüm linkleri kısa formatta göster.",
+      "scenario": "Routing tablosundaki tüm cache entries'leri göster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "ip -br link",
-          "hint_text": "Kısa link özeti için `ip -br link` kullan.",
-          "hint_partial": "ip -br link"
+          "answer": "ip route show cache",
+          "accepted_answers": [
+            "ip route show cache",
+            "ip r show cache"
+          ],
+          "hint_text": "Route cache'i görmek için `ip route show cache` kullan.",
+          "hint_partial": "ip route show ..."
         }
       ]
     },
     {
-      "id": "jnet-104",
+      "id": "jnet-div-004",
       "type": "single",
-      "scenario": "Tüm interface istatistiklerini göster.",
+      "scenario": "`10.0.0.0/24` subnet'ine giden route'u göster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "ip -s link",
-          "hint_text": "İstatistikli link görünümü için `ip -s link` kullan.",
-          "hint_partial": "ip -s link"
+          "answer": "ip route get 10.0.0.1",
+          "accepted_answers": [
+            "ip route get 10.0.0.1"
+          ],
+          "hint_text": "Belirli bir hedef IP için kernel'in seçtiği route'u `ip route get` ile sorgula.",
+          "hint_partial": "ip route get ..."
         }
       ]
     },
     {
-      "id": "jnet-105",
+      "id": "jnet-div-005",
       "type": "single",
-      "scenario": "Kısa hostname bilgisini göster.",
+      "scenario": "Interface istatistiklerini (RX/TX packet, error) tablo formatında göster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "hostname -s",
-          "hint_text": "Kısa hostname için `hostname -s` kullan.",
-          "hint_partial": "hostname -s"
+          "answer": "ip -s -s link show",
+          "accepted_answers": [
+            "ip -s -s link show",
+            "ip -statistics link show"
+          ],
+          "hint_text": "Detaylı istatistik için `-s` flag'ini iki kez kullan.",
+          "hint_partial": "ip -s -s ..."
         }
       ]
     },
     {
-      "id": "jnet-106",
+      "id": "jnet-div-006",
       "type": "single",
-      "scenario": "Hostname'in domain kısmını göster.",
+      "scenario": "Dinleyen UDP portlarını process bilgisiyle birlikte göster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "hostname -d",
-          "hint_text": "Domain parçasını görmek için `hostname -d` kullan.",
-          "hint_partial": "hostname -d"
+          "answer": "ss -lunp",
+          "accepted_answers": [
+            "ss -lunp",
+            "ss -lnup",
+            "ss --listening --udp --numeric --processes"
+          ],
+          "hint_text": "UDP için `-u`, process için `-p` ekle.",
+          "hint_partial": "ss -lu..."
         }
       ]
     },
     {
-      "id": "jnet-107",
+      "id": "jnet-div-007",
       "type": "single",
-      "scenario": "Network device durumlarını `nmcli` ile listele.",
+      "scenario": "ESTABLISHED durumdaki tüm TCP bağlantıları göster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "nmcli device status",
-          "hint_text": "Device durumları için `nmcli device status` kullan.",
-          "hint_partial": "nmcli device ..."
+          "answer": "ss -tn state established",
+          "accepted_answers": [
+            "ss -tn state established",
+            "ss -tnp state established"
+          ],
+          "hint_text": "State filtresi için `ss` sonunda `state established` kullan.",
+          "hint_partial": "ss -tn state ..."
         }
       ]
     },
     {
-      "id": "jnet-108",
+      "id": "jnet-div-008",
       "type": "single",
-      "scenario": "Kayıtlı network connection'ları `nmcli` ile listele.",
+      "scenario": "443 portuna bağlı tüm bağlantıları göster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "nmcli connection show",
-          "hint_text": "Bağlantı profilleri için `nmcli connection show` kullan.",
-          "hint_partial": "nmcli connection ..."
+          "answer": "ss -tn dst :443",
+          "accepted_answers": [
+            "ss -tn dst :443",
+            "ss -tnp dst :443"
+          ],
+          "hint_text": "Hedef port filtresi için `dst :port` kullan.",
+          "hint_partial": "ss -tn dst ..."
         }
       ]
     },
     {
-      "id": "jnet-109",
+      "id": "jnet-div-009",
       "type": "single",
-      "scenario": "eth0 için ayrıntılı `nmcli` bilgisini göster.",
+      "scenario": "Socket özet istatistiklerini (TCP/UDP/raw toplam) göster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "nmcli device show eth0",
-          "hint_text": "Belirli device ayrıntıları için `nmcli device show eth0` kullan.",
-          "hint_partial": "nmcli device show ..."
+          "answer": "ss -s",
+          "accepted_answers": [
+            "ss -s",
+            "ss --summary"
+          ],
+          "hint_text": "Toplam socket sayıları için `ss -s` yeterlidir.",
+          "hint_partial": "ss -s"
         }
       ]
     },
     {
-      "id": "jnet-110",
+      "id": "jnet-div-010",
       "type": "single",
-      "scenario": "gmail.com için MX kayıtlarını kısa formatta göster.",
+      "scenario": "TIME-WAIT durumundaki bağlantı sayısını göster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "dig +short mx gmail.com",
-          "hint_text": "MX kayıtlarını kısa görmek için `dig +short mx` kullan.",
-          "hint_partial": "dig +short mx ..."
+          "answer": "ss -tn state time-wait | wc -l",
+          "accepted_answers": [
+            "ss -tn state time-wait | wc -l",
+            "ss -tan state time-wait | wc -l"
+          ],
+          "hint_text": "State filtresi + pipe ile `wc -l` kullanarak say.",
+          "hint_partial": "ss -tn state time-wait | ..."
         }
       ]
     },
     {
-      "id": "jnet-111",
+      "id": "jnet-div-011",
       "type": "single",
-      "scenario": "example.com için NS kayıtlarını kısa formatta göster.",
+      "scenario": "`example.com` için MX kayıtlarını sorgula.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "dig +short ns example.com",
-          "hint_text": "NS kayıtları için `dig +short ns` kullan.",
-          "hint_partial": "dig +short ns ..."
+          "answer": "dig mx example.com",
+          "accepted_answers": [
+            "dig mx example.com",
+            "dig example.com mx"
+          ],
+          "hint_text": "Mail exchange kayıtları için `dig mx` kullan.",
+          "hint_partial": "dig mx ..."
         }
       ]
     },
     {
-      "id": "jnet-112",
+      "id": "jnet-div-012",
       "type": "single",
-      "scenario": "google.com için AAAA kaydını kısa formatta göster.",
+      "scenario": "`example.com` için TXT kayıtlarını kısa formatta göster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "dig +short aaaa google.com",
-          "hint_text": "IPv6 DNS kaydı için `dig +short aaaa` kullan.",
-          "hint_partial": "dig +short aaaa ..."
+          "answer": "dig +short txt example.com",
+          "accepted_answers": [
+            "dig +short txt example.com",
+            "dig +short example.com txt"
+          ],
+          "hint_text": "TXT kaydı için `dig +short txt` kullan.",
+          "hint_partial": "dig +short txt ..."
         }
       ]
     },
     {
-      "id": "jnet-113",
+      "id": "jnet-div-013",
       "type": "single",
-      "scenario": "example.com için TXT kaydını sorgula.",
+      "scenario": "`example.com` domain'inin SOA kaydını göster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "dig txt example.com",
-          "hint_text": "TXT kaydı için `dig txt` kullan.",
-          "hint_partial": "dig txt ..."
+          "answer": "dig soa example.com",
+          "accepted_answers": [
+            "dig soa example.com",
+            "dig example.com soa"
+          ],
+          "hint_text": "Start of Authority kaydı için `dig soa` kullan.",
+          "hint_partial": "dig soa ..."
         }
       ]
     },
     {
-      "id": "jnet-114",
+      "id": "jnet-div-014",
       "type": "single",
-      "scenario": "example.com için 8.8.8.8 üzerinden DNS sorgusu yap.",
+      "scenario": "Reverse DNS lookup ile `8.8.8.8` adresinin PTR kaydını sorgula.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "dig @8.8.8.8 example.com",
-          "hint_text": "Belirli DNS server kullanmak için `dig @server` kullan.",
-          "hint_partial": "dig @8.8.8.8 ..."
+          "answer": "dig +short -x 8.8.8.8",
+          "accepted_answers": [
+            "dig +short -x 8.8.8.8",
+            "dig -x 8.8.8.8 +short"
+          ],
+          "hint_text": "Reverse lookup için `dig -x` kullan.",
+          "hint_partial": "dig +short -x ..."
         }
       ]
     },
     {
-      "id": "jnet-115",
+      "id": "jnet-div-015",
       "type": "single",
-      "scenario": "gmail.com için MX kaydını `host` ile sorgula.",
+      "scenario": "`example.com` için tüm DNS kayıtlarını (ANY) göster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "host -t mx gmail.com",
-          "hint_text": "Belirli kayıt türü için `host -t mx` kullan.",
-          "hint_partial": "host -t ..."
+          "answer": "dig any example.com",
+          "accepted_answers": [
+            "dig any example.com",
+            "dig example.com any"
+          ],
+          "hint_text": "Tüm kayıt tipleri için `dig any` kullan.",
+          "hint_partial": "dig any ..."
         }
       ]
     },
     {
-      "id": "jnet-116",
+      "id": "jnet-div-016",
       "type": "single",
-      "scenario": "localhost için `getent` ile hosts sorgusu yap.",
+      "scenario": "`host` komutuyla `example.com` adresini çöz.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "host example.com",
+          "accepted_answers": [
+            "host example.com"
+          ],
+          "hint_text": "Basit DNS çözümü için `host` komutu yeterlidir.",
+          "hint_partial": "host ..."
+        }
+      ]
+    },
+    {
+      "id": "jnet-div-017",
+      "type": "single",
+      "scenario": "`/etc/hosts` dosyasını kullanarak `localhost` çözümünü göster.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "getent hosts localhost",
-          "hint_text": "Sistem resolver sonucunu görmek için `getent hosts` kullan.",
+          "accepted_answers": [
+            "getent hosts localhost"
+          ],
+          "hint_text": "NSS üzerinden çözüm için `getent hosts` kullan.",
           "hint_partial": "getent hosts ..."
         }
       ]
     },
     {
-      "id": "jnet-117",
+      "id": "jnet-div-018",
       "type": "single",
-      "scenario": "example.com için sadece HTTP header'larını göster.",
+      "scenario": "`https://example.com` sayfasının HTTP status code'unu göster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "curl -I https://example.com",
-          "hint_text": "Sadece response header'ları için `curl -I` kullan.",
-          "hint_partial": "curl -I ..."
+          "answer": "curl -o /dev/null -s -w '%{http_code}' https://example.com",
+          "accepted_answers": [
+            "curl -o /dev/null -s -w '%{http_code}' https://example.com",
+            "curl -o /dev/null -s -w \"%{http_code}\" https://example.com",
+            "curl -sw '%{http_code}' -o /dev/null https://example.com"
+          ],
+          "hint_text": "Write-out formatı için `-w '%{http_code}'` ve çıktıyı atmak için `-o /dev/null` kullan.",
+          "hint_partial": "curl -o /dev/null -s -w ..."
         }
       ]
     },
     {
-      "id": "jnet-118",
+      "id": "jnet-div-019",
       "type": "single",
-      "scenario": "example.com sayfasını normal olarak getir.",
+      "scenario": "`https://example.com` sayfasının response süresini göster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "curl https://example.com",
-          "hint_text": "Basit HTTP istek için `curl <url>` kullan.",
-          "hint_partial": "curl https://..."
+          "answer": "curl -o /dev/null -s -w '%{time_total}' https://example.com",
+          "accepted_answers": [
+            "curl -o /dev/null -s -w '%{time_total}' https://example.com",
+            "curl -o /dev/null -s -w \"%{time_total}\" https://example.com"
+          ],
+          "hint_text": "Toplam süre için `%{time_total}` write-out değişkenini kullan.",
+          "hint_partial": "curl -o /dev/null -s -w '%{time_total}' ..."
         }
       ]
     },
     {
-      "id": "jnet-119",
+      "id": "jnet-div-020",
       "type": "single",
-      "scenario": "example.com sayfasını sessiz modda getir.",
+      "scenario": "`https://example.com` adresine redirect'leri takip ederek istek at.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "curl -s https://example.com",
-          "hint_text": "Sessiz çıktı için `curl -s` kullan.",
-          "hint_partial": "curl -s ..."
-        }
-      ]
-    },
-    {
-      "id": "jnet-120",
-      "type": "single",
-      "scenario": "example.com çıktısını `page.html` dosyasına kaydet.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "curl -o page.html https://example.com",
-          "hint_text": "Çıktıyı dosyaya kaydetmek için `curl -o` kullan.",
-          "hint_partial": "curl -o ..."
-        }
-      ]
-    },
-    {
-      "id": "jnet-121",
-      "type": "single",
-      "scenario": "example.com'daki `index.html` dosyasını orijinal adıyla indir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "curl -O https://example.com/index.html",
-          "hint_text": "Dosyayı orijinal adıyla indirmek için `curl -O` kullan.",
-          "hint_partial": "curl -O ..."
-        }
-      ]
-    },
-    {
-      "id": "jnet-122",
-      "type": "single",
-      "scenario": "http://example.com isteğinde redirect'leri takip et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "curl -L http://example.com",
-          "hint_text": "Redirect takip etmek için `curl -L` kullan.",
+          "answer": "curl -L https://example.com",
+          "accepted_answers": [
+            "curl -l https://example.com",
+            "curl --location https://example.com"
+          ],
+          "hint_text": "Redirect takibi için `-L` flag'ini kullan.",
           "hint_partial": "curl -L ..."
         }
       ]
     },
     {
-      "id": "jnet-123",
+      "id": "jnet-div-021",
       "type": "single",
-      "scenario": "http://example.com için redirect'leri ve header'ları birlikte göster.",
+      "scenario": "`https://example.com` TLS sertifika bilgilerini göster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "curl -IL http://example.com",
-          "hint_text": "Header ve redirect kontrolü için `curl -IL` kullan.",
-          "hint_partial": "curl -IL ..."
+          "answer": "curl -vI https://example.com 2>&1 | grep -i 'ssl\\|tls\\|certificate'",
+          "accepted_answers": [
+            "curl -vi https://example.com 2>&1 | grep -i 'ssl\\|tls\\|certificate'",
+            "curl -vI https://example.com 2>&1 | grep -i ssl"
+          ],
+          "hint_text": "Verbose header çıktısından SSL satırlarını grep ile filtrele.",
+          "hint_partial": "curl -vI https://example.com 2>&1 | grep ..."
         }
       ]
     },
     {
-      "id": "jnet-124",
+      "id": "jnet-div-022",
       "type": "single",
-      "scenario": "example.com için sadece HTTP status code göster.",
+      "scenario": "`https://example.com` sayfasını `page.html` olarak indir.",
       "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "curl -o /dev/null -s -w \"%{http_code}\" https://example.com",
-          "hint_text": "Sadece status code için body'yi at ve `-w` kullan.",
-          "hint_partial": "curl -o /dev/null ..."
-        }
-      ]
-    },
-    {
-      "id": "jnet-125",
-      "type": "single",
-      "scenario": "example.com isteğinde bağlanılan remote IP'yi göster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "curl -o /dev/null -s -w \"%{remote_ip}\" https://example.com",
-          "hint_text": "Remote IP görmek için `-w \"%{remote_ip}\"` kullan.",
-          "hint_partial": "curl -o /dev/null ..."
-        }
-      ]
-    },
-    {
-      "id": "jnet-126",
-      "type": "single",
-      "scenario": "localhost:3000 için sadece HTTP status code göster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "curl -o /dev/null -s -w \"%{http_code}\" http://localhost:3000",
-          "hint_text": "Local service kontrolü için `curl` ile status code yazdır.",
-          "hint_partial": "curl -o /dev/null ..."
-        }
-      ]
-    },
-    {
-      "id": "jnet-127",
-      "type": "single",
-      "scenario": "localhost:8080/health endpoint'ine istek gönder.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "curl http://localhost:8080/health",
-          "hint_text": "Bir endpoint'i test etmek için doğrudan `curl` kullan.",
-          "hint_partial": "curl http://..."
-        }
-      ]
-    },
-    {
-      "id": "jnet-128",
-      "type": "single",
-      "scenario": "localhost:3000 için sadece HTTP header'larını göster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "curl -I http://localhost:3000",
-          "hint_text": "Local endpoint header'ları için `curl -I` kullan.",
-          "hint_partial": "curl -I http://..."
-        }
-      ]
-    },
-    {
-      "id": "jnet-129",
-      "type": "single",
-      "scenario": "example.com sayfasını sessiz ama hata gösterecek şekilde getir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "curl -sS https://example.com",
-          "hint_text": "Sessiz çalışıp hataları göstermek için `curl -sS` kullan.",
-          "hint_partial": "curl -sS ..."
-        }
-      ]
-    },
-    {
-      "id": "jnet-130",
-      "type": "single",
-      "scenario": "localhost üzerindeki self-signed HTTPS service'e bağlan.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "curl -k https://localhost",
-          "hint_text": "Self-signed sertifikayı geçmek için `curl -k` kullan.",
-          "hint_partial": "curl -k ..."
-        }
-      ]
-    },
-    {
-      "id": "jnet-131",
-      "type": "single",
-      "scenario": "example.com isteğinde 3 saniyelik connect timeout kullan.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "curl --connect-timeout 3 https://example.com",
-          "hint_text": "Bağlantı timeout'u için `--connect-timeout` kullan.",
-          "hint_partial": "curl --connect-timeout ..."
-        }
-      ]
-    },
-    {
-      "id": "jnet-132",
-      "type": "single",
-      "scenario": "example.com isteğinde toplam süreyi 5 saniye ile sınırla.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "curl --max-time 5 https://example.com",
-          "hint_text": "Toplam süre limiti için `--max-time` kullan.",
-          "hint_partial": "curl --max-time ..."
-        }
-      ]
-    },
-    {
-      "id": "jnet-133",
-      "type": "single",
-      "scenario": "Bir JSON API isteği gibi `Accept: application/json` header'ı gönder.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "curl -H \"Accept: application/json\" https://example.com/api",
-          "hint_text": "Custom header göndermek için `curl -H` kullan.",
-          "hint_partial": "curl -H ..."
-        }
-      ]
-    },
-    {
-      "id": "jnet-134",
-      "type": "single",
-      "scenario": "example.com isteğinde user-agent bilgisini özelleştir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "curl -A \"Mozilla/5.0\" https://example.com",
-          "hint_text": "User-Agent ayarlamak için `curl -A` kullan.",
-          "hint_partial": "curl -A ..."
-        }
-      ]
-    },
-    {
-      "id": "jnet-135",
-      "type": "single",
-      "scenario": "example.com sayfasını `wget` ile indir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "wget https://example.com",
-          "hint_text": "Temel indirme için `wget` kullan.",
-          "hint_partial": "wget ..."
-        }
-      ]
-    },
-    {
-      "id": "jnet-136",
-      "type": "single",
-      "scenario": "example.com sayfasını `wget` ile `page.html` olarak kaydet.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "wget -O page.html https://example.com",
-          "hint_text": "Dosya adını belirlemek için `wget -O` kullan.",
-          "hint_partial": "wget -O ..."
-        }
-      ]
-    },
-    {
-      "id": "jnet-137",
-      "type": "single",
-      "scenario": "example.com adresini indirmeden `wget` ile erişilebilirlik kontrolü yap.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "wget --spider https://example.com",
-          "hint_text": "Sadece kontrol için `wget --spider` kullan.",
-          "hint_partial": "wget --spider ..."
-        }
-      ]
-    },
-    {
-      "id": "jnet-138",
-      "type": "single",
-      "scenario": "example.com içeriğini `wget` ile stdout'a yaz.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "wget -qO- https://example.com",
-          "hint_text": "Stdout çıktısı için `wget -qO-` kullan.",
-          "hint_partial": "wget -qO- ..."
-        }
-      ]
-    },
-    {
-      "id": "jnet-139",
-      "type": "single",
-      "scenario": "example.com sayfasının ilk satırlarını `curl` ile al.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "curl https://example.com | head",
-          "hint_text": "İlk satırları görmek için `head` ile pipe kullan.",
-          "hint_partial": "curl https://... | head"
-        }
-      ]
-    },
-    {
-      "id": "jnet-140",
-      "type": "multi-step",
-      "scenario": "Önce example.com için header'ları gör, sonra sayfayı dosyaya indir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "curl -I https://example.com",
-          "hint_text": "İlk adımda header'ları kontrol et.",
-          "hint_partial": "curl -I ..."
-        },
         {
           "prompt": "$ ",
           "answer": "curl -o page.html https://example.com",
-          "hint_text": "İkinci adımda içeriği dosyaya kaydet.",
-          "hint_partial": "curl -o ..."
+          "accepted_answers": [
+            "curl -o page.html https://example.com",
+            "curl https://example.com -o page.html"
+          ],
+          "hint_text": "Dosyaya kaydetmek için `-o filename` kullan.",
+          "hint_partial": "curl -o ... https://example.com"
         }
       ]
     },
     {
-      "id": "jnet-141",
-      "type": "multi-step",
-      "scenario": "Önce example.com için DNS çözümü yap, sonra HTTP header'larını al.",
+      "id": "jnet-div-023",
+      "type": "single",
+      "scenario": "`example.com` hedefine giden hop'ları ve response sürelerini göster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "host example.com",
-          "hint_text": "İlk adımda DNS çözümünü kontrol et.",
-          "hint_partial": "host ..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "curl -I https://example.com",
-          "hint_text": "İkinci adımda HTTP header'larını al.",
-          "hint_partial": "curl -I ..."
+          "answer": "traceroute example.com",
+          "accepted_answers": [
+            "traceroute example.com",
+            "tracepath example.com"
+          ],
+          "hint_text": "Ara hop'ları görmek için `traceroute` kullan.",
+          "hint_partial": "traceroute ..."
         }
       ]
     },
     {
-      "id": "jnet-142",
-      "type": "multi-step",
-      "scenario": "Önce example.com için kısa DNS sonucunu gör, sonra HTTP status code'u göster.",
+      "id": "jnet-div-024",
+      "type": "single",
+      "scenario": "`10.0.0.1` adresine 10 paket gönder ve packet loss oranını göster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "dig +short example.com",
-          "hint_text": "İlk adımda kısa DNS sonucunu gör.",
-          "hint_partial": "dig +short ..."
-        },
+          "answer": "ping -c 10 10.0.0.1",
+          "accepted_answers": [
+            "ping -c 10 10.0.0.1"
+          ],
+          "hint_text": "Paket sayısı için `-c 10` kullan; özet otomatik gelir.",
+          "hint_partial": "ping -c 10 ..."
+        }
+      ]
+    },
+    {
+      "id": "jnet-div-025",
+      "type": "single",
+      "scenario": "`localhost` üzerinde 5432 portunun açık olup olmadığını test et.",
+      "steps": [
         {
           "prompt": "$ ",
-          "answer": "curl -o /dev/null -s -w \"%{http_code}\" https://example.com",
-          "hint_text": "İkinci adımda HTTP status code'u yazdır.",
-          "hint_partial": "curl -o /dev/null ..."
+          "answer": "nc -zv localhost 5432",
+          "accepted_answers": [
+            "nc -zv localhost 5432",
+            "nc -z localhost 5432"
+          ],
+          "hint_text": "TCP port testi için `nc -zv host port` kullan.",
+          "hint_partial": "nc -zv ..."
+        }
+      ]
+    },
+    {
+      "id": "jnet-div-026",
+      "type": "single",
+      "scenario": "`example.com` 443 portuna TLS handshake testi yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "openssl s_client -connect example.com:443 -brief",
+          "accepted_answers": [
+            "openssl s_client -connect example.com:443 -brief",
+            "openssl s_client -connect example.com:443"
+          ],
+          "hint_text": "TLS bağlantı testi için `openssl s_client -connect` kullan.",
+          "hint_partial": "openssl s_client -connect ..."
+        }
+      ]
+    },
+    {
+      "id": "jnet-div-027",
+      "type": "single",
+      "scenario": "ARP tablosundaki tüm entry'leri göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip neigh show",
+          "accepted_answers": [
+            "ip neigh show",
+            "ip neighbor show",
+            "arp -a"
+          ],
+          "hint_text": "Komşu tablosu için `ip neigh` veya klasik `arp -a` kullan.",
+          "hint_partial": "ip neigh ..."
+        }
+      ]
+    },
+    {
+      "id": "jnet-div-028",
+      "type": "single",
+      "scenario": "Kernel'in IP forwarding ayarını kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "cat /proc/sys/net/ipv4/ip_forward",
+          "accepted_answers": [
+            "cat /proc/sys/net/ipv4/ip_forward",
+            "sysctl net.ipv4.ip_forward"
+          ],
+          "hint_text": "procfs üzerinden veya `sysctl` ile forwarding değerini oku.",
+          "hint_partial": "cat /proc/sys/net/ipv4/..."
+        }
+      ]
+    },
+    {
+      "id": "jnet-div-029",
+      "type": "single",
+      "scenario": "Aktif firewall kurallarını (iptables) listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iptables -L -n -v",
+          "accepted_answers": [
+            "iptables -l -n -v",
+            "iptables -lnv",
+            "sudo iptables -l -n -v"
+          ],
+          "hint_text": "Numeric ve verbose listeleme için `-L -n -v` kullan.",
+          "hint_partial": "iptables -L ..."
+        }
+      ]
+    },
+    {
+      "id": "jnet-div-030",
+      "type": "single",
+      "scenario": "NAT tablosundaki kuralları göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "iptables -t nat -L -n",
+          "accepted_answers": [
+            "iptables -t nat -l -n",
+            "sudo iptables -t nat -l -n"
+          ],
+          "hint_text": "NAT tablosu için `-t nat` ekle.",
+          "hint_partial": "iptables -t nat ..."
+        }
+      ]
+    },
+    {
+      "id": "jnet-div-031",
+      "type": "single",
+      "scenario": "En çok bağlantı kurulan ilk 5 remote IP'yi göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ss -tn | awk '{print $5}' | cut -d: -f1 | sort | uniq -c | sort -rn | head -5",
+          "accepted_answers": [
+            "ss -tn | awk '{print $5}' | cut -d: -f1 | sort | uniq -c | sort -rn | head -5",
+            "ss -tn | awk '{print $5}' | cut -d: -f1 | sort | uniq -c | sort -rn | head -n 5"
+          ],
+          "hint_text": "ss çıktısını awk → cut → sort → uniq -c → sort -rn → head ile işle.",
+          "hint_partial": "ss -tn | awk ... | sort | uniq -c | ..."
+        }
+      ]
+    },
+    {
+      "id": "jnet-div-032",
+      "type": "single",
+      "scenario": "Dinleyen portları ve sahip process'leri birlikte göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ss -ltnp",
+          "accepted_answers": [
+            "ss -ltnp",
+            "ss -ltnp",
+            "ss --listening --tcp --numeric --processes"
+          ],
+          "hint_text": "Process bilgisi için `-p` flag'ini ekle.",
+          "hint_partial": "ss -ltn..."
+        }
+      ]
+    },
+    {
+      "id": "jnet-div-033",
+      "type": "single",
+      "scenario": "`/etc/resolv.conf` içindeki nameserver satırlarını göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "grep nameserver /etc/resolv.conf",
+          "accepted_answers": [
+            "grep nameserver /etc/resolv.conf",
+            "grep ^nameserver /etc/resolv.conf"
+          ],
+          "hint_text": "Sadece nameserver satırları için `grep nameserver` kullan.",
+          "hint_partial": "grep nameserver ..."
+        }
+      ]
+    },
+    {
+      "id": "jnet-div-034",
+      "type": "single",
+      "scenario": "Makinenin hostname'ini ve tüm IP adreslerini göster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "hostname -I",
+          "accepted_answers": [
+            "hostname -i",
+            "hostname -I"
+          ],
+          "hint_text": "Atanmış IP'ler için `hostname -I` kullan.",
+          "hint_partial": "hostname -..."
+        }
+      ]
+    },
+    {
+      "id": "jnet-div-035",
+      "type": "single",
+      "scenario": "TCP bağlantılarını durumlarına göre gruplayarak say.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ss -tn | awk 'NR>1{print $1}' | sort | uniq -c | sort -rn",
+          "accepted_answers": [
+            "ss -tn | awk 'nr>1{print $1}' | sort | uniq -c | sort -rn",
+            "ss -tan | awk 'NR>1{print $1}' | sort | uniq -c | sort -rn"
+          ],
+          "hint_text": "ss çıktısının ilk kolonunu (state) awk ile al, uniq -c ile say.",
+          "hint_partial": "ss -tn | awk ... | uniq -c | ..."
+        }
+      ]
+    },
+    {
+      "id": "jnet-div-036",
+      "type": "single",
+      "scenario": "`example.com` için WHOIS bilgisini sorgula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "whois example.com",
+          "accepted_answers": [
+            "whois example.com"
+          ],
+          "hint_text": "Domain tescil bilgileri için `whois` kullan.",
+          "hint_partial": "whois ..."
+        }
+      ]
+    },
+    {
+      "id": "jnet-div-037",
+      "type": "single",
+      "scenario": "Belirli bir interface üzerinden geçen paketleri say.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip -s link show eth0 | grep -A1 'RX:'",
+          "accepted_answers": [
+            "ip -s link show eth0 | grep -a1 'rx:'",
+            "ip -s link show eth0"
+          ],
+          "hint_text": "Interface istatistiklerinden RX satırını grep ile çek.",
+          "hint_partial": "ip -s link show eth0 | grep ..."
+        }
+      ]
+    },
+    {
+      "id": "jnet-div-038",
+      "type": "single",
+      "scenario": "DNS çözüm süresini ölç.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "time dig example.com",
+          "accepted_answers": [
+            "time dig example.com",
+            "time dig +short example.com"
+          ],
+          "hint_text": "Komut süresini ölçmek için `time` prefix'ini kullan.",
+          "hint_partial": "time dig ..."
+        }
+      ]
+    },
+    {
+      "id": "jnet-div-039",
+      "type": "single",
+      "scenario": "`/etc/services` dosyasında 443 portunun hangi servise ait olduğunu bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "grep 443 /etc/services",
+          "accepted_answers": [
+            "grep 443 /etc/services",
+            "grep ':443' /etc/services",
+            "grep -w 443 /etc/services"
+          ],
+          "hint_text": "Port-servis eşleşmesi için `/etc/services` dosyasını grep'le.",
+          "hint_partial": "grep 443 ..."
+        }
+      ]
+    },
+    {
+      "id": "jnet-div-040",
+      "type": "single",
+      "scenario": "Network namespace'lerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "ip netns list",
+          "accepted_answers": [
+            "ip netns list",
+            "ip netns"
+          ],
+          "hint_text": "Namespace listesi için `ip netns list` kullan.",
+          "hint_partial": "ip netns ..."
         }
       ]
     }

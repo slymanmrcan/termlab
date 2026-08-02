@@ -5,65 +5,130 @@
     {
       "id": "sgh-001",
       "type": "single",
-      "scenario": "Belirli bir repo ve PR için review comment'lerini API üzerinden listele.",
+      "scenario": "`acme/platform-api` reposunda PR 15 review comment'lerini API ile listele.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh api repos/{owner}/{repo}/pulls/123/comments",
-          "hint_text": "PR comment API'si için `gh api repos/.../pulls/.../comments` kullan.",
-          "hint_partial": "gh api repos/.../pulls/.../comments"
+          "answer": "gh api repos/acme/platform-api/pulls/15/comments",
+          "hint_text": "REST endpoint'ini `gh api` ile cagir.",
+          "hint_partial": "gh api repos/..."
         }
       ]
     },
     {
       "id": "sgh-002",
       "type": "single",
-      "scenario": "PR 15 için check status bilgisini göster.",
+      "scenario": "`acme/platform-api` reposunda run 1201 job detaylarini API ile cek.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh pr checks 15",
-          "hint_text": "PR checks için `gh pr checks <number>` kullan.",
-          "hint_partial": "gh pr checks ..."
+          "answer": "gh api repos/acme/platform-api/actions/runs/1201/jobs",
+          "hint_text": "Actions job verisi icin `gh api` uzerinden jobs endpoint'ine git.",
+          "hint_partial": "gh api repos/..."
         }
       ]
     },
     {
       "id": "sgh-003",
       "type": "single",
-      "scenario": "Workflow run 123456 log output'unu göster.",
+      "scenario": "PR 15'i squash merge edip branch'i sil.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh run view 123456 --log",
-          "hint_text": "Run log'ları için `gh run view <id> --log` kullan.",
-          "hint_partial": "gh run view ... --log"
+          "answer": "gh pr merge 15 --squash --delete-branch",
+          "hint_text": "CLI uzerinden merge stratejisi ve branch silmeyi ayni anda verebilirsin.",
+          "hint_partial": "gh pr merge ..."
         }
       ]
     },
     {
       "id": "sgh-004",
       "type": "single",
-      "scenario": "Current repo için release listesini göster.",
+      "scenario": "PR 15'i approve review ile onayla.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh release list",
-          "hint_text": "Release listesi için `gh release list` kullan.",
-          "hint_partial": "gh release ..."
+          "answer": "gh pr review 15 --approve --body approved",
+          "hint_text": "Approve review icin `gh pr review --approve` kullan.",
+          "hint_partial": "gh pr review ..."
         }
       ]
     },
     {
       "id": "sgh-005",
       "type": "single",
-      "scenario": "Issue 42'yi comment ekleyerek kapat.",
+      "scenario": "PR 15 icin change request review gonder.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh issue close 42 --comment \"fixed\"",
-          "hint_text": "Issue kapatmak için `gh issue close <number>` kullan.",
-          "hint_partial": "gh issue close ..."
+          "answer": "gh pr review 15 --request-changes --body needs-fix",
+          "hint_text": "Degisiklik istemek icin `--request-changes` kullan.",
+          "hint_partial": "gh pr review ..."
+        }
+      ]
+    },
+    {
+      "id": "sgh-006",
+      "type": "single",
+      "scenario": "Run 1201'de sadece basarisiz job'lari tekrar calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh run rerun 1201 --failed",
+          "hint_text": "Tum workflow yerine sadece failed job'lari rerun etmek icin `--failed` kullan.",
+          "hint_partial": "gh run rerun ..."
+        }
+      ]
+    },
+    {
+      "id": "sgh-007",
+      "type": "single",
+      "scenario": "Run 1201 artifact'larini `./artifacts` klasorune indir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh run download 1201 -D ./artifacts",
+          "hint_text": "Artifact indirme dizini icin `-D` kullan.",
+          "hint_partial": "gh run download ..."
+        }
+      ]
+    },
+    {
+      "id": "sgh-008",
+      "type": "single",
+      "scenario": "Run 1201 ozetini JSON alanlariyla goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh run view 1201 --json name,status,conclusion",
+          "hint_text": "Makinece okunur run ozeti icin `--json` kullan.",
+          "hint_partial": "gh run view ..."
+        }
+      ]
+    },
+    {
+      "id": "sgh-009",
+      "type": "single",
+      "scenario": "`acme/platform-api` reposunda `v1.4.0` release detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh release view v1.4.0 --repo acme/platform-api",
+          "hint_text": "Belirli release'i repo baglami ile gormek icin `gh release view --repo` kullan.",
+          "hint_partial": "gh release view ..."
+        }
+      ]
+    },
+    {
+      "id": "sgh-010",
+      "type": "single",
+      "scenario": "`acme/platform-api` reposundaki repository variable listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh variable list -R acme/platform-api",
+          "hint_text": "Repo bazli variable gormek icin `gh variable list -R` kullan.",
+          "hint_partial": "gh variable list ..."
         }
       ]
     }

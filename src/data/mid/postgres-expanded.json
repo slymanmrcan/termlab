@@ -1,0 +1,2536 @@
+{
+  "level": "mid",
+  "topic": "postgres",
+  "questions": [
+    {
+      "id": "mpg-exp-001",
+      "type": "multi-step",
+      "scenario": "Gece vardiyasinda `app_user` adinda login role olustur ve owner'i bu rol olan `app` database'ini ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"CREATE ROLE app_user WITH LOGIN PASSWORD 'app_user_pw2026';\"",
+          "hint_text": "Login role olustururken CREATE ROLE ve WITH LOGIN PASSWORD kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "createdb -U postgres -O app_user app",
+          "hint_text": "Owner belirleyerek database acmak icin createdb -O kullan.",
+          "hint_partial": "createdb -U postgres -O ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-002",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `app_user` rolune `app` database'i icin CONNECT izni ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"GRANT CONNECT ON DATABASE app TO app_user;\"",
+          "hint_text": "Database baglanti izni icin GRANT CONNECT ON DATABASE kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-003",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `app_user` rolune `app` icindeki public schema icin USAGE izni ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d app -c \"GRANT USAGE ON SCHEMA public TO app_user;\"",
+          "hint_text": "Schema kullanimi icin GRANT USAGE ON SCHEMA komutunu kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-004",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `app_user` rolune `app` icindeki mevcut tum tablolarda SELECT, INSERT, UPDATE ve DELETE izni ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d app -c \"GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO app_user;\"",
+          "hint_text": "Tum mevcut tablolar icin ALL TABLES IN SCHEMA public uzerinden grant ver.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-005",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `app_user` rolune `app` icindeki mevcut tum sequence'lerde USAGE, SELECT ve UPDATE izni ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d app -c \"GRANT USAGE, SELECT, UPDATE ON ALL SEQUENCES IN SCHEMA public TO app_user;\"",
+          "hint_text": "Sequence yetkileri icin ALL SEQUENCES IN SCHEMA public kalibini kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-006",
+      "type": "single",
+      "scenario": "Gece vardiyasinda bundan sonra olusacak tum tablolar icin `app_user` rolune varsayilan SELECT izni tanimla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d app -c \"ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT ON TABLES TO app_user;\"",
+          "hint_text": "Gelecekte olusacak tablolar icin ALTER DEFAULT PRIVILEGES kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-007",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `app` database'inde `pgcrypto` extension'ini kur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d app -c \"CREATE EXTENSION IF NOT EXISTS \"pgcrypto\";\"",
+          "hint_text": "Extension kurulumu icin CREATE EXTENSION IF NOT EXISTS kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-008",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `app` database'inde `users` tablosunun toplam boyutunu insan okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d app -c \"SELECT pg_size_pretty(pg_total_relation_size('users'));\"",
+          "hint_text": "Tablo boyutu icin pg_total_relation_size ve pg_size_pretty birlikte kullanilir.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-009",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `app` database'inin toplam boyutunu insan okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pg_size_pretty(pg_database_size('app'));\"",
+          "hint_text": "Database boyutu icin pg_database_size kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-010",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `app` database'inde `users` tablosu icin tanimli index isimlerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d app -c \"SELECT indexname FROM pg_indexes WHERE tablename = 'users' ORDER BY indexname;\"",
+          "hint_text": "Tablo index'lerini gormek icin pg_indexes view'unu kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-011",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `users` tablosunda `status = pending` filtresi icin query planini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d app -c \"EXPLAIN SELECT * FROM users WHERE status = 'pending';\"",
+          "hint_text": "Calistirmadan plan gormek icin EXPLAIN kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-012",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `users` tablosunda `status = pending` filtresini gercek kosuyla analiz et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d app -c \"EXPLAIN ANALYZE SELECT * FROM users WHERE status = 'pending';\"",
+          "hint_text": "Gercek calisma maliyeti icin EXPLAIN ANALYZE kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-013",
+      "type": "single",
+      "scenario": "Gece vardiyasinda planner istatistiklerini guncellemek icin `users` tablosunu ANALYZE et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d app -c \"ANALYZE users;\"",
+          "hint_text": "Tablo istatistigi yenilemek icin ANALYZE kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-014",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `users` tablosu uzerinde VACUUM ANALYZE calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d app -c \"VACUUM ANALYZE users;\"",
+          "hint_text": "Bakim ve istatistik icin VACUUM ANALYZE kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-015",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `app` database'inin custom format backup'ini `app.dump` dosyasina al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pg_dump -U postgres -Fc app -f app.dump",
+          "hint_text": "Custom dump icin pg_dump'i -Fc ile calistir.",
+          "hint_partial": "pg_dump -U postgres -Fc ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-016",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `app.dump` dump dosyasini `app` database'ine clean restore et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pg_restore -U postgres -d app --clean --if-exists app.dump",
+          "hint_text": "Temiz restore icin pg_restore'u --clean ve --if-exists ile calistir.",
+          "hint_partial": "pg_restore -U postgres -d ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-017",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `app` database'indeki idle session'lari sonlandir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname = 'app' AND state = 'idle';\"",
+          "hint_text": "Idle session kapatmak icin pg_stat_activity ve pg_terminate_backend kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-018",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `users` tablosu uzerindeki relation lock ayrintilarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d app -c \"SELECT locktype, mode, granted FROM pg_locks l JOIN pg_class c ON c.oid = l.relation WHERE c.relname = 'users';\"",
+          "hint_text": "Belirli bir tablo lock'unu gormek icin pg_locks ile pg_class join'i yap.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-019",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `app_user` rolune `app` icin 5s statement timeout ata.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d app -c \"ALTER ROLE app_user IN DATABASE app SET statement_timeout = '5s';\"",
+          "hint_text": "Role ve database bazli ayar icin ALTER ROLE ... IN DATABASE ... SET kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-020",
+      "type": "multi-step",
+      "scenario": "Bakim penceresinde `billing_user` adinda login role olustur ve owner'i bu rol olan `billing` database'ini ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"CREATE ROLE billing_user WITH LOGIN PASSWORD 'billing_user_pw2026';\"",
+          "hint_text": "Login role olustururken CREATE ROLE ve WITH LOGIN PASSWORD kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "createdb -U postgres -O billing_user billing",
+          "hint_text": "Owner belirleyerek database acmak icin createdb -O kullan.",
+          "hint_partial": "createdb -U postgres -O ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-021",
+      "type": "single",
+      "scenario": "Bakim penceresinde `billing_user` rolune `billing` database'i icin CONNECT izni ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"GRANT CONNECT ON DATABASE billing TO billing_user;\"",
+          "hint_text": "Database baglanti izni icin GRANT CONNECT ON DATABASE kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-022",
+      "type": "single",
+      "scenario": "Bakim penceresinde `billing_user` rolune `billing` icindeki public schema icin USAGE izni ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d billing -c \"GRANT USAGE ON SCHEMA public TO billing_user;\"",
+          "hint_text": "Schema kullanimi icin GRANT USAGE ON SCHEMA komutunu kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-023",
+      "type": "single",
+      "scenario": "Bakim penceresinde `billing_user` rolune `billing` icindeki mevcut tum tablolarda SELECT, INSERT, UPDATE ve DELETE izni ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d billing -c \"GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO billing_user;\"",
+          "hint_text": "Tum mevcut tablolar icin ALL TABLES IN SCHEMA public uzerinden grant ver.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-024",
+      "type": "single",
+      "scenario": "Bakim penceresinde `billing_user` rolune `billing` icindeki mevcut tum sequence'lerde USAGE, SELECT ve UPDATE izni ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d billing -c \"GRANT USAGE, SELECT, UPDATE ON ALL SEQUENCES IN SCHEMA public TO billing_user;\"",
+          "hint_text": "Sequence yetkileri icin ALL SEQUENCES IN SCHEMA public kalibini kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-025",
+      "type": "single",
+      "scenario": "Bakim penceresinde bundan sonra olusacak tum tablolar icin `billing_user` rolune varsayilan SELECT izni tanimla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d billing -c \"ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT ON TABLES TO billing_user;\"",
+          "hint_text": "Gelecekte olusacak tablolar icin ALTER DEFAULT PRIVILEGES kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-026",
+      "type": "single",
+      "scenario": "Bakim penceresinde `billing` database'inde `uuid-ossp` extension'ini kur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d billing -c \"CREATE EXTENSION IF NOT EXISTS \"uuid-ossp\";\"",
+          "hint_text": "Extension kurulumu icin CREATE EXTENSION IF NOT EXISTS kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-027",
+      "type": "single",
+      "scenario": "Bakim penceresinde `billing` database'inde `orders` tablosunun toplam boyutunu insan okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d billing -c \"SELECT pg_size_pretty(pg_total_relation_size('orders'));\"",
+          "hint_text": "Tablo boyutu icin pg_total_relation_size ve pg_size_pretty birlikte kullanilir.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-028",
+      "type": "single",
+      "scenario": "Bakim penceresinde `billing` database'inin toplam boyutunu insan okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pg_size_pretty(pg_database_size('billing'));\"",
+          "hint_text": "Database boyutu icin pg_database_size kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-029",
+      "type": "single",
+      "scenario": "Bakim penceresinde `billing` database'inde `orders` tablosu icin tanimli index isimlerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d billing -c \"SELECT indexname FROM pg_indexes WHERE tablename = 'orders' ORDER BY indexname;\"",
+          "hint_text": "Tablo index'lerini gormek icin pg_indexes view'unu kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-030",
+      "type": "single",
+      "scenario": "Bakim penceresinde `orders` tablosunda `status = paid` filtresi icin query planini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d billing -c \"EXPLAIN SELECT * FROM orders WHERE status = 'paid';\"",
+          "hint_text": "Calistirmadan plan gormek icin EXPLAIN kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-031",
+      "type": "single",
+      "scenario": "Bakim penceresinde `orders` tablosunda `status = paid` filtresini gercek kosuyla analiz et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d billing -c \"EXPLAIN ANALYZE SELECT * FROM orders WHERE status = 'paid';\"",
+          "hint_text": "Gercek calisma maliyeti icin EXPLAIN ANALYZE kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-032",
+      "type": "single",
+      "scenario": "Bakim penceresinde planner istatistiklerini guncellemek icin `orders` tablosunu ANALYZE et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d billing -c \"ANALYZE orders;\"",
+          "hint_text": "Tablo istatistigi yenilemek icin ANALYZE kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-033",
+      "type": "single",
+      "scenario": "Bakim penceresinde `orders` tablosu uzerinde VACUUM ANALYZE calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d billing -c \"VACUUM ANALYZE orders;\"",
+          "hint_text": "Bakim ve istatistik icin VACUUM ANALYZE kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-034",
+      "type": "single",
+      "scenario": "Bakim penceresinde `billing` database'inin custom format backup'ini `billing.dump` dosyasina al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pg_dump -U postgres -Fc billing -f billing.dump",
+          "hint_text": "Custom dump icin pg_dump'i -Fc ile calistir.",
+          "hint_partial": "pg_dump -U postgres -Fc ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-035",
+      "type": "single",
+      "scenario": "Bakim penceresinde `billing.dump` dump dosyasini `billing` database'ine clean restore et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pg_restore -U postgres -d billing --clean --if-exists billing.dump",
+          "hint_text": "Temiz restore icin pg_restore'u --clean ve --if-exists ile calistir.",
+          "hint_partial": "pg_restore -U postgres -d ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-036",
+      "type": "single",
+      "scenario": "Bakim penceresinde `billing` database'indeki idle session'lari sonlandir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname = 'billing' AND state = 'idle';\"",
+          "hint_text": "Idle session kapatmak icin pg_stat_activity ve pg_terminate_backend kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-037",
+      "type": "single",
+      "scenario": "Bakim penceresinde `orders` tablosu uzerindeki relation lock ayrintilarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d billing -c \"SELECT locktype, mode, granted FROM pg_locks l JOIN pg_class c ON c.oid = l.relation WHERE c.relname = 'orders';\"",
+          "hint_text": "Belirli bir tablo lock'unu gormek icin pg_locks ile pg_class join'i yap.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-038",
+      "type": "single",
+      "scenario": "Bakim penceresinde `billing_user` rolune `billing` icin 10s statement timeout ata.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d billing -c \"ALTER ROLE billing_user IN DATABASE billing SET statement_timeout = '10s';\"",
+          "hint_text": "Role ve database bazli ayar icin ALTER ROLE ... IN DATABASE ... SET kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-039",
+      "type": "multi-step",
+      "scenario": "Incident sonrasinda `analytics_user` adinda login role olustur ve owner'i bu rol olan `analytics` database'ini ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"CREATE ROLE analytics_user WITH LOGIN PASSWORD 'analytics_user_pw2026';\"",
+          "hint_text": "Login role olustururken CREATE ROLE ve WITH LOGIN PASSWORD kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "createdb -U postgres -O analytics_user analytics",
+          "hint_text": "Owner belirleyerek database acmak icin createdb -O kullan.",
+          "hint_partial": "createdb -U postgres -O ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-040",
+      "type": "single",
+      "scenario": "Incident sonrasinda `analytics_user` rolune `analytics` database'i icin CONNECT izni ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"GRANT CONNECT ON DATABASE analytics TO analytics_user;\"",
+          "hint_text": "Database baglanti izni icin GRANT CONNECT ON DATABASE kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-041",
+      "type": "single",
+      "scenario": "Incident sonrasinda `analytics_user` rolune `analytics` icindeki public schema icin USAGE izni ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d analytics -c \"GRANT USAGE ON SCHEMA public TO analytics_user;\"",
+          "hint_text": "Schema kullanimi icin GRANT USAGE ON SCHEMA komutunu kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-042",
+      "type": "single",
+      "scenario": "Incident sonrasinda `analytics_user` rolune `analytics` icindeki mevcut tum tablolarda SELECT, INSERT, UPDATE ve DELETE izni ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d analytics -c \"GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO analytics_user;\"",
+          "hint_text": "Tum mevcut tablolar icin ALL TABLES IN SCHEMA public uzerinden grant ver.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-043",
+      "type": "single",
+      "scenario": "Incident sonrasinda `analytics_user` rolune `analytics` icindeki mevcut tum sequence'lerde USAGE, SELECT ve UPDATE izni ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d analytics -c \"GRANT USAGE, SELECT, UPDATE ON ALL SEQUENCES IN SCHEMA public TO analytics_user;\"",
+          "hint_text": "Sequence yetkileri icin ALL SEQUENCES IN SCHEMA public kalibini kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-044",
+      "type": "single",
+      "scenario": "Incident sonrasinda bundan sonra olusacak tum tablolar icin `analytics_user` rolune varsayilan SELECT izni tanimla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d analytics -c \"ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT ON TABLES TO analytics_user;\"",
+          "hint_text": "Gelecekte olusacak tablolar icin ALTER DEFAULT PRIVILEGES kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-045",
+      "type": "single",
+      "scenario": "Incident sonrasinda `analytics` database'inde `citext` extension'ini kur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d analytics -c \"CREATE EXTENSION IF NOT EXISTS \"citext\";\"",
+          "hint_text": "Extension kurulumu icin CREATE EXTENSION IF NOT EXISTS kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-046",
+      "type": "single",
+      "scenario": "Incident sonrasinda `analytics` database'inde `sessions` tablosunun toplam boyutunu insan okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d analytics -c \"SELECT pg_size_pretty(pg_total_relation_size('sessions'));\"",
+          "hint_text": "Tablo boyutu icin pg_total_relation_size ve pg_size_pretty birlikte kullanilir.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-047",
+      "type": "single",
+      "scenario": "Incident sonrasinda `analytics` database'inin toplam boyutunu insan okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pg_size_pretty(pg_database_size('analytics'));\"",
+          "hint_text": "Database boyutu icin pg_database_size kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-048",
+      "type": "single",
+      "scenario": "Incident sonrasinda `analytics` database'inde `sessions` tablosu icin tanimli index isimlerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d analytics -c \"SELECT indexname FROM pg_indexes WHERE tablename = 'sessions' ORDER BY indexname;\"",
+          "hint_text": "Tablo index'lerini gormek icin pg_indexes view'unu kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-049",
+      "type": "single",
+      "scenario": "Incident sonrasinda `sessions` tablosunda `event_type = login` filtresi icin query planini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d analytics -c \"EXPLAIN SELECT * FROM sessions WHERE event_type = 'login';\"",
+          "hint_text": "Calistirmadan plan gormek icin EXPLAIN kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-050",
+      "type": "single",
+      "scenario": "Incident sonrasinda `sessions` tablosunda `event_type = login` filtresini gercek kosuyla analiz et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d analytics -c \"EXPLAIN ANALYZE SELECT * FROM sessions WHERE event_type = 'login';\"",
+          "hint_text": "Gercek calisma maliyeti icin EXPLAIN ANALYZE kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-051",
+      "type": "single",
+      "scenario": "Incident sonrasinda planner istatistiklerini guncellemek icin `sessions` tablosunu ANALYZE et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d analytics -c \"ANALYZE sessions;\"",
+          "hint_text": "Tablo istatistigi yenilemek icin ANALYZE kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-052",
+      "type": "single",
+      "scenario": "Incident sonrasinda `sessions` tablosu uzerinde VACUUM ANALYZE calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d analytics -c \"VACUUM ANALYZE sessions;\"",
+          "hint_text": "Bakim ve istatistik icin VACUUM ANALYZE kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-053",
+      "type": "single",
+      "scenario": "Incident sonrasinda `analytics` database'inin custom format backup'ini `analytics.dump` dosyasina al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pg_dump -U postgres -Fc analytics -f analytics.dump",
+          "hint_text": "Custom dump icin pg_dump'i -Fc ile calistir.",
+          "hint_partial": "pg_dump -U postgres -Fc ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-054",
+      "type": "single",
+      "scenario": "Incident sonrasinda `analytics.dump` dump dosyasini `analytics` database'ine clean restore et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pg_restore -U postgres -d analytics --clean --if-exists analytics.dump",
+          "hint_text": "Temiz restore icin pg_restore'u --clean ve --if-exists ile calistir.",
+          "hint_partial": "pg_restore -U postgres -d ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-055",
+      "type": "single",
+      "scenario": "Incident sonrasinda `analytics` database'indeki idle session'lari sonlandir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname = 'analytics' AND state = 'idle';\"",
+          "hint_text": "Idle session kapatmak icin pg_stat_activity ve pg_terminate_backend kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-056",
+      "type": "single",
+      "scenario": "Incident sonrasinda `sessions` tablosu uzerindeki relation lock ayrintilarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d analytics -c \"SELECT locktype, mode, granted FROM pg_locks l JOIN pg_class c ON c.oid = l.relation WHERE c.relname = 'sessions';\"",
+          "hint_text": "Belirli bir tablo lock'unu gormek icin pg_locks ile pg_class join'i yap.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-057",
+      "type": "single",
+      "scenario": "Incident sonrasinda `analytics_user` rolune `analytics` icin 15s statement timeout ata.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d analytics -c \"ALTER ROLE analytics_user IN DATABASE analytics SET statement_timeout = '15s';\"",
+          "hint_text": "Role ve database bazli ayar icin ALTER ROLE ... IN DATABASE ... SET kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-058",
+      "type": "multi-step",
+      "scenario": "Deploy oncesi `inventory_user` adinda login role olustur ve owner'i bu rol olan `inventory` database'ini ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"CREATE ROLE inventory_user WITH LOGIN PASSWORD 'inventory_user_pw2026';\"",
+          "hint_text": "Login role olustururken CREATE ROLE ve WITH LOGIN PASSWORD kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "createdb -U postgres -O inventory_user inventory",
+          "hint_text": "Owner belirleyerek database acmak icin createdb -O kullan.",
+          "hint_partial": "createdb -U postgres -O ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-059",
+      "type": "single",
+      "scenario": "Deploy oncesi `inventory_user` rolune `inventory` database'i icin CONNECT izni ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"GRANT CONNECT ON DATABASE inventory TO inventory_user;\"",
+          "hint_text": "Database baglanti izni icin GRANT CONNECT ON DATABASE kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-060",
+      "type": "single",
+      "scenario": "Deploy oncesi `inventory_user` rolune `inventory` icindeki public schema icin USAGE izni ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d inventory -c \"GRANT USAGE ON SCHEMA public TO inventory_user;\"",
+          "hint_text": "Schema kullanimi icin GRANT USAGE ON SCHEMA komutunu kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-061",
+      "type": "single",
+      "scenario": "Deploy oncesi `inventory_user` rolune `inventory` icindeki mevcut tum tablolarda SELECT, INSERT, UPDATE ve DELETE izni ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d inventory -c \"GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO inventory_user;\"",
+          "hint_text": "Tum mevcut tablolar icin ALL TABLES IN SCHEMA public uzerinden grant ver.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-062",
+      "type": "single",
+      "scenario": "Deploy oncesi `inventory_user` rolune `inventory` icindeki mevcut tum sequence'lerde USAGE, SELECT ve UPDATE izni ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d inventory -c \"GRANT USAGE, SELECT, UPDATE ON ALL SEQUENCES IN SCHEMA public TO inventory_user;\"",
+          "hint_text": "Sequence yetkileri icin ALL SEQUENCES IN SCHEMA public kalibini kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-063",
+      "type": "single",
+      "scenario": "Deploy oncesi bundan sonra olusacak tum tablolar icin `inventory_user` rolune varsayilan SELECT izni tanimla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d inventory -c \"ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT ON TABLES TO inventory_user;\"",
+          "hint_text": "Gelecekte olusacak tablolar icin ALTER DEFAULT PRIVILEGES kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-064",
+      "type": "single",
+      "scenario": "Deploy oncesi `inventory` database'inde `hstore` extension'ini kur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d inventory -c \"CREATE EXTENSION IF NOT EXISTS \"hstore\";\"",
+          "hint_text": "Extension kurulumu icin CREATE EXTENSION IF NOT EXISTS kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-065",
+      "type": "single",
+      "scenario": "Deploy oncesi `inventory` database'inde `payments` tablosunun toplam boyutunu insan okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d inventory -c \"SELECT pg_size_pretty(pg_total_relation_size('payments'));\"",
+          "hint_text": "Tablo boyutu icin pg_total_relation_size ve pg_size_pretty birlikte kullanilir.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-066",
+      "type": "single",
+      "scenario": "Deploy oncesi `inventory` database'inin toplam boyutunu insan okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pg_size_pretty(pg_database_size('inventory'));\"",
+          "hint_text": "Database boyutu icin pg_database_size kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-067",
+      "type": "single",
+      "scenario": "Deploy oncesi `inventory` database'inde `payments` tablosu icin tanimli index isimlerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d inventory -c \"SELECT indexname FROM pg_indexes WHERE tablename = 'payments' ORDER BY indexname;\"",
+          "hint_text": "Tablo index'lerini gormek icin pg_indexes view'unu kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-068",
+      "type": "single",
+      "scenario": "Deploy oncesi `payments` tablosunda `state = queued` filtresi icin query planini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d inventory -c \"EXPLAIN SELECT * FROM payments WHERE state = 'queued';\"",
+          "hint_text": "Calistirmadan plan gormek icin EXPLAIN kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-069",
+      "type": "single",
+      "scenario": "Deploy oncesi `payments` tablosunda `state = queued` filtresini gercek kosuyla analiz et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d inventory -c \"EXPLAIN ANALYZE SELECT * FROM payments WHERE state = 'queued';\"",
+          "hint_text": "Gercek calisma maliyeti icin EXPLAIN ANALYZE kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-070",
+      "type": "single",
+      "scenario": "Deploy oncesi planner istatistiklerini guncellemek icin `payments` tablosunu ANALYZE et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d inventory -c \"ANALYZE payments;\"",
+          "hint_text": "Tablo istatistigi yenilemek icin ANALYZE kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-071",
+      "type": "single",
+      "scenario": "Deploy oncesi `payments` tablosu uzerinde VACUUM ANALYZE calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d inventory -c \"VACUUM ANALYZE payments;\"",
+          "hint_text": "Bakim ve istatistik icin VACUUM ANALYZE kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-072",
+      "type": "single",
+      "scenario": "Deploy oncesi `inventory` database'inin custom format backup'ini `inventory.dump` dosyasina al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pg_dump -U postgres -Fc inventory -f inventory.dump",
+          "hint_text": "Custom dump icin pg_dump'i -Fc ile calistir.",
+          "hint_partial": "pg_dump -U postgres -Fc ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-073",
+      "type": "single",
+      "scenario": "Deploy oncesi `inventory.dump` dump dosyasini `inventory` database'ine clean restore et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pg_restore -U postgres -d inventory --clean --if-exists inventory.dump",
+          "hint_text": "Temiz restore icin pg_restore'u --clean ve --if-exists ile calistir.",
+          "hint_partial": "pg_restore -U postgres -d ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-074",
+      "type": "single",
+      "scenario": "Deploy oncesi `inventory` database'indeki idle session'lari sonlandir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname = 'inventory' AND state = 'idle';\"",
+          "hint_text": "Idle session kapatmak icin pg_stat_activity ve pg_terminate_backend kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-075",
+      "type": "single",
+      "scenario": "Deploy oncesi `payments` tablosu uzerindeki relation lock ayrintilarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d inventory -c \"SELECT locktype, mode, granted FROM pg_locks l JOIN pg_class c ON c.oid = l.relation WHERE c.relname = 'payments';\"",
+          "hint_text": "Belirli bir tablo lock'unu gormek icin pg_locks ile pg_class join'i yap.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-076",
+      "type": "single",
+      "scenario": "Deploy oncesi `inventory_user` rolune `inventory` icin 20s statement timeout ata.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d inventory -c \"ALTER ROLE inventory_user IN DATABASE inventory SET statement_timeout = '20s';\"",
+          "hint_text": "Role ve database bazli ayar icin ALTER ROLE ... IN DATABASE ... SET kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-077",
+      "type": "multi-step",
+      "scenario": "Audit sirasinda `report_user` adinda login role olustur ve owner'i bu rol olan `reporting` database'ini ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"CREATE ROLE report_user WITH LOGIN PASSWORD 'report_user_pw2026';\"",
+          "hint_text": "Login role olustururken CREATE ROLE ve WITH LOGIN PASSWORD kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "createdb -U postgres -O report_user reporting",
+          "hint_text": "Owner belirleyerek database acmak icin createdb -O kullan.",
+          "hint_partial": "createdb -U postgres -O ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-078",
+      "type": "single",
+      "scenario": "Audit sirasinda `report_user` rolune `reporting` database'i icin CONNECT izni ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"GRANT CONNECT ON DATABASE reporting TO report_user;\"",
+          "hint_text": "Database baglanti izni icin GRANT CONNECT ON DATABASE kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-079",
+      "type": "single",
+      "scenario": "Audit sirasinda `report_user` rolune `reporting` icindeki public schema icin USAGE izni ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d reporting -c \"GRANT USAGE ON SCHEMA public TO report_user;\"",
+          "hint_text": "Schema kullanimi icin GRANT USAGE ON SCHEMA komutunu kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-080",
+      "type": "single",
+      "scenario": "Audit sirasinda `report_user` rolune `reporting` icindeki mevcut tum tablolarda SELECT, INSERT, UPDATE ve DELETE izni ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d reporting -c \"GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO report_user;\"",
+          "hint_text": "Tum mevcut tablolar icin ALL TABLES IN SCHEMA public uzerinden grant ver.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-081",
+      "type": "single",
+      "scenario": "Audit sirasinda `report_user` rolune `reporting` icindeki mevcut tum sequence'lerde USAGE, SELECT ve UPDATE izni ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d reporting -c \"GRANT USAGE, SELECT, UPDATE ON ALL SEQUENCES IN SCHEMA public TO report_user;\"",
+          "hint_text": "Sequence yetkileri icin ALL SEQUENCES IN SCHEMA public kalibini kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-082",
+      "type": "single",
+      "scenario": "Audit sirasinda bundan sonra olusacak tum tablolar icin `report_user` rolune varsayilan SELECT izni tanimla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d reporting -c \"ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT ON TABLES TO report_user;\"",
+          "hint_text": "Gelecekte olusacak tablolar icin ALTER DEFAULT PRIVILEGES kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-083",
+      "type": "single",
+      "scenario": "Audit sirasinda `reporting` database'inde `pg_trgm` extension'ini kur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d reporting -c \"CREATE EXTENSION IF NOT EXISTS \"pg_trgm\";\"",
+          "hint_text": "Extension kurulumu icin CREATE EXTENSION IF NOT EXISTS kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-084",
+      "type": "single",
+      "scenario": "Audit sirasinda `reporting` database'inde `invoices` tablosunun toplam boyutunu insan okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d reporting -c \"SELECT pg_size_pretty(pg_total_relation_size('invoices'));\"",
+          "hint_text": "Tablo boyutu icin pg_total_relation_size ve pg_size_pretty birlikte kullanilir.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-085",
+      "type": "single",
+      "scenario": "Audit sirasinda `reporting` database'inin toplam boyutunu insan okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pg_size_pretty(pg_database_size('reporting'));\"",
+          "hint_text": "Database boyutu icin pg_database_size kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-086",
+      "type": "single",
+      "scenario": "Audit sirasinda `reporting` database'inde `invoices` tablosu icin tanimli index isimlerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d reporting -c \"SELECT indexname FROM pg_indexes WHERE tablename = 'invoices' ORDER BY indexname;\"",
+          "hint_text": "Tablo index'lerini gormek icin pg_indexes view'unu kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-087",
+      "type": "single",
+      "scenario": "Audit sirasinda `invoices` tablosunda `kind = invoice` filtresi icin query planini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d reporting -c \"EXPLAIN SELECT * FROM invoices WHERE kind = 'invoice';\"",
+          "hint_text": "Calistirmadan plan gormek icin EXPLAIN kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-088",
+      "type": "single",
+      "scenario": "Audit sirasinda `invoices` tablosunda `kind = invoice` filtresini gercek kosuyla analiz et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d reporting -c \"EXPLAIN ANALYZE SELECT * FROM invoices WHERE kind = 'invoice';\"",
+          "hint_text": "Gercek calisma maliyeti icin EXPLAIN ANALYZE kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-089",
+      "type": "single",
+      "scenario": "Audit sirasinda planner istatistiklerini guncellemek icin `invoices` tablosunu ANALYZE et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d reporting -c \"ANALYZE invoices;\"",
+          "hint_text": "Tablo istatistigi yenilemek icin ANALYZE kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-090",
+      "type": "single",
+      "scenario": "Audit sirasinda `invoices` tablosu uzerinde VACUUM ANALYZE calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d reporting -c \"VACUUM ANALYZE invoices;\"",
+          "hint_text": "Bakim ve istatistik icin VACUUM ANALYZE kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-091",
+      "type": "single",
+      "scenario": "Audit sirasinda `reporting` database'inin custom format backup'ini `reporting.dump` dosyasina al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pg_dump -U postgres -Fc reporting -f reporting.dump",
+          "hint_text": "Custom dump icin pg_dump'i -Fc ile calistir.",
+          "hint_partial": "pg_dump -U postgres -Fc ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-092",
+      "type": "single",
+      "scenario": "Audit sirasinda `reporting.dump` dump dosyasini `reporting` database'ine clean restore et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pg_restore -U postgres -d reporting --clean --if-exists reporting.dump",
+          "hint_text": "Temiz restore icin pg_restore'u --clean ve --if-exists ile calistir.",
+          "hint_partial": "pg_restore -U postgres -d ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-093",
+      "type": "single",
+      "scenario": "Audit sirasinda `reporting` database'indeki idle session'lari sonlandir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname = 'reporting' AND state = 'idle';\"",
+          "hint_text": "Idle session kapatmak icin pg_stat_activity ve pg_terminate_backend kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-094",
+      "type": "single",
+      "scenario": "Audit sirasinda `invoices` tablosu uzerindeki relation lock ayrintilarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d reporting -c \"SELECT locktype, mode, granted FROM pg_locks l JOIN pg_class c ON c.oid = l.relation WHERE c.relname = 'invoices';\"",
+          "hint_text": "Belirli bir tablo lock'unu gormek icin pg_locks ile pg_class join'i yap.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-095",
+      "type": "single",
+      "scenario": "Audit sirasinda `report_user` rolune `reporting` icin 30s statement timeout ata.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d reporting -c \"ALTER ROLE report_user IN DATABASE reporting SET statement_timeout = '30s';\"",
+          "hint_text": "Role ve database bazli ayar icin ALTER ROLE ... IN DATABASE ... SET kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-096",
+      "type": "multi-step",
+      "scenario": "Troubleshooting sirasinda `warehouse_user` adinda login role olustur ve owner'i bu rol olan `warehouse` database'ini ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"CREATE ROLE warehouse_user WITH LOGIN PASSWORD 'warehouse_user_pw2026';\"",
+          "hint_text": "Login role olustururken CREATE ROLE ve WITH LOGIN PASSWORD kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "createdb -U postgres -O warehouse_user warehouse",
+          "hint_text": "Owner belirleyerek database acmak icin createdb -O kullan.",
+          "hint_partial": "createdb -U postgres -O ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-097",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `warehouse_user` rolune `warehouse` database'i icin CONNECT izni ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"GRANT CONNECT ON DATABASE warehouse TO warehouse_user;\"",
+          "hint_text": "Database baglanti izni icin GRANT CONNECT ON DATABASE kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-098",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `warehouse_user` rolune `warehouse` icindeki public schema icin USAGE izni ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d warehouse -c \"GRANT USAGE ON SCHEMA public TO warehouse_user;\"",
+          "hint_text": "Schema kullanimi icin GRANT USAGE ON SCHEMA komutunu kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-099",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `warehouse_user` rolune `warehouse` icindeki mevcut tum tablolarda SELECT, INSERT, UPDATE ve DELETE izni ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d warehouse -c \"GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO warehouse_user;\"",
+          "hint_text": "Tum mevcut tablolar icin ALL TABLES IN SCHEMA public uzerinden grant ver.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-100",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `warehouse_user` rolune `warehouse` icindeki mevcut tum sequence'lerde USAGE, SELECT ve UPDATE izni ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d warehouse -c \"GRANT USAGE, SELECT, UPDATE ON ALL SEQUENCES IN SCHEMA public TO warehouse_user;\"",
+          "hint_text": "Sequence yetkileri icin ALL SEQUENCES IN SCHEMA public kalibini kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-101",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda bundan sonra olusacak tum tablolar icin `warehouse_user` rolune varsayilan SELECT izni tanimla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d warehouse -c \"ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT ON TABLES TO warehouse_user;\"",
+          "hint_text": "Gelecekte olusacak tablolar icin ALTER DEFAULT PRIVILEGES kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-102",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `warehouse` database'inde `btree_gin` extension'ini kur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d warehouse -c \"CREATE EXTENSION IF NOT EXISTS \"btree_gin\";\"",
+          "hint_text": "Extension kurulumu icin CREATE EXTENSION IF NOT EXISTS kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-103",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `warehouse` database'inde `shipments` tablosunun toplam boyutunu insan okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d warehouse -c \"SELECT pg_size_pretty(pg_total_relation_size('shipments'));\"",
+          "hint_text": "Tablo boyutu icin pg_total_relation_size ve pg_size_pretty birlikte kullanilir.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-104",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `warehouse` database'inin toplam boyutunu insan okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pg_size_pretty(pg_database_size('warehouse'));\"",
+          "hint_text": "Database boyutu icin pg_database_size kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-105",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `warehouse` database'inde `shipments` tablosu icin tanimli index isimlerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d warehouse -c \"SELECT indexname FROM pg_indexes WHERE tablename = 'shipments' ORDER BY indexname;\"",
+          "hint_text": "Tablo index'lerini gormek icin pg_indexes view'unu kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-106",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `shipments` tablosunda `source = api` filtresi icin query planini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d warehouse -c \"EXPLAIN SELECT * FROM shipments WHERE source = 'api';\"",
+          "hint_text": "Calistirmadan plan gormek icin EXPLAIN kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-107",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `shipments` tablosunda `source = api` filtresini gercek kosuyla analiz et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d warehouse -c \"EXPLAIN ANALYZE SELECT * FROM shipments WHERE source = 'api';\"",
+          "hint_text": "Gercek calisma maliyeti icin EXPLAIN ANALYZE kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-108",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda planner istatistiklerini guncellemek icin `shipments` tablosunu ANALYZE et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d warehouse -c \"ANALYZE shipments;\"",
+          "hint_text": "Tablo istatistigi yenilemek icin ANALYZE kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-109",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `shipments` tablosu uzerinde VACUUM ANALYZE calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d warehouse -c \"VACUUM ANALYZE shipments;\"",
+          "hint_text": "Bakim ve istatistik icin VACUUM ANALYZE kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-110",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `warehouse` database'inin custom format backup'ini `warehouse.dump` dosyasina al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pg_dump -U postgres -Fc warehouse -f warehouse.dump",
+          "hint_text": "Custom dump icin pg_dump'i -Fc ile calistir.",
+          "hint_partial": "pg_dump -U postgres -Fc ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-111",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `warehouse.dump` dump dosyasini `warehouse` database'ine clean restore et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pg_restore -U postgres -d warehouse --clean --if-exists warehouse.dump",
+          "hint_text": "Temiz restore icin pg_restore'u --clean ve --if-exists ile calistir.",
+          "hint_partial": "pg_restore -U postgres -d ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-112",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `warehouse` database'indeki idle session'lari sonlandir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname = 'warehouse' AND state = 'idle';\"",
+          "hint_text": "Idle session kapatmak icin pg_stat_activity ve pg_terminate_backend kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-113",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `shipments` tablosu uzerindeki relation lock ayrintilarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d warehouse -c \"SELECT locktype, mode, granted FROM pg_locks l JOIN pg_class c ON c.oid = l.relation WHERE c.relname = 'shipments';\"",
+          "hint_text": "Belirli bir tablo lock'unu gormek icin pg_locks ile pg_class join'i yap.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-114",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `warehouse_user` rolune `warehouse` icin 45s statement timeout ata.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d warehouse -c \"ALTER ROLE warehouse_user IN DATABASE warehouse SET statement_timeout = '45s';\"",
+          "hint_text": "Role ve database bazli ayar icin ALTER ROLE ... IN DATABASE ... SET kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-115",
+      "type": "multi-step",
+      "scenario": "Release kontrolunde `crm_user` adinda login role olustur ve owner'i bu rol olan `crm` database'ini ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"CREATE ROLE crm_user WITH LOGIN PASSWORD 'crm_user_pw2026';\"",
+          "hint_text": "Login role olustururken CREATE ROLE ve WITH LOGIN PASSWORD kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "createdb -U postgres -O crm_user crm",
+          "hint_text": "Owner belirleyerek database acmak icin createdb -O kullan.",
+          "hint_partial": "createdb -U postgres -O ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-116",
+      "type": "single",
+      "scenario": "Release kontrolunde `crm_user` rolune `crm` database'i icin CONNECT izni ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"GRANT CONNECT ON DATABASE crm TO crm_user;\"",
+          "hint_text": "Database baglanti izni icin GRANT CONNECT ON DATABASE kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-117",
+      "type": "single",
+      "scenario": "Release kontrolunde `crm_user` rolune `crm` icindeki public schema icin USAGE izni ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d crm -c \"GRANT USAGE ON SCHEMA public TO crm_user;\"",
+          "hint_text": "Schema kullanimi icin GRANT USAGE ON SCHEMA komutunu kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-118",
+      "type": "single",
+      "scenario": "Release kontrolunde `crm_user` rolune `crm` icindeki mevcut tum tablolarda SELECT, INSERT, UPDATE ve DELETE izni ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d crm -c \"GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO crm_user;\"",
+          "hint_text": "Tum mevcut tablolar icin ALL TABLES IN SCHEMA public uzerinden grant ver.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-119",
+      "type": "single",
+      "scenario": "Release kontrolunde `crm_user` rolune `crm` icindeki mevcut tum sequence'lerde USAGE, SELECT ve UPDATE izni ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d crm -c \"GRANT USAGE, SELECT, UPDATE ON ALL SEQUENCES IN SCHEMA public TO crm_user;\"",
+          "hint_text": "Sequence yetkileri icin ALL SEQUENCES IN SCHEMA public kalibini kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-120",
+      "type": "single",
+      "scenario": "Release kontrolunde bundan sonra olusacak tum tablolar icin `crm_user` rolune varsayilan SELECT izni tanimla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d crm -c \"ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT ON TABLES TO crm_user;\"",
+          "hint_text": "Gelecekte olusacak tablolar icin ALTER DEFAULT PRIVILEGES kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-121",
+      "type": "single",
+      "scenario": "Release kontrolunde `crm` database'inde `btree_gist` extension'ini kur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d crm -c \"CREATE EXTENSION IF NOT EXISTS \"btree_gist\";\"",
+          "hint_text": "Extension kurulumu icin CREATE EXTENSION IF NOT EXISTS kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-122",
+      "type": "single",
+      "scenario": "Release kontrolunde `crm` database'inde `audit_logs` tablosunun toplam boyutunu insan okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d crm -c \"SELECT pg_size_pretty(pg_total_relation_size('audit_logs'));\"",
+          "hint_text": "Tablo boyutu icin pg_total_relation_size ve pg_size_pretty birlikte kullanilir.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-123",
+      "type": "single",
+      "scenario": "Release kontrolunde `crm` database'inin toplam boyutunu insan okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pg_size_pretty(pg_database_size('crm'));\"",
+          "hint_text": "Database boyutu icin pg_database_size kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-124",
+      "type": "single",
+      "scenario": "Release kontrolunde `crm` database'inde `audit_logs` tablosu icin tanimli index isimlerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d crm -c \"SELECT indexname FROM pg_indexes WHERE tablename = 'audit_logs' ORDER BY indexname;\"",
+          "hint_text": "Tablo index'lerini gormek icin pg_indexes view'unu kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-125",
+      "type": "single",
+      "scenario": "Release kontrolunde `audit_logs` tablosunda `channel = email` filtresi icin query planini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d crm -c \"EXPLAIN SELECT * FROM audit_logs WHERE channel = 'email';\"",
+          "hint_text": "Calistirmadan plan gormek icin EXPLAIN kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-126",
+      "type": "single",
+      "scenario": "Release kontrolunde `audit_logs` tablosunda `channel = email` filtresini gercek kosuyla analiz et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d crm -c \"EXPLAIN ANALYZE SELECT * FROM audit_logs WHERE channel = 'email';\"",
+          "hint_text": "Gercek calisma maliyeti icin EXPLAIN ANALYZE kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-127",
+      "type": "single",
+      "scenario": "Release kontrolunde planner istatistiklerini guncellemek icin `audit_logs` tablosunu ANALYZE et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d crm -c \"ANALYZE audit_logs;\"",
+          "hint_text": "Tablo istatistigi yenilemek icin ANALYZE kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-128",
+      "type": "single",
+      "scenario": "Release kontrolunde `audit_logs` tablosu uzerinde VACUUM ANALYZE calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d crm -c \"VACUUM ANALYZE audit_logs;\"",
+          "hint_text": "Bakim ve istatistik icin VACUUM ANALYZE kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-129",
+      "type": "single",
+      "scenario": "Release kontrolunde `crm` database'inin custom format backup'ini `crm.dump` dosyasina al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pg_dump -U postgres -Fc crm -f crm.dump",
+          "hint_text": "Custom dump icin pg_dump'i -Fc ile calistir.",
+          "hint_partial": "pg_dump -U postgres -Fc ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-130",
+      "type": "single",
+      "scenario": "Release kontrolunde `crm.dump` dump dosyasini `crm` database'ine clean restore et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pg_restore -U postgres -d crm --clean --if-exists crm.dump",
+          "hint_text": "Temiz restore icin pg_restore'u --clean ve --if-exists ile calistir.",
+          "hint_partial": "pg_restore -U postgres -d ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-131",
+      "type": "single",
+      "scenario": "Release kontrolunde `crm` database'indeki idle session'lari sonlandir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname = 'crm' AND state = 'idle';\"",
+          "hint_text": "Idle session kapatmak icin pg_stat_activity ve pg_terminate_backend kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-132",
+      "type": "single",
+      "scenario": "Release kontrolunde `audit_logs` tablosu uzerindeki relation lock ayrintilarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d crm -c \"SELECT locktype, mode, granted FROM pg_locks l JOIN pg_class c ON c.oid = l.relation WHERE c.relname = 'audit_logs';\"",
+          "hint_text": "Belirli bir tablo lock'unu gormek icin pg_locks ile pg_class join'i yap.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-133",
+      "type": "single",
+      "scenario": "Release kontrolunde `crm_user` rolune `crm` icin 60s statement timeout ata.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d crm -c \"ALTER ROLE crm_user IN DATABASE crm SET statement_timeout = '60s';\"",
+          "hint_text": "Role ve database bazli ayar icin ALTER ROLE ... IN DATABASE ... SET kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-134",
+      "type": "multi-step",
+      "scenario": "Operasyon devrinde `support_user` adinda login role olustur ve owner'i bu rol olan `support` database'ini ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"CREATE ROLE support_user WITH LOGIN PASSWORD 'support_user_pw2026';\"",
+          "hint_text": "Login role olustururken CREATE ROLE ve WITH LOGIN PASSWORD kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "createdb -U postgres -O support_user support",
+          "hint_text": "Owner belirleyerek database acmak icin createdb -O kullan.",
+          "hint_partial": "createdb -U postgres -O ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-135",
+      "type": "single",
+      "scenario": "Operasyon devrinde `support_user` rolune `support` database'i icin CONNECT izni ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"GRANT CONNECT ON DATABASE support TO support_user;\"",
+          "hint_text": "Database baglanti izni icin GRANT CONNECT ON DATABASE kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-136",
+      "type": "single",
+      "scenario": "Operasyon devrinde `support_user` rolune `support` icindeki public schema icin USAGE izni ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d support -c \"GRANT USAGE ON SCHEMA public TO support_user;\"",
+          "hint_text": "Schema kullanimi icin GRANT USAGE ON SCHEMA komutunu kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-137",
+      "type": "single",
+      "scenario": "Operasyon devrinde `support_user` rolune `support` icindeki mevcut tum tablolarda SELECT, INSERT, UPDATE ve DELETE izni ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d support -c \"GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO support_user;\"",
+          "hint_text": "Tum mevcut tablolar icin ALL TABLES IN SCHEMA public uzerinden grant ver.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-138",
+      "type": "single",
+      "scenario": "Operasyon devrinde `support_user` rolune `support` icindeki mevcut tum sequence'lerde USAGE, SELECT ve UPDATE izni ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d support -c \"GRANT USAGE, SELECT, UPDATE ON ALL SEQUENCES IN SCHEMA public TO support_user;\"",
+          "hint_text": "Sequence yetkileri icin ALL SEQUENCES IN SCHEMA public kalibini kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-139",
+      "type": "single",
+      "scenario": "Operasyon devrinde bundan sonra olusacak tum tablolar icin `support_user` rolune varsayilan SELECT izni tanimla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d support -c \"ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT ON TABLES TO support_user;\"",
+          "hint_text": "Gelecekte olusacak tablolar icin ALTER DEFAULT PRIVILEGES kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-140",
+      "type": "single",
+      "scenario": "Operasyon devrinde `support` database'inde `unaccent` extension'ini kur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d support -c \"CREATE EXTENSION IF NOT EXISTS \"unaccent\";\"",
+          "hint_text": "Extension kurulumu icin CREATE EXTENSION IF NOT EXISTS kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-141",
+      "type": "single",
+      "scenario": "Operasyon devrinde `support` database'inde `events` tablosunun toplam boyutunu insan okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d support -c \"SELECT pg_size_pretty(pg_total_relation_size('events'));\"",
+          "hint_text": "Tablo boyutu icin pg_total_relation_size ve pg_size_pretty birlikte kullanilir.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-142",
+      "type": "single",
+      "scenario": "Operasyon devrinde `support` database'inin toplam boyutunu insan okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pg_size_pretty(pg_database_size('support'));\"",
+          "hint_text": "Database boyutu icin pg_database_size kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-143",
+      "type": "single",
+      "scenario": "Operasyon devrinde `support` database'inde `events` tablosu icin tanimli index isimlerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d support -c \"SELECT indexname FROM pg_indexes WHERE tablename = 'events' ORDER BY indexname;\"",
+          "hint_text": "Tablo index'lerini gormek icin pg_indexes view'unu kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-144",
+      "type": "single",
+      "scenario": "Operasyon devrinde `events` tablosunda `type = sync` filtresi icin query planini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d support -c \"EXPLAIN SELECT * FROM events WHERE type = 'sync';\"",
+          "hint_text": "Calistirmadan plan gormek icin EXPLAIN kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-145",
+      "type": "single",
+      "scenario": "Operasyon devrinde `events` tablosunda `type = sync` filtresini gercek kosuyla analiz et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d support -c \"EXPLAIN ANALYZE SELECT * FROM events WHERE type = 'sync';\"",
+          "hint_text": "Gercek calisma maliyeti icin EXPLAIN ANALYZE kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-146",
+      "type": "single",
+      "scenario": "Operasyon devrinde planner istatistiklerini guncellemek icin `events` tablosunu ANALYZE et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d support -c \"ANALYZE events;\"",
+          "hint_text": "Tablo istatistigi yenilemek icin ANALYZE kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-147",
+      "type": "single",
+      "scenario": "Operasyon devrinde `events` tablosu uzerinde VACUUM ANALYZE calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d support -c \"VACUUM ANALYZE events;\"",
+          "hint_text": "Bakim ve istatistik icin VACUUM ANALYZE kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-148",
+      "type": "single",
+      "scenario": "Operasyon devrinde `support` database'inin custom format backup'ini `support.dump` dosyasina al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pg_dump -U postgres -Fc support -f support.dump",
+          "hint_text": "Custom dump icin pg_dump'i -Fc ile calistir.",
+          "hint_partial": "pg_dump -U postgres -Fc ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-149",
+      "type": "single",
+      "scenario": "Operasyon devrinde `support.dump` dump dosyasini `support` database'ine clean restore et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pg_restore -U postgres -d support --clean --if-exists support.dump",
+          "hint_text": "Temiz restore icin pg_restore'u --clean ve --if-exists ile calistir.",
+          "hint_partial": "pg_restore -U postgres -d ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-150",
+      "type": "single",
+      "scenario": "Operasyon devrinde `support` database'indeki idle session'lari sonlandir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname = 'support' AND state = 'idle';\"",
+          "hint_text": "Idle session kapatmak icin pg_stat_activity ve pg_terminate_backend kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-151",
+      "type": "single",
+      "scenario": "Operasyon devrinde `events` tablosu uzerindeki relation lock ayrintilarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d support -c \"SELECT locktype, mode, granted FROM pg_locks l JOIN pg_class c ON c.oid = l.relation WHERE c.relname = 'events';\"",
+          "hint_text": "Belirli bir tablo lock'unu gormek icin pg_locks ile pg_class join'i yap.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-152",
+      "type": "single",
+      "scenario": "Operasyon devrinde `support_user` rolune `support` icin 90s statement timeout ata.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d support -c \"ALTER ROLE support_user IN DATABASE support SET statement_timeout = '90s';\"",
+          "hint_text": "Role ve database bazli ayar icin ALTER ROLE ... IN DATABASE ... SET kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-153",
+      "type": "multi-step",
+      "scenario": "On-call gorevinde `events_user` adinda login role olustur ve owner'i bu rol olan `events` database'ini ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"CREATE ROLE events_user WITH LOGIN PASSWORD 'events_user_pw2026';\"",
+          "hint_text": "Login role olustururken CREATE ROLE ve WITH LOGIN PASSWORD kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "createdb -U postgres -O events_user events",
+          "hint_text": "Owner belirleyerek database acmak icin createdb -O kullan.",
+          "hint_partial": "createdb -U postgres -O ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-154",
+      "type": "single",
+      "scenario": "On-call gorevinde `events_user` rolune `events` database'i icin CONNECT izni ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"GRANT CONNECT ON DATABASE events TO events_user;\"",
+          "hint_text": "Database baglanti izni icin GRANT CONNECT ON DATABASE kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-155",
+      "type": "single",
+      "scenario": "On-call gorevinde `events_user` rolune `events` icindeki public schema icin USAGE izni ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d events -c \"GRANT USAGE ON SCHEMA public TO events_user;\"",
+          "hint_text": "Schema kullanimi icin GRANT USAGE ON SCHEMA komutunu kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-156",
+      "type": "single",
+      "scenario": "On-call gorevinde `events_user` rolune `events` icindeki mevcut tum tablolarda SELECT, INSERT, UPDATE ve DELETE izni ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d events -c \"GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO events_user;\"",
+          "hint_text": "Tum mevcut tablolar icin ALL TABLES IN SCHEMA public uzerinden grant ver.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-157",
+      "type": "single",
+      "scenario": "On-call gorevinde `events_user` rolune `events` icindeki mevcut tum sequence'lerde USAGE, SELECT ve UPDATE izni ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d events -c \"GRANT USAGE, SELECT, UPDATE ON ALL SEQUENCES IN SCHEMA public TO events_user;\"",
+          "hint_text": "Sequence yetkileri icin ALL SEQUENCES IN SCHEMA public kalibini kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-158",
+      "type": "single",
+      "scenario": "On-call gorevinde bundan sonra olusacak tum tablolar icin `events_user` rolune varsayilan SELECT izni tanimla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d events -c \"ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT ON TABLES TO events_user;\"",
+          "hint_text": "Gelecekte olusacak tablolar icin ALTER DEFAULT PRIVILEGES kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-159",
+      "type": "single",
+      "scenario": "On-call gorevinde `events` database'inde `pgstattuple` extension'ini kur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d events -c \"CREATE EXTENSION IF NOT EXISTS \"pgstattuple\";\"",
+          "hint_text": "Extension kurulumu icin CREATE EXTENSION IF NOT EXISTS kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-160",
+      "type": "single",
+      "scenario": "On-call gorevinde `events` database'inde `job_runs` tablosunun toplam boyutunu insan okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d events -c \"SELECT pg_size_pretty(pg_total_relation_size('job_runs'));\"",
+          "hint_text": "Tablo boyutu icin pg_total_relation_size ve pg_size_pretty birlikte kullanilir.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-161",
+      "type": "single",
+      "scenario": "On-call gorevinde `events` database'inin toplam boyutunu insan okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pg_size_pretty(pg_database_size('events'));\"",
+          "hint_text": "Database boyutu icin pg_database_size kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-162",
+      "type": "single",
+      "scenario": "On-call gorevinde `events` database'inde `job_runs` tablosu icin tanimli index isimlerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d events -c \"SELECT indexname FROM pg_indexes WHERE tablename = 'job_runs' ORDER BY indexname;\"",
+          "hint_text": "Tablo index'lerini gormek icin pg_indexes view'unu kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-163",
+      "type": "single",
+      "scenario": "On-call gorevinde `job_runs` tablosunda `region = eu-west-1` filtresi icin query planini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d events -c \"EXPLAIN SELECT * FROM job_runs WHERE region = 'eu-west-1';\"",
+          "hint_text": "Calistirmadan plan gormek icin EXPLAIN kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-164",
+      "type": "single",
+      "scenario": "On-call gorevinde `job_runs` tablosunda `region = eu-west-1` filtresini gercek kosuyla analiz et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d events -c \"EXPLAIN ANALYZE SELECT * FROM job_runs WHERE region = 'eu-west-1';\"",
+          "hint_text": "Gercek calisma maliyeti icin EXPLAIN ANALYZE kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-165",
+      "type": "single",
+      "scenario": "On-call gorevinde planner istatistiklerini guncellemek icin `job_runs` tablosunu ANALYZE et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d events -c \"ANALYZE job_runs;\"",
+          "hint_text": "Tablo istatistigi yenilemek icin ANALYZE kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-166",
+      "type": "single",
+      "scenario": "On-call gorevinde `job_runs` tablosu uzerinde VACUUM ANALYZE calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d events -c \"VACUUM ANALYZE job_runs;\"",
+          "hint_text": "Bakim ve istatistik icin VACUUM ANALYZE kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-167",
+      "type": "single",
+      "scenario": "On-call gorevinde `events` database'inin custom format backup'ini `events.dump` dosyasina al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pg_dump -U postgres -Fc events -f events.dump",
+          "hint_text": "Custom dump icin pg_dump'i -Fc ile calistir.",
+          "hint_partial": "pg_dump -U postgres -Fc ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-168",
+      "type": "single",
+      "scenario": "On-call gorevinde `events.dump` dump dosyasini `events` database'ine clean restore et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pg_restore -U postgres -d events --clean --if-exists events.dump",
+          "hint_text": "Temiz restore icin pg_restore'u --clean ve --if-exists ile calistir.",
+          "hint_partial": "pg_restore -U postgres -d ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-169",
+      "type": "single",
+      "scenario": "On-call gorevinde `events` database'indeki idle session'lari sonlandir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname = 'events' AND state = 'idle';\"",
+          "hint_text": "Idle session kapatmak icin pg_stat_activity ve pg_terminate_backend kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-170",
+      "type": "single",
+      "scenario": "On-call gorevinde `job_runs` tablosu uzerindeki relation lock ayrintilarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d events -c \"SELECT locktype, mode, granted FROM pg_locks l JOIN pg_class c ON c.oid = l.relation WHERE c.relname = 'job_runs';\"",
+          "hint_text": "Belirli bir tablo lock'unu gormek icin pg_locks ile pg_class join'i yap.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-171",
+      "type": "single",
+      "scenario": "On-call gorevinde `events_user` rolune `events` icin 120s statement timeout ata.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d events -c \"ALTER ROLE events_user IN DATABASE events SET statement_timeout = '120s';\"",
+          "hint_text": "Role ve database bazli ayar icin ALTER ROLE ... IN DATABASE ... SET kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-172",
+      "type": "multi-step",
+      "scenario": "Kesinti sonrasinda `core_user` adinda login role olustur ve owner'i bu rol olan `core` database'ini ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"CREATE ROLE core_user WITH LOGIN PASSWORD 'core_user_pw2026';\"",
+          "hint_text": "Login role olustururken CREATE ROLE ve WITH LOGIN PASSWORD kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "createdb -U postgres -O core_user core",
+          "hint_text": "Owner belirleyerek database acmak icin createdb -O kullan.",
+          "hint_partial": "createdb -U postgres -O ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-173",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `core_user` rolune `core` database'i icin CONNECT izni ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"GRANT CONNECT ON DATABASE core TO core_user;\"",
+          "hint_text": "Database baglanti izni icin GRANT CONNECT ON DATABASE kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-174",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `core_user` rolune `core` icindeki public schema icin USAGE izni ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d core -c \"GRANT USAGE ON SCHEMA public TO core_user;\"",
+          "hint_text": "Schema kullanimi icin GRANT USAGE ON SCHEMA komutunu kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-175",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `core_user` rolune `core` icindeki mevcut tum tablolarda SELECT, INSERT, UPDATE ve DELETE izni ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d core -c \"GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO core_user;\"",
+          "hint_text": "Tum mevcut tablolar icin ALL TABLES IN SCHEMA public uzerinden grant ver.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-176",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `core_user` rolune `core` icindeki mevcut tum sequence'lerde USAGE, SELECT ve UPDATE izni ver.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d core -c \"GRANT USAGE, SELECT, UPDATE ON ALL SEQUENCES IN SCHEMA public TO core_user;\"",
+          "hint_text": "Sequence yetkileri icin ALL SEQUENCES IN SCHEMA public kalibini kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-177",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda bundan sonra olusacak tum tablolar icin `core_user` rolune varsayilan SELECT izni tanimla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d core -c \"ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT ON TABLES TO core_user;\"",
+          "hint_text": "Gelecekte olusacak tablolar icin ALTER DEFAULT PRIVILEGES kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-178",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `core` database'inde `pg_visibility` extension'ini kur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d core -c \"CREATE EXTENSION IF NOT EXISTS \"pg_visibility\";\"",
+          "hint_text": "Extension kurulumu icin CREATE EXTENSION IF NOT EXISTS kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-179",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `core` database'inde `notifications` tablosunun toplam boyutunu insan okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d core -c \"SELECT pg_size_pretty(pg_total_relation_size('notifications'));\"",
+          "hint_text": "Tablo boyutu icin pg_total_relation_size ve pg_size_pretty birlikte kullanilir.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-180",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `core` database'inin toplam boyutunu insan okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pg_size_pretty(pg_database_size('core'));\"",
+          "hint_text": "Database boyutu icin pg_database_size kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-181",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `core` database'inde `notifications` tablosu icin tanimli index isimlerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d core -c \"SELECT indexname FROM pg_indexes WHERE tablename = 'notifications' ORDER BY indexname;\"",
+          "hint_text": "Tablo index'lerini gormek icin pg_indexes view'unu kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-182",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `notifications` tablosunda `level = error` filtresi icin query planini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d core -c \"EXPLAIN SELECT * FROM notifications WHERE level = 'error';\"",
+          "hint_text": "Calistirmadan plan gormek icin EXPLAIN kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-183",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `notifications` tablosunda `level = error` filtresini gercek kosuyla analiz et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d core -c \"EXPLAIN ANALYZE SELECT * FROM notifications WHERE level = 'error';\"",
+          "hint_text": "Gercek calisma maliyeti icin EXPLAIN ANALYZE kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-184",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda planner istatistiklerini guncellemek icin `notifications` tablosunu ANALYZE et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d core -c \"ANALYZE notifications;\"",
+          "hint_text": "Tablo istatistigi yenilemek icin ANALYZE kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-185",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `notifications` tablosu uzerinde VACUUM ANALYZE calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d core -c \"VACUUM ANALYZE notifications;\"",
+          "hint_text": "Bakim ve istatistik icin VACUUM ANALYZE kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-186",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `core` database'inin custom format backup'ini `core.dump` dosyasina al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pg_dump -U postgres -Fc core -f core.dump",
+          "hint_text": "Custom dump icin pg_dump'i -Fc ile calistir.",
+          "hint_partial": "pg_dump -U postgres -Fc ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-187",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `core.dump` dump dosyasini `core` database'ine clean restore et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pg_restore -U postgres -d core --clean --if-exists core.dump",
+          "hint_text": "Temiz restore icin pg_restore'u --clean ve --if-exists ile calistir.",
+          "hint_partial": "pg_restore -U postgres -d ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-188",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `core` database'indeki idle session'lari sonlandir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname = 'core' AND state = 'idle';\"",
+          "hint_text": "Idle session kapatmak icin pg_stat_activity ve pg_terminate_backend kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-189",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `notifications` tablosu uzerindeki relation lock ayrintilarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d core -c \"SELECT locktype, mode, granted FROM pg_locks l JOIN pg_class c ON c.oid = l.relation WHERE c.relname = 'notifications';\"",
+          "hint_text": "Belirli bir tablo lock'unu gormek icin pg_locks ile pg_class join'i yap.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "mpg-exp-190",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `core_user` rolune `core` icin 180s statement timeout ata.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d core -c \"ALTER ROLE core_user IN DATABASE core SET statement_timeout = '180s';\"",
+          "hint_text": "Role ve database bazli ayar icin ALTER ROLE ... IN DATABASE ... SET kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    }
+  ]
+}

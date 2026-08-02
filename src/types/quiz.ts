@@ -10,6 +10,7 @@ export type QuizQuestionType = "single" | "multi-step";
 export interface QuizStep {
   prompt: string;
   answer: string;
+  accepted_answers?: string[];
   hint_text: string;
   hint_partial: string;
 }

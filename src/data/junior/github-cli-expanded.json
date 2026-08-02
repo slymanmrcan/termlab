@@ -3,2602 +3,2662 @@
   "topic": "github-cli",
   "questions": [
     {
-      "id": "jgh-006",
+      "id": "jgh-exp-001",
       "type": "single",
-      "scenario": "GitHub CLI login akisini baslat.",
+      "scenario": "Gece vardiyasinda GitHub CLI auth durumunu kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh auth status",
+          "hint_text": "Aktif login ve host bilgisini `gh auth status` ile gor.",
+          "hint_partial": "gh auth status"
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-002",
+      "type": "single",
+      "scenario": "Gece vardiyasinda GitHub CLI login akisina gir.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "gh auth login",
-          "hint_text": "Login akisini baslatmak icin `gh auth login` komutunu kullan.",
-          "hint_partial": "gh auth ..."
+          "hint_text": "Yeni makinede veya token yenilerken `gh auth login` kullan.",
+          "hint_partial": "gh auth login"
         }
       ]
     },
     {
-      "id": "jgh-007",
+      "id": "jgh-exp-003",
       "type": "single",
-      "scenario": "GitHub CLI oturumunu kapat.",
+      "scenario": "Gece vardiyasinda `acme/platform-api` reposunun ozetini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh auth logout",
-          "hint_text": "Oturumu kapatmak icin `gh auth logout` komutunu kullan.",
-          "hint_partial": "gh auth ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-008",
-      "type": "single",
-      "scenario": "`cli/cli` reposunu GitHub CLI ile clone et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh repo clone cli/cli",
-          "hint_text": "Bir repo clone etmek icin `gh repo clone owner/repo` yapisini kullan.",
-          "hint_partial": "gh repo ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-009",
-      "type": "single",
-      "scenario": "`octocat` kullanicisinin repository'lerini listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh repo list octocat",
-          "hint_text": "Bir kullanicinin repository'lerini listelemek icin `gh repo list <owner>` komutunu kullan.",
-          "hint_partial": "gh repo list ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-010",
-      "type": "single",
-      "scenario": "Mevcut repo sayfasini tarayicida ac.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh repo view --web",
-          "hint_text": "Repo sayfasini tarayicida acmak icin `gh repo view --web` komutunu kullan.",
+          "answer": "gh repo view acme/platform-api",
+          "hint_text": "Repo detayini gormek icin `gh repo view <owner>/<repo>` kullan.",
           "hint_partial": "gh repo view ..."
         }
       ]
     },
     {
-      "id": "jgh-011",
+      "id": "jgh-exp-004",
       "type": "single",
-      "scenario": "Yeni issue olusturma akisini baslat.",
+      "scenario": "Gece vardiyasinda `acme/platform-api` reposunu clone et.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh issue create",
-          "hint_text": "Yeni bir issue olusturmak icin `gh issue create` komutunu kullan.",
-          "hint_partial": "gh issue ..."
+          "answer": "gh repo clone acme/platform-api",
+          "hint_text": "Repo'yu yerel ortama cekmek icin `gh repo clone` kullan.",
+          "hint_partial": "gh repo clone ..."
         }
       ]
     },
     {
-      "id": "jgh-012",
+      "id": "jgh-exp-005",
       "type": "single",
-      "scenario": "Issue 42 detayini goruntule.",
+      "scenario": "Gece vardiyasinda varsayilan repo baglamini `acme/platform-api` yap.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh issue view 42",
-          "hint_text": "Belirli bir issue'yu gormek icin `gh issue view <number>` yapisini kullan.",
-          "hint_partial": "gh issue view ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-013",
-      "type": "single",
-      "scenario": "Sana atanmis veya takip ettigin issue ozetini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh issue status",
-          "hint_text": "Issue durum ozetini gormek icin `gh issue status` komutunu kullan.",
-          "hint_partial": "gh issue ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-014",
-      "type": "single",
-      "scenario": "Pull request 15 branch'ini checkout et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh pr checkout 15",
-          "hint_text": "Bir PR branch'ine gecmek icin `gh pr checkout <number>` yapisini kullan.",
-          "hint_partial": "gh pr ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-015",
-      "type": "single",
-      "scenario": "Pull request 15 detayini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh pr view 15",
-          "hint_text": "Belirli bir PR'yi gormek icin `gh pr view <number>` yapisini kullan.",
-          "hint_partial": "gh pr view ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-016",
-      "type": "single",
-      "scenario": "Seninle ilgili pull request durum ozetini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh pr status",
-          "hint_text": "Pull request durum ozetini gormek icin `gh pr status` komutunu kullan.",
-          "hint_partial": "gh pr ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-017",
-      "type": "single",
-      "scenario": "Repository'deki workflow listesini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh workflow list",
-          "hint_text": "Workflow listesini gormek icin `gh workflow list` komutunu kullan.",
-          "hint_partial": "gh workflow ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-018",
-      "type": "single",
-      "scenario": "`ci` isimli workflow detayini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh workflow view ci",
-          "hint_text": "Workflow detayini gormek icin `gh workflow view <name>` yapisini kullan.",
-          "hint_partial": "gh workflow view ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-019",
-      "type": "single",
-      "scenario": "GitHub Actions run listesini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh run list",
-          "hint_text": "Run listesini gormek icin `gh run list` komutunu kullan.",
-          "hint_partial": "gh run ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-020",
-      "type": "single",
-      "scenario": "Run 123 detayini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh run view 123",
-          "hint_text": "Belirli bir run'i gormek icin `gh run view <id>` yapisini kullan.",
-          "hint_partial": "gh run view ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-021",
-      "type": "single",
-      "scenario": "Release listesini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh release list",
-          "hint_text": "Release listesini gormek icin `gh release list` komutunu kullan.",
-          "hint_partial": "gh release ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-022",
-      "type": "single",
-      "scenario": "GitHub gist listesini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh gist list",
-          "hint_text": "Gist listesini gormek icin `gh gist list` komutunu kullan.",
-          "hint_partial": "gh gist ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-023",
-      "type": "single",
-      "scenario": "`owner/repo` reposunu fork et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh repo fork owner/repo",
-          "hint_text": "Bir repo'yu fork etmek icin `gh repo fork owner/repo` komutunu kullan.",
-          "hint_partial": "gh repo fork ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-024",
-      "type": "single",
-      "scenario": "Varsayilan GitHub repo baglamini `owner/repo` olarak ayarla.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh repo set-default owner/repo",
-          "hint_text": "Varsayilan repo baglamini ayarlamak icin `gh repo set-default owner/repo` komutunu kullan.",
+          "answer": "gh repo set-default acme/platform-api",
+          "hint_text": "Calisma klasorunde default repo secmek icin `gh repo set-default` kullan.",
           "hint_partial": "gh repo set-default ..."
         }
       ]
     },
     {
-      "id": "jgh-025",
+      "id": "jgh-exp-006",
       "type": "single",
-      "scenario": "GitHub'da `linux` kelimesiyle repo ara.",
+      "scenario": "Gece vardiyasinda `acme/platform-api` reposundaki open issue'lari listele.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh search repos linux",
-          "hint_text": "Repository aramasi yapmak icin `gh search repos <query>` yapisini kullan.",
-          "hint_partial": "gh search ..."
+          "answer": "gh issue list --repo acme/platform-api --state open",
+          "hint_text": "Repo issue kuyruğunu gormek icin `gh issue list --repo` kullan.",
+          "hint_partial": "gh issue list ..."
         }
       ]
     },
     {
-      "id": "jgh-006-r1",
+      "id": "jgh-exp-007",
       "type": "single",
-      "scenario": "Bakim oncesi, GitHub CLI login akisini baslat.",
+      "scenario": "Gece vardiyasinda sana atanmis open issue'lari listele.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh auth login",
-          "hint_text": "Login akisini baslatmak icin `gh auth login` komutunu kullan.",
-          "hint_partial": "gh auth ..."
+          "answer": "gh issue list --state open --assignee @me",
+          "hint_text": "Kendi issue kuyruğunu filtrelemek icin `--assignee @me` kullan.",
+          "hint_partial": "gh issue list ..."
         }
       ]
     },
     {
-      "id": "jgh-007-r2",
+      "id": "jgh-exp-008",
       "type": "single",
-      "scenario": "Troubleshooting sirasinda, GitHub CLI oturumunu kapat.",
+      "scenario": "Gece vardiyasinda `acme/platform-api` reposunda issue 42 detayini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh auth logout",
-          "hint_text": "Oturumu kapatmak icin `gh auth logout` komutunu kullan.",
-          "hint_partial": "gh auth ..."
+          "answer": "gh issue view 42 --repo acme/platform-api",
+          "hint_text": "Belirli issue ayrintisini `gh issue view` ile gor.",
+          "hint_partial": "gh issue view ..."
         }
       ]
     },
     {
-      "id": "jgh-008-r3",
+      "id": "jgh-exp-009",
       "type": "single",
-      "scenario": "Deploy sonrasi, `cli/cli` reposunu GitHub CLI ile clone et.",
+      "scenario": "Gece vardiyasinda `acme/platform-api` reposunda issue 42'ye `ack` notunu ekle.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh repo clone cli/cli",
-          "hint_text": "Bir repo clone etmek icin `gh repo clone owner/repo` yapisini kullan.",
-          "hint_partial": "gh repo ..."
+          "answer": "gh issue comment 42 --body ack --repo acme/platform-api",
+          "hint_text": "Kisa issue notu eklemek icin `gh issue comment` kullan.",
+          "hint_partial": "gh issue comment ..."
         }
       ]
     },
     {
-      "id": "jgh-009-r4",
+      "id": "jgh-exp-010",
       "type": "single",
-      "scenario": "Kesinti incelemesinde, `octocat` kullanicisinin repository'lerini listele.",
+      "scenario": "Gece vardiyasinda `acme/platform-api` reposundaki open PR'lari listele.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh repo list octocat",
-          "hint_text": "Bir kullanicinin repository'lerini listelemek icin `gh repo list <owner>` komutunu kullan.",
-          "hint_partial": "gh repo list ..."
+          "answer": "gh pr list --repo acme/platform-api --state open",
+          "hint_text": "Acik PR listesini gormek icin `gh pr list --state open` kullan.",
+          "hint_partial": "gh pr list ..."
         }
       ]
     },
     {
-      "id": "jgh-010-r5",
+      "id": "jgh-exp-011",
       "type": "single",
-      "scenario": "Yeni acilan hostta, mevcut repo sayfasini tarayicida ac.",
+      "scenario": "Gece vardiyasinda `acme/platform-api` reposunda PR 15 detayini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh repo view --web",
-          "hint_text": "Repo sayfasini tarayicida acmak icin `gh repo view --web` komutunu kullan.",
+          "answer": "gh pr view 15 --repo acme/platform-api",
+          "hint_text": "Belirli PR detayina `gh pr view` ile bak.",
+          "hint_partial": "gh pr view ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-012",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `acme/platform-api` reposunda PR 15 branch'ine gec.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh pr checkout 15 --repo acme/platform-api",
+          "hint_text": "Review edecegin branch'i cekmek icin `gh pr checkout` kullan.",
+          "hint_partial": "gh pr checkout ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-013",
+      "type": "single",
+      "scenario": "Gece vardiyasinda mevcut branch icin otomatik doldurulmus PR olusturma akisina gir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh pr create --fill",
+          "hint_text": "PR baslik ve govdesini commit'lerden doldurmak icin `--fill` kullan.",
+          "hint_partial": "gh pr create ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-014",
+      "type": "single",
+      "scenario": "Gece vardiyasinda PR durum ozetini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh pr status",
+          "hint_text": "Uzerinde calistigin ve review bekleyen PR'lari `gh pr status` ile gor.",
+          "hint_partial": "gh pr status"
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-015",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `acme/platform-api` reposundaki son 10 workflow run kaydini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh run list --repo acme/platform-api --limit 10",
+          "hint_text": "Yakindaki workflow calismalarini `gh run list --limit` ile gor.",
+          "hint_partial": "gh run list ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-016",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `acme/platform-api` reposunda run 1201 ozetini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh run view 1201 --repo acme/platform-api",
+          "hint_text": "Belirli run'in durumunu `gh run view` ile kontrol et.",
+          "hint_partial": "gh run view ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-017",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `acme/platform-api` reposundaki workflow listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh workflow list --repo acme/platform-api",
+          "hint_text": "Tanimli workflow'lari gormek icin `gh workflow list` kullan.",
+          "hint_partial": "gh workflow list ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-018",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `acme/platform-api` repo sayfasini browser'da ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh repo view acme/platform-api --web",
+          "hint_text": "Terminalden web arayuzune gecmek icin `gh repo view --web` kullan.",
           "hint_partial": "gh repo view ..."
         }
       ]
     },
     {
-      "id": "jgh-011-r6",
+      "id": "jgh-exp-019",
       "type": "single",
-      "scenario": "Runbook adiminda, yeni issue olusturma akisini baslat.",
+      "scenario": "Gece vardiyasinda `acme/platform-api` reposunda issue 42'ye `bug` label'ini ekle.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh issue create",
-          "hint_text": "Yeni bir issue olusturmak icin `gh issue create` komutunu kullan.",
-          "hint_partial": "gh issue ..."
+          "answer": "gh issue edit 42 --add-label bug --repo acme/platform-api",
+          "hint_text": "Issue'ya label eklemek icin `gh issue edit --add-label` kullan.",
+          "hint_partial": "gh issue edit ..."
         }
       ]
     },
     {
-      "id": "jgh-012-r7",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde, issue 42 detayini goruntule.",
+      "id": "jgh-exp-020",
+      "type": "multi-step",
+      "scenario": "Gece vardiyasinda `acme/platform-api` reposunda once PR 15 branch'ine gec, sonra detayini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh issue view 42",
-          "hint_text": "Belirli bir issue'yu gormek icin `gh issue view <number>` yapisini kullan.",
-          "hint_partial": "gh issue view ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-013-r8",
-      "type": "single",
-      "scenario": "Incident sonrasinda, sana atanmis veya takip ettigin issue ozetini goruntule.",
-      "steps": [
+          "answer": "gh pr checkout 15 --repo acme/platform-api",
+          "hint_text": "Ilk adimda inceleyecegin PR branch'ini cek.",
+          "hint_partial": "gh pr checkout ..."
+        },
         {
           "prompt": "$ ",
-          "answer": "gh issue status",
-          "hint_text": "Issue durum ozetini gormek icin `gh issue status` komutunu kullan.",
-          "hint_partial": "gh issue ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-014-r9",
-      "type": "single",
-      "scenario": "Bakim oncesi, pull request 15 branch'ini checkout et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh pr checkout 15",
-          "hint_text": "Bir PR branch'ine gecmek icin `gh pr checkout <number>` yapisini kullan.",
-          "hint_partial": "gh pr ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-015-r10",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda, pull request 15 detayini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh pr view 15",
-          "hint_text": "Belirli bir PR'yi gormek icin `gh pr view <number>` yapisini kullan.",
+          "answer": "gh pr view 15 --repo acme/platform-api",
+          "hint_text": "Ikinci adimda PR detayini terminalde ac.",
           "hint_partial": "gh pr view ..."
         }
       ]
     },
     {
-      "id": "jgh-016-r11",
+      "id": "jgh-exp-021",
       "type": "single",
-      "scenario": "Deploy sonrasi, seninle ilgili pull request durum ozetini goruntule.",
+      "scenario": "Bakim penceresinde GitHub CLI auth durumunu kontrol et.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh pr status",
-          "hint_text": "Pull request durum ozetini gormek icin `gh pr status` komutunu kullan.",
-          "hint_partial": "gh pr ..."
+          "answer": "gh auth status",
+          "hint_text": "Aktif login ve host bilgisini `gh auth status` ile gor.",
+          "hint_partial": "gh auth status"
         }
       ]
     },
     {
-      "id": "jgh-017-r12",
+      "id": "jgh-exp-022",
       "type": "single",
-      "scenario": "Kesinti incelemesinde, repository'deki workflow listesini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh workflow list",
-          "hint_text": "Workflow listesini gormek icin `gh workflow list` komutunu kullan.",
-          "hint_partial": "gh workflow ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-018-r13",
-      "type": "single",
-      "scenario": "Yeni acilan hostta, `ci` isimli workflow detayini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh workflow view ci",
-          "hint_text": "Workflow detayini gormek icin `gh workflow view <name>` yapisini kullan.",
-          "hint_partial": "gh workflow view ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-019-r14",
-      "type": "single",
-      "scenario": "Runbook adiminda, GitHub Actions run listesini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh run list",
-          "hint_text": "Run listesini gormek icin `gh run list` komutunu kullan.",
-          "hint_partial": "gh run ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-020-r15",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde, run 123 detayini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh run view 123",
-          "hint_text": "Belirli bir run'i gormek icin `gh run view <id>` yapisini kullan.",
-          "hint_partial": "gh run view ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-021-r16",
-      "type": "single",
-      "scenario": "Incident sonrasinda, release listesini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh release list",
-          "hint_text": "Release listesini gormek icin `gh release list` komutunu kullan.",
-          "hint_partial": "gh release ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-022-r17",
-      "type": "single",
-      "scenario": "Bakim oncesi, GitHub gist listesini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh gist list",
-          "hint_text": "Gist listesini gormek icin `gh gist list` komutunu kullan.",
-          "hint_partial": "gh gist ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-023-r18",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda, `owner/repo` reposunu fork et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh repo fork owner/repo",
-          "hint_text": "Bir repo'yu fork etmek icin `gh repo fork owner/repo` komutunu kullan.",
-          "hint_partial": "gh repo fork ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-024-r19",
-      "type": "single",
-      "scenario": "Deploy sonrasi, varsayilan GitHub repo baglamini `owner/repo` olarak ayarla.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh repo set-default owner/repo",
-          "hint_text": "Varsayilan repo baglamini ayarlamak icin `gh repo set-default owner/repo` komutunu kullan.",
-          "hint_partial": "gh repo set-default ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-025-r20",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde, GitHub'da `linux` kelimesiyle repo ara.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh search repos linux",
-          "hint_text": "Repository aramasi yapmak icin `gh search repos <query>` yapisini kullan.",
-          "hint_partial": "gh search ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-006-r21",
-      "type": "single",
-      "scenario": "Yeni acilan hostta, GitHub CLI login akisini baslat.",
+      "scenario": "Bakim penceresinde GitHub CLI login akisina gir.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "gh auth login",
-          "hint_text": "Login akisini baslatmak icin `gh auth login` komutunu kullan.",
-          "hint_partial": "gh auth ..."
+          "hint_text": "Yeni makinede veya token yenilerken `gh auth login` kullan.",
+          "hint_partial": "gh auth login"
         }
       ]
     },
     {
-      "id": "jgh-007-r22",
+      "id": "jgh-exp-023",
       "type": "single",
-      "scenario": "Runbook adiminda, GitHub CLI oturumunu kapat.",
+      "scenario": "Bakim penceresinde `acme/web-app` reposunun ozetini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh auth logout",
-          "hint_text": "Oturumu kapatmak icin `gh auth logout` komutunu kullan.",
-          "hint_partial": "gh auth ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-008-r23",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde, `cli/cli` reposunu GitHub CLI ile clone et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh repo clone cli/cli",
-          "hint_text": "Bir repo clone etmek icin `gh repo clone owner/repo` yapisini kullan.",
-          "hint_partial": "gh repo ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-009-r24",
-      "type": "single",
-      "scenario": "Incident sonrasinda, `octocat` kullanicisinin repository'lerini listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh repo list octocat",
-          "hint_text": "Bir kullanicinin repository'lerini listelemek icin `gh repo list <owner>` komutunu kullan.",
-          "hint_partial": "gh repo list ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-010-r25",
-      "type": "single",
-      "scenario": "Bakim oncesi, mevcut repo sayfasini tarayicida ac.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh repo view --web",
-          "hint_text": "Repo sayfasini tarayicida acmak icin `gh repo view --web` komutunu kullan.",
+          "answer": "gh repo view acme/web-app",
+          "hint_text": "Repo detayini gormek icin `gh repo view <owner>/<repo>` kullan.",
           "hint_partial": "gh repo view ..."
         }
       ]
     },
     {
-      "id": "jgh-011-r26",
+      "id": "jgh-exp-024",
       "type": "single",
-      "scenario": "Troubleshooting sirasinda, yeni issue olusturma akisini baslat.",
+      "scenario": "Bakim penceresinde `acme/web-app` reposunu clone et.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh issue create",
-          "hint_text": "Yeni bir issue olusturmak icin `gh issue create` komutunu kullan.",
-          "hint_partial": "gh issue ..."
+          "answer": "gh repo clone acme/web-app",
+          "hint_text": "Repo'yu yerel ortama cekmek icin `gh repo clone` kullan.",
+          "hint_partial": "gh repo clone ..."
         }
       ]
     },
     {
-      "id": "jgh-012-r27",
+      "id": "jgh-exp-025",
       "type": "single",
-      "scenario": "Deploy sonrasi, issue 42 detayini goruntule.",
+      "scenario": "Bakim penceresinde varsayilan repo baglamini `acme/web-app` yap.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh issue view 42",
-          "hint_text": "Belirli bir issue'yu gormek icin `gh issue view <number>` yapisini kullan.",
-          "hint_partial": "gh issue view ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-013-r28",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde, sana atanmis veya takip ettigin issue ozetini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh issue status",
-          "hint_text": "Issue durum ozetini gormek icin `gh issue status` komutunu kullan.",
-          "hint_partial": "gh issue ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-014-r29",
-      "type": "single",
-      "scenario": "Yeni acilan hostta, pull request 15 branch'ini checkout et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh pr checkout 15",
-          "hint_text": "Bir PR branch'ine gecmek icin `gh pr checkout <number>` yapisini kullan.",
-          "hint_partial": "gh pr ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-015-r30",
-      "type": "single",
-      "scenario": "Runbook adiminda, pull request 15 detayini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh pr view 15",
-          "hint_text": "Belirli bir PR'yi gormek icin `gh pr view <number>` yapisini kullan.",
-          "hint_partial": "gh pr view ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-016-r31",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde, seninle ilgili pull request durum ozetini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh pr status",
-          "hint_text": "Pull request durum ozetini gormek icin `gh pr status` komutunu kullan.",
-          "hint_partial": "gh pr ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-017-r32",
-      "type": "single",
-      "scenario": "Incident sonrasinda, repository'deki workflow listesini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh workflow list",
-          "hint_text": "Workflow listesini gormek icin `gh workflow list` komutunu kullan.",
-          "hint_partial": "gh workflow ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-018-r33",
-      "type": "single",
-      "scenario": "Bakim oncesi, `ci` isimli workflow detayini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh workflow view ci",
-          "hint_text": "Workflow detayini gormek icin `gh workflow view <name>` yapisini kullan.",
-          "hint_partial": "gh workflow view ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-019-r34",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda, GitHub Actions run listesini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh run list",
-          "hint_text": "Run listesini gormek icin `gh run list` komutunu kullan.",
-          "hint_partial": "gh run ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-020-r35",
-      "type": "single",
-      "scenario": "Deploy sonrasi, run 123 detayini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh run view 123",
-          "hint_text": "Belirli bir run'i gormek icin `gh run view <id>` yapisini kullan.",
-          "hint_partial": "gh run view ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-021-r36",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde, release listesini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh release list",
-          "hint_text": "Release listesini gormek icin `gh release list` komutunu kullan.",
-          "hint_partial": "gh release ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-022-r37",
-      "type": "single",
-      "scenario": "Yeni acilan hostta, GitHub gist listesini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh gist list",
-          "hint_text": "Gist listesini gormek icin `gh gist list` komutunu kullan.",
-          "hint_partial": "gh gist ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-023-r38",
-      "type": "single",
-      "scenario": "Runbook adiminda, `owner/repo` reposunu fork et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh repo fork owner/repo",
-          "hint_text": "Bir repo'yu fork etmek icin `gh repo fork owner/repo` komutunu kullan.",
-          "hint_partial": "gh repo fork ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-024-r39",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde, varsayilan GitHub repo baglamini `owner/repo` olarak ayarla.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh repo set-default owner/repo",
-          "hint_text": "Varsayilan repo baglamini ayarlamak icin `gh repo set-default owner/repo` komutunu kullan.",
+          "answer": "gh repo set-default acme/web-app",
+          "hint_text": "Calisma klasorunde default repo secmek icin `gh repo set-default` kullan.",
           "hint_partial": "gh repo set-default ..."
         }
       ]
     },
     {
-      "id": "jgh-025-r40",
+      "id": "jgh-exp-026",
       "type": "single",
-      "scenario": "Incident sonrasinda, GitHub'da `linux` kelimesiyle repo ara.",
+      "scenario": "Bakim penceresinde `acme/web-app` reposundaki open issue'lari listele.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh search repos linux",
-          "hint_text": "Repository aramasi yapmak icin `gh search repos <query>` yapisini kullan.",
-          "hint_partial": "gh search ..."
+          "answer": "gh issue list --repo acme/web-app --state open",
+          "hint_text": "Repo issue kuyruğunu gormek icin `gh issue list --repo` kullan.",
+          "hint_partial": "gh issue list ..."
         }
       ]
     },
     {
-      "id": "jgh-006-r41",
+      "id": "jgh-exp-027",
       "type": "single",
-      "scenario": "Bakim oncesi, GitHub CLI login akisini baslat.",
+      "scenario": "Bakim penceresinde sana atanmis open issue'lari listele.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh auth login",
-          "hint_text": "Login akisini baslatmak icin `gh auth login` komutunu kullan.",
-          "hint_partial": "gh auth ..."
+          "answer": "gh issue list --state open --assignee @me",
+          "hint_text": "Kendi issue kuyruğunu filtrelemek icin `--assignee @me` kullan.",
+          "hint_partial": "gh issue list ..."
         }
       ]
     },
     {
-      "id": "jgh-007-r42",
+      "id": "jgh-exp-028",
       "type": "single",
-      "scenario": "Troubleshooting sirasinda, GitHub CLI oturumunu kapat.",
+      "scenario": "Bakim penceresinde `acme/web-app` reposunda issue 58 detayini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh auth logout",
-          "hint_text": "Oturumu kapatmak icin `gh auth logout` komutunu kullan.",
-          "hint_partial": "gh auth ..."
+          "answer": "gh issue view 58 --repo acme/web-app",
+          "hint_text": "Belirli issue ayrintisini `gh issue view` ile gor.",
+          "hint_partial": "gh issue view ..."
         }
       ]
     },
     {
-      "id": "jgh-008-r43",
+      "id": "jgh-exp-029",
       "type": "single",
-      "scenario": "Deploy sonrasi, `cli/cli` reposunu GitHub CLI ile clone et.",
+      "scenario": "Bakim penceresinde `acme/web-app` reposunda issue 58'ye `ack` notunu ekle.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh repo clone cli/cli",
-          "hint_text": "Bir repo clone etmek icin `gh repo clone owner/repo` yapisini kullan.",
-          "hint_partial": "gh repo ..."
+          "answer": "gh issue comment 58 --body ack --repo acme/web-app",
+          "hint_text": "Kisa issue notu eklemek icin `gh issue comment` kullan.",
+          "hint_partial": "gh issue comment ..."
         }
       ]
     },
     {
-      "id": "jgh-009-r44",
+      "id": "jgh-exp-030",
       "type": "single",
-      "scenario": "Kesinti incelemesinde, `octocat` kullanicisinin repository'lerini listele.",
+      "scenario": "Bakim penceresinde `acme/web-app` reposundaki open PR'lari listele.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh repo list octocat",
-          "hint_text": "Bir kullanicinin repository'lerini listelemek icin `gh repo list <owner>` komutunu kullan.",
-          "hint_partial": "gh repo list ..."
+          "answer": "gh pr list --repo acme/web-app --state open",
+          "hint_text": "Acik PR listesini gormek icin `gh pr list --state open` kullan.",
+          "hint_partial": "gh pr list ..."
         }
       ]
     },
     {
-      "id": "jgh-010-r45",
+      "id": "jgh-exp-031",
       "type": "single",
-      "scenario": "Yeni acilan hostta, mevcut repo sayfasini tarayicida ac.",
+      "scenario": "Bakim penceresinde `acme/web-app` reposunda PR 21 detayini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh repo view --web",
-          "hint_text": "Repo sayfasini tarayicida acmak icin `gh repo view --web` komutunu kullan.",
+          "answer": "gh pr view 21 --repo acme/web-app",
+          "hint_text": "Belirli PR detayina `gh pr view` ile bak.",
+          "hint_partial": "gh pr view ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-032",
+      "type": "single",
+      "scenario": "Bakim penceresinde `acme/web-app` reposunda PR 21 branch'ine gec.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh pr checkout 21 --repo acme/web-app",
+          "hint_text": "Review edecegin branch'i cekmek icin `gh pr checkout` kullan.",
+          "hint_partial": "gh pr checkout ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-033",
+      "type": "single",
+      "scenario": "Bakim penceresinde mevcut branch icin otomatik doldurulmus PR olusturma akisina gir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh pr create --fill",
+          "hint_text": "PR baslik ve govdesini commit'lerden doldurmak icin `--fill` kullan.",
+          "hint_partial": "gh pr create ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-034",
+      "type": "single",
+      "scenario": "Bakim penceresinde PR durum ozetini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh pr status",
+          "hint_text": "Uzerinde calistigin ve review bekleyen PR'lari `gh pr status` ile gor.",
+          "hint_partial": "gh pr status"
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-035",
+      "type": "single",
+      "scenario": "Bakim penceresinde `acme/web-app` reposundaki son 10 workflow run kaydini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh run list --repo acme/web-app --limit 10",
+          "hint_text": "Yakindaki workflow calismalarini `gh run list --limit` ile gor.",
+          "hint_partial": "gh run list ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-036",
+      "type": "single",
+      "scenario": "Bakim penceresinde `acme/web-app` reposunda run 1202 ozetini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh run view 1202 --repo acme/web-app",
+          "hint_text": "Belirli run'in durumunu `gh run view` ile kontrol et.",
+          "hint_partial": "gh run view ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-037",
+      "type": "single",
+      "scenario": "Bakim penceresinde `acme/web-app` reposundaki workflow listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh workflow list --repo acme/web-app",
+          "hint_text": "Tanimli workflow'lari gormek icin `gh workflow list` kullan.",
+          "hint_partial": "gh workflow list ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-038",
+      "type": "single",
+      "scenario": "Bakim penceresinde `acme/web-app` repo sayfasini browser'da ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh repo view acme/web-app --web",
+          "hint_text": "Terminalden web arayuzune gecmek icin `gh repo view --web` kullan.",
           "hint_partial": "gh repo view ..."
         }
       ]
     },
     {
-      "id": "jgh-011-r46",
+      "id": "jgh-exp-039",
       "type": "single",
-      "scenario": "Runbook adiminda, yeni issue olusturma akisini baslat.",
+      "scenario": "Bakim penceresinde `acme/web-app` reposunda issue 58'ye `frontend` label'ini ekle.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh issue create",
-          "hint_text": "Yeni bir issue olusturmak icin `gh issue create` komutunu kullan.",
-          "hint_partial": "gh issue ..."
+          "answer": "gh issue edit 58 --add-label frontend --repo acme/web-app",
+          "hint_text": "Issue'ya label eklemek icin `gh issue edit --add-label` kullan.",
+          "hint_partial": "gh issue edit ..."
         }
       ]
     },
     {
-      "id": "jgh-012-r47",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde, issue 42 detayini goruntule.",
+      "id": "jgh-exp-040",
+      "type": "multi-step",
+      "scenario": "Bakim penceresinde `acme/web-app` reposunda once PR 21 branch'ine gec, sonra detayini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh issue view 42",
-          "hint_text": "Belirli bir issue'yu gormek icin `gh issue view <number>` yapisini kullan.",
-          "hint_partial": "gh issue view ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-013-r48",
-      "type": "single",
-      "scenario": "Incident sonrasinda, sana atanmis veya takip ettigin issue ozetini goruntule.",
-      "steps": [
+          "answer": "gh pr checkout 21 --repo acme/web-app",
+          "hint_text": "Ilk adimda inceleyecegin PR branch'ini cek.",
+          "hint_partial": "gh pr checkout ..."
+        },
         {
           "prompt": "$ ",
-          "answer": "gh issue status",
-          "hint_text": "Issue durum ozetini gormek icin `gh issue status` komutunu kullan.",
-          "hint_partial": "gh issue ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-014-r49",
-      "type": "single",
-      "scenario": "Bakim oncesi, pull request 15 branch'ini checkout et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh pr checkout 15",
-          "hint_text": "Bir PR branch'ine gecmek icin `gh pr checkout <number>` yapisini kullan.",
-          "hint_partial": "gh pr ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-015-r50",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda, pull request 15 detayini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh pr view 15",
-          "hint_text": "Belirli bir PR'yi gormek icin `gh pr view <number>` yapisini kullan.",
+          "answer": "gh pr view 21 --repo acme/web-app",
+          "hint_text": "Ikinci adimda PR detayini terminalde ac.",
           "hint_partial": "gh pr view ..."
         }
       ]
     },
     {
-      "id": "jgh-016-r51",
+      "id": "jgh-exp-041",
       "type": "single",
-      "scenario": "Deploy sonrasi, seninle ilgili pull request durum ozetini goruntule.",
+      "scenario": "Incident sonrasinda GitHub CLI auth durumunu kontrol et.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh pr status",
-          "hint_text": "Pull request durum ozetini gormek icin `gh pr status` komutunu kullan.",
-          "hint_partial": "gh pr ..."
+          "answer": "gh auth status",
+          "hint_text": "Aktif login ve host bilgisini `gh auth status` ile gor.",
+          "hint_partial": "gh auth status"
         }
       ]
     },
     {
-      "id": "jgh-017-r52",
+      "id": "jgh-exp-042",
       "type": "single",
-      "scenario": "Kesinti incelemesinde, repository'deki workflow listesini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh workflow list",
-          "hint_text": "Workflow listesini gormek icin `gh workflow list` komutunu kullan.",
-          "hint_partial": "gh workflow ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-018-r53",
-      "type": "single",
-      "scenario": "Yeni acilan hostta, `ci` isimli workflow detayini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh workflow view ci",
-          "hint_text": "Workflow detayini gormek icin `gh workflow view <name>` yapisini kullan.",
-          "hint_partial": "gh workflow view ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-019-r54",
-      "type": "single",
-      "scenario": "Runbook adiminda, GitHub Actions run listesini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh run list",
-          "hint_text": "Run listesini gormek icin `gh run list` komutunu kullan.",
-          "hint_partial": "gh run ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-020-r55",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde, run 123 detayini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh run view 123",
-          "hint_text": "Belirli bir run'i gormek icin `gh run view <id>` yapisini kullan.",
-          "hint_partial": "gh run view ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-021-r56",
-      "type": "single",
-      "scenario": "Incident sonrasinda, release listesini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh release list",
-          "hint_text": "Release listesini gormek icin `gh release list` komutunu kullan.",
-          "hint_partial": "gh release ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-022-r57",
-      "type": "single",
-      "scenario": "Bakim oncesi, GitHub gist listesini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh gist list",
-          "hint_text": "Gist listesini gormek icin `gh gist list` komutunu kullan.",
-          "hint_partial": "gh gist ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-023-r58",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda, `owner/repo` reposunu fork et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh repo fork owner/repo",
-          "hint_text": "Bir repo'yu fork etmek icin `gh repo fork owner/repo` komutunu kullan.",
-          "hint_partial": "gh repo fork ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-024-r59",
-      "type": "single",
-      "scenario": "Deploy sonrasi, varsayilan GitHub repo baglamini `owner/repo` olarak ayarla.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh repo set-default owner/repo",
-          "hint_text": "Varsayilan repo baglamini ayarlamak icin `gh repo set-default owner/repo` komutunu kullan.",
-          "hint_partial": "gh repo set-default ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-025-r60",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde, GitHub'da `linux` kelimesiyle repo ara.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh search repos linux",
-          "hint_text": "Repository aramasi yapmak icin `gh search repos <query>` yapisini kullan.",
-          "hint_partial": "gh search ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-006-r61",
-      "type": "single",
-      "scenario": "Yeni acilan hostta, GitHub CLI login akisini baslat.",
+      "scenario": "Incident sonrasinda GitHub CLI login akisina gir.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "gh auth login",
-          "hint_text": "Login akisini baslatmak icin `gh auth login` komutunu kullan.",
-          "hint_partial": "gh auth ..."
+          "hint_text": "Yeni makinede veya token yenilerken `gh auth login` kullan.",
+          "hint_partial": "gh auth login"
         }
       ]
     },
     {
-      "id": "jgh-007-r62",
+      "id": "jgh-exp-043",
       "type": "single",
-      "scenario": "Runbook adiminda, GitHub CLI oturumunu kapat.",
+      "scenario": "Incident sonrasinda `acme/payments` reposunun ozetini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh auth logout",
-          "hint_text": "Oturumu kapatmak icin `gh auth logout` komutunu kullan.",
-          "hint_partial": "gh auth ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-008-r63",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde, `cli/cli` reposunu GitHub CLI ile clone et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh repo clone cli/cli",
-          "hint_text": "Bir repo clone etmek icin `gh repo clone owner/repo` yapisini kullan.",
-          "hint_partial": "gh repo ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-009-r64",
-      "type": "single",
-      "scenario": "Incident sonrasinda, `octocat` kullanicisinin repository'lerini listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh repo list octocat",
-          "hint_text": "Bir kullanicinin repository'lerini listelemek icin `gh repo list <owner>` komutunu kullan.",
-          "hint_partial": "gh repo list ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-010-r65",
-      "type": "single",
-      "scenario": "Bakim oncesi, mevcut repo sayfasini tarayicida ac.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh repo view --web",
-          "hint_text": "Repo sayfasini tarayicida acmak icin `gh repo view --web` komutunu kullan.",
+          "answer": "gh repo view acme/payments",
+          "hint_text": "Repo detayini gormek icin `gh repo view <owner>/<repo>` kullan.",
           "hint_partial": "gh repo view ..."
         }
       ]
     },
     {
-      "id": "jgh-011-r66",
+      "id": "jgh-exp-044",
       "type": "single",
-      "scenario": "Troubleshooting sirasinda, yeni issue olusturma akisini baslat.",
+      "scenario": "Incident sonrasinda `acme/payments` reposunu clone et.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh issue create",
-          "hint_text": "Yeni bir issue olusturmak icin `gh issue create` komutunu kullan.",
-          "hint_partial": "gh issue ..."
+          "answer": "gh repo clone acme/payments",
+          "hint_text": "Repo'yu yerel ortama cekmek icin `gh repo clone` kullan.",
+          "hint_partial": "gh repo clone ..."
         }
       ]
     },
     {
-      "id": "jgh-012-r67",
+      "id": "jgh-exp-045",
       "type": "single",
-      "scenario": "Deploy sonrasi, issue 42 detayini goruntule.",
+      "scenario": "Incident sonrasinda varsayilan repo baglamini `acme/payments` yap.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh issue view 42",
-          "hint_text": "Belirli bir issue'yu gormek icin `gh issue view <number>` yapisini kullan.",
-          "hint_partial": "gh issue view ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-013-r68",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde, sana atanmis veya takip ettigin issue ozetini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh issue status",
-          "hint_text": "Issue durum ozetini gormek icin `gh issue status` komutunu kullan.",
-          "hint_partial": "gh issue ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-014-r69",
-      "type": "single",
-      "scenario": "Yeni acilan hostta, pull request 15 branch'ini checkout et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh pr checkout 15",
-          "hint_text": "Bir PR branch'ine gecmek icin `gh pr checkout <number>` yapisini kullan.",
-          "hint_partial": "gh pr ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-015-r70",
-      "type": "single",
-      "scenario": "Runbook adiminda, pull request 15 detayini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh pr view 15",
-          "hint_text": "Belirli bir PR'yi gormek icin `gh pr view <number>` yapisini kullan.",
-          "hint_partial": "gh pr view ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-016-r71",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde, seninle ilgili pull request durum ozetini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh pr status",
-          "hint_text": "Pull request durum ozetini gormek icin `gh pr status` komutunu kullan.",
-          "hint_partial": "gh pr ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-017-r72",
-      "type": "single",
-      "scenario": "Incident sonrasinda, repository'deki workflow listesini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh workflow list",
-          "hint_text": "Workflow listesini gormek icin `gh workflow list` komutunu kullan.",
-          "hint_partial": "gh workflow ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-018-r73",
-      "type": "single",
-      "scenario": "Bakim oncesi, `ci` isimli workflow detayini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh workflow view ci",
-          "hint_text": "Workflow detayini gormek icin `gh workflow view <name>` yapisini kullan.",
-          "hint_partial": "gh workflow view ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-019-r74",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda, GitHub Actions run listesini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh run list",
-          "hint_text": "Run listesini gormek icin `gh run list` komutunu kullan.",
-          "hint_partial": "gh run ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-020-r75",
-      "type": "single",
-      "scenario": "Deploy sonrasi, run 123 detayini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh run view 123",
-          "hint_text": "Belirli bir run'i gormek icin `gh run view <id>` yapisini kullan.",
-          "hint_partial": "gh run view ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-021-r76",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde, release listesini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh release list",
-          "hint_text": "Release listesini gormek icin `gh release list` komutunu kullan.",
-          "hint_partial": "gh release ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-022-r77",
-      "type": "single",
-      "scenario": "Yeni acilan hostta, GitHub gist listesini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh gist list",
-          "hint_text": "Gist listesini gormek icin `gh gist list` komutunu kullan.",
-          "hint_partial": "gh gist ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-023-r78",
-      "type": "single",
-      "scenario": "Runbook adiminda, `owner/repo` reposunu fork et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh repo fork owner/repo",
-          "hint_text": "Bir repo'yu fork etmek icin `gh repo fork owner/repo` komutunu kullan.",
-          "hint_partial": "gh repo fork ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-024-r79",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde, varsayilan GitHub repo baglamini `owner/repo` olarak ayarla.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh repo set-default owner/repo",
-          "hint_text": "Varsayilan repo baglamini ayarlamak icin `gh repo set-default owner/repo` komutunu kullan.",
+          "answer": "gh repo set-default acme/payments",
+          "hint_text": "Calisma klasorunde default repo secmek icin `gh repo set-default` kullan.",
           "hint_partial": "gh repo set-default ..."
         }
       ]
     },
     {
-      "id": "jgh-025-r80",
+      "id": "jgh-exp-046",
       "type": "single",
-      "scenario": "Incident sonrasinda, GitHub'da `linux` kelimesiyle repo ara.",
+      "scenario": "Incident sonrasinda `acme/payments` reposundaki open issue'lari listele.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh search repos linux",
-          "hint_text": "Repository aramasi yapmak icin `gh search repos <query>` yapisini kullan.",
-          "hint_partial": "gh search ..."
+          "answer": "gh issue list --repo acme/payments --state open",
+          "hint_text": "Repo issue kuyruğunu gormek icin `gh issue list --repo` kullan.",
+          "hint_partial": "gh issue list ..."
         }
       ]
     },
     {
-      "id": "jgh-006-r81",
+      "id": "jgh-exp-047",
       "type": "single",
-      "scenario": "Bakim oncesi, GitHub CLI login akisini baslat.",
+      "scenario": "Incident sonrasinda sana atanmis open issue'lari listele.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh auth login",
-          "hint_text": "Login akisini baslatmak icin `gh auth login` komutunu kullan.",
-          "hint_partial": "gh auth ..."
+          "answer": "gh issue list --state open --assignee @me",
+          "hint_text": "Kendi issue kuyruğunu filtrelemek icin `--assignee @me` kullan.",
+          "hint_partial": "gh issue list ..."
         }
       ]
     },
     {
-      "id": "jgh-007-r82",
+      "id": "jgh-exp-048",
       "type": "single",
-      "scenario": "Troubleshooting sirasinda, GitHub CLI oturumunu kapat.",
+      "scenario": "Incident sonrasinda `acme/payments` reposunda issue 77 detayini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh auth logout",
-          "hint_text": "Oturumu kapatmak icin `gh auth logout` komutunu kullan.",
-          "hint_partial": "gh auth ..."
+          "answer": "gh issue view 77 --repo acme/payments",
+          "hint_text": "Belirli issue ayrintisini `gh issue view` ile gor.",
+          "hint_partial": "gh issue view ..."
         }
       ]
     },
     {
-      "id": "jgh-008-r83",
+      "id": "jgh-exp-049",
       "type": "single",
-      "scenario": "Deploy sonrasi, `cli/cli` reposunu GitHub CLI ile clone et.",
+      "scenario": "Incident sonrasinda `acme/payments` reposunda issue 77'ye `ack` notunu ekle.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh repo clone cli/cli",
-          "hint_text": "Bir repo clone etmek icin `gh repo clone owner/repo` yapisini kullan.",
-          "hint_partial": "gh repo ..."
+          "answer": "gh issue comment 77 --body ack --repo acme/payments",
+          "hint_text": "Kisa issue notu eklemek icin `gh issue comment` kullan.",
+          "hint_partial": "gh issue comment ..."
         }
       ]
     },
     {
-      "id": "jgh-009-r84",
+      "id": "jgh-exp-050",
       "type": "single",
-      "scenario": "Kesinti incelemesinde, `octocat` kullanicisinin repository'lerini listele.",
+      "scenario": "Incident sonrasinda `acme/payments` reposundaki open PR'lari listele.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh repo list octocat",
-          "hint_text": "Bir kullanicinin repository'lerini listelemek icin `gh repo list <owner>` komutunu kullan.",
-          "hint_partial": "gh repo list ..."
+          "answer": "gh pr list --repo acme/payments --state open",
+          "hint_text": "Acik PR listesini gormek icin `gh pr list --state open` kullan.",
+          "hint_partial": "gh pr list ..."
         }
       ]
     },
     {
-      "id": "jgh-010-r85",
+      "id": "jgh-exp-051",
       "type": "single",
-      "scenario": "Yeni acilan hostta, mevcut repo sayfasini tarayicida ac.",
+      "scenario": "Incident sonrasinda `acme/payments` reposunda PR 34 detayini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh repo view --web",
-          "hint_text": "Repo sayfasini tarayicida acmak icin `gh repo view --web` komutunu kullan.",
+          "answer": "gh pr view 34 --repo acme/payments",
+          "hint_text": "Belirli PR detayina `gh pr view` ile bak.",
+          "hint_partial": "gh pr view ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-052",
+      "type": "single",
+      "scenario": "Incident sonrasinda `acme/payments` reposunda PR 34 branch'ine gec.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh pr checkout 34 --repo acme/payments",
+          "hint_text": "Review edecegin branch'i cekmek icin `gh pr checkout` kullan.",
+          "hint_partial": "gh pr checkout ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-053",
+      "type": "single",
+      "scenario": "Incident sonrasinda mevcut branch icin otomatik doldurulmus PR olusturma akisina gir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh pr create --fill",
+          "hint_text": "PR baslik ve govdesini commit'lerden doldurmak icin `--fill` kullan.",
+          "hint_partial": "gh pr create ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-054",
+      "type": "single",
+      "scenario": "Incident sonrasinda PR durum ozetini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh pr status",
+          "hint_text": "Uzerinde calistigin ve review bekleyen PR'lari `gh pr status` ile gor.",
+          "hint_partial": "gh pr status"
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-055",
+      "type": "single",
+      "scenario": "Incident sonrasinda `acme/payments` reposundaki son 10 workflow run kaydini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh run list --repo acme/payments --limit 10",
+          "hint_text": "Yakindaki workflow calismalarini `gh run list --limit` ile gor.",
+          "hint_partial": "gh run list ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-056",
+      "type": "single",
+      "scenario": "Incident sonrasinda `acme/payments` reposunda run 1203 ozetini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh run view 1203 --repo acme/payments",
+          "hint_text": "Belirli run'in durumunu `gh run view` ile kontrol et.",
+          "hint_partial": "gh run view ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-057",
+      "type": "single",
+      "scenario": "Incident sonrasinda `acme/payments` reposundaki workflow listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh workflow list --repo acme/payments",
+          "hint_text": "Tanimli workflow'lari gormek icin `gh workflow list` kullan.",
+          "hint_partial": "gh workflow list ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-058",
+      "type": "single",
+      "scenario": "Incident sonrasinda `acme/payments` repo sayfasini browser'da ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh repo view acme/payments --web",
+          "hint_text": "Terminalden web arayuzune gecmek icin `gh repo view --web` kullan.",
           "hint_partial": "gh repo view ..."
         }
       ]
     },
     {
-      "id": "jgh-011-r86",
+      "id": "jgh-exp-059",
       "type": "single",
-      "scenario": "Runbook adiminda, yeni issue olusturma akisini baslat.",
+      "scenario": "Incident sonrasinda `acme/payments` reposunda issue 77'ye `incident` label'ini ekle.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh issue create",
-          "hint_text": "Yeni bir issue olusturmak icin `gh issue create` komutunu kullan.",
-          "hint_partial": "gh issue ..."
+          "answer": "gh issue edit 77 --add-label incident --repo acme/payments",
+          "hint_text": "Issue'ya label eklemek icin `gh issue edit --add-label` kullan.",
+          "hint_partial": "gh issue edit ..."
         }
       ]
     },
     {
-      "id": "jgh-012-r87",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde, issue 42 detayini goruntule.",
+      "id": "jgh-exp-060",
+      "type": "multi-step",
+      "scenario": "Incident sonrasinda `acme/payments` reposunda once PR 34 branch'ine gec, sonra detayini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh issue view 42",
-          "hint_text": "Belirli bir issue'yu gormek icin `gh issue view <number>` yapisini kullan.",
-          "hint_partial": "gh issue view ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-013-r88",
-      "type": "single",
-      "scenario": "Incident sonrasinda, sana atanmis veya takip ettigin issue ozetini goruntule.",
-      "steps": [
+          "answer": "gh pr checkout 34 --repo acme/payments",
+          "hint_text": "Ilk adimda inceleyecegin PR branch'ini cek.",
+          "hint_partial": "gh pr checkout ..."
+        },
         {
           "prompt": "$ ",
-          "answer": "gh issue status",
-          "hint_text": "Issue durum ozetini gormek icin `gh issue status` komutunu kullan.",
-          "hint_partial": "gh issue ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-014-r89",
-      "type": "single",
-      "scenario": "Bakim oncesi, pull request 15 branch'ini checkout et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh pr checkout 15",
-          "hint_text": "Bir PR branch'ine gecmek icin `gh pr checkout <number>` yapisini kullan.",
-          "hint_partial": "gh pr ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-015-r90",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda, pull request 15 detayini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh pr view 15",
-          "hint_text": "Belirli bir PR'yi gormek icin `gh pr view <number>` yapisini kullan.",
+          "answer": "gh pr view 34 --repo acme/payments",
+          "hint_text": "Ikinci adimda PR detayini terminalde ac.",
           "hint_partial": "gh pr view ..."
         }
       ]
     },
     {
-      "id": "jgh-016-r91",
+      "id": "jgh-exp-061",
       "type": "single",
-      "scenario": "Deploy sonrasi, seninle ilgili pull request durum ozetini goruntule.",
+      "scenario": "Deploy oncesi GitHub CLI auth durumunu kontrol et.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh pr status",
-          "hint_text": "Pull request durum ozetini gormek icin `gh pr status` komutunu kullan.",
-          "hint_partial": "gh pr ..."
+          "answer": "gh auth status",
+          "hint_text": "Aktif login ve host bilgisini `gh auth status` ile gor.",
+          "hint_partial": "gh auth status"
         }
       ]
     },
     {
-      "id": "jgh-017-r92",
+      "id": "jgh-exp-062",
       "type": "single",
-      "scenario": "Kesinti incelemesinde, repository'deki workflow listesini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh workflow list",
-          "hint_text": "Workflow listesini gormek icin `gh workflow list` komutunu kullan.",
-          "hint_partial": "gh workflow ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-018-r93",
-      "type": "single",
-      "scenario": "Yeni acilan hostta, `ci` isimli workflow detayini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh workflow view ci",
-          "hint_text": "Workflow detayini gormek icin `gh workflow view <name>` yapisini kullan.",
-          "hint_partial": "gh workflow view ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-019-r94",
-      "type": "single",
-      "scenario": "Runbook adiminda, GitHub Actions run listesini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh run list",
-          "hint_text": "Run listesini gormek icin `gh run list` komutunu kullan.",
-          "hint_partial": "gh run ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-020-r95",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde, run 123 detayini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh run view 123",
-          "hint_text": "Belirli bir run'i gormek icin `gh run view <id>` yapisini kullan.",
-          "hint_partial": "gh run view ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-021-r96",
-      "type": "single",
-      "scenario": "Incident sonrasinda, release listesini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh release list",
-          "hint_text": "Release listesini gormek icin `gh release list` komutunu kullan.",
-          "hint_partial": "gh release ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-022-r97",
-      "type": "single",
-      "scenario": "Bakim oncesi, GitHub gist listesini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh gist list",
-          "hint_text": "Gist listesini gormek icin `gh gist list` komutunu kullan.",
-          "hint_partial": "gh gist ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-023-r98",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda, `owner/repo` reposunu fork et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh repo fork owner/repo",
-          "hint_text": "Bir repo'yu fork etmek icin `gh repo fork owner/repo` komutunu kullan.",
-          "hint_partial": "gh repo fork ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-024-r99",
-      "type": "single",
-      "scenario": "Deploy sonrasi, varsayilan GitHub repo baglamini `owner/repo` olarak ayarla.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh repo set-default owner/repo",
-          "hint_text": "Varsayilan repo baglamini ayarlamak icin `gh repo set-default owner/repo` komutunu kullan.",
-          "hint_partial": "gh repo set-default ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-025-r100",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde, GitHub'da `linux` kelimesiyle repo ara.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh search repos linux",
-          "hint_text": "Repository aramasi yapmak icin `gh search repos <query>` yapisini kullan.",
-          "hint_partial": "gh search ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-006-r101",
-      "type": "single",
-      "scenario": "Yeni acilan hostta, GitHub CLI login akisini baslat.",
+      "scenario": "Deploy oncesi GitHub CLI login akisina gir.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "gh auth login",
-          "hint_text": "Login akisini baslatmak icin `gh auth login` komutunu kullan.",
-          "hint_partial": "gh auth ..."
+          "hint_text": "Yeni makinede veya token yenilerken `gh auth login` kullan.",
+          "hint_partial": "gh auth login"
         }
       ]
     },
     {
-      "id": "jgh-007-r102",
+      "id": "jgh-exp-063",
       "type": "single",
-      "scenario": "Runbook adiminda, GitHub CLI oturumunu kapat.",
+      "scenario": "Deploy oncesi `acme/ops-tooling` reposunun ozetini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh auth logout",
-          "hint_text": "Oturumu kapatmak icin `gh auth logout` komutunu kullan.",
-          "hint_partial": "gh auth ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-008-r103",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde, `cli/cli` reposunu GitHub CLI ile clone et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh repo clone cli/cli",
-          "hint_text": "Bir repo clone etmek icin `gh repo clone owner/repo` yapisini kullan.",
-          "hint_partial": "gh repo ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-009-r104",
-      "type": "single",
-      "scenario": "Incident sonrasinda, `octocat` kullanicisinin repository'lerini listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh repo list octocat",
-          "hint_text": "Bir kullanicinin repository'lerini listelemek icin `gh repo list <owner>` komutunu kullan.",
-          "hint_partial": "gh repo list ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-010-r105",
-      "type": "single",
-      "scenario": "Bakim oncesi, mevcut repo sayfasini tarayicida ac.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh repo view --web",
-          "hint_text": "Repo sayfasini tarayicida acmak icin `gh repo view --web` komutunu kullan.",
+          "answer": "gh repo view acme/ops-tooling",
+          "hint_text": "Repo detayini gormek icin `gh repo view <owner>/<repo>` kullan.",
           "hint_partial": "gh repo view ..."
         }
       ]
     },
     {
-      "id": "jgh-011-r106",
+      "id": "jgh-exp-064",
       "type": "single",
-      "scenario": "Troubleshooting sirasinda, yeni issue olusturma akisini baslat.",
+      "scenario": "Deploy oncesi `acme/ops-tooling` reposunu clone et.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh issue create",
-          "hint_text": "Yeni bir issue olusturmak icin `gh issue create` komutunu kullan.",
-          "hint_partial": "gh issue ..."
+          "answer": "gh repo clone acme/ops-tooling",
+          "hint_text": "Repo'yu yerel ortama cekmek icin `gh repo clone` kullan.",
+          "hint_partial": "gh repo clone ..."
         }
       ]
     },
     {
-      "id": "jgh-012-r107",
+      "id": "jgh-exp-065",
       "type": "single",
-      "scenario": "Deploy sonrasi, issue 42 detayini goruntule.",
+      "scenario": "Deploy oncesi varsayilan repo baglamini `acme/ops-tooling` yap.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh issue view 42",
-          "hint_text": "Belirli bir issue'yu gormek icin `gh issue view <number>` yapisini kullan.",
-          "hint_partial": "gh issue view ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-013-r108",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde, sana atanmis veya takip ettigin issue ozetini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh issue status",
-          "hint_text": "Issue durum ozetini gormek icin `gh issue status` komutunu kullan.",
-          "hint_partial": "gh issue ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-014-r109",
-      "type": "single",
-      "scenario": "Yeni acilan hostta, pull request 15 branch'ini checkout et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh pr checkout 15",
-          "hint_text": "Bir PR branch'ine gecmek icin `gh pr checkout <number>` yapisini kullan.",
-          "hint_partial": "gh pr ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-015-r110",
-      "type": "single",
-      "scenario": "Runbook adiminda, pull request 15 detayini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh pr view 15",
-          "hint_text": "Belirli bir PR'yi gormek icin `gh pr view <number>` yapisini kullan.",
-          "hint_partial": "gh pr view ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-016-r111",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde, seninle ilgili pull request durum ozetini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh pr status",
-          "hint_text": "Pull request durum ozetini gormek icin `gh pr status` komutunu kullan.",
-          "hint_partial": "gh pr ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-017-r112",
-      "type": "single",
-      "scenario": "Incident sonrasinda, repository'deki workflow listesini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh workflow list",
-          "hint_text": "Workflow listesini gormek icin `gh workflow list` komutunu kullan.",
-          "hint_partial": "gh workflow ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-018-r113",
-      "type": "single",
-      "scenario": "Bakim oncesi, `ci` isimli workflow detayini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh workflow view ci",
-          "hint_text": "Workflow detayini gormek icin `gh workflow view <name>` yapisini kullan.",
-          "hint_partial": "gh workflow view ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-019-r114",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda, GitHub Actions run listesini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh run list",
-          "hint_text": "Run listesini gormek icin `gh run list` komutunu kullan.",
-          "hint_partial": "gh run ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-020-r115",
-      "type": "single",
-      "scenario": "Deploy sonrasi, run 123 detayini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh run view 123",
-          "hint_text": "Belirli bir run'i gormek icin `gh run view <id>` yapisini kullan.",
-          "hint_partial": "gh run view ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-021-r116",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde, release listesini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh release list",
-          "hint_text": "Release listesini gormek icin `gh release list` komutunu kullan.",
-          "hint_partial": "gh release ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-022-r117",
-      "type": "single",
-      "scenario": "Yeni acilan hostta, GitHub gist listesini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh gist list",
-          "hint_text": "Gist listesini gormek icin `gh gist list` komutunu kullan.",
-          "hint_partial": "gh gist ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-023-r118",
-      "type": "single",
-      "scenario": "Runbook adiminda, `owner/repo` reposunu fork et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh repo fork owner/repo",
-          "hint_text": "Bir repo'yu fork etmek icin `gh repo fork owner/repo` komutunu kullan.",
-          "hint_partial": "gh repo fork ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-024-r119",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde, varsayilan GitHub repo baglamini `owner/repo` olarak ayarla.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh repo set-default owner/repo",
-          "hint_text": "Varsayilan repo baglamini ayarlamak icin `gh repo set-default owner/repo` komutunu kullan.",
+          "answer": "gh repo set-default acme/ops-tooling",
+          "hint_text": "Calisma klasorunde default repo secmek icin `gh repo set-default` kullan.",
           "hint_partial": "gh repo set-default ..."
         }
       ]
     },
     {
-      "id": "jgh-025-r120",
+      "id": "jgh-exp-066",
       "type": "single",
-      "scenario": "Incident sonrasinda, GitHub'da `linux` kelimesiyle repo ara.",
+      "scenario": "Deploy oncesi `acme/ops-tooling` reposundaki open issue'lari listele.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh search repos linux",
-          "hint_text": "Repository aramasi yapmak icin `gh search repos <query>` yapisini kullan.",
-          "hint_partial": "gh search ..."
+          "answer": "gh issue list --repo acme/ops-tooling --state open",
+          "hint_text": "Repo issue kuyruğunu gormek icin `gh issue list --repo` kullan.",
+          "hint_partial": "gh issue list ..."
         }
       ]
     },
     {
-      "id": "jgh-006-r121",
+      "id": "jgh-exp-067",
       "type": "single",
-      "scenario": "Bakim oncesi, GitHub CLI login akisini baslat.",
+      "scenario": "Deploy oncesi sana atanmis open issue'lari listele.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh auth login",
-          "hint_text": "Login akisini baslatmak icin `gh auth login` komutunu kullan.",
-          "hint_partial": "gh auth ..."
+          "answer": "gh issue list --state open --assignee @me",
+          "hint_text": "Kendi issue kuyruğunu filtrelemek icin `--assignee @me` kullan.",
+          "hint_partial": "gh issue list ..."
         }
       ]
     },
     {
-      "id": "jgh-007-r122",
+      "id": "jgh-exp-068",
       "type": "single",
-      "scenario": "Troubleshooting sirasinda, GitHub CLI oturumunu kapat.",
+      "scenario": "Deploy oncesi `acme/ops-tooling` reposunda issue 89 detayini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh auth logout",
-          "hint_text": "Oturumu kapatmak icin `gh auth logout` komutunu kullan.",
-          "hint_partial": "gh auth ..."
+          "answer": "gh issue view 89 --repo acme/ops-tooling",
+          "hint_text": "Belirli issue ayrintisini `gh issue view` ile gor.",
+          "hint_partial": "gh issue view ..."
         }
       ]
     },
     {
-      "id": "jgh-008-r123",
+      "id": "jgh-exp-069",
       "type": "single",
-      "scenario": "Deploy sonrasi, `cli/cli` reposunu GitHub CLI ile clone et.",
+      "scenario": "Deploy oncesi `acme/ops-tooling` reposunda issue 89'ye `ack` notunu ekle.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh repo clone cli/cli",
-          "hint_text": "Bir repo clone etmek icin `gh repo clone owner/repo` yapisini kullan.",
-          "hint_partial": "gh repo ..."
+          "answer": "gh issue comment 89 --body ack --repo acme/ops-tooling",
+          "hint_text": "Kisa issue notu eklemek icin `gh issue comment` kullan.",
+          "hint_partial": "gh issue comment ..."
         }
       ]
     },
     {
-      "id": "jgh-009-r124",
+      "id": "jgh-exp-070",
       "type": "single",
-      "scenario": "Kesinti incelemesinde, `octocat` kullanicisinin repository'lerini listele.",
+      "scenario": "Deploy oncesi `acme/ops-tooling` reposundaki open PR'lari listele.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh repo list octocat",
-          "hint_text": "Bir kullanicinin repository'lerini listelemek icin `gh repo list <owner>` komutunu kullan.",
-          "hint_partial": "gh repo list ..."
+          "answer": "gh pr list --repo acme/ops-tooling --state open",
+          "hint_text": "Acik PR listesini gormek icin `gh pr list --state open` kullan.",
+          "hint_partial": "gh pr list ..."
         }
       ]
     },
     {
-      "id": "jgh-010-r125",
+      "id": "jgh-exp-071",
       "type": "single",
-      "scenario": "Yeni acilan hostta, mevcut repo sayfasini tarayicida ac.",
+      "scenario": "Deploy oncesi `acme/ops-tooling` reposunda PR 55 detayini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh repo view --web",
-          "hint_text": "Repo sayfasini tarayicida acmak icin `gh repo view --web` komutunu kullan.",
+          "answer": "gh pr view 55 --repo acme/ops-tooling",
+          "hint_text": "Belirli PR detayina `gh pr view` ile bak.",
+          "hint_partial": "gh pr view ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-072",
+      "type": "single",
+      "scenario": "Deploy oncesi `acme/ops-tooling` reposunda PR 55 branch'ine gec.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh pr checkout 55 --repo acme/ops-tooling",
+          "hint_text": "Review edecegin branch'i cekmek icin `gh pr checkout` kullan.",
+          "hint_partial": "gh pr checkout ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-073",
+      "type": "single",
+      "scenario": "Deploy oncesi mevcut branch icin otomatik doldurulmus PR olusturma akisina gir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh pr create --fill",
+          "hint_text": "PR baslik ve govdesini commit'lerden doldurmak icin `--fill` kullan.",
+          "hint_partial": "gh pr create ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-074",
+      "type": "single",
+      "scenario": "Deploy oncesi PR durum ozetini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh pr status",
+          "hint_text": "Uzerinde calistigin ve review bekleyen PR'lari `gh pr status` ile gor.",
+          "hint_partial": "gh pr status"
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-075",
+      "type": "single",
+      "scenario": "Deploy oncesi `acme/ops-tooling` reposundaki son 10 workflow run kaydini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh run list --repo acme/ops-tooling --limit 10",
+          "hint_text": "Yakindaki workflow calismalarini `gh run list --limit` ile gor.",
+          "hint_partial": "gh run list ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-076",
+      "type": "single",
+      "scenario": "Deploy oncesi `acme/ops-tooling` reposunda run 1204 ozetini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh run view 1204 --repo acme/ops-tooling",
+          "hint_text": "Belirli run'in durumunu `gh run view` ile kontrol et.",
+          "hint_partial": "gh run view ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-077",
+      "type": "single",
+      "scenario": "Deploy oncesi `acme/ops-tooling` reposundaki workflow listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh workflow list --repo acme/ops-tooling",
+          "hint_text": "Tanimli workflow'lari gormek icin `gh workflow list` kullan.",
+          "hint_partial": "gh workflow list ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-078",
+      "type": "single",
+      "scenario": "Deploy oncesi `acme/ops-tooling` repo sayfasini browser'da ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh repo view acme/ops-tooling --web",
+          "hint_text": "Terminalden web arayuzune gecmek icin `gh repo view --web` kullan.",
           "hint_partial": "gh repo view ..."
         }
       ]
     },
     {
-      "id": "jgh-011-r126",
+      "id": "jgh-exp-079",
       "type": "single",
-      "scenario": "Runbook adiminda, yeni issue olusturma akisini baslat.",
+      "scenario": "Deploy oncesi `acme/ops-tooling` reposunda issue 89'ye `ops` label'ini ekle.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh issue create",
-          "hint_text": "Yeni bir issue olusturmak icin `gh issue create` komutunu kullan.",
-          "hint_partial": "gh issue ..."
+          "answer": "gh issue edit 89 --add-label ops --repo acme/ops-tooling",
+          "hint_text": "Issue'ya label eklemek icin `gh issue edit --add-label` kullan.",
+          "hint_partial": "gh issue edit ..."
         }
       ]
     },
     {
-      "id": "jgh-012-r127",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde, issue 42 detayini goruntule.",
+      "id": "jgh-exp-080",
+      "type": "multi-step",
+      "scenario": "Deploy oncesi `acme/ops-tooling` reposunda once PR 55 branch'ine gec, sonra detayini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh issue view 42",
-          "hint_text": "Belirli bir issue'yu gormek icin `gh issue view <number>` yapisini kullan.",
-          "hint_partial": "gh issue view ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-013-r128",
-      "type": "single",
-      "scenario": "Incident sonrasinda, sana atanmis veya takip ettigin issue ozetini goruntule.",
-      "steps": [
+          "answer": "gh pr checkout 55 --repo acme/ops-tooling",
+          "hint_text": "Ilk adimda inceleyecegin PR branch'ini cek.",
+          "hint_partial": "gh pr checkout ..."
+        },
         {
           "prompt": "$ ",
-          "answer": "gh issue status",
-          "hint_text": "Issue durum ozetini gormek icin `gh issue status` komutunu kullan.",
-          "hint_partial": "gh issue ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-014-r129",
-      "type": "single",
-      "scenario": "Bakim oncesi, pull request 15 branch'ini checkout et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh pr checkout 15",
-          "hint_text": "Bir PR branch'ine gecmek icin `gh pr checkout <number>` yapisini kullan.",
-          "hint_partial": "gh pr ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-015-r130",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda, pull request 15 detayini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh pr view 15",
-          "hint_text": "Belirli bir PR'yi gormek icin `gh pr view <number>` yapisini kullan.",
+          "answer": "gh pr view 55 --repo acme/ops-tooling",
+          "hint_text": "Ikinci adimda PR detayini terminalde ac.",
           "hint_partial": "gh pr view ..."
         }
       ]
     },
     {
-      "id": "jgh-016-r131",
+      "id": "jgh-exp-081",
       "type": "single",
-      "scenario": "Deploy sonrasi, seninle ilgili pull request durum ozetini goruntule.",
+      "scenario": "Audit sirasinda GitHub CLI auth durumunu kontrol et.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh pr status",
-          "hint_text": "Pull request durum ozetini gormek icin `gh pr status` komutunu kullan.",
-          "hint_partial": "gh pr ..."
+          "answer": "gh auth status",
+          "hint_text": "Aktif login ve host bilgisini `gh auth status` ile gor.",
+          "hint_partial": "gh auth status"
         }
       ]
     },
     {
-      "id": "jgh-017-r132",
+      "id": "jgh-exp-082",
       "type": "single",
-      "scenario": "Kesinti incelemesinde, repository'deki workflow listesini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh workflow list",
-          "hint_text": "Workflow listesini gormek icin `gh workflow list` komutunu kullan.",
-          "hint_partial": "gh workflow ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-018-r133",
-      "type": "single",
-      "scenario": "Yeni acilan hostta, `ci` isimli workflow detayini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh workflow view ci",
-          "hint_text": "Workflow detayini gormek icin `gh workflow view <name>` yapisini kullan.",
-          "hint_partial": "gh workflow view ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-019-r134",
-      "type": "single",
-      "scenario": "Runbook adiminda, GitHub Actions run listesini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh run list",
-          "hint_text": "Run listesini gormek icin `gh run list` komutunu kullan.",
-          "hint_partial": "gh run ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-020-r135",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde, run 123 detayini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh run view 123",
-          "hint_text": "Belirli bir run'i gormek icin `gh run view <id>` yapisini kullan.",
-          "hint_partial": "gh run view ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-021-r136",
-      "type": "single",
-      "scenario": "Incident sonrasinda, release listesini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh release list",
-          "hint_text": "Release listesini gormek icin `gh release list` komutunu kullan.",
-          "hint_partial": "gh release ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-022-r137",
-      "type": "single",
-      "scenario": "Bakim oncesi, GitHub gist listesini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh gist list",
-          "hint_text": "Gist listesini gormek icin `gh gist list` komutunu kullan.",
-          "hint_partial": "gh gist ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-023-r138",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda, `owner/repo` reposunu fork et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh repo fork owner/repo",
-          "hint_text": "Bir repo'yu fork etmek icin `gh repo fork owner/repo` komutunu kullan.",
-          "hint_partial": "gh repo fork ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-024-r139",
-      "type": "single",
-      "scenario": "Deploy sonrasi, varsayilan GitHub repo baglamini `owner/repo` olarak ayarla.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh repo set-default owner/repo",
-          "hint_text": "Varsayilan repo baglamini ayarlamak icin `gh repo set-default owner/repo` komutunu kullan.",
-          "hint_partial": "gh repo set-default ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-025-r140",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde, GitHub'da `linux` kelimesiyle repo ara.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh search repos linux",
-          "hint_text": "Repository aramasi yapmak icin `gh search repos <query>` yapisini kullan.",
-          "hint_partial": "gh search ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-006-r141",
-      "type": "single",
-      "scenario": "Yeni acilan hostta, GitHub CLI login akisini baslat.",
+      "scenario": "Audit sirasinda GitHub CLI login akisina gir.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "gh auth login",
-          "hint_text": "Login akisini baslatmak icin `gh auth login` komutunu kullan.",
-          "hint_partial": "gh auth ..."
+          "hint_text": "Yeni makinede veya token yenilerken `gh auth login` kullan.",
+          "hint_partial": "gh auth login"
         }
       ]
     },
     {
-      "id": "jgh-007-r142",
+      "id": "jgh-exp-083",
       "type": "single",
-      "scenario": "Runbook adiminda, GitHub CLI oturumunu kapat.",
+      "scenario": "Audit sirasinda `acme/data-pipeline` reposunun ozetini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh auth logout",
-          "hint_text": "Oturumu kapatmak icin `gh auth logout` komutunu kullan.",
-          "hint_partial": "gh auth ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-008-r143",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde, `cli/cli` reposunu GitHub CLI ile clone et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh repo clone cli/cli",
-          "hint_text": "Bir repo clone etmek icin `gh repo clone owner/repo` yapisini kullan.",
-          "hint_partial": "gh repo ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-009-r144",
-      "type": "single",
-      "scenario": "Incident sonrasinda, `octocat` kullanicisinin repository'lerini listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh repo list octocat",
-          "hint_text": "Bir kullanicinin repository'lerini listelemek icin `gh repo list <owner>` komutunu kullan.",
-          "hint_partial": "gh repo list ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-010-r145",
-      "type": "single",
-      "scenario": "Bakim oncesi, mevcut repo sayfasini tarayicida ac.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh repo view --web",
-          "hint_text": "Repo sayfasini tarayicida acmak icin `gh repo view --web` komutunu kullan.",
+          "answer": "gh repo view acme/data-pipeline",
+          "hint_text": "Repo detayini gormek icin `gh repo view <owner>/<repo>` kullan.",
           "hint_partial": "gh repo view ..."
         }
       ]
     },
     {
-      "id": "jgh-011-r146",
+      "id": "jgh-exp-084",
       "type": "single",
-      "scenario": "Troubleshooting sirasinda, yeni issue olusturma akisini baslat.",
+      "scenario": "Audit sirasinda `acme/data-pipeline` reposunu clone et.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh issue create",
-          "hint_text": "Yeni bir issue olusturmak icin `gh issue create` komutunu kullan.",
-          "hint_partial": "gh issue ..."
+          "answer": "gh repo clone acme/data-pipeline",
+          "hint_text": "Repo'yu yerel ortama cekmek icin `gh repo clone` kullan.",
+          "hint_partial": "gh repo clone ..."
         }
       ]
     },
     {
-      "id": "jgh-012-r147",
+      "id": "jgh-exp-085",
       "type": "single",
-      "scenario": "Deploy sonrasi, issue 42 detayini goruntule.",
+      "scenario": "Audit sirasinda varsayilan repo baglamini `acme/data-pipeline` yap.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh issue view 42",
-          "hint_text": "Belirli bir issue'yu gormek icin `gh issue view <number>` yapisini kullan.",
-          "hint_partial": "gh issue view ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-013-r148",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde, sana atanmis veya takip ettigin issue ozetini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh issue status",
-          "hint_text": "Issue durum ozetini gormek icin `gh issue status` komutunu kullan.",
-          "hint_partial": "gh issue ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-014-r149",
-      "type": "single",
-      "scenario": "Yeni acilan hostta, pull request 15 branch'ini checkout et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh pr checkout 15",
-          "hint_text": "Bir PR branch'ine gecmek icin `gh pr checkout <number>` yapisini kullan.",
-          "hint_partial": "gh pr ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-015-r150",
-      "type": "single",
-      "scenario": "Runbook adiminda, pull request 15 detayini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh pr view 15",
-          "hint_text": "Belirli bir PR'yi gormek icin `gh pr view <number>` yapisini kullan.",
-          "hint_partial": "gh pr view ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-016-r151",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde, seninle ilgili pull request durum ozetini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh pr status",
-          "hint_text": "Pull request durum ozetini gormek icin `gh pr status` komutunu kullan.",
-          "hint_partial": "gh pr ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-017-r152",
-      "type": "single",
-      "scenario": "Incident sonrasinda, repository'deki workflow listesini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh workflow list",
-          "hint_text": "Workflow listesini gormek icin `gh workflow list` komutunu kullan.",
-          "hint_partial": "gh workflow ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-018-r153",
-      "type": "single",
-      "scenario": "Bakim oncesi, `ci` isimli workflow detayini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh workflow view ci",
-          "hint_text": "Workflow detayini gormek icin `gh workflow view <name>` yapisini kullan.",
-          "hint_partial": "gh workflow view ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-019-r154",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda, GitHub Actions run listesini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh run list",
-          "hint_text": "Run listesini gormek icin `gh run list` komutunu kullan.",
-          "hint_partial": "gh run ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-020-r155",
-      "type": "single",
-      "scenario": "Deploy sonrasi, run 123 detayini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh run view 123",
-          "hint_text": "Belirli bir run'i gormek icin `gh run view <id>` yapisini kullan.",
-          "hint_partial": "gh run view ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-021-r156",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde, release listesini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh release list",
-          "hint_text": "Release listesini gormek icin `gh release list` komutunu kullan.",
-          "hint_partial": "gh release ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-022-r157",
-      "type": "single",
-      "scenario": "Yeni acilan hostta, GitHub gist listesini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh gist list",
-          "hint_text": "Gist listesini gormek icin `gh gist list` komutunu kullan.",
-          "hint_partial": "gh gist ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-023-r158",
-      "type": "single",
-      "scenario": "Runbook adiminda, `owner/repo` reposunu fork et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh repo fork owner/repo",
-          "hint_text": "Bir repo'yu fork etmek icin `gh repo fork owner/repo` komutunu kullan.",
-          "hint_partial": "gh repo fork ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-024-r159",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde, varsayilan GitHub repo baglamini `owner/repo` olarak ayarla.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh repo set-default owner/repo",
-          "hint_text": "Varsayilan repo baglamini ayarlamak icin `gh repo set-default owner/repo` komutunu kullan.",
+          "answer": "gh repo set-default acme/data-pipeline",
+          "hint_text": "Calisma klasorunde default repo secmek icin `gh repo set-default` kullan.",
           "hint_partial": "gh repo set-default ..."
         }
       ]
     },
     {
-      "id": "jgh-025-r160",
+      "id": "jgh-exp-086",
       "type": "single",
-      "scenario": "Incident sonrasinda, GitHub'da `linux` kelimesiyle repo ara.",
+      "scenario": "Audit sirasinda `acme/data-pipeline` reposundaki open issue'lari listele.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh search repos linux",
-          "hint_text": "Repository aramasi yapmak icin `gh search repos <query>` yapisini kullan.",
-          "hint_partial": "gh search ..."
+          "answer": "gh issue list --repo acme/data-pipeline --state open",
+          "hint_text": "Repo issue kuyruğunu gormek icin `gh issue list --repo` kullan.",
+          "hint_partial": "gh issue list ..."
         }
       ]
     },
     {
-      "id": "jgh-006-r161",
+      "id": "jgh-exp-087",
       "type": "single",
-      "scenario": "Bakim oncesi, GitHub CLI login akisini baslat.",
+      "scenario": "Audit sirasinda sana atanmis open issue'lari listele.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh auth login",
-          "hint_text": "Login akisini baslatmak icin `gh auth login` komutunu kullan.",
-          "hint_partial": "gh auth ..."
+          "answer": "gh issue list --state open --assignee @me",
+          "hint_text": "Kendi issue kuyruğunu filtrelemek icin `--assignee @me` kullan.",
+          "hint_partial": "gh issue list ..."
         }
       ]
     },
     {
-      "id": "jgh-007-r162",
+      "id": "jgh-exp-088",
       "type": "single",
-      "scenario": "Troubleshooting sirasinda, GitHub CLI oturumunu kapat.",
+      "scenario": "Audit sirasinda `acme/data-pipeline` reposunda issue 101 detayini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh auth logout",
-          "hint_text": "Oturumu kapatmak icin `gh auth logout` komutunu kullan.",
-          "hint_partial": "gh auth ..."
+          "answer": "gh issue view 101 --repo acme/data-pipeline",
+          "hint_text": "Belirli issue ayrintisini `gh issue view` ile gor.",
+          "hint_partial": "gh issue view ..."
         }
       ]
     },
     {
-      "id": "jgh-008-r163",
+      "id": "jgh-exp-089",
       "type": "single",
-      "scenario": "Deploy sonrasi, `cli/cli` reposunu GitHub CLI ile clone et.",
+      "scenario": "Audit sirasinda `acme/data-pipeline` reposunda issue 101'ye `ack` notunu ekle.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh repo clone cli/cli",
-          "hint_text": "Bir repo clone etmek icin `gh repo clone owner/repo` yapisini kullan.",
-          "hint_partial": "gh repo ..."
+          "answer": "gh issue comment 101 --body ack --repo acme/data-pipeline",
+          "hint_text": "Kisa issue notu eklemek icin `gh issue comment` kullan.",
+          "hint_partial": "gh issue comment ..."
         }
       ]
     },
     {
-      "id": "jgh-009-r164",
+      "id": "jgh-exp-090",
       "type": "single",
-      "scenario": "Kesinti incelemesinde, `octocat` kullanicisinin repository'lerini listele.",
+      "scenario": "Audit sirasinda `acme/data-pipeline` reposundaki open PR'lari listele.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh repo list octocat",
-          "hint_text": "Bir kullanicinin repository'lerini listelemek icin `gh repo list <owner>` komutunu kullan.",
-          "hint_partial": "gh repo list ..."
+          "answer": "gh pr list --repo acme/data-pipeline --state open",
+          "hint_text": "Acik PR listesini gormek icin `gh pr list --state open` kullan.",
+          "hint_partial": "gh pr list ..."
         }
       ]
     },
     {
-      "id": "jgh-010-r165",
+      "id": "jgh-exp-091",
       "type": "single",
-      "scenario": "Yeni acilan hostta, mevcut repo sayfasini tarayicida ac.",
+      "scenario": "Audit sirasinda `acme/data-pipeline` reposunda PR 63 detayini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh repo view --web",
-          "hint_text": "Repo sayfasini tarayicida acmak icin `gh repo view --web` komutunu kullan.",
+          "answer": "gh pr view 63 --repo acme/data-pipeline",
+          "hint_text": "Belirli PR detayina `gh pr view` ile bak.",
+          "hint_partial": "gh pr view ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-092",
+      "type": "single",
+      "scenario": "Audit sirasinda `acme/data-pipeline` reposunda PR 63 branch'ine gec.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh pr checkout 63 --repo acme/data-pipeline",
+          "hint_text": "Review edecegin branch'i cekmek icin `gh pr checkout` kullan.",
+          "hint_partial": "gh pr checkout ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-093",
+      "type": "single",
+      "scenario": "Audit sirasinda mevcut branch icin otomatik doldurulmus PR olusturma akisina gir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh pr create --fill",
+          "hint_text": "PR baslik ve govdesini commit'lerden doldurmak icin `--fill` kullan.",
+          "hint_partial": "gh pr create ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-094",
+      "type": "single",
+      "scenario": "Audit sirasinda PR durum ozetini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh pr status",
+          "hint_text": "Uzerinde calistigin ve review bekleyen PR'lari `gh pr status` ile gor.",
+          "hint_partial": "gh pr status"
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-095",
+      "type": "single",
+      "scenario": "Audit sirasinda `acme/data-pipeline` reposundaki son 10 workflow run kaydini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh run list --repo acme/data-pipeline --limit 10",
+          "hint_text": "Yakindaki workflow calismalarini `gh run list --limit` ile gor.",
+          "hint_partial": "gh run list ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-096",
+      "type": "single",
+      "scenario": "Audit sirasinda `acme/data-pipeline` reposunda run 1205 ozetini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh run view 1205 --repo acme/data-pipeline",
+          "hint_text": "Belirli run'in durumunu `gh run view` ile kontrol et.",
+          "hint_partial": "gh run view ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-097",
+      "type": "single",
+      "scenario": "Audit sirasinda `acme/data-pipeline` reposundaki workflow listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh workflow list --repo acme/data-pipeline",
+          "hint_text": "Tanimli workflow'lari gormek icin `gh workflow list` kullan.",
+          "hint_partial": "gh workflow list ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-098",
+      "type": "single",
+      "scenario": "Audit sirasinda `acme/data-pipeline` repo sayfasini browser'da ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh repo view acme/data-pipeline --web",
+          "hint_text": "Terminalden web arayuzune gecmek icin `gh repo view --web` kullan.",
           "hint_partial": "gh repo view ..."
         }
       ]
     },
     {
-      "id": "jgh-011-r166",
+      "id": "jgh-exp-099",
       "type": "single",
-      "scenario": "Runbook adiminda, yeni issue olusturma akisini baslat.",
+      "scenario": "Audit sirasinda `acme/data-pipeline` reposunda issue 101'ye `data` label'ini ekle.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh issue create",
-          "hint_text": "Yeni bir issue olusturmak icin `gh issue create` komutunu kullan.",
-          "hint_partial": "gh issue ..."
+          "answer": "gh issue edit 101 --add-label data --repo acme/data-pipeline",
+          "hint_text": "Issue'ya label eklemek icin `gh issue edit --add-label` kullan.",
+          "hint_partial": "gh issue edit ..."
         }
       ]
     },
     {
-      "id": "jgh-012-r167",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde, issue 42 detayini goruntule.",
+      "id": "jgh-exp-100",
+      "type": "multi-step",
+      "scenario": "Audit sirasinda `acme/data-pipeline` reposunda once PR 63 branch'ine gec, sonra detayini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh issue view 42",
-          "hint_text": "Belirli bir issue'yu gormek icin `gh issue view <number>` yapisini kullan.",
-          "hint_partial": "gh issue view ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-013-r168",
-      "type": "single",
-      "scenario": "Incident sonrasinda, sana atanmis veya takip ettigin issue ozetini goruntule.",
-      "steps": [
+          "answer": "gh pr checkout 63 --repo acme/data-pipeline",
+          "hint_text": "Ilk adimda inceleyecegin PR branch'ini cek.",
+          "hint_partial": "gh pr checkout ..."
+        },
         {
           "prompt": "$ ",
-          "answer": "gh issue status",
-          "hint_text": "Issue durum ozetini gormek icin `gh issue status` komutunu kullan.",
-          "hint_partial": "gh issue ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-014-r169",
-      "type": "single",
-      "scenario": "Bakim oncesi, pull request 15 branch'ini checkout et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh pr checkout 15",
-          "hint_text": "Bir PR branch'ine gecmek icin `gh pr checkout <number>` yapisini kullan.",
-          "hint_partial": "gh pr ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-015-r170",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda, pull request 15 detayini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh pr view 15",
-          "hint_text": "Belirli bir PR'yi gormek icin `gh pr view <number>` yapisini kullan.",
+          "answer": "gh pr view 63 --repo acme/data-pipeline",
+          "hint_text": "Ikinci adimda PR detayini terminalde ac.",
           "hint_partial": "gh pr view ..."
         }
       ]
     },
     {
-      "id": "jgh-016-r171",
+      "id": "jgh-exp-101",
       "type": "single",
-      "scenario": "Deploy sonrasi, seninle ilgili pull request durum ozetini goruntule.",
+      "scenario": "Troubleshooting sirasinda GitHub CLI auth durumunu kontrol et.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh pr status",
-          "hint_text": "Pull request durum ozetini gormek icin `gh pr status` komutunu kullan.",
-          "hint_partial": "gh pr ..."
+          "answer": "gh auth status",
+          "hint_text": "Aktif login ve host bilgisini `gh auth status` ile gor.",
+          "hint_partial": "gh auth status"
         }
       ]
     },
     {
-      "id": "jgh-017-r172",
+      "id": "jgh-exp-102",
       "type": "single",
-      "scenario": "Kesinti incelemesinde, repository'deki workflow listesini goruntule.",
+      "scenario": "Troubleshooting sirasinda GitHub CLI login akisina gir.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh workflow list",
-          "hint_text": "Workflow listesini gormek icin `gh workflow list` komutunu kullan.",
-          "hint_partial": "gh workflow ..."
+          "answer": "gh auth login",
+          "hint_text": "Yeni makinede veya token yenilerken `gh auth login` kullan.",
+          "hint_partial": "gh auth login"
         }
       ]
     },
     {
-      "id": "jgh-018-r173",
+      "id": "jgh-exp-103",
       "type": "single",
-      "scenario": "Yeni acilan hostta, `ci` isimli workflow detayini goruntule.",
+      "scenario": "Troubleshooting sirasinda `acme/mobile-api` reposunun ozetini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh workflow view ci",
-          "hint_text": "Workflow detayini gormek icin `gh workflow view <name>` yapisini kullan.",
-          "hint_partial": "gh workflow view ..."
+          "answer": "gh repo view acme/mobile-api",
+          "hint_text": "Repo detayini gormek icin `gh repo view <owner>/<repo>` kullan.",
+          "hint_partial": "gh repo view ..."
         }
       ]
     },
     {
-      "id": "jgh-019-r174",
+      "id": "jgh-exp-104",
       "type": "single",
-      "scenario": "Runbook adiminda, GitHub Actions run listesini goruntule.",
+      "scenario": "Troubleshooting sirasinda `acme/mobile-api` reposunu clone et.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh run list",
-          "hint_text": "Run listesini gormek icin `gh run list` komutunu kullan.",
-          "hint_partial": "gh run ..."
+          "answer": "gh repo clone acme/mobile-api",
+          "hint_text": "Repo'yu yerel ortama cekmek icin `gh repo clone` kullan.",
+          "hint_partial": "gh repo clone ..."
         }
       ]
     },
     {
-      "id": "jgh-020-r175",
+      "id": "jgh-exp-105",
       "type": "single",
-      "scenario": "Operasyon kontrolunde, run 123 detayini goruntule.",
+      "scenario": "Troubleshooting sirasinda varsayilan repo baglamini `acme/mobile-api` yap.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh run view 123",
-          "hint_text": "Belirli bir run'i gormek icin `gh run view <id>` yapisini kullan.",
-          "hint_partial": "gh run view ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-021-r176",
-      "type": "single",
-      "scenario": "Incident sonrasinda, release listesini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh release list",
-          "hint_text": "Release listesini gormek icin `gh release list` komutunu kullan.",
-          "hint_partial": "gh release ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-022-r177",
-      "type": "single",
-      "scenario": "Bakim oncesi, GitHub gist listesini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh gist list",
-          "hint_text": "Gist listesini gormek icin `gh gist list` komutunu kullan.",
-          "hint_partial": "gh gist ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-023-r178",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda, `owner/repo` reposunu fork et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh repo fork owner/repo",
-          "hint_text": "Bir repo'yu fork etmek icin `gh repo fork owner/repo` komutunu kullan.",
-          "hint_partial": "gh repo fork ..."
-        }
-      ]
-    },
-    {
-      "id": "jgh-024-r179",
-      "type": "single",
-      "scenario": "Deploy sonrasi, varsayilan GitHub repo baglamini `owner/repo` olarak ayarla.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh repo set-default owner/repo",
-          "hint_text": "Varsayilan repo baglamini ayarlamak icin `gh repo set-default owner/repo` komutunu kullan.",
+          "answer": "gh repo set-default acme/mobile-api",
+          "hint_text": "Calisma klasorunde default repo secmek icin `gh repo set-default` kullan.",
           "hint_partial": "gh repo set-default ..."
         }
       ]
     },
     {
-      "id": "jgh-025-r180",
+      "id": "jgh-exp-106",
       "type": "single",
-      "scenario": "Kesinti incelemesinde, GitHub'da `linux` kelimesiyle repo ara.",
+      "scenario": "Troubleshooting sirasinda `acme/mobile-api` reposundaki open issue'lari listele.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh search repos linux",
-          "hint_text": "Repository aramasi yapmak icin `gh search repos <query>` yapisini kullan.",
-          "hint_partial": "gh search ..."
+          "answer": "gh issue list --repo acme/mobile-api --state open",
+          "hint_text": "Repo issue kuyruğunu gormek icin `gh issue list --repo` kullan.",
+          "hint_partial": "gh issue list ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-107",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda sana atanmis open issue'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh issue list --state open --assignee @me",
+          "hint_text": "Kendi issue kuyruğunu filtrelemek icin `--assignee @me` kullan.",
+          "hint_partial": "gh issue list ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-108",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `acme/mobile-api` reposunda issue 115 detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh issue view 115 --repo acme/mobile-api",
+          "hint_text": "Belirli issue ayrintisini `gh issue view` ile gor.",
+          "hint_partial": "gh issue view ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-109",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `acme/mobile-api` reposunda issue 115'ye `ack` notunu ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh issue comment 115 --body ack --repo acme/mobile-api",
+          "hint_text": "Kisa issue notu eklemek icin `gh issue comment` kullan.",
+          "hint_partial": "gh issue comment ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-110",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `acme/mobile-api` reposundaki open PR'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh pr list --repo acme/mobile-api --state open",
+          "hint_text": "Acik PR listesini gormek icin `gh pr list --state open` kullan.",
+          "hint_partial": "gh pr list ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-111",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `acme/mobile-api` reposunda PR 72 detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh pr view 72 --repo acme/mobile-api",
+          "hint_text": "Belirli PR detayina `gh pr view` ile bak.",
+          "hint_partial": "gh pr view ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-112",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `acme/mobile-api` reposunda PR 72 branch'ine gec.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh pr checkout 72 --repo acme/mobile-api",
+          "hint_text": "Review edecegin branch'i cekmek icin `gh pr checkout` kullan.",
+          "hint_partial": "gh pr checkout ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-113",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda mevcut branch icin otomatik doldurulmus PR olusturma akisina gir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh pr create --fill",
+          "hint_text": "PR baslik ve govdesini commit'lerden doldurmak icin `--fill` kullan.",
+          "hint_partial": "gh pr create ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-114",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda PR durum ozetini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh pr status",
+          "hint_text": "Uzerinde calistigin ve review bekleyen PR'lari `gh pr status` ile gor.",
+          "hint_partial": "gh pr status"
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-115",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `acme/mobile-api` reposundaki son 10 workflow run kaydini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh run list --repo acme/mobile-api --limit 10",
+          "hint_text": "Yakindaki workflow calismalarini `gh run list --limit` ile gor.",
+          "hint_partial": "gh run list ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-116",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `acme/mobile-api` reposunda run 1206 ozetini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh run view 1206 --repo acme/mobile-api",
+          "hint_text": "Belirli run'in durumunu `gh run view` ile kontrol et.",
+          "hint_partial": "gh run view ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-117",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `acme/mobile-api` reposundaki workflow listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh workflow list --repo acme/mobile-api",
+          "hint_text": "Tanimli workflow'lari gormek icin `gh workflow list` kullan.",
+          "hint_partial": "gh workflow list ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-118",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `acme/mobile-api` repo sayfasini browser'da ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh repo view acme/mobile-api --web",
+          "hint_text": "Terminalden web arayuzune gecmek icin `gh repo view --web` kullan.",
+          "hint_partial": "gh repo view ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-119",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `acme/mobile-api` reposunda issue 115'ye `backend` label'ini ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh issue edit 115 --add-label backend --repo acme/mobile-api",
+          "hint_text": "Issue'ya label eklemek icin `gh issue edit --add-label` kullan.",
+          "hint_partial": "gh issue edit ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-120",
+      "type": "multi-step",
+      "scenario": "Troubleshooting sirasinda `acme/mobile-api` reposunda once PR 72 branch'ine gec, sonra detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh pr checkout 72 --repo acme/mobile-api",
+          "hint_text": "Ilk adimda inceleyecegin PR branch'ini cek.",
+          "hint_partial": "gh pr checkout ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "gh pr view 72 --repo acme/mobile-api",
+          "hint_text": "Ikinci adimda PR detayini terminalde ac.",
+          "hint_partial": "gh pr view ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-121",
+      "type": "single",
+      "scenario": "Release kontrolunde GitHub CLI auth durumunu kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh auth status",
+          "hint_text": "Aktif login ve host bilgisini `gh auth status` ile gor.",
+          "hint_partial": "gh auth status"
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-122",
+      "type": "single",
+      "scenario": "Release kontrolunde GitHub CLI login akisina gir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh auth login",
+          "hint_text": "Yeni makinede veya token yenilerken `gh auth login` kullan.",
+          "hint_partial": "gh auth login"
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-123",
+      "type": "single",
+      "scenario": "Release kontrolunde `acme/catalog` reposunun ozetini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh repo view acme/catalog",
+          "hint_text": "Repo detayini gormek icin `gh repo view <owner>/<repo>` kullan.",
+          "hint_partial": "gh repo view ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-124",
+      "type": "single",
+      "scenario": "Release kontrolunde `acme/catalog` reposunu clone et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh repo clone acme/catalog",
+          "hint_text": "Repo'yu yerel ortama cekmek icin `gh repo clone` kullan.",
+          "hint_partial": "gh repo clone ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-125",
+      "type": "single",
+      "scenario": "Release kontrolunde varsayilan repo baglamini `acme/catalog` yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh repo set-default acme/catalog",
+          "hint_text": "Calisma klasorunde default repo secmek icin `gh repo set-default` kullan.",
+          "hint_partial": "gh repo set-default ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-126",
+      "type": "single",
+      "scenario": "Release kontrolunde `acme/catalog` reposundaki open issue'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh issue list --repo acme/catalog --state open",
+          "hint_text": "Repo issue kuyruğunu gormek icin `gh issue list --repo` kullan.",
+          "hint_partial": "gh issue list ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-127",
+      "type": "single",
+      "scenario": "Release kontrolunde sana atanmis open issue'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh issue list --state open --assignee @me",
+          "hint_text": "Kendi issue kuyruğunu filtrelemek icin `--assignee @me` kullan.",
+          "hint_partial": "gh issue list ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-128",
+      "type": "single",
+      "scenario": "Release kontrolunde `acme/catalog` reposunda issue 126 detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh issue view 126 --repo acme/catalog",
+          "hint_text": "Belirli issue ayrintisini `gh issue view` ile gor.",
+          "hint_partial": "gh issue view ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-129",
+      "type": "single",
+      "scenario": "Release kontrolunde `acme/catalog` reposunda issue 126'ye `ack` notunu ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh issue comment 126 --body ack --repo acme/catalog",
+          "hint_text": "Kisa issue notu eklemek icin `gh issue comment` kullan.",
+          "hint_partial": "gh issue comment ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-130",
+      "type": "single",
+      "scenario": "Release kontrolunde `acme/catalog` reposundaki open PR'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh pr list --repo acme/catalog --state open",
+          "hint_text": "Acik PR listesini gormek icin `gh pr list --state open` kullan.",
+          "hint_partial": "gh pr list ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-131",
+      "type": "single",
+      "scenario": "Release kontrolunde `acme/catalog` reposunda PR 81 detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh pr view 81 --repo acme/catalog",
+          "hint_text": "Belirli PR detayina `gh pr view` ile bak.",
+          "hint_partial": "gh pr view ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-132",
+      "type": "single",
+      "scenario": "Release kontrolunde `acme/catalog` reposunda PR 81 branch'ine gec.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh pr checkout 81 --repo acme/catalog",
+          "hint_text": "Review edecegin branch'i cekmek icin `gh pr checkout` kullan.",
+          "hint_partial": "gh pr checkout ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-133",
+      "type": "single",
+      "scenario": "Release kontrolunde mevcut branch icin otomatik doldurulmus PR olusturma akisina gir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh pr create --fill",
+          "hint_text": "PR baslik ve govdesini commit'lerden doldurmak icin `--fill` kullan.",
+          "hint_partial": "gh pr create ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-134",
+      "type": "single",
+      "scenario": "Release kontrolunde PR durum ozetini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh pr status",
+          "hint_text": "Uzerinde calistigin ve review bekleyen PR'lari `gh pr status` ile gor.",
+          "hint_partial": "gh pr status"
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-135",
+      "type": "single",
+      "scenario": "Release kontrolunde `acme/catalog` reposundaki son 10 workflow run kaydini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh run list --repo acme/catalog --limit 10",
+          "hint_text": "Yakindaki workflow calismalarini `gh run list --limit` ile gor.",
+          "hint_partial": "gh run list ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-136",
+      "type": "single",
+      "scenario": "Release kontrolunde `acme/catalog` reposunda run 1207 ozetini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh run view 1207 --repo acme/catalog",
+          "hint_text": "Belirli run'in durumunu `gh run view` ile kontrol et.",
+          "hint_partial": "gh run view ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-137",
+      "type": "single",
+      "scenario": "Release kontrolunde `acme/catalog` reposundaki workflow listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh workflow list --repo acme/catalog",
+          "hint_text": "Tanimli workflow'lari gormek icin `gh workflow list` kullan.",
+          "hint_partial": "gh workflow list ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-138",
+      "type": "single",
+      "scenario": "Release kontrolunde `acme/catalog` repo sayfasini browser'da ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh repo view acme/catalog --web",
+          "hint_text": "Terminalden web arayuzune gecmek icin `gh repo view --web` kullan.",
+          "hint_partial": "gh repo view ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-139",
+      "type": "single",
+      "scenario": "Release kontrolunde `acme/catalog` reposunda issue 126'ye `release` label'ini ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh issue edit 126 --add-label release --repo acme/catalog",
+          "hint_text": "Issue'ya label eklemek icin `gh issue edit --add-label` kullan.",
+          "hint_partial": "gh issue edit ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-140",
+      "type": "multi-step",
+      "scenario": "Release kontrolunde `acme/catalog` reposunda once PR 81 branch'ine gec, sonra detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh pr checkout 81 --repo acme/catalog",
+          "hint_text": "Ilk adimda inceleyecegin PR branch'ini cek.",
+          "hint_partial": "gh pr checkout ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "gh pr view 81 --repo acme/catalog",
+          "hint_text": "Ikinci adimda PR detayini terminalde ac.",
+          "hint_partial": "gh pr view ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-141",
+      "type": "single",
+      "scenario": "Operasyon devrinde GitHub CLI auth durumunu kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh auth status",
+          "hint_text": "Aktif login ve host bilgisini `gh auth status` ile gor.",
+          "hint_partial": "gh auth status"
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-142",
+      "type": "single",
+      "scenario": "Operasyon devrinde GitHub CLI login akisina gir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh auth login",
+          "hint_text": "Yeni makinede veya token yenilerken `gh auth login` kullan.",
+          "hint_partial": "gh auth login"
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-143",
+      "type": "single",
+      "scenario": "Operasyon devrinde `acme/search` reposunun ozetini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh repo view acme/search",
+          "hint_text": "Repo detayini gormek icin `gh repo view <owner>/<repo>` kullan.",
+          "hint_partial": "gh repo view ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-144",
+      "type": "single",
+      "scenario": "Operasyon devrinde `acme/search` reposunu clone et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh repo clone acme/search",
+          "hint_text": "Repo'yu yerel ortama cekmek icin `gh repo clone` kullan.",
+          "hint_partial": "gh repo clone ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-145",
+      "type": "single",
+      "scenario": "Operasyon devrinde varsayilan repo baglamini `acme/search` yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh repo set-default acme/search",
+          "hint_text": "Calisma klasorunde default repo secmek icin `gh repo set-default` kullan.",
+          "hint_partial": "gh repo set-default ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-146",
+      "type": "single",
+      "scenario": "Operasyon devrinde `acme/search` reposundaki open issue'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh issue list --repo acme/search --state open",
+          "hint_text": "Repo issue kuyruğunu gormek icin `gh issue list --repo` kullan.",
+          "hint_partial": "gh issue list ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-147",
+      "type": "single",
+      "scenario": "Operasyon devrinde sana atanmis open issue'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh issue list --state open --assignee @me",
+          "hint_text": "Kendi issue kuyruğunu filtrelemek icin `--assignee @me` kullan.",
+          "hint_partial": "gh issue list ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-148",
+      "type": "single",
+      "scenario": "Operasyon devrinde `acme/search` reposunda issue 141 detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh issue view 141 --repo acme/search",
+          "hint_text": "Belirli issue ayrintisini `gh issue view` ile gor.",
+          "hint_partial": "gh issue view ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-149",
+      "type": "single",
+      "scenario": "Operasyon devrinde `acme/search` reposunda issue 141'ye `ack` notunu ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh issue comment 141 --body ack --repo acme/search",
+          "hint_text": "Kisa issue notu eklemek icin `gh issue comment` kullan.",
+          "hint_partial": "gh issue comment ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-150",
+      "type": "single",
+      "scenario": "Operasyon devrinde `acme/search` reposundaki open PR'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh pr list --repo acme/search --state open",
+          "hint_text": "Acik PR listesini gormek icin `gh pr list --state open` kullan.",
+          "hint_partial": "gh pr list ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-151",
+      "type": "single",
+      "scenario": "Operasyon devrinde `acme/search` reposunda PR 94 detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh pr view 94 --repo acme/search",
+          "hint_text": "Belirli PR detayina `gh pr view` ile bak.",
+          "hint_partial": "gh pr view ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-152",
+      "type": "single",
+      "scenario": "Operasyon devrinde `acme/search` reposunda PR 94 branch'ine gec.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh pr checkout 94 --repo acme/search",
+          "hint_text": "Review edecegin branch'i cekmek icin `gh pr checkout` kullan.",
+          "hint_partial": "gh pr checkout ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-153",
+      "type": "single",
+      "scenario": "Operasyon devrinde mevcut branch icin otomatik doldurulmus PR olusturma akisina gir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh pr create --fill",
+          "hint_text": "PR baslik ve govdesini commit'lerden doldurmak icin `--fill` kullan.",
+          "hint_partial": "gh pr create ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-154",
+      "type": "single",
+      "scenario": "Operasyon devrinde PR durum ozetini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh pr status",
+          "hint_text": "Uzerinde calistigin ve review bekleyen PR'lari `gh pr status` ile gor.",
+          "hint_partial": "gh pr status"
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-155",
+      "type": "single",
+      "scenario": "Operasyon devrinde `acme/search` reposundaki son 10 workflow run kaydini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh run list --repo acme/search --limit 10",
+          "hint_text": "Yakindaki workflow calismalarini `gh run list --limit` ile gor.",
+          "hint_partial": "gh run list ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-156",
+      "type": "single",
+      "scenario": "Operasyon devrinde `acme/search` reposunda run 1208 ozetini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh run view 1208 --repo acme/search",
+          "hint_text": "Belirli run'in durumunu `gh run view` ile kontrol et.",
+          "hint_partial": "gh run view ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-157",
+      "type": "single",
+      "scenario": "Operasyon devrinde `acme/search` reposundaki workflow listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh workflow list --repo acme/search",
+          "hint_text": "Tanimli workflow'lari gormek icin `gh workflow list` kullan.",
+          "hint_partial": "gh workflow list ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-158",
+      "type": "single",
+      "scenario": "Operasyon devrinde `acme/search` repo sayfasini browser'da ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh repo view acme/search --web",
+          "hint_text": "Terminalden web arayuzune gecmek icin `gh repo view --web` kullan.",
+          "hint_partial": "gh repo view ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-159",
+      "type": "single",
+      "scenario": "Operasyon devrinde `acme/search` reposunda issue 141'ye `search` label'ini ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh issue edit 141 --add-label search --repo acme/search",
+          "hint_text": "Issue'ya label eklemek icin `gh issue edit --add-label` kullan.",
+          "hint_partial": "gh issue edit ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-160",
+      "type": "multi-step",
+      "scenario": "Operasyon devrinde `acme/search` reposunda once PR 94 branch'ine gec, sonra detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh pr checkout 94 --repo acme/search",
+          "hint_text": "Ilk adimda inceleyecegin PR branch'ini cek.",
+          "hint_partial": "gh pr checkout ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "gh pr view 94 --repo acme/search",
+          "hint_text": "Ikinci adimda PR detayini terminalde ac.",
+          "hint_partial": "gh pr view ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-161",
+      "type": "single",
+      "scenario": "On-call gorevinde GitHub CLI auth durumunu kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh auth status",
+          "hint_text": "Aktif login ve host bilgisini `gh auth status` ile gor.",
+          "hint_partial": "gh auth status"
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-162",
+      "type": "single",
+      "scenario": "On-call gorevinde GitHub CLI login akisina gir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh auth login",
+          "hint_text": "Yeni makinede veya token yenilerken `gh auth login` kullan.",
+          "hint_partial": "gh auth login"
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-163",
+      "type": "single",
+      "scenario": "On-call gorevinde `acme/infra-live` reposunun ozetini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh repo view acme/infra-live",
+          "hint_text": "Repo detayini gormek icin `gh repo view <owner>/<repo>` kullan.",
+          "hint_partial": "gh repo view ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-164",
+      "type": "single",
+      "scenario": "On-call gorevinde `acme/infra-live` reposunu clone et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh repo clone acme/infra-live",
+          "hint_text": "Repo'yu yerel ortama cekmek icin `gh repo clone` kullan.",
+          "hint_partial": "gh repo clone ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-165",
+      "type": "single",
+      "scenario": "On-call gorevinde varsayilan repo baglamini `acme/infra-live` yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh repo set-default acme/infra-live",
+          "hint_text": "Calisma klasorunde default repo secmek icin `gh repo set-default` kullan.",
+          "hint_partial": "gh repo set-default ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-166",
+      "type": "single",
+      "scenario": "On-call gorevinde `acme/infra-live` reposundaki open issue'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh issue list --repo acme/infra-live --state open",
+          "hint_text": "Repo issue kuyruğunu gormek icin `gh issue list --repo` kullan.",
+          "hint_partial": "gh issue list ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-167",
+      "type": "single",
+      "scenario": "On-call gorevinde sana atanmis open issue'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh issue list --state open --assignee @me",
+          "hint_text": "Kendi issue kuyruğunu filtrelemek icin `--assignee @me` kullan.",
+          "hint_partial": "gh issue list ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-168",
+      "type": "single",
+      "scenario": "On-call gorevinde `acme/infra-live` reposunda issue 152 detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh issue view 152 --repo acme/infra-live",
+          "hint_text": "Belirli issue ayrintisini `gh issue view` ile gor.",
+          "hint_partial": "gh issue view ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-169",
+      "type": "single",
+      "scenario": "On-call gorevinde `acme/infra-live` reposunda issue 152'ye `ack` notunu ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh issue comment 152 --body ack --repo acme/infra-live",
+          "hint_text": "Kisa issue notu eklemek icin `gh issue comment` kullan.",
+          "hint_partial": "gh issue comment ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-170",
+      "type": "single",
+      "scenario": "On-call gorevinde `acme/infra-live` reposundaki open PR'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh pr list --repo acme/infra-live --state open",
+          "hint_text": "Acik PR listesini gormek icin `gh pr list --state open` kullan.",
+          "hint_partial": "gh pr list ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-171",
+      "type": "single",
+      "scenario": "On-call gorevinde `acme/infra-live` reposunda PR 105 detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh pr view 105 --repo acme/infra-live",
+          "hint_text": "Belirli PR detayina `gh pr view` ile bak.",
+          "hint_partial": "gh pr view ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-172",
+      "type": "single",
+      "scenario": "On-call gorevinde `acme/infra-live` reposunda PR 105 branch'ine gec.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh pr checkout 105 --repo acme/infra-live",
+          "hint_text": "Review edecegin branch'i cekmek icin `gh pr checkout` kullan.",
+          "hint_partial": "gh pr checkout ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-173",
+      "type": "single",
+      "scenario": "On-call gorevinde mevcut branch icin otomatik doldurulmus PR olusturma akisina gir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh pr create --fill",
+          "hint_text": "PR baslik ve govdesini commit'lerden doldurmak icin `--fill` kullan.",
+          "hint_partial": "gh pr create ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-174",
+      "type": "single",
+      "scenario": "On-call gorevinde PR durum ozetini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh pr status",
+          "hint_text": "Uzerinde calistigin ve review bekleyen PR'lari `gh pr status` ile gor.",
+          "hint_partial": "gh pr status"
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-175",
+      "type": "single",
+      "scenario": "On-call gorevinde `acme/infra-live` reposundaki son 10 workflow run kaydini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh run list --repo acme/infra-live --limit 10",
+          "hint_text": "Yakindaki workflow calismalarini `gh run list --limit` ile gor.",
+          "hint_partial": "gh run list ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-176",
+      "type": "single",
+      "scenario": "On-call gorevinde `acme/infra-live` reposunda run 1209 ozetini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh run view 1209 --repo acme/infra-live",
+          "hint_text": "Belirli run'in durumunu `gh run view` ile kontrol et.",
+          "hint_partial": "gh run view ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-177",
+      "type": "single",
+      "scenario": "On-call gorevinde `acme/infra-live` reposundaki workflow listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh workflow list --repo acme/infra-live",
+          "hint_text": "Tanimli workflow'lari gormek icin `gh workflow list` kullan.",
+          "hint_partial": "gh workflow list ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-178",
+      "type": "single",
+      "scenario": "On-call gorevinde `acme/infra-live` repo sayfasini browser'da ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh repo view acme/infra-live --web",
+          "hint_text": "Terminalden web arayuzune gecmek icin `gh repo view --web` kullan.",
+          "hint_partial": "gh repo view ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-179",
+      "type": "single",
+      "scenario": "On-call gorevinde `acme/infra-live` reposunda issue 152'ye `infra` label'ini ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh issue edit 152 --add-label infra --repo acme/infra-live",
+          "hint_text": "Issue'ya label eklemek icin `gh issue edit --add-label` kullan.",
+          "hint_partial": "gh issue edit ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-180",
+      "type": "multi-step",
+      "scenario": "On-call gorevinde `acme/infra-live` reposunda once PR 105 branch'ine gec, sonra detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh pr checkout 105 --repo acme/infra-live",
+          "hint_text": "Ilk adimda inceleyecegin PR branch'ini cek.",
+          "hint_partial": "gh pr checkout ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "gh pr view 105 --repo acme/infra-live",
+          "hint_text": "Ikinci adimda PR detayini terminalde ac.",
+          "hint_partial": "gh pr view ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-181",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda GitHub CLI auth durumunu kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh auth status",
+          "hint_text": "Aktif login ve host bilgisini `gh auth status` ile gor.",
+          "hint_partial": "gh auth status"
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-182",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda GitHub CLI login akisina gir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh auth login",
+          "hint_text": "Yeni makinede veya token yenilerken `gh auth login` kullan.",
+          "hint_partial": "gh auth login"
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-183",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `acme/observability` reposunun ozetini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh repo view acme/observability",
+          "hint_text": "Repo detayini gormek icin `gh repo view <owner>/<repo>` kullan.",
+          "hint_partial": "gh repo view ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-184",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `acme/observability` reposunu clone et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh repo clone acme/observability",
+          "hint_text": "Repo'yu yerel ortama cekmek icin `gh repo clone` kullan.",
+          "hint_partial": "gh repo clone ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-185",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda varsayilan repo baglamini `acme/observability` yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh repo set-default acme/observability",
+          "hint_text": "Calisma klasorunde default repo secmek icin `gh repo set-default` kullan.",
+          "hint_partial": "gh repo set-default ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-186",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `acme/observability` reposundaki open issue'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh issue list --repo acme/observability --state open",
+          "hint_text": "Repo issue kuyruğunu gormek icin `gh issue list --repo` kullan.",
+          "hint_partial": "gh issue list ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-187",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda sana atanmis open issue'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh issue list --state open --assignee @me",
+          "hint_text": "Kendi issue kuyruğunu filtrelemek icin `--assignee @me` kullan.",
+          "hint_partial": "gh issue list ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-188",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `acme/observability` reposunda issue 166 detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh issue view 166 --repo acme/observability",
+          "hint_text": "Belirli issue ayrintisini `gh issue view` ile gor.",
+          "hint_partial": "gh issue view ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-189",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `acme/observability` reposunda issue 166'ye `ack` notunu ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh issue comment 166 --body ack --repo acme/observability",
+          "hint_text": "Kisa issue notu eklemek icin `gh issue comment` kullan.",
+          "hint_partial": "gh issue comment ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-190",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `acme/observability` reposundaki open PR'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh pr list --repo acme/observability --state open",
+          "hint_text": "Acik PR listesini gormek icin `gh pr list --state open` kullan.",
+          "hint_partial": "gh pr list ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-191",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `acme/observability` reposunda PR 117 detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh pr view 117 --repo acme/observability",
+          "hint_text": "Belirli PR detayina `gh pr view` ile bak.",
+          "hint_partial": "gh pr view ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-192",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `acme/observability` reposunda PR 117 branch'ine gec.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh pr checkout 117 --repo acme/observability",
+          "hint_text": "Review edecegin branch'i cekmek icin `gh pr checkout` kullan.",
+          "hint_partial": "gh pr checkout ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-193",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda mevcut branch icin otomatik doldurulmus PR olusturma akisina gir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh pr create --fill",
+          "hint_text": "PR baslik ve govdesini commit'lerden doldurmak icin `--fill` kullan.",
+          "hint_partial": "gh pr create ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-194",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda PR durum ozetini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh pr status",
+          "hint_text": "Uzerinde calistigin ve review bekleyen PR'lari `gh pr status` ile gor.",
+          "hint_partial": "gh pr status"
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-195",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `acme/observability` reposundaki son 10 workflow run kaydini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh run list --repo acme/observability --limit 10",
+          "hint_text": "Yakindaki workflow calismalarini `gh run list --limit` ile gor.",
+          "hint_partial": "gh run list ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-196",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `acme/observability` reposunda run 1210 ozetini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh run view 1210 --repo acme/observability",
+          "hint_text": "Belirli run'in durumunu `gh run view` ile kontrol et.",
+          "hint_partial": "gh run view ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-197",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `acme/observability` reposundaki workflow listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh workflow list --repo acme/observability",
+          "hint_text": "Tanimli workflow'lari gormek icin `gh workflow list` kullan.",
+          "hint_partial": "gh workflow list ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-198",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `acme/observability` repo sayfasini browser'da ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh repo view acme/observability --web",
+          "hint_text": "Terminalden web arayuzune gecmek icin `gh repo view --web` kullan.",
+          "hint_partial": "gh repo view ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-199",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `acme/observability` reposunda issue 166'ye `monitoring` label'ini ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh issue edit 166 --add-label monitoring --repo acme/observability",
+          "hint_text": "Issue'ya label eklemek icin `gh issue edit --add-label` kullan.",
+          "hint_partial": "gh issue edit ..."
+        }
+      ]
+    },
+    {
+      "id": "jgh-exp-200",
+      "type": "multi-step",
+      "scenario": "Kesinti sonrasinda `acme/observability` reposunda once PR 117 branch'ine gec, sonra detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh pr checkout 117 --repo acme/observability",
+          "hint_text": "Ilk adimda inceleyecegin PR branch'ini cek.",
+          "hint_partial": "gh pr checkout ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "gh pr view 117 --repo acme/observability",
+          "hint_text": "Ikinci adimda PR detayini terminalde ac.",
+          "hint_partial": "gh pr view ..."
         }
       ]
     }

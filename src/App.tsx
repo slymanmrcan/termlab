@@ -1,7 +1,12 @@
+import { ErrorBoundary } from "./components/ErrorBoundary";
 import { TerminalQuizApp } from "./components/TerminalQuizApp";
 
 function App() {
-  return <TerminalQuizApp />;
+  return (
+    <ErrorBoundary>
+      <TerminalQuizApp />
+    </ErrorBoundary>
+  );
 }
 
 export default App;

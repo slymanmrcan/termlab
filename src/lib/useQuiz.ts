@@ -1,53 +1,28 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { createEmptyQuizDataset } from "./quizData";
-import { loadQuizData } from "./quizLoader";
-import { TOPICS, type QuizDataset, type QuizLevel, type QuizTopic, type TerminalLine } from "../types/quiz";
+import { loadQuizTopicData } from "./quizLoader";
+import { buildSuccessText, isAnswerCorrect, shuffle } from "./quizUtils";
+import { loadPreference, savePreference } from "./storage";
+import { LEVELS, TOPICS, type QuizDataset, type QuizLevel, type QuizTopic, type TerminalLine } from "../types/quiz";
 
 const ADVANCE_DELAY = 700;
 
-function hashSeed(value: string) {
-  let hash = 0;
-
-  for (let index = 0; index < value.length; index += 1) {
-    hash = (hash * 31 + value.charCodeAt(index)) >>> 0;
-  }
-
-  return hash || 1;
-}
-
-function shuffle<T>(items: T[], seedSource: string) {
-  const copy = [...items];
-  let seed = hashSeed(seedSource);
-
-  for (let index = copy.length - 1; index > 0; index -= 1) {
-    seed = (seed * 1664525 + 1013904223) >>> 0;
-    const swapIndex = seed % (index + 1);
-    [copy[index], copy[swapIndex]] = [copy[swapIndex], copy[index]];
-  }
-
-  return copy;
-}
-
-function normalizeAnswer(value: string) {
-  return value.trim().replace(/\s+/g, " ").toLowerCase();
-}
-
-function buildSuccessText(stepNumber: number, totalSteps: number) {
-  if (totalSteps > 1 && stepNumber < totalSteps) {
-    return `step ${stepNumber}/${totalSteps} complete`;
-  }
-
-  return "command accepted";
-}
-
 export function useQuiz() {
   const [dataset, setDataset] = useState<QuizDataset>(createEmptyQuizDataset);
-  const [level, setLevel] = useState<QuizLevel>("junior");
-  const [topic, setTopic] = useState<QuizTopic>("filesystem");
+  const [level, setLevel] = useState<QuizLevel>(() => {
+    const saved = loadPreference<QuizLevel>("level", "junior");
+    return LEVELS.includes(saved) ? saved : "junior";
+  });
+  const [topic, setTopic] = useState<QuizTopic>(() => {
+    const saved = loadPreference<QuizTopic>("topic", "filesystem");
+    return TOPICS.includes(saved) ? saved : "filesystem";
+  });
   const [sessionSeed, setSessionSeed] = useState(() => Date.now()); ////linepoint
   const [questionIndex, setQuestionIndex] = useState(0);
   const [stepIndex, setStepIndex] = useState(0);
   const [score, setScore] = useState(0);
+  const [skipped, setSkipped] = useState(0);
+  const [wrongAttempts, setWrongAttempts] = useState(0);
   const [input, setInput] = useState("");
   const [hintStage, setHintStage] = useState(0);
   const [transcript, setTranscript] = useState<TerminalLine[]>([]);
@@ -57,6 +32,9 @@ export function useQuiz() {
 
   const lineIdRef = useRef(0);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const loadedTopicKeysRef = useRef(new Set<string>());
+  const historyRef = useRef<string[]>([]);
+  const historyCursorRef = useRef(-1);
 
   const clearPendingAdvance = useCallback(() => {
     if (timerRef.current) {
@@ -68,24 +46,45 @@ export function useQuiz() {
   useEffect(() => clearPendingAdvance, [clearPendingAdvance]);
 
   useEffect(() => {
-    let cancelled = false;
+    savePreference("level", level);
+  }, [level]);
 
-    async function hydrateQuiz() {
+  useEffect(() => {
+    savePreference("topic", topic);
+  }, [topic]);
+
+  useEffect(() => {
+    let cancelled = false;
+    const selectionKey = `${level}:${topic}`;
+
+    if (loadedTopicKeysRef.current.has(selectionKey)) {
+      setIsLoading(false);
+      setLoadError(null);
+      return;
+    }
+
+    async function hydrateQuizSelection() {
       try {
         setIsLoading(true);
         setLoadError(null);
 
-        const nextDataset = await loadQuizData();
+        const nextQuestionFile = await loadQuizTopicData(level, topic);
 
         if (!cancelled) {
-          setDataset(nextDataset);
+          loadedTopicKeysRef.current.add(selectionKey);
+          setDataset((currentDataset) => ({
+            ...currentDataset,
+            [level]: {
+              ...currentDataset[level],
+              [topic]: nextQuestionFile,
+            },
+          }));
         }
       } catch (error) {
         if (cancelled) {
           return;
         }
 
-        setDataset(createEmptyQuizDataset());
         setLoadError(error instanceof Error ? error.message : "Quiz data could not be loaded.");
       } finally {
         if (!cancelled) {
@@ -94,12 +93,12 @@ export function useQuiz() {
       }
     }
 
-    void hydrateQuiz();
+    void hydrateQuizSelection();
 
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [level, topic]);
 
   const resetRunState = useCallback(() => {
     clearPendingAdvance();
@@ -107,6 +106,8 @@ export function useQuiz() {
     setQuestionIndex(0);
     setStepIndex(0);
     setScore(0);
+    setSkipped(0);
+    setWrongAttempts(0);
     setInput("");
     setHintStage(0);
     setTranscript([]);
@@ -134,15 +135,6 @@ export function useQuiz() {
       : hintStage >= 2
         ? currentStep?.hint_partial ?? null
         : null;
-
-  const topicCounts = useMemo(
-    () =>
-      TOPICS.reduce<Record<QuizTopic, number>>((counts, currentTopic) => {
-        counts[currentTopic] = dataset[level][currentTopic].questions.length;
-        return counts;
-      }, {} as Record<QuizTopic, number>),
-    [dataset, level],
-  );
 
   const scheduleAdvance = useCallback(
     (mode: "step" | "question") => {
@@ -182,10 +174,13 @@ export function useQuiz() {
       return;
     }
 
+    historyRef.current.push(submittedValue);
+    historyCursorRef.current = -1;
+
     const baseLineId = lineIdRef.current;
     lineIdRef.current += 2;
 
-    if (normalizeAnswer(submittedValue) === normalizeAnswer(currentStep.answer)) {
+    if (isAnswerCorrect(submittedValue, currentStep)) {
       const isQuestionComplete = stepIndex === currentQuestion.steps.length - 1;
 
       setTranscript((currentTranscript) => [
@@ -218,7 +213,37 @@ export function useQuiz() {
       },
     ]);
     setInput("");
+    setWrongAttempts((current) => current + 1);
   }, [currentQuestion, currentStep, input, isAdvancing, scheduleAdvance, stepIndex]);
+
+  const historyUp = useCallback(() => {
+    const history = historyRef.current;
+
+    if (history.length === 0) {
+      return;
+    }
+
+    const nextCursor = historyCursorRef.current === -1 ? history.length - 1 : Math.max(0, historyCursorRef.current - 1);
+    historyCursorRef.current = nextCursor;
+    setInput(history[nextCursor]);
+  }, []);
+
+  const historyDown = useCallback(() => {
+    if (historyCursorRef.current === -1) {
+      return;
+    }
+
+    const nextCursor = historyCursorRef.current + 1;
+
+    if (nextCursor >= historyRef.current.length) {
+      historyCursorRef.current = -1;
+      setInput("");
+      return;
+    }
+
+    historyCursorRef.current = nextCursor;
+    setInput(historyRef.current[nextCursor]);
+  }, []);
 
   const skipQuestion = useCallback(() => {
     if (!currentStep || isAdvancing) {
@@ -238,6 +263,7 @@ export function useQuiz() {
     ]);
 
     scheduleAdvance("question");
+    setSkipped((current) => current + 1);
   }, [currentStep, isAdvancing, scheduleAdvance]);
 
   const revealHint = useCallback(() => {
@@ -277,6 +303,10 @@ export function useQuiz() {
     setSessionSeed((currentSeed) => currentSeed + 1);
   }, [resetRunState]);
 
+  const selectionKey = `${level}:${topic}`;
+  const selectionLoaded = loadedTopicKeysRef.current.has(selectionKey);
+  const displayLoading = isLoading || (!selectionLoaded && !loadError);
+
   return {
     level,
     topic,
@@ -289,17 +319,21 @@ export function useQuiz() {
     submitAnswer,
     skipQuestion,
     revealHint,
+    historyUp,
+    historyDown,
     transcript,
     currentQuestion,
     currentStep,
     hintMessage,
     hintStage,
     isAdvancing,
-    isLoading,
+    isLoading: displayLoading,
     loadError,
     finished,
-    isEmpty: !isLoading && !loadError && totalQuestions === 0,
+    isEmpty: !displayLoading && !loadError && totalQuestions === 0,
     score,
+    skipped,
+    wrongAttempts,
     totalQuestions,
     progressCurrent: totalQuestions === 0 ? 0 : finished ? totalQuestions : questionIndex + 1,
     questionNumber: questionIndex + 1,
@@ -307,6 +341,5 @@ export function useQuiz() {
     sessionClockKey,
     questionClockKey,
     questionCursorKey,
-    topicCounts,
   };
 }

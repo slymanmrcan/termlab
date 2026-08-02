@@ -3,2698 +3,2722 @@
   "topic": "user",
   "questions": [
     {
-      "id": "juserx-001",
+      "id": "jusr-exp-001",
       "type": "single",
-      "scenario": "`ali` kullanicisinin sayisal UID bilgisini goruntule.",
+      "scenario": "Gece vardiyasinda `deploy` kullanicisinin passwd kaydini gor.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "id -u ali",
-          "hint_text": "Bir kullanicinin sayisal UID bilgisini gormek icin `id -u ali` komutunu kullan.",
-          "hint_partial": "id -u ..."
+          "answer": "getent passwd deploy",
+          "hint_text": "Sistem hesap kaydini gormek icin `getent passwd` kullan.",
+          "hint_partial": "getent passwd ..."
         }
       ]
     },
     {
-      "id": "juserx-002",
+      "id": "jusr-exp-002",
       "type": "single",
-      "scenario": "`ali` kullanicisinin sayisal ana group bilgisini goruntule.",
+      "scenario": "Gece vardiyasinda `docker` grubunun kaydini gor.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "id -g ali",
-          "hint_text": "Bir kullanicinin sayisal ana group bilgisini gormek icin `id -g ali` komutunu kullan.",
-          "hint_partial": "id -g ..."
+          "answer": "getent group docker",
+          "hint_text": "Grup kaydini sistem veritabanindan okumak icin `getent group` kullan.",
+          "hint_partial": "getent group ..."
         }
       ]
     },
     {
-      "id": "juserx-003",
+      "id": "jusr-exp-003",
       "type": "single",
-      "scenario": "Mevcut kullanicinin adini kisa formatta goruntule.",
+      "scenario": "Gece vardiyasinda `deploy` kullanicisinin UID, GID ve group bilgisini gor.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "id -un",
-          "hint_text": "Mevcut kullanicinin adini kisa formatta gormek icin `id -un` komutunu kullan.",
-          "hint_partial": "id -un"
-        }
-      ]
-    },
-    {
-      "id": "juserx-004",
-      "type": "single",
-      "scenario": "`ali` kullanicisinin tum group adlarini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "id -Gn ali",
-          "hint_text": "Bir kullanicinin tum group adlarini gormek icin `id -Gn ali` komutunu kullan.",
-          "hint_partial": "id -Gn ..."
-        }
-      ]
-    },
-    {
-      "id": "juserx-005",
-      "type": "single",
-      "scenario": "Tum passwd kayitlarini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "getent passwd",
-          "hint_text": "Tum passwd kayitlarini gormek icin `getent passwd` komutunu kullan.",
-          "hint_partial": "getent passwd"
-        }
-      ]
-    },
-    {
-      "id": "juserx-006",
-      "type": "single",
-      "scenario": "Tum group kayitlarini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "getent group",
-          "hint_text": "Tum group kayitlarini gormek icin `getent group` komutunu kullan.",
-          "hint_partial": "getent group"
-        }
-      ]
-    },
-    {
-      "id": "juserx-007",
-      "type": "single",
-      "scenario": "Son login kayitlarini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "last",
-          "hint_text": "Son login kayitlarini gormek icin `last` komutunu kullan.",
-          "hint_partial": "last"
-        }
-      ]
-    },
-    {
-      "id": "juserx-008",
-      "type": "single",
-      "scenario": "Tum kullanicilar icin son login bilgisini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "lastlog",
-          "hint_text": "Tum kullanicilarin son login bilgisini gormek icin `lastlog` komutunu kullan.",
-          "hint_partial": "lastlog"
-        }
-      ]
-    },
-    {
-      "id": "juserx-009",
-      "type": "single",
-      "scenario": "Home dizini ve `/bin/bash` shell'i ile `ali` kullanicisini olustur.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "useradd -m -s /bin/bash ali",
-          "hint_text": "Home dizini ve shell belirleyerek kullanici olusturmak icin `useradd -m -s /bin/bash ali` komutunu kullan.",
-          "hint_partial": "useradd -m -s ..."
-        }
-      ]
-    },
-    {
-      "id": "juserx-010",
-      "type": "single",
-      "scenario": "Home diziniyle birlikte `ali` kullanicisini olustur ve ilk ek grup olarak `sudo` ata.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "useradd -m -G sudo ali",
-          "hint_text": "Kullaniciyi ilk ek group ile olusturmak icin `useradd -m -G sudo ali` komutunu kullan.",
-          "hint_partial": "useradd -m -G ..."
-        }
-      ]
-    },
-    {
-      "id": "juserx-011",
-      "type": "single",
-      "scenario": "Comment alaniyla birlikte `ali` kullanicisini olustur.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "useradd -m -c \"Ali Veli\" ali",
-          "hint_text": "Comment alani vererek kullanici olusturmak icin `useradd -m -c \"Ali Veli\" ali` komutunu kullan.",
-          "hint_partial": "useradd -m -c ..."
-        }
-      ]
-    },
-    {
-      "id": "juserx-012",
-      "type": "single",
-      "scenario": "`docker` grubunu olustur.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "groupadd docker",
-          "hint_text": "Yeni grup olusturmak icin `groupadd docker` komutunu kullan.",
-          "hint_partial": "groupadd ..."
-        }
-      ]
-    },
-    {
-      "id": "juserx-013",
-      "type": "single",
-      "scenario": "`developers` grubunun adini `platform` olarak degistir.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "groupmod -n platform developers",
-          "hint_text": "Bir grubun adini degistirmek icin `groupmod -n platform developers` komutunu kullan.",
-          "hint_partial": "groupmod -n ..."
-        }
-      ]
-    },
-    {
-      "id": "juserx-014",
-      "type": "single",
-      "scenario": "`ali` kullanicisini `sudo` grubuna ekle.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "usermod -aG sudo ali",
-          "hint_text": "Bir kullaniciyi `sudo` grubuna eklemek icin `usermod -aG sudo ali` komutunu kullan.",
-          "hint_partial": "usermod -aG ..."
-        }
-      ]
-    },
-    {
-      "id": "juserx-015",
-      "type": "single",
-      "scenario": "`ali` kullanicisini `docker` grubuna ekle.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "usermod -aG docker ali",
-          "hint_text": "Bir kullaniciyi `docker` grubuna eklemek icin `usermod -aG docker ali` komutunu kullan.",
-          "hint_partial": "usermod -aG ..."
-        }
-      ]
-    },
-    {
-      "id": "juserx-016",
-      "type": "single",
-      "scenario": "`ali` kullanicisini `docker` grubundan cikar.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gpasswd -d ali docker",
-          "hint_text": "Bir kullaniciyi `docker` grubundan cikarmak icin `gpasswd -d ali docker` komutunu kullan.",
-          "hint_partial": "gpasswd -d ..."
-        }
-      ]
-    },
-    {
-      "id": "juserx-017",
-      "type": "single",
-      "scenario": "`ali` kullanicisinin login shell'ini `/bin/zsh` yap.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "usermod -s /bin/zsh ali",
-          "hint_text": "Bir kullanicinin shell'ini degistirmek icin `usermod -s /bin/zsh ali` komutunu kullan.",
-          "hint_partial": "usermod -s ..."
-        }
-      ]
-    },
-    {
-      "id": "juserx-018",
-      "type": "single",
-      "scenario": "`ali` kullanicisinin home dizinini tasiyarak `/srv/ali` yap.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "usermod -d /srv/ali -m ali",
-          "hint_text": "Bir kullanicinin home dizinini tasiyarak degistirmek icin `usermod -d /srv/ali -m ali` komutunu kullan.",
-          "hint_partial": "usermod -d ... -m ..."
-        }
-      ]
-    },
-    {
-      "id": "juserx-019",
-      "type": "single",
-      "scenario": "`ali` kullanicisinin parolasini kilitle.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "passwd -l ali",
-          "hint_text": "Bir kullanicinin parolasini kilitlemek icin `passwd -l ali` komutunu kullan.",
-          "hint_partial": "passwd -l ..."
-        }
-      ]
-    },
-    {
-      "id": "juserx-020",
-      "type": "single",
-      "scenario": "`ali` kullanicisinin parola kilidini ac.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "passwd -u ali",
-          "hint_text": "Bir kullanicinin parola kilidini acmak icin `passwd -u ali` komutunu kullan.",
-          "hint_partial": "passwd -u ..."
-        }
-      ]
-    },
-    {
-      "id": "juserx-021",
-      "type": "single",
-      "scenario": "`ali` kullanicisinin parolasini bir sonraki giriste degismeye zorla.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "passwd -e ali",
-          "hint_text": "Parolayi bir sonraki giriste degismeye zorlamak icin `passwd -e ali` komutunu kullan.",
-          "hint_partial": "passwd -e ..."
-        }
-      ]
-    },
-    {
-      "id": "juserx-022",
-      "type": "single",
-      "scenario": "`ali` kullanicisi icin maksimum parola suresini 90 gun yap.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "chage -M 90 ali",
-          "hint_text": "Maksimum parola suresini ayarlamak icin `chage -M 90 ali` komutunu kullan.",
-          "hint_partial": "chage -M ..."
-        }
-      ]
-    },
-    {
-      "id": "juserx-023",
-      "type": "single",
-      "scenario": "`ali` kullanicisi icin hesap bitis tarihini `2026-12-31` yap.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "chage -E 2026-12-31 ali",
-          "hint_text": "Hesap bitis tarihini ayarlamak icin `chage -E 2026-12-31 ali` komutunu kullan.",
-          "hint_partial": "chage -E ..."
-        }
-      ]
-    },
-    {
-      "id": "juserx-024",
-      "type": "multi-step",
-      "scenario": "Once home diziniyle birlikte `ali` kullanicisini olustur ve sonra kimlik bilgisini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "useradd -m ali",
-          "hint_text": "Home diziniyle kullanici olusturmak icin `useradd -m ali` komutunu kullan.",
-          "hint_partial": "useradd -m ..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "id ali",
-          "hint_text": "Olusturulan kullanicinin kimlik bilgisini dogrulamak icin `id ali` komutunu kullan.",
+          "answer": "id deploy",
+          "hint_text": "Bir hesabin kimlik bilgisini `id` ile goster.",
           "hint_partial": "id ..."
         }
       ]
     },
     {
-      "id": "juserx-025",
-      "type": "multi-step",
-      "scenario": "Once `ali` kullanicisini `docker` grubuna ekle ve sonra group uyeliklerini kontrol et.",
+      "id": "jusr-exp-004",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `deploy` kullanicisinin group uyeliklerini gor.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "usermod -aG docker ali",
-          "hint_text": "Bir kullaniciyi `docker` grubuna eklemek icin `usermod -aG docker ali` komutunu kullan.",
-          "hint_partial": "usermod -aG ..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "groups ali",
-          "hint_text": "Group uyeliklerini dogrulamak icin `groups ali` komutunu kullan.",
+          "answer": "groups deploy",
+          "hint_text": "Kullanicinin gruplarini `groups` ile listele.",
           "hint_partial": "groups ..."
         }
       ]
     },
     {
-      "id": "juserx-001-r1",
+      "id": "jusr-exp-005",
       "type": "single",
-      "scenario": "Bakim oncesi, `ali` kullanicisinin sayisal UID bilgisini goruntule.",
+      "scenario": "Gece vardiyasinda home dizini ile birlikte `deploy` kullanicisini olustur.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "id -u ali",
-          "hint_text": "Bir kullanicinin sayisal UID bilgisini gormek icin `id -u ali` komutunu kullan.",
-          "hint_partial": "id -u ..."
+          "answer": "useradd -m deploy",
+          "hint_text": "Yeni hesabi home dizini ile birlikte acmak icin `useradd -m` kullan.",
+          "hint_partial": "useradd -m ..."
         }
       ]
     },
     {
-      "id": "juserx-002-r2",
+      "id": "jusr-exp-006",
       "type": "single",
-      "scenario": "Bakim oncesi, `ali` kullanicisinin sayisal ana group bilgisini goruntule.",
+      "scenario": "Gece vardiyasinda `deploy` kullanicisi icin parola belirle.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "id -g ali",
-          "hint_text": "Bir kullanicinin sayisal ana group bilgisini gormek icin `id -g ali` komutunu kullan.",
-          "hint_partial": "id -g ..."
+          "answer": "passwd deploy",
+          "hint_text": "Hesaba parola atamak icin `passwd` kullan.",
+          "hint_partial": "passwd ..."
         }
       ]
     },
     {
-      "id": "juserx-003-r3",
+      "id": "jusr-exp-007",
       "type": "single",
-      "scenario": "Bakim oncesi, mevcut kullanicinin adini kisa formatta goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "id -un",
-          "hint_text": "Mevcut kullanicinin adini kisa formatta gormek icin `id -un` komutunu kullan.",
-          "hint_partial": "id -un"
-        }
-      ]
-    },
-    {
-      "id": "juserx-004-r4",
-      "type": "single",
-      "scenario": "Bakim oncesi, `ali` kullanicisinin tum group adlarini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "id -Gn ali",
-          "hint_text": "Bir kullanicinin tum group adlarini gormek icin `id -Gn ali` komutunu kullan.",
-          "hint_partial": "id -Gn ..."
-        }
-      ]
-    },
-    {
-      "id": "juserx-005-r5",
-      "type": "single",
-      "scenario": "Bakim oncesi, tum passwd kayitlarini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "getent passwd",
-          "hint_text": "Tum passwd kayitlarini gormek icin `getent passwd` komutunu kullan.",
-          "hint_partial": "getent passwd"
-        }
-      ]
-    },
-    {
-      "id": "juserx-006-r6",
-      "type": "single",
-      "scenario": "Bakim oncesi, tum group kayitlarini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "getent group",
-          "hint_text": "Tum group kayitlarini gormek icin `getent group` komutunu kullan.",
-          "hint_partial": "getent group"
-        }
-      ]
-    },
-    {
-      "id": "juserx-007-r7",
-      "type": "single",
-      "scenario": "Bakim oncesi, son login kayitlarini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "last",
-          "hint_text": "Son login kayitlarini gormek icin `last` komutunu kullan.",
-          "hint_partial": "last"
-        }
-      ]
-    },
-    {
-      "id": "juserx-008-r8",
-      "type": "single",
-      "scenario": "Bakim oncesi, tum kullanicilar icin son login bilgisini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "lastlog",
-          "hint_text": "Tum kullanicilarin son login bilgisini gormek icin `lastlog` komutunu kullan.",
-          "hint_partial": "lastlog"
-        }
-      ]
-    },
-    {
-      "id": "juserx-009-r9",
-      "type": "single",
-      "scenario": "Bakim oncesi, home dizini ve `/bin/bash` shell'i ile `ali` kullanicisini olustur.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "useradd -m -s /bin/bash ali",
-          "hint_text": "Home dizini ve shell belirleyerek kullanici olusturmak icin `useradd -m -s /bin/bash ali` komutunu kullan.",
-          "hint_partial": "useradd -m -s ..."
-        }
-      ]
-    },
-    {
-      "id": "juserx-010-r10",
-      "type": "single",
-      "scenario": "Bakim oncesi, home diziniyle birlikte `ali` kullanicisini olustur ve ilk ek grup olarak `sudo` ata.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "useradd -m -G sudo ali",
-          "hint_text": "Kullaniciyi ilk ek group ile olusturmak icin `useradd -m -G sudo ali` komutunu kullan.",
-          "hint_partial": "useradd -m -G ..."
-        }
-      ]
-    },
-    {
-      "id": "juserx-011-r11",
-      "type": "single",
-      "scenario": "Bakim oncesi, comment alaniyla birlikte `ali` kullanicisini olustur.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "useradd -m -c \"Ali Veli\" ali",
-          "hint_text": "Comment alani vererek kullanici olusturmak icin `useradd -m -c \"Ali Veli\" ali` komutunu kullan.",
-          "hint_partial": "useradd -m -c ..."
-        }
-      ]
-    },
-    {
-      "id": "juserx-012-r12",
-      "type": "single",
-      "scenario": "Bakim oncesi, `docker` grubunu olustur.",
+      "scenario": "Gece vardiyasinda `docker` grubunu olustur.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "groupadd docker",
-          "hint_text": "Yeni grup olusturmak icin `groupadd docker` komutunu kullan.",
+          "hint_text": "Yeni grup acmak icin `groupadd` kullan.",
           "hint_partial": "groupadd ..."
         }
       ]
     },
     {
-      "id": "juserx-013-r13",
+      "id": "jusr-exp-008",
       "type": "single",
-      "scenario": "Bakim oncesi, `developers` grubunun adini `platform` olarak degistir.",
+      "scenario": "Gece vardiyasinda `docker` grubunu sil.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "groupmod -n platform developers",
-          "hint_text": "Bir grubun adini degistirmek icin `groupmod -n platform developers` komutunu kullan.",
-          "hint_partial": "groupmod -n ..."
+          "answer": "groupdel docker",
+          "hint_text": "Artik kullanilmayan grubu `groupdel` ile sil.",
+          "hint_partial": "groupdel ..."
         }
       ]
     },
     {
-      "id": "juserx-014-r14",
+      "id": "jusr-exp-009",
       "type": "single",
-      "scenario": "Bakim oncesi, `ali` kullanicisini `sudo` grubuna ekle.",
+      "scenario": "Gece vardiyasinda `deploy` kullanicisini `docker` grubuna ekle.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "usermod -aG sudo ali",
-          "hint_text": "Bir kullaniciyi `sudo` grubuna eklemek icin `usermod -aG sudo ali` komutunu kullan.",
+          "answer": "usermod -aG docker deploy",
+          "hint_text": "Kullaniciyi ek gruba katmak icin `usermod -aG` kullan.",
           "hint_partial": "usermod -aG ..."
         }
       ]
     },
     {
-      "id": "juserx-015-r15",
+      "id": "jusr-exp-010",
       "type": "single",
-      "scenario": "Bakim oncesi, `ali` kullanicisini `docker` grubuna ekle.",
+      "scenario": "Gece vardiyasinda `deploy` kullanicisini `docker` grubundan cikar.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "usermod -aG docker ali",
-          "hint_text": "Bir kullaniciyi `docker` grubuna eklemek icin `usermod -aG docker ali` komutunu kullan.",
-          "hint_partial": "usermod -aG ..."
-        }
-      ]
-    },
-    {
-      "id": "juserx-016-r16",
-      "type": "single",
-      "scenario": "Bakim oncesi, `ali` kullanicisini `docker` grubundan cikar.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gpasswd -d ali docker",
-          "hint_text": "Bir kullaniciyi `docker` grubundan cikarmak icin `gpasswd -d ali docker` komutunu kullan.",
+          "answer": "gpasswd -d deploy docker",
+          "hint_text": "Kullaniciyi belirli bir gruptan cikarmak icin `gpasswd -d` kullan.",
           "hint_partial": "gpasswd -d ..."
         }
       ]
     },
     {
-      "id": "juserx-017-r17",
+      "id": "jusr-exp-011",
       "type": "single",
-      "scenario": "Bakim oncesi, `ali` kullanicisinin login shell'ini `/bin/zsh` yap.",
+      "scenario": "Gece vardiyasinda `deploy` kullanicisinin parola durumunu gor.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "usermod -s /bin/zsh ali",
-          "hint_text": "Bir kullanicinin shell'ini degistirmek icin `usermod -s /bin/zsh ali` komutunu kullan.",
-          "hint_partial": "usermod -s ..."
+          "answer": "passwd -S deploy",
+          "hint_text": "Parola kilit durumunu `passwd -S` ile denetle.",
+          "hint_partial": "passwd -S ..."
         }
       ]
     },
     {
-      "id": "juserx-018-r18",
+      "id": "jusr-exp-012",
       "type": "single",
-      "scenario": "Bakim oncesi, `ali` kullanicisinin home dizinini tasiyarak `/srv/ali` yap.",
+      "scenario": "Gece vardiyasinda `deploy` kullanicisinin parolasini kilitle.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "usermod -d /srv/ali -m ali",
-          "hint_text": "Bir kullanicinin home dizinini tasiyarak degistirmek icin `usermod -d /srv/ali -m ali` komutunu kullan.",
-          "hint_partial": "usermod -d ... -m ..."
-        }
-      ]
-    },
-    {
-      "id": "juserx-019-r19",
-      "type": "single",
-      "scenario": "Bakim oncesi, `ali` kullanicisinin parolasini kilitle.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "passwd -l ali",
-          "hint_text": "Bir kullanicinin parolasini kilitlemek icin `passwd -l ali` komutunu kullan.",
+          "answer": "passwd -l deploy",
+          "hint_text": "Parola ile girisi kapatmak icin `passwd -l` kullan.",
           "hint_partial": "passwd -l ..."
         }
       ]
     },
     {
-      "id": "juserx-020-r20",
+      "id": "jusr-exp-013",
       "type": "single",
-      "scenario": "Bakim oncesi, `ali` kullanicisinin parola kilidini ac.",
+      "scenario": "Gece vardiyasinda `deploy` kullanicisinin parola kilidini ac.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "passwd -u ali",
-          "hint_text": "Bir kullanicinin parola kilidini acmak icin `passwd -u ali` komutunu kullan.",
+          "answer": "passwd -u deploy",
+          "hint_text": "Kilitli hesabi tekrar aktif etmek icin `passwd -u` kullan.",
           "hint_partial": "passwd -u ..."
         }
       ]
     },
     {
-      "id": "juserx-021-r21",
+      "id": "jusr-exp-014",
       "type": "single",
-      "scenario": "Bakim oncesi, `ali` kullanicisinin parolasini bir sonraki giriste degismeye zorla.",
+      "scenario": "Gece vardiyasinda `deploy` kullanicisinin parola aging bilgisini gor.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "passwd -e ali",
-          "hint_text": "Parolayi bir sonraki giriste degismeye zorlamak icin `passwd -e ali` komutunu kullan.",
-          "hint_partial": "passwd -e ..."
+          "answer": "chage -l deploy",
+          "hint_text": "Expiry ve warning politikasini `chage -l` ile gor.",
+          "hint_partial": "chage -l ..."
         }
       ]
     },
     {
-      "id": "juserx-022-r22",
+      "id": "jusr-exp-015",
       "type": "single",
-      "scenario": "Bakim oncesi, `ali` kullanicisi icin maksimum parola suresini 90 gun yap.",
+      "scenario": "Gece vardiyasinda `deploy` kullanicisinin son login bilgisini gor.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "chage -M 90 ali",
-          "hint_text": "Maksimum parola suresini ayarlamak icin `chage -M 90 ali` komutunu kullan.",
-          "hint_partial": "chage -M ..."
+          "answer": "lastlog -u deploy",
+          "hint_text": "Son login zamanini `lastlog` ile denetle.",
+          "hint_partial": "lastlog -u ..."
         }
       ]
     },
     {
-      "id": "juserx-023-r23",
+      "id": "jusr-exp-016",
       "type": "single",
-      "scenario": "Bakim oncesi, `ali` kullanicisi icin hesap bitis tarihini `2026-12-31` yap.",
+      "scenario": "Gece vardiyasinda `deploy` ve `docker` sahibi olacak sekilde `/srv/deploy` dizinini olustur.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "chage -E 2026-12-31 ali",
-          "hint_text": "Hesap bitis tarihini ayarlamak icin `chage -E 2026-12-31 ali` komutunu kullan.",
-          "hint_partial": "chage -E ..."
+          "answer": "install -d -o deploy -g docker /srv/deploy",
+          "hint_text": "Sahiplik vererek dizin olusturmak icin `install -d` kullan.",
+          "hint_partial": "install -d ..."
         }
       ]
     },
     {
-      "id": "juserx-024-r24",
+      "id": "jusr-exp-017",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `deploy` kullanicisini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "userdel deploy",
+          "hint_text": "Hesabi home dizini kalacak sekilde silmek icin `userdel` kullan.",
+          "hint_partial": "userdel ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-018",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `deploy` kullanicisini home diziniyle birlikte sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "userdel -r deploy",
+          "hint_text": "Offboarding icin kullaniciyi home'u ile birlikte kaldir.",
+          "hint_partial": "userdel -r ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-019",
       "type": "multi-step",
-      "scenario": "Bakim oncesi, once home diziniyle birlikte `ali` kullanicisini olustur ve sonra kimlik bilgisini goruntule.",
+      "scenario": "Gece vardiyasinda `deploy` kullanicisini olustur, sonra `docker` grubuna ekle.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "useradd -m ali",
-          "hint_text": "Home diziniyle kullanici olusturmak icin `useradd -m ali` komutunu kullan.",
+          "answer": "useradd -m deploy",
+          "hint_text": "Ilk adimda hesabi home dizini ile birlikte ac.",
           "hint_partial": "useradd -m ..."
         },
         {
           "prompt": "$ ",
-          "answer": "id ali",
-          "hint_text": "Olusturulan kullanicinin kimlik bilgisini dogrulamak icin `id ali` komutunu kullan.",
+          "answer": "usermod -aG docker deploy",
+          "hint_text": "Ikinci adimda gerekli ek gruba dahil et.",
+          "hint_partial": "usermod -aG ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-020",
+      "type": "multi-step",
+      "scenario": "Gece vardiyasinda `deploy` kullanicisinin parolasini kilitle, sonra durumunu dogrula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -l deploy",
+          "hint_text": "Ilk adimda parola login'ini kapat.",
+          "hint_partial": "passwd -l ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "passwd -S deploy",
+          "hint_text": "Ikinci adimda kilit durumunu `passwd -S` ile kontrol et.",
+          "hint_partial": "passwd -S ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-021",
+      "type": "single",
+      "scenario": "Bakim penceresinde `app` kullanicisinin passwd kaydini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getent passwd app",
+          "hint_text": "Sistem hesap kaydini gormek icin `getent passwd` kullan.",
+          "hint_partial": "getent passwd ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-022",
+      "type": "single",
+      "scenario": "Bakim penceresinde `developers` grubunun kaydini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getent group developers",
+          "hint_text": "Grup kaydini sistem veritabanindan okumak icin `getent group` kullan.",
+          "hint_partial": "getent group ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-023",
+      "type": "single",
+      "scenario": "Bakim penceresinde `app` kullanicisinin UID, GID ve group bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "id app",
+          "hint_text": "Bir hesabin kimlik bilgisini `id` ile goster.",
           "hint_partial": "id ..."
         }
       ]
     },
     {
-      "id": "juserx-025-r25",
-      "type": "multi-step",
-      "scenario": "Bakim oncesi, once `ali` kullanicisini `docker` grubuna ekle ve sonra group uyeliklerini kontrol et.",
+      "id": "jusr-exp-024",
+      "type": "single",
+      "scenario": "Bakim penceresinde `app` kullanicisinin group uyeliklerini gor.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "usermod -aG docker ali",
-          "hint_text": "Bir kullaniciyi `docker` grubuna eklemek icin `usermod -aG docker ali` komutunu kullan.",
-          "hint_partial": "usermod -aG ..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "groups ali",
-          "hint_text": "Group uyeliklerini dogrulamak icin `groups ali` komutunu kullan.",
+          "answer": "groups app",
+          "hint_text": "Kullanicinin gruplarini `groups` ile listele.",
           "hint_partial": "groups ..."
         }
       ]
     },
     {
-      "id": "juserx-001-r26",
+      "id": "jusr-exp-025",
       "type": "single",
-      "scenario": "Troubleshooting sirasinda, `ali` kullanicisinin sayisal UID bilgisini goruntule.",
+      "scenario": "Bakim penceresinde home dizini ile birlikte `app` kullanicisini olustur.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "id -u ali",
-          "hint_text": "Bir kullanicinin sayisal UID bilgisini gormek icin `id -u ali` komutunu kullan.",
-          "hint_partial": "id -u ..."
+          "answer": "useradd -m app",
+          "hint_text": "Yeni hesabi home dizini ile birlikte acmak icin `useradd -m` kullan.",
+          "hint_partial": "useradd -m ..."
         }
       ]
     },
     {
-      "id": "juserx-002-r27",
+      "id": "jusr-exp-026",
       "type": "single",
-      "scenario": "Troubleshooting sirasinda, `ali` kullanicisinin sayisal ana group bilgisini goruntule.",
+      "scenario": "Bakim penceresinde `app` kullanicisi icin parola belirle.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "id -g ali",
-          "hint_text": "Bir kullanicinin sayisal ana group bilgisini gormek icin `id -g ali` komutunu kullan.",
-          "hint_partial": "id -g ..."
+          "answer": "passwd app",
+          "hint_text": "Hesaba parola atamak icin `passwd` kullan.",
+          "hint_partial": "passwd ..."
         }
       ]
     },
     {
-      "id": "juserx-003-r28",
+      "id": "jusr-exp-027",
       "type": "single",
-      "scenario": "Troubleshooting sirasinda, mevcut kullanicinin adini kisa formatta goruntule.",
+      "scenario": "Bakim penceresinde `developers` grubunu olustur.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "id -un",
-          "hint_text": "Mevcut kullanicinin adini kisa formatta gormek icin `id -un` komutunu kullan.",
-          "hint_partial": "id -un"
-        }
-      ]
-    },
-    {
-      "id": "juserx-004-r29",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda, `ali` kullanicisinin tum group adlarini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "id -Gn ali",
-          "hint_text": "Bir kullanicinin tum group adlarini gormek icin `id -Gn ali` komutunu kullan.",
-          "hint_partial": "id -Gn ..."
-        }
-      ]
-    },
-    {
-      "id": "juserx-005-r30",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda, tum passwd kayitlarini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "getent passwd",
-          "hint_text": "Tum passwd kayitlarini gormek icin `getent passwd` komutunu kullan.",
-          "hint_partial": "getent passwd"
-        }
-      ]
-    },
-    {
-      "id": "juserx-006-r31",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda, tum group kayitlarini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "getent group",
-          "hint_text": "Tum group kayitlarini gormek icin `getent group` komutunu kullan.",
-          "hint_partial": "getent group"
-        }
-      ]
-    },
-    {
-      "id": "juserx-007-r32",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda, son login kayitlarini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "last",
-          "hint_text": "Son login kayitlarini gormek icin `last` komutunu kullan.",
-          "hint_partial": "last"
-        }
-      ]
-    },
-    {
-      "id": "juserx-008-r33",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda, tum kullanicilar icin son login bilgisini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "lastlog",
-          "hint_text": "Tum kullanicilarin son login bilgisini gormek icin `lastlog` komutunu kullan.",
-          "hint_partial": "lastlog"
-        }
-      ]
-    },
-    {
-      "id": "juserx-009-r34",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda, home dizini ve `/bin/bash` shell'i ile `ali` kullanicisini olustur.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "useradd -m -s /bin/bash ali",
-          "hint_text": "Home dizini ve shell belirleyerek kullanici olusturmak icin `useradd -m -s /bin/bash ali` komutunu kullan.",
-          "hint_partial": "useradd -m -s ..."
-        }
-      ]
-    },
-    {
-      "id": "juserx-010-r35",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda, home diziniyle birlikte `ali` kullanicisini olustur ve ilk ek grup olarak `sudo` ata.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "useradd -m -G sudo ali",
-          "hint_text": "Kullaniciyi ilk ek group ile olusturmak icin `useradd -m -G sudo ali` komutunu kullan.",
-          "hint_partial": "useradd -m -G ..."
-        }
-      ]
-    },
-    {
-      "id": "juserx-011-r36",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda, comment alaniyla birlikte `ali` kullanicisini olustur.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "useradd -m -c \"Ali Veli\" ali",
-          "hint_text": "Comment alani vererek kullanici olusturmak icin `useradd -m -c \"Ali Veli\" ali` komutunu kullan.",
-          "hint_partial": "useradd -m -c ..."
-        }
-      ]
-    },
-    {
-      "id": "juserx-012-r37",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda, `docker` grubunu olustur.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "groupadd docker",
-          "hint_text": "Yeni grup olusturmak icin `groupadd docker` komutunu kullan.",
+          "answer": "groupadd developers",
+          "hint_text": "Yeni grup acmak icin `groupadd` kullan.",
           "hint_partial": "groupadd ..."
         }
       ]
     },
     {
-      "id": "juserx-013-r38",
+      "id": "jusr-exp-028",
       "type": "single",
-      "scenario": "Troubleshooting sirasinda, `developers` grubunun adini `platform` olarak degistir.",
+      "scenario": "Bakim penceresinde `developers` grubunu sil.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "groupmod -n platform developers",
-          "hint_text": "Bir grubun adini degistirmek icin `groupmod -n platform developers` komutunu kullan.",
-          "hint_partial": "groupmod -n ..."
+          "answer": "groupdel developers",
+          "hint_text": "Artik kullanilmayan grubu `groupdel` ile sil.",
+          "hint_partial": "groupdel ..."
         }
       ]
     },
     {
-      "id": "juserx-014-r39",
+      "id": "jusr-exp-029",
       "type": "single",
-      "scenario": "Troubleshooting sirasinda, `ali` kullanicisini `sudo` grubuna ekle.",
+      "scenario": "Bakim penceresinde `app` kullanicisini `developers` grubuna ekle.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "usermod -aG sudo ali",
-          "hint_text": "Bir kullaniciyi `sudo` grubuna eklemek icin `usermod -aG sudo ali` komutunu kullan.",
+          "answer": "usermod -aG developers app",
+          "hint_text": "Kullaniciyi ek gruba katmak icin `usermod -aG` kullan.",
           "hint_partial": "usermod -aG ..."
         }
       ]
     },
     {
-      "id": "juserx-015-r40",
+      "id": "jusr-exp-030",
       "type": "single",
-      "scenario": "Troubleshooting sirasinda, `ali` kullanicisini `docker` grubuna ekle.",
+      "scenario": "Bakim penceresinde `app` kullanicisini `developers` grubundan cikar.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "usermod -aG docker ali",
-          "hint_text": "Bir kullaniciyi `docker` grubuna eklemek icin `usermod -aG docker ali` komutunu kullan.",
-          "hint_partial": "usermod -aG ..."
-        }
-      ]
-    },
-    {
-      "id": "juserx-016-r41",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda, `ali` kullanicisini `docker` grubundan cikar.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gpasswd -d ali docker",
-          "hint_text": "Bir kullaniciyi `docker` grubundan cikarmak icin `gpasswd -d ali docker` komutunu kullan.",
+          "answer": "gpasswd -d app developers",
+          "hint_text": "Kullaniciyi belirli bir gruptan cikarmak icin `gpasswd -d` kullan.",
           "hint_partial": "gpasswd -d ..."
         }
       ]
     },
     {
-      "id": "juserx-017-r42",
+      "id": "jusr-exp-031",
       "type": "single",
-      "scenario": "Troubleshooting sirasinda, `ali` kullanicisinin login shell'ini `/bin/zsh` yap.",
+      "scenario": "Bakim penceresinde `app` kullanicisinin parola durumunu gor.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "usermod -s /bin/zsh ali",
-          "hint_text": "Bir kullanicinin shell'ini degistirmek icin `usermod -s /bin/zsh ali` komutunu kullan.",
-          "hint_partial": "usermod -s ..."
+          "answer": "passwd -S app",
+          "hint_text": "Parola kilit durumunu `passwd -S` ile denetle.",
+          "hint_partial": "passwd -S ..."
         }
       ]
     },
     {
-      "id": "juserx-018-r43",
+      "id": "jusr-exp-032",
       "type": "single",
-      "scenario": "Troubleshooting sirasinda, `ali` kullanicisinin home dizinini tasiyarak `/srv/ali` yap.",
+      "scenario": "Bakim penceresinde `app` kullanicisinin parolasini kilitle.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "usermod -d /srv/ali -m ali",
-          "hint_text": "Bir kullanicinin home dizinini tasiyarak degistirmek icin `usermod -d /srv/ali -m ali` komutunu kullan.",
-          "hint_partial": "usermod -d ... -m ..."
-        }
-      ]
-    },
-    {
-      "id": "juserx-019-r44",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda, `ali` kullanicisinin parolasini kilitle.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "passwd -l ali",
-          "hint_text": "Bir kullanicinin parolasini kilitlemek icin `passwd -l ali` komutunu kullan.",
+          "answer": "passwd -l app",
+          "hint_text": "Parola ile girisi kapatmak icin `passwd -l` kullan.",
           "hint_partial": "passwd -l ..."
         }
       ]
     },
     {
-      "id": "juserx-020-r45",
+      "id": "jusr-exp-033",
       "type": "single",
-      "scenario": "Troubleshooting sirasinda, `ali` kullanicisinin parola kilidini ac.",
+      "scenario": "Bakim penceresinde `app` kullanicisinin parola kilidini ac.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "passwd -u ali",
-          "hint_text": "Bir kullanicinin parola kilidini acmak icin `passwd -u ali` komutunu kullan.",
+          "answer": "passwd -u app",
+          "hint_text": "Kilitli hesabi tekrar aktif etmek icin `passwd -u` kullan.",
           "hint_partial": "passwd -u ..."
         }
       ]
     },
     {
-      "id": "juserx-021-r46",
+      "id": "jusr-exp-034",
       "type": "single",
-      "scenario": "Troubleshooting sirasinda, `ali` kullanicisinin parolasini bir sonraki giriste degismeye zorla.",
+      "scenario": "Bakim penceresinde `app` kullanicisinin parola aging bilgisini gor.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "passwd -e ali",
-          "hint_text": "Parolayi bir sonraki giriste degismeye zorlamak icin `passwd -e ali` komutunu kullan.",
-          "hint_partial": "passwd -e ..."
+          "answer": "chage -l app",
+          "hint_text": "Expiry ve warning politikasini `chage -l` ile gor.",
+          "hint_partial": "chage -l ..."
         }
       ]
     },
     {
-      "id": "juserx-022-r47",
+      "id": "jusr-exp-035",
       "type": "single",
-      "scenario": "Troubleshooting sirasinda, `ali` kullanicisi icin maksimum parola suresini 90 gun yap.",
+      "scenario": "Bakim penceresinde `app` kullanicisinin son login bilgisini gor.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "chage -M 90 ali",
-          "hint_text": "Maksimum parola suresini ayarlamak icin `chage -M 90 ali` komutunu kullan.",
-          "hint_partial": "chage -M ..."
+          "answer": "lastlog -u app",
+          "hint_text": "Son login zamanini `lastlog` ile denetle.",
+          "hint_partial": "lastlog -u ..."
         }
       ]
     },
     {
-      "id": "juserx-023-r48",
+      "id": "jusr-exp-036",
       "type": "single",
-      "scenario": "Troubleshooting sirasinda, `ali` kullanicisi icin hesap bitis tarihini `2026-12-31` yap.",
+      "scenario": "Bakim penceresinde `app` ve `developers` sahibi olacak sekilde `/srv/app` dizinini olustur.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "chage -E 2026-12-31 ali",
-          "hint_text": "Hesap bitis tarihini ayarlamak icin `chage -E 2026-12-31 ali` komutunu kullan.",
-          "hint_partial": "chage -E ..."
+          "answer": "install -d -o app -g developers /srv/app",
+          "hint_text": "Sahiplik vererek dizin olusturmak icin `install -d` kullan.",
+          "hint_partial": "install -d ..."
         }
       ]
     },
     {
-      "id": "juserx-024-r49",
+      "id": "jusr-exp-037",
+      "type": "single",
+      "scenario": "Bakim penceresinde `app` kullanicisini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "userdel app",
+          "hint_text": "Hesabi home dizini kalacak sekilde silmek icin `userdel` kullan.",
+          "hint_partial": "userdel ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-038",
+      "type": "single",
+      "scenario": "Bakim penceresinde `app` kullanicisini home diziniyle birlikte sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "userdel -r app",
+          "hint_text": "Offboarding icin kullaniciyi home'u ile birlikte kaldir.",
+          "hint_partial": "userdel -r ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-039",
       "type": "multi-step",
-      "scenario": "Troubleshooting sirasinda, once home diziniyle birlikte `ali` kullanicisini olustur ve sonra kimlik bilgisini goruntule.",
+      "scenario": "Bakim penceresinde `app` kullanicisini olustur, sonra `developers` grubuna ekle.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "useradd -m ali",
-          "hint_text": "Home diziniyle kullanici olusturmak icin `useradd -m ali` komutunu kullan.",
+          "answer": "useradd -m app",
+          "hint_text": "Ilk adimda hesabi home dizini ile birlikte ac.",
           "hint_partial": "useradd -m ..."
         },
         {
           "prompt": "$ ",
-          "answer": "id ali",
-          "hint_text": "Olusturulan kullanicinin kimlik bilgisini dogrulamak icin `id ali` komutunu kullan.",
+          "answer": "usermod -aG developers app",
+          "hint_text": "Ikinci adimda gerekli ek gruba dahil et.",
+          "hint_partial": "usermod -aG ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-040",
+      "type": "multi-step",
+      "scenario": "Bakim penceresinde `app` kullanicisinin parolasini kilitle, sonra durumunu dogrula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -l app",
+          "hint_text": "Ilk adimda parola login'ini kapat.",
+          "hint_partial": "passwd -l ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "passwd -S app",
+          "hint_text": "Ikinci adimda kilit durumunu `passwd -S` ile kontrol et.",
+          "hint_partial": "passwd -S ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-041",
+      "type": "single",
+      "scenario": "Incident sonrasinda `backup` kullanicisinin passwd kaydini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getent passwd backup",
+          "hint_text": "Sistem hesap kaydini gormek icin `getent passwd` kullan.",
+          "hint_partial": "getent passwd ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-042",
+      "type": "single",
+      "scenario": "Incident sonrasinda `analytics` grubunun kaydini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getent group analytics",
+          "hint_text": "Grup kaydini sistem veritabanindan okumak icin `getent group` kullan.",
+          "hint_partial": "getent group ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-043",
+      "type": "single",
+      "scenario": "Incident sonrasinda `backup` kullanicisinin UID, GID ve group bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "id backup",
+          "hint_text": "Bir hesabin kimlik bilgisini `id` ile goster.",
           "hint_partial": "id ..."
         }
       ]
     },
     {
-      "id": "juserx-025-r50",
-      "type": "multi-step",
-      "scenario": "Troubleshooting sirasinda, once `ali` kullanicisini `docker` grubuna ekle ve sonra group uyeliklerini kontrol et.",
+      "id": "jusr-exp-044",
+      "type": "single",
+      "scenario": "Incident sonrasinda `backup` kullanicisinin group uyeliklerini gor.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "usermod -aG docker ali",
-          "hint_text": "Bir kullaniciyi `docker` grubuna eklemek icin `usermod -aG docker ali` komutunu kullan.",
-          "hint_partial": "usermod -aG ..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "groups ali",
-          "hint_text": "Group uyeliklerini dogrulamak icin `groups ali` komutunu kullan.",
+          "answer": "groups backup",
+          "hint_text": "Kullanicinin gruplarini `groups` ile listele.",
           "hint_partial": "groups ..."
         }
       ]
     },
     {
-      "id": "juserx-001-r51",
+      "id": "jusr-exp-045",
       "type": "single",
-      "scenario": "Deploy sonrasi, `ali` kullanicisinin sayisal UID bilgisini goruntule.",
+      "scenario": "Incident sonrasinda home dizini ile birlikte `backup` kullanicisini olustur.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "id -u ali",
-          "hint_text": "Bir kullanicinin sayisal UID bilgisini gormek icin `id -u ali` komutunu kullan.",
-          "hint_partial": "id -u ..."
+          "answer": "useradd -m backup",
+          "hint_text": "Yeni hesabi home dizini ile birlikte acmak icin `useradd -m` kullan.",
+          "hint_partial": "useradd -m ..."
         }
       ]
     },
     {
-      "id": "juserx-002-r52",
+      "id": "jusr-exp-046",
       "type": "single",
-      "scenario": "Deploy sonrasi, `ali` kullanicisinin sayisal ana group bilgisini goruntule.",
+      "scenario": "Incident sonrasinda `backup` kullanicisi icin parola belirle.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "id -g ali",
-          "hint_text": "Bir kullanicinin sayisal ana group bilgisini gormek icin `id -g ali` komutunu kullan.",
-          "hint_partial": "id -g ..."
+          "answer": "passwd backup",
+          "hint_text": "Hesaba parola atamak icin `passwd` kullan.",
+          "hint_partial": "passwd ..."
         }
       ]
     },
     {
-      "id": "juserx-003-r53",
+      "id": "jusr-exp-047",
       "type": "single",
-      "scenario": "Deploy sonrasi, mevcut kullanicinin adini kisa formatta goruntule.",
+      "scenario": "Incident sonrasinda `analytics` grubunu olustur.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "id -un",
-          "hint_text": "Mevcut kullanicinin adini kisa formatta gormek icin `id -un` komutunu kullan.",
-          "hint_partial": "id -un"
-        }
-      ]
-    },
-    {
-      "id": "juserx-004-r54",
-      "type": "single",
-      "scenario": "Deploy sonrasi, `ali` kullanicisinin tum group adlarini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "id -Gn ali",
-          "hint_text": "Bir kullanicinin tum group adlarini gormek icin `id -Gn ali` komutunu kullan.",
-          "hint_partial": "id -Gn ..."
-        }
-      ]
-    },
-    {
-      "id": "juserx-005-r55",
-      "type": "single",
-      "scenario": "Deploy sonrasi, tum passwd kayitlarini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "getent passwd",
-          "hint_text": "Tum passwd kayitlarini gormek icin `getent passwd` komutunu kullan.",
-          "hint_partial": "getent passwd"
-        }
-      ]
-    },
-    {
-      "id": "juserx-006-r56",
-      "type": "single",
-      "scenario": "Deploy sonrasi, tum group kayitlarini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "getent group",
-          "hint_text": "Tum group kayitlarini gormek icin `getent group` komutunu kullan.",
-          "hint_partial": "getent group"
-        }
-      ]
-    },
-    {
-      "id": "juserx-007-r57",
-      "type": "single",
-      "scenario": "Deploy sonrasi, son login kayitlarini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "last",
-          "hint_text": "Son login kayitlarini gormek icin `last` komutunu kullan.",
-          "hint_partial": "last"
-        }
-      ]
-    },
-    {
-      "id": "juserx-008-r58",
-      "type": "single",
-      "scenario": "Deploy sonrasi, tum kullanicilar icin son login bilgisini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "lastlog",
-          "hint_text": "Tum kullanicilarin son login bilgisini gormek icin `lastlog` komutunu kullan.",
-          "hint_partial": "lastlog"
-        }
-      ]
-    },
-    {
-      "id": "juserx-009-r59",
-      "type": "single",
-      "scenario": "Deploy sonrasi, home dizini ve `/bin/bash` shell'i ile `ali` kullanicisini olustur.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "useradd -m -s /bin/bash ali",
-          "hint_text": "Home dizini ve shell belirleyerek kullanici olusturmak icin `useradd -m -s /bin/bash ali` komutunu kullan.",
-          "hint_partial": "useradd -m -s ..."
-        }
-      ]
-    },
-    {
-      "id": "juserx-010-r60",
-      "type": "single",
-      "scenario": "Deploy sonrasi, home diziniyle birlikte `ali` kullanicisini olustur ve ilk ek grup olarak `sudo` ata.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "useradd -m -G sudo ali",
-          "hint_text": "Kullaniciyi ilk ek group ile olusturmak icin `useradd -m -G sudo ali` komutunu kullan.",
-          "hint_partial": "useradd -m -G ..."
-        }
-      ]
-    },
-    {
-      "id": "juserx-011-r61",
-      "type": "single",
-      "scenario": "Deploy sonrasi, comment alaniyla birlikte `ali` kullanicisini olustur.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "useradd -m -c \"Ali Veli\" ali",
-          "hint_text": "Comment alani vererek kullanici olusturmak icin `useradd -m -c \"Ali Veli\" ali` komutunu kullan.",
-          "hint_partial": "useradd -m -c ..."
-        }
-      ]
-    },
-    {
-      "id": "juserx-012-r62",
-      "type": "single",
-      "scenario": "Deploy sonrasi, `docker` grubunu olustur.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "groupadd docker",
-          "hint_text": "Yeni grup olusturmak icin `groupadd docker` komutunu kullan.",
+          "answer": "groupadd analytics",
+          "hint_text": "Yeni grup acmak icin `groupadd` kullan.",
           "hint_partial": "groupadd ..."
         }
       ]
     },
     {
-      "id": "juserx-013-r63",
+      "id": "jusr-exp-048",
       "type": "single",
-      "scenario": "Deploy sonrasi, `developers` grubunun adini `platform` olarak degistir.",
+      "scenario": "Incident sonrasinda `analytics` grubunu sil.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "groupmod -n platform developers",
-          "hint_text": "Bir grubun adini degistirmek icin `groupmod -n platform developers` komutunu kullan.",
-          "hint_partial": "groupmod -n ..."
+          "answer": "groupdel analytics",
+          "hint_text": "Artik kullanilmayan grubu `groupdel` ile sil.",
+          "hint_partial": "groupdel ..."
         }
       ]
     },
     {
-      "id": "juserx-014-r64",
+      "id": "jusr-exp-049",
       "type": "single",
-      "scenario": "Deploy sonrasi, `ali` kullanicisini `sudo` grubuna ekle.",
+      "scenario": "Incident sonrasinda `backup` kullanicisini `analytics` grubuna ekle.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "usermod -aG sudo ali",
-          "hint_text": "Bir kullaniciyi `sudo` grubuna eklemek icin `usermod -aG sudo ali` komutunu kullan.",
+          "answer": "usermod -aG analytics backup",
+          "hint_text": "Kullaniciyi ek gruba katmak icin `usermod -aG` kullan.",
           "hint_partial": "usermod -aG ..."
         }
       ]
     },
     {
-      "id": "juserx-015-r65",
+      "id": "jusr-exp-050",
       "type": "single",
-      "scenario": "Deploy sonrasi, `ali` kullanicisini `docker` grubuna ekle.",
+      "scenario": "Incident sonrasinda `backup` kullanicisini `analytics` grubundan cikar.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "usermod -aG docker ali",
-          "hint_text": "Bir kullaniciyi `docker` grubuna eklemek icin `usermod -aG docker ali` komutunu kullan.",
-          "hint_partial": "usermod -aG ..."
-        }
-      ]
-    },
-    {
-      "id": "juserx-016-r66",
-      "type": "single",
-      "scenario": "Deploy sonrasi, `ali` kullanicisini `docker` grubundan cikar.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gpasswd -d ali docker",
-          "hint_text": "Bir kullaniciyi `docker` grubundan cikarmak icin `gpasswd -d ali docker` komutunu kullan.",
+          "answer": "gpasswd -d backup analytics",
+          "hint_text": "Kullaniciyi belirli bir gruptan cikarmak icin `gpasswd -d` kullan.",
           "hint_partial": "gpasswd -d ..."
         }
       ]
     },
     {
-      "id": "juserx-017-r67",
+      "id": "jusr-exp-051",
       "type": "single",
-      "scenario": "Deploy sonrasi, `ali` kullanicisinin login shell'ini `/bin/zsh` yap.",
+      "scenario": "Incident sonrasinda `backup` kullanicisinin parola durumunu gor.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "usermod -s /bin/zsh ali",
-          "hint_text": "Bir kullanicinin shell'ini degistirmek icin `usermod -s /bin/zsh ali` komutunu kullan.",
-          "hint_partial": "usermod -s ..."
+          "answer": "passwd -S backup",
+          "hint_text": "Parola kilit durumunu `passwd -S` ile denetle.",
+          "hint_partial": "passwd -S ..."
         }
       ]
     },
     {
-      "id": "juserx-018-r68",
+      "id": "jusr-exp-052",
       "type": "single",
-      "scenario": "Deploy sonrasi, `ali` kullanicisinin home dizinini tasiyarak `/srv/ali` yap.",
+      "scenario": "Incident sonrasinda `backup` kullanicisinin parolasini kilitle.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "usermod -d /srv/ali -m ali",
-          "hint_text": "Bir kullanicinin home dizinini tasiyarak degistirmek icin `usermod -d /srv/ali -m ali` komutunu kullan.",
-          "hint_partial": "usermod -d ... -m ..."
-        }
-      ]
-    },
-    {
-      "id": "juserx-019-r69",
-      "type": "single",
-      "scenario": "Deploy sonrasi, `ali` kullanicisinin parolasini kilitle.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "passwd -l ali",
-          "hint_text": "Bir kullanicinin parolasini kilitlemek icin `passwd -l ali` komutunu kullan.",
+          "answer": "passwd -l backup",
+          "hint_text": "Parola ile girisi kapatmak icin `passwd -l` kullan.",
           "hint_partial": "passwd -l ..."
         }
       ]
     },
     {
-      "id": "juserx-020-r70",
+      "id": "jusr-exp-053",
       "type": "single",
-      "scenario": "Deploy sonrasi, `ali` kullanicisinin parola kilidini ac.",
+      "scenario": "Incident sonrasinda `backup` kullanicisinin parola kilidini ac.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "passwd -u ali",
-          "hint_text": "Bir kullanicinin parola kilidini acmak icin `passwd -u ali` komutunu kullan.",
+          "answer": "passwd -u backup",
+          "hint_text": "Kilitli hesabi tekrar aktif etmek icin `passwd -u` kullan.",
           "hint_partial": "passwd -u ..."
         }
       ]
     },
     {
-      "id": "juserx-021-r71",
+      "id": "jusr-exp-054",
       "type": "single",
-      "scenario": "Deploy sonrasi, `ali` kullanicisinin parolasini bir sonraki giriste degismeye zorla.",
+      "scenario": "Incident sonrasinda `backup` kullanicisinin parola aging bilgisini gor.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "passwd -e ali",
-          "hint_text": "Parolayi bir sonraki giriste degismeye zorlamak icin `passwd -e ali` komutunu kullan.",
-          "hint_partial": "passwd -e ..."
+          "answer": "chage -l backup",
+          "hint_text": "Expiry ve warning politikasini `chage -l` ile gor.",
+          "hint_partial": "chage -l ..."
         }
       ]
     },
     {
-      "id": "juserx-022-r72",
+      "id": "jusr-exp-055",
       "type": "single",
-      "scenario": "Deploy sonrasi, `ali` kullanicisi icin maksimum parola suresini 90 gun yap.",
+      "scenario": "Incident sonrasinda `backup` kullanicisinin son login bilgisini gor.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "chage -M 90 ali",
-          "hint_text": "Maksimum parola suresini ayarlamak icin `chage -M 90 ali` komutunu kullan.",
-          "hint_partial": "chage -M ..."
+          "answer": "lastlog -u backup",
+          "hint_text": "Son login zamanini `lastlog` ile denetle.",
+          "hint_partial": "lastlog -u ..."
         }
       ]
     },
     {
-      "id": "juserx-023-r73",
+      "id": "jusr-exp-056",
       "type": "single",
-      "scenario": "Deploy sonrasi, `ali` kullanicisi icin hesap bitis tarihini `2026-12-31` yap.",
+      "scenario": "Incident sonrasinda `backup` ve `analytics` sahibi olacak sekilde `/srv/backup` dizinini olustur.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "chage -E 2026-12-31 ali",
-          "hint_text": "Hesap bitis tarihini ayarlamak icin `chage -E 2026-12-31 ali` komutunu kullan.",
-          "hint_partial": "chage -E ..."
+          "answer": "install -d -o backup -g analytics /srv/backup",
+          "hint_text": "Sahiplik vererek dizin olusturmak icin `install -d` kullan.",
+          "hint_partial": "install -d ..."
         }
       ]
     },
     {
-      "id": "juserx-024-r74",
+      "id": "jusr-exp-057",
+      "type": "single",
+      "scenario": "Incident sonrasinda `backup` kullanicisini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "userdel backup",
+          "hint_text": "Hesabi home dizini kalacak sekilde silmek icin `userdel` kullan.",
+          "hint_partial": "userdel ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-058",
+      "type": "single",
+      "scenario": "Incident sonrasinda `backup` kullanicisini home diziniyle birlikte sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "userdel -r backup",
+          "hint_text": "Offboarding icin kullaniciyi home'u ile birlikte kaldir.",
+          "hint_partial": "userdel -r ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-059",
       "type": "multi-step",
-      "scenario": "Deploy sonrasi, once home diziniyle birlikte `ali` kullanicisini olustur ve sonra kimlik bilgisini goruntule.",
+      "scenario": "Incident sonrasinda `backup` kullanicisini olustur, sonra `analytics` grubuna ekle.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "useradd -m ali",
-          "hint_text": "Home diziniyle kullanici olusturmak icin `useradd -m ali` komutunu kullan.",
+          "answer": "useradd -m backup",
+          "hint_text": "Ilk adimda hesabi home dizini ile birlikte ac.",
           "hint_partial": "useradd -m ..."
         },
         {
           "prompt": "$ ",
-          "answer": "id ali",
-          "hint_text": "Olusturulan kullanicinin kimlik bilgisini dogrulamak icin `id ali` komutunu kullan.",
+          "answer": "usermod -aG analytics backup",
+          "hint_text": "Ikinci adimda gerekli ek gruba dahil et.",
+          "hint_partial": "usermod -aG ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-060",
+      "type": "multi-step",
+      "scenario": "Incident sonrasinda `backup` kullanicisinin parolasini kilitle, sonra durumunu dogrula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -l backup",
+          "hint_text": "Ilk adimda parola login'ini kapat.",
+          "hint_partial": "passwd -l ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "passwd -S backup",
+          "hint_text": "Ikinci adimda kilit durumunu `passwd -S` ile kontrol et.",
+          "hint_partial": "passwd -S ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-061",
+      "type": "single",
+      "scenario": "Deploy oncesi `reporting` kullanicisinin passwd kaydini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getent passwd reporting",
+          "hint_text": "Sistem hesap kaydini gormek icin `getent passwd` kullan.",
+          "hint_partial": "getent passwd ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-062",
+      "type": "single",
+      "scenario": "Deploy oncesi `support` grubunun kaydini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getent group support",
+          "hint_text": "Grup kaydini sistem veritabanindan okumak icin `getent group` kullan.",
+          "hint_partial": "getent group ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-063",
+      "type": "single",
+      "scenario": "Deploy oncesi `reporting` kullanicisinin UID, GID ve group bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "id reporting",
+          "hint_text": "Bir hesabin kimlik bilgisini `id` ile goster.",
           "hint_partial": "id ..."
         }
       ]
     },
     {
-      "id": "juserx-025-r75",
-      "type": "multi-step",
-      "scenario": "Deploy sonrasi, once `ali` kullanicisini `docker` grubuna ekle ve sonra group uyeliklerini kontrol et.",
+      "id": "jusr-exp-064",
+      "type": "single",
+      "scenario": "Deploy oncesi `reporting` kullanicisinin group uyeliklerini gor.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "usermod -aG docker ali",
-          "hint_text": "Bir kullaniciyi `docker` grubuna eklemek icin `usermod -aG docker ali` komutunu kullan.",
-          "hint_partial": "usermod -aG ..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "groups ali",
-          "hint_text": "Group uyeliklerini dogrulamak icin `groups ali` komutunu kullan.",
+          "answer": "groups reporting",
+          "hint_text": "Kullanicinin gruplarini `groups` ile listele.",
           "hint_partial": "groups ..."
         }
       ]
     },
     {
-      "id": "juserx-001-r76",
+      "id": "jusr-exp-065",
       "type": "single",
-      "scenario": "Kesinti incelemesinde, `ali` kullanicisinin sayisal UID bilgisini goruntule.",
+      "scenario": "Deploy oncesi home dizini ile birlikte `reporting` kullanicisini olustur.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "id -u ali",
-          "hint_text": "Bir kullanicinin sayisal UID bilgisini gormek icin `id -u ali` komutunu kullan.",
-          "hint_partial": "id -u ..."
+          "answer": "useradd -m reporting",
+          "hint_text": "Yeni hesabi home dizini ile birlikte acmak icin `useradd -m` kullan.",
+          "hint_partial": "useradd -m ..."
         }
       ]
     },
     {
-      "id": "juserx-002-r77",
+      "id": "jusr-exp-066",
       "type": "single",
-      "scenario": "Kesinti incelemesinde, `ali` kullanicisinin sayisal ana group bilgisini goruntule.",
+      "scenario": "Deploy oncesi `reporting` kullanicisi icin parola belirle.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "id -g ali",
-          "hint_text": "Bir kullanicinin sayisal ana group bilgisini gormek icin `id -g ali` komutunu kullan.",
-          "hint_partial": "id -g ..."
+          "answer": "passwd reporting",
+          "hint_text": "Hesaba parola atamak icin `passwd` kullan.",
+          "hint_partial": "passwd ..."
         }
       ]
     },
     {
-      "id": "juserx-003-r78",
+      "id": "jusr-exp-067",
       "type": "single",
-      "scenario": "Kesinti incelemesinde, mevcut kullanicinin adini kisa formatta goruntule.",
+      "scenario": "Deploy oncesi `support` grubunu olustur.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "id -un",
-          "hint_text": "Mevcut kullanicinin adini kisa formatta gormek icin `id -un` komutunu kullan.",
-          "hint_partial": "id -un"
-        }
-      ]
-    },
-    {
-      "id": "juserx-004-r79",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde, `ali` kullanicisinin tum group adlarini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "id -Gn ali",
-          "hint_text": "Bir kullanicinin tum group adlarini gormek icin `id -Gn ali` komutunu kullan.",
-          "hint_partial": "id -Gn ..."
-        }
-      ]
-    },
-    {
-      "id": "juserx-005-r80",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde, tum passwd kayitlarini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "getent passwd",
-          "hint_text": "Tum passwd kayitlarini gormek icin `getent passwd` komutunu kullan.",
-          "hint_partial": "getent passwd"
-        }
-      ]
-    },
-    {
-      "id": "juserx-006-r81",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde, tum group kayitlarini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "getent group",
-          "hint_text": "Tum group kayitlarini gormek icin `getent group` komutunu kullan.",
-          "hint_partial": "getent group"
-        }
-      ]
-    },
-    {
-      "id": "juserx-007-r82",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde, son login kayitlarini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "last",
-          "hint_text": "Son login kayitlarini gormek icin `last` komutunu kullan.",
-          "hint_partial": "last"
-        }
-      ]
-    },
-    {
-      "id": "juserx-008-r83",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde, tum kullanicilar icin son login bilgisini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "lastlog",
-          "hint_text": "Tum kullanicilarin son login bilgisini gormek icin `lastlog` komutunu kullan.",
-          "hint_partial": "lastlog"
-        }
-      ]
-    },
-    {
-      "id": "juserx-009-r84",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde, home dizini ve `/bin/bash` shell'i ile `ali` kullanicisini olustur.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "useradd -m -s /bin/bash ali",
-          "hint_text": "Home dizini ve shell belirleyerek kullanici olusturmak icin `useradd -m -s /bin/bash ali` komutunu kullan.",
-          "hint_partial": "useradd -m -s ..."
-        }
-      ]
-    },
-    {
-      "id": "juserx-010-r85",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde, home diziniyle birlikte `ali` kullanicisini olustur ve ilk ek grup olarak `sudo` ata.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "useradd -m -G sudo ali",
-          "hint_text": "Kullaniciyi ilk ek group ile olusturmak icin `useradd -m -G sudo ali` komutunu kullan.",
-          "hint_partial": "useradd -m -G ..."
-        }
-      ]
-    },
-    {
-      "id": "juserx-011-r86",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde, comment alaniyla birlikte `ali` kullanicisini olustur.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "useradd -m -c \"Ali Veli\" ali",
-          "hint_text": "Comment alani vererek kullanici olusturmak icin `useradd -m -c \"Ali Veli\" ali` komutunu kullan.",
-          "hint_partial": "useradd -m -c ..."
-        }
-      ]
-    },
-    {
-      "id": "juserx-012-r87",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde, `docker` grubunu olustur.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "groupadd docker",
-          "hint_text": "Yeni grup olusturmak icin `groupadd docker` komutunu kullan.",
+          "answer": "groupadd support",
+          "hint_text": "Yeni grup acmak icin `groupadd` kullan.",
           "hint_partial": "groupadd ..."
         }
       ]
     },
     {
-      "id": "juserx-013-r88",
+      "id": "jusr-exp-068",
       "type": "single",
-      "scenario": "Kesinti incelemesinde, `developers` grubunun adini `platform` olarak degistir.",
+      "scenario": "Deploy oncesi `support` grubunu sil.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "groupmod -n platform developers",
-          "hint_text": "Bir grubun adini degistirmek icin `groupmod -n platform developers` komutunu kullan.",
-          "hint_partial": "groupmod -n ..."
+          "answer": "groupdel support",
+          "hint_text": "Artik kullanilmayan grubu `groupdel` ile sil.",
+          "hint_partial": "groupdel ..."
         }
       ]
     },
     {
-      "id": "juserx-014-r89",
+      "id": "jusr-exp-069",
       "type": "single",
-      "scenario": "Kesinti incelemesinde, `ali` kullanicisini `sudo` grubuna ekle.",
+      "scenario": "Deploy oncesi `reporting` kullanicisini `support` grubuna ekle.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "usermod -aG sudo ali",
-          "hint_text": "Bir kullaniciyi `sudo` grubuna eklemek icin `usermod -aG sudo ali` komutunu kullan.",
+          "answer": "usermod -aG support reporting",
+          "hint_text": "Kullaniciyi ek gruba katmak icin `usermod -aG` kullan.",
           "hint_partial": "usermod -aG ..."
         }
       ]
     },
     {
-      "id": "juserx-015-r90",
+      "id": "jusr-exp-070",
       "type": "single",
-      "scenario": "Kesinti incelemesinde, `ali` kullanicisini `docker` grubuna ekle.",
+      "scenario": "Deploy oncesi `reporting` kullanicisini `support` grubundan cikar.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "usermod -aG docker ali",
-          "hint_text": "Bir kullaniciyi `docker` grubuna eklemek icin `usermod -aG docker ali` komutunu kullan.",
-          "hint_partial": "usermod -aG ..."
-        }
-      ]
-    },
-    {
-      "id": "juserx-016-r91",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde, `ali` kullanicisini `docker` grubundan cikar.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gpasswd -d ali docker",
-          "hint_text": "Bir kullaniciyi `docker` grubundan cikarmak icin `gpasswd -d ali docker` komutunu kullan.",
+          "answer": "gpasswd -d reporting support",
+          "hint_text": "Kullaniciyi belirli bir gruptan cikarmak icin `gpasswd -d` kullan.",
           "hint_partial": "gpasswd -d ..."
         }
       ]
     },
     {
-      "id": "juserx-017-r92",
+      "id": "jusr-exp-071",
       "type": "single",
-      "scenario": "Kesinti incelemesinde, `ali` kullanicisinin login shell'ini `/bin/zsh` yap.",
+      "scenario": "Deploy oncesi `reporting` kullanicisinin parola durumunu gor.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "usermod -s /bin/zsh ali",
-          "hint_text": "Bir kullanicinin shell'ini degistirmek icin `usermod -s /bin/zsh ali` komutunu kullan.",
-          "hint_partial": "usermod -s ..."
+          "answer": "passwd -S reporting",
+          "hint_text": "Parola kilit durumunu `passwd -S` ile denetle.",
+          "hint_partial": "passwd -S ..."
         }
       ]
     },
     {
-      "id": "juserx-018-r93",
+      "id": "jusr-exp-072",
       "type": "single",
-      "scenario": "Kesinti incelemesinde, `ali` kullanicisinin home dizinini tasiyarak `/srv/ali` yap.",
+      "scenario": "Deploy oncesi `reporting` kullanicisinin parolasini kilitle.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "usermod -d /srv/ali -m ali",
-          "hint_text": "Bir kullanicinin home dizinini tasiyarak degistirmek icin `usermod -d /srv/ali -m ali` komutunu kullan.",
-          "hint_partial": "usermod -d ... -m ..."
-        }
-      ]
-    },
-    {
-      "id": "juserx-019-r94",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde, `ali` kullanicisinin parolasini kilitle.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "passwd -l ali",
-          "hint_text": "Bir kullanicinin parolasini kilitlemek icin `passwd -l ali` komutunu kullan.",
+          "answer": "passwd -l reporting",
+          "hint_text": "Parola ile girisi kapatmak icin `passwd -l` kullan.",
           "hint_partial": "passwd -l ..."
         }
       ]
     },
     {
-      "id": "juserx-020-r95",
+      "id": "jusr-exp-073",
       "type": "single",
-      "scenario": "Kesinti incelemesinde, `ali` kullanicisinin parola kilidini ac.",
+      "scenario": "Deploy oncesi `reporting` kullanicisinin parola kilidini ac.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "passwd -u ali",
-          "hint_text": "Bir kullanicinin parola kilidini acmak icin `passwd -u ali` komutunu kullan.",
+          "answer": "passwd -u reporting",
+          "hint_text": "Kilitli hesabi tekrar aktif etmek icin `passwd -u` kullan.",
           "hint_partial": "passwd -u ..."
         }
       ]
     },
     {
-      "id": "juserx-021-r96",
+      "id": "jusr-exp-074",
       "type": "single",
-      "scenario": "Kesinti incelemesinde, `ali` kullanicisinin parolasini bir sonraki giriste degismeye zorla.",
+      "scenario": "Deploy oncesi `reporting` kullanicisinin parola aging bilgisini gor.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "passwd -e ali",
-          "hint_text": "Parolayi bir sonraki giriste degismeye zorlamak icin `passwd -e ali` komutunu kullan.",
-          "hint_partial": "passwd -e ..."
+          "answer": "chage -l reporting",
+          "hint_text": "Expiry ve warning politikasini `chage -l` ile gor.",
+          "hint_partial": "chage -l ..."
         }
       ]
     },
     {
-      "id": "juserx-022-r97",
+      "id": "jusr-exp-075",
       "type": "single",
-      "scenario": "Kesinti incelemesinde, `ali` kullanicisi icin maksimum parola suresini 90 gun yap.",
+      "scenario": "Deploy oncesi `reporting` kullanicisinin son login bilgisini gor.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "chage -M 90 ali",
-          "hint_text": "Maksimum parola suresini ayarlamak icin `chage -M 90 ali` komutunu kullan.",
-          "hint_partial": "chage -M ..."
+          "answer": "lastlog -u reporting",
+          "hint_text": "Son login zamanini `lastlog` ile denetle.",
+          "hint_partial": "lastlog -u ..."
         }
       ]
     },
     {
-      "id": "juserx-023-r98",
+      "id": "jusr-exp-076",
       "type": "single",
-      "scenario": "Kesinti incelemesinde, `ali` kullanicisi icin hesap bitis tarihini `2026-12-31` yap.",
+      "scenario": "Deploy oncesi `reporting` ve `support` sahibi olacak sekilde `/srv/reporting` dizinini olustur.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "chage -E 2026-12-31 ali",
-          "hint_text": "Hesap bitis tarihini ayarlamak icin `chage -E 2026-12-31 ali` komutunu kullan.",
-          "hint_partial": "chage -E ..."
+          "answer": "install -d -o reporting -g support /srv/reporting",
+          "hint_text": "Sahiplik vererek dizin olusturmak icin `install -d` kullan.",
+          "hint_partial": "install -d ..."
         }
       ]
     },
     {
-      "id": "juserx-024-r99",
+      "id": "jusr-exp-077",
+      "type": "single",
+      "scenario": "Deploy oncesi `reporting` kullanicisini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "userdel reporting",
+          "hint_text": "Hesabi home dizini kalacak sekilde silmek icin `userdel` kullan.",
+          "hint_partial": "userdel ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-078",
+      "type": "single",
+      "scenario": "Deploy oncesi `reporting` kullanicisini home diziniyle birlikte sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "userdel -r reporting",
+          "hint_text": "Offboarding icin kullaniciyi home'u ile birlikte kaldir.",
+          "hint_partial": "userdel -r ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-079",
       "type": "multi-step",
-      "scenario": "Kesinti incelemesinde, once home diziniyle birlikte `ali` kullanicisini olustur ve sonra kimlik bilgisini goruntule.",
+      "scenario": "Deploy oncesi `reporting` kullanicisini olustur, sonra `support` grubuna ekle.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "useradd -m ali",
-          "hint_text": "Home diziniyle kullanici olusturmak icin `useradd -m ali` komutunu kullan.",
+          "answer": "useradd -m reporting",
+          "hint_text": "Ilk adimda hesabi home dizini ile birlikte ac.",
           "hint_partial": "useradd -m ..."
         },
         {
           "prompt": "$ ",
-          "answer": "id ali",
-          "hint_text": "Olusturulan kullanicinin kimlik bilgisini dogrulamak icin `id ali` komutunu kullan.",
+          "answer": "usermod -aG support reporting",
+          "hint_text": "Ikinci adimda gerekli ek gruba dahil et.",
+          "hint_partial": "usermod -aG ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-080",
+      "type": "multi-step",
+      "scenario": "Deploy oncesi `reporting` kullanicisinin parolasini kilitle, sonra durumunu dogrula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -l reporting",
+          "hint_text": "Ilk adimda parola login'ini kapat.",
+          "hint_partial": "passwd -l ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "passwd -S reporting",
+          "hint_text": "Ikinci adimda kilit durumunu `passwd -S` ile kontrol et.",
+          "hint_partial": "passwd -S ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-081",
+      "type": "single",
+      "scenario": "Audit sirasinda `analytics` kullanicisinin passwd kaydini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getent passwd analytics",
+          "hint_text": "Sistem hesap kaydini gormek icin `getent passwd` kullan.",
+          "hint_partial": "getent passwd ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-082",
+      "type": "single",
+      "scenario": "Audit sirasinda `ops` grubunun kaydini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getent group ops",
+          "hint_text": "Grup kaydini sistem veritabanindan okumak icin `getent group` kullan.",
+          "hint_partial": "getent group ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-083",
+      "type": "single",
+      "scenario": "Audit sirasinda `analytics` kullanicisinin UID, GID ve group bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "id analytics",
+          "hint_text": "Bir hesabin kimlik bilgisini `id` ile goster.",
           "hint_partial": "id ..."
         }
       ]
     },
     {
-      "id": "juserx-025-r100",
-      "type": "multi-step",
-      "scenario": "Kesinti incelemesinde, once `ali` kullanicisini `docker` grubuna ekle ve sonra group uyeliklerini kontrol et.",
+      "id": "jusr-exp-084",
+      "type": "single",
+      "scenario": "Audit sirasinda `analytics` kullanicisinin group uyeliklerini gor.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "usermod -aG docker ali",
-          "hint_text": "Bir kullaniciyi `docker` grubuna eklemek icin `usermod -aG docker ali` komutunu kullan.",
-          "hint_partial": "usermod -aG ..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "groups ali",
-          "hint_text": "Group uyeliklerini dogrulamak icin `groups ali` komutunu kullan.",
+          "answer": "groups analytics",
+          "hint_text": "Kullanicinin gruplarini `groups` ile listele.",
           "hint_partial": "groups ..."
         }
       ]
     },
     {
-      "id": "juserx-001-r101",
+      "id": "jusr-exp-085",
       "type": "single",
-      "scenario": "Yeni acilan hostta, `ali` kullanicisinin sayisal UID bilgisini goruntule.",
+      "scenario": "Audit sirasinda home dizini ile birlikte `analytics` kullanicisini olustur.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "id -u ali",
-          "hint_text": "Bir kullanicinin sayisal UID bilgisini gormek icin `id -u ali` komutunu kullan.",
-          "hint_partial": "id -u ..."
+          "answer": "useradd -m analytics",
+          "hint_text": "Yeni hesabi home dizini ile birlikte acmak icin `useradd -m` kullan.",
+          "hint_partial": "useradd -m ..."
         }
       ]
     },
     {
-      "id": "juserx-002-r102",
+      "id": "jusr-exp-086",
       "type": "single",
-      "scenario": "Yeni acilan hostta, `ali` kullanicisinin sayisal ana group bilgisini goruntule.",
+      "scenario": "Audit sirasinda `analytics` kullanicisi icin parola belirle.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "id -g ali",
-          "hint_text": "Bir kullanicinin sayisal ana group bilgisini gormek icin `id -g ali` komutunu kullan.",
-          "hint_partial": "id -g ..."
+          "answer": "passwd analytics",
+          "hint_text": "Hesaba parola atamak icin `passwd` kullan.",
+          "hint_partial": "passwd ..."
         }
       ]
     },
     {
-      "id": "juserx-003-r103",
+      "id": "jusr-exp-087",
       "type": "single",
-      "scenario": "Yeni acilan hostta, mevcut kullanicinin adini kisa formatta goruntule.",
+      "scenario": "Audit sirasinda `ops` grubunu olustur.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "id -un",
-          "hint_text": "Mevcut kullanicinin adini kisa formatta gormek icin `id -un` komutunu kullan.",
-          "hint_partial": "id -un"
-        }
-      ]
-    },
-    {
-      "id": "juserx-004-r104",
-      "type": "single",
-      "scenario": "Yeni acilan hostta, `ali` kullanicisinin tum group adlarini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "id -Gn ali",
-          "hint_text": "Bir kullanicinin tum group adlarini gormek icin `id -Gn ali` komutunu kullan.",
-          "hint_partial": "id -Gn ..."
-        }
-      ]
-    },
-    {
-      "id": "juserx-005-r105",
-      "type": "single",
-      "scenario": "Yeni acilan hostta, tum passwd kayitlarini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "getent passwd",
-          "hint_text": "Tum passwd kayitlarini gormek icin `getent passwd` komutunu kullan.",
-          "hint_partial": "getent passwd"
-        }
-      ]
-    },
-    {
-      "id": "juserx-006-r106",
-      "type": "single",
-      "scenario": "Yeni acilan hostta, tum group kayitlarini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "getent group",
-          "hint_text": "Tum group kayitlarini gormek icin `getent group` komutunu kullan.",
-          "hint_partial": "getent group"
-        }
-      ]
-    },
-    {
-      "id": "juserx-007-r107",
-      "type": "single",
-      "scenario": "Yeni acilan hostta, son login kayitlarini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "last",
-          "hint_text": "Son login kayitlarini gormek icin `last` komutunu kullan.",
-          "hint_partial": "last"
-        }
-      ]
-    },
-    {
-      "id": "juserx-008-r108",
-      "type": "single",
-      "scenario": "Yeni acilan hostta, tum kullanicilar icin son login bilgisini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "lastlog",
-          "hint_text": "Tum kullanicilarin son login bilgisini gormek icin `lastlog` komutunu kullan.",
-          "hint_partial": "lastlog"
-        }
-      ]
-    },
-    {
-      "id": "juserx-009-r109",
-      "type": "single",
-      "scenario": "Yeni acilan hostta, home dizini ve `/bin/bash` shell'i ile `ali` kullanicisini olustur.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "useradd -m -s /bin/bash ali",
-          "hint_text": "Home dizini ve shell belirleyerek kullanici olusturmak icin `useradd -m -s /bin/bash ali` komutunu kullan.",
-          "hint_partial": "useradd -m -s ..."
-        }
-      ]
-    },
-    {
-      "id": "juserx-010-r110",
-      "type": "single",
-      "scenario": "Yeni acilan hostta, home diziniyle birlikte `ali` kullanicisini olustur ve ilk ek grup olarak `sudo` ata.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "useradd -m -G sudo ali",
-          "hint_text": "Kullaniciyi ilk ek group ile olusturmak icin `useradd -m -G sudo ali` komutunu kullan.",
-          "hint_partial": "useradd -m -G ..."
-        }
-      ]
-    },
-    {
-      "id": "juserx-011-r111",
-      "type": "single",
-      "scenario": "Yeni acilan hostta, comment alaniyla birlikte `ali` kullanicisini olustur.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "useradd -m -c \"Ali Veli\" ali",
-          "hint_text": "Comment alani vererek kullanici olusturmak icin `useradd -m -c \"Ali Veli\" ali` komutunu kullan.",
-          "hint_partial": "useradd -m -c ..."
-        }
-      ]
-    },
-    {
-      "id": "juserx-012-r112",
-      "type": "single",
-      "scenario": "Yeni acilan hostta, `docker` grubunu olustur.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "groupadd docker",
-          "hint_text": "Yeni grup olusturmak icin `groupadd docker` komutunu kullan.",
+          "answer": "groupadd ops",
+          "hint_text": "Yeni grup acmak icin `groupadd` kullan.",
           "hint_partial": "groupadd ..."
         }
       ]
     },
     {
-      "id": "juserx-013-r113",
+      "id": "jusr-exp-088",
       "type": "single",
-      "scenario": "Yeni acilan hostta, `developers` grubunun adini `platform` olarak degistir.",
+      "scenario": "Audit sirasinda `ops` grubunu sil.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "groupmod -n platform developers",
-          "hint_text": "Bir grubun adini degistirmek icin `groupmod -n platform developers` komutunu kullan.",
-          "hint_partial": "groupmod -n ..."
+          "answer": "groupdel ops",
+          "hint_text": "Artik kullanilmayan grubu `groupdel` ile sil.",
+          "hint_partial": "groupdel ..."
         }
       ]
     },
     {
-      "id": "juserx-014-r114",
+      "id": "jusr-exp-089",
       "type": "single",
-      "scenario": "Yeni acilan hostta, `ali` kullanicisini `sudo` grubuna ekle.",
+      "scenario": "Audit sirasinda `analytics` kullanicisini `ops` grubuna ekle.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "usermod -aG sudo ali",
-          "hint_text": "Bir kullaniciyi `sudo` grubuna eklemek icin `usermod -aG sudo ali` komutunu kullan.",
+          "answer": "usermod -aG ops analytics",
+          "hint_text": "Kullaniciyi ek gruba katmak icin `usermod -aG` kullan.",
           "hint_partial": "usermod -aG ..."
         }
       ]
     },
     {
-      "id": "juserx-015-r115",
+      "id": "jusr-exp-090",
       "type": "single",
-      "scenario": "Yeni acilan hostta, `ali` kullanicisini `docker` grubuna ekle.",
+      "scenario": "Audit sirasinda `analytics` kullanicisini `ops` grubundan cikar.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "usermod -aG docker ali",
-          "hint_text": "Bir kullaniciyi `docker` grubuna eklemek icin `usermod -aG docker ali` komutunu kullan.",
-          "hint_partial": "usermod -aG ..."
-        }
-      ]
-    },
-    {
-      "id": "juserx-016-r116",
-      "type": "single",
-      "scenario": "Yeni acilan hostta, `ali` kullanicisini `docker` grubundan cikar.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gpasswd -d ali docker",
-          "hint_text": "Bir kullaniciyi `docker` grubundan cikarmak icin `gpasswd -d ali docker` komutunu kullan.",
+          "answer": "gpasswd -d analytics ops",
+          "hint_text": "Kullaniciyi belirli bir gruptan cikarmak icin `gpasswd -d` kullan.",
           "hint_partial": "gpasswd -d ..."
         }
       ]
     },
     {
-      "id": "juserx-017-r117",
+      "id": "jusr-exp-091",
       "type": "single",
-      "scenario": "Yeni acilan hostta, `ali` kullanicisinin login shell'ini `/bin/zsh` yap.",
+      "scenario": "Audit sirasinda `analytics` kullanicisinin parola durumunu gor.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "usermod -s /bin/zsh ali",
-          "hint_text": "Bir kullanicinin shell'ini degistirmek icin `usermod -s /bin/zsh ali` komutunu kullan.",
-          "hint_partial": "usermod -s ..."
+          "answer": "passwd -S analytics",
+          "hint_text": "Parola kilit durumunu `passwd -S` ile denetle.",
+          "hint_partial": "passwd -S ..."
         }
       ]
     },
     {
-      "id": "juserx-018-r118",
+      "id": "jusr-exp-092",
       "type": "single",
-      "scenario": "Yeni acilan hostta, `ali` kullanicisinin home dizinini tasiyarak `/srv/ali` yap.",
+      "scenario": "Audit sirasinda `analytics` kullanicisinin parolasini kilitle.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "usermod -d /srv/ali -m ali",
-          "hint_text": "Bir kullanicinin home dizinini tasiyarak degistirmek icin `usermod -d /srv/ali -m ali` komutunu kullan.",
-          "hint_partial": "usermod -d ... -m ..."
-        }
-      ]
-    },
-    {
-      "id": "juserx-019-r119",
-      "type": "single",
-      "scenario": "Yeni acilan hostta, `ali` kullanicisinin parolasini kilitle.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "passwd -l ali",
-          "hint_text": "Bir kullanicinin parolasini kilitlemek icin `passwd -l ali` komutunu kullan.",
+          "answer": "passwd -l analytics",
+          "hint_text": "Parola ile girisi kapatmak icin `passwd -l` kullan.",
           "hint_partial": "passwd -l ..."
         }
       ]
     },
     {
-      "id": "juserx-020-r120",
+      "id": "jusr-exp-093",
       "type": "single",
-      "scenario": "Yeni acilan hostta, `ali` kullanicisinin parola kilidini ac.",
+      "scenario": "Audit sirasinda `analytics` kullanicisinin parola kilidini ac.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "passwd -u ali",
-          "hint_text": "Bir kullanicinin parola kilidini acmak icin `passwd -u ali` komutunu kullan.",
+          "answer": "passwd -u analytics",
+          "hint_text": "Kilitli hesabi tekrar aktif etmek icin `passwd -u` kullan.",
           "hint_partial": "passwd -u ..."
         }
       ]
     },
     {
-      "id": "juserx-021-r121",
+      "id": "jusr-exp-094",
       "type": "single",
-      "scenario": "Yeni acilan hostta, `ali` kullanicisinin parolasini bir sonraki giriste degismeye zorla.",
+      "scenario": "Audit sirasinda `analytics` kullanicisinin parola aging bilgisini gor.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "passwd -e ali",
-          "hint_text": "Parolayi bir sonraki giriste degismeye zorlamak icin `passwd -e ali` komutunu kullan.",
-          "hint_partial": "passwd -e ..."
+          "answer": "chage -l analytics",
+          "hint_text": "Expiry ve warning politikasini `chage -l` ile gor.",
+          "hint_partial": "chage -l ..."
         }
       ]
     },
     {
-      "id": "juserx-022-r122",
+      "id": "jusr-exp-095",
       "type": "single",
-      "scenario": "Yeni acilan hostta, `ali` kullanicisi icin maksimum parola suresini 90 gun yap.",
+      "scenario": "Audit sirasinda `analytics` kullanicisinin son login bilgisini gor.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "chage -M 90 ali",
-          "hint_text": "Maksimum parola suresini ayarlamak icin `chage -M 90 ali` komutunu kullan.",
-          "hint_partial": "chage -M ..."
+          "answer": "lastlog -u analytics",
+          "hint_text": "Son login zamanini `lastlog` ile denetle.",
+          "hint_partial": "lastlog -u ..."
         }
       ]
     },
     {
-      "id": "juserx-023-r123",
+      "id": "jusr-exp-096",
       "type": "single",
-      "scenario": "Yeni acilan hostta, `ali` kullanicisi icin hesap bitis tarihini `2026-12-31` yap.",
+      "scenario": "Audit sirasinda `analytics` ve `ops` sahibi olacak sekilde `/srv/analytics` dizinini olustur.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "chage -E 2026-12-31 ali",
-          "hint_text": "Hesap bitis tarihini ayarlamak icin `chage -E 2026-12-31 ali` komutunu kullan.",
-          "hint_partial": "chage -E ..."
+          "answer": "install -d -o analytics -g ops /srv/analytics",
+          "hint_text": "Sahiplik vererek dizin olusturmak icin `install -d` kullan.",
+          "hint_partial": "install -d ..."
         }
       ]
     },
     {
-      "id": "juserx-024-r124",
+      "id": "jusr-exp-097",
+      "type": "single",
+      "scenario": "Audit sirasinda `analytics` kullanicisini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "userdel analytics",
+          "hint_text": "Hesabi home dizini kalacak sekilde silmek icin `userdel` kullan.",
+          "hint_partial": "userdel ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-098",
+      "type": "single",
+      "scenario": "Audit sirasinda `analytics` kullanicisini home diziniyle birlikte sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "userdel -r analytics",
+          "hint_text": "Offboarding icin kullaniciyi home'u ile birlikte kaldir.",
+          "hint_partial": "userdel -r ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-099",
       "type": "multi-step",
-      "scenario": "Yeni acilan hostta, once home diziniyle birlikte `ali` kullanicisini olustur ve sonra kimlik bilgisini goruntule.",
+      "scenario": "Audit sirasinda `analytics` kullanicisini olustur, sonra `ops` grubuna ekle.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "useradd -m ali",
-          "hint_text": "Home diziniyle kullanici olusturmak icin `useradd -m ali` komutunu kullan.",
+          "answer": "useradd -m analytics",
+          "hint_text": "Ilk adimda hesabi home dizini ile birlikte ac.",
           "hint_partial": "useradd -m ..."
         },
         {
           "prompt": "$ ",
-          "answer": "id ali",
-          "hint_text": "Olusturulan kullanicinin kimlik bilgisini dogrulamak icin `id ali` komutunu kullan.",
+          "answer": "usermod -aG ops analytics",
+          "hint_text": "Ikinci adimda gerekli ek gruba dahil et.",
+          "hint_partial": "usermod -aG ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-100",
+      "type": "multi-step",
+      "scenario": "Audit sirasinda `analytics` kullanicisinin parolasini kilitle, sonra durumunu dogrula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -l analytics",
+          "hint_text": "Ilk adimda parola login'ini kapat.",
+          "hint_partial": "passwd -l ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "passwd -S analytics",
+          "hint_text": "Ikinci adimda kilit durumunu `passwd -S` ile kontrol et.",
+          "hint_partial": "passwd -S ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-101",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `ops` kullanicisinin passwd kaydini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getent passwd ops",
+          "hint_text": "Sistem hesap kaydini gormek icin `getent passwd` kullan.",
+          "hint_partial": "getent passwd ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-102",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `infra` grubunun kaydini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getent group infra",
+          "hint_text": "Grup kaydini sistem veritabanindan okumak icin `getent group` kullan.",
+          "hint_partial": "getent group ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-103",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `ops` kullanicisinin UID, GID ve group bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "id ops",
+          "hint_text": "Bir hesabin kimlik bilgisini `id` ile goster.",
           "hint_partial": "id ..."
         }
       ]
     },
     {
-      "id": "juserx-025-r125",
-      "type": "multi-step",
-      "scenario": "Yeni acilan hostta, once `ali` kullanicisini `docker` grubuna ekle ve sonra group uyeliklerini kontrol et.",
+      "id": "jusr-exp-104",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `ops` kullanicisinin group uyeliklerini gor.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "usermod -aG docker ali",
-          "hint_text": "Bir kullaniciyi `docker` grubuna eklemek icin `usermod -aG docker ali` komutunu kullan.",
-          "hint_partial": "usermod -aG ..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "groups ali",
-          "hint_text": "Group uyeliklerini dogrulamak icin `groups ali` komutunu kullan.",
+          "answer": "groups ops",
+          "hint_text": "Kullanicinin gruplarini `groups` ile listele.",
           "hint_partial": "groups ..."
         }
       ]
     },
     {
-      "id": "juserx-001-r126",
+      "id": "jusr-exp-105",
       "type": "single",
-      "scenario": "Runbook adiminda, `ali` kullanicisinin sayisal UID bilgisini goruntule.",
+      "scenario": "Troubleshooting sirasinda home dizini ile birlikte `ops` kullanicisini olustur.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "id -u ali",
-          "hint_text": "Bir kullanicinin sayisal UID bilgisini gormek icin `id -u ali` komutunu kullan.",
-          "hint_partial": "id -u ..."
+          "answer": "useradd -m ops",
+          "hint_text": "Yeni hesabi home dizini ile birlikte acmak icin `useradd -m` kullan.",
+          "hint_partial": "useradd -m ..."
         }
       ]
     },
     {
-      "id": "juserx-002-r127",
+      "id": "jusr-exp-106",
       "type": "single",
-      "scenario": "Runbook adiminda, `ali` kullanicisinin sayisal ana group bilgisini goruntule.",
+      "scenario": "Troubleshooting sirasinda `ops` kullanicisi icin parola belirle.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "id -g ali",
-          "hint_text": "Bir kullanicinin sayisal ana group bilgisini gormek icin `id -g ali` komutunu kullan.",
-          "hint_partial": "id -g ..."
+          "answer": "passwd ops",
+          "hint_text": "Hesaba parola atamak icin `passwd` kullan.",
+          "hint_partial": "passwd ..."
         }
       ]
     },
     {
-      "id": "juserx-003-r128",
+      "id": "jusr-exp-107",
       "type": "single",
-      "scenario": "Runbook adiminda, mevcut kullanicinin adini kisa formatta goruntule.",
+      "scenario": "Troubleshooting sirasinda `infra` grubunu olustur.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "id -un",
-          "hint_text": "Mevcut kullanicinin adini kisa formatta gormek icin `id -un` komutunu kullan.",
-          "hint_partial": "id -un"
-        }
-      ]
-    },
-    {
-      "id": "juserx-004-r129",
-      "type": "single",
-      "scenario": "Runbook adiminda, `ali` kullanicisinin tum group adlarini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "id -Gn ali",
-          "hint_text": "Bir kullanicinin tum group adlarini gormek icin `id -Gn ali` komutunu kullan.",
-          "hint_partial": "id -Gn ..."
-        }
-      ]
-    },
-    {
-      "id": "juserx-005-r130",
-      "type": "single",
-      "scenario": "Runbook adiminda, tum passwd kayitlarini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "getent passwd",
-          "hint_text": "Tum passwd kayitlarini gormek icin `getent passwd` komutunu kullan.",
-          "hint_partial": "getent passwd"
-        }
-      ]
-    },
-    {
-      "id": "juserx-006-r131",
-      "type": "single",
-      "scenario": "Runbook adiminda, tum group kayitlarini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "getent group",
-          "hint_text": "Tum group kayitlarini gormek icin `getent group` komutunu kullan.",
-          "hint_partial": "getent group"
-        }
-      ]
-    },
-    {
-      "id": "juserx-007-r132",
-      "type": "single",
-      "scenario": "Runbook adiminda, son login kayitlarini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "last",
-          "hint_text": "Son login kayitlarini gormek icin `last` komutunu kullan.",
-          "hint_partial": "last"
-        }
-      ]
-    },
-    {
-      "id": "juserx-008-r133",
-      "type": "single",
-      "scenario": "Runbook adiminda, tum kullanicilar icin son login bilgisini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "lastlog",
-          "hint_text": "Tum kullanicilarin son login bilgisini gormek icin `lastlog` komutunu kullan.",
-          "hint_partial": "lastlog"
-        }
-      ]
-    },
-    {
-      "id": "juserx-009-r134",
-      "type": "single",
-      "scenario": "Runbook adiminda, home dizini ve `/bin/bash` shell'i ile `ali` kullanicisini olustur.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "useradd -m -s /bin/bash ali",
-          "hint_text": "Home dizini ve shell belirleyerek kullanici olusturmak icin `useradd -m -s /bin/bash ali` komutunu kullan.",
-          "hint_partial": "useradd -m -s ..."
-        }
-      ]
-    },
-    {
-      "id": "juserx-010-r135",
-      "type": "single",
-      "scenario": "Runbook adiminda, home diziniyle birlikte `ali` kullanicisini olustur ve ilk ek grup olarak `sudo` ata.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "useradd -m -G sudo ali",
-          "hint_text": "Kullaniciyi ilk ek group ile olusturmak icin `useradd -m -G sudo ali` komutunu kullan.",
-          "hint_partial": "useradd -m -G ..."
-        }
-      ]
-    },
-    {
-      "id": "juserx-011-r136",
-      "type": "single",
-      "scenario": "Runbook adiminda, comment alaniyla birlikte `ali` kullanicisini olustur.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "useradd -m -c \"Ali Veli\" ali",
-          "hint_text": "Comment alani vererek kullanici olusturmak icin `useradd -m -c \"Ali Veli\" ali` komutunu kullan.",
-          "hint_partial": "useradd -m -c ..."
-        }
-      ]
-    },
-    {
-      "id": "juserx-012-r137",
-      "type": "single",
-      "scenario": "Runbook adiminda, `docker` grubunu olustur.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "groupadd docker",
-          "hint_text": "Yeni grup olusturmak icin `groupadd docker` komutunu kullan.",
+          "answer": "groupadd infra",
+          "hint_text": "Yeni grup acmak icin `groupadd` kullan.",
           "hint_partial": "groupadd ..."
         }
       ]
     },
     {
-      "id": "juserx-013-r138",
+      "id": "jusr-exp-108",
       "type": "single",
-      "scenario": "Runbook adiminda, `developers` grubunun adini `platform` olarak degistir.",
+      "scenario": "Troubleshooting sirasinda `infra` grubunu sil.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "groupmod -n platform developers",
-          "hint_text": "Bir grubun adini degistirmek icin `groupmod -n platform developers` komutunu kullan.",
-          "hint_partial": "groupmod -n ..."
+          "answer": "groupdel infra",
+          "hint_text": "Artik kullanilmayan grubu `groupdel` ile sil.",
+          "hint_partial": "groupdel ..."
         }
       ]
     },
     {
-      "id": "juserx-014-r139",
+      "id": "jusr-exp-109",
       "type": "single",
-      "scenario": "Runbook adiminda, `ali` kullanicisini `sudo` grubuna ekle.",
+      "scenario": "Troubleshooting sirasinda `ops` kullanicisini `infra` grubuna ekle.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "usermod -aG sudo ali",
-          "hint_text": "Bir kullaniciyi `sudo` grubuna eklemek icin `usermod -aG sudo ali` komutunu kullan.",
+          "answer": "usermod -aG infra ops",
+          "hint_text": "Kullaniciyi ek gruba katmak icin `usermod -aG` kullan.",
           "hint_partial": "usermod -aG ..."
         }
       ]
     },
     {
-      "id": "juserx-015-r140",
+      "id": "jusr-exp-110",
       "type": "single",
-      "scenario": "Runbook adiminda, `ali` kullanicisini `docker` grubuna ekle.",
+      "scenario": "Troubleshooting sirasinda `ops` kullanicisini `infra` grubundan cikar.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "usermod -aG docker ali",
-          "hint_text": "Bir kullaniciyi `docker` grubuna eklemek icin `usermod -aG docker ali` komutunu kullan.",
-          "hint_partial": "usermod -aG ..."
-        }
-      ]
-    },
-    {
-      "id": "juserx-016-r141",
-      "type": "single",
-      "scenario": "Runbook adiminda, `ali` kullanicisini `docker` grubundan cikar.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gpasswd -d ali docker",
-          "hint_text": "Bir kullaniciyi `docker` grubundan cikarmak icin `gpasswd -d ali docker` komutunu kullan.",
+          "answer": "gpasswd -d ops infra",
+          "hint_text": "Kullaniciyi belirli bir gruptan cikarmak icin `gpasswd -d` kullan.",
           "hint_partial": "gpasswd -d ..."
         }
       ]
     },
     {
-      "id": "juserx-017-r142",
+      "id": "jusr-exp-111",
       "type": "single",
-      "scenario": "Runbook adiminda, `ali` kullanicisinin login shell'ini `/bin/zsh` yap.",
+      "scenario": "Troubleshooting sirasinda `ops` kullanicisinin parola durumunu gor.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "usermod -s /bin/zsh ali",
-          "hint_text": "Bir kullanicinin shell'ini degistirmek icin `usermod -s /bin/zsh ali` komutunu kullan.",
-          "hint_partial": "usermod -s ..."
+          "answer": "passwd -S ops",
+          "hint_text": "Parola kilit durumunu `passwd -S` ile denetle.",
+          "hint_partial": "passwd -S ..."
         }
       ]
     },
     {
-      "id": "juserx-018-r143",
+      "id": "jusr-exp-112",
       "type": "single",
-      "scenario": "Runbook adiminda, `ali` kullanicisinin home dizinini tasiyarak `/srv/ali` yap.",
+      "scenario": "Troubleshooting sirasinda `ops` kullanicisinin parolasini kilitle.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "usermod -d /srv/ali -m ali",
-          "hint_text": "Bir kullanicinin home dizinini tasiyarak degistirmek icin `usermod -d /srv/ali -m ali` komutunu kullan.",
-          "hint_partial": "usermod -d ... -m ..."
-        }
-      ]
-    },
-    {
-      "id": "juserx-019-r144",
-      "type": "single",
-      "scenario": "Runbook adiminda, `ali` kullanicisinin parolasini kilitle.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "passwd -l ali",
-          "hint_text": "Bir kullanicinin parolasini kilitlemek icin `passwd -l ali` komutunu kullan.",
+          "answer": "passwd -l ops",
+          "hint_text": "Parola ile girisi kapatmak icin `passwd -l` kullan.",
           "hint_partial": "passwd -l ..."
         }
       ]
     },
     {
-      "id": "juserx-020-r145",
+      "id": "jusr-exp-113",
       "type": "single",
-      "scenario": "Runbook adiminda, `ali` kullanicisinin parola kilidini ac.",
+      "scenario": "Troubleshooting sirasinda `ops` kullanicisinin parola kilidini ac.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "passwd -u ali",
-          "hint_text": "Bir kullanicinin parola kilidini acmak icin `passwd -u ali` komutunu kullan.",
+          "answer": "passwd -u ops",
+          "hint_text": "Kilitli hesabi tekrar aktif etmek icin `passwd -u` kullan.",
           "hint_partial": "passwd -u ..."
         }
       ]
     },
     {
-      "id": "juserx-021-r146",
+      "id": "jusr-exp-114",
       "type": "single",
-      "scenario": "Runbook adiminda, `ali` kullanicisinin parolasini bir sonraki giriste degismeye zorla.",
+      "scenario": "Troubleshooting sirasinda `ops` kullanicisinin parola aging bilgisini gor.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "passwd -e ali",
-          "hint_text": "Parolayi bir sonraki giriste degismeye zorlamak icin `passwd -e ali` komutunu kullan.",
-          "hint_partial": "passwd -e ..."
+          "answer": "chage -l ops",
+          "hint_text": "Expiry ve warning politikasini `chage -l` ile gor.",
+          "hint_partial": "chage -l ..."
         }
       ]
     },
     {
-      "id": "juserx-022-r147",
+      "id": "jusr-exp-115",
       "type": "single",
-      "scenario": "Runbook adiminda, `ali` kullanicisi icin maksimum parola suresini 90 gun yap.",
+      "scenario": "Troubleshooting sirasinda `ops` kullanicisinin son login bilgisini gor.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "chage -M 90 ali",
-          "hint_text": "Maksimum parola suresini ayarlamak icin `chage -M 90 ali` komutunu kullan.",
-          "hint_partial": "chage -M ..."
+          "answer": "lastlog -u ops",
+          "hint_text": "Son login zamanini `lastlog` ile denetle.",
+          "hint_partial": "lastlog -u ..."
         }
       ]
     },
     {
-      "id": "juserx-023-r148",
+      "id": "jusr-exp-116",
       "type": "single",
-      "scenario": "Runbook adiminda, `ali` kullanicisi icin hesap bitis tarihini `2026-12-31` yap.",
+      "scenario": "Troubleshooting sirasinda `ops` ve `infra` sahibi olacak sekilde `/srv/ops` dizinini olustur.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "chage -E 2026-12-31 ali",
-          "hint_text": "Hesap bitis tarihini ayarlamak icin `chage -E 2026-12-31 ali` komutunu kullan.",
-          "hint_partial": "chage -E ..."
+          "answer": "install -d -o ops -g infra /srv/ops",
+          "hint_text": "Sahiplik vererek dizin olusturmak icin `install -d` kullan.",
+          "hint_partial": "install -d ..."
         }
       ]
     },
     {
-      "id": "juserx-024-r149",
+      "id": "jusr-exp-117",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `ops` kullanicisini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "userdel ops",
+          "hint_text": "Hesabi home dizini kalacak sekilde silmek icin `userdel` kullan.",
+          "hint_partial": "userdel ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-118",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `ops` kullanicisini home diziniyle birlikte sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "userdel -r ops",
+          "hint_text": "Offboarding icin kullaniciyi home'u ile birlikte kaldir.",
+          "hint_partial": "userdel -r ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-119",
       "type": "multi-step",
-      "scenario": "Runbook adiminda, once home diziniyle birlikte `ali` kullanicisini olustur ve sonra kimlik bilgisini goruntule.",
+      "scenario": "Troubleshooting sirasinda `ops` kullanicisini olustur, sonra `infra` grubuna ekle.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "useradd -m ali",
-          "hint_text": "Home diziniyle kullanici olusturmak icin `useradd -m ali` komutunu kullan.",
+          "answer": "useradd -m ops",
+          "hint_text": "Ilk adimda hesabi home dizini ile birlikte ac.",
           "hint_partial": "useradd -m ..."
         },
         {
           "prompt": "$ ",
-          "answer": "id ali",
-          "hint_text": "Olusturulan kullanicinin kimlik bilgisini dogrulamak icin `id ali` komutunu kullan.",
+          "answer": "usermod -aG infra ops",
+          "hint_text": "Ikinci adimda gerekli ek gruba dahil et.",
+          "hint_partial": "usermod -aG ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-120",
+      "type": "multi-step",
+      "scenario": "Troubleshooting sirasinda `ops` kullanicisinin parolasini kilitle, sonra durumunu dogrula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -l ops",
+          "hint_text": "Ilk adimda parola login'ini kapat.",
+          "hint_partial": "passwd -l ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "passwd -S ops",
+          "hint_text": "Ikinci adimda kilit durumunu `passwd -S` ile kontrol et.",
+          "hint_partial": "passwd -S ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-121",
+      "type": "single",
+      "scenario": "Release kontrolunde `api` kullanicisinin passwd kaydini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getent passwd api",
+          "hint_text": "Sistem hesap kaydini gormek icin `getent passwd` kullan.",
+          "hint_partial": "getent passwd ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-122",
+      "type": "single",
+      "scenario": "Release kontrolunde `ci` grubunun kaydini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getent group ci",
+          "hint_text": "Grup kaydini sistem veritabanindan okumak icin `getent group` kullan.",
+          "hint_partial": "getent group ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-123",
+      "type": "single",
+      "scenario": "Release kontrolunde `api` kullanicisinin UID, GID ve group bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "id api",
+          "hint_text": "Bir hesabin kimlik bilgisini `id` ile goster.",
           "hint_partial": "id ..."
         }
       ]
     },
     {
-      "id": "juserx-025-r150",
-      "type": "multi-step",
-      "scenario": "Runbook adiminda, once `ali` kullanicisini `docker` grubuna ekle ve sonra group uyeliklerini kontrol et.",
+      "id": "jusr-exp-124",
+      "type": "single",
+      "scenario": "Release kontrolunde `api` kullanicisinin group uyeliklerini gor.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "usermod -aG docker ali",
-          "hint_text": "Bir kullaniciyi `docker` grubuna eklemek icin `usermod -aG docker ali` komutunu kullan.",
-          "hint_partial": "usermod -aG ..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "groups ali",
-          "hint_text": "Group uyeliklerini dogrulamak icin `groups ali` komutunu kullan.",
+          "answer": "groups api",
+          "hint_text": "Kullanicinin gruplarini `groups` ile listele.",
           "hint_partial": "groups ..."
         }
       ]
     },
     {
-      "id": "juserx-001-r151",
+      "id": "jusr-exp-125",
       "type": "single",
-      "scenario": "Operasyon kontrolunde, `ali` kullanicisinin sayisal UID bilgisini goruntule.",
+      "scenario": "Release kontrolunde home dizini ile birlikte `api` kullanicisini olustur.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "id -u ali",
-          "hint_text": "Bir kullanicinin sayisal UID bilgisini gormek icin `id -u ali` komutunu kullan.",
-          "hint_partial": "id -u ..."
+          "answer": "useradd -m api",
+          "hint_text": "Yeni hesabi home dizini ile birlikte acmak icin `useradd -m` kullan.",
+          "hint_partial": "useradd -m ..."
         }
       ]
     },
     {
-      "id": "juserx-002-r152",
+      "id": "jusr-exp-126",
       "type": "single",
-      "scenario": "Operasyon kontrolunde, `ali` kullanicisinin sayisal ana group bilgisini goruntule.",
+      "scenario": "Release kontrolunde `api` kullanicisi icin parola belirle.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "id -g ali",
-          "hint_text": "Bir kullanicinin sayisal ana group bilgisini gormek icin `id -g ali` komutunu kullan.",
-          "hint_partial": "id -g ..."
+          "answer": "passwd api",
+          "hint_text": "Hesaba parola atamak icin `passwd` kullan.",
+          "hint_partial": "passwd ..."
         }
       ]
     },
     {
-      "id": "juserx-003-r153",
+      "id": "jusr-exp-127",
       "type": "single",
-      "scenario": "Operasyon kontrolunde, mevcut kullanicinin adini kisa formatta goruntule.",
+      "scenario": "Release kontrolunde `ci` grubunu olustur.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "id -un",
-          "hint_text": "Mevcut kullanicinin adini kisa formatta gormek icin `id -un` komutunu kullan.",
-          "hint_partial": "id -un"
-        }
-      ]
-    },
-    {
-      "id": "juserx-004-r154",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde, `ali` kullanicisinin tum group adlarini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "id -Gn ali",
-          "hint_text": "Bir kullanicinin tum group adlarini gormek icin `id -Gn ali` komutunu kullan.",
-          "hint_partial": "id -Gn ..."
-        }
-      ]
-    },
-    {
-      "id": "juserx-005-r155",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde, tum passwd kayitlarini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "getent passwd",
-          "hint_text": "Tum passwd kayitlarini gormek icin `getent passwd` komutunu kullan.",
-          "hint_partial": "getent passwd"
-        }
-      ]
-    },
-    {
-      "id": "juserx-006-r156",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde, tum group kayitlarini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "getent group",
-          "hint_text": "Tum group kayitlarini gormek icin `getent group` komutunu kullan.",
-          "hint_partial": "getent group"
-        }
-      ]
-    },
-    {
-      "id": "juserx-007-r157",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde, son login kayitlarini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "last",
-          "hint_text": "Son login kayitlarini gormek icin `last` komutunu kullan.",
-          "hint_partial": "last"
-        }
-      ]
-    },
-    {
-      "id": "juserx-008-r158",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde, tum kullanicilar icin son login bilgisini goruntule.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "lastlog",
-          "hint_text": "Tum kullanicilarin son login bilgisini gormek icin `lastlog` komutunu kullan.",
-          "hint_partial": "lastlog"
-        }
-      ]
-    },
-    {
-      "id": "juserx-009-r159",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde, home dizini ve `/bin/bash` shell'i ile `ali` kullanicisini olustur.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "useradd -m -s /bin/bash ali",
-          "hint_text": "Home dizini ve shell belirleyerek kullanici olusturmak icin `useradd -m -s /bin/bash ali` komutunu kullan.",
-          "hint_partial": "useradd -m -s ..."
-        }
-      ]
-    },
-    {
-      "id": "juserx-010-r160",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde, home diziniyle birlikte `ali` kullanicisini olustur ve ilk ek grup olarak `sudo` ata.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "useradd -m -G sudo ali",
-          "hint_text": "Kullaniciyi ilk ek group ile olusturmak icin `useradd -m -G sudo ali` komutunu kullan.",
-          "hint_partial": "useradd -m -G ..."
-        }
-      ]
-    },
-    {
-      "id": "juserx-011-r161",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde, comment alaniyla birlikte `ali` kullanicisini olustur.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "useradd -m -c \"Ali Veli\" ali",
-          "hint_text": "Comment alani vererek kullanici olusturmak icin `useradd -m -c \"Ali Veli\" ali` komutunu kullan.",
-          "hint_partial": "useradd -m -c ..."
-        }
-      ]
-    },
-    {
-      "id": "juserx-012-r162",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde, `docker` grubunu olustur.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "groupadd docker",
-          "hint_text": "Yeni grup olusturmak icin `groupadd docker` komutunu kullan.",
+          "answer": "groupadd ci",
+          "hint_text": "Yeni grup acmak icin `groupadd` kullan.",
           "hint_partial": "groupadd ..."
         }
       ]
     },
     {
-      "id": "juserx-013-r163",
+      "id": "jusr-exp-128",
       "type": "single",
-      "scenario": "Operasyon kontrolunde, `developers` grubunun adini `platform` olarak degistir.",
+      "scenario": "Release kontrolunde `ci` grubunu sil.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "groupmod -n platform developers",
-          "hint_text": "Bir grubun adini degistirmek icin `groupmod -n platform developers` komutunu kullan.",
-          "hint_partial": "groupmod -n ..."
+          "answer": "groupdel ci",
+          "hint_text": "Artik kullanilmayan grubu `groupdel` ile sil.",
+          "hint_partial": "groupdel ..."
         }
       ]
     },
     {
-      "id": "juserx-014-r164",
+      "id": "jusr-exp-129",
       "type": "single",
-      "scenario": "Operasyon kontrolunde, `ali` kullanicisini `sudo` grubuna ekle.",
+      "scenario": "Release kontrolunde `api` kullanicisini `ci` grubuna ekle.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "usermod -aG sudo ali",
-          "hint_text": "Bir kullaniciyi `sudo` grubuna eklemek icin `usermod -aG sudo ali` komutunu kullan.",
+          "answer": "usermod -aG ci api",
+          "hint_text": "Kullaniciyi ek gruba katmak icin `usermod -aG` kullan.",
           "hint_partial": "usermod -aG ..."
         }
       ]
     },
     {
-      "id": "juserx-015-r165",
+      "id": "jusr-exp-130",
       "type": "single",
-      "scenario": "Operasyon kontrolunde, `ali` kullanicisini `docker` grubuna ekle.",
+      "scenario": "Release kontrolunde `api` kullanicisini `ci` grubundan cikar.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "usermod -aG docker ali",
-          "hint_text": "Bir kullaniciyi `docker` grubuna eklemek icin `usermod -aG docker ali` komutunu kullan.",
-          "hint_partial": "usermod -aG ..."
-        }
-      ]
-    },
-    {
-      "id": "juserx-016-r166",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde, `ali` kullanicisini `docker` grubundan cikar.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gpasswd -d ali docker",
-          "hint_text": "Bir kullaniciyi `docker` grubundan cikarmak icin `gpasswd -d ali docker` komutunu kullan.",
+          "answer": "gpasswd -d api ci",
+          "hint_text": "Kullaniciyi belirli bir gruptan cikarmak icin `gpasswd -d` kullan.",
           "hint_partial": "gpasswd -d ..."
         }
       ]
     },
     {
-      "id": "juserx-017-r167",
+      "id": "jusr-exp-131",
       "type": "single",
-      "scenario": "Operasyon kontrolunde, `ali` kullanicisinin login shell'ini `/bin/zsh` yap.",
+      "scenario": "Release kontrolunde `api` kullanicisinin parola durumunu gor.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "usermod -s /bin/zsh ali",
-          "hint_text": "Bir kullanicinin shell'ini degistirmek icin `usermod -s /bin/zsh ali` komutunu kullan.",
-          "hint_partial": "usermod -s ..."
+          "answer": "passwd -S api",
+          "hint_text": "Parola kilit durumunu `passwd -S` ile denetle.",
+          "hint_partial": "passwd -S ..."
         }
       ]
     },
     {
-      "id": "juserx-018-r168",
+      "id": "jusr-exp-132",
       "type": "single",
-      "scenario": "Operasyon kontrolunde, `ali` kullanicisinin home dizinini tasiyarak `/srv/ali` yap.",
+      "scenario": "Release kontrolunde `api` kullanicisinin parolasini kilitle.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "usermod -d /srv/ali -m ali",
-          "hint_text": "Bir kullanicinin home dizinini tasiyarak degistirmek icin `usermod -d /srv/ali -m ali` komutunu kullan.",
-          "hint_partial": "usermod -d ... -m ..."
-        }
-      ]
-    },
-    {
-      "id": "juserx-019-r169",
-      "type": "single",
-      "scenario": "Operasyon kontrolunde, `ali` kullanicisinin parolasini kilitle.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "passwd -l ali",
-          "hint_text": "Bir kullanicinin parolasini kilitlemek icin `passwd -l ali` komutunu kullan.",
+          "answer": "passwd -l api",
+          "hint_text": "Parola ile girisi kapatmak icin `passwd -l` kullan.",
           "hint_partial": "passwd -l ..."
         }
       ]
     },
     {
-      "id": "juserx-020-r170",
+      "id": "jusr-exp-133",
       "type": "single",
-      "scenario": "Operasyon kontrolunde, `ali` kullanicisinin parola kilidini ac.",
+      "scenario": "Release kontrolunde `api` kullanicisinin parola kilidini ac.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "passwd -u ali",
-          "hint_text": "Bir kullanicinin parola kilidini acmak icin `passwd -u ali` komutunu kullan.",
+          "answer": "passwd -u api",
+          "hint_text": "Kilitli hesabi tekrar aktif etmek icin `passwd -u` kullan.",
           "hint_partial": "passwd -u ..."
         }
       ]
     },
     {
-      "id": "juserx-021-r171",
+      "id": "jusr-exp-134",
       "type": "single",
-      "scenario": "Operasyon kontrolunde, `ali` kullanicisinin parolasini bir sonraki giriste degismeye zorla.",
+      "scenario": "Release kontrolunde `api` kullanicisinin parola aging bilgisini gor.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "passwd -e ali",
-          "hint_text": "Parolayi bir sonraki giriste degismeye zorlamak icin `passwd -e ali` komutunu kullan.",
-          "hint_partial": "passwd -e ..."
+          "answer": "chage -l api",
+          "hint_text": "Expiry ve warning politikasini `chage -l` ile gor.",
+          "hint_partial": "chage -l ..."
         }
       ]
     },
     {
-      "id": "juserx-022-r172",
+      "id": "jusr-exp-135",
       "type": "single",
-      "scenario": "Operasyon kontrolunde, `ali` kullanicisi icin maksimum parola suresini 90 gun yap.",
+      "scenario": "Release kontrolunde `api` kullanicisinin son login bilgisini gor.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "chage -M 90 ali",
-          "hint_text": "Maksimum parola suresini ayarlamak icin `chage -M 90 ali` komutunu kullan.",
-          "hint_partial": "chage -M ..."
+          "answer": "lastlog -u api",
+          "hint_text": "Son login zamanini `lastlog` ile denetle.",
+          "hint_partial": "lastlog -u ..."
         }
       ]
     },
     {
-      "id": "juserx-023-r173",
+      "id": "jusr-exp-136",
       "type": "single",
-      "scenario": "Operasyon kontrolunde, `ali` kullanicisi icin hesap bitis tarihini `2026-12-31` yap.",
+      "scenario": "Release kontrolunde `api` ve `ci` sahibi olacak sekilde `/srv/api` dizinini olustur.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "chage -E 2026-12-31 ali",
-          "hint_text": "Hesap bitis tarihini ayarlamak icin `chage -E 2026-12-31 ali` komutunu kullan.",
-          "hint_partial": "chage -E ..."
+          "answer": "install -d -o api -g ci /srv/api",
+          "hint_text": "Sahiplik vererek dizin olusturmak icin `install -d` kullan.",
+          "hint_partial": "install -d ..."
         }
       ]
     },
     {
-      "id": "juserx-024-r174",
+      "id": "jusr-exp-137",
+      "type": "single",
+      "scenario": "Release kontrolunde `api` kullanicisini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "userdel api",
+          "hint_text": "Hesabi home dizini kalacak sekilde silmek icin `userdel` kullan.",
+          "hint_partial": "userdel ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-138",
+      "type": "single",
+      "scenario": "Release kontrolunde `api` kullanicisini home diziniyle birlikte sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "userdel -r api",
+          "hint_text": "Offboarding icin kullaniciyi home'u ile birlikte kaldir.",
+          "hint_partial": "userdel -r ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-139",
       "type": "multi-step",
-      "scenario": "Operasyon kontrolunde, once home diziniyle birlikte `ali` kullanicisini olustur ve sonra kimlik bilgisini goruntule.",
+      "scenario": "Release kontrolunde `api` kullanicisini olustur, sonra `ci` grubuna ekle.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "useradd -m ali",
-          "hint_text": "Home diziniyle kullanici olusturmak icin `useradd -m ali` komutunu kullan.",
+          "answer": "useradd -m api",
+          "hint_text": "Ilk adimda hesabi home dizini ile birlikte ac.",
           "hint_partial": "useradd -m ..."
         },
         {
           "prompt": "$ ",
-          "answer": "id ali",
-          "hint_text": "Olusturulan kullanicinin kimlik bilgisini dogrulamak icin `id ali` komutunu kullan.",
+          "answer": "usermod -aG ci api",
+          "hint_text": "Ikinci adimda gerekli ek gruba dahil et.",
+          "hint_partial": "usermod -aG ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-140",
+      "type": "multi-step",
+      "scenario": "Release kontrolunde `api` kullanicisinin parolasini kilitle, sonra durumunu dogrula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -l api",
+          "hint_text": "Ilk adimda parola login'ini kapat.",
+          "hint_partial": "passwd -l ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "passwd -S api",
+          "hint_text": "Ikinci adimda kilit durumunu `passwd -S` ile kontrol et.",
+          "hint_partial": "passwd -S ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-141",
+      "type": "single",
+      "scenario": "Operasyon devrinde `worker` kullanicisinin passwd kaydini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getent passwd worker",
+          "hint_text": "Sistem hesap kaydini gormek icin `getent passwd` kullan.",
+          "hint_partial": "getent passwd ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-142",
+      "type": "single",
+      "scenario": "Operasyon devrinde `backup` grubunun kaydini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getent group backup",
+          "hint_text": "Grup kaydini sistem veritabanindan okumak icin `getent group` kullan.",
+          "hint_partial": "getent group ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-143",
+      "type": "single",
+      "scenario": "Operasyon devrinde `worker` kullanicisinin UID, GID ve group bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "id worker",
+          "hint_text": "Bir hesabin kimlik bilgisini `id` ile goster.",
           "hint_partial": "id ..."
         }
       ]
     },
     {
-      "id": "juserx-025-r175",
-      "type": "multi-step",
-      "scenario": "Operasyon kontrolunde, once `ali` kullanicisini `docker` grubuna ekle ve sonra group uyeliklerini kontrol et.",
+      "id": "jusr-exp-144",
+      "type": "single",
+      "scenario": "Operasyon devrinde `worker` kullanicisinin group uyeliklerini gor.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "usermod -aG docker ali",
-          "hint_text": "Bir kullaniciyi `docker` grubuna eklemek icin `usermod -aG docker ali` komutunu kullan.",
+          "answer": "groups worker",
+          "hint_text": "Kullanicinin gruplarini `groups` ile listele.",
+          "hint_partial": "groups ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-145",
+      "type": "single",
+      "scenario": "Operasyon devrinde home dizini ile birlikte `worker` kullanicisini olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "useradd -m worker",
+          "hint_text": "Yeni hesabi home dizini ile birlikte acmak icin `useradd -m` kullan.",
+          "hint_partial": "useradd -m ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-146",
+      "type": "single",
+      "scenario": "Operasyon devrinde `worker` kullanicisi icin parola belirle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd worker",
+          "hint_text": "Hesaba parola atamak icin `passwd` kullan.",
+          "hint_partial": "passwd ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-147",
+      "type": "single",
+      "scenario": "Operasyon devrinde `backup` grubunu olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "groupadd backup",
+          "hint_text": "Yeni grup acmak icin `groupadd` kullan.",
+          "hint_partial": "groupadd ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-148",
+      "type": "single",
+      "scenario": "Operasyon devrinde `backup` grubunu sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "groupdel backup",
+          "hint_text": "Artik kullanilmayan grubu `groupdel` ile sil.",
+          "hint_partial": "groupdel ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-149",
+      "type": "single",
+      "scenario": "Operasyon devrinde `worker` kullanicisini `backup` grubuna ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "usermod -aG backup worker",
+          "hint_text": "Kullaniciyi ek gruba katmak icin `usermod -aG` kullan.",
           "hint_partial": "usermod -aG ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-150",
+      "type": "single",
+      "scenario": "Operasyon devrinde `worker` kullanicisini `backup` grubundan cikar.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gpasswd -d worker backup",
+          "hint_text": "Kullaniciyi belirli bir gruptan cikarmak icin `gpasswd -d` kullan.",
+          "hint_partial": "gpasswd -d ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-151",
+      "type": "single",
+      "scenario": "Operasyon devrinde `worker` kullanicisinin parola durumunu gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -S worker",
+          "hint_text": "Parola kilit durumunu `passwd -S` ile denetle.",
+          "hint_partial": "passwd -S ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-152",
+      "type": "single",
+      "scenario": "Operasyon devrinde `worker` kullanicisinin parolasini kilitle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -l worker",
+          "hint_text": "Parola ile girisi kapatmak icin `passwd -l` kullan.",
+          "hint_partial": "passwd -l ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-153",
+      "type": "single",
+      "scenario": "Operasyon devrinde `worker` kullanicisinin parola kilidini ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -u worker",
+          "hint_text": "Kilitli hesabi tekrar aktif etmek icin `passwd -u` kullan.",
+          "hint_partial": "passwd -u ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-154",
+      "type": "single",
+      "scenario": "Operasyon devrinde `worker` kullanicisinin parola aging bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -l worker",
+          "hint_text": "Expiry ve warning politikasini `chage -l` ile gor.",
+          "hint_partial": "chage -l ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-155",
+      "type": "single",
+      "scenario": "Operasyon devrinde `worker` kullanicisinin son login bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lastlog -u worker",
+          "hint_text": "Son login zamanini `lastlog` ile denetle.",
+          "hint_partial": "lastlog -u ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-156",
+      "type": "single",
+      "scenario": "Operasyon devrinde `worker` ve `backup` sahibi olacak sekilde `/srv/worker` dizinini olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "install -d -o worker -g backup /srv/worker",
+          "hint_text": "Sahiplik vererek dizin olusturmak icin `install -d` kullan.",
+          "hint_partial": "install -d ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-157",
+      "type": "single",
+      "scenario": "Operasyon devrinde `worker` kullanicisini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "userdel worker",
+          "hint_text": "Hesabi home dizini kalacak sekilde silmek icin `userdel` kullan.",
+          "hint_partial": "userdel ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-158",
+      "type": "single",
+      "scenario": "Operasyon devrinde `worker` kullanicisini home diziniyle birlikte sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "userdel -r worker",
+          "hint_text": "Offboarding icin kullaniciyi home'u ile birlikte kaldir.",
+          "hint_partial": "userdel -r ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-159",
+      "type": "multi-step",
+      "scenario": "Operasyon devrinde `worker` kullanicisini olustur, sonra `backup` grubuna ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "useradd -m worker",
+          "hint_text": "Ilk adimda hesabi home dizini ile birlikte ac.",
+          "hint_partial": "useradd -m ..."
         },
         {
           "prompt": "$ ",
-          "answer": "groups ali",
-          "hint_text": "Group uyeliklerini dogrulamak icin `groups ali` komutunu kullan.",
+          "answer": "usermod -aG backup worker",
+          "hint_text": "Ikinci adimda gerekli ek gruba dahil et.",
+          "hint_partial": "usermod -aG ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-160",
+      "type": "multi-step",
+      "scenario": "Operasyon devrinde `worker` kullanicisinin parolasini kilitle, sonra durumunu dogrula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -l worker",
+          "hint_text": "Ilk adimda parola login'ini kapat.",
+          "hint_partial": "passwd -l ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "passwd -S worker",
+          "hint_text": "Ikinci adimda kilit durumunu `passwd -S` ile kontrol et.",
+          "hint_partial": "passwd -S ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-161",
+      "type": "single",
+      "scenario": "On-call gorevinde `support` kullanicisinin passwd kaydini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getent passwd support",
+          "hint_text": "Sistem hesap kaydini gormek icin `getent passwd` kullan.",
+          "hint_partial": "getent passwd ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-162",
+      "type": "single",
+      "scenario": "On-call gorevinde `readonly` grubunun kaydini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getent group readonly",
+          "hint_text": "Grup kaydini sistem veritabanindan okumak icin `getent group` kullan.",
+          "hint_partial": "getent group ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-163",
+      "type": "single",
+      "scenario": "On-call gorevinde `support` kullanicisinin UID, GID ve group bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "id support",
+          "hint_text": "Bir hesabin kimlik bilgisini `id` ile goster.",
+          "hint_partial": "id ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-164",
+      "type": "single",
+      "scenario": "On-call gorevinde `support` kullanicisinin group uyeliklerini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "groups support",
+          "hint_text": "Kullanicinin gruplarini `groups` ile listele.",
           "hint_partial": "groups ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-165",
+      "type": "single",
+      "scenario": "On-call gorevinde home dizini ile birlikte `support` kullanicisini olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "useradd -m support",
+          "hint_text": "Yeni hesabi home dizini ile birlikte acmak icin `useradd -m` kullan.",
+          "hint_partial": "useradd -m ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-166",
+      "type": "single",
+      "scenario": "On-call gorevinde `support` kullanicisi icin parola belirle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd support",
+          "hint_text": "Hesaba parola atamak icin `passwd` kullan.",
+          "hint_partial": "passwd ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-167",
+      "type": "single",
+      "scenario": "On-call gorevinde `readonly` grubunu olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "groupadd readonly",
+          "hint_text": "Yeni grup acmak icin `groupadd` kullan.",
+          "hint_partial": "groupadd ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-168",
+      "type": "single",
+      "scenario": "On-call gorevinde `readonly` grubunu sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "groupdel readonly",
+          "hint_text": "Artik kullanilmayan grubu `groupdel` ile sil.",
+          "hint_partial": "groupdel ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-169",
+      "type": "single",
+      "scenario": "On-call gorevinde `support` kullanicisini `readonly` grubuna ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "usermod -aG readonly support",
+          "hint_text": "Kullaniciyi ek gruba katmak icin `usermod -aG` kullan.",
+          "hint_partial": "usermod -aG ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-170",
+      "type": "single",
+      "scenario": "On-call gorevinde `support` kullanicisini `readonly` grubundan cikar.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gpasswd -d support readonly",
+          "hint_text": "Kullaniciyi belirli bir gruptan cikarmak icin `gpasswd -d` kullan.",
+          "hint_partial": "gpasswd -d ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-171",
+      "type": "single",
+      "scenario": "On-call gorevinde `support` kullanicisinin parola durumunu gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -S support",
+          "hint_text": "Parola kilit durumunu `passwd -S` ile denetle.",
+          "hint_partial": "passwd -S ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-172",
+      "type": "single",
+      "scenario": "On-call gorevinde `support` kullanicisinin parolasini kilitle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -l support",
+          "hint_text": "Parola ile girisi kapatmak icin `passwd -l` kullan.",
+          "hint_partial": "passwd -l ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-173",
+      "type": "single",
+      "scenario": "On-call gorevinde `support` kullanicisinin parola kilidini ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -u support",
+          "hint_text": "Kilitli hesabi tekrar aktif etmek icin `passwd -u` kullan.",
+          "hint_partial": "passwd -u ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-174",
+      "type": "single",
+      "scenario": "On-call gorevinde `support` kullanicisinin parola aging bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -l support",
+          "hint_text": "Expiry ve warning politikasini `chage -l` ile gor.",
+          "hint_partial": "chage -l ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-175",
+      "type": "single",
+      "scenario": "On-call gorevinde `support` kullanicisinin son login bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lastlog -u support",
+          "hint_text": "Son login zamanini `lastlog` ile denetle.",
+          "hint_partial": "lastlog -u ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-176",
+      "type": "single",
+      "scenario": "On-call gorevinde `support` ve `readonly` sahibi olacak sekilde `/srv/support` dizinini olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "install -d -o support -g readonly /srv/support",
+          "hint_text": "Sahiplik vererek dizin olusturmak icin `install -d` kullan.",
+          "hint_partial": "install -d ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-177",
+      "type": "single",
+      "scenario": "On-call gorevinde `support` kullanicisini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "userdel support",
+          "hint_text": "Hesabi home dizini kalacak sekilde silmek icin `userdel` kullan.",
+          "hint_partial": "userdel ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-178",
+      "type": "single",
+      "scenario": "On-call gorevinde `support` kullanicisini home diziniyle birlikte sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "userdel -r support",
+          "hint_text": "Offboarding icin kullaniciyi home'u ile birlikte kaldir.",
+          "hint_partial": "userdel -r ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-179",
+      "type": "multi-step",
+      "scenario": "On-call gorevinde `support` kullanicisini olustur, sonra `readonly` grubuna ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "useradd -m support",
+          "hint_text": "Ilk adimda hesabi home dizini ile birlikte ac.",
+          "hint_partial": "useradd -m ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "usermod -aG readonly support",
+          "hint_text": "Ikinci adimda gerekli ek gruba dahil et.",
+          "hint_partial": "usermod -aG ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-180",
+      "type": "multi-step",
+      "scenario": "On-call gorevinde `support` kullanicisinin parolasini kilitle, sonra durumunu dogrula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -l support",
+          "hint_text": "Ilk adimda parola login'ini kapat.",
+          "hint_partial": "passwd -l ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "passwd -S support",
+          "hint_text": "Ikinci adimda kilit durumunu `passwd -S` ile kontrol et.",
+          "hint_partial": "passwd -S ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-181",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `build` kullanicisinin passwd kaydini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getent passwd build",
+          "hint_text": "Sistem hesap kaydini gormek icin `getent passwd` kullan.",
+          "hint_partial": "getent passwd ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-182",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `dbops` grubunun kaydini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getent group dbops",
+          "hint_text": "Grup kaydini sistem veritabanindan okumak icin `getent group` kullan.",
+          "hint_partial": "getent group ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-183",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `build` kullanicisinin UID, GID ve group bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "id build",
+          "hint_text": "Bir hesabin kimlik bilgisini `id` ile goster.",
+          "hint_partial": "id ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-184",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `build` kullanicisinin group uyeliklerini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "groups build",
+          "hint_text": "Kullanicinin gruplarini `groups` ile listele.",
+          "hint_partial": "groups ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-185",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda home dizini ile birlikte `build` kullanicisini olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "useradd -m build",
+          "hint_text": "Yeni hesabi home dizini ile birlikte acmak icin `useradd -m` kullan.",
+          "hint_partial": "useradd -m ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-186",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `build` kullanicisi icin parola belirle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd build",
+          "hint_text": "Hesaba parola atamak icin `passwd` kullan.",
+          "hint_partial": "passwd ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-187",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `dbops` grubunu olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "groupadd dbops",
+          "hint_text": "Yeni grup acmak icin `groupadd` kullan.",
+          "hint_partial": "groupadd ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-188",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `dbops` grubunu sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "groupdel dbops",
+          "hint_text": "Artik kullanilmayan grubu `groupdel` ile sil.",
+          "hint_partial": "groupdel ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-189",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `build` kullanicisini `dbops` grubuna ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "usermod -aG dbops build",
+          "hint_text": "Kullaniciyi ek gruba katmak icin `usermod -aG` kullan.",
+          "hint_partial": "usermod -aG ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-190",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `build` kullanicisini `dbops` grubundan cikar.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gpasswd -d build dbops",
+          "hint_text": "Kullaniciyi belirli bir gruptan cikarmak icin `gpasswd -d` kullan.",
+          "hint_partial": "gpasswd -d ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-191",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `build` kullanicisinin parola durumunu gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -S build",
+          "hint_text": "Parola kilit durumunu `passwd -S` ile denetle.",
+          "hint_partial": "passwd -S ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-192",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `build` kullanicisinin parolasini kilitle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -l build",
+          "hint_text": "Parola ile girisi kapatmak icin `passwd -l` kullan.",
+          "hint_partial": "passwd -l ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-193",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `build` kullanicisinin parola kilidini ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -u build",
+          "hint_text": "Kilitli hesabi tekrar aktif etmek icin `passwd -u` kullan.",
+          "hint_partial": "passwd -u ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-194",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `build` kullanicisinin parola aging bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -l build",
+          "hint_text": "Expiry ve warning politikasini `chage -l` ile gor.",
+          "hint_partial": "chage -l ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-195",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `build` kullanicisinin son login bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lastlog -u build",
+          "hint_text": "Son login zamanini `lastlog` ile denetle.",
+          "hint_partial": "lastlog -u ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-196",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `build` ve `dbops` sahibi olacak sekilde `/srv/build` dizinini olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "install -d -o build -g dbops /srv/build",
+          "hint_text": "Sahiplik vererek dizin olusturmak icin `install -d` kullan.",
+          "hint_partial": "install -d ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-197",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `build` kullanicisini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "userdel build",
+          "hint_text": "Hesabi home dizini kalacak sekilde silmek icin `userdel` kullan.",
+          "hint_partial": "userdel ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-198",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `build` kullanicisini home diziniyle birlikte sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "userdel -r build",
+          "hint_text": "Offboarding icin kullaniciyi home'u ile birlikte kaldir.",
+          "hint_partial": "userdel -r ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-199",
+      "type": "multi-step",
+      "scenario": "Kesinti sonrasinda `build` kullanicisini olustur, sonra `dbops` grubuna ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "useradd -m build",
+          "hint_text": "Ilk adimda hesabi home dizini ile birlikte ac.",
+          "hint_partial": "useradd -m ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "usermod -aG dbops build",
+          "hint_text": "Ikinci adimda gerekli ek gruba dahil et.",
+          "hint_partial": "usermod -aG ..."
+        }
+      ]
+    },
+    {
+      "id": "jusr-exp-200",
+      "type": "multi-step",
+      "scenario": "Kesinti sonrasinda `build` kullanicisinin parolasini kilitle, sonra durumunu dogrula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -l build",
+          "hint_text": "Ilk adimda parola login'ini kapat.",
+          "hint_partial": "passwd -l ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "passwd -S build",
+          "hint_text": "Ikinci adimda kilit durumunu `passwd -S` ile kontrol et.",
+          "hint_partial": "passwd -S ..."
         }
       ]
     }

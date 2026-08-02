@@ -1,0 +1,3186 @@
+{
+  "level": "junior",
+  "topic": "postgres",
+  "questions": [
+    {
+      "id": "jpg-exp-001",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `app` database'ine baglan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d app",
+          "hint_text": "psql ile dogrudan ilgili database'e baglan.",
+          "hint_partial": "psql -U postgres -d ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-002",
+      "type": "single",
+      "scenario": "Gece vardiyasinda cluster'da `app` adli database var mi kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT datname FROM pg_database WHERE datname = 'app';\"",
+          "hint_text": "Database varligini kontrol etmek icin pg_database view'unu ilgili isimle filtrele.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-003",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `app` database'indeki schema adlarini alfabetik listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d app -c \"SELECT schema_name FROM information_schema.schemata ORDER BY schema_name;\"",
+          "hint_text": "Schema isimleri icin information_schema tarafindan sunulan view'u kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-004",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `app` database'inde PostgreSQL surum bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d app -c \"SELECT version();\"",
+          "hint_text": "Sunucu surum bilgisini SQL tarafindan donduren yerlesik fonksiyonla oku.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-005",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `app` tarafinda aktif search_path degerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d app -c \"SHOW search_path;\"",
+          "hint_text": "Oturumun schema arama yolunu gormek icin ilgili ayari dogrudan oku.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-006",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `app` database'inde public schema altindaki tablo adlarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d app -c \"SELECT tablename FROM pg_tables WHERE schemaname = 'public' ORDER BY tablename;\"",
+          "hint_text": "Public tablolari pg_tables view'u uzerinden filtrele.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-007",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `app` database'inde psql meta-komutuyla `users` tablosunun kolon ve index bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d app -c \"\\d users\"",
+          "hint_text": "Tek komutla tablo yapisini gormek icin psql'in describe meta-komutunu kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-008",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `app` database'inde `users` tablosunun kolonlarini sira numarasina gore getir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d app -c \"SELECT column_name FROM information_schema.columns WHERE table_name = 'users' ORDER BY ordinal_position;\"",
+          "hint_text": "Kolon listesi icin information_schema.columns ve ordinal_position kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-009",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `app` database'inde `users` tablosundaki toplam kayit sayisini hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d app -c \"SELECT COUNT(*) FROM users;\"",
+          "hint_text": "Kayit sayisi icin COUNT(*) ile tabloyu sorgula.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-010",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `app` database'inde `users` tablosundan ilk 5 satiri getir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d app -c \"SELECT * FROM users LIMIT 5;\"",
+          "hint_text": "Satir sayisini sinirlamak icin LIMIT kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-011",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `app` database'inde `users` tablosundan `status = pending` olan ilk 5 satiri getir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d app -c \"SELECT * FROM users WHERE status = 'pending' LIMIT 5;\"",
+          "hint_text": "Filtreli veri icin WHERE, satir siniri icin LIMIT kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-012",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `app` database'inde `users` tablosunu CSV header ile `users.csv` dosyasina aktar.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d app -c \"\\copy users TO 'users.csv' CSV HEADER\"",
+          "hint_text": "Terminalden dosyaya export icin psql'in client-side copy meta-komutunu kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-013",
+      "type": "multi-step",
+      "scenario": "Gece vardiyasinda deneme icin `app_lab` adinda bir database olustur ve sonra baglan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "createdb -U postgres app_lab",
+          "hint_text": "Yeni bir database acmak icin createdb kullan.",
+          "hint_partial": "createdb -U postgres ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d app_lab",
+          "hint_text": "Olusturdugun database'e psql ile baglan.",
+          "hint_partial": "psql -U postgres -d ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-014",
+      "type": "single",
+      "scenario": "Gece vardiyasinda deneme icin acilan `app_lab` database'ini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dropdb -U postgres app_lab",
+          "hint_text": "Database kaldirmak icin dropdb kullan.",
+          "hint_partial": "dropdb -U postgres ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-015",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `app_user` rolunun login ozelligini kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT rolname, rolcanlogin FROM pg_roles WHERE rolname = 'app_user';\"",
+          "hint_text": "Belirli bir rolun ozelliklerini gormek icin pg_roles view'unu rol adi ile filtrele.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-016",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `app` database'inde kurulu extension'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d app -c \"SELECT extname FROM pg_extension ORDER BY extname;\"",
+          "hint_text": "Kurulu extension'lar icin pg_extension view'unu kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-017",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `app` tarafinda aktif `max_connections` degerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d app -c \"SHOW max_connections;\"",
+          "hint_text": "Bir PostgreSQL ayarini okumak icin SHOW kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-018",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `app` icin server tarafinda baglanti hazir mi kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pg_isready -U postgres -d app",
+          "hint_text": "Hazirlik kontrolu icin pg_isready komutunu kullan.",
+          "hint_partial": "pg_isready -U postgres -d ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-019",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `app` database'inin plain SQL backup'ini `app.sql` dosyasina al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pg_dump -U postgres app > app.sql",
+          "hint_text": "Plain SQL export icin pg_dump ciktisini dosyaya yonlendir.",
+          "hint_partial": "pg_dump -U postgres ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-020",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `app` database'inin sadece schema bilgisini `app-schema.sql` dosyasina cikar.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pg_dump -U postgres --schema-only app > app-schema.sql",
+          "hint_text": "Sadece schema icin pg_dump'i schema-only modunda calistir.",
+          "hint_partial": "pg_dump -U postgres --schema-only ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-021",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `app-seed.sql` dosyasini `app` database'ine uygula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d app -f app-seed.sql",
+          "hint_text": "Bir SQL dosyasini uygulamak icin psql'i -f ile calistir.",
+          "hint_partial": "psql -U postgres -d ... -f ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-022",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `app` database'indeki aktif session'lari pid, user ve state ile listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pid, usename, state FROM pg_stat_activity WHERE datname = 'app';\"",
+          "hint_text": "Aktif baglantilar icin pg_stat_activity view'unu database filtresiyle kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-023",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `app` database'ine acik toplam session sayisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT COUNT(*) FROM pg_stat_activity WHERE datname = 'app';\"",
+          "hint_text": "Baglanti yogunlugunu hizli gormek icin pg_stat_activity uzerinde sayim yap.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-024",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `app` database'inin toplam boyutunu insan okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pg_size_pretty(pg_database_size('app'));\"",
+          "hint_text": "Database boyutunu gormek icin pg_database_size ve pg_size_pretty kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-025",
+      "type": "single",
+      "scenario": "Bakim penceresinde `billing` database'ine baglan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d billing",
+          "hint_text": "psql ile dogrudan ilgili database'e baglan.",
+          "hint_partial": "psql -U postgres -d ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-026",
+      "type": "single",
+      "scenario": "Bakim penceresinde cluster'da `billing` adli database var mi kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT datname FROM pg_database WHERE datname = 'billing';\"",
+          "hint_text": "Database varligini kontrol etmek icin pg_database view'unu ilgili isimle filtrele.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-027",
+      "type": "single",
+      "scenario": "Bakim penceresinde `billing` database'indeki schema adlarini alfabetik listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d billing -c \"SELECT schema_name FROM information_schema.schemata ORDER BY schema_name;\"",
+          "hint_text": "Schema isimleri icin information_schema tarafindan sunulan view'u kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-028",
+      "type": "single",
+      "scenario": "Bakim penceresinde `billing` database'inde PostgreSQL surum bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d billing -c \"SELECT version();\"",
+          "hint_text": "Sunucu surum bilgisini SQL tarafindan donduren yerlesik fonksiyonla oku.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-029",
+      "type": "single",
+      "scenario": "Bakim penceresinde `billing` tarafinda aktif search_path degerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d billing -c \"SHOW search_path;\"",
+          "hint_text": "Oturumun schema arama yolunu gormek icin ilgili ayari dogrudan oku.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-030",
+      "type": "single",
+      "scenario": "Bakim penceresinde `billing` database'inde public schema altindaki tablo adlarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d billing -c \"SELECT tablename FROM pg_tables WHERE schemaname = 'public' ORDER BY tablename;\"",
+          "hint_text": "Public tablolari pg_tables view'u uzerinden filtrele.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-031",
+      "type": "single",
+      "scenario": "Bakim penceresinde `billing` database'inde psql meta-komutuyla `orders` tablosunun kolon ve index bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d billing -c \"\\d orders\"",
+          "hint_text": "Tek komutla tablo yapisini gormek icin psql'in describe meta-komutunu kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-032",
+      "type": "single",
+      "scenario": "Bakim penceresinde `billing` database'inde `orders` tablosunun kolonlarini sira numarasina gore getir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d billing -c \"SELECT column_name FROM information_schema.columns WHERE table_name = 'orders' ORDER BY ordinal_position;\"",
+          "hint_text": "Kolon listesi icin information_schema.columns ve ordinal_position kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-033",
+      "type": "single",
+      "scenario": "Bakim penceresinde `billing` database'inde `orders` tablosundaki toplam kayit sayisini hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d billing -c \"SELECT COUNT(*) FROM orders;\"",
+          "hint_text": "Kayit sayisi icin COUNT(*) ile tabloyu sorgula.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-034",
+      "type": "single",
+      "scenario": "Bakim penceresinde `billing` database'inde `orders` tablosundan ilk 10 satiri getir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d billing -c \"SELECT * FROM orders LIMIT 10;\"",
+          "hint_text": "Satir sayisini sinirlamak icin LIMIT kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-035",
+      "type": "single",
+      "scenario": "Bakim penceresinde `billing` database'inde `orders` tablosundan `status = paid` olan ilk 10 satiri getir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d billing -c \"SELECT * FROM orders WHERE status = 'paid' LIMIT 10;\"",
+          "hint_text": "Filtreli veri icin WHERE, satir siniri icin LIMIT kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-036",
+      "type": "single",
+      "scenario": "Bakim penceresinde `billing` database'inde `orders` tablosunu CSV header ile `orders.csv` dosyasina aktar.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d billing -c \"\\copy orders TO 'orders.csv' CSV HEADER\"",
+          "hint_text": "Terminalden dosyaya export icin psql'in client-side copy meta-komutunu kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-037",
+      "type": "multi-step",
+      "scenario": "Bakim penceresinde deneme icin `billing_lab` adinda bir database olustur ve sonra baglan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "createdb -U postgres billing_lab",
+          "hint_text": "Yeni bir database acmak icin createdb kullan.",
+          "hint_partial": "createdb -U postgres ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d billing_lab",
+          "hint_text": "Olusturdugun database'e psql ile baglan.",
+          "hint_partial": "psql -U postgres -d ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-038",
+      "type": "single",
+      "scenario": "Bakim penceresinde deneme icin acilan `billing_lab` database'ini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dropdb -U postgres billing_lab",
+          "hint_text": "Database kaldirmak icin dropdb kullan.",
+          "hint_partial": "dropdb -U postgres ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-039",
+      "type": "single",
+      "scenario": "Bakim penceresinde `billing_user` rolunun login ozelligini kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT rolname, rolcanlogin FROM pg_roles WHERE rolname = 'billing_user';\"",
+          "hint_text": "Belirli bir rolun ozelliklerini gormek icin pg_roles view'unu rol adi ile filtrele.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-040",
+      "type": "single",
+      "scenario": "Bakim penceresinde `billing` database'inde kurulu extension'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d billing -c \"SELECT extname FROM pg_extension ORDER BY extname;\"",
+          "hint_text": "Kurulu extension'lar icin pg_extension view'unu kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-041",
+      "type": "single",
+      "scenario": "Bakim penceresinde `billing` tarafinda aktif `shared_buffers` degerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d billing -c \"SHOW shared_buffers;\"",
+          "hint_text": "Bir PostgreSQL ayarini okumak icin SHOW kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-042",
+      "type": "single",
+      "scenario": "Bakim penceresinde `billing` icin server tarafinda baglanti hazir mi kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pg_isready -U postgres -d billing",
+          "hint_text": "Hazirlik kontrolu icin pg_isready komutunu kullan.",
+          "hint_partial": "pg_isready -U postgres -d ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-043",
+      "type": "single",
+      "scenario": "Bakim penceresinde `billing` database'inin plain SQL backup'ini `billing.sql` dosyasina al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pg_dump -U postgres billing > billing.sql",
+          "hint_text": "Plain SQL export icin pg_dump ciktisini dosyaya yonlendir.",
+          "hint_partial": "pg_dump -U postgres ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-044",
+      "type": "single",
+      "scenario": "Bakim penceresinde `billing` database'inin sadece schema bilgisini `billing-schema.sql` dosyasina cikar.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pg_dump -U postgres --schema-only billing > billing-schema.sql",
+          "hint_text": "Sadece schema icin pg_dump'i schema-only modunda calistir.",
+          "hint_partial": "pg_dump -U postgres --schema-only ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-045",
+      "type": "single",
+      "scenario": "Bakim penceresinde `billing-seed.sql` dosyasini `billing` database'ine uygula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d billing -f billing-seed.sql",
+          "hint_text": "Bir SQL dosyasini uygulamak icin psql'i -f ile calistir.",
+          "hint_partial": "psql -U postgres -d ... -f ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-046",
+      "type": "single",
+      "scenario": "Bakim penceresinde `billing` database'indeki aktif session'lari pid, user ve state ile listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pid, usename, state FROM pg_stat_activity WHERE datname = 'billing';\"",
+          "hint_text": "Aktif baglantilar icin pg_stat_activity view'unu database filtresiyle kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-047",
+      "type": "single",
+      "scenario": "Bakim penceresinde `billing` database'ine acik toplam session sayisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT COUNT(*) FROM pg_stat_activity WHERE datname = 'billing';\"",
+          "hint_text": "Baglanti yogunlugunu hizli gormek icin pg_stat_activity uzerinde sayim yap.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-048",
+      "type": "single",
+      "scenario": "Bakim penceresinde `billing` database'inin toplam boyutunu insan okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pg_size_pretty(pg_database_size('billing'));\"",
+          "hint_text": "Database boyutunu gormek icin pg_database_size ve pg_size_pretty kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-049",
+      "type": "single",
+      "scenario": "Incident sonrasinda `analytics` database'ine baglan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d analytics",
+          "hint_text": "psql ile dogrudan ilgili database'e baglan.",
+          "hint_partial": "psql -U postgres -d ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-050",
+      "type": "single",
+      "scenario": "Incident sonrasinda cluster'da `analytics` adli database var mi kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT datname FROM pg_database WHERE datname = 'analytics';\"",
+          "hint_text": "Database varligini kontrol etmek icin pg_database view'unu ilgili isimle filtrele.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-051",
+      "type": "single",
+      "scenario": "Incident sonrasinda `analytics` database'indeki schema adlarini alfabetik listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d analytics -c \"SELECT schema_name FROM information_schema.schemata ORDER BY schema_name;\"",
+          "hint_text": "Schema isimleri icin information_schema tarafindan sunulan view'u kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-052",
+      "type": "single",
+      "scenario": "Incident sonrasinda `analytics` database'inde PostgreSQL surum bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d analytics -c \"SELECT version();\"",
+          "hint_text": "Sunucu surum bilgisini SQL tarafindan donduren yerlesik fonksiyonla oku.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-053",
+      "type": "single",
+      "scenario": "Incident sonrasinda `analytics` tarafinda aktif search_path degerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d analytics -c \"SHOW search_path;\"",
+          "hint_text": "Oturumun schema arama yolunu gormek icin ilgili ayari dogrudan oku.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-054",
+      "type": "single",
+      "scenario": "Incident sonrasinda `analytics` database'inde public schema altindaki tablo adlarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d analytics -c \"SELECT tablename FROM pg_tables WHERE schemaname = 'public' ORDER BY tablename;\"",
+          "hint_text": "Public tablolari pg_tables view'u uzerinden filtrele.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-055",
+      "type": "single",
+      "scenario": "Incident sonrasinda `analytics` database'inde psql meta-komutuyla `sessions` tablosunun kolon ve index bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d analytics -c \"\\d sessions\"",
+          "hint_text": "Tek komutla tablo yapisini gormek icin psql'in describe meta-komutunu kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-056",
+      "type": "single",
+      "scenario": "Incident sonrasinda `analytics` database'inde `sessions` tablosunun kolonlarini sira numarasina gore getir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d analytics -c \"SELECT column_name FROM information_schema.columns WHERE table_name = 'sessions' ORDER BY ordinal_position;\"",
+          "hint_text": "Kolon listesi icin information_schema.columns ve ordinal_position kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-057",
+      "type": "single",
+      "scenario": "Incident sonrasinda `analytics` database'inde `sessions` tablosundaki toplam kayit sayisini hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d analytics -c \"SELECT COUNT(*) FROM sessions;\"",
+          "hint_text": "Kayit sayisi icin COUNT(*) ile tabloyu sorgula.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-058",
+      "type": "single",
+      "scenario": "Incident sonrasinda `analytics` database'inde `sessions` tablosundan ilk 15 satiri getir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d analytics -c \"SELECT * FROM sessions LIMIT 15;\"",
+          "hint_text": "Satir sayisini sinirlamak icin LIMIT kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-059",
+      "type": "single",
+      "scenario": "Incident sonrasinda `analytics` database'inde `sessions` tablosundan `event_type = login` olan ilk 15 satiri getir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d analytics -c \"SELECT * FROM sessions WHERE event_type = 'login' LIMIT 15;\"",
+          "hint_text": "Filtreli veri icin WHERE, satir siniri icin LIMIT kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-060",
+      "type": "single",
+      "scenario": "Incident sonrasinda `analytics` database'inde `sessions` tablosunu CSV header ile `sessions.csv` dosyasina aktar.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d analytics -c \"\\copy sessions TO 'sessions.csv' CSV HEADER\"",
+          "hint_text": "Terminalden dosyaya export icin psql'in client-side copy meta-komutunu kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-061",
+      "type": "multi-step",
+      "scenario": "Incident sonrasinda deneme icin `analytics_lab` adinda bir database olustur ve sonra baglan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "createdb -U postgres analytics_lab",
+          "hint_text": "Yeni bir database acmak icin createdb kullan.",
+          "hint_partial": "createdb -U postgres ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d analytics_lab",
+          "hint_text": "Olusturdugun database'e psql ile baglan.",
+          "hint_partial": "psql -U postgres -d ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-062",
+      "type": "single",
+      "scenario": "Incident sonrasinda deneme icin acilan `analytics_lab` database'ini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dropdb -U postgres analytics_lab",
+          "hint_text": "Database kaldirmak icin dropdb kullan.",
+          "hint_partial": "dropdb -U postgres ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-063",
+      "type": "single",
+      "scenario": "Incident sonrasinda `analytics_user` rolunun login ozelligini kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT rolname, rolcanlogin FROM pg_roles WHERE rolname = 'analytics_user';\"",
+          "hint_text": "Belirli bir rolun ozelliklerini gormek icin pg_roles view'unu rol adi ile filtrele.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-064",
+      "type": "single",
+      "scenario": "Incident sonrasinda `analytics` database'inde kurulu extension'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d analytics -c \"SELECT extname FROM pg_extension ORDER BY extname;\"",
+          "hint_text": "Kurulu extension'lar icin pg_extension view'unu kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-065",
+      "type": "single",
+      "scenario": "Incident sonrasinda `analytics` tarafinda aktif `work_mem` degerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d analytics -c \"SHOW work_mem;\"",
+          "hint_text": "Bir PostgreSQL ayarini okumak icin SHOW kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-066",
+      "type": "single",
+      "scenario": "Incident sonrasinda `analytics` icin server tarafinda baglanti hazir mi kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pg_isready -U postgres -d analytics",
+          "hint_text": "Hazirlik kontrolu icin pg_isready komutunu kullan.",
+          "hint_partial": "pg_isready -U postgres -d ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-067",
+      "type": "single",
+      "scenario": "Incident sonrasinda `analytics` database'inin plain SQL backup'ini `analytics.sql` dosyasina al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pg_dump -U postgres analytics > analytics.sql",
+          "hint_text": "Plain SQL export icin pg_dump ciktisini dosyaya yonlendir.",
+          "hint_partial": "pg_dump -U postgres ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-068",
+      "type": "single",
+      "scenario": "Incident sonrasinda `analytics` database'inin sadece schema bilgisini `analytics-schema.sql` dosyasina cikar.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pg_dump -U postgres --schema-only analytics > analytics-schema.sql",
+          "hint_text": "Sadece schema icin pg_dump'i schema-only modunda calistir.",
+          "hint_partial": "pg_dump -U postgres --schema-only ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-069",
+      "type": "single",
+      "scenario": "Incident sonrasinda `analytics-seed.sql` dosyasini `analytics` database'ine uygula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d analytics -f analytics-seed.sql",
+          "hint_text": "Bir SQL dosyasini uygulamak icin psql'i -f ile calistir.",
+          "hint_partial": "psql -U postgres -d ... -f ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-070",
+      "type": "single",
+      "scenario": "Incident sonrasinda `analytics` database'indeki aktif session'lari pid, user ve state ile listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pid, usename, state FROM pg_stat_activity WHERE datname = 'analytics';\"",
+          "hint_text": "Aktif baglantilar icin pg_stat_activity view'unu database filtresiyle kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-071",
+      "type": "single",
+      "scenario": "Incident sonrasinda `analytics` database'ine acik toplam session sayisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT COUNT(*) FROM pg_stat_activity WHERE datname = 'analytics';\"",
+          "hint_text": "Baglanti yogunlugunu hizli gormek icin pg_stat_activity uzerinde sayim yap.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-072",
+      "type": "single",
+      "scenario": "Incident sonrasinda `analytics` database'inin toplam boyutunu insan okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pg_size_pretty(pg_database_size('analytics'));\"",
+          "hint_text": "Database boyutunu gormek icin pg_database_size ve pg_size_pretty kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-073",
+      "type": "single",
+      "scenario": "Deploy oncesi `inventory` database'ine baglan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d inventory",
+          "hint_text": "psql ile dogrudan ilgili database'e baglan.",
+          "hint_partial": "psql -U postgres -d ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-074",
+      "type": "single",
+      "scenario": "Deploy oncesi cluster'da `inventory` adli database var mi kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT datname FROM pg_database WHERE datname = 'inventory';\"",
+          "hint_text": "Database varligini kontrol etmek icin pg_database view'unu ilgili isimle filtrele.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-075",
+      "type": "single",
+      "scenario": "Deploy oncesi `inventory` database'indeki schema adlarini alfabetik listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d inventory -c \"SELECT schema_name FROM information_schema.schemata ORDER BY schema_name;\"",
+          "hint_text": "Schema isimleri icin information_schema tarafindan sunulan view'u kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-076",
+      "type": "single",
+      "scenario": "Deploy oncesi `inventory` database'inde PostgreSQL surum bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d inventory -c \"SELECT version();\"",
+          "hint_text": "Sunucu surum bilgisini SQL tarafindan donduren yerlesik fonksiyonla oku.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-077",
+      "type": "single",
+      "scenario": "Deploy oncesi `inventory` tarafinda aktif search_path degerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d inventory -c \"SHOW search_path;\"",
+          "hint_text": "Oturumun schema arama yolunu gormek icin ilgili ayari dogrudan oku.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-078",
+      "type": "single",
+      "scenario": "Deploy oncesi `inventory` database'inde public schema altindaki tablo adlarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d inventory -c \"SELECT tablename FROM pg_tables WHERE schemaname = 'public' ORDER BY tablename;\"",
+          "hint_text": "Public tablolari pg_tables view'u uzerinden filtrele.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-079",
+      "type": "single",
+      "scenario": "Deploy oncesi `inventory` database'inde psql meta-komutuyla `payments` tablosunun kolon ve index bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d inventory -c \"\\d payments\"",
+          "hint_text": "Tek komutla tablo yapisini gormek icin psql'in describe meta-komutunu kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-080",
+      "type": "single",
+      "scenario": "Deploy oncesi `inventory` database'inde `payments` tablosunun kolonlarini sira numarasina gore getir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d inventory -c \"SELECT column_name FROM information_schema.columns WHERE table_name = 'payments' ORDER BY ordinal_position;\"",
+          "hint_text": "Kolon listesi icin information_schema.columns ve ordinal_position kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-081",
+      "type": "single",
+      "scenario": "Deploy oncesi `inventory` database'inde `payments` tablosundaki toplam kayit sayisini hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d inventory -c \"SELECT COUNT(*) FROM payments;\"",
+          "hint_text": "Kayit sayisi icin COUNT(*) ile tabloyu sorgula.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-082",
+      "type": "single",
+      "scenario": "Deploy oncesi `inventory` database'inde `payments` tablosundan ilk 20 satiri getir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d inventory -c \"SELECT * FROM payments LIMIT 20;\"",
+          "hint_text": "Satir sayisini sinirlamak icin LIMIT kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-083",
+      "type": "single",
+      "scenario": "Deploy oncesi `inventory` database'inde `payments` tablosundan `state = queued` olan ilk 20 satiri getir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d inventory -c \"SELECT * FROM payments WHERE state = 'queued' LIMIT 20;\"",
+          "hint_text": "Filtreli veri icin WHERE, satir siniri icin LIMIT kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-084",
+      "type": "single",
+      "scenario": "Deploy oncesi `inventory` database'inde `payments` tablosunu CSV header ile `payments.csv` dosyasina aktar.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d inventory -c \"\\copy payments TO 'payments.csv' CSV HEADER\"",
+          "hint_text": "Terminalden dosyaya export icin psql'in client-side copy meta-komutunu kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-085",
+      "type": "multi-step",
+      "scenario": "Deploy oncesi deneme icin `inventory_lab` adinda bir database olustur ve sonra baglan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "createdb -U postgres inventory_lab",
+          "hint_text": "Yeni bir database acmak icin createdb kullan.",
+          "hint_partial": "createdb -U postgres ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d inventory_lab",
+          "hint_text": "Olusturdugun database'e psql ile baglan.",
+          "hint_partial": "psql -U postgres -d ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-086",
+      "type": "single",
+      "scenario": "Deploy oncesi deneme icin acilan `inventory_lab` database'ini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dropdb -U postgres inventory_lab",
+          "hint_text": "Database kaldirmak icin dropdb kullan.",
+          "hint_partial": "dropdb -U postgres ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-087",
+      "type": "single",
+      "scenario": "Deploy oncesi `inventory_user` rolunun login ozelligini kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT rolname, rolcanlogin FROM pg_roles WHERE rolname = 'inventory_user';\"",
+          "hint_text": "Belirli bir rolun ozelliklerini gormek icin pg_roles view'unu rol adi ile filtrele.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-088",
+      "type": "single",
+      "scenario": "Deploy oncesi `inventory` database'inde kurulu extension'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d inventory -c \"SELECT extname FROM pg_extension ORDER BY extname;\"",
+          "hint_text": "Kurulu extension'lar icin pg_extension view'unu kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-089",
+      "type": "single",
+      "scenario": "Deploy oncesi `inventory` tarafinda aktif `maintenance_work_mem` degerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d inventory -c \"SHOW maintenance_work_mem;\"",
+          "hint_text": "Bir PostgreSQL ayarini okumak icin SHOW kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-090",
+      "type": "single",
+      "scenario": "Deploy oncesi `inventory` icin server tarafinda baglanti hazir mi kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pg_isready -U postgres -d inventory",
+          "hint_text": "Hazirlik kontrolu icin pg_isready komutunu kullan.",
+          "hint_partial": "pg_isready -U postgres -d ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-091",
+      "type": "single",
+      "scenario": "Deploy oncesi `inventory` database'inin plain SQL backup'ini `inventory.sql` dosyasina al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pg_dump -U postgres inventory > inventory.sql",
+          "hint_text": "Plain SQL export icin pg_dump ciktisini dosyaya yonlendir.",
+          "hint_partial": "pg_dump -U postgres ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-092",
+      "type": "single",
+      "scenario": "Deploy oncesi `inventory` database'inin sadece schema bilgisini `inventory-schema.sql` dosyasina cikar.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pg_dump -U postgres --schema-only inventory > inventory-schema.sql",
+          "hint_text": "Sadece schema icin pg_dump'i schema-only modunda calistir.",
+          "hint_partial": "pg_dump -U postgres --schema-only ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-093",
+      "type": "single",
+      "scenario": "Deploy oncesi `inventory-seed.sql` dosyasini `inventory` database'ine uygula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d inventory -f inventory-seed.sql",
+          "hint_text": "Bir SQL dosyasini uygulamak icin psql'i -f ile calistir.",
+          "hint_partial": "psql -U postgres -d ... -f ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-094",
+      "type": "single",
+      "scenario": "Deploy oncesi `inventory` database'indeki aktif session'lari pid, user ve state ile listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pid, usename, state FROM pg_stat_activity WHERE datname = 'inventory';\"",
+          "hint_text": "Aktif baglantilar icin pg_stat_activity view'unu database filtresiyle kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-095",
+      "type": "single",
+      "scenario": "Deploy oncesi `inventory` database'ine acik toplam session sayisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT COUNT(*) FROM pg_stat_activity WHERE datname = 'inventory';\"",
+          "hint_text": "Baglanti yogunlugunu hizli gormek icin pg_stat_activity uzerinde sayim yap.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-096",
+      "type": "single",
+      "scenario": "Deploy oncesi `inventory` database'inin toplam boyutunu insan okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pg_size_pretty(pg_database_size('inventory'));\"",
+          "hint_text": "Database boyutunu gormek icin pg_database_size ve pg_size_pretty kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-097",
+      "type": "single",
+      "scenario": "Audit sirasinda `reporting` database'ine baglan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d reporting",
+          "hint_text": "psql ile dogrudan ilgili database'e baglan.",
+          "hint_partial": "psql -U postgres -d ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-098",
+      "type": "single",
+      "scenario": "Audit sirasinda cluster'da `reporting` adli database var mi kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT datname FROM pg_database WHERE datname = 'reporting';\"",
+          "hint_text": "Database varligini kontrol etmek icin pg_database view'unu ilgili isimle filtrele.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-099",
+      "type": "single",
+      "scenario": "Audit sirasinda `reporting` database'indeki schema adlarini alfabetik listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d reporting -c \"SELECT schema_name FROM information_schema.schemata ORDER BY schema_name;\"",
+          "hint_text": "Schema isimleri icin information_schema tarafindan sunulan view'u kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-100",
+      "type": "single",
+      "scenario": "Audit sirasinda `reporting` database'inde PostgreSQL surum bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d reporting -c \"SELECT version();\"",
+          "hint_text": "Sunucu surum bilgisini SQL tarafindan donduren yerlesik fonksiyonla oku.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-101",
+      "type": "single",
+      "scenario": "Audit sirasinda `reporting` tarafinda aktif search_path degerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d reporting -c \"SHOW search_path;\"",
+          "hint_text": "Oturumun schema arama yolunu gormek icin ilgili ayari dogrudan oku.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-102",
+      "type": "single",
+      "scenario": "Audit sirasinda `reporting` database'inde public schema altindaki tablo adlarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d reporting -c \"SELECT tablename FROM pg_tables WHERE schemaname = 'public' ORDER BY tablename;\"",
+          "hint_text": "Public tablolari pg_tables view'u uzerinden filtrele.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-103",
+      "type": "single",
+      "scenario": "Audit sirasinda `reporting` database'inde psql meta-komutuyla `invoices` tablosunun kolon ve index bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d reporting -c \"\\d invoices\"",
+          "hint_text": "Tek komutla tablo yapisini gormek icin psql'in describe meta-komutunu kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-104",
+      "type": "single",
+      "scenario": "Audit sirasinda `reporting` database'inde `invoices` tablosunun kolonlarini sira numarasina gore getir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d reporting -c \"SELECT column_name FROM information_schema.columns WHERE table_name = 'invoices' ORDER BY ordinal_position;\"",
+          "hint_text": "Kolon listesi icin information_schema.columns ve ordinal_position kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-105",
+      "type": "single",
+      "scenario": "Audit sirasinda `reporting` database'inde `invoices` tablosundaki toplam kayit sayisini hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d reporting -c \"SELECT COUNT(*) FROM invoices;\"",
+          "hint_text": "Kayit sayisi icin COUNT(*) ile tabloyu sorgula.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-106",
+      "type": "single",
+      "scenario": "Audit sirasinda `reporting` database'inde `invoices` tablosundan ilk 25 satiri getir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d reporting -c \"SELECT * FROM invoices LIMIT 25;\"",
+          "hint_text": "Satir sayisini sinirlamak icin LIMIT kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-107",
+      "type": "single",
+      "scenario": "Audit sirasinda `reporting` database'inde `invoices` tablosundan `kind = invoice` olan ilk 25 satiri getir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d reporting -c \"SELECT * FROM invoices WHERE kind = 'invoice' LIMIT 25;\"",
+          "hint_text": "Filtreli veri icin WHERE, satir siniri icin LIMIT kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-108",
+      "type": "single",
+      "scenario": "Audit sirasinda `reporting` database'inde `invoices` tablosunu CSV header ile `invoices.csv` dosyasina aktar.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d reporting -c \"\\copy invoices TO 'invoices.csv' CSV HEADER\"",
+          "hint_text": "Terminalden dosyaya export icin psql'in client-side copy meta-komutunu kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-109",
+      "type": "multi-step",
+      "scenario": "Audit sirasinda deneme icin `reporting_lab` adinda bir database olustur ve sonra baglan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "createdb -U postgres reporting_lab",
+          "hint_text": "Yeni bir database acmak icin createdb kullan.",
+          "hint_partial": "createdb -U postgres ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d reporting_lab",
+          "hint_text": "Olusturdugun database'e psql ile baglan.",
+          "hint_partial": "psql -U postgres -d ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-110",
+      "type": "single",
+      "scenario": "Audit sirasinda deneme icin acilan `reporting_lab` database'ini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dropdb -U postgres reporting_lab",
+          "hint_text": "Database kaldirmak icin dropdb kullan.",
+          "hint_partial": "dropdb -U postgres ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-111",
+      "type": "single",
+      "scenario": "Audit sirasinda `report_user` rolunun login ozelligini kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT rolname, rolcanlogin FROM pg_roles WHERE rolname = 'report_user';\"",
+          "hint_text": "Belirli bir rolun ozelliklerini gormek icin pg_roles view'unu rol adi ile filtrele.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-112",
+      "type": "single",
+      "scenario": "Audit sirasinda `reporting` database'inde kurulu extension'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d reporting -c \"SELECT extname FROM pg_extension ORDER BY extname;\"",
+          "hint_text": "Kurulu extension'lar icin pg_extension view'unu kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-113",
+      "type": "single",
+      "scenario": "Audit sirasinda `reporting` tarafinda aktif `statement_timeout` degerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d reporting -c \"SHOW statement_timeout;\"",
+          "hint_text": "Bir PostgreSQL ayarini okumak icin SHOW kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-114",
+      "type": "single",
+      "scenario": "Audit sirasinda `reporting` icin server tarafinda baglanti hazir mi kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pg_isready -U postgres -d reporting",
+          "hint_text": "Hazirlik kontrolu icin pg_isready komutunu kullan.",
+          "hint_partial": "pg_isready -U postgres -d ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-115",
+      "type": "single",
+      "scenario": "Audit sirasinda `reporting` database'inin plain SQL backup'ini `reporting.sql` dosyasina al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pg_dump -U postgres reporting > reporting.sql",
+          "hint_text": "Plain SQL export icin pg_dump ciktisini dosyaya yonlendir.",
+          "hint_partial": "pg_dump -U postgres ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-116",
+      "type": "single",
+      "scenario": "Audit sirasinda `reporting` database'inin sadece schema bilgisini `reporting-schema.sql` dosyasina cikar.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pg_dump -U postgres --schema-only reporting > reporting-schema.sql",
+          "hint_text": "Sadece schema icin pg_dump'i schema-only modunda calistir.",
+          "hint_partial": "pg_dump -U postgres --schema-only ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-117",
+      "type": "single",
+      "scenario": "Audit sirasinda `reporting-seed.sql` dosyasini `reporting` database'ine uygula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d reporting -f reporting-seed.sql",
+          "hint_text": "Bir SQL dosyasini uygulamak icin psql'i -f ile calistir.",
+          "hint_partial": "psql -U postgres -d ... -f ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-118",
+      "type": "single",
+      "scenario": "Audit sirasinda `reporting` database'indeki aktif session'lari pid, user ve state ile listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pid, usename, state FROM pg_stat_activity WHERE datname = 'reporting';\"",
+          "hint_text": "Aktif baglantilar icin pg_stat_activity view'unu database filtresiyle kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-119",
+      "type": "single",
+      "scenario": "Audit sirasinda `reporting` database'ine acik toplam session sayisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT COUNT(*) FROM pg_stat_activity WHERE datname = 'reporting';\"",
+          "hint_text": "Baglanti yogunlugunu hizli gormek icin pg_stat_activity uzerinde sayim yap.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-120",
+      "type": "single",
+      "scenario": "Audit sirasinda `reporting` database'inin toplam boyutunu insan okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pg_size_pretty(pg_database_size('reporting'));\"",
+          "hint_text": "Database boyutunu gormek icin pg_database_size ve pg_size_pretty kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-121",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `warehouse` database'ine baglan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d warehouse",
+          "hint_text": "psql ile dogrudan ilgili database'e baglan.",
+          "hint_partial": "psql -U postgres -d ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-122",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda cluster'da `warehouse` adli database var mi kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT datname FROM pg_database WHERE datname = 'warehouse';\"",
+          "hint_text": "Database varligini kontrol etmek icin pg_database view'unu ilgili isimle filtrele.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-123",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `warehouse` database'indeki schema adlarini alfabetik listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d warehouse -c \"SELECT schema_name FROM information_schema.schemata ORDER BY schema_name;\"",
+          "hint_text": "Schema isimleri icin information_schema tarafindan sunulan view'u kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-124",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `warehouse` database'inde PostgreSQL surum bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d warehouse -c \"SELECT version();\"",
+          "hint_text": "Sunucu surum bilgisini SQL tarafindan donduren yerlesik fonksiyonla oku.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-125",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `warehouse` tarafinda aktif search_path degerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d warehouse -c \"SHOW search_path;\"",
+          "hint_text": "Oturumun schema arama yolunu gormek icin ilgili ayari dogrudan oku.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-126",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `warehouse` database'inde public schema altindaki tablo adlarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d warehouse -c \"SELECT tablename FROM pg_tables WHERE schemaname = 'public' ORDER BY tablename;\"",
+          "hint_text": "Public tablolari pg_tables view'u uzerinden filtrele.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-127",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `warehouse` database'inde psql meta-komutuyla `shipments` tablosunun kolon ve index bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d warehouse -c \"\\d shipments\"",
+          "hint_text": "Tek komutla tablo yapisini gormek icin psql'in describe meta-komutunu kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-128",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `warehouse` database'inde `shipments` tablosunun kolonlarini sira numarasina gore getir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d warehouse -c \"SELECT column_name FROM information_schema.columns WHERE table_name = 'shipments' ORDER BY ordinal_position;\"",
+          "hint_text": "Kolon listesi icin information_schema.columns ve ordinal_position kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-129",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `warehouse` database'inde `shipments` tablosundaki toplam kayit sayisini hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d warehouse -c \"SELECT COUNT(*) FROM shipments;\"",
+          "hint_text": "Kayit sayisi icin COUNT(*) ile tabloyu sorgula.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-130",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `warehouse` database'inde `shipments` tablosundan ilk 30 satiri getir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d warehouse -c \"SELECT * FROM shipments LIMIT 30;\"",
+          "hint_text": "Satir sayisini sinirlamak icin LIMIT kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-131",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `warehouse` database'inde `shipments` tablosundan `source = api` olan ilk 30 satiri getir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d warehouse -c \"SELECT * FROM shipments WHERE source = 'api' LIMIT 30;\"",
+          "hint_text": "Filtreli veri icin WHERE, satir siniri icin LIMIT kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-132",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `warehouse` database'inde `shipments` tablosunu CSV header ile `shipments.csv` dosyasina aktar.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d warehouse -c \"\\copy shipments TO 'shipments.csv' CSV HEADER\"",
+          "hint_text": "Terminalden dosyaya export icin psql'in client-side copy meta-komutunu kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-133",
+      "type": "multi-step",
+      "scenario": "Troubleshooting sirasinda deneme icin `warehouse_lab` adinda bir database olustur ve sonra baglan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "createdb -U postgres warehouse_lab",
+          "hint_text": "Yeni bir database acmak icin createdb kullan.",
+          "hint_partial": "createdb -U postgres ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d warehouse_lab",
+          "hint_text": "Olusturdugun database'e psql ile baglan.",
+          "hint_partial": "psql -U postgres -d ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-134",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda deneme icin acilan `warehouse_lab` database'ini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dropdb -U postgres warehouse_lab",
+          "hint_text": "Database kaldirmak icin dropdb kullan.",
+          "hint_partial": "dropdb -U postgres ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-135",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `warehouse_user` rolunun login ozelligini kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT rolname, rolcanlogin FROM pg_roles WHERE rolname = 'warehouse_user';\"",
+          "hint_text": "Belirli bir rolun ozelliklerini gormek icin pg_roles view'unu rol adi ile filtrele.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-136",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `warehouse` database'inde kurulu extension'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d warehouse -c \"SELECT extname FROM pg_extension ORDER BY extname;\"",
+          "hint_text": "Kurulu extension'lar icin pg_extension view'unu kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-137",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `warehouse` tarafinda aktif `lock_timeout` degerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d warehouse -c \"SHOW lock_timeout;\"",
+          "hint_text": "Bir PostgreSQL ayarini okumak icin SHOW kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-138",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `warehouse` icin server tarafinda baglanti hazir mi kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pg_isready -U postgres -d warehouse",
+          "hint_text": "Hazirlik kontrolu icin pg_isready komutunu kullan.",
+          "hint_partial": "pg_isready -U postgres -d ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-139",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `warehouse` database'inin plain SQL backup'ini `warehouse.sql` dosyasina al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pg_dump -U postgres warehouse > warehouse.sql",
+          "hint_text": "Plain SQL export icin pg_dump ciktisini dosyaya yonlendir.",
+          "hint_partial": "pg_dump -U postgres ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-140",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `warehouse` database'inin sadece schema bilgisini `warehouse-schema.sql` dosyasina cikar.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pg_dump -U postgres --schema-only warehouse > warehouse-schema.sql",
+          "hint_text": "Sadece schema icin pg_dump'i schema-only modunda calistir.",
+          "hint_partial": "pg_dump -U postgres --schema-only ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-141",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `warehouse-seed.sql` dosyasini `warehouse` database'ine uygula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d warehouse -f warehouse-seed.sql",
+          "hint_text": "Bir SQL dosyasini uygulamak icin psql'i -f ile calistir.",
+          "hint_partial": "psql -U postgres -d ... -f ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-142",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `warehouse` database'indeki aktif session'lari pid, user ve state ile listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pid, usename, state FROM pg_stat_activity WHERE datname = 'warehouse';\"",
+          "hint_text": "Aktif baglantilar icin pg_stat_activity view'unu database filtresiyle kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-143",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `warehouse` database'ine acik toplam session sayisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT COUNT(*) FROM pg_stat_activity WHERE datname = 'warehouse';\"",
+          "hint_text": "Baglanti yogunlugunu hizli gormek icin pg_stat_activity uzerinde sayim yap.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-144",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `warehouse` database'inin toplam boyutunu insan okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pg_size_pretty(pg_database_size('warehouse'));\"",
+          "hint_text": "Database boyutunu gormek icin pg_database_size ve pg_size_pretty kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-145",
+      "type": "single",
+      "scenario": "Release kontrolunde `crm` database'ine baglan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d crm",
+          "hint_text": "psql ile dogrudan ilgili database'e baglan.",
+          "hint_partial": "psql -U postgres -d ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-146",
+      "type": "single",
+      "scenario": "Release kontrolunde cluster'da `crm` adli database var mi kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT datname FROM pg_database WHERE datname = 'crm';\"",
+          "hint_text": "Database varligini kontrol etmek icin pg_database view'unu ilgili isimle filtrele.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-147",
+      "type": "single",
+      "scenario": "Release kontrolunde `crm` database'indeki schema adlarini alfabetik listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d crm -c \"SELECT schema_name FROM information_schema.schemata ORDER BY schema_name;\"",
+          "hint_text": "Schema isimleri icin information_schema tarafindan sunulan view'u kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-148",
+      "type": "single",
+      "scenario": "Release kontrolunde `crm` database'inde PostgreSQL surum bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d crm -c \"SELECT version();\"",
+          "hint_text": "Sunucu surum bilgisini SQL tarafindan donduren yerlesik fonksiyonla oku.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-149",
+      "type": "single",
+      "scenario": "Release kontrolunde `crm` tarafinda aktif search_path degerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d crm -c \"SHOW search_path;\"",
+          "hint_text": "Oturumun schema arama yolunu gormek icin ilgili ayari dogrudan oku.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-150",
+      "type": "single",
+      "scenario": "Release kontrolunde `crm` database'inde public schema altindaki tablo adlarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d crm -c \"SELECT tablename FROM pg_tables WHERE schemaname = 'public' ORDER BY tablename;\"",
+          "hint_text": "Public tablolari pg_tables view'u uzerinden filtrele.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-151",
+      "type": "single",
+      "scenario": "Release kontrolunde `crm` database'inde psql meta-komutuyla `audit_logs` tablosunun kolon ve index bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d crm -c \"\\d audit_logs\"",
+          "hint_text": "Tek komutla tablo yapisini gormek icin psql'in describe meta-komutunu kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-152",
+      "type": "single",
+      "scenario": "Release kontrolunde `crm` database'inde `audit_logs` tablosunun kolonlarini sira numarasina gore getir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d crm -c \"SELECT column_name FROM information_schema.columns WHERE table_name = 'audit_logs' ORDER BY ordinal_position;\"",
+          "hint_text": "Kolon listesi icin information_schema.columns ve ordinal_position kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-153",
+      "type": "single",
+      "scenario": "Release kontrolunde `crm` database'inde `audit_logs` tablosundaki toplam kayit sayisini hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d crm -c \"SELECT COUNT(*) FROM audit_logs;\"",
+          "hint_text": "Kayit sayisi icin COUNT(*) ile tabloyu sorgula.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-154",
+      "type": "single",
+      "scenario": "Release kontrolunde `crm` database'inde `audit_logs` tablosundan ilk 40 satiri getir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d crm -c \"SELECT * FROM audit_logs LIMIT 40;\"",
+          "hint_text": "Satir sayisini sinirlamak icin LIMIT kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-155",
+      "type": "single",
+      "scenario": "Release kontrolunde `crm` database'inde `audit_logs` tablosundan `channel = email` olan ilk 40 satiri getir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d crm -c \"SELECT * FROM audit_logs WHERE channel = 'email' LIMIT 40;\"",
+          "hint_text": "Filtreli veri icin WHERE, satir siniri icin LIMIT kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-156",
+      "type": "single",
+      "scenario": "Release kontrolunde `crm` database'inde `audit_logs` tablosunu CSV header ile `audit_logs.csv` dosyasina aktar.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d crm -c \"\\copy audit_logs TO 'audit_logs.csv' CSV HEADER\"",
+          "hint_text": "Terminalden dosyaya export icin psql'in client-side copy meta-komutunu kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-157",
+      "type": "multi-step",
+      "scenario": "Release kontrolunde deneme icin `crm_lab` adinda bir database olustur ve sonra baglan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "createdb -U postgres crm_lab",
+          "hint_text": "Yeni bir database acmak icin createdb kullan.",
+          "hint_partial": "createdb -U postgres ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d crm_lab",
+          "hint_text": "Olusturdugun database'e psql ile baglan.",
+          "hint_partial": "psql -U postgres -d ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-158",
+      "type": "single",
+      "scenario": "Release kontrolunde deneme icin acilan `crm_lab` database'ini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dropdb -U postgres crm_lab",
+          "hint_text": "Database kaldirmak icin dropdb kullan.",
+          "hint_partial": "dropdb -U postgres ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-159",
+      "type": "single",
+      "scenario": "Release kontrolunde `crm_user` rolunun login ozelligini kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT rolname, rolcanlogin FROM pg_roles WHERE rolname = 'crm_user';\"",
+          "hint_text": "Belirli bir rolun ozelliklerini gormek icin pg_roles view'unu rol adi ile filtrele.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-160",
+      "type": "single",
+      "scenario": "Release kontrolunde `crm` database'inde kurulu extension'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d crm -c \"SELECT extname FROM pg_extension ORDER BY extname;\"",
+          "hint_text": "Kurulu extension'lar icin pg_extension view'unu kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-161",
+      "type": "single",
+      "scenario": "Release kontrolunde `crm` tarafinda aktif `search_path` degerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d crm -c \"SHOW search_path;\"",
+          "hint_text": "Bir PostgreSQL ayarini okumak icin SHOW kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-162",
+      "type": "single",
+      "scenario": "Release kontrolunde `crm` icin server tarafinda baglanti hazir mi kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pg_isready -U postgres -d crm",
+          "hint_text": "Hazirlik kontrolu icin pg_isready komutunu kullan.",
+          "hint_partial": "pg_isready -U postgres -d ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-163",
+      "type": "single",
+      "scenario": "Release kontrolunde `crm` database'inin plain SQL backup'ini `crm.sql` dosyasina al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pg_dump -U postgres crm > crm.sql",
+          "hint_text": "Plain SQL export icin pg_dump ciktisini dosyaya yonlendir.",
+          "hint_partial": "pg_dump -U postgres ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-164",
+      "type": "single",
+      "scenario": "Release kontrolunde `crm` database'inin sadece schema bilgisini `crm-schema.sql` dosyasina cikar.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pg_dump -U postgres --schema-only crm > crm-schema.sql",
+          "hint_text": "Sadece schema icin pg_dump'i schema-only modunda calistir.",
+          "hint_partial": "pg_dump -U postgres --schema-only ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-165",
+      "type": "single",
+      "scenario": "Release kontrolunde `crm-seed.sql` dosyasini `crm` database'ine uygula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d crm -f crm-seed.sql",
+          "hint_text": "Bir SQL dosyasini uygulamak icin psql'i -f ile calistir.",
+          "hint_partial": "psql -U postgres -d ... -f ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-166",
+      "type": "single",
+      "scenario": "Release kontrolunde `crm` database'indeki aktif session'lari pid, user ve state ile listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pid, usename, state FROM pg_stat_activity WHERE datname = 'crm';\"",
+          "hint_text": "Aktif baglantilar icin pg_stat_activity view'unu database filtresiyle kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-167",
+      "type": "single",
+      "scenario": "Release kontrolunde `crm` database'ine acik toplam session sayisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT COUNT(*) FROM pg_stat_activity WHERE datname = 'crm';\"",
+          "hint_text": "Baglanti yogunlugunu hizli gormek icin pg_stat_activity uzerinde sayim yap.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-168",
+      "type": "single",
+      "scenario": "Release kontrolunde `crm` database'inin toplam boyutunu insan okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pg_size_pretty(pg_database_size('crm'));\"",
+          "hint_text": "Database boyutunu gormek icin pg_database_size ve pg_size_pretty kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-169",
+      "type": "single",
+      "scenario": "Operasyon devrinde `support` database'ine baglan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d support",
+          "hint_text": "psql ile dogrudan ilgili database'e baglan.",
+          "hint_partial": "psql -U postgres -d ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-170",
+      "type": "single",
+      "scenario": "Operasyon devrinde cluster'da `support` adli database var mi kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT datname FROM pg_database WHERE datname = 'support';\"",
+          "hint_text": "Database varligini kontrol etmek icin pg_database view'unu ilgili isimle filtrele.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-171",
+      "type": "single",
+      "scenario": "Operasyon devrinde `support` database'indeki schema adlarini alfabetik listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d support -c \"SELECT schema_name FROM information_schema.schemata ORDER BY schema_name;\"",
+          "hint_text": "Schema isimleri icin information_schema tarafindan sunulan view'u kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-172",
+      "type": "single",
+      "scenario": "Operasyon devrinde `support` database'inde PostgreSQL surum bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d support -c \"SELECT version();\"",
+          "hint_text": "Sunucu surum bilgisini SQL tarafindan donduren yerlesik fonksiyonla oku.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-173",
+      "type": "single",
+      "scenario": "Operasyon devrinde `support` tarafinda aktif search_path degerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d support -c \"SHOW search_path;\"",
+          "hint_text": "Oturumun schema arama yolunu gormek icin ilgili ayari dogrudan oku.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-174",
+      "type": "single",
+      "scenario": "Operasyon devrinde `support` database'inde public schema altindaki tablo adlarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d support -c \"SELECT tablename FROM pg_tables WHERE schemaname = 'public' ORDER BY tablename;\"",
+          "hint_text": "Public tablolari pg_tables view'u uzerinden filtrele.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-175",
+      "type": "single",
+      "scenario": "Operasyon devrinde `support` database'inde psql meta-komutuyla `events` tablosunun kolon ve index bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d support -c \"\\d events\"",
+          "hint_text": "Tek komutla tablo yapisini gormek icin psql'in describe meta-komutunu kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-176",
+      "type": "single",
+      "scenario": "Operasyon devrinde `support` database'inde `events` tablosunun kolonlarini sira numarasina gore getir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d support -c \"SELECT column_name FROM information_schema.columns WHERE table_name = 'events' ORDER BY ordinal_position;\"",
+          "hint_text": "Kolon listesi icin information_schema.columns ve ordinal_position kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-177",
+      "type": "single",
+      "scenario": "Operasyon devrinde `support` database'inde `events` tablosundaki toplam kayit sayisini hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d support -c \"SELECT COUNT(*) FROM events;\"",
+          "hint_text": "Kayit sayisi icin COUNT(*) ile tabloyu sorgula.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-178",
+      "type": "single",
+      "scenario": "Operasyon devrinde `support` database'inde `events` tablosundan ilk 50 satiri getir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d support -c \"SELECT * FROM events LIMIT 50;\"",
+          "hint_text": "Satir sayisini sinirlamak icin LIMIT kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-179",
+      "type": "single",
+      "scenario": "Operasyon devrinde `support` database'inde `events` tablosundan `type = sync` olan ilk 50 satiri getir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d support -c \"SELECT * FROM events WHERE type = 'sync' LIMIT 50;\"",
+          "hint_text": "Filtreli veri icin WHERE, satir siniri icin LIMIT kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-180",
+      "type": "single",
+      "scenario": "Operasyon devrinde `support` database'inde `events` tablosunu CSV header ile `events.csv` dosyasina aktar.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d support -c \"\\copy events TO 'events.csv' CSV HEADER\"",
+          "hint_text": "Terminalden dosyaya export icin psql'in client-side copy meta-komutunu kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-181",
+      "type": "multi-step",
+      "scenario": "Operasyon devrinde deneme icin `support_lab` adinda bir database olustur ve sonra baglan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "createdb -U postgres support_lab",
+          "hint_text": "Yeni bir database acmak icin createdb kullan.",
+          "hint_partial": "createdb -U postgres ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d support_lab",
+          "hint_text": "Olusturdugun database'e psql ile baglan.",
+          "hint_partial": "psql -U postgres -d ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-182",
+      "type": "single",
+      "scenario": "Operasyon devrinde deneme icin acilan `support_lab` database'ini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dropdb -U postgres support_lab",
+          "hint_text": "Database kaldirmak icin dropdb kullan.",
+          "hint_partial": "dropdb -U postgres ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-183",
+      "type": "single",
+      "scenario": "Operasyon devrinde `support_user` rolunun login ozelligini kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT rolname, rolcanlogin FROM pg_roles WHERE rolname = 'support_user';\"",
+          "hint_text": "Belirli bir rolun ozelliklerini gormek icin pg_roles view'unu rol adi ile filtrele.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-184",
+      "type": "single",
+      "scenario": "Operasyon devrinde `support` database'inde kurulu extension'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d support -c \"SELECT extname FROM pg_extension ORDER BY extname;\"",
+          "hint_text": "Kurulu extension'lar icin pg_extension view'unu kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-185",
+      "type": "single",
+      "scenario": "Operasyon devrinde `support` tarafinda aktif `TimeZone` degerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d support -c \"SHOW TimeZone;\"",
+          "hint_text": "Bir PostgreSQL ayarini okumak icin SHOW kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-186",
+      "type": "single",
+      "scenario": "Operasyon devrinde `support` icin server tarafinda baglanti hazir mi kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pg_isready -U postgres -d support",
+          "hint_text": "Hazirlik kontrolu icin pg_isready komutunu kullan.",
+          "hint_partial": "pg_isready -U postgres -d ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-187",
+      "type": "single",
+      "scenario": "Operasyon devrinde `support` database'inin plain SQL backup'ini `support.sql` dosyasina al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pg_dump -U postgres support > support.sql",
+          "hint_text": "Plain SQL export icin pg_dump ciktisini dosyaya yonlendir.",
+          "hint_partial": "pg_dump -U postgres ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-188",
+      "type": "single",
+      "scenario": "Operasyon devrinde `support` database'inin sadece schema bilgisini `support-schema.sql` dosyasina cikar.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pg_dump -U postgres --schema-only support > support-schema.sql",
+          "hint_text": "Sadece schema icin pg_dump'i schema-only modunda calistir.",
+          "hint_partial": "pg_dump -U postgres --schema-only ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-189",
+      "type": "single",
+      "scenario": "Operasyon devrinde `support-seed.sql` dosyasini `support` database'ine uygula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d support -f support-seed.sql",
+          "hint_text": "Bir SQL dosyasini uygulamak icin psql'i -f ile calistir.",
+          "hint_partial": "psql -U postgres -d ... -f ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-190",
+      "type": "single",
+      "scenario": "Operasyon devrinde `support` database'indeki aktif session'lari pid, user ve state ile listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pid, usename, state FROM pg_stat_activity WHERE datname = 'support';\"",
+          "hint_text": "Aktif baglantilar icin pg_stat_activity view'unu database filtresiyle kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-191",
+      "type": "single",
+      "scenario": "Operasyon devrinde `support` database'ine acik toplam session sayisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT COUNT(*) FROM pg_stat_activity WHERE datname = 'support';\"",
+          "hint_text": "Baglanti yogunlugunu hizli gormek icin pg_stat_activity uzerinde sayim yap.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-192",
+      "type": "single",
+      "scenario": "Operasyon devrinde `support` database'inin toplam boyutunu insan okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pg_size_pretty(pg_database_size('support'));\"",
+          "hint_text": "Database boyutunu gormek icin pg_database_size ve pg_size_pretty kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-193",
+      "type": "single",
+      "scenario": "On-call gorevinde `events` database'ine baglan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d events",
+          "hint_text": "psql ile dogrudan ilgili database'e baglan.",
+          "hint_partial": "psql -U postgres -d ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-194",
+      "type": "single",
+      "scenario": "On-call gorevinde cluster'da `events` adli database var mi kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT datname FROM pg_database WHERE datname = 'events';\"",
+          "hint_text": "Database varligini kontrol etmek icin pg_database view'unu ilgili isimle filtrele.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-195",
+      "type": "single",
+      "scenario": "On-call gorevinde `events` database'indeki schema adlarini alfabetik listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d events -c \"SELECT schema_name FROM information_schema.schemata ORDER BY schema_name;\"",
+          "hint_text": "Schema isimleri icin information_schema tarafindan sunulan view'u kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-196",
+      "type": "single",
+      "scenario": "On-call gorevinde `events` database'inde PostgreSQL surum bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d events -c \"SELECT version();\"",
+          "hint_text": "Sunucu surum bilgisini SQL tarafindan donduren yerlesik fonksiyonla oku.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-197",
+      "type": "single",
+      "scenario": "On-call gorevinde `events` tarafinda aktif search_path degerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d events -c \"SHOW search_path;\"",
+          "hint_text": "Oturumun schema arama yolunu gormek icin ilgili ayari dogrudan oku.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-198",
+      "type": "single",
+      "scenario": "On-call gorevinde `events` database'inde public schema altindaki tablo adlarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d events -c \"SELECT tablename FROM pg_tables WHERE schemaname = 'public' ORDER BY tablename;\"",
+          "hint_text": "Public tablolari pg_tables view'u uzerinden filtrele.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-199",
+      "type": "single",
+      "scenario": "On-call gorevinde `events` database'inde psql meta-komutuyla `job_runs` tablosunun kolon ve index bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d events -c \"\\d job_runs\"",
+          "hint_text": "Tek komutla tablo yapisini gormek icin psql'in describe meta-komutunu kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-200",
+      "type": "single",
+      "scenario": "On-call gorevinde `events` database'inde `job_runs` tablosunun kolonlarini sira numarasina gore getir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d events -c \"SELECT column_name FROM information_schema.columns WHERE table_name = 'job_runs' ORDER BY ordinal_position;\"",
+          "hint_text": "Kolon listesi icin information_schema.columns ve ordinal_position kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-201",
+      "type": "single",
+      "scenario": "On-call gorevinde `events` database'inde `job_runs` tablosundaki toplam kayit sayisini hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d events -c \"SELECT COUNT(*) FROM job_runs;\"",
+          "hint_text": "Kayit sayisi icin COUNT(*) ile tabloyu sorgula.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-202",
+      "type": "single",
+      "scenario": "On-call gorevinde `events` database'inde `job_runs` tablosundan ilk 75 satiri getir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d events -c \"SELECT * FROM job_runs LIMIT 75;\"",
+          "hint_text": "Satir sayisini sinirlamak icin LIMIT kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-203",
+      "type": "single",
+      "scenario": "On-call gorevinde `events` database'inde `job_runs` tablosundan `region = eu-west-1` olan ilk 75 satiri getir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d events -c \"SELECT * FROM job_runs WHERE region = 'eu-west-1' LIMIT 75;\"",
+          "hint_text": "Filtreli veri icin WHERE, satir siniri icin LIMIT kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-204",
+      "type": "single",
+      "scenario": "On-call gorevinde `events` database'inde `job_runs` tablosunu CSV header ile `job_runs.csv` dosyasina aktar.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d events -c \"\\copy job_runs TO 'job_runs.csv' CSV HEADER\"",
+          "hint_text": "Terminalden dosyaya export icin psql'in client-side copy meta-komutunu kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-205",
+      "type": "multi-step",
+      "scenario": "On-call gorevinde deneme icin `events_lab` adinda bir database olustur ve sonra baglan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "createdb -U postgres events_lab",
+          "hint_text": "Yeni bir database acmak icin createdb kullan.",
+          "hint_partial": "createdb -U postgres ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d events_lab",
+          "hint_text": "Olusturdugun database'e psql ile baglan.",
+          "hint_partial": "psql -U postgres -d ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-206",
+      "type": "single",
+      "scenario": "On-call gorevinde deneme icin acilan `events_lab` database'ini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dropdb -U postgres events_lab",
+          "hint_text": "Database kaldirmak icin dropdb kullan.",
+          "hint_partial": "dropdb -U postgres ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-207",
+      "type": "single",
+      "scenario": "On-call gorevinde `events_user` rolunun login ozelligini kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT rolname, rolcanlogin FROM pg_roles WHERE rolname = 'events_user';\"",
+          "hint_text": "Belirli bir rolun ozelliklerini gormek icin pg_roles view'unu rol adi ile filtrele.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-208",
+      "type": "single",
+      "scenario": "On-call gorevinde `events` database'inde kurulu extension'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d events -c \"SELECT extname FROM pg_extension ORDER BY extname;\"",
+          "hint_text": "Kurulu extension'lar icin pg_extension view'unu kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-209",
+      "type": "single",
+      "scenario": "On-call gorevinde `events` tarafinda aktif `application_name` degerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d events -c \"SHOW application_name;\"",
+          "hint_text": "Bir PostgreSQL ayarini okumak icin SHOW kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-210",
+      "type": "single",
+      "scenario": "On-call gorevinde `events` icin server tarafinda baglanti hazir mi kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pg_isready -U postgres -d events",
+          "hint_text": "Hazirlik kontrolu icin pg_isready komutunu kullan.",
+          "hint_partial": "pg_isready -U postgres -d ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-211",
+      "type": "single",
+      "scenario": "On-call gorevinde `events` database'inin plain SQL backup'ini `events.sql` dosyasina al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pg_dump -U postgres events > events.sql",
+          "hint_text": "Plain SQL export icin pg_dump ciktisini dosyaya yonlendir.",
+          "hint_partial": "pg_dump -U postgres ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-212",
+      "type": "single",
+      "scenario": "On-call gorevinde `events` database'inin sadece schema bilgisini `events-schema.sql` dosyasina cikar.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pg_dump -U postgres --schema-only events > events-schema.sql",
+          "hint_text": "Sadece schema icin pg_dump'i schema-only modunda calistir.",
+          "hint_partial": "pg_dump -U postgres --schema-only ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-213",
+      "type": "single",
+      "scenario": "On-call gorevinde `events-seed.sql` dosyasini `events` database'ine uygula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d events -f events-seed.sql",
+          "hint_text": "Bir SQL dosyasini uygulamak icin psql'i -f ile calistir.",
+          "hint_partial": "psql -U postgres -d ... -f ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-214",
+      "type": "single",
+      "scenario": "On-call gorevinde `events` database'indeki aktif session'lari pid, user ve state ile listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pid, usename, state FROM pg_stat_activity WHERE datname = 'events';\"",
+          "hint_text": "Aktif baglantilar icin pg_stat_activity view'unu database filtresiyle kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-215",
+      "type": "single",
+      "scenario": "On-call gorevinde `events` database'ine acik toplam session sayisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT COUNT(*) FROM pg_stat_activity WHERE datname = 'events';\"",
+          "hint_text": "Baglanti yogunlugunu hizli gormek icin pg_stat_activity uzerinde sayim yap.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-216",
+      "type": "single",
+      "scenario": "On-call gorevinde `events` database'inin toplam boyutunu insan okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pg_size_pretty(pg_database_size('events'));\"",
+          "hint_text": "Database boyutunu gormek icin pg_database_size ve pg_size_pretty kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-217",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `core` database'ine baglan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d core",
+          "hint_text": "psql ile dogrudan ilgili database'e baglan.",
+          "hint_partial": "psql -U postgres -d ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-218",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda cluster'da `core` adli database var mi kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT datname FROM pg_database WHERE datname = 'core';\"",
+          "hint_text": "Database varligini kontrol etmek icin pg_database view'unu ilgili isimle filtrele.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-219",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `core` database'indeki schema adlarini alfabetik listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d core -c \"SELECT schema_name FROM information_schema.schemata ORDER BY schema_name;\"",
+          "hint_text": "Schema isimleri icin information_schema tarafindan sunulan view'u kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-220",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `core` database'inde PostgreSQL surum bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d core -c \"SELECT version();\"",
+          "hint_text": "Sunucu surum bilgisini SQL tarafindan donduren yerlesik fonksiyonla oku.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-221",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `core` tarafinda aktif search_path degerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d core -c \"SHOW search_path;\"",
+          "hint_text": "Oturumun schema arama yolunu gormek icin ilgili ayari dogrudan oku.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-222",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `core` database'inde public schema altindaki tablo adlarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d core -c \"SELECT tablename FROM pg_tables WHERE schemaname = 'public' ORDER BY tablename;\"",
+          "hint_text": "Public tablolari pg_tables view'u uzerinden filtrele.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-223",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `core` database'inde psql meta-komutuyla `notifications` tablosunun kolon ve index bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d core -c \"\\d notifications\"",
+          "hint_text": "Tek komutla tablo yapisini gormek icin psql'in describe meta-komutunu kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-224",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `core` database'inde `notifications` tablosunun kolonlarini sira numarasina gore getir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d core -c \"SELECT column_name FROM information_schema.columns WHERE table_name = 'notifications' ORDER BY ordinal_position;\"",
+          "hint_text": "Kolon listesi icin information_schema.columns ve ordinal_position kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-225",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `core` database'inde `notifications` tablosundaki toplam kayit sayisini hesapla.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d core -c \"SELECT COUNT(*) FROM notifications;\"",
+          "hint_text": "Kayit sayisi icin COUNT(*) ile tabloyu sorgula.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-226",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `core` database'inde `notifications` tablosundan ilk 100 satiri getir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d core -c \"SELECT * FROM notifications LIMIT 100;\"",
+          "hint_text": "Satir sayisini sinirlamak icin LIMIT kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-227",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `core` database'inde `notifications` tablosundan `level = error` olan ilk 100 satiri getir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d core -c \"SELECT * FROM notifications WHERE level = 'error' LIMIT 100;\"",
+          "hint_text": "Filtreli veri icin WHERE, satir siniri icin LIMIT kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-228",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `core` database'inde `notifications` tablosunu CSV header ile `notifications.csv` dosyasina aktar.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d core -c \"\\copy notifications TO 'notifications.csv' CSV HEADER\"",
+          "hint_text": "Terminalden dosyaya export icin psql'in client-side copy meta-komutunu kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-229",
+      "type": "multi-step",
+      "scenario": "Kesinti sonrasinda deneme icin `core_lab` adinda bir database olustur ve sonra baglan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "createdb -U postgres core_lab",
+          "hint_text": "Yeni bir database acmak icin createdb kullan.",
+          "hint_partial": "createdb -U postgres ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d core_lab",
+          "hint_text": "Olusturdugun database'e psql ile baglan.",
+          "hint_partial": "psql -U postgres -d ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-230",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda deneme icin acilan `core_lab` database'ini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dropdb -U postgres core_lab",
+          "hint_text": "Database kaldirmak icin dropdb kullan.",
+          "hint_partial": "dropdb -U postgres ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-231",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `core_user` rolunun login ozelligini kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT rolname, rolcanlogin FROM pg_roles WHERE rolname = 'core_user';\"",
+          "hint_text": "Belirli bir rolun ozelliklerini gormek icin pg_roles view'unu rol adi ile filtrele.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-232",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `core` database'inde kurulu extension'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d core -c \"SELECT extname FROM pg_extension ORDER BY extname;\"",
+          "hint_text": "Kurulu extension'lar icin pg_extension view'unu kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-233",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `core` tarafinda aktif `client_encoding` degerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d core -c \"SHOW client_encoding;\"",
+          "hint_text": "Bir PostgreSQL ayarini okumak icin SHOW kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-234",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `core` icin server tarafinda baglanti hazir mi kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pg_isready -U postgres -d core",
+          "hint_text": "Hazirlik kontrolu icin pg_isready komutunu kullan.",
+          "hint_partial": "pg_isready -U postgres -d ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-235",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `core` database'inin plain SQL backup'ini `core.sql` dosyasina al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pg_dump -U postgres core > core.sql",
+          "hint_text": "Plain SQL export icin pg_dump ciktisini dosyaya yonlendir.",
+          "hint_partial": "pg_dump -U postgres ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-236",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `core` database'inin sadece schema bilgisini `core-schema.sql` dosyasina cikar.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pg_dump -U postgres --schema-only core > core-schema.sql",
+          "hint_text": "Sadece schema icin pg_dump'i schema-only modunda calistir.",
+          "hint_partial": "pg_dump -U postgres --schema-only ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-237",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `core-seed.sql` dosyasini `core` database'ine uygula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d core -f core-seed.sql",
+          "hint_text": "Bir SQL dosyasini uygulamak icin psql'i -f ile calistir.",
+          "hint_partial": "psql -U postgres -d ... -f ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-238",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `core` database'indeki aktif session'lari pid, user ve state ile listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pid, usename, state FROM pg_stat_activity WHERE datname = 'core';\"",
+          "hint_text": "Aktif baglantilar icin pg_stat_activity view'unu database filtresiyle kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-239",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `core` database'ine acik toplam session sayisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT COUNT(*) FROM pg_stat_activity WHERE datname = 'core';\"",
+          "hint_text": "Baglanti yogunlugunu hizli gormek icin pg_stat_activity uzerinde sayim yap.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-exp-240",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `core` database'inin toplam boyutunu insan okunur formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pg_size_pretty(pg_database_size('core'));\"",
+          "hint_text": "Database boyutunu gormek icin pg_database_size ve pg_size_pretty kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    }
+  ]
+}

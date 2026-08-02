@@ -1,0 +1,226 @@
+{
+  "level": "junior",
+  "topic": "postgres",
+  "questions": [
+    {
+      "id": "jpg-001",
+      "type": "single",
+      "scenario": "Local makinede varsayilan superuser ile PostgreSQL shell ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres",
+          "hint_text": "Yerel superuser oturumu acmak icin dogrudan `postgres` roluyle psql baslat.",
+          "hint_partial": "psql -U ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-002",
+      "type": "single",
+      "scenario": "Sunucudaki database listesini kisa formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -l",
+          "hint_text": "Tum database'leri hizli gormek icin psql'in listeleme modunu kullan.",
+          "hint_partial": "psql -U postgres ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-003",
+      "type": "single",
+      "scenario": "`app` database'ine baglan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d app",
+          "hint_text": "Belirli bir database secmek icin psql'i ilgili adla baslat.",
+          "hint_partial": "psql -U postgres -d ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-004",
+      "type": "single",
+      "scenario": "`app` database'ine baglandiginda hangi database ve kullanici ile oturum actigini dogrula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d app -c \"SELECT current_database(), current_user;\"",
+          "hint_text": "Bagli oldugun context'i teyit etmek icin oturum bilgisini donduren yerlesik fonksiyonlari kullan.",
+          "hint_partial": "psql -U postgres -d app -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-005",
+      "type": "single",
+      "scenario": "`users` tablosundan ilk 5 kaydi getir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d app -c \"SELECT * FROM users LIMIT 5;\"",
+          "hint_text": "Terminalden tek seferlik sorgu kos ve sonuc sayisini `LIMIT` ile kisitla.",
+          "hint_partial": "psql -U postgres -d app -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-006",
+      "type": "multi-step",
+      "scenario": "`analytics` adinda yeni bir database olustur ve hemen baglan.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "createdb -U postgres analytics",
+          "hint_text": "Yeni bir database acmak icin CLI tarafindaki olusturma aracini kullan.",
+          "hint_partial": "createdb -U postgres ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d analytics",
+          "hint_text": "Olusturdugun database'e ayni oturumda psql ile gec.",
+          "hint_partial": "psql -U postgres -d ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-007",
+      "type": "single",
+      "scenario": "Deneme icin acilan `analytics` database'ini sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "dropdb -U postgres analytics",
+          "hint_text": "Gecici olarak actigin database'i CLI silme araci ile kaldir.",
+          "hint_partial": "dropdb -U postgres ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-008",
+      "type": "single",
+      "scenario": "`app` database'inin plain SQL backup'ini `app.sql` dosyasina al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "pg_dump -U postgres app > app.sql",
+          "hint_text": "Plain text yedek icin `pg_dump` ciktisini bir `.sql` dosyasina yonlendir.",
+          "hint_partial": "pg_dump -U postgres ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-009",
+      "type": "single",
+      "scenario": "`seed.sql` dosyasini `app` database'ine uygula.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d app -f seed.sql",
+          "hint_text": "Bir SQL script'ini toplu calistirmak icin psql'i dosya modunda kullan.",
+          "hint_partial": "psql -U postgres -d app -f ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-010",
+      "type": "multi-step",
+      "scenario": "Servisin ayakta oldugunu teyit et ve son 50 log satirini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "systemctl status postgresql",
+          "hint_text": "Servisin canli olup olmadigini systemd uzerinden kontrol et.",
+          "hint_partial": "systemctl status ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "journalctl -u postgresql -n 50",
+          "hint_text": "Sorun varsa en son unit loglarini sinirli satir sayisiyla oku.",
+          "hint_partial": "journalctl -u ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-011",
+      "type": "single",
+      "scenario": "`app` database'inde PostgreSQL surum bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d app -c \"SELECT version();\"",
+          "hint_text": "Sunucunun calistirdigi PostgreSQL surumunu SQL tarafindan donduren yerlesik fonksiyonla oku.",
+          "hint_partial": "psql -U postgres -d app -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-012",
+      "type": "single",
+      "scenario": "`app` database'inde aktif search_path degerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d app -c \"SHOW search_path;\"",
+          "hint_text": "Varsayilan schema arama yolunu gormek icin ilgili PostgreSQL ayarini dogrudan oku.",
+          "hint_partial": "psql -U postgres -d app -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-013",
+      "type": "single",
+      "scenario": "psql meta-komutuyla `users` tablosunun kolon ve index bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d app -c \"\\d users\"",
+          "hint_text": "Tablo yapisini tek komutta gormek icin psql'in describe meta-komutunu kullan.",
+          "hint_partial": "psql -U postgres -d app -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-014",
+      "type": "single",
+      "scenario": "`app` database'inde kurulu extension'lari alfabetik listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d app -c \"SELECT extname FROM pg_extension ORDER BY extname;\"",
+          "hint_text": "Kurulu extension envanterini almak icin sistem kataloglarindaki extension view'unu kullan.",
+          "hint_partial": "psql -U postgres -d app -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-015",
+      "type": "single",
+      "scenario": "`users` tablosunu CSV header ile `users.csv` dosyasina aktar.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d app -c \"\\copy users TO 'users.csv' CSV HEADER\"",
+          "hint_text": "Terminalden dosyaya export icin psql'in client-side copy meta-komutunu kullan.",
+          "hint_partial": "psql -U postgres -d app -c ..."
+        }
+      ]
+    },
+    {
+      "id": "jpg-016",
+      "type": "single",
+      "scenario": "`app` database'ine acik toplam session sayisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT COUNT(*) FROM pg_stat_activity WHERE datname = 'app';\"",
+          "hint_text": "Baglanti yogunlugunu hizli gormek icin aktivite view'u uzerinde sayim yap.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2536 @@
+{
+  "level": "senior",
+  "topic": "postgres",
+  "questions": [
+    {
+      "id": "spg-exp-001",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `app` database'inde bloklanan backend'leri ve kim tarafindan bloklandiklarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pid, pg_blocking_pids(pid) FROM pg_stat_activity WHERE datname = 'app' AND cardinality(pg_blocking_pids(pid)) > 0;\"",
+          "hint_text": "Bloklayan pid zincirini gormek icin pg_blocking_pids kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-002",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `app` database'inde 5 dakikadan uzun suredir kosan query'leri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pid, now() - query_start AS runtime, query FROM pg_stat_activity WHERE datname = 'app' AND state <> 'idle' AND now() - query_start > interval '5 minutes';\"",
+          "hint_text": "Uzun kosan query icin pg_stat_activity ve query_start uzerinden zaman filtresi kur.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-003",
+      "type": "single",
+      "scenario": "Gece vardiyasinda bakim oncesi `app` database'indeki tum session'lari kendi session'in haric sonlandir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname = 'app' AND pid <> pg_backend_pid();\"",
+          "hint_text": "Kendi session'ini korumak icin pg_backend_pid filtresi ekle.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-004",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `app` database'inde bekleyen backend'leri wait event bilgileriyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pid, wait_event_type, wait_event FROM pg_stat_activity WHERE datname = 'app' AND wait_event_type IS NOT NULL;\"",
+          "hint_text": "Bekleme sebebini gormek icin wait_event_type ve wait_event kolonlarini kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-005",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `users(created_at)` uzerine online index olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d app -c \"CREATE INDEX CONCURRENTLY idx_users_created_at ON users (created_at);\"",
+          "hint_text": "Uretimde kesinti riskini azaltmak icin CREATE INDEX CONCURRENTLY kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-006",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `idx_users_created_at` index'ini concurrent sekilde reindex et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d app -c \"REINDEX INDEX CONCURRENTLY idx_users_created_at;\"",
+          "hint_text": "Online reindex icin REINDEX INDEX CONCURRENTLY kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-007",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `users` tablosu icin verbose vacuum analyze calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d app -c \"VACUUM (VERBOSE, ANALYZE) users;\"",
+          "hint_text": "Ayrintili bakim ciktisi icin VACUUM (VERBOSE, ANALYZE) kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-008",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `app` database'inde en fazla dead tuple birikmis ilk 10 tabloyu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d app -c \"SELECT relname, n_dead_tup FROM pg_stat_user_tables ORDER BY n_dead_tup DESC LIMIT 10;\"",
+          "hint_text": "Bloat ipucu icin pg_stat_user_tables uzerinden n_dead_tup siralamasi yap.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-009",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `users` tablosunda `status = pending` filtresini buffer istatistikleriyle analiz et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d app -c \"EXPLAIN (ANALYZE, BUFFERS) SELECT * FROM users WHERE status = 'pending';\"",
+          "hint_text": "Gercek plan ve buffer kullanimini bir arada gormek icin EXPLAIN (ANALYZE, BUFFERS) kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-010",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `app` database'indeki en buyuk 10 user tablosunu boyutlariyla listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d app -c \"SELECT relname, pg_size_pretty(pg_total_relation_size(relid)) AS size FROM pg_catalog.pg_statio_user_tables ORDER BY pg_total_relation_size(relid) DESC LIMIT 10;\"",
+          "hint_text": "Buyuk tablolar icin pg_statio_user_tables ve pg_total_relation_size kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-011",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `app` database'inde gecersiz index'leri bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d app -c \"SELECT indexrelid::regclass AS index_name FROM pg_index WHERE NOT indisvalid;\"",
+          "hint_text": "Gecersiz index kontrolu icin pg_index uzerinde indisvalid filtresi kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-012",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `slot_app` replication slot'unu aktiflik ve restart LSN bilgisiyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT slot_name, active, restart_lsn FROM pg_replication_slots WHERE slot_name = 'slot_app';\"",
+          "hint_text": "Slot ayrintisi icin pg_replication_slots view'unu kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-013",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `replica-app-1` replication client'ini state ve sync state ile goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT application_name, state, sync_state FROM pg_stat_replication WHERE application_name = 'replica-app-1';\"",
+          "hint_text": "Replication istemcisi durumu icin pg_stat_replication view'unu filtrele.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-014",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `replica-app-1` replika istemcisi icin WAL byte lag bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT application_name, pg_wal_lsn_diff(sent_lsn, replay_lsn) AS byte_lag FROM pg_stat_replication WHERE application_name = 'replica-app-1';\"",
+          "hint_text": "WAL lag icin pg_wal_lsn_diff fonksiyonunu kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-015",
+      "type": "single",
+      "scenario": "Gece vardiyasinda 5 dakikadan daha eski prepared transaction kayitlarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT gid, prepared, owner FROM pg_prepared_xacts WHERE prepared < now() - interval '5 minutes';\"",
+          "hint_text": "Hazir bekleyen transaction'lar icin pg_prepared_xacts view'unu zaman filtresiyle tara.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-016",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `app` database'inde 5 dakikadan eski idle in transaction session'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pid, now() - xact_start AS idle_tx_age, query FROM pg_stat_activity WHERE datname = 'app' AND state = 'idle in transaction' AND now() - xact_start > interval '5 minutes';\"",
+          "hint_text": "Takili transaction'lari bulmak icin pg_stat_activity uzerinde state = 'idle in transaction' filtresi kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-017",
+      "type": "multi-step",
+      "scenario": "Gece vardiyasinda global ayarda work_mem degerini `32MB` yap ve config'i reload et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"ALTER SYSTEM SET work_mem = '32MB';\"",
+          "hint_text": "Kalici ayar icin ALTER SYSTEM SET work_mem kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pg_reload_conf();\"",
+          "hint_text": "Degisiklikleri yeniden okutmak icin pg_reload_conf cagir.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-018",
+      "type": "single",
+      "scenario": "Gece vardiyasinda ileri seviye ayarlardan `wal_level` degerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SHOW wal_level;\"",
+          "hint_text": "Sunucu ayari okumak icin SHOW kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-019",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `users_p` tablosunun partition tree bilgisini getir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d app -c \"SELECT relid::regclass, parentrelid::regclass, isleaf FROM pg_partition_tree('users_p');\"",
+          "hint_text": "Partition hiyerarsisini gormek icin pg_partition_tree fonksiyonunu kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-020",
+      "type": "single",
+      "scenario": "Bakim penceresinde `billing` database'inde bloklanan backend'leri ve kim tarafindan bloklandiklarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pid, pg_blocking_pids(pid) FROM pg_stat_activity WHERE datname = 'billing' AND cardinality(pg_blocking_pids(pid)) > 0;\"",
+          "hint_text": "Bloklayan pid zincirini gormek icin pg_blocking_pids kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-021",
+      "type": "single",
+      "scenario": "Bakim penceresinde `billing` database'inde 10 dakikadan uzun suredir kosan query'leri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pid, now() - query_start AS runtime, query FROM pg_stat_activity WHERE datname = 'billing' AND state <> 'idle' AND now() - query_start > interval '10 minutes';\"",
+          "hint_text": "Uzun kosan query icin pg_stat_activity ve query_start uzerinden zaman filtresi kur.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-022",
+      "type": "single",
+      "scenario": "Bakim penceresinde bakim oncesi `billing` database'indeki tum session'lari kendi session'in haric sonlandir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname = 'billing' AND pid <> pg_backend_pid();\"",
+          "hint_text": "Kendi session'ini korumak icin pg_backend_pid filtresi ekle.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-023",
+      "type": "single",
+      "scenario": "Bakim penceresinde `billing` database'inde bekleyen backend'leri wait event bilgileriyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pid, wait_event_type, wait_event FROM pg_stat_activity WHERE datname = 'billing' AND wait_event_type IS NOT NULL;\"",
+          "hint_text": "Bekleme sebebini gormek icin wait_event_type ve wait_event kolonlarini kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-024",
+      "type": "single",
+      "scenario": "Bakim penceresinde `orders(updated_at)` uzerine online index olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d billing -c \"CREATE INDEX CONCURRENTLY idx_orders_updated_at ON orders (updated_at);\"",
+          "hint_text": "Uretimde kesinti riskini azaltmak icin CREATE INDEX CONCURRENTLY kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-025",
+      "type": "single",
+      "scenario": "Bakim penceresinde `idx_orders_updated_at` index'ini concurrent sekilde reindex et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d billing -c \"REINDEX INDEX CONCURRENTLY idx_orders_updated_at;\"",
+          "hint_text": "Online reindex icin REINDEX INDEX CONCURRENTLY kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-026",
+      "type": "single",
+      "scenario": "Bakim penceresinde `orders` tablosu icin verbose vacuum analyze calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d billing -c \"VACUUM (VERBOSE, ANALYZE) orders;\"",
+          "hint_text": "Ayrintili bakim ciktisi icin VACUUM (VERBOSE, ANALYZE) kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-027",
+      "type": "single",
+      "scenario": "Bakim penceresinde `billing` database'inde en fazla dead tuple birikmis ilk 10 tabloyu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d billing -c \"SELECT relname, n_dead_tup FROM pg_stat_user_tables ORDER BY n_dead_tup DESC LIMIT 10;\"",
+          "hint_text": "Bloat ipucu icin pg_stat_user_tables uzerinden n_dead_tup siralamasi yap.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-028",
+      "type": "single",
+      "scenario": "Bakim penceresinde `orders` tablosunda `status = paid` filtresini buffer istatistikleriyle analiz et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d billing -c \"EXPLAIN (ANALYZE, BUFFERS) SELECT * FROM orders WHERE status = 'paid';\"",
+          "hint_text": "Gercek plan ve buffer kullanimini bir arada gormek icin EXPLAIN (ANALYZE, BUFFERS) kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-029",
+      "type": "single",
+      "scenario": "Bakim penceresinde `billing` database'indeki en buyuk 10 user tablosunu boyutlariyla listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d billing -c \"SELECT relname, pg_size_pretty(pg_total_relation_size(relid)) AS size FROM pg_catalog.pg_statio_user_tables ORDER BY pg_total_relation_size(relid) DESC LIMIT 10;\"",
+          "hint_text": "Buyuk tablolar icin pg_statio_user_tables ve pg_total_relation_size kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-030",
+      "type": "single",
+      "scenario": "Bakim penceresinde `billing` database'inde gecersiz index'leri bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d billing -c \"SELECT indexrelid::regclass AS index_name FROM pg_index WHERE NOT indisvalid;\"",
+          "hint_text": "Gecersiz index kontrolu icin pg_index uzerinde indisvalid filtresi kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-031",
+      "type": "single",
+      "scenario": "Bakim penceresinde `slot_billing` replication slot'unu aktiflik ve restart LSN bilgisiyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT slot_name, active, restart_lsn FROM pg_replication_slots WHERE slot_name = 'slot_billing';\"",
+          "hint_text": "Slot ayrintisi icin pg_replication_slots view'unu kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-032",
+      "type": "single",
+      "scenario": "Bakim penceresinde `replica-billing-1` replication client'ini state ve sync state ile goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT application_name, state, sync_state FROM pg_stat_replication WHERE application_name = 'replica-billing-1';\"",
+          "hint_text": "Replication istemcisi durumu icin pg_stat_replication view'unu filtrele.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-033",
+      "type": "single",
+      "scenario": "Bakim penceresinde `replica-billing-1` replika istemcisi icin WAL byte lag bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT application_name, pg_wal_lsn_diff(sent_lsn, replay_lsn) AS byte_lag FROM pg_stat_replication WHERE application_name = 'replica-billing-1';\"",
+          "hint_text": "WAL lag icin pg_wal_lsn_diff fonksiyonunu kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-034",
+      "type": "single",
+      "scenario": "Bakim penceresinde 10 dakikadan daha eski prepared transaction kayitlarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT gid, prepared, owner FROM pg_prepared_xacts WHERE prepared < now() - interval '10 minutes';\"",
+          "hint_text": "Hazir bekleyen transaction'lar icin pg_prepared_xacts view'unu zaman filtresiyle tara.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-035",
+      "type": "single",
+      "scenario": "Bakim penceresinde `billing` database'inde 10 dakikadan eski idle in transaction session'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pid, now() - xact_start AS idle_tx_age, query FROM pg_stat_activity WHERE datname = 'billing' AND state = 'idle in transaction' AND now() - xact_start > interval '10 minutes';\"",
+          "hint_text": "Takili transaction'lari bulmak icin pg_stat_activity uzerinde state = 'idle in transaction' filtresi kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-036",
+      "type": "multi-step",
+      "scenario": "Bakim penceresinde global ayarda work_mem degerini `48MB` yap ve config'i reload et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"ALTER SYSTEM SET work_mem = '48MB';\"",
+          "hint_text": "Kalici ayar icin ALTER SYSTEM SET work_mem kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pg_reload_conf();\"",
+          "hint_text": "Degisiklikleri yeniden okutmak icin pg_reload_conf cagir.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-037",
+      "type": "single",
+      "scenario": "Bakim penceresinde ileri seviye ayarlardan `max_wal_size` degerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SHOW max_wal_size;\"",
+          "hint_text": "Sunucu ayari okumak icin SHOW kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-038",
+      "type": "single",
+      "scenario": "Bakim penceresinde `orders_p` tablosunun partition tree bilgisini getir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d billing -c \"SELECT relid::regclass, parentrelid::regclass, isleaf FROM pg_partition_tree('orders_p');\"",
+          "hint_text": "Partition hiyerarsisini gormek icin pg_partition_tree fonksiyonunu kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-039",
+      "type": "single",
+      "scenario": "Incident sonrasinda `analytics` database'inde bloklanan backend'leri ve kim tarafindan bloklandiklarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pid, pg_blocking_pids(pid) FROM pg_stat_activity WHERE datname = 'analytics' AND cardinality(pg_blocking_pids(pid)) > 0;\"",
+          "hint_text": "Bloklayan pid zincirini gormek icin pg_blocking_pids kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-040",
+      "type": "single",
+      "scenario": "Incident sonrasinda `analytics` database'inde 15 dakikadan uzun suredir kosan query'leri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pid, now() - query_start AS runtime, query FROM pg_stat_activity WHERE datname = 'analytics' AND state <> 'idle' AND now() - query_start > interval '15 minutes';\"",
+          "hint_text": "Uzun kosan query icin pg_stat_activity ve query_start uzerinden zaman filtresi kur.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-041",
+      "type": "single",
+      "scenario": "Incident sonrasinda bakim oncesi `analytics` database'indeki tum session'lari kendi session'in haric sonlandir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname = 'analytics' AND pid <> pg_backend_pid();\"",
+          "hint_text": "Kendi session'ini korumak icin pg_backend_pid filtresi ekle.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-042",
+      "type": "single",
+      "scenario": "Incident sonrasinda `analytics` database'inde bekleyen backend'leri wait event bilgileriyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pid, wait_event_type, wait_event FROM pg_stat_activity WHERE datname = 'analytics' AND wait_event_type IS NOT NULL;\"",
+          "hint_text": "Bekleme sebebini gormek icin wait_event_type ve wait_event kolonlarini kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-043",
+      "type": "single",
+      "scenario": "Incident sonrasinda `sessions(user_id)` uzerine online index olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d analytics -c \"CREATE INDEX CONCURRENTLY idx_sessions_user_id ON sessions (user_id);\"",
+          "hint_text": "Uretimde kesinti riskini azaltmak icin CREATE INDEX CONCURRENTLY kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-044",
+      "type": "single",
+      "scenario": "Incident sonrasinda `idx_sessions_user_id` index'ini concurrent sekilde reindex et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d analytics -c \"REINDEX INDEX CONCURRENTLY idx_sessions_user_id;\"",
+          "hint_text": "Online reindex icin REINDEX INDEX CONCURRENTLY kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-045",
+      "type": "single",
+      "scenario": "Incident sonrasinda `sessions` tablosu icin verbose vacuum analyze calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d analytics -c \"VACUUM (VERBOSE, ANALYZE) sessions;\"",
+          "hint_text": "Ayrintili bakim ciktisi icin VACUUM (VERBOSE, ANALYZE) kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-046",
+      "type": "single",
+      "scenario": "Incident sonrasinda `analytics` database'inde en fazla dead tuple birikmis ilk 10 tabloyu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d analytics -c \"SELECT relname, n_dead_tup FROM pg_stat_user_tables ORDER BY n_dead_tup DESC LIMIT 10;\"",
+          "hint_text": "Bloat ipucu icin pg_stat_user_tables uzerinden n_dead_tup siralamasi yap.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-047",
+      "type": "single",
+      "scenario": "Incident sonrasinda `sessions` tablosunda `event_type = login` filtresini buffer istatistikleriyle analiz et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d analytics -c \"EXPLAIN (ANALYZE, BUFFERS) SELECT * FROM sessions WHERE event_type = 'login';\"",
+          "hint_text": "Gercek plan ve buffer kullanimini bir arada gormek icin EXPLAIN (ANALYZE, BUFFERS) kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-048",
+      "type": "single",
+      "scenario": "Incident sonrasinda `analytics` database'indeki en buyuk 10 user tablosunu boyutlariyla listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d analytics -c \"SELECT relname, pg_size_pretty(pg_total_relation_size(relid)) AS size FROM pg_catalog.pg_statio_user_tables ORDER BY pg_total_relation_size(relid) DESC LIMIT 10;\"",
+          "hint_text": "Buyuk tablolar icin pg_statio_user_tables ve pg_total_relation_size kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-049",
+      "type": "single",
+      "scenario": "Incident sonrasinda `analytics` database'inde gecersiz index'leri bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d analytics -c \"SELECT indexrelid::regclass AS index_name FROM pg_index WHERE NOT indisvalid;\"",
+          "hint_text": "Gecersiz index kontrolu icin pg_index uzerinde indisvalid filtresi kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-050",
+      "type": "single",
+      "scenario": "Incident sonrasinda `slot_analytics` replication slot'unu aktiflik ve restart LSN bilgisiyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT slot_name, active, restart_lsn FROM pg_replication_slots WHERE slot_name = 'slot_analytics';\"",
+          "hint_text": "Slot ayrintisi icin pg_replication_slots view'unu kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-051",
+      "type": "single",
+      "scenario": "Incident sonrasinda `replica-analytics-1` replication client'ini state ve sync state ile goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT application_name, state, sync_state FROM pg_stat_replication WHERE application_name = 'replica-analytics-1';\"",
+          "hint_text": "Replication istemcisi durumu icin pg_stat_replication view'unu filtrele.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-052",
+      "type": "single",
+      "scenario": "Incident sonrasinda `replica-analytics-1` replika istemcisi icin WAL byte lag bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT application_name, pg_wal_lsn_diff(sent_lsn, replay_lsn) AS byte_lag FROM pg_stat_replication WHERE application_name = 'replica-analytics-1';\"",
+          "hint_text": "WAL lag icin pg_wal_lsn_diff fonksiyonunu kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-053",
+      "type": "single",
+      "scenario": "Incident sonrasinda 15 dakikadan daha eski prepared transaction kayitlarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT gid, prepared, owner FROM pg_prepared_xacts WHERE prepared < now() - interval '15 minutes';\"",
+          "hint_text": "Hazir bekleyen transaction'lar icin pg_prepared_xacts view'unu zaman filtresiyle tara.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-054",
+      "type": "single",
+      "scenario": "Incident sonrasinda `analytics` database'inde 15 dakikadan eski idle in transaction session'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pid, now() - xact_start AS idle_tx_age, query FROM pg_stat_activity WHERE datname = 'analytics' AND state = 'idle in transaction' AND now() - xact_start > interval '15 minutes';\"",
+          "hint_text": "Takili transaction'lari bulmak icin pg_stat_activity uzerinde state = 'idle in transaction' filtresi kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-055",
+      "type": "multi-step",
+      "scenario": "Incident sonrasinda global ayarda work_mem degerini `64MB` yap ve config'i reload et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"ALTER SYSTEM SET work_mem = '64MB';\"",
+          "hint_text": "Kalici ayar icin ALTER SYSTEM SET work_mem kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pg_reload_conf();\"",
+          "hint_text": "Degisiklikleri yeniden okutmak icin pg_reload_conf cagir.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-056",
+      "type": "single",
+      "scenario": "Incident sonrasinda ileri seviye ayarlardan `min_wal_size` degerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SHOW min_wal_size;\"",
+          "hint_text": "Sunucu ayari okumak icin SHOW kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-057",
+      "type": "single",
+      "scenario": "Incident sonrasinda `sessions_p` tablosunun partition tree bilgisini getir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d analytics -c \"SELECT relid::regclass, parentrelid::regclass, isleaf FROM pg_partition_tree('sessions_p');\"",
+          "hint_text": "Partition hiyerarsisini gormek icin pg_partition_tree fonksiyonunu kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-058",
+      "type": "single",
+      "scenario": "Deploy oncesi `inventory` database'inde bloklanan backend'leri ve kim tarafindan bloklandiklarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pid, pg_blocking_pids(pid) FROM pg_stat_activity WHERE datname = 'inventory' AND cardinality(pg_blocking_pids(pid)) > 0;\"",
+          "hint_text": "Bloklayan pid zincirini gormek icin pg_blocking_pids kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-059",
+      "type": "single",
+      "scenario": "Deploy oncesi `inventory` database'inde 20 dakikadan uzun suredir kosan query'leri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pid, now() - query_start AS runtime, query FROM pg_stat_activity WHERE datname = 'inventory' AND state <> 'idle' AND now() - query_start > interval '20 minutes';\"",
+          "hint_text": "Uzun kosan query icin pg_stat_activity ve query_start uzerinden zaman filtresi kur.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-060",
+      "type": "single",
+      "scenario": "Deploy oncesi bakim oncesi `inventory` database'indeki tum session'lari kendi session'in haric sonlandir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname = 'inventory' AND pid <> pg_backend_pid();\"",
+          "hint_text": "Kendi session'ini korumak icin pg_backend_pid filtresi ekle.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-061",
+      "type": "single",
+      "scenario": "Deploy oncesi `inventory` database'inde bekleyen backend'leri wait event bilgileriyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pid, wait_event_type, wait_event FROM pg_stat_activity WHERE datname = 'inventory' AND wait_event_type IS NOT NULL;\"",
+          "hint_text": "Bekleme sebebini gormek icin wait_event_type ve wait_event kolonlarini kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-062",
+      "type": "single",
+      "scenario": "Deploy oncesi `payments(status)` uzerine online index olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d inventory -c \"CREATE INDEX CONCURRENTLY idx_payments_status ON payments (status);\"",
+          "hint_text": "Uretimde kesinti riskini azaltmak icin CREATE INDEX CONCURRENTLY kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-063",
+      "type": "single",
+      "scenario": "Deploy oncesi `idx_payments_status` index'ini concurrent sekilde reindex et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d inventory -c \"REINDEX INDEX CONCURRENTLY idx_payments_status;\"",
+          "hint_text": "Online reindex icin REINDEX INDEX CONCURRENTLY kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-064",
+      "type": "single",
+      "scenario": "Deploy oncesi `payments` tablosu icin verbose vacuum analyze calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d inventory -c \"VACUUM (VERBOSE, ANALYZE) payments;\"",
+          "hint_text": "Ayrintili bakim ciktisi icin VACUUM (VERBOSE, ANALYZE) kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-065",
+      "type": "single",
+      "scenario": "Deploy oncesi `inventory` database'inde en fazla dead tuple birikmis ilk 10 tabloyu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d inventory -c \"SELECT relname, n_dead_tup FROM pg_stat_user_tables ORDER BY n_dead_tup DESC LIMIT 10;\"",
+          "hint_text": "Bloat ipucu icin pg_stat_user_tables uzerinden n_dead_tup siralamasi yap.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-066",
+      "type": "single",
+      "scenario": "Deploy oncesi `payments` tablosunda `state = queued` filtresini buffer istatistikleriyle analiz et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d inventory -c \"EXPLAIN (ANALYZE, BUFFERS) SELECT * FROM payments WHERE state = 'queued';\"",
+          "hint_text": "Gercek plan ve buffer kullanimini bir arada gormek icin EXPLAIN (ANALYZE, BUFFERS) kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-067",
+      "type": "single",
+      "scenario": "Deploy oncesi `inventory` database'indeki en buyuk 10 user tablosunu boyutlariyla listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d inventory -c \"SELECT relname, pg_size_pretty(pg_total_relation_size(relid)) AS size FROM pg_catalog.pg_statio_user_tables ORDER BY pg_total_relation_size(relid) DESC LIMIT 10;\"",
+          "hint_text": "Buyuk tablolar icin pg_statio_user_tables ve pg_total_relation_size kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-068",
+      "type": "single",
+      "scenario": "Deploy oncesi `inventory` database'inde gecersiz index'leri bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d inventory -c \"SELECT indexrelid::regclass AS index_name FROM pg_index WHERE NOT indisvalid;\"",
+          "hint_text": "Gecersiz index kontrolu icin pg_index uzerinde indisvalid filtresi kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-069",
+      "type": "single",
+      "scenario": "Deploy oncesi `slot_inventory` replication slot'unu aktiflik ve restart LSN bilgisiyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT slot_name, active, restart_lsn FROM pg_replication_slots WHERE slot_name = 'slot_inventory';\"",
+          "hint_text": "Slot ayrintisi icin pg_replication_slots view'unu kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-070",
+      "type": "single",
+      "scenario": "Deploy oncesi `replica-inventory-1` replication client'ini state ve sync state ile goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT application_name, state, sync_state FROM pg_stat_replication WHERE application_name = 'replica-inventory-1';\"",
+          "hint_text": "Replication istemcisi durumu icin pg_stat_replication view'unu filtrele.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-071",
+      "type": "single",
+      "scenario": "Deploy oncesi `replica-inventory-1` replika istemcisi icin WAL byte lag bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT application_name, pg_wal_lsn_diff(sent_lsn, replay_lsn) AS byte_lag FROM pg_stat_replication WHERE application_name = 'replica-inventory-1';\"",
+          "hint_text": "WAL lag icin pg_wal_lsn_diff fonksiyonunu kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-072",
+      "type": "single",
+      "scenario": "Deploy oncesi 20 dakikadan daha eski prepared transaction kayitlarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT gid, prepared, owner FROM pg_prepared_xacts WHERE prepared < now() - interval '20 minutes';\"",
+          "hint_text": "Hazir bekleyen transaction'lar icin pg_prepared_xacts view'unu zaman filtresiyle tara.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-073",
+      "type": "single",
+      "scenario": "Deploy oncesi `inventory` database'inde 20 dakikadan eski idle in transaction session'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pid, now() - xact_start AS idle_tx_age, query FROM pg_stat_activity WHERE datname = 'inventory' AND state = 'idle in transaction' AND now() - xact_start > interval '20 minutes';\"",
+          "hint_text": "Takili transaction'lari bulmak icin pg_stat_activity uzerinde state = 'idle in transaction' filtresi kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-074",
+      "type": "multi-step",
+      "scenario": "Deploy oncesi global ayarda work_mem degerini `80MB` yap ve config'i reload et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"ALTER SYSTEM SET work_mem = '80MB';\"",
+          "hint_text": "Kalici ayar icin ALTER SYSTEM SET work_mem kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pg_reload_conf();\"",
+          "hint_text": "Degisiklikleri yeniden okutmak icin pg_reload_conf cagir.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-075",
+      "type": "single",
+      "scenario": "Deploy oncesi ileri seviye ayarlardan `checkpoint_timeout` degerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SHOW checkpoint_timeout;\"",
+          "hint_text": "Sunucu ayari okumak icin SHOW kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-076",
+      "type": "single",
+      "scenario": "Deploy oncesi `payments_p` tablosunun partition tree bilgisini getir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d inventory -c \"SELECT relid::regclass, parentrelid::regclass, isleaf FROM pg_partition_tree('payments_p');\"",
+          "hint_text": "Partition hiyerarsisini gormek icin pg_partition_tree fonksiyonunu kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-077",
+      "type": "single",
+      "scenario": "Audit sirasinda `reporting` database'inde bloklanan backend'leri ve kim tarafindan bloklandiklarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pid, pg_blocking_pids(pid) FROM pg_stat_activity WHERE datname = 'reporting' AND cardinality(pg_blocking_pids(pid)) > 0;\"",
+          "hint_text": "Bloklayan pid zincirini gormek icin pg_blocking_pids kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-078",
+      "type": "single",
+      "scenario": "Audit sirasinda `reporting` database'inde 30 dakikadan uzun suredir kosan query'leri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pid, now() - query_start AS runtime, query FROM pg_stat_activity WHERE datname = 'reporting' AND state <> 'idle' AND now() - query_start > interval '30 minutes';\"",
+          "hint_text": "Uzun kosan query icin pg_stat_activity ve query_start uzerinden zaman filtresi kur.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-079",
+      "type": "single",
+      "scenario": "Audit sirasinda bakim oncesi `reporting` database'indeki tum session'lari kendi session'in haric sonlandir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname = 'reporting' AND pid <> pg_backend_pid();\"",
+          "hint_text": "Kendi session'ini korumak icin pg_backend_pid filtresi ekle.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-080",
+      "type": "single",
+      "scenario": "Audit sirasinda `reporting` database'inde bekleyen backend'leri wait event bilgileriyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pid, wait_event_type, wait_event FROM pg_stat_activity WHERE datname = 'reporting' AND wait_event_type IS NOT NULL;\"",
+          "hint_text": "Bekleme sebebini gormek icin wait_event_type ve wait_event kolonlarini kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-081",
+      "type": "single",
+      "scenario": "Audit sirasinda `invoices(customer_id)` uzerine online index olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d reporting -c \"CREATE INDEX CONCURRENTLY idx_invoices_customer_id ON invoices (customer_id);\"",
+          "hint_text": "Uretimde kesinti riskini azaltmak icin CREATE INDEX CONCURRENTLY kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-082",
+      "type": "single",
+      "scenario": "Audit sirasinda `idx_invoices_customer_id` index'ini concurrent sekilde reindex et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d reporting -c \"REINDEX INDEX CONCURRENTLY idx_invoices_customer_id;\"",
+          "hint_text": "Online reindex icin REINDEX INDEX CONCURRENTLY kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-083",
+      "type": "single",
+      "scenario": "Audit sirasinda `invoices` tablosu icin verbose vacuum analyze calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d reporting -c \"VACUUM (VERBOSE, ANALYZE) invoices;\"",
+          "hint_text": "Ayrintili bakim ciktisi icin VACUUM (VERBOSE, ANALYZE) kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-084",
+      "type": "single",
+      "scenario": "Audit sirasinda `reporting` database'inde en fazla dead tuple birikmis ilk 10 tabloyu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d reporting -c \"SELECT relname, n_dead_tup FROM pg_stat_user_tables ORDER BY n_dead_tup DESC LIMIT 10;\"",
+          "hint_text": "Bloat ipucu icin pg_stat_user_tables uzerinden n_dead_tup siralamasi yap.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-085",
+      "type": "single",
+      "scenario": "Audit sirasinda `invoices` tablosunda `kind = invoice` filtresini buffer istatistikleriyle analiz et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d reporting -c \"EXPLAIN (ANALYZE, BUFFERS) SELECT * FROM invoices WHERE kind = 'invoice';\"",
+          "hint_text": "Gercek plan ve buffer kullanimini bir arada gormek icin EXPLAIN (ANALYZE, BUFFERS) kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-086",
+      "type": "single",
+      "scenario": "Audit sirasinda `reporting` database'indeki en buyuk 10 user tablosunu boyutlariyla listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d reporting -c \"SELECT relname, pg_size_pretty(pg_total_relation_size(relid)) AS size FROM pg_catalog.pg_statio_user_tables ORDER BY pg_total_relation_size(relid) DESC LIMIT 10;\"",
+          "hint_text": "Buyuk tablolar icin pg_statio_user_tables ve pg_total_relation_size kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-087",
+      "type": "single",
+      "scenario": "Audit sirasinda `reporting` database'inde gecersiz index'leri bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d reporting -c \"SELECT indexrelid::regclass AS index_name FROM pg_index WHERE NOT indisvalid;\"",
+          "hint_text": "Gecersiz index kontrolu icin pg_index uzerinde indisvalid filtresi kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-088",
+      "type": "single",
+      "scenario": "Audit sirasinda `slot_reporting` replication slot'unu aktiflik ve restart LSN bilgisiyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT slot_name, active, restart_lsn FROM pg_replication_slots WHERE slot_name = 'slot_reporting';\"",
+          "hint_text": "Slot ayrintisi icin pg_replication_slots view'unu kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-089",
+      "type": "single",
+      "scenario": "Audit sirasinda `replica-reporting-1` replication client'ini state ve sync state ile goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT application_name, state, sync_state FROM pg_stat_replication WHERE application_name = 'replica-reporting-1';\"",
+          "hint_text": "Replication istemcisi durumu icin pg_stat_replication view'unu filtrele.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-090",
+      "type": "single",
+      "scenario": "Audit sirasinda `replica-reporting-1` replika istemcisi icin WAL byte lag bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT application_name, pg_wal_lsn_diff(sent_lsn, replay_lsn) AS byte_lag FROM pg_stat_replication WHERE application_name = 'replica-reporting-1';\"",
+          "hint_text": "WAL lag icin pg_wal_lsn_diff fonksiyonunu kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-091",
+      "type": "single",
+      "scenario": "Audit sirasinda 30 dakikadan daha eski prepared transaction kayitlarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT gid, prepared, owner FROM pg_prepared_xacts WHERE prepared < now() - interval '30 minutes';\"",
+          "hint_text": "Hazir bekleyen transaction'lar icin pg_prepared_xacts view'unu zaman filtresiyle tara.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-092",
+      "type": "single",
+      "scenario": "Audit sirasinda `reporting` database'inde 30 dakikadan eski idle in transaction session'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pid, now() - xact_start AS idle_tx_age, query FROM pg_stat_activity WHERE datname = 'reporting' AND state = 'idle in transaction' AND now() - xact_start > interval '30 minutes';\"",
+          "hint_text": "Takili transaction'lari bulmak icin pg_stat_activity uzerinde state = 'idle in transaction' filtresi kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-093",
+      "type": "multi-step",
+      "scenario": "Audit sirasinda global ayarda work_mem degerini `96MB` yap ve config'i reload et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"ALTER SYSTEM SET work_mem = '96MB';\"",
+          "hint_text": "Kalici ayar icin ALTER SYSTEM SET work_mem kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pg_reload_conf();\"",
+          "hint_text": "Degisiklikleri yeniden okutmak icin pg_reload_conf cagir.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-094",
+      "type": "single",
+      "scenario": "Audit sirasinda ileri seviye ayarlardan `checkpoint_completion_target` degerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SHOW checkpoint_completion_target;\"",
+          "hint_text": "Sunucu ayari okumak icin SHOW kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-095",
+      "type": "single",
+      "scenario": "Audit sirasinda `invoices_p` tablosunun partition tree bilgisini getir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d reporting -c \"SELECT relid::regclass, parentrelid::regclass, isleaf FROM pg_partition_tree('invoices_p');\"",
+          "hint_text": "Partition hiyerarsisini gormek icin pg_partition_tree fonksiyonunu kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-096",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `warehouse` database'inde bloklanan backend'leri ve kim tarafindan bloklandiklarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pid, pg_blocking_pids(pid) FROM pg_stat_activity WHERE datname = 'warehouse' AND cardinality(pg_blocking_pids(pid)) > 0;\"",
+          "hint_text": "Bloklayan pid zincirini gormek icin pg_blocking_pids kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-097",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `warehouse` database'inde 45 dakikadan uzun suredir kosan query'leri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pid, now() - query_start AS runtime, query FROM pg_stat_activity WHERE datname = 'warehouse' AND state <> 'idle' AND now() - query_start > interval '45 minutes';\"",
+          "hint_text": "Uzun kosan query icin pg_stat_activity ve query_start uzerinden zaman filtresi kur.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-098",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda bakim oncesi `warehouse` database'indeki tum session'lari kendi session'in haric sonlandir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname = 'warehouse' AND pid <> pg_backend_pid();\"",
+          "hint_text": "Kendi session'ini korumak icin pg_backend_pid filtresi ekle.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-099",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `warehouse` database'inde bekleyen backend'leri wait event bilgileriyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pid, wait_event_type, wait_event FROM pg_stat_activity WHERE datname = 'warehouse' AND wait_event_type IS NOT NULL;\"",
+          "hint_text": "Bekleme sebebini gormek icin wait_event_type ve wait_event kolonlarini kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-100",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `shipments(event_time)` uzerine online index olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d warehouse -c \"CREATE INDEX CONCURRENTLY idx_shipments_event_time ON shipments (event_time);\"",
+          "hint_text": "Uretimde kesinti riskini azaltmak icin CREATE INDEX CONCURRENTLY kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-101",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `idx_shipments_event_time` index'ini concurrent sekilde reindex et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d warehouse -c \"REINDEX INDEX CONCURRENTLY idx_shipments_event_time;\"",
+          "hint_text": "Online reindex icin REINDEX INDEX CONCURRENTLY kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-102",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `shipments` tablosu icin verbose vacuum analyze calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d warehouse -c \"VACUUM (VERBOSE, ANALYZE) shipments;\"",
+          "hint_text": "Ayrintili bakim ciktisi icin VACUUM (VERBOSE, ANALYZE) kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-103",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `warehouse` database'inde en fazla dead tuple birikmis ilk 10 tabloyu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d warehouse -c \"SELECT relname, n_dead_tup FROM pg_stat_user_tables ORDER BY n_dead_tup DESC LIMIT 10;\"",
+          "hint_text": "Bloat ipucu icin pg_stat_user_tables uzerinden n_dead_tup siralamasi yap.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-104",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `shipments` tablosunda `source = api` filtresini buffer istatistikleriyle analiz et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d warehouse -c \"EXPLAIN (ANALYZE, BUFFERS) SELECT * FROM shipments WHERE source = 'api';\"",
+          "hint_text": "Gercek plan ve buffer kullanimini bir arada gormek icin EXPLAIN (ANALYZE, BUFFERS) kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-105",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `warehouse` database'indeki en buyuk 10 user tablosunu boyutlariyla listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d warehouse -c \"SELECT relname, pg_size_pretty(pg_total_relation_size(relid)) AS size FROM pg_catalog.pg_statio_user_tables ORDER BY pg_total_relation_size(relid) DESC LIMIT 10;\"",
+          "hint_text": "Buyuk tablolar icin pg_statio_user_tables ve pg_total_relation_size kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-106",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `warehouse` database'inde gecersiz index'leri bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d warehouse -c \"SELECT indexrelid::regclass AS index_name FROM pg_index WHERE NOT indisvalid;\"",
+          "hint_text": "Gecersiz index kontrolu icin pg_index uzerinde indisvalid filtresi kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-107",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `slot_warehouse` replication slot'unu aktiflik ve restart LSN bilgisiyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT slot_name, active, restart_lsn FROM pg_replication_slots WHERE slot_name = 'slot_warehouse';\"",
+          "hint_text": "Slot ayrintisi icin pg_replication_slots view'unu kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-108",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `replica-warehouse-1` replication client'ini state ve sync state ile goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT application_name, state, sync_state FROM pg_stat_replication WHERE application_name = 'replica-warehouse-1';\"",
+          "hint_text": "Replication istemcisi durumu icin pg_stat_replication view'unu filtrele.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-109",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `replica-warehouse-1` replika istemcisi icin WAL byte lag bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT application_name, pg_wal_lsn_diff(sent_lsn, replay_lsn) AS byte_lag FROM pg_stat_replication WHERE application_name = 'replica-warehouse-1';\"",
+          "hint_text": "WAL lag icin pg_wal_lsn_diff fonksiyonunu kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-110",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda 45 dakikadan daha eski prepared transaction kayitlarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT gid, prepared, owner FROM pg_prepared_xacts WHERE prepared < now() - interval '45 minutes';\"",
+          "hint_text": "Hazir bekleyen transaction'lar icin pg_prepared_xacts view'unu zaman filtresiyle tara.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-111",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `warehouse` database'inde 45 dakikadan eski idle in transaction session'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pid, now() - xact_start AS idle_tx_age, query FROM pg_stat_activity WHERE datname = 'warehouse' AND state = 'idle in transaction' AND now() - xact_start > interval '45 minutes';\"",
+          "hint_text": "Takili transaction'lari bulmak icin pg_stat_activity uzerinde state = 'idle in transaction' filtresi kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-112",
+      "type": "multi-step",
+      "scenario": "Troubleshooting sirasinda global ayarda work_mem degerini `128MB` yap ve config'i reload et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"ALTER SYSTEM SET work_mem = '128MB';\"",
+          "hint_text": "Kalici ayar icin ALTER SYSTEM SET work_mem kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pg_reload_conf();\"",
+          "hint_text": "Degisiklikleri yeniden okutmak icin pg_reload_conf cagir.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-113",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda ileri seviye ayarlardan `max_worker_processes` degerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SHOW max_worker_processes;\"",
+          "hint_text": "Sunucu ayari okumak icin SHOW kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-114",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `shipments_p` tablosunun partition tree bilgisini getir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d warehouse -c \"SELECT relid::regclass, parentrelid::regclass, isleaf FROM pg_partition_tree('shipments_p');\"",
+          "hint_text": "Partition hiyerarsisini gormek icin pg_partition_tree fonksiyonunu kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-115",
+      "type": "single",
+      "scenario": "Release kontrolunde `crm` database'inde bloklanan backend'leri ve kim tarafindan bloklandiklarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pid, pg_blocking_pids(pid) FROM pg_stat_activity WHERE datname = 'crm' AND cardinality(pg_blocking_pids(pid)) > 0;\"",
+          "hint_text": "Bloklayan pid zincirini gormek icin pg_blocking_pids kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-116",
+      "type": "single",
+      "scenario": "Release kontrolunde `crm` database'inde 60 dakikadan uzun suredir kosan query'leri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pid, now() - query_start AS runtime, query FROM pg_stat_activity WHERE datname = 'crm' AND state <> 'idle' AND now() - query_start > interval '60 minutes';\"",
+          "hint_text": "Uzun kosan query icin pg_stat_activity ve query_start uzerinden zaman filtresi kur.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-117",
+      "type": "single",
+      "scenario": "Release kontrolunde bakim oncesi `crm` database'indeki tum session'lari kendi session'in haric sonlandir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname = 'crm' AND pid <> pg_backend_pid();\"",
+          "hint_text": "Kendi session'ini korumak icin pg_backend_pid filtresi ekle.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-118",
+      "type": "single",
+      "scenario": "Release kontrolunde `crm` database'inde bekleyen backend'leri wait event bilgileriyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pid, wait_event_type, wait_event FROM pg_stat_activity WHERE datname = 'crm' AND wait_event_type IS NOT NULL;\"",
+          "hint_text": "Bekleme sebebini gormek icin wait_event_type ve wait_event kolonlarini kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-119",
+      "type": "single",
+      "scenario": "Release kontrolunde `audit_logs(session_id)` uzerine online index olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d crm -c \"CREATE INDEX CONCURRENTLY idx_audit_logs_session_id ON audit_logs (session_id);\"",
+          "hint_text": "Uretimde kesinti riskini azaltmak icin CREATE INDEX CONCURRENTLY kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-120",
+      "type": "single",
+      "scenario": "Release kontrolunde `idx_audit_logs_session_id` index'ini concurrent sekilde reindex et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d crm -c \"REINDEX INDEX CONCURRENTLY idx_audit_logs_session_id;\"",
+          "hint_text": "Online reindex icin REINDEX INDEX CONCURRENTLY kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-121",
+      "type": "single",
+      "scenario": "Release kontrolunde `audit_logs` tablosu icin verbose vacuum analyze calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d crm -c \"VACUUM (VERBOSE, ANALYZE) audit_logs;\"",
+          "hint_text": "Ayrintili bakim ciktisi icin VACUUM (VERBOSE, ANALYZE) kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-122",
+      "type": "single",
+      "scenario": "Release kontrolunde `crm` database'inde en fazla dead tuple birikmis ilk 10 tabloyu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d crm -c \"SELECT relname, n_dead_tup FROM pg_stat_user_tables ORDER BY n_dead_tup DESC LIMIT 10;\"",
+          "hint_text": "Bloat ipucu icin pg_stat_user_tables uzerinden n_dead_tup siralamasi yap.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-123",
+      "type": "single",
+      "scenario": "Release kontrolunde `audit_logs` tablosunda `channel = email` filtresini buffer istatistikleriyle analiz et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d crm -c \"EXPLAIN (ANALYZE, BUFFERS) SELECT * FROM audit_logs WHERE channel = 'email';\"",
+          "hint_text": "Gercek plan ve buffer kullanimini bir arada gormek icin EXPLAIN (ANALYZE, BUFFERS) kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-124",
+      "type": "single",
+      "scenario": "Release kontrolunde `crm` database'indeki en buyuk 10 user tablosunu boyutlariyla listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d crm -c \"SELECT relname, pg_size_pretty(pg_total_relation_size(relid)) AS size FROM pg_catalog.pg_statio_user_tables ORDER BY pg_total_relation_size(relid) DESC LIMIT 10;\"",
+          "hint_text": "Buyuk tablolar icin pg_statio_user_tables ve pg_total_relation_size kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-125",
+      "type": "single",
+      "scenario": "Release kontrolunde `crm` database'inde gecersiz index'leri bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d crm -c \"SELECT indexrelid::regclass AS index_name FROM pg_index WHERE NOT indisvalid;\"",
+          "hint_text": "Gecersiz index kontrolu icin pg_index uzerinde indisvalid filtresi kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-126",
+      "type": "single",
+      "scenario": "Release kontrolunde `slot_crm` replication slot'unu aktiflik ve restart LSN bilgisiyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT slot_name, active, restart_lsn FROM pg_replication_slots WHERE slot_name = 'slot_crm';\"",
+          "hint_text": "Slot ayrintisi icin pg_replication_slots view'unu kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-127",
+      "type": "single",
+      "scenario": "Release kontrolunde `replica-crm-1` replication client'ini state ve sync state ile goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT application_name, state, sync_state FROM pg_stat_replication WHERE application_name = 'replica-crm-1';\"",
+          "hint_text": "Replication istemcisi durumu icin pg_stat_replication view'unu filtrele.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-128",
+      "type": "single",
+      "scenario": "Release kontrolunde `replica-crm-1` replika istemcisi icin WAL byte lag bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT application_name, pg_wal_lsn_diff(sent_lsn, replay_lsn) AS byte_lag FROM pg_stat_replication WHERE application_name = 'replica-crm-1';\"",
+          "hint_text": "WAL lag icin pg_wal_lsn_diff fonksiyonunu kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-129",
+      "type": "single",
+      "scenario": "Release kontrolunde 60 dakikadan daha eski prepared transaction kayitlarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT gid, prepared, owner FROM pg_prepared_xacts WHERE prepared < now() - interval '60 minutes';\"",
+          "hint_text": "Hazir bekleyen transaction'lar icin pg_prepared_xacts view'unu zaman filtresiyle tara.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-130",
+      "type": "single",
+      "scenario": "Release kontrolunde `crm` database'inde 60 dakikadan eski idle in transaction session'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pid, now() - xact_start AS idle_tx_age, query FROM pg_stat_activity WHERE datname = 'crm' AND state = 'idle in transaction' AND now() - xact_start > interval '60 minutes';\"",
+          "hint_text": "Takili transaction'lari bulmak icin pg_stat_activity uzerinde state = 'idle in transaction' filtresi kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-131",
+      "type": "multi-step",
+      "scenario": "Release kontrolunde global ayarda work_mem degerini `160MB` yap ve config'i reload et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"ALTER SYSTEM SET work_mem = '160MB';\"",
+          "hint_text": "Kalici ayar icin ALTER SYSTEM SET work_mem kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pg_reload_conf();\"",
+          "hint_text": "Degisiklikleri yeniden okutmak icin pg_reload_conf cagir.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-132",
+      "type": "single",
+      "scenario": "Release kontrolunde ileri seviye ayarlardan `max_parallel_workers` degerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SHOW max_parallel_workers;\"",
+          "hint_text": "Sunucu ayari okumak icin SHOW kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-133",
+      "type": "single",
+      "scenario": "Release kontrolunde `audit_logs_p` tablosunun partition tree bilgisini getir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d crm -c \"SELECT relid::regclass, parentrelid::regclass, isleaf FROM pg_partition_tree('audit_logs_p');\"",
+          "hint_text": "Partition hiyerarsisini gormek icin pg_partition_tree fonksiyonunu kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-134",
+      "type": "single",
+      "scenario": "Operasyon devrinde `support` database'inde bloklanan backend'leri ve kim tarafindan bloklandiklarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pid, pg_blocking_pids(pid) FROM pg_stat_activity WHERE datname = 'support' AND cardinality(pg_blocking_pids(pid)) > 0;\"",
+          "hint_text": "Bloklayan pid zincirini gormek icin pg_blocking_pids kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-135",
+      "type": "single",
+      "scenario": "Operasyon devrinde `support` database'inde 90 dakikadan uzun suredir kosan query'leri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pid, now() - query_start AS runtime, query FROM pg_stat_activity WHERE datname = 'support' AND state <> 'idle' AND now() - query_start > interval '90 minutes';\"",
+          "hint_text": "Uzun kosan query icin pg_stat_activity ve query_start uzerinden zaman filtresi kur.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-136",
+      "type": "single",
+      "scenario": "Operasyon devrinde bakim oncesi `support` database'indeki tum session'lari kendi session'in haric sonlandir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname = 'support' AND pid <> pg_backend_pid();\"",
+          "hint_text": "Kendi session'ini korumak icin pg_backend_pid filtresi ekle.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-137",
+      "type": "single",
+      "scenario": "Operasyon devrinde `support` database'inde bekleyen backend'leri wait event bilgileriyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pid, wait_event_type, wait_event FROM pg_stat_activity WHERE datname = 'support' AND wait_event_type IS NOT NULL;\"",
+          "hint_text": "Bekleme sebebini gormek icin wait_event_type ve wait_event kolonlarini kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-138",
+      "type": "single",
+      "scenario": "Operasyon devrinde `events(queue_at)` uzerine online index olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d support -c \"CREATE INDEX CONCURRENTLY idx_events_queue_at ON events (queue_at);\"",
+          "hint_text": "Uretimde kesinti riskini azaltmak icin CREATE INDEX CONCURRENTLY kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-139",
+      "type": "single",
+      "scenario": "Operasyon devrinde `idx_events_queue_at` index'ini concurrent sekilde reindex et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d support -c \"REINDEX INDEX CONCURRENTLY idx_events_queue_at;\"",
+          "hint_text": "Online reindex icin REINDEX INDEX CONCURRENTLY kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-140",
+      "type": "single",
+      "scenario": "Operasyon devrinde `events` tablosu icin verbose vacuum analyze calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d support -c \"VACUUM (VERBOSE, ANALYZE) events;\"",
+          "hint_text": "Ayrintili bakim ciktisi icin VACUUM (VERBOSE, ANALYZE) kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-141",
+      "type": "single",
+      "scenario": "Operasyon devrinde `support` database'inde en fazla dead tuple birikmis ilk 10 tabloyu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d support -c \"SELECT relname, n_dead_tup FROM pg_stat_user_tables ORDER BY n_dead_tup DESC LIMIT 10;\"",
+          "hint_text": "Bloat ipucu icin pg_stat_user_tables uzerinden n_dead_tup siralamasi yap.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-142",
+      "type": "single",
+      "scenario": "Operasyon devrinde `events` tablosunda `type = sync` filtresini buffer istatistikleriyle analiz et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d support -c \"EXPLAIN (ANALYZE, BUFFERS) SELECT * FROM events WHERE type = 'sync';\"",
+          "hint_text": "Gercek plan ve buffer kullanimini bir arada gormek icin EXPLAIN (ANALYZE, BUFFERS) kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-143",
+      "type": "single",
+      "scenario": "Operasyon devrinde `support` database'indeki en buyuk 10 user tablosunu boyutlariyla listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d support -c \"SELECT relname, pg_size_pretty(pg_total_relation_size(relid)) AS size FROM pg_catalog.pg_statio_user_tables ORDER BY pg_total_relation_size(relid) DESC LIMIT 10;\"",
+          "hint_text": "Buyuk tablolar icin pg_statio_user_tables ve pg_total_relation_size kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-144",
+      "type": "single",
+      "scenario": "Operasyon devrinde `support` database'inde gecersiz index'leri bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d support -c \"SELECT indexrelid::regclass AS index_name FROM pg_index WHERE NOT indisvalid;\"",
+          "hint_text": "Gecersiz index kontrolu icin pg_index uzerinde indisvalid filtresi kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-145",
+      "type": "single",
+      "scenario": "Operasyon devrinde `slot_support` replication slot'unu aktiflik ve restart LSN bilgisiyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT slot_name, active, restart_lsn FROM pg_replication_slots WHERE slot_name = 'slot_support';\"",
+          "hint_text": "Slot ayrintisi icin pg_replication_slots view'unu kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-146",
+      "type": "single",
+      "scenario": "Operasyon devrinde `replica-support-1` replication client'ini state ve sync state ile goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT application_name, state, sync_state FROM pg_stat_replication WHERE application_name = 'replica-support-1';\"",
+          "hint_text": "Replication istemcisi durumu icin pg_stat_replication view'unu filtrele.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-147",
+      "type": "single",
+      "scenario": "Operasyon devrinde `replica-support-1` replika istemcisi icin WAL byte lag bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT application_name, pg_wal_lsn_diff(sent_lsn, replay_lsn) AS byte_lag FROM pg_stat_replication WHERE application_name = 'replica-support-1';\"",
+          "hint_text": "WAL lag icin pg_wal_lsn_diff fonksiyonunu kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-148",
+      "type": "single",
+      "scenario": "Operasyon devrinde 90 dakikadan daha eski prepared transaction kayitlarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT gid, prepared, owner FROM pg_prepared_xacts WHERE prepared < now() - interval '90 minutes';\"",
+          "hint_text": "Hazir bekleyen transaction'lar icin pg_prepared_xacts view'unu zaman filtresiyle tara.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-149",
+      "type": "single",
+      "scenario": "Operasyon devrinde `support` database'inde 90 dakikadan eski idle in transaction session'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pid, now() - xact_start AS idle_tx_age, query FROM pg_stat_activity WHERE datname = 'support' AND state = 'idle in transaction' AND now() - xact_start > interval '90 minutes';\"",
+          "hint_text": "Takili transaction'lari bulmak icin pg_stat_activity uzerinde state = 'idle in transaction' filtresi kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-150",
+      "type": "multi-step",
+      "scenario": "Operasyon devrinde global ayarda work_mem degerini `192MB` yap ve config'i reload et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"ALTER SYSTEM SET work_mem = '192MB';\"",
+          "hint_text": "Kalici ayar icin ALTER SYSTEM SET work_mem kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pg_reload_conf();\"",
+          "hint_text": "Degisiklikleri yeniden okutmak icin pg_reload_conf cagir.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-151",
+      "type": "single",
+      "scenario": "Operasyon devrinde ileri seviye ayarlardan `max_parallel_maintenance_workers` degerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SHOW max_parallel_maintenance_workers;\"",
+          "hint_text": "Sunucu ayari okumak icin SHOW kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-152",
+      "type": "single",
+      "scenario": "Operasyon devrinde `events_p` tablosunun partition tree bilgisini getir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d support -c \"SELECT relid::regclass, parentrelid::regclass, isleaf FROM pg_partition_tree('events_p');\"",
+          "hint_text": "Partition hiyerarsisini gormek icin pg_partition_tree fonksiyonunu kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-153",
+      "type": "single",
+      "scenario": "On-call gorevinde `events` database'inde bloklanan backend'leri ve kim tarafindan bloklandiklarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pid, pg_blocking_pids(pid) FROM pg_stat_activity WHERE datname = 'events' AND cardinality(pg_blocking_pids(pid)) > 0;\"",
+          "hint_text": "Bloklayan pid zincirini gormek icin pg_blocking_pids kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-154",
+      "type": "single",
+      "scenario": "On-call gorevinde `events` database'inde 120 dakikadan uzun suredir kosan query'leri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pid, now() - query_start AS runtime, query FROM pg_stat_activity WHERE datname = 'events' AND state <> 'idle' AND now() - query_start > interval '120 minutes';\"",
+          "hint_text": "Uzun kosan query icin pg_stat_activity ve query_start uzerinden zaman filtresi kur.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-155",
+      "type": "single",
+      "scenario": "On-call gorevinde bakim oncesi `events` database'indeki tum session'lari kendi session'in haric sonlandir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname = 'events' AND pid <> pg_backend_pid();\"",
+          "hint_text": "Kendi session'ini korumak icin pg_backend_pid filtresi ekle.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-156",
+      "type": "single",
+      "scenario": "On-call gorevinde `events` database'inde bekleyen backend'leri wait event bilgileriyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pid, wait_event_type, wait_event FROM pg_stat_activity WHERE datname = 'events' AND wait_event_type IS NOT NULL;\"",
+          "hint_text": "Bekleme sebebini gormek icin wait_event_type ve wait_event kolonlarini kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-157",
+      "type": "single",
+      "scenario": "On-call gorevinde `job_runs(processed_at)` uzerine online index olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d events -c \"CREATE INDEX CONCURRENTLY idx_job_runs_processed_at ON job_runs (processed_at);\"",
+          "hint_text": "Uretimde kesinti riskini azaltmak icin CREATE INDEX CONCURRENTLY kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-158",
+      "type": "single",
+      "scenario": "On-call gorevinde `idx_job_runs_processed_at` index'ini concurrent sekilde reindex et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d events -c \"REINDEX INDEX CONCURRENTLY idx_job_runs_processed_at;\"",
+          "hint_text": "Online reindex icin REINDEX INDEX CONCURRENTLY kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-159",
+      "type": "single",
+      "scenario": "On-call gorevinde `job_runs` tablosu icin verbose vacuum analyze calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d events -c \"VACUUM (VERBOSE, ANALYZE) job_runs;\"",
+          "hint_text": "Ayrintili bakim ciktisi icin VACUUM (VERBOSE, ANALYZE) kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-160",
+      "type": "single",
+      "scenario": "On-call gorevinde `events` database'inde en fazla dead tuple birikmis ilk 10 tabloyu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d events -c \"SELECT relname, n_dead_tup FROM pg_stat_user_tables ORDER BY n_dead_tup DESC LIMIT 10;\"",
+          "hint_text": "Bloat ipucu icin pg_stat_user_tables uzerinden n_dead_tup siralamasi yap.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-161",
+      "type": "single",
+      "scenario": "On-call gorevinde `job_runs` tablosunda `region = eu-west-1` filtresini buffer istatistikleriyle analiz et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d events -c \"EXPLAIN (ANALYZE, BUFFERS) SELECT * FROM job_runs WHERE region = 'eu-west-1';\"",
+          "hint_text": "Gercek plan ve buffer kullanimini bir arada gormek icin EXPLAIN (ANALYZE, BUFFERS) kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-162",
+      "type": "single",
+      "scenario": "On-call gorevinde `events` database'indeki en buyuk 10 user tablosunu boyutlariyla listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d events -c \"SELECT relname, pg_size_pretty(pg_total_relation_size(relid)) AS size FROM pg_catalog.pg_statio_user_tables ORDER BY pg_total_relation_size(relid) DESC LIMIT 10;\"",
+          "hint_text": "Buyuk tablolar icin pg_statio_user_tables ve pg_total_relation_size kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-163",
+      "type": "single",
+      "scenario": "On-call gorevinde `events` database'inde gecersiz index'leri bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d events -c \"SELECT indexrelid::regclass AS index_name FROM pg_index WHERE NOT indisvalid;\"",
+          "hint_text": "Gecersiz index kontrolu icin pg_index uzerinde indisvalid filtresi kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-164",
+      "type": "single",
+      "scenario": "On-call gorevinde `slot_events` replication slot'unu aktiflik ve restart LSN bilgisiyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT slot_name, active, restart_lsn FROM pg_replication_slots WHERE slot_name = 'slot_events';\"",
+          "hint_text": "Slot ayrintisi icin pg_replication_slots view'unu kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-165",
+      "type": "single",
+      "scenario": "On-call gorevinde `replica-events-1` replication client'ini state ve sync state ile goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT application_name, state, sync_state FROM pg_stat_replication WHERE application_name = 'replica-events-1';\"",
+          "hint_text": "Replication istemcisi durumu icin pg_stat_replication view'unu filtrele.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-166",
+      "type": "single",
+      "scenario": "On-call gorevinde `replica-events-1` replika istemcisi icin WAL byte lag bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT application_name, pg_wal_lsn_diff(sent_lsn, replay_lsn) AS byte_lag FROM pg_stat_replication WHERE application_name = 'replica-events-1';\"",
+          "hint_text": "WAL lag icin pg_wal_lsn_diff fonksiyonunu kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-167",
+      "type": "single",
+      "scenario": "On-call gorevinde 120 dakikadan daha eski prepared transaction kayitlarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT gid, prepared, owner FROM pg_prepared_xacts WHERE prepared < now() - interval '120 minutes';\"",
+          "hint_text": "Hazir bekleyen transaction'lar icin pg_prepared_xacts view'unu zaman filtresiyle tara.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-168",
+      "type": "single",
+      "scenario": "On-call gorevinde `events` database'inde 120 dakikadan eski idle in transaction session'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pid, now() - xact_start AS idle_tx_age, query FROM pg_stat_activity WHERE datname = 'events' AND state = 'idle in transaction' AND now() - xact_start > interval '120 minutes';\"",
+          "hint_text": "Takili transaction'lari bulmak icin pg_stat_activity uzerinde state = 'idle in transaction' filtresi kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-169",
+      "type": "multi-step",
+      "scenario": "On-call gorevinde global ayarda work_mem degerini `224MB` yap ve config'i reload et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"ALTER SYSTEM SET work_mem = '224MB';\"",
+          "hint_text": "Kalici ayar icin ALTER SYSTEM SET work_mem kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pg_reload_conf();\"",
+          "hint_text": "Degisiklikleri yeniden okutmak icin pg_reload_conf cagir.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-170",
+      "type": "single",
+      "scenario": "On-call gorevinde ileri seviye ayarlardan `autovacuum_naptime` degerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SHOW autovacuum_naptime;\"",
+          "hint_text": "Sunucu ayari okumak icin SHOW kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-171",
+      "type": "single",
+      "scenario": "On-call gorevinde `job_runs_p` tablosunun partition tree bilgisini getir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d events -c \"SELECT relid::regclass, parentrelid::regclass, isleaf FROM pg_partition_tree('job_runs_p');\"",
+          "hint_text": "Partition hiyerarsisini gormek icin pg_partition_tree fonksiyonunu kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-172",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `core` database'inde bloklanan backend'leri ve kim tarafindan bloklandiklarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pid, pg_blocking_pids(pid) FROM pg_stat_activity WHERE datname = 'core' AND cardinality(pg_blocking_pids(pid)) > 0;\"",
+          "hint_text": "Bloklayan pid zincirini gormek icin pg_blocking_pids kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-173",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `core` database'inde 180 dakikadan uzun suredir kosan query'leri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pid, now() - query_start AS runtime, query FROM pg_stat_activity WHERE datname = 'core' AND state <> 'idle' AND now() - query_start > interval '180 minutes';\"",
+          "hint_text": "Uzun kosan query icin pg_stat_activity ve query_start uzerinden zaman filtresi kur.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-174",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda bakim oncesi `core` database'indeki tum session'lari kendi session'in haric sonlandir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname = 'core' AND pid <> pg_backend_pid();\"",
+          "hint_text": "Kendi session'ini korumak icin pg_backend_pid filtresi ekle.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-175",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `core` database'inde bekleyen backend'leri wait event bilgileriyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pid, wait_event_type, wait_event FROM pg_stat_activity WHERE datname = 'core' AND wait_event_type IS NOT NULL;\"",
+          "hint_text": "Bekleme sebebini gormek icin wait_event_type ve wait_event kolonlarini kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-176",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `notifications(sent_at)` uzerine online index olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d core -c \"CREATE INDEX CONCURRENTLY idx_notifications_sent_at ON notifications (sent_at);\"",
+          "hint_text": "Uretimde kesinti riskini azaltmak icin CREATE INDEX CONCURRENTLY kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-177",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `idx_notifications_sent_at` index'ini concurrent sekilde reindex et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d core -c \"REINDEX INDEX CONCURRENTLY idx_notifications_sent_at;\"",
+          "hint_text": "Online reindex icin REINDEX INDEX CONCURRENTLY kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-178",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `notifications` tablosu icin verbose vacuum analyze calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d core -c \"VACUUM (VERBOSE, ANALYZE) notifications;\"",
+          "hint_text": "Ayrintili bakim ciktisi icin VACUUM (VERBOSE, ANALYZE) kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-179",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `core` database'inde en fazla dead tuple birikmis ilk 10 tabloyu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d core -c \"SELECT relname, n_dead_tup FROM pg_stat_user_tables ORDER BY n_dead_tup DESC LIMIT 10;\"",
+          "hint_text": "Bloat ipucu icin pg_stat_user_tables uzerinden n_dead_tup siralamasi yap.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-180",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `notifications` tablosunda `level = error` filtresini buffer istatistikleriyle analiz et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d core -c \"EXPLAIN (ANALYZE, BUFFERS) SELECT * FROM notifications WHERE level = 'error';\"",
+          "hint_text": "Gercek plan ve buffer kullanimini bir arada gormek icin EXPLAIN (ANALYZE, BUFFERS) kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-181",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `core` database'indeki en buyuk 10 user tablosunu boyutlariyla listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d core -c \"SELECT relname, pg_size_pretty(pg_total_relation_size(relid)) AS size FROM pg_catalog.pg_statio_user_tables ORDER BY pg_total_relation_size(relid) DESC LIMIT 10;\"",
+          "hint_text": "Buyuk tablolar icin pg_statio_user_tables ve pg_total_relation_size kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-182",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `core` database'inde gecersiz index'leri bul.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d core -c \"SELECT indexrelid::regclass AS index_name FROM pg_index WHERE NOT indisvalid;\"",
+          "hint_text": "Gecersiz index kontrolu icin pg_index uzerinde indisvalid filtresi kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-183",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `slot_core` replication slot'unu aktiflik ve restart LSN bilgisiyle goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT slot_name, active, restart_lsn FROM pg_replication_slots WHERE slot_name = 'slot_core';\"",
+          "hint_text": "Slot ayrintisi icin pg_replication_slots view'unu kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-184",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `replica-core-1` replication client'ini state ve sync state ile goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT application_name, state, sync_state FROM pg_stat_replication WHERE application_name = 'replica-core-1';\"",
+          "hint_text": "Replication istemcisi durumu icin pg_stat_replication view'unu filtrele.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-185",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `replica-core-1` replika istemcisi icin WAL byte lag bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT application_name, pg_wal_lsn_diff(sent_lsn, replay_lsn) AS byte_lag FROM pg_stat_replication WHERE application_name = 'replica-core-1';\"",
+          "hint_text": "WAL lag icin pg_wal_lsn_diff fonksiyonunu kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-186",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda 180 dakikadan daha eski prepared transaction kayitlarini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT gid, prepared, owner FROM pg_prepared_xacts WHERE prepared < now() - interval '180 minutes';\"",
+          "hint_text": "Hazir bekleyen transaction'lar icin pg_prepared_xacts view'unu zaman filtresiyle tara.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-187",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `core` database'inde 180 dakikadan eski idle in transaction session'lari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pid, now() - xact_start AS idle_tx_age, query FROM pg_stat_activity WHERE datname = 'core' AND state = 'idle in transaction' AND now() - xact_start > interval '180 minutes';\"",
+          "hint_text": "Takili transaction'lari bulmak icin pg_stat_activity uzerinde state = 'idle in transaction' filtresi kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-188",
+      "type": "multi-step",
+      "scenario": "Kesinti sonrasinda global ayarda work_mem degerini `256MB` yap ve config'i reload et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"ALTER SYSTEM SET work_mem = '256MB';\"",
+          "hint_text": "Kalici ayar icin ALTER SYSTEM SET work_mem kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pg_reload_conf();\"",
+          "hint_text": "Degisiklikleri yeniden okutmak icin pg_reload_conf cagir.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-189",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda ileri seviye ayarlardan `track_io_timing` degerini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SHOW track_io_timing;\"",
+          "hint_text": "Sunucu ayari okumak icin SHOW kullan.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-exp-190",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `notifications_p` tablosunun partition tree bilgisini getir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d core -c \"SELECT relid::regclass, parentrelid::regclass, isleaf FROM pg_partition_tree('notifications_p');\"",
+          "hint_text": "Partition hiyerarsisini gormek icin pg_partition_tree fonksiyonunu kullan.",
+          "hint_partial": "psql -U postgres -d ... -c ..."
+        }
+      ]
+    }
+  ]
+}

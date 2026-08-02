@@ -1,0 +1,2606 @@
+{
+  "level": "senior",
+  "topic": "user",
+  "questions": [
+    {
+      "id": "susr-exp-001",
+      "type": "single",
+      "scenario": "Gece vardiyasinda UID degeri 0 olan tum hesaplari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk -F: '$3 == 0 {print $1}' /etc/passwd",
+          "hint_text": "Root esdegeri hesaplari passwd verisinden filtrele.",
+          "hint_partial": "awk -F: ... /etc/passwd"
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-002",
+      "type": "single",
+      "scenario": "Gece vardiyasinda sahibi veya grubu bulunamayan dosyalari tara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find / -nouser -o -nogroup 2>/dev/null",
+          "hint_text": "Silinmis hesaplardan kalan dosyalari `find` ile tespit et.",
+          "hint_partial": "find / ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-003",
+      "type": "single",
+      "scenario": "Gece vardiyasinda interaktif shell'i olan tum hesaplari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk -F: '$7 !~ /(nologin|false)$/ {print $1 \":\" $7}' /etc/passwd",
+          "hint_text": "Gercek login shell kullanan hesaplari passwd alanlarindan ayikla.",
+          "hint_partial": "awk -F: ... /etc/passwd"
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-004",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `deploy` kullanicisinin sudo yetkilerini audit et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sudo -l -U deploy",
+          "hint_text": "Sudo kapsam denetimi icin `sudo -l -U` kullan.",
+          "hint_partial": "sudo -l -U ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-005",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `deploy` kullanicisinin son login bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lastlog -u deploy",
+          "hint_text": "En son login kaydini `lastlog` ile denetle.",
+          "hint_partial": "lastlog -u ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-006",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `deploy` kullanicisinin parola durumunu audit et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -S deploy",
+          "hint_text": "Parola kilit ve politika durumunu `passwd -S` ile gor.",
+          "hint_partial": "passwd -S ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-007",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `deploy` kullanicisinin aging politikasini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -l deploy",
+          "hint_text": "Expiry ve warning politikasini `chage -l` ile denetle.",
+          "hint_partial": "chage -l ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-008",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `deploy` kullanicisinin shell'ini `nologin` yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "usermod -s /usr/sbin/nologin deploy",
+          "hint_text": "Interaktif erisimi kapatmak icin shell'i degistir.",
+          "hint_partial": "usermod -s ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-009",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `deploy` ve `docker` sahibi olacak sekilde `750` izinli `/srv/deploy` dizinini olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "install -d -o deploy -g docker -m 750 /srv/deploy",
+          "hint_text": "Sahiplik ve izin vererek dizin hazirla.",
+          "hint_partial": "install -d ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-010",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `deploy` kullanicisinin passwd alanlarindan kullanici, uid, gid, home ve shell bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getent passwd deploy | cut -d: -f1,3,4,6,7",
+          "hint_text": "Passwd kaydindan secili alanlari ayiklamak icin ayirici kullan.",
+          "hint_partial": "getent passwd ... | cut ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-011",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `deploy` kullanicisinin sahip oldugu `/srv` altindaki dizinleri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /srv -maxdepth 2 -type d -user deploy -printf '%u:%g %p\\n'",
+          "hint_text": "Belirli bir hesabin sahipligini dizin bazinda audit et.",
+          "hint_partial": "find /srv ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-012",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `/home` altindaki dizinleri birinci seviyede listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /home -maxdepth 1 -mindepth 1 -type d -printf '%f\\n'",
+          "hint_text": "Home dizinlerini ilk seviyede filtreleyerek gor.",
+          "hint_partial": "find /home ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-013",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `deploy` kullanicisinin hesap bitis tarihini `2026-12-31` yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -E 2026-12-31 deploy",
+          "hint_text": "Hesabi tarih bazli kapatmak icin `chage -E` kullan.",
+          "hint_partial": "chage -E ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-014",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `deploy` kullanicisi icin parola maksimum yasini 90 gun yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -M 90 deploy",
+          "hint_text": "Parola politikasini gun bazinda duzenle.",
+          "hint_partial": "chage -M ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-015",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `docker` grubunun kaydini denetle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getent group docker",
+          "hint_text": "Grubun sistem kaydini `getent group` ile oku.",
+          "hint_partial": "getent group ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-016",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `deploy` kullanicisinin UID, GID ve group bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "id deploy",
+          "hint_text": "Hesabin kimlik bilgisini `id` ile denetle.",
+          "hint_partial": "id ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-017",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `deploy` kullanicisinin parolasini kilitle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -l deploy",
+          "hint_text": "Acil durumda parola login'ini kapat.",
+          "hint_partial": "passwd -l ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-018",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `deploy` kullanicisinin parola kilidini ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -u deploy",
+          "hint_text": "Bakim sonrasi hesabi yeniden aktif et.",
+          "hint_partial": "passwd -u ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-019",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `deploy` kullanicisinin passwd kaydini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getent passwd deploy",
+          "hint_text": "Passwd kaydi ile home ve shell alanlarini kontrol et.",
+          "hint_partial": "getent passwd ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-020",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `deploy` kullanicisi icin sudo erisimi audit etmek amaciyla `sudo -l -U` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sudo -l -U deploy",
+          "hint_text": "Yetki kapsam audit'inde `sudo -l -U` kullanilir.",
+          "hint_partial": "sudo -l -U ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-021",
+      "type": "single",
+      "scenario": "Bakim penceresinde UID degeri 0 olan tum hesaplari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk -F: '$3 == 0 {print $1}' /etc/passwd",
+          "hint_text": "Root esdegeri hesaplari passwd verisinden filtrele.",
+          "hint_partial": "awk -F: ... /etc/passwd"
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-022",
+      "type": "single",
+      "scenario": "Bakim penceresinde sahibi veya grubu bulunamayan dosyalari tara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find / -nouser -o -nogroup 2>/dev/null",
+          "hint_text": "Silinmis hesaplardan kalan dosyalari `find` ile tespit et.",
+          "hint_partial": "find / ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-023",
+      "type": "single",
+      "scenario": "Bakim penceresinde interaktif shell'i olan tum hesaplari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk -F: '$7 !~ /(nologin|false)$/ {print $1 \":\" $7}' /etc/passwd",
+          "hint_text": "Gercek login shell kullanan hesaplari passwd alanlarindan ayikla.",
+          "hint_partial": "awk -F: ... /etc/passwd"
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-024",
+      "type": "single",
+      "scenario": "Bakim penceresinde `app` kullanicisinin sudo yetkilerini audit et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sudo -l -U app",
+          "hint_text": "Sudo kapsam denetimi icin `sudo -l -U` kullan.",
+          "hint_partial": "sudo -l -U ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-025",
+      "type": "single",
+      "scenario": "Bakim penceresinde `app` kullanicisinin son login bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lastlog -u app",
+          "hint_text": "En son login kaydini `lastlog` ile denetle.",
+          "hint_partial": "lastlog -u ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-026",
+      "type": "single",
+      "scenario": "Bakim penceresinde `app` kullanicisinin parola durumunu audit et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -S app",
+          "hint_text": "Parola kilit ve politika durumunu `passwd -S` ile gor.",
+          "hint_partial": "passwd -S ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-027",
+      "type": "single",
+      "scenario": "Bakim penceresinde `app` kullanicisinin aging politikasini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -l app",
+          "hint_text": "Expiry ve warning politikasini `chage -l` ile denetle.",
+          "hint_partial": "chage -l ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-028",
+      "type": "single",
+      "scenario": "Bakim penceresinde `app` kullanicisinin shell'ini `nologin` yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "usermod -s /usr/sbin/nologin app",
+          "hint_text": "Interaktif erisimi kapatmak icin shell'i degistir.",
+          "hint_partial": "usermod -s ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-029",
+      "type": "single",
+      "scenario": "Bakim penceresinde `app` ve `developers` sahibi olacak sekilde `750` izinli `/srv/app` dizinini olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "install -d -o app -g developers -m 750 /srv/app",
+          "hint_text": "Sahiplik ve izin vererek dizin hazirla.",
+          "hint_partial": "install -d ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-030",
+      "type": "single",
+      "scenario": "Bakim penceresinde `app` kullanicisinin passwd alanlarindan kullanici, uid, gid, home ve shell bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getent passwd app | cut -d: -f1,3,4,6,7",
+          "hint_text": "Passwd kaydindan secili alanlari ayiklamak icin ayirici kullan.",
+          "hint_partial": "getent passwd ... | cut ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-031",
+      "type": "single",
+      "scenario": "Bakim penceresinde `app` kullanicisinin sahip oldugu `/srv` altindaki dizinleri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /srv -maxdepth 2 -type d -user app -printf '%u:%g %p\\n'",
+          "hint_text": "Belirli bir hesabin sahipligini dizin bazinda audit et.",
+          "hint_partial": "find /srv ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-032",
+      "type": "single",
+      "scenario": "Bakim penceresinde `/home` altindaki dizinleri birinci seviyede listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /home -maxdepth 1 -mindepth 1 -type d -printf '%f\\n'",
+          "hint_text": "Home dizinlerini ilk seviyede filtreleyerek gor.",
+          "hint_partial": "find /home ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-033",
+      "type": "single",
+      "scenario": "Bakim penceresinde `app` kullanicisinin hesap bitis tarihini `2026-11-30` yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -E 2026-11-30 app",
+          "hint_text": "Hesabi tarih bazli kapatmak icin `chage -E` kullan.",
+          "hint_partial": "chage -E ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-034",
+      "type": "single",
+      "scenario": "Bakim penceresinde `app` kullanicisi icin parola maksimum yasini 90 gun yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -M 90 app",
+          "hint_text": "Parola politikasini gun bazinda duzenle.",
+          "hint_partial": "chage -M ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-035",
+      "type": "single",
+      "scenario": "Bakim penceresinde `developers` grubunun kaydini denetle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getent group developers",
+          "hint_text": "Grubun sistem kaydini `getent group` ile oku.",
+          "hint_partial": "getent group ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-036",
+      "type": "single",
+      "scenario": "Bakim penceresinde `app` kullanicisinin UID, GID ve group bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "id app",
+          "hint_text": "Hesabin kimlik bilgisini `id` ile denetle.",
+          "hint_partial": "id ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-037",
+      "type": "single",
+      "scenario": "Bakim penceresinde `app` kullanicisinin parolasini kilitle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -l app",
+          "hint_text": "Acil durumda parola login'ini kapat.",
+          "hint_partial": "passwd -l ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-038",
+      "type": "single",
+      "scenario": "Bakim penceresinde `app` kullanicisinin parola kilidini ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -u app",
+          "hint_text": "Bakim sonrasi hesabi yeniden aktif et.",
+          "hint_partial": "passwd -u ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-039",
+      "type": "single",
+      "scenario": "Bakim penceresinde `app` kullanicisinin passwd kaydini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getent passwd app",
+          "hint_text": "Passwd kaydi ile home ve shell alanlarini kontrol et.",
+          "hint_partial": "getent passwd ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-040",
+      "type": "single",
+      "scenario": "Bakim penceresinde `app` kullanicisi icin sudo erisimi audit etmek amaciyla `sudo -l -U` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sudo -l -U app",
+          "hint_text": "Yetki kapsam audit'inde `sudo -l -U` kullanilir.",
+          "hint_partial": "sudo -l -U ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-041",
+      "type": "single",
+      "scenario": "Incident sonrasinda UID degeri 0 olan tum hesaplari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk -F: '$3 == 0 {print $1}' /etc/passwd",
+          "hint_text": "Root esdegeri hesaplari passwd verisinden filtrele.",
+          "hint_partial": "awk -F: ... /etc/passwd"
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-042",
+      "type": "single",
+      "scenario": "Incident sonrasinda sahibi veya grubu bulunamayan dosyalari tara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find / -nouser -o -nogroup 2>/dev/null",
+          "hint_text": "Silinmis hesaplardan kalan dosyalari `find` ile tespit et.",
+          "hint_partial": "find / ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-043",
+      "type": "single",
+      "scenario": "Incident sonrasinda interaktif shell'i olan tum hesaplari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk -F: '$7 !~ /(nologin|false)$/ {print $1 \":\" $7}' /etc/passwd",
+          "hint_text": "Gercek login shell kullanan hesaplari passwd alanlarindan ayikla.",
+          "hint_partial": "awk -F: ... /etc/passwd"
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-044",
+      "type": "single",
+      "scenario": "Incident sonrasinda `backup` kullanicisinin sudo yetkilerini audit et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sudo -l -U backup",
+          "hint_text": "Sudo kapsam denetimi icin `sudo -l -U` kullan.",
+          "hint_partial": "sudo -l -U ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-045",
+      "type": "single",
+      "scenario": "Incident sonrasinda `backup` kullanicisinin son login bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lastlog -u backup",
+          "hint_text": "En son login kaydini `lastlog` ile denetle.",
+          "hint_partial": "lastlog -u ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-046",
+      "type": "single",
+      "scenario": "Incident sonrasinda `backup` kullanicisinin parola durumunu audit et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -S backup",
+          "hint_text": "Parola kilit ve politika durumunu `passwd -S` ile gor.",
+          "hint_partial": "passwd -S ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-047",
+      "type": "single",
+      "scenario": "Incident sonrasinda `backup` kullanicisinin aging politikasini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -l backup",
+          "hint_text": "Expiry ve warning politikasini `chage -l` ile denetle.",
+          "hint_partial": "chage -l ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-048",
+      "type": "single",
+      "scenario": "Incident sonrasinda `backup` kullanicisinin shell'ini `nologin` yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "usermod -s /usr/sbin/nologin backup",
+          "hint_text": "Interaktif erisimi kapatmak icin shell'i degistir.",
+          "hint_partial": "usermod -s ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-049",
+      "type": "single",
+      "scenario": "Incident sonrasinda `backup` ve `analytics` sahibi olacak sekilde `750` izinli `/srv/backup` dizinini olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "install -d -o backup -g analytics -m 750 /srv/backup",
+          "hint_text": "Sahiplik ve izin vererek dizin hazirla.",
+          "hint_partial": "install -d ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-050",
+      "type": "single",
+      "scenario": "Incident sonrasinda `backup` kullanicisinin passwd alanlarindan kullanici, uid, gid, home ve shell bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getent passwd backup | cut -d: -f1,3,4,6,7",
+          "hint_text": "Passwd kaydindan secili alanlari ayiklamak icin ayirici kullan.",
+          "hint_partial": "getent passwd ... | cut ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-051",
+      "type": "single",
+      "scenario": "Incident sonrasinda `backup` kullanicisinin sahip oldugu `/srv` altindaki dizinleri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /srv -maxdepth 2 -type d -user backup -printf '%u:%g %p\\n'",
+          "hint_text": "Belirli bir hesabin sahipligini dizin bazinda audit et.",
+          "hint_partial": "find /srv ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-052",
+      "type": "single",
+      "scenario": "Incident sonrasinda `/home` altindaki dizinleri birinci seviyede listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /home -maxdepth 1 -mindepth 1 -type d -printf '%f\\n'",
+          "hint_text": "Home dizinlerini ilk seviyede filtreleyerek gor.",
+          "hint_partial": "find /home ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-053",
+      "type": "single",
+      "scenario": "Incident sonrasinda `backup` kullanicisinin hesap bitis tarihini `2026-10-31` yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -E 2026-10-31 backup",
+          "hint_text": "Hesabi tarih bazli kapatmak icin `chage -E` kullan.",
+          "hint_partial": "chage -E ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-054",
+      "type": "single",
+      "scenario": "Incident sonrasinda `backup` kullanicisi icin parola maksimum yasini 90 gun yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -M 90 backup",
+          "hint_text": "Parola politikasini gun bazinda duzenle.",
+          "hint_partial": "chage -M ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-055",
+      "type": "single",
+      "scenario": "Incident sonrasinda `analytics` grubunun kaydini denetle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getent group analytics",
+          "hint_text": "Grubun sistem kaydini `getent group` ile oku.",
+          "hint_partial": "getent group ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-056",
+      "type": "single",
+      "scenario": "Incident sonrasinda `backup` kullanicisinin UID, GID ve group bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "id backup",
+          "hint_text": "Hesabin kimlik bilgisini `id` ile denetle.",
+          "hint_partial": "id ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-057",
+      "type": "single",
+      "scenario": "Incident sonrasinda `backup` kullanicisinin parolasini kilitle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -l backup",
+          "hint_text": "Acil durumda parola login'ini kapat.",
+          "hint_partial": "passwd -l ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-058",
+      "type": "single",
+      "scenario": "Incident sonrasinda `backup` kullanicisinin parola kilidini ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -u backup",
+          "hint_text": "Bakim sonrasi hesabi yeniden aktif et.",
+          "hint_partial": "passwd -u ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-059",
+      "type": "single",
+      "scenario": "Incident sonrasinda `backup` kullanicisinin passwd kaydini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getent passwd backup",
+          "hint_text": "Passwd kaydi ile home ve shell alanlarini kontrol et.",
+          "hint_partial": "getent passwd ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-060",
+      "type": "single",
+      "scenario": "Incident sonrasinda `backup` kullanicisi icin sudo erisimi audit etmek amaciyla `sudo -l -U` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sudo -l -U backup",
+          "hint_text": "Yetki kapsam audit'inde `sudo -l -U` kullanilir.",
+          "hint_partial": "sudo -l -U ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-061",
+      "type": "single",
+      "scenario": "Deploy oncesi UID degeri 0 olan tum hesaplari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk -F: '$3 == 0 {print $1}' /etc/passwd",
+          "hint_text": "Root esdegeri hesaplari passwd verisinden filtrele.",
+          "hint_partial": "awk -F: ... /etc/passwd"
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-062",
+      "type": "single",
+      "scenario": "Deploy oncesi sahibi veya grubu bulunamayan dosyalari tara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find / -nouser -o -nogroup 2>/dev/null",
+          "hint_text": "Silinmis hesaplardan kalan dosyalari `find` ile tespit et.",
+          "hint_partial": "find / ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-063",
+      "type": "single",
+      "scenario": "Deploy oncesi interaktif shell'i olan tum hesaplari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk -F: '$7 !~ /(nologin|false)$/ {print $1 \":\" $7}' /etc/passwd",
+          "hint_text": "Gercek login shell kullanan hesaplari passwd alanlarindan ayikla.",
+          "hint_partial": "awk -F: ... /etc/passwd"
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-064",
+      "type": "single",
+      "scenario": "Deploy oncesi `reporting` kullanicisinin sudo yetkilerini audit et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sudo -l -U reporting",
+          "hint_text": "Sudo kapsam denetimi icin `sudo -l -U` kullan.",
+          "hint_partial": "sudo -l -U ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-065",
+      "type": "single",
+      "scenario": "Deploy oncesi `reporting` kullanicisinin son login bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lastlog -u reporting",
+          "hint_text": "En son login kaydini `lastlog` ile denetle.",
+          "hint_partial": "lastlog -u ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-066",
+      "type": "single",
+      "scenario": "Deploy oncesi `reporting` kullanicisinin parola durumunu audit et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -S reporting",
+          "hint_text": "Parola kilit ve politika durumunu `passwd -S` ile gor.",
+          "hint_partial": "passwd -S ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-067",
+      "type": "single",
+      "scenario": "Deploy oncesi `reporting` kullanicisinin aging politikasini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -l reporting",
+          "hint_text": "Expiry ve warning politikasini `chage -l` ile denetle.",
+          "hint_partial": "chage -l ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-068",
+      "type": "single",
+      "scenario": "Deploy oncesi `reporting` kullanicisinin shell'ini `nologin` yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "usermod -s /usr/sbin/nologin reporting",
+          "hint_text": "Interaktif erisimi kapatmak icin shell'i degistir.",
+          "hint_partial": "usermod -s ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-069",
+      "type": "single",
+      "scenario": "Deploy oncesi `reporting` ve `support` sahibi olacak sekilde `750` izinli `/srv/reporting` dizinini olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "install -d -o reporting -g support -m 750 /srv/reporting",
+          "hint_text": "Sahiplik ve izin vererek dizin hazirla.",
+          "hint_partial": "install -d ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-070",
+      "type": "single",
+      "scenario": "Deploy oncesi `reporting` kullanicisinin passwd alanlarindan kullanici, uid, gid, home ve shell bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getent passwd reporting | cut -d: -f1,3,4,6,7",
+          "hint_text": "Passwd kaydindan secili alanlari ayiklamak icin ayirici kullan.",
+          "hint_partial": "getent passwd ... | cut ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-071",
+      "type": "single",
+      "scenario": "Deploy oncesi `reporting` kullanicisinin sahip oldugu `/srv` altindaki dizinleri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /srv -maxdepth 2 -type d -user reporting -printf '%u:%g %p\\n'",
+          "hint_text": "Belirli bir hesabin sahipligini dizin bazinda audit et.",
+          "hint_partial": "find /srv ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-072",
+      "type": "single",
+      "scenario": "Deploy oncesi `/home` altindaki dizinleri birinci seviyede listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /home -maxdepth 1 -mindepth 1 -type d -printf '%f\\n'",
+          "hint_text": "Home dizinlerini ilk seviyede filtreleyerek gor.",
+          "hint_partial": "find /home ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-073",
+      "type": "single",
+      "scenario": "Deploy oncesi `reporting` kullanicisinin hesap bitis tarihini `2026-09-30` yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -E 2026-09-30 reporting",
+          "hint_text": "Hesabi tarih bazli kapatmak icin `chage -E` kullan.",
+          "hint_partial": "chage -E ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-074",
+      "type": "single",
+      "scenario": "Deploy oncesi `reporting` kullanicisi icin parola maksimum yasini 90 gun yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -M 90 reporting",
+          "hint_text": "Parola politikasini gun bazinda duzenle.",
+          "hint_partial": "chage -M ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-075",
+      "type": "single",
+      "scenario": "Deploy oncesi `support` grubunun kaydini denetle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getent group support",
+          "hint_text": "Grubun sistem kaydini `getent group` ile oku.",
+          "hint_partial": "getent group ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-076",
+      "type": "single",
+      "scenario": "Deploy oncesi `reporting` kullanicisinin UID, GID ve group bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "id reporting",
+          "hint_text": "Hesabin kimlik bilgisini `id` ile denetle.",
+          "hint_partial": "id ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-077",
+      "type": "single",
+      "scenario": "Deploy oncesi `reporting` kullanicisinin parolasini kilitle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -l reporting",
+          "hint_text": "Acil durumda parola login'ini kapat.",
+          "hint_partial": "passwd -l ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-078",
+      "type": "single",
+      "scenario": "Deploy oncesi `reporting` kullanicisinin parola kilidini ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -u reporting",
+          "hint_text": "Bakim sonrasi hesabi yeniden aktif et.",
+          "hint_partial": "passwd -u ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-079",
+      "type": "single",
+      "scenario": "Deploy oncesi `reporting` kullanicisinin passwd kaydini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getent passwd reporting",
+          "hint_text": "Passwd kaydi ile home ve shell alanlarini kontrol et.",
+          "hint_partial": "getent passwd ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-080",
+      "type": "single",
+      "scenario": "Deploy oncesi `reporting` kullanicisi icin sudo erisimi audit etmek amaciyla `sudo -l -U` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sudo -l -U reporting",
+          "hint_text": "Yetki kapsam audit'inde `sudo -l -U` kullanilir.",
+          "hint_partial": "sudo -l -U ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-081",
+      "type": "single",
+      "scenario": "Audit sirasinda UID degeri 0 olan tum hesaplari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk -F: '$3 == 0 {print $1}' /etc/passwd",
+          "hint_text": "Root esdegeri hesaplari passwd verisinden filtrele.",
+          "hint_partial": "awk -F: ... /etc/passwd"
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-082",
+      "type": "single",
+      "scenario": "Audit sirasinda sahibi veya grubu bulunamayan dosyalari tara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find / -nouser -o -nogroup 2>/dev/null",
+          "hint_text": "Silinmis hesaplardan kalan dosyalari `find` ile tespit et.",
+          "hint_partial": "find / ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-083",
+      "type": "single",
+      "scenario": "Audit sirasinda interaktif shell'i olan tum hesaplari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk -F: '$7 !~ /(nologin|false)$/ {print $1 \":\" $7}' /etc/passwd",
+          "hint_text": "Gercek login shell kullanan hesaplari passwd alanlarindan ayikla.",
+          "hint_partial": "awk -F: ... /etc/passwd"
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-084",
+      "type": "single",
+      "scenario": "Audit sirasinda `analytics` kullanicisinin sudo yetkilerini audit et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sudo -l -U analytics",
+          "hint_text": "Sudo kapsam denetimi icin `sudo -l -U` kullan.",
+          "hint_partial": "sudo -l -U ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-085",
+      "type": "single",
+      "scenario": "Audit sirasinda `analytics` kullanicisinin son login bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lastlog -u analytics",
+          "hint_text": "En son login kaydini `lastlog` ile denetle.",
+          "hint_partial": "lastlog -u ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-086",
+      "type": "single",
+      "scenario": "Audit sirasinda `analytics` kullanicisinin parola durumunu audit et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -S analytics",
+          "hint_text": "Parola kilit ve politika durumunu `passwd -S` ile gor.",
+          "hint_partial": "passwd -S ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-087",
+      "type": "single",
+      "scenario": "Audit sirasinda `analytics` kullanicisinin aging politikasini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -l analytics",
+          "hint_text": "Expiry ve warning politikasini `chage -l` ile denetle.",
+          "hint_partial": "chage -l ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-088",
+      "type": "single",
+      "scenario": "Audit sirasinda `analytics` kullanicisinin shell'ini `nologin` yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "usermod -s /usr/sbin/nologin analytics",
+          "hint_text": "Interaktif erisimi kapatmak icin shell'i degistir.",
+          "hint_partial": "usermod -s ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-089",
+      "type": "single",
+      "scenario": "Audit sirasinda `analytics` ve `ops` sahibi olacak sekilde `750` izinli `/srv/analytics` dizinini olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "install -d -o analytics -g ops -m 750 /srv/analytics",
+          "hint_text": "Sahiplik ve izin vererek dizin hazirla.",
+          "hint_partial": "install -d ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-090",
+      "type": "single",
+      "scenario": "Audit sirasinda `analytics` kullanicisinin passwd alanlarindan kullanici, uid, gid, home ve shell bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getent passwd analytics | cut -d: -f1,3,4,6,7",
+          "hint_text": "Passwd kaydindan secili alanlari ayiklamak icin ayirici kullan.",
+          "hint_partial": "getent passwd ... | cut ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-091",
+      "type": "single",
+      "scenario": "Audit sirasinda `analytics` kullanicisinin sahip oldugu `/srv` altindaki dizinleri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /srv -maxdepth 2 -type d -user analytics -printf '%u:%g %p\\n'",
+          "hint_text": "Belirli bir hesabin sahipligini dizin bazinda audit et.",
+          "hint_partial": "find /srv ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-092",
+      "type": "single",
+      "scenario": "Audit sirasinda `/home` altindaki dizinleri birinci seviyede listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /home -maxdepth 1 -mindepth 1 -type d -printf '%f\\n'",
+          "hint_text": "Home dizinlerini ilk seviyede filtreleyerek gor.",
+          "hint_partial": "find /home ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-093",
+      "type": "single",
+      "scenario": "Audit sirasinda `analytics` kullanicisinin hesap bitis tarihini `2026-08-31` yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -E 2026-08-31 analytics",
+          "hint_text": "Hesabi tarih bazli kapatmak icin `chage -E` kullan.",
+          "hint_partial": "chage -E ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-094",
+      "type": "single",
+      "scenario": "Audit sirasinda `analytics` kullanicisi icin parola maksimum yasini 90 gun yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -M 90 analytics",
+          "hint_text": "Parola politikasini gun bazinda duzenle.",
+          "hint_partial": "chage -M ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-095",
+      "type": "single",
+      "scenario": "Audit sirasinda `ops` grubunun kaydini denetle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getent group ops",
+          "hint_text": "Grubun sistem kaydini `getent group` ile oku.",
+          "hint_partial": "getent group ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-096",
+      "type": "single",
+      "scenario": "Audit sirasinda `analytics` kullanicisinin UID, GID ve group bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "id analytics",
+          "hint_text": "Hesabin kimlik bilgisini `id` ile denetle.",
+          "hint_partial": "id ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-097",
+      "type": "single",
+      "scenario": "Audit sirasinda `analytics` kullanicisinin parolasini kilitle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -l analytics",
+          "hint_text": "Acil durumda parola login'ini kapat.",
+          "hint_partial": "passwd -l ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-098",
+      "type": "single",
+      "scenario": "Audit sirasinda `analytics` kullanicisinin parola kilidini ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -u analytics",
+          "hint_text": "Bakim sonrasi hesabi yeniden aktif et.",
+          "hint_partial": "passwd -u ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-099",
+      "type": "single",
+      "scenario": "Audit sirasinda `analytics` kullanicisinin passwd kaydini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getent passwd analytics",
+          "hint_text": "Passwd kaydi ile home ve shell alanlarini kontrol et.",
+          "hint_partial": "getent passwd ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-100",
+      "type": "single",
+      "scenario": "Audit sirasinda `analytics` kullanicisi icin sudo erisimi audit etmek amaciyla `sudo -l -U` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sudo -l -U analytics",
+          "hint_text": "Yetki kapsam audit'inde `sudo -l -U` kullanilir.",
+          "hint_partial": "sudo -l -U ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-101",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda UID degeri 0 olan tum hesaplari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk -F: '$3 == 0 {print $1}' /etc/passwd",
+          "hint_text": "Root esdegeri hesaplari passwd verisinden filtrele.",
+          "hint_partial": "awk -F: ... /etc/passwd"
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-102",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda sahibi veya grubu bulunamayan dosyalari tara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find / -nouser -o -nogroup 2>/dev/null",
+          "hint_text": "Silinmis hesaplardan kalan dosyalari `find` ile tespit et.",
+          "hint_partial": "find / ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-103",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda interaktif shell'i olan tum hesaplari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk -F: '$7 !~ /(nologin|false)$/ {print $1 \":\" $7}' /etc/passwd",
+          "hint_text": "Gercek login shell kullanan hesaplari passwd alanlarindan ayikla.",
+          "hint_partial": "awk -F: ... /etc/passwd"
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-104",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `ops` kullanicisinin sudo yetkilerini audit et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sudo -l -U ops",
+          "hint_text": "Sudo kapsam denetimi icin `sudo -l -U` kullan.",
+          "hint_partial": "sudo -l -U ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-105",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `ops` kullanicisinin son login bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lastlog -u ops",
+          "hint_text": "En son login kaydini `lastlog` ile denetle.",
+          "hint_partial": "lastlog -u ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-106",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `ops` kullanicisinin parola durumunu audit et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -S ops",
+          "hint_text": "Parola kilit ve politika durumunu `passwd -S` ile gor.",
+          "hint_partial": "passwd -S ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-107",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `ops` kullanicisinin aging politikasini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -l ops",
+          "hint_text": "Expiry ve warning politikasini `chage -l` ile denetle.",
+          "hint_partial": "chage -l ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-108",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `ops` kullanicisinin shell'ini `nologin` yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "usermod -s /usr/sbin/nologin ops",
+          "hint_text": "Interaktif erisimi kapatmak icin shell'i degistir.",
+          "hint_partial": "usermod -s ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-109",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `ops` ve `infra` sahibi olacak sekilde `750` izinli `/srv/ops` dizinini olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "install -d -o ops -g infra -m 750 /srv/ops",
+          "hint_text": "Sahiplik ve izin vererek dizin hazirla.",
+          "hint_partial": "install -d ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-110",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `ops` kullanicisinin passwd alanlarindan kullanici, uid, gid, home ve shell bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getent passwd ops | cut -d: -f1,3,4,6,7",
+          "hint_text": "Passwd kaydindan secili alanlari ayiklamak icin ayirici kullan.",
+          "hint_partial": "getent passwd ... | cut ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-111",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `ops` kullanicisinin sahip oldugu `/srv` altindaki dizinleri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /srv -maxdepth 2 -type d -user ops -printf '%u:%g %p\\n'",
+          "hint_text": "Belirli bir hesabin sahipligini dizin bazinda audit et.",
+          "hint_partial": "find /srv ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-112",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `/home` altindaki dizinleri birinci seviyede listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /home -maxdepth 1 -mindepth 1 -type d -printf '%f\\n'",
+          "hint_text": "Home dizinlerini ilk seviyede filtreleyerek gor.",
+          "hint_partial": "find /home ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-113",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `ops` kullanicisinin hesap bitis tarihini `2026-07-31` yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -E 2026-07-31 ops",
+          "hint_text": "Hesabi tarih bazli kapatmak icin `chage -E` kullan.",
+          "hint_partial": "chage -E ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-114",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `ops` kullanicisi icin parola maksimum yasini 90 gun yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -M 90 ops",
+          "hint_text": "Parola politikasini gun bazinda duzenle.",
+          "hint_partial": "chage -M ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-115",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `infra` grubunun kaydini denetle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getent group infra",
+          "hint_text": "Grubun sistem kaydini `getent group` ile oku.",
+          "hint_partial": "getent group ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-116",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `ops` kullanicisinin UID, GID ve group bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "id ops",
+          "hint_text": "Hesabin kimlik bilgisini `id` ile denetle.",
+          "hint_partial": "id ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-117",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `ops` kullanicisinin parolasini kilitle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -l ops",
+          "hint_text": "Acil durumda parola login'ini kapat.",
+          "hint_partial": "passwd -l ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-118",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `ops` kullanicisinin parola kilidini ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -u ops",
+          "hint_text": "Bakim sonrasi hesabi yeniden aktif et.",
+          "hint_partial": "passwd -u ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-119",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `ops` kullanicisinin passwd kaydini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getent passwd ops",
+          "hint_text": "Passwd kaydi ile home ve shell alanlarini kontrol et.",
+          "hint_partial": "getent passwd ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-120",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `ops` kullanicisi icin sudo erisimi audit etmek amaciyla `sudo -l -U` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sudo -l -U ops",
+          "hint_text": "Yetki kapsam audit'inde `sudo -l -U` kullanilir.",
+          "hint_partial": "sudo -l -U ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-121",
+      "type": "single",
+      "scenario": "Release kontrolunde UID degeri 0 olan tum hesaplari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk -F: '$3 == 0 {print $1}' /etc/passwd",
+          "hint_text": "Root esdegeri hesaplari passwd verisinden filtrele.",
+          "hint_partial": "awk -F: ... /etc/passwd"
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-122",
+      "type": "single",
+      "scenario": "Release kontrolunde sahibi veya grubu bulunamayan dosyalari tara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find / -nouser -o -nogroup 2>/dev/null",
+          "hint_text": "Silinmis hesaplardan kalan dosyalari `find` ile tespit et.",
+          "hint_partial": "find / ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-123",
+      "type": "single",
+      "scenario": "Release kontrolunde interaktif shell'i olan tum hesaplari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk -F: '$7 !~ /(nologin|false)$/ {print $1 \":\" $7}' /etc/passwd",
+          "hint_text": "Gercek login shell kullanan hesaplari passwd alanlarindan ayikla.",
+          "hint_partial": "awk -F: ... /etc/passwd"
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-124",
+      "type": "single",
+      "scenario": "Release kontrolunde `api` kullanicisinin sudo yetkilerini audit et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sudo -l -U api",
+          "hint_text": "Sudo kapsam denetimi icin `sudo -l -U` kullan.",
+          "hint_partial": "sudo -l -U ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-125",
+      "type": "single",
+      "scenario": "Release kontrolunde `api` kullanicisinin son login bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lastlog -u api",
+          "hint_text": "En son login kaydini `lastlog` ile denetle.",
+          "hint_partial": "lastlog -u ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-126",
+      "type": "single",
+      "scenario": "Release kontrolunde `api` kullanicisinin parola durumunu audit et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -S api",
+          "hint_text": "Parola kilit ve politika durumunu `passwd -S` ile gor.",
+          "hint_partial": "passwd -S ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-127",
+      "type": "single",
+      "scenario": "Release kontrolunde `api` kullanicisinin aging politikasini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -l api",
+          "hint_text": "Expiry ve warning politikasini `chage -l` ile denetle.",
+          "hint_partial": "chage -l ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-128",
+      "type": "single",
+      "scenario": "Release kontrolunde `api` kullanicisinin shell'ini `nologin` yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "usermod -s /usr/sbin/nologin api",
+          "hint_text": "Interaktif erisimi kapatmak icin shell'i degistir.",
+          "hint_partial": "usermod -s ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-129",
+      "type": "single",
+      "scenario": "Release kontrolunde `api` ve `ci` sahibi olacak sekilde `750` izinli `/srv/api` dizinini olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "install -d -o api -g ci -m 750 /srv/api",
+          "hint_text": "Sahiplik ve izin vererek dizin hazirla.",
+          "hint_partial": "install -d ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-130",
+      "type": "single",
+      "scenario": "Release kontrolunde `api` kullanicisinin passwd alanlarindan kullanici, uid, gid, home ve shell bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getent passwd api | cut -d: -f1,3,4,6,7",
+          "hint_text": "Passwd kaydindan secili alanlari ayiklamak icin ayirici kullan.",
+          "hint_partial": "getent passwd ... | cut ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-131",
+      "type": "single",
+      "scenario": "Release kontrolunde `api` kullanicisinin sahip oldugu `/srv` altindaki dizinleri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /srv -maxdepth 2 -type d -user api -printf '%u:%g %p\\n'",
+          "hint_text": "Belirli bir hesabin sahipligini dizin bazinda audit et.",
+          "hint_partial": "find /srv ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-132",
+      "type": "single",
+      "scenario": "Release kontrolunde `/home` altindaki dizinleri birinci seviyede listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /home -maxdepth 1 -mindepth 1 -type d -printf '%f\\n'",
+          "hint_text": "Home dizinlerini ilk seviyede filtreleyerek gor.",
+          "hint_partial": "find /home ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-133",
+      "type": "single",
+      "scenario": "Release kontrolunde `api` kullanicisinin hesap bitis tarihini `2026-06-30` yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -E 2026-06-30 api",
+          "hint_text": "Hesabi tarih bazli kapatmak icin `chage -E` kullan.",
+          "hint_partial": "chage -E ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-134",
+      "type": "single",
+      "scenario": "Release kontrolunde `api` kullanicisi icin parola maksimum yasini 90 gun yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -M 90 api",
+          "hint_text": "Parola politikasini gun bazinda duzenle.",
+          "hint_partial": "chage -M ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-135",
+      "type": "single",
+      "scenario": "Release kontrolunde `ci` grubunun kaydini denetle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getent group ci",
+          "hint_text": "Grubun sistem kaydini `getent group` ile oku.",
+          "hint_partial": "getent group ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-136",
+      "type": "single",
+      "scenario": "Release kontrolunde `api` kullanicisinin UID, GID ve group bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "id api",
+          "hint_text": "Hesabin kimlik bilgisini `id` ile denetle.",
+          "hint_partial": "id ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-137",
+      "type": "single",
+      "scenario": "Release kontrolunde `api` kullanicisinin parolasini kilitle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -l api",
+          "hint_text": "Acil durumda parola login'ini kapat.",
+          "hint_partial": "passwd -l ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-138",
+      "type": "single",
+      "scenario": "Release kontrolunde `api` kullanicisinin parola kilidini ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -u api",
+          "hint_text": "Bakim sonrasi hesabi yeniden aktif et.",
+          "hint_partial": "passwd -u ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-139",
+      "type": "single",
+      "scenario": "Release kontrolunde `api` kullanicisinin passwd kaydini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getent passwd api",
+          "hint_text": "Passwd kaydi ile home ve shell alanlarini kontrol et.",
+          "hint_partial": "getent passwd ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-140",
+      "type": "single",
+      "scenario": "Release kontrolunde `api` kullanicisi icin sudo erisimi audit etmek amaciyla `sudo -l -U` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sudo -l -U api",
+          "hint_text": "Yetki kapsam audit'inde `sudo -l -U` kullanilir.",
+          "hint_partial": "sudo -l -U ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-141",
+      "type": "single",
+      "scenario": "Operasyon devrinde UID degeri 0 olan tum hesaplari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk -F: '$3 == 0 {print $1}' /etc/passwd",
+          "hint_text": "Root esdegeri hesaplari passwd verisinden filtrele.",
+          "hint_partial": "awk -F: ... /etc/passwd"
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-142",
+      "type": "single",
+      "scenario": "Operasyon devrinde sahibi veya grubu bulunamayan dosyalari tara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find / -nouser -o -nogroup 2>/dev/null",
+          "hint_text": "Silinmis hesaplardan kalan dosyalari `find` ile tespit et.",
+          "hint_partial": "find / ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-143",
+      "type": "single",
+      "scenario": "Operasyon devrinde interaktif shell'i olan tum hesaplari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk -F: '$7 !~ /(nologin|false)$/ {print $1 \":\" $7}' /etc/passwd",
+          "hint_text": "Gercek login shell kullanan hesaplari passwd alanlarindan ayikla.",
+          "hint_partial": "awk -F: ... /etc/passwd"
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-144",
+      "type": "single",
+      "scenario": "Operasyon devrinde `worker` kullanicisinin sudo yetkilerini audit et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sudo -l -U worker",
+          "hint_text": "Sudo kapsam denetimi icin `sudo -l -U` kullan.",
+          "hint_partial": "sudo -l -U ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-145",
+      "type": "single",
+      "scenario": "Operasyon devrinde `worker` kullanicisinin son login bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lastlog -u worker",
+          "hint_text": "En son login kaydini `lastlog` ile denetle.",
+          "hint_partial": "lastlog -u ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-146",
+      "type": "single",
+      "scenario": "Operasyon devrinde `worker` kullanicisinin parola durumunu audit et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -S worker",
+          "hint_text": "Parola kilit ve politika durumunu `passwd -S` ile gor.",
+          "hint_partial": "passwd -S ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-147",
+      "type": "single",
+      "scenario": "Operasyon devrinde `worker` kullanicisinin aging politikasini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -l worker",
+          "hint_text": "Expiry ve warning politikasini `chage -l` ile denetle.",
+          "hint_partial": "chage -l ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-148",
+      "type": "single",
+      "scenario": "Operasyon devrinde `worker` kullanicisinin shell'ini `nologin` yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "usermod -s /usr/sbin/nologin worker",
+          "hint_text": "Interaktif erisimi kapatmak icin shell'i degistir.",
+          "hint_partial": "usermod -s ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-149",
+      "type": "single",
+      "scenario": "Operasyon devrinde `worker` ve `backup` sahibi olacak sekilde `750` izinli `/srv/worker` dizinini olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "install -d -o worker -g backup -m 750 /srv/worker",
+          "hint_text": "Sahiplik ve izin vererek dizin hazirla.",
+          "hint_partial": "install -d ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-150",
+      "type": "single",
+      "scenario": "Operasyon devrinde `worker` kullanicisinin passwd alanlarindan kullanici, uid, gid, home ve shell bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getent passwd worker | cut -d: -f1,3,4,6,7",
+          "hint_text": "Passwd kaydindan secili alanlari ayiklamak icin ayirici kullan.",
+          "hint_partial": "getent passwd ... | cut ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-151",
+      "type": "single",
+      "scenario": "Operasyon devrinde `worker` kullanicisinin sahip oldugu `/srv` altindaki dizinleri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /srv -maxdepth 2 -type d -user worker -printf '%u:%g %p\\n'",
+          "hint_text": "Belirli bir hesabin sahipligini dizin bazinda audit et.",
+          "hint_partial": "find /srv ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-152",
+      "type": "single",
+      "scenario": "Operasyon devrinde `/home` altindaki dizinleri birinci seviyede listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /home -maxdepth 1 -mindepth 1 -type d -printf '%f\\n'",
+          "hint_text": "Home dizinlerini ilk seviyede filtreleyerek gor.",
+          "hint_partial": "find /home ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-153",
+      "type": "single",
+      "scenario": "Operasyon devrinde `worker` kullanicisinin hesap bitis tarihini `2026-05-31` yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -E 2026-05-31 worker",
+          "hint_text": "Hesabi tarih bazli kapatmak icin `chage -E` kullan.",
+          "hint_partial": "chage -E ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-154",
+      "type": "single",
+      "scenario": "Operasyon devrinde `worker` kullanicisi icin parola maksimum yasini 90 gun yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -M 90 worker",
+          "hint_text": "Parola politikasini gun bazinda duzenle.",
+          "hint_partial": "chage -M ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-155",
+      "type": "single",
+      "scenario": "Operasyon devrinde `backup` grubunun kaydini denetle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getent group backup",
+          "hint_text": "Grubun sistem kaydini `getent group` ile oku.",
+          "hint_partial": "getent group ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-156",
+      "type": "single",
+      "scenario": "Operasyon devrinde `worker` kullanicisinin UID, GID ve group bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "id worker",
+          "hint_text": "Hesabin kimlik bilgisini `id` ile denetle.",
+          "hint_partial": "id ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-157",
+      "type": "single",
+      "scenario": "Operasyon devrinde `worker` kullanicisinin parolasini kilitle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -l worker",
+          "hint_text": "Acil durumda parola login'ini kapat.",
+          "hint_partial": "passwd -l ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-158",
+      "type": "single",
+      "scenario": "Operasyon devrinde `worker` kullanicisinin parola kilidini ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -u worker",
+          "hint_text": "Bakim sonrasi hesabi yeniden aktif et.",
+          "hint_partial": "passwd -u ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-159",
+      "type": "single",
+      "scenario": "Operasyon devrinde `worker` kullanicisinin passwd kaydini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getent passwd worker",
+          "hint_text": "Passwd kaydi ile home ve shell alanlarini kontrol et.",
+          "hint_partial": "getent passwd ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-160",
+      "type": "single",
+      "scenario": "Operasyon devrinde `worker` kullanicisi icin sudo erisimi audit etmek amaciyla `sudo -l -U` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sudo -l -U worker",
+          "hint_text": "Yetki kapsam audit'inde `sudo -l -U` kullanilir.",
+          "hint_partial": "sudo -l -U ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-161",
+      "type": "single",
+      "scenario": "On-call gorevinde UID degeri 0 olan tum hesaplari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk -F: '$3 == 0 {print $1}' /etc/passwd",
+          "hint_text": "Root esdegeri hesaplari passwd verisinden filtrele.",
+          "hint_partial": "awk -F: ... /etc/passwd"
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-162",
+      "type": "single",
+      "scenario": "On-call gorevinde sahibi veya grubu bulunamayan dosyalari tara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find / -nouser -o -nogroup 2>/dev/null",
+          "hint_text": "Silinmis hesaplardan kalan dosyalari `find` ile tespit et.",
+          "hint_partial": "find / ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-163",
+      "type": "single",
+      "scenario": "On-call gorevinde interaktif shell'i olan tum hesaplari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk -F: '$7 !~ /(nologin|false)$/ {print $1 \":\" $7}' /etc/passwd",
+          "hint_text": "Gercek login shell kullanan hesaplari passwd alanlarindan ayikla.",
+          "hint_partial": "awk -F: ... /etc/passwd"
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-164",
+      "type": "single",
+      "scenario": "On-call gorevinde `support` kullanicisinin sudo yetkilerini audit et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sudo -l -U support",
+          "hint_text": "Sudo kapsam denetimi icin `sudo -l -U` kullan.",
+          "hint_partial": "sudo -l -U ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-165",
+      "type": "single",
+      "scenario": "On-call gorevinde `support` kullanicisinin son login bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lastlog -u support",
+          "hint_text": "En son login kaydini `lastlog` ile denetle.",
+          "hint_partial": "lastlog -u ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-166",
+      "type": "single",
+      "scenario": "On-call gorevinde `support` kullanicisinin parola durumunu audit et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -S support",
+          "hint_text": "Parola kilit ve politika durumunu `passwd -S` ile gor.",
+          "hint_partial": "passwd -S ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-167",
+      "type": "single",
+      "scenario": "On-call gorevinde `support` kullanicisinin aging politikasini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -l support",
+          "hint_text": "Expiry ve warning politikasini `chage -l` ile denetle.",
+          "hint_partial": "chage -l ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-168",
+      "type": "single",
+      "scenario": "On-call gorevinde `support` kullanicisinin shell'ini `nologin` yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "usermod -s /usr/sbin/nologin support",
+          "hint_text": "Interaktif erisimi kapatmak icin shell'i degistir.",
+          "hint_partial": "usermod -s ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-169",
+      "type": "single",
+      "scenario": "On-call gorevinde `support` ve `readonly` sahibi olacak sekilde `750` izinli `/srv/support` dizinini olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "install -d -o support -g readonly -m 750 /srv/support",
+          "hint_text": "Sahiplik ve izin vererek dizin hazirla.",
+          "hint_partial": "install -d ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-170",
+      "type": "single",
+      "scenario": "On-call gorevinde `support` kullanicisinin passwd alanlarindan kullanici, uid, gid, home ve shell bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getent passwd support | cut -d: -f1,3,4,6,7",
+          "hint_text": "Passwd kaydindan secili alanlari ayiklamak icin ayirici kullan.",
+          "hint_partial": "getent passwd ... | cut ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-171",
+      "type": "single",
+      "scenario": "On-call gorevinde `support` kullanicisinin sahip oldugu `/srv` altindaki dizinleri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /srv -maxdepth 2 -type d -user support -printf '%u:%g %p\\n'",
+          "hint_text": "Belirli bir hesabin sahipligini dizin bazinda audit et.",
+          "hint_partial": "find /srv ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-172",
+      "type": "single",
+      "scenario": "On-call gorevinde `/home` altindaki dizinleri birinci seviyede listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /home -maxdepth 1 -mindepth 1 -type d -printf '%f\\n'",
+          "hint_text": "Home dizinlerini ilk seviyede filtreleyerek gor.",
+          "hint_partial": "find /home ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-173",
+      "type": "single",
+      "scenario": "On-call gorevinde `support` kullanicisinin hesap bitis tarihini `2026-04-30` yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -E 2026-04-30 support",
+          "hint_text": "Hesabi tarih bazli kapatmak icin `chage -E` kullan.",
+          "hint_partial": "chage -E ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-174",
+      "type": "single",
+      "scenario": "On-call gorevinde `support` kullanicisi icin parola maksimum yasini 90 gun yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -M 90 support",
+          "hint_text": "Parola politikasini gun bazinda duzenle.",
+          "hint_partial": "chage -M ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-175",
+      "type": "single",
+      "scenario": "On-call gorevinde `readonly` grubunun kaydini denetle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getent group readonly",
+          "hint_text": "Grubun sistem kaydini `getent group` ile oku.",
+          "hint_partial": "getent group ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-176",
+      "type": "single",
+      "scenario": "On-call gorevinde `support` kullanicisinin UID, GID ve group bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "id support",
+          "hint_text": "Hesabin kimlik bilgisini `id` ile denetle.",
+          "hint_partial": "id ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-177",
+      "type": "single",
+      "scenario": "On-call gorevinde `support` kullanicisinin parolasini kilitle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -l support",
+          "hint_text": "Acil durumda parola login'ini kapat.",
+          "hint_partial": "passwd -l ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-178",
+      "type": "single",
+      "scenario": "On-call gorevinde `support` kullanicisinin parola kilidini ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -u support",
+          "hint_text": "Bakim sonrasi hesabi yeniden aktif et.",
+          "hint_partial": "passwd -u ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-179",
+      "type": "single",
+      "scenario": "On-call gorevinde `support` kullanicisinin passwd kaydini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getent passwd support",
+          "hint_text": "Passwd kaydi ile home ve shell alanlarini kontrol et.",
+          "hint_partial": "getent passwd ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-180",
+      "type": "single",
+      "scenario": "On-call gorevinde `support` kullanicisi icin sudo erisimi audit etmek amaciyla `sudo -l -U` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sudo -l -U support",
+          "hint_text": "Yetki kapsam audit'inde `sudo -l -U` kullanilir.",
+          "hint_partial": "sudo -l -U ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-181",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda UID degeri 0 olan tum hesaplari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk -F: '$3 == 0 {print $1}' /etc/passwd",
+          "hint_text": "Root esdegeri hesaplari passwd verisinden filtrele.",
+          "hint_partial": "awk -F: ... /etc/passwd"
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-182",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda sahibi veya grubu bulunamayan dosyalari tara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find / -nouser -o -nogroup 2>/dev/null",
+          "hint_text": "Silinmis hesaplardan kalan dosyalari `find` ile tespit et.",
+          "hint_partial": "find / ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-183",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda interaktif shell'i olan tum hesaplari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk -F: '$7 !~ /(nologin|false)$/ {print $1 \":\" $7}' /etc/passwd",
+          "hint_text": "Gercek login shell kullanan hesaplari passwd alanlarindan ayikla.",
+          "hint_partial": "awk -F: ... /etc/passwd"
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-184",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `build` kullanicisinin sudo yetkilerini audit et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sudo -l -U build",
+          "hint_text": "Sudo kapsam denetimi icin `sudo -l -U` kullan.",
+          "hint_partial": "sudo -l -U ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-185",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `build` kullanicisinin son login bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lastlog -u build",
+          "hint_text": "En son login kaydini `lastlog` ile denetle.",
+          "hint_partial": "lastlog -u ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-186",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `build` kullanicisinin parola durumunu audit et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -S build",
+          "hint_text": "Parola kilit ve politika durumunu `passwd -S` ile gor.",
+          "hint_partial": "passwd -S ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-187",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `build` kullanicisinin aging politikasini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -l build",
+          "hint_text": "Expiry ve warning politikasini `chage -l` ile denetle.",
+          "hint_partial": "chage -l ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-188",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `build` kullanicisinin shell'ini `nologin` yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "usermod -s /usr/sbin/nologin build",
+          "hint_text": "Interaktif erisimi kapatmak icin shell'i degistir.",
+          "hint_partial": "usermod -s ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-189",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `build` ve `dbops` sahibi olacak sekilde `750` izinli `/srv/build` dizinini olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "install -d -o build -g dbops -m 750 /srv/build",
+          "hint_text": "Sahiplik ve izin vererek dizin hazirla.",
+          "hint_partial": "install -d ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-190",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `build` kullanicisinin passwd alanlarindan kullanici, uid, gid, home ve shell bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getent passwd build | cut -d: -f1,3,4,6,7",
+          "hint_text": "Passwd kaydindan secili alanlari ayiklamak icin ayirici kullan.",
+          "hint_partial": "getent passwd ... | cut ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-191",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `build` kullanicisinin sahip oldugu `/srv` altindaki dizinleri listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /srv -maxdepth 2 -type d -user build -printf '%u:%g %p\\n'",
+          "hint_text": "Belirli bir hesabin sahipligini dizin bazinda audit et.",
+          "hint_partial": "find /srv ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-192",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `/home` altindaki dizinleri birinci seviyede listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /home -maxdepth 1 -mindepth 1 -type d -printf '%f\\n'",
+          "hint_text": "Home dizinlerini ilk seviyede filtreleyerek gor.",
+          "hint_partial": "find /home ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-193",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `build` kullanicisinin hesap bitis tarihini `2026-03-31` yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -E 2026-03-31 build",
+          "hint_text": "Hesabi tarih bazli kapatmak icin `chage -E` kullan.",
+          "hint_partial": "chage -E ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-194",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `build` kullanicisi icin parola maksimum yasini 90 gun yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -M 90 build",
+          "hint_text": "Parola politikasini gun bazinda duzenle.",
+          "hint_partial": "chage -M ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-195",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `dbops` grubunun kaydini denetle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getent group dbops",
+          "hint_text": "Grubun sistem kaydini `getent group` ile oku.",
+          "hint_partial": "getent group ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-196",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `build` kullanicisinin UID, GID ve group bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "id build",
+          "hint_text": "Hesabin kimlik bilgisini `id` ile denetle.",
+          "hint_partial": "id ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-197",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `build` kullanicisinin parolasini kilitle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -l build",
+          "hint_text": "Acil durumda parola login'ini kapat.",
+          "hint_partial": "passwd -l ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-198",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `build` kullanicisinin parola kilidini ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -u build",
+          "hint_text": "Bakim sonrasi hesabi yeniden aktif et.",
+          "hint_partial": "passwd -u ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-199",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `build` kullanicisinin passwd kaydini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getent passwd build",
+          "hint_text": "Passwd kaydi ile home ve shell alanlarini kontrol et.",
+          "hint_partial": "getent passwd ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-exp-200",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `build` kullanicisi icin sudo erisimi audit etmek amaciyla `sudo -l -U` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sudo -l -U build",
+          "hint_text": "Yetki kapsam audit'inde `sudo -l -U` kullanilir.",
+          "hint_partial": "sudo -l -U ..."
+        }
+      ]
+    }
+  ]
+}

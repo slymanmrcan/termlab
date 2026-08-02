@@ -1,0 +1,142 @@
+{
+  "level": "senior",
+  "topic": "postgres",
+  "questions": [
+    {
+      "id": "spg-001",
+      "type": "single",
+      "scenario": "Bloklanan backend'leri ve hangi pid tarafindan bloklandiklarini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pid, pg_blocking_pids(pid) FROM pg_stat_activity WHERE cardinality(pg_blocking_pids(pid)) > 0;\"",
+          "hint_text": "Lock zincirini cikarmak icin aktivite gorunumundeki pid'leri bloklayan backend listesiyle eslestir.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-002",
+      "type": "single",
+      "scenario": "5 dakikadan uzun suredir calisan aktif query'leri runtime ile listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pid, now() - query_start AS runtime, query FROM pg_stat_activity WHERE state <> 'idle' AND now() - query_start > interval '5 minutes';\"",
+          "hint_text": "Aktif sorgulari baslangic zamanina gore filtreleyip runtime kolonunu dinamik hesapla.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-003",
+      "type": "single",
+      "scenario": "Bakim oncesi `app` database'indeki mevcut session'lari kendi session'in haric tutarak sonlandir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname = 'app' AND pid <> pg_backend_pid();\"",
+          "hint_text": "Bakim temizligi yaparken kendi oturumunu korumak icin mevcut backend pid'ini disarida birak.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-004",
+      "type": "single",
+      "scenario": "`orders(created_at)` uzerine online index olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d app -c \"CREATE INDEX CONCURRENTLY idx_orders_created_at ON orders (created_at);\"",
+          "hint_text": "Yazma trafigini minimum etkilemek icin index'i concurrent modda kur.",
+          "hint_partial": "psql -U postgres -d app -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-005",
+      "type": "single",
+      "scenario": "`idx_orders_created_at` index'ini production'da yeniden olusturmadan reindex et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d app -c \"REINDEX INDEX CONCURRENTLY idx_orders_created_at;\"",
+          "hint_text": "Mevcut index'i minimum kesintiyle yenilemek icin concurrent reindex yolunu kullan.",
+          "hint_partial": "psql -U postgres -d app -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-006",
+      "type": "single",
+      "scenario": "`orders` tablosunda ayrintili vacuum analyze calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d app -c \"VACUUM (VERBOSE, ANALYZE) orders;\"",
+          "hint_text": "Hem bakim hem istatistik hem de ayrintili cikti istiyorsan vacuum seceneklerini birlikte ver.",
+          "hint_partial": "psql -U postgres -d app -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-007",
+      "type": "single",
+      "scenario": "En fazla dead tuple birikmis ilk 10 user tablosunu goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d app -c \"SELECT relname, n_dead_tup FROM pg_stat_user_tables ORDER BY n_dead_tup DESC LIMIT 10;\"",
+          "hint_text": "Bloat adayi tablolar icin user table istatistiklerini dead tuple sayisina gore sirala.",
+          "hint_partial": "psql -U postgres -d app -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-008",
+      "type": "single",
+      "scenario": "`orders` sorgusunu gercek calisma istatistikleri ve buffer kullanimi ile incele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d app -c \"EXPLAIN (ANALYZE, BUFFERS) SELECT * FROM orders WHERE user_id = 42;\"",
+          "hint_text": "Gercek runtime ile I/O izini ayni planda gormek icin analyze ve buffer seceneklerini birlikte ac.",
+          "hint_partial": "psql -U postgres -d app -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-009",
+      "type": "single",
+      "scenario": "`app` database'indeki en buyuk 10 user tablosunu boyutlariyla listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d app -c \"SELECT relname, pg_size_pretty(pg_total_relation_size(relid)) AS size FROM pg_catalog.pg_statio_user_tables ORDER BY pg_total_relation_size(relid) DESC LIMIT 10;\"",
+          "hint_text": "Kapasite taramasi icin user table istatistiklerinden gidip relation boyutunu okunur formata cevir.",
+          "hint_partial": "psql -U postgres -d app -c ..."
+        }
+      ]
+    },
+    {
+      "id": "spg-010",
+      "type": "multi-step",
+      "scenario": "Replication tarafini hizlica kontrol et: slot'lari listele, sonra `wal_level` degerini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SELECT slot_name, active FROM pg_replication_slots;\"",
+          "hint_text": "Replication slot durumunu katalogdaki ilgili gorunumden oku.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "psql -U postgres -d postgres -c \"SHOW wal_level;\"",
+          "hint_text": "Replication davranisini etkileyen temel WAL ayarini server parametresi olarak sorgula.",
+          "hint_partial": "psql -U postgres -d postgres -c ..."
+        }
+      ]
+    }
+  ]
+}

@@ -116,6 +116,8 @@ export function BottomBar({
           <span className="text-white/[0.06]">·</span>
           <span>, hint</span>
           <span className="text-white/[0.06]">·</span>
+          <span>↑↓ history</span>
+          <span className="text-white/[0.06]">·</span>
           <span>tab topic</span>
           <span className="text-white/[0.06]">·</span>
           <span>enter submit</span>

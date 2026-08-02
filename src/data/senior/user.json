@@ -1,0 +1,136 @@
+{
+  "level": "senior",
+  "topic": "user",
+  "questions": [
+    {
+      "id": "susr-001",
+      "type": "single",
+      "scenario": "UID degeri 0 olan tum hesaplari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk -F: '$3 == 0 {print $1}' /etc/passwd",
+          "hint_text": "Root yetkisine sahip hesaplari passwd verisinden filtrele.",
+          "hint_partial": "awk -F: ... /etc/passwd"
+        }
+      ]
+    },
+    {
+      "id": "susr-002",
+      "type": "single",
+      "scenario": "Sistemde sahibi veya grubu bulunamayan dosyalari tara.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find / -nouser -o -nogroup 2>/dev/null",
+          "hint_text": "Eski veya silinmis hesap artigini bulmak icin `find` audit'i yap.",
+          "hint_partial": "find / ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-003",
+      "type": "single",
+      "scenario": "Interaktif shell'i olan tum hesaplari listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "awk -F: '$7 !~ /(nologin|false)$/ {print $1 \":\" $7}' /etc/passwd",
+          "hint_text": "Gercek login shell kullanan hesaplari passwd alanlari uzerinden ayikla.",
+          "hint_partial": "awk -F: ... /etc/passwd"
+        }
+      ]
+    },
+    {
+      "id": "susr-004",
+      "type": "single",
+      "scenario": "`deploy` kullanicisinin sudo yetkilerini denetle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sudo -l -U deploy",
+          "hint_text": "Sudo kapsamini audit etmek icin `sudo -l -U` kullan.",
+          "hint_partial": "sudo -l -U ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-005",
+      "type": "single",
+      "scenario": "`deploy` kullanicisinin son login bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "lastlog -u deploy",
+          "hint_text": "En son giris zamanini `lastlog` ile kontrol et.",
+          "hint_partial": "lastlog -u ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-006",
+      "type": "single",
+      "scenario": "`deploy` kullanicisinin parola aging politikasini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -l deploy",
+          "hint_text": "Hesabin expiry ve warning politikasini `chage -l` ile denetle.",
+          "hint_partial": "chage -l ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-007",
+      "type": "single",
+      "scenario": "`deploy` kullanicisinin shell'ini `nologin` yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "usermod -s /usr/sbin/nologin deploy",
+          "hint_text": "Servis hesabi yapmak veya interaktif girisi kapatmak icin shell'i degistir.",
+          "hint_partial": "usermod -s ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-008",
+      "type": "single",
+      "scenario": "`deploy` kullanicisi ve `docker` grubu sahibi olacak sekilde `750` izinli `/srv/deploy` dizinini olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "install -d -o deploy -g docker -m 750 /srv/deploy",
+          "hint_text": "Sahiplik ve izinle dizin olusturmak icin `install -d -m` kullan.",
+          "hint_partial": "install -d ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-009",
+      "type": "single",
+      "scenario": "Home dizinlerini birinci seviyede listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "find /home -maxdepth 1 -mindepth 1 -type d -printf '%f\\n'",
+          "hint_text": "Gercek kullanici home dizinlerini ilk seviyede filtrele.",
+          "hint_partial": "find /home ..."
+        }
+      ]
+    },
+    {
+      "id": "susr-010",
+      "type": "single",
+      "scenario": "`deploy` kullanicisinin passwd alanlarindan kullanici, uid, gid, home ve shell bilgisini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getent passwd deploy | cut -d: -f1,3,4,6,7",
+          "hint_text": "Passwd kaydindan secili alanlari almak icin ayirici kullan.",
+          "hint_partial": "getent passwd ... | cut ..."
+        }
+      ]
+    }
+  ]
+}

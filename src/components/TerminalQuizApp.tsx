@@ -85,6 +85,8 @@ export function TerminalQuizApp() {
           onLevelChange={quiz.setLevel}
           onSubmit={quiz.submitAnswer}
           onCycleTopic={quiz.cycleTopic}
+          onHistoryUp={quiz.historyUp}
+          onHistoryDown={quiz.historyDown}
           hintMessage={quiz.hintMessage}
           isAdvancing={quiz.isAdvancing}
           isLoading={quiz.isLoading}
@@ -92,6 +94,8 @@ export function TerminalQuizApp() {
           finished={quiz.finished}
           isEmpty={quiz.isEmpty}
           score={quiz.score}
+          skipped={quiz.skipped}
+          wrongAttempts={quiz.wrongAttempts}
           onRestart={quiz.restartSession}
           showAnswer={showAnswer}
         />

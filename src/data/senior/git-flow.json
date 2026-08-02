@@ -1,0 +1,142 @@
+{
+  "level": "senior",
+  "topic": "git-flow",
+  "questions": [
+    {
+      "id": "sgf-001",
+      "type": "single",
+      "scenario": "Tum remote bilgilerini guncelle ve eski tracking branch'leri temizle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git fetch --all --prune",
+          "hint_text": "Remote referanslarini tazelemek icin `fetch --all --prune` kullan.",
+          "hint_partial": "git fetch --all ..."
+        }
+      ]
+    },
+    {
+      "id": "sgf-002",
+      "type": "single",
+      "scenario": "Tum branch'leri upstream bilgileriyle listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git branch -vv",
+          "hint_text": "Branch'lerin hangi remote'u takip ettigini `-vv` ile gor.",
+          "hint_partial": "git branch -vv"
+        }
+      ]
+    },
+    {
+      "id": "sgf-003",
+      "type": "single",
+      "scenario": "Tum branch gecmisini graph formatta goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git log --oneline --graph --decorate --all",
+          "hint_text": "Akisin durumunu denetlemek icin graph gorunumu kullan.",
+          "hint_partial": "git log ..."
+        }
+      ]
+    },
+    {
+      "id": "sgf-004",
+      "type": "single",
+      "scenario": "`main` ile `develop` arasindaki farki goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git diff main...develop",
+          "hint_text": "Release oncesi farki uc nokta notasyonuyla incele.",
+          "hint_partial": "git diff main...develop"
+        }
+      ]
+    },
+    {
+      "id": "sgf-005",
+      "type": "single",
+      "scenario": "`billing-export` feature branch'ini origin'den pull et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git flow feature pull origin billing-export",
+          "hint_text": "Baska bir ekip uyesinin feature branch'ini takip etmek icin `feature pull` kullan.",
+          "hint_partial": "git flow feature pull ..."
+        }
+      ]
+    },
+    {
+      "id": "sgf-006",
+      "type": "single",
+      "scenario": "`1.6.0` release branch'ini remote'a publish et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git flow release publish 1.6.0",
+          "hint_text": "Release branch'ini ekip ile paylasmak icin publish et.",
+          "hint_partial": "git flow release publish ..."
+        }
+      ]
+    },
+    {
+      "id": "sgf-007",
+      "type": "single",
+      "scenario": "`1.6.0` release branch'ini finish et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git flow release finish 1.6.0",
+          "hint_text": "Release kapama islemi icin `release finish` kullan.",
+          "hint_partial": "git flow release finish ..."
+        }
+      ]
+    },
+    {
+      "id": "sgf-008",
+      "type": "single",
+      "scenario": "`auth-timeout` hotfix branch'ini remote'a publish et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git flow hotfix publish auth-timeout",
+          "hint_text": "Acil duzeltmeyi baska ekiplerle paylasmak icin hotfix publish et.",
+          "hint_partial": "git flow hotfix publish ..."
+        }
+      ]
+    },
+    {
+      "id": "sgf-009",
+      "type": "single",
+      "scenario": "`auth-timeout` hotfix branch'ini finish et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git flow hotfix finish auth-timeout",
+          "hint_text": "Hotfix'i main ve develop akisina geri kapat.",
+          "hint_partial": "git flow hotfix finish ..."
+        }
+      ]
+    },
+    {
+      "id": "sgf-010",
+      "type": "multi-step",
+      "scenario": "`v1.6.0` annotated tag'ini olustur ve tum tag'leri remote'a gonder.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git tag -a v1.6.0 -m \"release v1.6.0\"",
+          "hint_text": "Annotated release tag'i mesajiyla birlikte olustur.",
+          "hint_partial": "git tag -a ... -m ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "git push origin --tags",
+          "hint_text": "Tag'leri remote'a gondermek icin toplu tag push kullan.",
+          "hint_partial": "git push origin ..."
+        }
+      ]
+    }
+  ]
+}

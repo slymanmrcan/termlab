@@ -14,10 +14,11 @@ Canli adres: [https://termlab.is-app.com/](https://termlab.is-app.com/)
 ## Yapi
 
 - `src/components/`: terminal arayuzu, alt bar, header ve uygulama kabugu.
+- `src/config/topics.ts`: topic kimlikleri, etiketleri ve UI section dagilimi.
 - `src/lib/useQuiz.ts`: quiz state, ilerleme, scoring ve shortcut davranisi.
 - `src/lib/quizLoader.ts`: `src/data/` altindaki aktif JSON dosyalarini toplar.
 - `src/data/<level>/*.json`: aktif soru havuzu. Non-expanded seed dosyalari burada tutulur.
-- `src/data/**/*-expanded.json`: repo icinde kalsa da production bundle'a alinmaz.
+- `src/data/**/*-expanded.json`: ayni topic icin ek varyasyon soru setleri. Mevcut loader bunlari da merge eder.
 - `Dockerfile`: production build alip nginx ile servis eder.
 - `docker-compose.yml`: container'i mevcut `infra_net` agina baglayacak sekilde hazirlanmistir.
 
@@ -70,8 +71,19 @@ Bu compose tanimi container'i `infra_net` icinde `fake-terminal` servisi olarak 
 ## Veri Akisi
 
 - Soru setleri `src/data/<level>/*.json` altinda tutulur.
-- Loader bu dosyalari merge eder ve level/topic bazinda quiz datasina cevirir.
+- Loader yalniz secili `level/topic` icin gerekli base ve `*-expanded.json` dosyalarini lazy load eder, sonra merge edip quiz datasina cevirir.
 - Kullanilan aktif veri statiktir; uygulama soru kalitesini runtime'da override etmez.
+
+## Yeni Topic Ekleme
+
+Yeni bir konu eklemek icin minimum akisin tamami client-side kalir:
+
+1. `src/config/topics.ts` icine yeni `id`, `label` ve `section` ekle.
+2. Her seviye icin `src/data/<level>/<topic>.json` dosyasi olustur.
+3. JSON icindeki `topic` alani config'deki `id` ile birebir ayni olsun.
+4. Dosya adi varsayilan olarak `topic` id ile ayni olmali; farkli bir stem kullanacaksan `src/lib/quizLoader.ts` icindeki topic file map'ini de guncelle.
+5. Ek varyasyon istiyorsan `src/data/<level>/<topic>-expanded.json` dosyalari ekle.
+6. Son olarak `npm run build` ve `npm run lint` ile veri ve topic tanimini dogrula.
 
 ## Deploy
 

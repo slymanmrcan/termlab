@@ -3,327 +3,214 @@
   "topic": "docker",
   "questions": [
     {
-      "id": "jdkr2-001",
+      "id": "jdkr-001",
       "type": "single",
-      "scenario": "Image ID'lerini kısa formatta listele.",
+      "scenario": "Running container'lari listele.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker images -q",
-          "hint_text": "Sadece image ID'leri için `docker images -q` kullan.",
-          "hint_partial": "docker images ..."
+          "answer": "docker ps",
+          "accepted_answers": ["docker ps", "docker container ls"],
+          "hint_text": "Ayakta olan container'lari gormek icin `docker ps` kullan.",
+          "hint_partial": "docker ps"
         }
       ]
     },
     {
-      "id": "jdkr2-002",
+      "id": "jdkr-002",
       "type": "single",
-      "scenario": "web container'ının detaylı bilgisini göster.",
+      "scenario": "Stopped olanlar dahil tum container'lari listele.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker inspect web",
-          "hint_text": "Container detaylarını görmek için `docker inspect <container>` kullan.",
-          "hint_partial": "docker inspect ..."
+          "answer": "docker ps -a",
+          "accepted_answers": ["docker ps -a", "docker ps --all", "docker container ls -a", "docker container ls --all"],
+          "hint_text": "Tum container kayitlarini gormek icin `docker ps -a` kullan.",
+          "hint_partial": "docker ps -a"
         }
       ]
     },
     {
-      "id": "jdkr2-003",
+      "id": "jdkr-003",
       "type": "single",
-      "scenario": "api container'ının detaylı bilgisini göster.",
+      "scenario": "Local image listesini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker inspect api",
-          "hint_text": "Container detaylarını görmek için `docker inspect <container>` kullan.",
-          "hint_partial": "docker inspect ..."
+          "answer": "docker images",
+          "accepted_answers": ["docker images", "docker image ls"],
+          "hint_text": "Makinedeki image'lari gormek icin `docker images` kullan.",
+          "hint_partial": "docker images"
         }
       ]
     },
     {
-      "id": "jdkr2-004",
+      "id": "jdkr-004",
       "type": "single",
-      "scenario": "web container logs'unu canlı takip et.",
+      "scenario": "`web` container'inin son 50 log satirini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker logs --tail 50 web",
+          "hint_text": "Tum log yerine son satirlari gormek icin `--tail` kullan.",
+          "hint_partial": "docker logs --tail ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-005",
+      "type": "single",
+      "scenario": "`web` container'inin loglarini canli takip et.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "docker logs -f web",
-          "hint_text": "Logs'u canlı izlemek için `docker logs -f <container>` kullan.",
+          "hint_text": "Canli log akisi icin `docker logs -f` kullan.",
           "hint_partial": "docker logs -f ..."
         }
       ]
     },
     {
-      "id": "jdkr2-005",
+      "id": "jdkr-006",
       "type": "single",
-      "scenario": "worker container logs'unu canlı takip et.",
+      "scenario": "`web` container'i icinde shell ac.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker logs -f worker",
-          "hint_text": "Logs'u canlı izlemek için `docker logs -f <container>` kullan.",
-          "hint_partial": "docker logs -f ..."
+          "answer": "docker exec -it web sh",
+          "accepted_answers": ["docker exec -it web sh", "docker exec -it web bash", "docker exec -it web /bin/sh", "docker exec -it web /bin/bash"],
+          "hint_text": "Container icine girmek icin `docker exec -it <container> sh` kullan.",
+          "hint_partial": "docker exec -it ..."
         }
       ]
     },
     {
-      "id": "jdkr2-006",
+      "id": "jdkr-007",
       "type": "single",
-      "scenario": "web container'ını restart et.",
+      "scenario": "`web` container detaylarini incele.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker restart web",
-          "hint_text": "Bir container'ı yeniden başlatmak için `docker restart <container>` kullan.",
-          "hint_partial": "docker restart ..."
+          "answer": "docker inspect web",
+          "hint_text": "Port, mount ve network ayrintilari icin `docker inspect` kullan.",
+          "hint_partial": "docker inspect ..."
         }
       ]
     },
     {
-      "id": "jdkr2-007",
+      "id": "jdkr-008",
       "type": "single",
-      "scenario": "api container'ını restart et.",
+      "scenario": "`web` container'inin port mapping bilgisini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker restart api",
-          "hint_text": "Bir container'ı yeniden başlatmak için `docker restart <container>` kullan.",
-          "hint_partial": "docker restart ..."
+          "answer": "docker port web",
+          "hint_text": "Host-container port eslesmesini `docker port` ile gor.",
+          "hint_partial": "docker port ..."
         }
       ]
     },
     {
-      "id": "jdkr2-008",
+      "id": "jdkr-009",
       "type": "single",
-      "scenario": "Geçici bir alpine container çalıştırıp `echo hello` komutunu koştur.",
+      "scenario": "Container kaynak kullanimini tek seferlik goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker run --rm alpine echo hello",
-          "hint_text": "Tek kullanımlık container için `docker run --rm <image> <command>` kullan.",
+          "answer": "docker stats --no-stream",
+          "hint_text": "Canli ekran yerine tek snapshot icin `--no-stream` kullan.",
+          "hint_partial": "docker stats --no-stream"
+        }
+      ]
+    },
+    {
+      "id": "jdkr-010",
+      "type": "single",
+      "scenario": "Docker network listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker network ls",
+          "hint_text": "Network adlarini ve driver bilgisini gormek icin `docker network ls` kullan.",
+          "hint_partial": "docker network ls"
+        }
+      ]
+    },
+    {
+      "id": "jdkr-011",
+      "type": "single",
+      "scenario": "Docker volume listesini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker volume ls",
+          "hint_text": "Kalici volume'leri gormek icin `docker volume ls` kullan.",
+          "hint_partial": "docker volume ls"
+        }
+      ]
+    },
+    {
+      "id": "jdkr-012",
+      "type": "single",
+      "scenario": "`nginx:alpine` image'ini indir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker pull nginx:alpine",
+          "hint_text": "Belirli image ve tag'i indirmek icin `docker pull` kullan.",
+          "hint_partial": "docker pull ..."
+        }
+      ]
+    },
+    {
+      "id": "jdkr-013",
+      "type": "single",
+      "scenario": "Tek kullanimlik alpine container'da `cat /etc/os-release` calistir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "docker run --rm alpine cat /etc/os-release",
+          "hint_text": "Is bitince container silinsin istiyorsan `docker run --rm` kullan.",
           "hint_partial": "docker run --rm ..."
         }
       ]
     },
     {
-      "id": "jdkr2-009",
+      "id": "jdkr-014",
       "type": "single",
-      "scenario": "nginx:alpine image'ını pull et.",
+      "scenario": "`demo` adinda detached nginx container'ini 8080:80 port mapping ile baslat.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker pull nginx:alpine",
-          "hint_text": "Tag'li image indirmek için `docker pull <image>:<tag>` kullan.",
-          "hint_partial": "docker pull ..."
-        }
-      ]
-    },
-    {
-      "id": "jdkr2-010",
-      "type": "single",
-      "scenario": "redis:alpine image'ını pull et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker pull redis:alpine",
-          "hint_text": "Tag'li image indirmek için `docker pull <image>:<tag>` kullan.",
-          "hint_partial": "docker pull ..."
-        }
-      ]
-    },
-    {
-      "id": "jdkr2-011",
-      "type": "single",
-      "scenario": "`demo` adında detached nginx container başlat.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker run -d --name demo nginx",
-          "hint_text": "Detached başlatmak için `docker run -d --name <name> <image>` kullan.",
+          "answer": "docker run -d --name demo -p 8080:80 nginx:alpine",
+          "hint_text": "Detached ve port map'li baslatmak icin `docker run -d --name -p` kullan.",
           "hint_partial": "docker run -d ..."
         }
       ]
     },
     {
-      "id": "jdkr2-012",
+      "id": "jdkr-015",
       "type": "single",
-      "scenario": "`cache` adında detached redis container başlat.",
+      "scenario": "`demo` container'ini durdur.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker run -d --name cache redis",
-          "hint_text": "Detached başlatmak için `docker run -d --name <name> <image>` kullan.",
-          "hint_partial": "docker run -d ..."
+          "answer": "docker stop demo",
+          "hint_text": "Ayakta olan container'i durdurmak icin `docker stop` kullan.",
+          "hint_partial": "docker stop ..."
         }
       ]
     },
     {
-      "id": "jdkr2-013",
+      "id": "jdkr-016",
       "type": "single",
-      "scenario": "Docker network listesini göster.",
+      "scenario": "`demo` container'ini sil.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "docker network ls",
-          "hint_text": "Network listesini görmek için `docker network ls` kullan.",
-          "hint_partial": "docker network ..."
-        }
-      ]
-    },
-    {
-      "id": "jdkr2-014",
-      "type": "single",
-      "scenario": "Docker volume listesini göster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker volume ls",
-          "hint_text": "Volume listesini görmek için `docker volume ls` kullan.",
-          "hint_partial": "docker volume ..."
-        }
-      ]
-    },
-    {
-      "id": "jdkr2-015",
-      "type": "single",
-      "scenario": "web container'ının port mapping bilgisini göster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker port web",
-          "hint_text": "Port mapping bilgisini görmek için `docker port <container>` kullan.",
-          "hint_partial": "docker port ..."
-        }
-      ]
-    },
-    {
-      "id": "jdkr2-016",
-      "type": "single",
-      "scenario": "api container'ının port mapping bilgisini göster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker port api",
-          "hint_text": "Port mapping bilgisini görmek için `docker port <container>` kullan.",
-          "hint_partial": "docker port ..."
-        }
-      ]
-    },
-    {
-      "id": "jdkr2-017",
-      "type": "single",
-      "scenario": "web container'ı içinde `/app` klasörünü listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker exec web ls /app",
-          "hint_text": "Container içinde komut çalıştırmak için `docker exec <container> <command>` kullan.",
-          "hint_partial": "docker exec ..."
-        }
-      ]
-    },
-    {
-      "id": "jdkr2-018",
-      "type": "single",
-      "scenario": "api container'ı içinde `/usr/src/app` klasörünü listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker exec api ls /usr/src/app",
-          "hint_text": "Container içinde komut çalıştırmak için `docker exec <container> <command>` kullan.",
-          "hint_partial": "docker exec ..."
-        }
-      ]
-    },
-    {
-      "id": "jdkr2-019",
-      "type": "single",
-      "scenario": "`demo-old` container'ının adını `demo` yap.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker rename demo-old demo",
-          "hint_text": "Container adını değiştirmek için `docker rename <old> <new>` kullan.",
-          "hint_partial": "docker rename ..."
-        }
-      ]
-    },
-    {
-      "id": "jdkr2-020",
-      "type": "single",
-      "scenario": "hello-world image'ını sil.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker rmi hello-world",
-          "hint_text": "Bir image'ı silmek için `docker rmi <image>` kullan.",
-          "hint_partial": "docker rmi ..."
-        }
-      ]
-    },
-    {
-      "id": "jdkr2-021",
-      "type": "single",
-      "scenario": "Local `index.html` dosyasını web container'ı içinde `/usr/share/nginx/html/index.html` yoluna kopyala.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker cp index.html web:/usr/share/nginx/html/index.html",
-          "hint_text": "Host'tan container'a dosya kopyalamak için `docker cp <src> <container>:<dest>` kullan.",
-          "hint_partial": "docker cp ..."
-        }
-      ]
-    },
-    {
-      "id": "jdkr2-022",
-      "type": "single",
-      "scenario": "web container'ı içindeki `/var/log/nginx/access.log` dosyasını current directory'ye `./access.log` olarak kopyala.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker cp web:/var/log/nginx/access.log ./access.log",
-          "hint_text": "Container'dan host'a dosya kopyalamak için `docker cp <container>:<src> <dest>` kullan.",
-          "hint_partial": "docker cp ..."
-        }
-      ]
-    },
-    {
-      "id": "jdkr2-023",
-      "type": "single",
-      "scenario": "Local `config.json` dosyasını api container'ı içinde `/app/config.json` yoluna kopyala.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker cp config.json api:/app/config.json",
-          "hint_text": "Host'tan container'a dosya kopyalamak için `docker cp <src> <container>:<dest>` kullan.",
-          "hint_partial": "docker cp ..."
-        }
-      ]
-    },
-    {
-      "id": "jdkr2-024",
-      "type": "single",
-      "scenario": "api container'ı içindeki `/app/logs/app.log` dosyasını current directory'ye `./app.log` olarak kopyala.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker cp api:/app/logs/app.log ./app.log",
-          "hint_text": "Container'dan host'a dosya kopyalamak için `docker cp <container>:<src> <dest>` kullan.",
-          "hint_partial": "docker cp ..."
-        }
-      ]
-    },
-    {
-      "id": "jdkr2-025",
-      "type": "single",
-      "scenario": "Review için image ID'lerini tekrar kısa formatta listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "docker images -q",
-          "hint_text": "Sadece image ID'leri için yine `docker images -q` kullan.",
-          "hint_partial": "docker images ..."
+          "answer": "docker rm demo",
+          "hint_text": "Stopped container kaydini temizlemek icin `docker rm` kullan.",
+          "hint_partial": "docker rm ..."
         }
       ]
     }

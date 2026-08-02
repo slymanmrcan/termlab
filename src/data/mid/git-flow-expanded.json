@@ -1,48 +1,35 @@
 {
-  "level": "junior",
+  "level": "mid",
   "topic": "git-flow",
   "questions": [
     {
-      "id": "jgf-exp-001",
+      "id": "mgf-exp-001",
       "type": "single",
       "scenario": "Gece vardiyasinda git flow yapisini varsayilan ayarlarla baslat.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "git flow init -d",
-          "hint_text": "Flow yapisini varsayilan branch isimleriyle kurmak icin `git flow init -d` kullan.",
+          "hint_text": "Flow yapisini hizli kurmak icin varsayilan init secenegini kullan.",
           "hint_partial": "git flow init ..."
         }
       ]
     },
     {
-      "id": "jgf-exp-002",
-      "type": "single",
-      "scenario": "Gece vardiyasinda aktif branch adini goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "git branch --show-current",
-          "hint_text": "Bulundugun branch'i hizli gormek icin bu komutu kullan.",
-          "hint_partial": "git branch --show-current"
-        }
-      ]
-    },
-    {
-      "id": "jgf-exp-003",
+      "id": "mgf-exp-002",
       "type": "single",
       "scenario": "Gece vardiyasinda `login-ui` feature branch'ini baslat.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "git flow feature start login-ui",
-          "hint_text": "Yeni bir feature branch'i acmak icin `feature start` kullan.",
+          "hint_text": "Yeni bir feature icin `feature start` kullan.",
           "hint_partial": "git flow feature start ..."
         }
       ]
     },
     {
-      "id": "jgf-exp-004",
+      "id": "mgf-exp-003",
       "type": "single",
       "scenario": "Gece vardiyasinda `login-ui` feature branch'ini remote'a publish et.",
       "steps": [
@@ -55,7 +42,7 @@
       ]
     },
     {
-      "id": "jgf-exp-005",
+      "id": "mgf-exp-004",
       "type": "single",
       "scenario": "Gece vardiyasinda `login-ui` feature branch'ini finish et.",
       "steps": [
@@ -68,7 +55,7 @@
       ]
     },
     {
-      "id": "jgf-exp-006",
+      "id": "mgf-exp-005",
       "type": "single",
       "scenario": "Gece vardiyasinda `login-ui` feature branch'ini git flow ile checkout et.",
       "steps": [
@@ -81,7 +68,7 @@
       ]
     },
     {
-      "id": "jgf-exp-007",
+      "id": "mgf-exp-006",
       "type": "single",
       "scenario": "Gece vardiyasinda origin'deki `login-ui` feature branch'ini takip etmeye basla.",
       "steps": [
@@ -94,20 +81,7 @@
       ]
     },
     {
-      "id": "jgf-exp-008",
-      "type": "single",
-      "scenario": "Gece vardiyasinda tum feature branch'lerini listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "git flow feature list",
-          "hint_text": "Aktif feature branch'lerini `feature list` ile gor.",
-          "hint_partial": "git flow feature list"
-        }
-      ]
-    },
-    {
-      "id": "jgf-exp-009",
+      "id": "mgf-exp-007",
       "type": "single",
       "scenario": "Gece vardiyasinda `1.4.0` release branch'ini baslat.",
       "steps": [
@@ -120,51 +94,85 @@
       ]
     },
     {
-      "id": "jgf-exp-010",
+      "id": "mgf-exp-008",
       "type": "single",
       "scenario": "Gece vardiyasinda `1.4.0` release branch'ini remote'a publish et.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "git flow release publish 1.4.0",
-          "hint_text": "Release branch'ini ekip ile paylasmak icin publish et.",
+          "hint_text": "Takimla ortak release calismasi icin publish et.",
           "hint_partial": "git flow release publish ..."
         }
       ]
     },
     {
-      "id": "jgf-exp-011",
-      "type": "multi-step",
-      "scenario": "Gece vardiyasinda `1.4.0` release branch'ini finish et, sonra main'i, develop'u ve tag'leri remote'a gonder.",
+      "id": "mgf-exp-009",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `1.4.0` release branch'ini finish et.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "git flow release finish 1.4.0",
-          "hint_text": "Ilk adimda release branch'ini finish et.",
+          "hint_text": "Release'i main ve develop akisina kapatmak icin finish kullan.",
           "hint_partial": "git flow release finish ..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "git push origin main",
-          "hint_text": "Finish sonrasi guncellenen main branch'ini remote'a gonder.",
-          "hint_partial": "git push origin ..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "git push origin develop",
-          "hint_text": "Finish sonrasi guncellenen develop branch'ini remote'a gonder.",
-          "hint_partial": "git push origin ..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "git push origin --tags",
-          "hint_text": "Release tag'lerini de remote'a gonder.",
-          "hint_partial": "git push origin ..."
         }
       ]
     },
     {
-      "id": "jgf-exp-012",
+      "id": "mgf-exp-010",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `auth-timeout` hotfix branch'ini baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git flow hotfix start auth-timeout",
+          "hint_text": "Production acili icin hotfix branch'i ac.",
+          "hint_partial": "git flow hotfix start ..."
+        }
+      ]
+    },
+    {
+      "id": "mgf-exp-011",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `auth-timeout` hotfix branch'ini remote'a publish et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git flow hotfix publish auth-timeout",
+          "hint_text": "Hotfix calismasini paylasmak icin publish et.",
+          "hint_partial": "git flow hotfix publish ..."
+        }
+      ]
+    },
+    {
+      "id": "mgf-exp-012",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `auth-timeout` hotfix branch'ini finish et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git flow hotfix finish auth-timeout",
+          "hint_text": "Hotfix'i main ve develop akisina finish ile kapat.",
+          "hint_partial": "git flow hotfix finish ..."
+        }
+      ]
+    },
+    {
+      "id": "mgf-exp-013",
+      "type": "single",
+      "scenario": "Gece vardiyasinda tum feature branch'lerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git flow feature list",
+          "hint_text": "Aktif feature branch'lerini `feature list` ile gor.",
+          "hint_partial": "git flow feature list"
+        }
+      ]
+    },
+    {
+      "id": "mgf-exp-014",
       "type": "single",
       "scenario": "Gece vardiyasinda tum release branch'lerini listele.",
       "steps": [
@@ -177,64 +185,7 @@
       ]
     },
     {
-      "id": "jgf-exp-013",
-      "type": "single",
-      "scenario": "Gece vardiyasinda `auth-timeout` hotfix branch'ini baslat.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "git flow hotfix start auth-timeout",
-          "hint_text": "Production acili icin `hotfix start` kullan.",
-          "hint_partial": "git flow hotfix start ..."
-        }
-      ]
-    },
-    {
-      "id": "jgf-exp-014",
-      "type": "single",
-      "scenario": "Gece vardiyasinda `auth-timeout` hotfix branch'ini remote'a publish et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "git flow hotfix publish auth-timeout",
-          "hint_text": "Acil duzeltmeyi paylasmak icin hotfix publish et.",
-          "hint_partial": "git flow hotfix publish ..."
-        }
-      ]
-    },
-    {
-      "id": "jgf-exp-015",
-      "type": "multi-step",
-      "scenario": "Gece vardiyasinda `auth-timeout` hotfix branch'ini finish et, sonra main'i, develop'u ve tag'leri remote'a gonder.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "git flow hotfix finish auth-timeout",
-          "hint_text": "Ilk adimda hotfix branch'ini finish et.",
-          "hint_partial": "git flow hotfix finish ..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "git push origin main",
-          "hint_text": "Finish sonrasi guncellenen main branch'ini remote'a gonder.",
-          "hint_partial": "git push origin ..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "git push origin develop",
-          "hint_text": "Finish sonrasi guncellenen develop branch'ini remote'a gonder.",
-          "hint_partial": "git push origin ..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "git push origin --tags",
-          "hint_text": "Hotfix tag'lerini de remote'a gonder.",
-          "hint_partial": "git push origin ..."
-        }
-      ]
-    },
-    {
-      "id": "jgf-exp-016",
+      "id": "mgf-exp-015",
       "type": "single",
       "scenario": "Gece vardiyasinda tum hotfix branch'lerini listele.",
       "steps": [
@@ -247,98 +198,98 @@
       ]
     },
     {
-      "id": "jgf-exp-017",
+      "id": "mgf-exp-016",
       "type": "single",
       "scenario": "Gece vardiyasinda tum remote bilgilerini guncelle ve stale branch'leri temizle.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "git fetch --all --prune",
-          "hint_text": "Remote referanslarini tazelemek icin `fetch --all --prune` kullan.",
+          "hint_text": "Remote referanslarini temizlemek icin `fetch --all --prune` kullan.",
           "hint_partial": "git fetch --all ..."
         }
       ]
     },
     {
-      "id": "jgf-exp-018",
+      "id": "mgf-exp-017",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `develop` branch'ini remote'dan guncelle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git pull origin develop",
+          "hint_text": "Develop branch'ini remote ile esitlemek icin pull yap.",
+          "hint_partial": "git pull origin ..."
+        }
+      ]
+    },
+    {
+      "id": "mgf-exp-018",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `develop` branch'ini remote'a gonder.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git push origin develop",
+          "hint_text": "Develop branch'ini origin'e gonder.",
+          "hint_partial": "git push origin ..."
+        }
+      ]
+    },
+    {
+      "id": "mgf-exp-019",
       "type": "single",
       "scenario": "Gece vardiyasinda tum branch gecmisini graph formatta goster.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "git log --oneline --graph --decorate --all",
-          "hint_text": "Flow akisini graph gorunumuyle kontrol et.",
+          "hint_text": "Flow akisini graph gorunumuyle incele.",
           "hint_partial": "git log ..."
         }
       ]
     },
     {
-      "id": "jgf-exp-019",
+      "id": "mgf-exp-020",
       "type": "single",
-      "scenario": "Gece vardiyasinda local ve remote branch'leri listele.",
+      "scenario": "Gece vardiyasinda tum tag'leri remote'a gonder.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "git branch -a",
-          "hint_text": "Tum branch kapsamini `git branch -a` ile gor.",
-          "hint_partial": "git branch -a"
+          "answer": "git push origin --tags",
+          "hint_text": "Release tag'lerini toplu gondermek icin tag push kullan.",
+          "hint_partial": "git push origin ..."
         }
       ]
     },
     {
-      "id": "jgf-exp-020",
-      "type": "single",
-      "scenario": "Gece vardiyasinda `main` ile `develop` arasindaki farki goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "git diff main...develop",
-          "hint_text": "Release oncesi iki ana branch arasindaki farki incele.",
-          "hint_partial": "git diff main...develop"
-        }
-      ]
-    },
-    {
-      "id": "jgf-exp-021",
+      "id": "mgf-exp-021",
       "type": "single",
       "scenario": "Bakim penceresinde git flow yapisini varsayilan ayarlarla baslat.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "git flow init -d",
-          "hint_text": "Flow yapisini varsayilan branch isimleriyle kurmak icin `git flow init -d` kullan.",
+          "hint_text": "Flow yapisini hizli kurmak icin varsayilan init secenegini kullan.",
           "hint_partial": "git flow init ..."
         }
       ]
     },
     {
-      "id": "jgf-exp-022",
-      "type": "single",
-      "scenario": "Bakim penceresinde aktif branch adini goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "git branch --show-current",
-          "hint_text": "Bulundugun branch'i hizli gormek icin bu komutu kullan.",
-          "hint_partial": "git branch --show-current"
-        }
-      ]
-    },
-    {
-      "id": "jgf-exp-023",
+      "id": "mgf-exp-022",
       "type": "single",
       "scenario": "Bakim penceresinde `billing-export` feature branch'ini baslat.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "git flow feature start billing-export",
-          "hint_text": "Yeni bir feature branch'i acmak icin `feature start` kullan.",
+          "hint_text": "Yeni bir feature icin `feature start` kullan.",
           "hint_partial": "git flow feature start ..."
         }
       ]
     },
     {
-      "id": "jgf-exp-024",
+      "id": "mgf-exp-023",
       "type": "single",
       "scenario": "Bakim penceresinde `billing-export` feature branch'ini remote'a publish et.",
       "steps": [
@@ -351,7 +302,7 @@
       ]
     },
     {
-      "id": "jgf-exp-025",
+      "id": "mgf-exp-024",
       "type": "single",
       "scenario": "Bakim penceresinde `billing-export` feature branch'ini finish et.",
       "steps": [
@@ -364,7 +315,7 @@
       ]
     },
     {
-      "id": "jgf-exp-026",
+      "id": "mgf-exp-025",
       "type": "single",
       "scenario": "Bakim penceresinde `billing-export` feature branch'ini git flow ile checkout et.",
       "steps": [
@@ -377,7 +328,7 @@
       ]
     },
     {
-      "id": "jgf-exp-027",
+      "id": "mgf-exp-026",
       "type": "single",
       "scenario": "Bakim penceresinde origin'deki `billing-export` feature branch'ini takip etmeye basla.",
       "steps": [
@@ -390,20 +341,7 @@
       ]
     },
     {
-      "id": "jgf-exp-028",
-      "type": "single",
-      "scenario": "Bakim penceresinde tum feature branch'lerini listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "git flow feature list",
-          "hint_text": "Aktif feature branch'lerini `feature list` ile gor.",
-          "hint_partial": "git flow feature list"
-        }
-      ]
-    },
-    {
-      "id": "jgf-exp-029",
+      "id": "mgf-exp-027",
       "type": "single",
       "scenario": "Bakim penceresinde `1.5.0` release branch'ini baslat.",
       "steps": [
@@ -416,51 +354,85 @@
       ]
     },
     {
-      "id": "jgf-exp-030",
+      "id": "mgf-exp-028",
       "type": "single",
       "scenario": "Bakim penceresinde `1.5.0` release branch'ini remote'a publish et.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "git flow release publish 1.5.0",
-          "hint_text": "Release branch'ini ekip ile paylasmak icin publish et.",
+          "hint_text": "Takimla ortak release calismasi icin publish et.",
           "hint_partial": "git flow release publish ..."
         }
       ]
     },
     {
-      "id": "jgf-exp-031",
-      "type": "multi-step",
-      "scenario": "Bakim penceresinde `1.5.0` release branch'ini finish et, sonra main'i, develop'u ve tag'leri remote'a gonder.",
+      "id": "mgf-exp-029",
+      "type": "single",
+      "scenario": "Bakim penceresinde `1.5.0` release branch'ini finish et.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "git flow release finish 1.5.0",
-          "hint_text": "Ilk adimda release branch'ini finish et.",
+          "hint_text": "Release'i main ve develop akisina kapatmak icin finish kullan.",
           "hint_partial": "git flow release finish ..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "git push origin main",
-          "hint_text": "Finish sonrasi guncellenen main branch'ini remote'a gonder.",
-          "hint_partial": "git push origin ..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "git push origin develop",
-          "hint_text": "Finish sonrasi guncellenen develop branch'ini remote'a gonder.",
-          "hint_partial": "git push origin ..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "git push origin --tags",
-          "hint_text": "Release tag'lerini de remote'a gonder.",
-          "hint_partial": "git push origin ..."
         }
       ]
     },
     {
-      "id": "jgf-exp-032",
+      "id": "mgf-exp-030",
+      "type": "single",
+      "scenario": "Bakim penceresinde `ssl-chain` hotfix branch'ini baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git flow hotfix start ssl-chain",
+          "hint_text": "Production acili icin hotfix branch'i ac.",
+          "hint_partial": "git flow hotfix start ..."
+        }
+      ]
+    },
+    {
+      "id": "mgf-exp-031",
+      "type": "single",
+      "scenario": "Bakim penceresinde `ssl-chain` hotfix branch'ini remote'a publish et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git flow hotfix publish ssl-chain",
+          "hint_text": "Hotfix calismasini paylasmak icin publish et.",
+          "hint_partial": "git flow hotfix publish ..."
+        }
+      ]
+    },
+    {
+      "id": "mgf-exp-032",
+      "type": "single",
+      "scenario": "Bakim penceresinde `ssl-chain` hotfix branch'ini finish et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git flow hotfix finish ssl-chain",
+          "hint_text": "Hotfix'i main ve develop akisina finish ile kapat.",
+          "hint_partial": "git flow hotfix finish ..."
+        }
+      ]
+    },
+    {
+      "id": "mgf-exp-033",
+      "type": "single",
+      "scenario": "Bakim penceresinde tum feature branch'lerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git flow feature list",
+          "hint_text": "Aktif feature branch'lerini `feature list` ile gor.",
+          "hint_partial": "git flow feature list"
+        }
+      ]
+    },
+    {
+      "id": "mgf-exp-034",
       "type": "single",
       "scenario": "Bakim penceresinde tum release branch'lerini listele.",
       "steps": [
@@ -473,64 +445,7 @@
       ]
     },
     {
-      "id": "jgf-exp-033",
-      "type": "single",
-      "scenario": "Bakim penceresinde `ssl-chain` hotfix branch'ini baslat.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "git flow hotfix start ssl-chain",
-          "hint_text": "Production acili icin `hotfix start` kullan.",
-          "hint_partial": "git flow hotfix start ..."
-        }
-      ]
-    },
-    {
-      "id": "jgf-exp-034",
-      "type": "single",
-      "scenario": "Bakim penceresinde `ssl-chain` hotfix branch'ini remote'a publish et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "git flow hotfix publish ssl-chain",
-          "hint_text": "Acil duzeltmeyi paylasmak icin hotfix publish et.",
-          "hint_partial": "git flow hotfix publish ..."
-        }
-      ]
-    },
-    {
-      "id": "jgf-exp-035",
-      "type": "multi-step",
-      "scenario": "Bakim penceresinde `ssl-chain` hotfix branch'ini finish et, sonra main'i, develop'u ve tag'leri remote'a gonder.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "git flow hotfix finish ssl-chain",
-          "hint_text": "Ilk adimda hotfix branch'ini finish et.",
-          "hint_partial": "git flow hotfix finish ..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "git push origin main",
-          "hint_text": "Finish sonrasi guncellenen main branch'ini remote'a gonder.",
-          "hint_partial": "git push origin ..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "git push origin develop",
-          "hint_text": "Finish sonrasi guncellenen develop branch'ini remote'a gonder.",
-          "hint_partial": "git push origin ..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "git push origin --tags",
-          "hint_text": "Hotfix tag'lerini de remote'a gonder.",
-          "hint_partial": "git push origin ..."
-        }
-      ]
-    },
-    {
-      "id": "jgf-exp-036",
+      "id": "mgf-exp-035",
       "type": "single",
       "scenario": "Bakim penceresinde tum hotfix branch'lerini listele.",
       "steps": [
@@ -543,98 +458,98 @@
       ]
     },
     {
-      "id": "jgf-exp-037",
+      "id": "mgf-exp-036",
       "type": "single",
       "scenario": "Bakim penceresinde tum remote bilgilerini guncelle ve stale branch'leri temizle.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "git fetch --all --prune",
-          "hint_text": "Remote referanslarini tazelemek icin `fetch --all --prune` kullan.",
+          "hint_text": "Remote referanslarini temizlemek icin `fetch --all --prune` kullan.",
           "hint_partial": "git fetch --all ..."
         }
       ]
     },
     {
-      "id": "jgf-exp-038",
+      "id": "mgf-exp-037",
+      "type": "single",
+      "scenario": "Bakim penceresinde `develop` branch'ini remote'dan guncelle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git pull origin develop",
+          "hint_text": "Develop branch'ini remote ile esitlemek icin pull yap.",
+          "hint_partial": "git pull origin ..."
+        }
+      ]
+    },
+    {
+      "id": "mgf-exp-038",
+      "type": "single",
+      "scenario": "Bakim penceresinde `develop` branch'ini remote'a gonder.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git push origin develop",
+          "hint_text": "Develop branch'ini origin'e gonder.",
+          "hint_partial": "git push origin ..."
+        }
+      ]
+    },
+    {
+      "id": "mgf-exp-039",
       "type": "single",
       "scenario": "Bakim penceresinde tum branch gecmisini graph formatta goster.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "git log --oneline --graph --decorate --all",
-          "hint_text": "Flow akisini graph gorunumuyle kontrol et.",
+          "hint_text": "Flow akisini graph gorunumuyle incele.",
           "hint_partial": "git log ..."
         }
       ]
     },
     {
-      "id": "jgf-exp-039",
+      "id": "mgf-exp-040",
       "type": "single",
-      "scenario": "Bakim penceresinde local ve remote branch'leri listele.",
+      "scenario": "Bakim penceresinde tum tag'leri remote'a gonder.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "git branch -a",
-          "hint_text": "Tum branch kapsamini `git branch -a` ile gor.",
-          "hint_partial": "git branch -a"
+          "answer": "git push origin --tags",
+          "hint_text": "Release tag'lerini toplu gondermek icin tag push kullan.",
+          "hint_partial": "git push origin ..."
         }
       ]
     },
     {
-      "id": "jgf-exp-040",
-      "type": "single",
-      "scenario": "Bakim penceresinde `main` ile `develop` arasindaki farki goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "git diff main...develop",
-          "hint_text": "Release oncesi iki ana branch arasindaki farki incele.",
-          "hint_partial": "git diff main...develop"
-        }
-      ]
-    },
-    {
-      "id": "jgf-exp-041",
+      "id": "mgf-exp-041",
       "type": "single",
       "scenario": "Incident sonrasinda git flow yapisini varsayilan ayarlarla baslat.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "git flow init -d",
-          "hint_text": "Flow yapisini varsayilan branch isimleriyle kurmak icin `git flow init -d` kullan.",
+          "hint_text": "Flow yapisini hizli kurmak icin varsayilan init secenegini kullan.",
           "hint_partial": "git flow init ..."
         }
       ]
     },
     {
-      "id": "jgf-exp-042",
-      "type": "single",
-      "scenario": "Incident sonrasinda aktif branch adini goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "git branch --show-current",
-          "hint_text": "Bulundugun branch'i hizli gormek icin bu komutu kullan.",
-          "hint_partial": "git branch --show-current"
-        }
-      ]
-    },
-    {
-      "id": "jgf-exp-043",
+      "id": "mgf-exp-042",
       "type": "single",
       "scenario": "Incident sonrasinda `cache-refresh` feature branch'ini baslat.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "git flow feature start cache-refresh",
-          "hint_text": "Yeni bir feature branch'i acmak icin `feature start` kullan.",
+          "hint_text": "Yeni bir feature icin `feature start` kullan.",
           "hint_partial": "git flow feature start ..."
         }
       ]
     },
     {
-      "id": "jgf-exp-044",
+      "id": "mgf-exp-043",
       "type": "single",
       "scenario": "Incident sonrasinda `cache-refresh` feature branch'ini remote'a publish et.",
       "steps": [
@@ -647,7 +562,7 @@
       ]
     },
     {
-      "id": "jgf-exp-045",
+      "id": "mgf-exp-044",
       "type": "single",
       "scenario": "Incident sonrasinda `cache-refresh` feature branch'ini finish et.",
       "steps": [
@@ -660,7 +575,7 @@
       ]
     },
     {
-      "id": "jgf-exp-046",
+      "id": "mgf-exp-045",
       "type": "single",
       "scenario": "Incident sonrasinda `cache-refresh` feature branch'ini git flow ile checkout et.",
       "steps": [
@@ -673,7 +588,7 @@
       ]
     },
     {
-      "id": "jgf-exp-047",
+      "id": "mgf-exp-046",
       "type": "single",
       "scenario": "Incident sonrasinda origin'deki `cache-refresh` feature branch'ini takip etmeye basla.",
       "steps": [
@@ -686,20 +601,7 @@
       ]
     },
     {
-      "id": "jgf-exp-048",
-      "type": "single",
-      "scenario": "Incident sonrasinda tum feature branch'lerini listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "git flow feature list",
-          "hint_text": "Aktif feature branch'lerini `feature list` ile gor.",
-          "hint_partial": "git flow feature list"
-        }
-      ]
-    },
-    {
-      "id": "jgf-exp-049",
+      "id": "mgf-exp-047",
       "type": "single",
       "scenario": "Incident sonrasinda `1.5.1` release branch'ini baslat.",
       "steps": [
@@ -712,51 +614,85 @@
       ]
     },
     {
-      "id": "jgf-exp-050",
+      "id": "mgf-exp-048",
       "type": "single",
       "scenario": "Incident sonrasinda `1.5.1` release branch'ini remote'a publish et.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "git flow release publish 1.5.1",
-          "hint_text": "Release branch'ini ekip ile paylasmak icin publish et.",
+          "hint_text": "Takimla ortak release calismasi icin publish et.",
           "hint_partial": "git flow release publish ..."
         }
       ]
     },
     {
-      "id": "jgf-exp-051",
-      "type": "multi-step",
-      "scenario": "Incident sonrasinda `1.5.1` release branch'ini finish et, sonra main'i, develop'u ve tag'leri remote'a gonder.",
+      "id": "mgf-exp-049",
+      "type": "single",
+      "scenario": "Incident sonrasinda `1.5.1` release branch'ini finish et.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "git flow release finish 1.5.1",
-          "hint_text": "Ilk adimda release branch'ini finish et.",
+          "hint_text": "Release'i main ve develop akisina kapatmak icin finish kullan.",
           "hint_partial": "git flow release finish ..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "git push origin main",
-          "hint_text": "Finish sonrasi guncellenen main branch'ini remote'a gonder.",
-          "hint_partial": "git push origin ..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "git push origin develop",
-          "hint_text": "Finish sonrasi guncellenen develop branch'ini remote'a gonder.",
-          "hint_partial": "git push origin ..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "git push origin --tags",
-          "hint_text": "Release tag'lerini de remote'a gonder.",
-          "hint_partial": "git push origin ..."
         }
       ]
     },
     {
-      "id": "jgf-exp-052",
+      "id": "mgf-exp-050",
+      "type": "single",
+      "scenario": "Incident sonrasinda `cache-leak` hotfix branch'ini baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git flow hotfix start cache-leak",
+          "hint_text": "Production acili icin hotfix branch'i ac.",
+          "hint_partial": "git flow hotfix start ..."
+        }
+      ]
+    },
+    {
+      "id": "mgf-exp-051",
+      "type": "single",
+      "scenario": "Incident sonrasinda `cache-leak` hotfix branch'ini remote'a publish et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git flow hotfix publish cache-leak",
+          "hint_text": "Hotfix calismasini paylasmak icin publish et.",
+          "hint_partial": "git flow hotfix publish ..."
+        }
+      ]
+    },
+    {
+      "id": "mgf-exp-052",
+      "type": "single",
+      "scenario": "Incident sonrasinda `cache-leak` hotfix branch'ini finish et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git flow hotfix finish cache-leak",
+          "hint_text": "Hotfix'i main ve develop akisina finish ile kapat.",
+          "hint_partial": "git flow hotfix finish ..."
+        }
+      ]
+    },
+    {
+      "id": "mgf-exp-053",
+      "type": "single",
+      "scenario": "Incident sonrasinda tum feature branch'lerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git flow feature list",
+          "hint_text": "Aktif feature branch'lerini `feature list` ile gor.",
+          "hint_partial": "git flow feature list"
+        }
+      ]
+    },
+    {
+      "id": "mgf-exp-054",
       "type": "single",
       "scenario": "Incident sonrasinda tum release branch'lerini listele.",
       "steps": [
@@ -769,64 +705,7 @@
       ]
     },
     {
-      "id": "jgf-exp-053",
-      "type": "single",
-      "scenario": "Incident sonrasinda `cache-leak` hotfix branch'ini baslat.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "git flow hotfix start cache-leak",
-          "hint_text": "Production acili icin `hotfix start` kullan.",
-          "hint_partial": "git flow hotfix start ..."
-        }
-      ]
-    },
-    {
-      "id": "jgf-exp-054",
-      "type": "single",
-      "scenario": "Incident sonrasinda `cache-leak` hotfix branch'ini remote'a publish et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "git flow hotfix publish cache-leak",
-          "hint_text": "Acil duzeltmeyi paylasmak icin hotfix publish et.",
-          "hint_partial": "git flow hotfix publish ..."
-        }
-      ]
-    },
-    {
-      "id": "jgf-exp-055",
-      "type": "multi-step",
-      "scenario": "Incident sonrasinda `cache-leak` hotfix branch'ini finish et, sonra main'i, develop'u ve tag'leri remote'a gonder.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "git flow hotfix finish cache-leak",
-          "hint_text": "Ilk adimda hotfix branch'ini finish et.",
-          "hint_partial": "git flow hotfix finish ..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "git push origin main",
-          "hint_text": "Finish sonrasi guncellenen main branch'ini remote'a gonder.",
-          "hint_partial": "git push origin ..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "git push origin develop",
-          "hint_text": "Finish sonrasi guncellenen develop branch'ini remote'a gonder.",
-          "hint_partial": "git push origin ..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "git push origin --tags",
-          "hint_text": "Hotfix tag'lerini de remote'a gonder.",
-          "hint_partial": "git push origin ..."
-        }
-      ]
-    },
-    {
-      "id": "jgf-exp-056",
+      "id": "mgf-exp-055",
       "type": "single",
       "scenario": "Incident sonrasinda tum hotfix branch'lerini listele.",
       "steps": [
@@ -839,98 +718,98 @@
       ]
     },
     {
-      "id": "jgf-exp-057",
+      "id": "mgf-exp-056",
       "type": "single",
       "scenario": "Incident sonrasinda tum remote bilgilerini guncelle ve stale branch'leri temizle.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "git fetch --all --prune",
-          "hint_text": "Remote referanslarini tazelemek icin `fetch --all --prune` kullan.",
+          "hint_text": "Remote referanslarini temizlemek icin `fetch --all --prune` kullan.",
           "hint_partial": "git fetch --all ..."
         }
       ]
     },
     {
-      "id": "jgf-exp-058",
+      "id": "mgf-exp-057",
+      "type": "single",
+      "scenario": "Incident sonrasinda `develop` branch'ini remote'dan guncelle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git pull origin develop",
+          "hint_text": "Develop branch'ini remote ile esitlemek icin pull yap.",
+          "hint_partial": "git pull origin ..."
+        }
+      ]
+    },
+    {
+      "id": "mgf-exp-058",
+      "type": "single",
+      "scenario": "Incident sonrasinda `develop` branch'ini remote'a gonder.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git push origin develop",
+          "hint_text": "Develop branch'ini origin'e gonder.",
+          "hint_partial": "git push origin ..."
+        }
+      ]
+    },
+    {
+      "id": "mgf-exp-059",
       "type": "single",
       "scenario": "Incident sonrasinda tum branch gecmisini graph formatta goster.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "git log --oneline --graph --decorate --all",
-          "hint_text": "Flow akisini graph gorunumuyle kontrol et.",
+          "hint_text": "Flow akisini graph gorunumuyle incele.",
           "hint_partial": "git log ..."
         }
       ]
     },
     {
-      "id": "jgf-exp-059",
+      "id": "mgf-exp-060",
       "type": "single",
-      "scenario": "Incident sonrasinda local ve remote branch'leri listele.",
+      "scenario": "Incident sonrasinda tum tag'leri remote'a gonder.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "git branch -a",
-          "hint_text": "Tum branch kapsamini `git branch -a` ile gor.",
-          "hint_partial": "git branch -a"
+          "answer": "git push origin --tags",
+          "hint_text": "Release tag'lerini toplu gondermek icin tag push kullan.",
+          "hint_partial": "git push origin ..."
         }
       ]
     },
     {
-      "id": "jgf-exp-060",
-      "type": "single",
-      "scenario": "Incident sonrasinda `main` ile `develop` arasindaki farki goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "git diff main...develop",
-          "hint_text": "Release oncesi iki ana branch arasindaki farki incele.",
-          "hint_partial": "git diff main...develop"
-        }
-      ]
-    },
-    {
-      "id": "jgf-exp-061",
+      "id": "mgf-exp-061",
       "type": "single",
       "scenario": "Deploy oncesi git flow yapisini varsayilan ayarlarla baslat.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "git flow init -d",
-          "hint_text": "Flow yapisini varsayilan branch isimleriyle kurmak icin `git flow init -d` kullan.",
+          "hint_text": "Flow yapisini hizli kurmak icin varsayilan init secenegini kullan.",
           "hint_partial": "git flow init ..."
         }
       ]
     },
     {
-      "id": "jgf-exp-062",
-      "type": "single",
-      "scenario": "Deploy oncesi aktif branch adini goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "git branch --show-current",
-          "hint_text": "Bulundugun branch'i hizli gormek icin bu komutu kullan.",
-          "hint_partial": "git branch --show-current"
-        }
-      ]
-    },
-    {
-      "id": "jgf-exp-063",
+      "id": "mgf-exp-062",
       "type": "single",
       "scenario": "Deploy oncesi `search-tuning` feature branch'ini baslat.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "git flow feature start search-tuning",
-          "hint_text": "Yeni bir feature branch'i acmak icin `feature start` kullan.",
+          "hint_text": "Yeni bir feature icin `feature start` kullan.",
           "hint_partial": "git flow feature start ..."
         }
       ]
     },
     {
-      "id": "jgf-exp-064",
+      "id": "mgf-exp-063",
       "type": "single",
       "scenario": "Deploy oncesi `search-tuning` feature branch'ini remote'a publish et.",
       "steps": [
@@ -943,7 +822,7 @@
       ]
     },
     {
-      "id": "jgf-exp-065",
+      "id": "mgf-exp-064",
       "type": "single",
       "scenario": "Deploy oncesi `search-tuning` feature branch'ini finish et.",
       "steps": [
@@ -956,7 +835,7 @@
       ]
     },
     {
-      "id": "jgf-exp-066",
+      "id": "mgf-exp-065",
       "type": "single",
       "scenario": "Deploy oncesi `search-tuning` feature branch'ini git flow ile checkout et.",
       "steps": [
@@ -969,7 +848,7 @@
       ]
     },
     {
-      "id": "jgf-exp-067",
+      "id": "mgf-exp-066",
       "type": "single",
       "scenario": "Deploy oncesi origin'deki `search-tuning` feature branch'ini takip etmeye basla.",
       "steps": [
@@ -982,20 +861,7 @@
       ]
     },
     {
-      "id": "jgf-exp-068",
-      "type": "single",
-      "scenario": "Deploy oncesi tum feature branch'lerini listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "git flow feature list",
-          "hint_text": "Aktif feature branch'lerini `feature list` ile gor.",
-          "hint_partial": "git flow feature list"
-        }
-      ]
-    },
-    {
-      "id": "jgf-exp-069",
+      "id": "mgf-exp-067",
       "type": "single",
       "scenario": "Deploy oncesi `1.6.0` release branch'ini baslat.",
       "steps": [
@@ -1008,51 +874,85 @@
       ]
     },
     {
-      "id": "jgf-exp-070",
+      "id": "mgf-exp-068",
       "type": "single",
       "scenario": "Deploy oncesi `1.6.0` release branch'ini remote'a publish et.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "git flow release publish 1.6.0",
-          "hint_text": "Release branch'ini ekip ile paylasmak icin publish et.",
+          "hint_text": "Takimla ortak release calismasi icin publish et.",
           "hint_partial": "git flow release publish ..."
         }
       ]
     },
     {
-      "id": "jgf-exp-071",
-      "type": "multi-step",
-      "scenario": "Deploy oncesi `1.6.0` release branch'ini finish et, sonra main'i, develop'u ve tag'leri remote'a gonder.",
+      "id": "mgf-exp-069",
+      "type": "single",
+      "scenario": "Deploy oncesi `1.6.0` release branch'ini finish et.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "git flow release finish 1.6.0",
-          "hint_text": "Ilk adimda release branch'ini finish et.",
+          "hint_text": "Release'i main ve develop akisina kapatmak icin finish kullan.",
           "hint_partial": "git flow release finish ..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "git push origin main",
-          "hint_text": "Finish sonrasi guncellenen main branch'ini remote'a gonder.",
-          "hint_partial": "git push origin ..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "git push origin develop",
-          "hint_text": "Finish sonrasi guncellenen develop branch'ini remote'a gonder.",
-          "hint_partial": "git push origin ..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "git push origin --tags",
-          "hint_text": "Release tag'lerini de remote'a gonder.",
-          "hint_partial": "git push origin ..."
         }
       ]
     },
     {
-      "id": "jgf-exp-072",
+      "id": "mgf-exp-070",
+      "type": "single",
+      "scenario": "Deploy oncesi `queue-stall` hotfix branch'ini baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git flow hotfix start queue-stall",
+          "hint_text": "Production acili icin hotfix branch'i ac.",
+          "hint_partial": "git flow hotfix start ..."
+        }
+      ]
+    },
+    {
+      "id": "mgf-exp-071",
+      "type": "single",
+      "scenario": "Deploy oncesi `queue-stall` hotfix branch'ini remote'a publish et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git flow hotfix publish queue-stall",
+          "hint_text": "Hotfix calismasini paylasmak icin publish et.",
+          "hint_partial": "git flow hotfix publish ..."
+        }
+      ]
+    },
+    {
+      "id": "mgf-exp-072",
+      "type": "single",
+      "scenario": "Deploy oncesi `queue-stall` hotfix branch'ini finish et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git flow hotfix finish queue-stall",
+          "hint_text": "Hotfix'i main ve develop akisina finish ile kapat.",
+          "hint_partial": "git flow hotfix finish ..."
+        }
+      ]
+    },
+    {
+      "id": "mgf-exp-073",
+      "type": "single",
+      "scenario": "Deploy oncesi tum feature branch'lerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git flow feature list",
+          "hint_text": "Aktif feature branch'lerini `feature list` ile gor.",
+          "hint_partial": "git flow feature list"
+        }
+      ]
+    },
+    {
+      "id": "mgf-exp-074",
       "type": "single",
       "scenario": "Deploy oncesi tum release branch'lerini listele.",
       "steps": [
@@ -1065,64 +965,7 @@
       ]
     },
     {
-      "id": "jgf-exp-073",
-      "type": "single",
-      "scenario": "Deploy oncesi `queue-stall` hotfix branch'ini baslat.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "git flow hotfix start queue-stall",
-          "hint_text": "Production acili icin `hotfix start` kullan.",
-          "hint_partial": "git flow hotfix start ..."
-        }
-      ]
-    },
-    {
-      "id": "jgf-exp-074",
-      "type": "single",
-      "scenario": "Deploy oncesi `queue-stall` hotfix branch'ini remote'a publish et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "git flow hotfix publish queue-stall",
-          "hint_text": "Acil duzeltmeyi paylasmak icin hotfix publish et.",
-          "hint_partial": "git flow hotfix publish ..."
-        }
-      ]
-    },
-    {
-      "id": "jgf-exp-075",
-      "type": "multi-step",
-      "scenario": "Deploy oncesi `queue-stall` hotfix branch'ini finish et, sonra main'i, develop'u ve tag'leri remote'a gonder.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "git flow hotfix finish queue-stall",
-          "hint_text": "Ilk adimda hotfix branch'ini finish et.",
-          "hint_partial": "git flow hotfix finish ..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "git push origin main",
-          "hint_text": "Finish sonrasi guncellenen main branch'ini remote'a gonder.",
-          "hint_partial": "git push origin ..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "git push origin develop",
-          "hint_text": "Finish sonrasi guncellenen develop branch'ini remote'a gonder.",
-          "hint_partial": "git push origin ..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "git push origin --tags",
-          "hint_text": "Hotfix tag'lerini de remote'a gonder.",
-          "hint_partial": "git push origin ..."
-        }
-      ]
-    },
-    {
-      "id": "jgf-exp-076",
+      "id": "mgf-exp-075",
       "type": "single",
       "scenario": "Deploy oncesi tum hotfix branch'lerini listele.",
       "steps": [
@@ -1135,98 +978,98 @@
       ]
     },
     {
-      "id": "jgf-exp-077",
+      "id": "mgf-exp-076",
       "type": "single",
       "scenario": "Deploy oncesi tum remote bilgilerini guncelle ve stale branch'leri temizle.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "git fetch --all --prune",
-          "hint_text": "Remote referanslarini tazelemek icin `fetch --all --prune` kullan.",
+          "hint_text": "Remote referanslarini temizlemek icin `fetch --all --prune` kullan.",
           "hint_partial": "git fetch --all ..."
         }
       ]
     },
     {
-      "id": "jgf-exp-078",
+      "id": "mgf-exp-077",
+      "type": "single",
+      "scenario": "Deploy oncesi `develop` branch'ini remote'dan guncelle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git pull origin develop",
+          "hint_text": "Develop branch'ini remote ile esitlemek icin pull yap.",
+          "hint_partial": "git pull origin ..."
+        }
+      ]
+    },
+    {
+      "id": "mgf-exp-078",
+      "type": "single",
+      "scenario": "Deploy oncesi `develop` branch'ini remote'a gonder.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git push origin develop",
+          "hint_text": "Develop branch'ini origin'e gonder.",
+          "hint_partial": "git push origin ..."
+        }
+      ]
+    },
+    {
+      "id": "mgf-exp-079",
       "type": "single",
       "scenario": "Deploy oncesi tum branch gecmisini graph formatta goster.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "git log --oneline --graph --decorate --all",
-          "hint_text": "Flow akisini graph gorunumuyle kontrol et.",
+          "hint_text": "Flow akisini graph gorunumuyle incele.",
           "hint_partial": "git log ..."
         }
       ]
     },
     {
-      "id": "jgf-exp-079",
+      "id": "mgf-exp-080",
       "type": "single",
-      "scenario": "Deploy oncesi local ve remote branch'leri listele.",
+      "scenario": "Deploy oncesi tum tag'leri remote'a gonder.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "git branch -a",
-          "hint_text": "Tum branch kapsamini `git branch -a` ile gor.",
-          "hint_partial": "git branch -a"
+          "answer": "git push origin --tags",
+          "hint_text": "Release tag'lerini toplu gondermek icin tag push kullan.",
+          "hint_partial": "git push origin ..."
         }
       ]
     },
     {
-      "id": "jgf-exp-080",
-      "type": "single",
-      "scenario": "Deploy oncesi `main` ile `develop` arasindaki farki goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "git diff main...develop",
-          "hint_text": "Release oncesi iki ana branch arasindaki farki incele.",
-          "hint_partial": "git diff main...develop"
-        }
-      ]
-    },
-    {
-      "id": "jgf-exp-081",
+      "id": "mgf-exp-081",
       "type": "single",
       "scenario": "Audit sirasinda git flow yapisini varsayilan ayarlarla baslat.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "git flow init -d",
-          "hint_text": "Flow yapisini varsayilan branch isimleriyle kurmak icin `git flow init -d` kullan.",
+          "hint_text": "Flow yapisini hizli kurmak icin varsayilan init secenegini kullan.",
           "hint_partial": "git flow init ..."
         }
       ]
     },
     {
-      "id": "jgf-exp-082",
-      "type": "single",
-      "scenario": "Audit sirasinda aktif branch adini goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "git branch --show-current",
-          "hint_text": "Bulundugun branch'i hizli gormek icin bu komutu kullan.",
-          "hint_partial": "git branch --show-current"
-        }
-      ]
-    },
-    {
-      "id": "jgf-exp-083",
+      "id": "mgf-exp-082",
       "type": "single",
       "scenario": "Audit sirasinda `auth-audit` feature branch'ini baslat.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "git flow feature start auth-audit",
-          "hint_text": "Yeni bir feature branch'i acmak icin `feature start` kullan.",
+          "hint_text": "Yeni bir feature icin `feature start` kullan.",
           "hint_partial": "git flow feature start ..."
         }
       ]
     },
     {
-      "id": "jgf-exp-084",
+      "id": "mgf-exp-083",
       "type": "single",
       "scenario": "Audit sirasinda `auth-audit` feature branch'ini remote'a publish et.",
       "steps": [
@@ -1239,7 +1082,7 @@
       ]
     },
     {
-      "id": "jgf-exp-085",
+      "id": "mgf-exp-084",
       "type": "single",
       "scenario": "Audit sirasinda `auth-audit` feature branch'ini finish et.",
       "steps": [
@@ -1252,7 +1095,7 @@
       ]
     },
     {
-      "id": "jgf-exp-086",
+      "id": "mgf-exp-085",
       "type": "single",
       "scenario": "Audit sirasinda `auth-audit` feature branch'ini git flow ile checkout et.",
       "steps": [
@@ -1265,7 +1108,7 @@
       ]
     },
     {
-      "id": "jgf-exp-087",
+      "id": "mgf-exp-086",
       "type": "single",
       "scenario": "Audit sirasinda origin'deki `auth-audit` feature branch'ini takip etmeye basla.",
       "steps": [
@@ -1278,20 +1121,7 @@
       ]
     },
     {
-      "id": "jgf-exp-088",
-      "type": "single",
-      "scenario": "Audit sirasinda tum feature branch'lerini listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "git flow feature list",
-          "hint_text": "Aktif feature branch'lerini `feature list` ile gor.",
-          "hint_partial": "git flow feature list"
-        }
-      ]
-    },
-    {
-      "id": "jgf-exp-089",
+      "id": "mgf-exp-087",
       "type": "single",
       "scenario": "Audit sirasinda `1.6.1` release branch'ini baslat.",
       "steps": [
@@ -1304,51 +1134,85 @@
       ]
     },
     {
-      "id": "jgf-exp-090",
+      "id": "mgf-exp-088",
       "type": "single",
       "scenario": "Audit sirasinda `1.6.1` release branch'ini remote'a publish et.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "git flow release publish 1.6.1",
-          "hint_text": "Release branch'ini ekip ile paylasmak icin publish et.",
+          "hint_text": "Takimla ortak release calismasi icin publish et.",
           "hint_partial": "git flow release publish ..."
         }
       ]
     },
     {
-      "id": "jgf-exp-091",
-      "type": "multi-step",
-      "scenario": "Audit sirasinda `1.6.1` release branch'ini finish et, sonra main'i, develop'u ve tag'leri remote'a gonder.",
+      "id": "mgf-exp-089",
+      "type": "single",
+      "scenario": "Audit sirasinda `1.6.1` release branch'ini finish et.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "git flow release finish 1.6.1",
-          "hint_text": "Ilk adimda release branch'ini finish et.",
+          "hint_text": "Release'i main ve develop akisina kapatmak icin finish kullan.",
           "hint_partial": "git flow release finish ..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "git push origin main",
-          "hint_text": "Finish sonrasi guncellenen main branch'ini remote'a gonder.",
-          "hint_partial": "git push origin ..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "git push origin develop",
-          "hint_text": "Finish sonrasi guncellenen develop branch'ini remote'a gonder.",
-          "hint_partial": "git push origin ..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "git push origin --tags",
-          "hint_text": "Release tag'lerini de remote'a gonder.",
-          "hint_partial": "git push origin ..."
         }
       ]
     },
     {
-      "id": "jgf-exp-092",
+      "id": "mgf-exp-090",
+      "type": "single",
+      "scenario": "Audit sirasinda `db-rollback` hotfix branch'ini baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git flow hotfix start db-rollback",
+          "hint_text": "Production acili icin hotfix branch'i ac.",
+          "hint_partial": "git flow hotfix start ..."
+        }
+      ]
+    },
+    {
+      "id": "mgf-exp-091",
+      "type": "single",
+      "scenario": "Audit sirasinda `db-rollback` hotfix branch'ini remote'a publish et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git flow hotfix publish db-rollback",
+          "hint_text": "Hotfix calismasini paylasmak icin publish et.",
+          "hint_partial": "git flow hotfix publish ..."
+        }
+      ]
+    },
+    {
+      "id": "mgf-exp-092",
+      "type": "single",
+      "scenario": "Audit sirasinda `db-rollback` hotfix branch'ini finish et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git flow hotfix finish db-rollback",
+          "hint_text": "Hotfix'i main ve develop akisina finish ile kapat.",
+          "hint_partial": "git flow hotfix finish ..."
+        }
+      ]
+    },
+    {
+      "id": "mgf-exp-093",
+      "type": "single",
+      "scenario": "Audit sirasinda tum feature branch'lerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git flow feature list",
+          "hint_text": "Aktif feature branch'lerini `feature list` ile gor.",
+          "hint_partial": "git flow feature list"
+        }
+      ]
+    },
+    {
+      "id": "mgf-exp-094",
       "type": "single",
       "scenario": "Audit sirasinda tum release branch'lerini listele.",
       "steps": [
@@ -1361,64 +1225,7 @@
       ]
     },
     {
-      "id": "jgf-exp-093",
-      "type": "single",
-      "scenario": "Audit sirasinda `db-rollback` hotfix branch'ini baslat.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "git flow hotfix start db-rollback",
-          "hint_text": "Production acili icin `hotfix start` kullan.",
-          "hint_partial": "git flow hotfix start ..."
-        }
-      ]
-    },
-    {
-      "id": "jgf-exp-094",
-      "type": "single",
-      "scenario": "Audit sirasinda `db-rollback` hotfix branch'ini remote'a publish et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "git flow hotfix publish db-rollback",
-          "hint_text": "Acil duzeltmeyi paylasmak icin hotfix publish et.",
-          "hint_partial": "git flow hotfix publish ..."
-        }
-      ]
-    },
-    {
-      "id": "jgf-exp-095",
-      "type": "multi-step",
-      "scenario": "Audit sirasinda `db-rollback` hotfix branch'ini finish et, sonra main'i, develop'u ve tag'leri remote'a gonder.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "git flow hotfix finish db-rollback",
-          "hint_text": "Ilk adimda hotfix branch'ini finish et.",
-          "hint_partial": "git flow hotfix finish ..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "git push origin main",
-          "hint_text": "Finish sonrasi guncellenen main branch'ini remote'a gonder.",
-          "hint_partial": "git push origin ..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "git push origin develop",
-          "hint_text": "Finish sonrasi guncellenen develop branch'ini remote'a gonder.",
-          "hint_partial": "git push origin ..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "git push origin --tags",
-          "hint_text": "Hotfix tag'lerini de remote'a gonder.",
-          "hint_partial": "git push origin ..."
-        }
-      ]
-    },
-    {
-      "id": "jgf-exp-096",
+      "id": "mgf-exp-095",
       "type": "single",
       "scenario": "Audit sirasinda tum hotfix branch'lerini listele.",
       "steps": [
@@ -1431,98 +1238,98 @@
       ]
     },
     {
-      "id": "jgf-exp-097",
+      "id": "mgf-exp-096",
       "type": "single",
       "scenario": "Audit sirasinda tum remote bilgilerini guncelle ve stale branch'leri temizle.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "git fetch --all --prune",
-          "hint_text": "Remote referanslarini tazelemek icin `fetch --all --prune` kullan.",
+          "hint_text": "Remote referanslarini temizlemek icin `fetch --all --prune` kullan.",
           "hint_partial": "git fetch --all ..."
         }
       ]
     },
     {
-      "id": "jgf-exp-098",
+      "id": "mgf-exp-097",
+      "type": "single",
+      "scenario": "Audit sirasinda `develop` branch'ini remote'dan guncelle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git pull origin develop",
+          "hint_text": "Develop branch'ini remote ile esitlemek icin pull yap.",
+          "hint_partial": "git pull origin ..."
+        }
+      ]
+    },
+    {
+      "id": "mgf-exp-098",
+      "type": "single",
+      "scenario": "Audit sirasinda `develop` branch'ini remote'a gonder.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git push origin develop",
+          "hint_text": "Develop branch'ini origin'e gonder.",
+          "hint_partial": "git push origin ..."
+        }
+      ]
+    },
+    {
+      "id": "mgf-exp-099",
       "type": "single",
       "scenario": "Audit sirasinda tum branch gecmisini graph formatta goster.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "git log --oneline --graph --decorate --all",
-          "hint_text": "Flow akisini graph gorunumuyle kontrol et.",
+          "hint_text": "Flow akisini graph gorunumuyle incele.",
           "hint_partial": "git log ..."
         }
       ]
     },
     {
-      "id": "jgf-exp-099",
+      "id": "mgf-exp-100",
       "type": "single",
-      "scenario": "Audit sirasinda local ve remote branch'leri listele.",
+      "scenario": "Audit sirasinda tum tag'leri remote'a gonder.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "git branch -a",
-          "hint_text": "Tum branch kapsamini `git branch -a` ile gor.",
-          "hint_partial": "git branch -a"
+          "answer": "git push origin --tags",
+          "hint_text": "Release tag'lerini toplu gondermek icin tag push kullan.",
+          "hint_partial": "git push origin ..."
         }
       ]
     },
     {
-      "id": "jgf-exp-100",
-      "type": "single",
-      "scenario": "Audit sirasinda `main` ile `develop` arasindaki farki goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "git diff main...develop",
-          "hint_text": "Release oncesi iki ana branch arasindaki farki incele.",
-          "hint_partial": "git diff main...develop"
-        }
-      ]
-    },
-    {
-      "id": "jgf-exp-101",
+      "id": "mgf-exp-101",
       "type": "single",
       "scenario": "Troubleshooting sirasinda git flow yapisini varsayilan ayarlarla baslat.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "git flow init -d",
-          "hint_text": "Flow yapisini varsayilan branch isimleriyle kurmak icin `git flow init -d` kullan.",
+          "hint_text": "Flow yapisini hizli kurmak icin varsayilan init secenegini kullan.",
           "hint_partial": "git flow init ..."
         }
       ]
     },
     {
-      "id": "jgf-exp-102",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda aktif branch adini goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "git branch --show-current",
-          "hint_text": "Bulundugun branch'i hizli gormek icin bu komutu kullan.",
-          "hint_partial": "git branch --show-current"
-        }
-      ]
-    },
-    {
-      "id": "jgf-exp-103",
+      "id": "mgf-exp-102",
       "type": "single",
       "scenario": "Troubleshooting sirasinda `alert-cleanup` feature branch'ini baslat.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "git flow feature start alert-cleanup",
-          "hint_text": "Yeni bir feature branch'i acmak icin `feature start` kullan.",
+          "hint_text": "Yeni bir feature icin `feature start` kullan.",
           "hint_partial": "git flow feature start ..."
         }
       ]
     },
     {
-      "id": "jgf-exp-104",
+      "id": "mgf-exp-103",
       "type": "single",
       "scenario": "Troubleshooting sirasinda `alert-cleanup` feature branch'ini remote'a publish et.",
       "steps": [
@@ -1535,7 +1342,7 @@
       ]
     },
     {
-      "id": "jgf-exp-105",
+      "id": "mgf-exp-104",
       "type": "single",
       "scenario": "Troubleshooting sirasinda `alert-cleanup` feature branch'ini finish et.",
       "steps": [
@@ -1548,7 +1355,7 @@
       ]
     },
     {
-      "id": "jgf-exp-106",
+      "id": "mgf-exp-105",
       "type": "single",
       "scenario": "Troubleshooting sirasinda `alert-cleanup` feature branch'ini git flow ile checkout et.",
       "steps": [
@@ -1561,7 +1368,7 @@
       ]
     },
     {
-      "id": "jgf-exp-107",
+      "id": "mgf-exp-106",
       "type": "single",
       "scenario": "Troubleshooting sirasinda origin'deki `alert-cleanup` feature branch'ini takip etmeye basla.",
       "steps": [
@@ -1574,20 +1381,7 @@
       ]
     },
     {
-      "id": "jgf-exp-108",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda tum feature branch'lerini listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "git flow feature list",
-          "hint_text": "Aktif feature branch'lerini `feature list` ile gor.",
-          "hint_partial": "git flow feature list"
-        }
-      ]
-    },
-    {
-      "id": "jgf-exp-109",
+      "id": "mgf-exp-107",
       "type": "single",
       "scenario": "Troubleshooting sirasinda `1.7.0` release branch'ini baslat.",
       "steps": [
@@ -1600,51 +1394,85 @@
       ]
     },
     {
-      "id": "jgf-exp-110",
+      "id": "mgf-exp-108",
       "type": "single",
       "scenario": "Troubleshooting sirasinda `1.7.0` release branch'ini remote'a publish et.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "git flow release publish 1.7.0",
-          "hint_text": "Release branch'ini ekip ile paylasmak icin publish et.",
+          "hint_text": "Takimla ortak release calismasi icin publish et.",
           "hint_partial": "git flow release publish ..."
         }
       ]
     },
     {
-      "id": "jgf-exp-111",
-      "type": "multi-step",
-      "scenario": "Troubleshooting sirasinda `1.7.0` release branch'ini finish et, sonra main'i, develop'u ve tag'leri remote'a gonder.",
+      "id": "mgf-exp-109",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `1.7.0` release branch'ini finish et.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "git flow release finish 1.7.0",
-          "hint_text": "Ilk adimda release branch'ini finish et.",
+          "hint_text": "Release'i main ve develop akisina kapatmak icin finish kullan.",
           "hint_partial": "git flow release finish ..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "git push origin main",
-          "hint_text": "Finish sonrasi guncellenen main branch'ini remote'a gonder.",
-          "hint_partial": "git push origin ..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "git push origin develop",
-          "hint_text": "Finish sonrasi guncellenen develop branch'ini remote'a gonder.",
-          "hint_partial": "git push origin ..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "git push origin --tags",
-          "hint_text": "Release tag'lerini de remote'a gonder.",
-          "hint_partial": "git push origin ..."
         }
       ]
     },
     {
-      "id": "jgf-exp-112",
+      "id": "mgf-exp-110",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `header-bug` hotfix branch'ini baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git flow hotfix start header-bug",
+          "hint_text": "Production acili icin hotfix branch'i ac.",
+          "hint_partial": "git flow hotfix start ..."
+        }
+      ]
+    },
+    {
+      "id": "mgf-exp-111",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `header-bug` hotfix branch'ini remote'a publish et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git flow hotfix publish header-bug",
+          "hint_text": "Hotfix calismasini paylasmak icin publish et.",
+          "hint_partial": "git flow hotfix publish ..."
+        }
+      ]
+    },
+    {
+      "id": "mgf-exp-112",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `header-bug` hotfix branch'ini finish et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git flow hotfix finish header-bug",
+          "hint_text": "Hotfix'i main ve develop akisina finish ile kapat.",
+          "hint_partial": "git flow hotfix finish ..."
+        }
+      ]
+    },
+    {
+      "id": "mgf-exp-113",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda tum feature branch'lerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git flow feature list",
+          "hint_text": "Aktif feature branch'lerini `feature list` ile gor.",
+          "hint_partial": "git flow feature list"
+        }
+      ]
+    },
+    {
+      "id": "mgf-exp-114",
       "type": "single",
       "scenario": "Troubleshooting sirasinda tum release branch'lerini listele.",
       "steps": [
@@ -1657,64 +1485,7 @@
       ]
     },
     {
-      "id": "jgf-exp-113",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda `header-bug` hotfix branch'ini baslat.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "git flow hotfix start header-bug",
-          "hint_text": "Production acili icin `hotfix start` kullan.",
-          "hint_partial": "git flow hotfix start ..."
-        }
-      ]
-    },
-    {
-      "id": "jgf-exp-114",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda `header-bug` hotfix branch'ini remote'a publish et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "git flow hotfix publish header-bug",
-          "hint_text": "Acil duzeltmeyi paylasmak icin hotfix publish et.",
-          "hint_partial": "git flow hotfix publish ..."
-        }
-      ]
-    },
-    {
-      "id": "jgf-exp-115",
-      "type": "multi-step",
-      "scenario": "Troubleshooting sirasinda `header-bug` hotfix branch'ini finish et, sonra main'i, develop'u ve tag'leri remote'a gonder.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "git flow hotfix finish header-bug",
-          "hint_text": "Ilk adimda hotfix branch'ini finish et.",
-          "hint_partial": "git flow hotfix finish ..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "git push origin main",
-          "hint_text": "Finish sonrasi guncellenen main branch'ini remote'a gonder.",
-          "hint_partial": "git push origin ..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "git push origin develop",
-          "hint_text": "Finish sonrasi guncellenen develop branch'ini remote'a gonder.",
-          "hint_partial": "git push origin ..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "git push origin --tags",
-          "hint_text": "Hotfix tag'lerini de remote'a gonder.",
-          "hint_partial": "git push origin ..."
-        }
-      ]
-    },
-    {
-      "id": "jgf-exp-116",
+      "id": "mgf-exp-115",
       "type": "single",
       "scenario": "Troubleshooting sirasinda tum hotfix branch'lerini listele.",
       "steps": [
@@ -1727,98 +1498,98 @@
       ]
     },
     {
-      "id": "jgf-exp-117",
+      "id": "mgf-exp-116",
       "type": "single",
       "scenario": "Troubleshooting sirasinda tum remote bilgilerini guncelle ve stale branch'leri temizle.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "git fetch --all --prune",
-          "hint_text": "Remote referanslarini tazelemek icin `fetch --all --prune` kullan.",
+          "hint_text": "Remote referanslarini temizlemek icin `fetch --all --prune` kullan.",
           "hint_partial": "git fetch --all ..."
         }
       ]
     },
     {
-      "id": "jgf-exp-118",
+      "id": "mgf-exp-117",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `develop` branch'ini remote'dan guncelle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git pull origin develop",
+          "hint_text": "Develop branch'ini remote ile esitlemek icin pull yap.",
+          "hint_partial": "git pull origin ..."
+        }
+      ]
+    },
+    {
+      "id": "mgf-exp-118",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `develop` branch'ini remote'a gonder.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git push origin develop",
+          "hint_text": "Develop branch'ini origin'e gonder.",
+          "hint_partial": "git push origin ..."
+        }
+      ]
+    },
+    {
+      "id": "mgf-exp-119",
       "type": "single",
       "scenario": "Troubleshooting sirasinda tum branch gecmisini graph formatta goster.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "git log --oneline --graph --decorate --all",
-          "hint_text": "Flow akisini graph gorunumuyle kontrol et.",
+          "hint_text": "Flow akisini graph gorunumuyle incele.",
           "hint_partial": "git log ..."
         }
       ]
     },
     {
-      "id": "jgf-exp-119",
+      "id": "mgf-exp-120",
       "type": "single",
-      "scenario": "Troubleshooting sirasinda local ve remote branch'leri listele.",
+      "scenario": "Troubleshooting sirasinda tum tag'leri remote'a gonder.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "git branch -a",
-          "hint_text": "Tum branch kapsamini `git branch -a` ile gor.",
-          "hint_partial": "git branch -a"
+          "answer": "git push origin --tags",
+          "hint_text": "Release tag'lerini toplu gondermek icin tag push kullan.",
+          "hint_partial": "git push origin ..."
         }
       ]
     },
     {
-      "id": "jgf-exp-120",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda `main` ile `develop` arasindaki farki goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "git diff main...develop",
-          "hint_text": "Release oncesi iki ana branch arasindaki farki incele.",
-          "hint_partial": "git diff main...develop"
-        }
-      ]
-    },
-    {
-      "id": "jgf-exp-121",
+      "id": "mgf-exp-121",
       "type": "single",
       "scenario": "Release kontrolunde git flow yapisini varsayilan ayarlarla baslat.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "git flow init -d",
-          "hint_text": "Flow yapisini varsayilan branch isimleriyle kurmak icin `git flow init -d` kullan.",
+          "hint_text": "Flow yapisini hizli kurmak icin varsayilan init secenegini kullan.",
           "hint_partial": "git flow init ..."
         }
       ]
     },
     {
-      "id": "jgf-exp-122",
-      "type": "single",
-      "scenario": "Release kontrolunde aktif branch adini goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "git branch --show-current",
-          "hint_text": "Bulundugun branch'i hizli gormek icin bu komutu kullan.",
-          "hint_partial": "git branch --show-current"
-        }
-      ]
-    },
-    {
-      "id": "jgf-exp-123",
+      "id": "mgf-exp-122",
       "type": "single",
       "scenario": "Release kontrolunde `db-metrics` feature branch'ini baslat.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "git flow feature start db-metrics",
-          "hint_text": "Yeni bir feature branch'i acmak icin `feature start` kullan.",
+          "hint_text": "Yeni bir feature icin `feature start` kullan.",
           "hint_partial": "git flow feature start ..."
         }
       ]
     },
     {
-      "id": "jgf-exp-124",
+      "id": "mgf-exp-123",
       "type": "single",
       "scenario": "Release kontrolunde `db-metrics` feature branch'ini remote'a publish et.",
       "steps": [
@@ -1831,7 +1602,7 @@
       ]
     },
     {
-      "id": "jgf-exp-125",
+      "id": "mgf-exp-124",
       "type": "single",
       "scenario": "Release kontrolunde `db-metrics` feature branch'ini finish et.",
       "steps": [
@@ -1844,7 +1615,7 @@
       ]
     },
     {
-      "id": "jgf-exp-126",
+      "id": "mgf-exp-125",
       "type": "single",
       "scenario": "Release kontrolunde `db-metrics` feature branch'ini git flow ile checkout et.",
       "steps": [
@@ -1857,7 +1628,7 @@
       ]
     },
     {
-      "id": "jgf-exp-127",
+      "id": "mgf-exp-126",
       "type": "single",
       "scenario": "Release kontrolunde origin'deki `db-metrics` feature branch'ini takip etmeye basla.",
       "steps": [
@@ -1870,20 +1641,7 @@
       ]
     },
     {
-      "id": "jgf-exp-128",
-      "type": "single",
-      "scenario": "Release kontrolunde tum feature branch'lerini listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "git flow feature list",
-          "hint_text": "Aktif feature branch'lerini `feature list` ile gor.",
-          "hint_partial": "git flow feature list"
-        }
-      ]
-    },
-    {
-      "id": "jgf-exp-129",
+      "id": "mgf-exp-127",
       "type": "single",
       "scenario": "Release kontrolunde `1.8.0` release branch'ini baslat.",
       "steps": [
@@ -1896,51 +1654,85 @@
       ]
     },
     {
-      "id": "jgf-exp-130",
+      "id": "mgf-exp-128",
       "type": "single",
       "scenario": "Release kontrolunde `1.8.0` release branch'ini remote'a publish et.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "git flow release publish 1.8.0",
-          "hint_text": "Release branch'ini ekip ile paylasmak icin publish et.",
+          "hint_text": "Takimla ortak release calismasi icin publish et.",
           "hint_partial": "git flow release publish ..."
         }
       ]
     },
     {
-      "id": "jgf-exp-131",
-      "type": "multi-step",
-      "scenario": "Release kontrolunde `1.8.0` release branch'ini finish et, sonra main'i, develop'u ve tag'leri remote'a gonder.",
+      "id": "mgf-exp-129",
+      "type": "single",
+      "scenario": "Release kontrolunde `1.8.0` release branch'ini finish et.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "git flow release finish 1.8.0",
-          "hint_text": "Ilk adimda release branch'ini finish et.",
+          "hint_text": "Release'i main ve develop akisina kapatmak icin finish kullan.",
           "hint_partial": "git flow release finish ..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "git push origin main",
-          "hint_text": "Finish sonrasi guncellenen main branch'ini remote'a gonder.",
-          "hint_partial": "git push origin ..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "git push origin develop",
-          "hint_text": "Finish sonrasi guncellenen develop branch'ini remote'a gonder.",
-          "hint_partial": "git push origin ..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "git push origin --tags",
-          "hint_text": "Release tag'lerini de remote'a gonder.",
-          "hint_partial": "git push origin ..."
         }
       ]
     },
     {
-      "id": "jgf-exp-132",
+      "id": "mgf-exp-130",
+      "type": "single",
+      "scenario": "Release kontrolunde `token-expiry` hotfix branch'ini baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git flow hotfix start token-expiry",
+          "hint_text": "Production acili icin hotfix branch'i ac.",
+          "hint_partial": "git flow hotfix start ..."
+        }
+      ]
+    },
+    {
+      "id": "mgf-exp-131",
+      "type": "single",
+      "scenario": "Release kontrolunde `token-expiry` hotfix branch'ini remote'a publish et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git flow hotfix publish token-expiry",
+          "hint_text": "Hotfix calismasini paylasmak icin publish et.",
+          "hint_partial": "git flow hotfix publish ..."
+        }
+      ]
+    },
+    {
+      "id": "mgf-exp-132",
+      "type": "single",
+      "scenario": "Release kontrolunde `token-expiry` hotfix branch'ini finish et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git flow hotfix finish token-expiry",
+          "hint_text": "Hotfix'i main ve develop akisina finish ile kapat.",
+          "hint_partial": "git flow hotfix finish ..."
+        }
+      ]
+    },
+    {
+      "id": "mgf-exp-133",
+      "type": "single",
+      "scenario": "Release kontrolunde tum feature branch'lerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git flow feature list",
+          "hint_text": "Aktif feature branch'lerini `feature list` ile gor.",
+          "hint_partial": "git flow feature list"
+        }
+      ]
+    },
+    {
+      "id": "mgf-exp-134",
       "type": "single",
       "scenario": "Release kontrolunde tum release branch'lerini listele.",
       "steps": [
@@ -1953,64 +1745,7 @@
       ]
     },
     {
-      "id": "jgf-exp-133",
-      "type": "single",
-      "scenario": "Release kontrolunde `token-expiry` hotfix branch'ini baslat.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "git flow hotfix start token-expiry",
-          "hint_text": "Production acili icin `hotfix start` kullan.",
-          "hint_partial": "git flow hotfix start ..."
-        }
-      ]
-    },
-    {
-      "id": "jgf-exp-134",
-      "type": "single",
-      "scenario": "Release kontrolunde `token-expiry` hotfix branch'ini remote'a publish et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "git flow hotfix publish token-expiry",
-          "hint_text": "Acil duzeltmeyi paylasmak icin hotfix publish et.",
-          "hint_partial": "git flow hotfix publish ..."
-        }
-      ]
-    },
-    {
-      "id": "jgf-exp-135",
-      "type": "multi-step",
-      "scenario": "Release kontrolunde `token-expiry` hotfix branch'ini finish et, sonra main'i, develop'u ve tag'leri remote'a gonder.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "git flow hotfix finish token-expiry",
-          "hint_text": "Ilk adimda hotfix branch'ini finish et.",
-          "hint_partial": "git flow hotfix finish ..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "git push origin main",
-          "hint_text": "Finish sonrasi guncellenen main branch'ini remote'a gonder.",
-          "hint_partial": "git push origin ..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "git push origin develop",
-          "hint_text": "Finish sonrasi guncellenen develop branch'ini remote'a gonder.",
-          "hint_partial": "git push origin ..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "git push origin --tags",
-          "hint_text": "Hotfix tag'lerini de remote'a gonder.",
-          "hint_partial": "git push origin ..."
-        }
-      ]
-    },
-    {
-      "id": "jgf-exp-136",
+      "id": "mgf-exp-135",
       "type": "single",
       "scenario": "Release kontrolunde tum hotfix branch'lerini listele.",
       "steps": [
@@ -2023,98 +1758,98 @@
       ]
     },
     {
-      "id": "jgf-exp-137",
+      "id": "mgf-exp-136",
       "type": "single",
       "scenario": "Release kontrolunde tum remote bilgilerini guncelle ve stale branch'leri temizle.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "git fetch --all --prune",
-          "hint_text": "Remote referanslarini tazelemek icin `fetch --all --prune` kullan.",
+          "hint_text": "Remote referanslarini temizlemek icin `fetch --all --prune` kullan.",
           "hint_partial": "git fetch --all ..."
         }
       ]
     },
     {
-      "id": "jgf-exp-138",
+      "id": "mgf-exp-137",
+      "type": "single",
+      "scenario": "Release kontrolunde `develop` branch'ini remote'dan guncelle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git pull origin develop",
+          "hint_text": "Develop branch'ini remote ile esitlemek icin pull yap.",
+          "hint_partial": "git pull origin ..."
+        }
+      ]
+    },
+    {
+      "id": "mgf-exp-138",
+      "type": "single",
+      "scenario": "Release kontrolunde `develop` branch'ini remote'a gonder.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git push origin develop",
+          "hint_text": "Develop branch'ini origin'e gonder.",
+          "hint_partial": "git push origin ..."
+        }
+      ]
+    },
+    {
+      "id": "mgf-exp-139",
       "type": "single",
       "scenario": "Release kontrolunde tum branch gecmisini graph formatta goster.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "git log --oneline --graph --decorate --all",
-          "hint_text": "Flow akisini graph gorunumuyle kontrol et.",
+          "hint_text": "Flow akisini graph gorunumuyle incele.",
           "hint_partial": "git log ..."
         }
       ]
     },
     {
-      "id": "jgf-exp-139",
+      "id": "mgf-exp-140",
       "type": "single",
-      "scenario": "Release kontrolunde local ve remote branch'leri listele.",
+      "scenario": "Release kontrolunde tum tag'leri remote'a gonder.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "git branch -a",
-          "hint_text": "Tum branch kapsamini `git branch -a` ile gor.",
-          "hint_partial": "git branch -a"
+          "answer": "git push origin --tags",
+          "hint_text": "Release tag'lerini toplu gondermek icin tag push kullan.",
+          "hint_partial": "git push origin ..."
         }
       ]
     },
     {
-      "id": "jgf-exp-140",
-      "type": "single",
-      "scenario": "Release kontrolunde `main` ile `develop` arasindaki farki goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "git diff main...develop",
-          "hint_text": "Release oncesi iki ana branch arasindaki farki incele.",
-          "hint_partial": "git diff main...develop"
-        }
-      ]
-    },
-    {
-      "id": "jgf-exp-141",
+      "id": "mgf-exp-141",
       "type": "single",
       "scenario": "Operasyon devrinde git flow yapisini varsayilan ayarlarla baslat.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "git flow init -d",
-          "hint_text": "Flow yapisini varsayilan branch isimleriyle kurmak icin `git flow init -d` kullan.",
+          "hint_text": "Flow yapisini hizli kurmak icin varsayilan init secenegini kullan.",
           "hint_partial": "git flow init ..."
         }
       ]
     },
     {
-      "id": "jgf-exp-142",
-      "type": "single",
-      "scenario": "Operasyon devrinde aktif branch adini goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "git branch --show-current",
-          "hint_text": "Bulundugun branch'i hizli gormek icin bu komutu kullan.",
-          "hint_partial": "git branch --show-current"
-        }
-      ]
-    },
-    {
-      "id": "jgf-exp-143",
+      "id": "mgf-exp-142",
       "type": "single",
       "scenario": "Operasyon devrinde `queue-retry` feature branch'ini baslat.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "git flow feature start queue-retry",
-          "hint_text": "Yeni bir feature branch'i acmak icin `feature start` kullan.",
+          "hint_text": "Yeni bir feature icin `feature start` kullan.",
           "hint_partial": "git flow feature start ..."
         }
       ]
     },
     {
-      "id": "jgf-exp-144",
+      "id": "mgf-exp-143",
       "type": "single",
       "scenario": "Operasyon devrinde `queue-retry` feature branch'ini remote'a publish et.",
       "steps": [
@@ -2127,7 +1862,7 @@
       ]
     },
     {
-      "id": "jgf-exp-145",
+      "id": "mgf-exp-144",
       "type": "single",
       "scenario": "Operasyon devrinde `queue-retry` feature branch'ini finish et.",
       "steps": [
@@ -2140,7 +1875,7 @@
       ]
     },
     {
-      "id": "jgf-exp-146",
+      "id": "mgf-exp-145",
       "type": "single",
       "scenario": "Operasyon devrinde `queue-retry` feature branch'ini git flow ile checkout et.",
       "steps": [
@@ -2153,7 +1888,7 @@
       ]
     },
     {
-      "id": "jgf-exp-147",
+      "id": "mgf-exp-146",
       "type": "single",
       "scenario": "Operasyon devrinde origin'deki `queue-retry` feature branch'ini takip etmeye basla.",
       "steps": [
@@ -2166,20 +1901,7 @@
       ]
     },
     {
-      "id": "jgf-exp-148",
-      "type": "single",
-      "scenario": "Operasyon devrinde tum feature branch'lerini listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "git flow feature list",
-          "hint_text": "Aktif feature branch'lerini `feature list` ile gor.",
-          "hint_partial": "git flow feature list"
-        }
-      ]
-    },
-    {
-      "id": "jgf-exp-149",
+      "id": "mgf-exp-147",
       "type": "single",
       "scenario": "Operasyon devrinde `2.0.0` release branch'ini baslat.",
       "steps": [
@@ -2192,51 +1914,85 @@
       ]
     },
     {
-      "id": "jgf-exp-150",
+      "id": "mgf-exp-148",
       "type": "single",
       "scenario": "Operasyon devrinde `2.0.0` release branch'ini remote'a publish et.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "git flow release publish 2.0.0",
-          "hint_text": "Release branch'ini ekip ile paylasmak icin publish et.",
+          "hint_text": "Takimla ortak release calismasi icin publish et.",
           "hint_partial": "git flow release publish ..."
         }
       ]
     },
     {
-      "id": "jgf-exp-151",
-      "type": "multi-step",
-      "scenario": "Operasyon devrinde `2.0.0` release branch'ini finish et, sonra main'i, develop'u ve tag'leri remote'a gonder.",
+      "id": "mgf-exp-149",
+      "type": "single",
+      "scenario": "Operasyon devrinde `2.0.0` release branch'ini finish et.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "git flow release finish 2.0.0",
-          "hint_text": "Ilk adimda release branch'ini finish et.",
+          "hint_text": "Release'i main ve develop akisina kapatmak icin finish kullan.",
           "hint_partial": "git flow release finish ..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "git push origin main",
-          "hint_text": "Finish sonrasi guncellenen main branch'ini remote'a gonder.",
-          "hint_partial": "git push origin ..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "git push origin develop",
-          "hint_text": "Finish sonrasi guncellenen develop branch'ini remote'a gonder.",
-          "hint_partial": "git push origin ..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "git push origin --tags",
-          "hint_text": "Release tag'lerini de remote'a gonder.",
-          "hint_partial": "git push origin ..."
         }
       ]
     },
     {
-      "id": "jgf-exp-152",
+      "id": "mgf-exp-150",
+      "type": "single",
+      "scenario": "Operasyon devrinde `worker-crash` hotfix branch'ini baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git flow hotfix start worker-crash",
+          "hint_text": "Production acili icin hotfix branch'i ac.",
+          "hint_partial": "git flow hotfix start ..."
+        }
+      ]
+    },
+    {
+      "id": "mgf-exp-151",
+      "type": "single",
+      "scenario": "Operasyon devrinde `worker-crash` hotfix branch'ini remote'a publish et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git flow hotfix publish worker-crash",
+          "hint_text": "Hotfix calismasini paylasmak icin publish et.",
+          "hint_partial": "git flow hotfix publish ..."
+        }
+      ]
+    },
+    {
+      "id": "mgf-exp-152",
+      "type": "single",
+      "scenario": "Operasyon devrinde `worker-crash` hotfix branch'ini finish et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git flow hotfix finish worker-crash",
+          "hint_text": "Hotfix'i main ve develop akisina finish ile kapat.",
+          "hint_partial": "git flow hotfix finish ..."
+        }
+      ]
+    },
+    {
+      "id": "mgf-exp-153",
+      "type": "single",
+      "scenario": "Operasyon devrinde tum feature branch'lerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git flow feature list",
+          "hint_text": "Aktif feature branch'lerini `feature list` ile gor.",
+          "hint_partial": "git flow feature list"
+        }
+      ]
+    },
+    {
+      "id": "mgf-exp-154",
       "type": "single",
       "scenario": "Operasyon devrinde tum release branch'lerini listele.",
       "steps": [
@@ -2249,64 +2005,7 @@
       ]
     },
     {
-      "id": "jgf-exp-153",
-      "type": "single",
-      "scenario": "Operasyon devrinde `worker-crash` hotfix branch'ini baslat.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "git flow hotfix start worker-crash",
-          "hint_text": "Production acili icin `hotfix start` kullan.",
-          "hint_partial": "git flow hotfix start ..."
-        }
-      ]
-    },
-    {
-      "id": "jgf-exp-154",
-      "type": "single",
-      "scenario": "Operasyon devrinde `worker-crash` hotfix branch'ini remote'a publish et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "git flow hotfix publish worker-crash",
-          "hint_text": "Acil duzeltmeyi paylasmak icin hotfix publish et.",
-          "hint_partial": "git flow hotfix publish ..."
-        }
-      ]
-    },
-    {
-      "id": "jgf-exp-155",
-      "type": "multi-step",
-      "scenario": "Operasyon devrinde `worker-crash` hotfix branch'ini finish et, sonra main'i, develop'u ve tag'leri remote'a gonder.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "git flow hotfix finish worker-crash",
-          "hint_text": "Ilk adimda hotfix branch'ini finish et.",
-          "hint_partial": "git flow hotfix finish ..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "git push origin main",
-          "hint_text": "Finish sonrasi guncellenen main branch'ini remote'a gonder.",
-          "hint_partial": "git push origin ..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "git push origin develop",
-          "hint_text": "Finish sonrasi guncellenen develop branch'ini remote'a gonder.",
-          "hint_partial": "git push origin ..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "git push origin --tags",
-          "hint_text": "Hotfix tag'lerini de remote'a gonder.",
-          "hint_partial": "git push origin ..."
-        }
-      ]
-    },
-    {
-      "id": "jgf-exp-156",
+      "id": "mgf-exp-155",
       "type": "single",
       "scenario": "Operasyon devrinde tum hotfix branch'lerini listele.",
       "steps": [
@@ -2319,98 +2018,98 @@
       ]
     },
     {
-      "id": "jgf-exp-157",
+      "id": "mgf-exp-156",
       "type": "single",
       "scenario": "Operasyon devrinde tum remote bilgilerini guncelle ve stale branch'leri temizle.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "git fetch --all --prune",
-          "hint_text": "Remote referanslarini tazelemek icin `fetch --all --prune` kullan.",
+          "hint_text": "Remote referanslarini temizlemek icin `fetch --all --prune` kullan.",
           "hint_partial": "git fetch --all ..."
         }
       ]
     },
     {
-      "id": "jgf-exp-158",
+      "id": "mgf-exp-157",
+      "type": "single",
+      "scenario": "Operasyon devrinde `develop` branch'ini remote'dan guncelle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git pull origin develop",
+          "hint_text": "Develop branch'ini remote ile esitlemek icin pull yap.",
+          "hint_partial": "git pull origin ..."
+        }
+      ]
+    },
+    {
+      "id": "mgf-exp-158",
+      "type": "single",
+      "scenario": "Operasyon devrinde `develop` branch'ini remote'a gonder.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git push origin develop",
+          "hint_text": "Develop branch'ini origin'e gonder.",
+          "hint_partial": "git push origin ..."
+        }
+      ]
+    },
+    {
+      "id": "mgf-exp-159",
       "type": "single",
       "scenario": "Operasyon devrinde tum branch gecmisini graph formatta goster.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "git log --oneline --graph --decorate --all",
-          "hint_text": "Flow akisini graph gorunumuyle kontrol et.",
+          "hint_text": "Flow akisini graph gorunumuyle incele.",
           "hint_partial": "git log ..."
         }
       ]
     },
     {
-      "id": "jgf-exp-159",
+      "id": "mgf-exp-160",
       "type": "single",
-      "scenario": "Operasyon devrinde local ve remote branch'leri listele.",
+      "scenario": "Operasyon devrinde tum tag'leri remote'a gonder.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "git branch -a",
-          "hint_text": "Tum branch kapsamini `git branch -a` ile gor.",
-          "hint_partial": "git branch -a"
+          "answer": "git push origin --tags",
+          "hint_text": "Release tag'lerini toplu gondermek icin tag push kullan.",
+          "hint_partial": "git push origin ..."
         }
       ]
     },
     {
-      "id": "jgf-exp-160",
-      "type": "single",
-      "scenario": "Operasyon devrinde `main` ile `develop` arasindaki farki goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "git diff main...develop",
-          "hint_text": "Release oncesi iki ana branch arasindaki farki incele.",
-          "hint_partial": "git diff main...develop"
-        }
-      ]
-    },
-    {
-      "id": "jgf-exp-161",
+      "id": "mgf-exp-161",
       "type": "single",
       "scenario": "On-call gorevinde git flow yapisini varsayilan ayarlarla baslat.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "git flow init -d",
-          "hint_text": "Flow yapisini varsayilan branch isimleriyle kurmak icin `git flow init -d` kullan.",
+          "hint_text": "Flow yapisini hizli kurmak icin varsayilan init secenegini kullan.",
           "hint_partial": "git flow init ..."
         }
       ]
     },
     {
-      "id": "jgf-exp-162",
-      "type": "single",
-      "scenario": "On-call gorevinde aktif branch adini goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "git branch --show-current",
-          "hint_text": "Bulundugun branch'i hizli gormek icin bu komutu kullan.",
-          "hint_partial": "git branch --show-current"
-        }
-      ]
-    },
-    {
-      "id": "jgf-exp-163",
+      "id": "mgf-exp-162",
       "type": "single",
       "scenario": "On-call gorevinde `report-fix` feature branch'ini baslat.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "git flow feature start report-fix",
-          "hint_text": "Yeni bir feature branch'i acmak icin `feature start` kullan.",
+          "hint_text": "Yeni bir feature icin `feature start` kullan.",
           "hint_partial": "git flow feature start ..."
         }
       ]
     },
     {
-      "id": "jgf-exp-164",
+      "id": "mgf-exp-163",
       "type": "single",
       "scenario": "On-call gorevinde `report-fix` feature branch'ini remote'a publish et.",
       "steps": [
@@ -2423,7 +2122,7 @@
       ]
     },
     {
-      "id": "jgf-exp-165",
+      "id": "mgf-exp-164",
       "type": "single",
       "scenario": "On-call gorevinde `report-fix` feature branch'ini finish et.",
       "steps": [
@@ -2436,7 +2135,7 @@
       ]
     },
     {
-      "id": "jgf-exp-166",
+      "id": "mgf-exp-165",
       "type": "single",
       "scenario": "On-call gorevinde `report-fix` feature branch'ini git flow ile checkout et.",
       "steps": [
@@ -2449,7 +2148,7 @@
       ]
     },
     {
-      "id": "jgf-exp-167",
+      "id": "mgf-exp-166",
       "type": "single",
       "scenario": "On-call gorevinde origin'deki `report-fix` feature branch'ini takip etmeye basla.",
       "steps": [
@@ -2462,20 +2161,7 @@
       ]
     },
     {
-      "id": "jgf-exp-168",
-      "type": "single",
-      "scenario": "On-call gorevinde tum feature branch'lerini listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "git flow feature list",
-          "hint_text": "Aktif feature branch'lerini `feature list` ile gor.",
-          "hint_partial": "git flow feature list"
-        }
-      ]
-    },
-    {
-      "id": "jgf-exp-169",
+      "id": "mgf-exp-167",
       "type": "single",
       "scenario": "On-call gorevinde `2.0.1` release branch'ini baslat.",
       "steps": [
@@ -2488,51 +2174,85 @@
       ]
     },
     {
-      "id": "jgf-exp-170",
+      "id": "mgf-exp-168",
       "type": "single",
       "scenario": "On-call gorevinde `2.0.1` release branch'ini remote'a publish et.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "git flow release publish 2.0.1",
-          "hint_text": "Release branch'ini ekip ile paylasmak icin publish et.",
+          "hint_text": "Takimla ortak release calismasi icin publish et.",
           "hint_partial": "git flow release publish ..."
         }
       ]
     },
     {
-      "id": "jgf-exp-171",
-      "type": "multi-step",
-      "scenario": "On-call gorevinde `2.0.1` release branch'ini finish et, sonra main'i, develop'u ve tag'leri remote'a gonder.",
+      "id": "mgf-exp-169",
+      "type": "single",
+      "scenario": "On-call gorevinde `2.0.1` release branch'ini finish et.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "git flow release finish 2.0.1",
-          "hint_text": "Ilk adimda release branch'ini finish et.",
+          "hint_text": "Release'i main ve develop akisina kapatmak icin finish kullan.",
           "hint_partial": "git flow release finish ..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "git push origin main",
-          "hint_text": "Finish sonrasi guncellenen main branch'ini remote'a gonder.",
-          "hint_partial": "git push origin ..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "git push origin develop",
-          "hint_text": "Finish sonrasi guncellenen develop branch'ini remote'a gonder.",
-          "hint_partial": "git push origin ..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "git push origin --tags",
-          "hint_text": "Release tag'lerini de remote'a gonder.",
-          "hint_partial": "git push origin ..."
         }
       ]
     },
     {
-      "id": "jgf-exp-172",
+      "id": "mgf-exp-170",
+      "type": "single",
+      "scenario": "On-call gorevinde `billing-rounding` hotfix branch'ini baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git flow hotfix start billing-rounding",
+          "hint_text": "Production acili icin hotfix branch'i ac.",
+          "hint_partial": "git flow hotfix start ..."
+        }
+      ]
+    },
+    {
+      "id": "mgf-exp-171",
+      "type": "single",
+      "scenario": "On-call gorevinde `billing-rounding` hotfix branch'ini remote'a publish et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git flow hotfix publish billing-rounding",
+          "hint_text": "Hotfix calismasini paylasmak icin publish et.",
+          "hint_partial": "git flow hotfix publish ..."
+        }
+      ]
+    },
+    {
+      "id": "mgf-exp-172",
+      "type": "single",
+      "scenario": "On-call gorevinde `billing-rounding` hotfix branch'ini finish et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git flow hotfix finish billing-rounding",
+          "hint_text": "Hotfix'i main ve develop akisina finish ile kapat.",
+          "hint_partial": "git flow hotfix finish ..."
+        }
+      ]
+    },
+    {
+      "id": "mgf-exp-173",
+      "type": "single",
+      "scenario": "On-call gorevinde tum feature branch'lerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git flow feature list",
+          "hint_text": "Aktif feature branch'lerini `feature list` ile gor.",
+          "hint_partial": "git flow feature list"
+        }
+      ]
+    },
+    {
+      "id": "mgf-exp-174",
       "type": "single",
       "scenario": "On-call gorevinde tum release branch'lerini listele.",
       "steps": [
@@ -2545,64 +2265,7 @@
       ]
     },
     {
-      "id": "jgf-exp-173",
-      "type": "single",
-      "scenario": "On-call gorevinde `billing-rounding` hotfix branch'ini baslat.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "git flow hotfix start billing-rounding",
-          "hint_text": "Production acili icin `hotfix start` kullan.",
-          "hint_partial": "git flow hotfix start ..."
-        }
-      ]
-    },
-    {
-      "id": "jgf-exp-174",
-      "type": "single",
-      "scenario": "On-call gorevinde `billing-rounding` hotfix branch'ini remote'a publish et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "git flow hotfix publish billing-rounding",
-          "hint_text": "Acil duzeltmeyi paylasmak icin hotfix publish et.",
-          "hint_partial": "git flow hotfix publish ..."
-        }
-      ]
-    },
-    {
-      "id": "jgf-exp-175",
-      "type": "multi-step",
-      "scenario": "On-call gorevinde `billing-rounding` hotfix branch'ini finish et, sonra main'i, develop'u ve tag'leri remote'a gonder.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "git flow hotfix finish billing-rounding",
-          "hint_text": "Ilk adimda hotfix branch'ini finish et.",
-          "hint_partial": "git flow hotfix finish ..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "git push origin main",
-          "hint_text": "Finish sonrasi guncellenen main branch'ini remote'a gonder.",
-          "hint_partial": "git push origin ..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "git push origin develop",
-          "hint_text": "Finish sonrasi guncellenen develop branch'ini remote'a gonder.",
-          "hint_partial": "git push origin ..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "git push origin --tags",
-          "hint_text": "Hotfix tag'lerini de remote'a gonder.",
-          "hint_partial": "git push origin ..."
-        }
-      ]
-    },
-    {
-      "id": "jgf-exp-176",
+      "id": "mgf-exp-175",
       "type": "single",
       "scenario": "On-call gorevinde tum hotfix branch'lerini listele.",
       "steps": [
@@ -2615,98 +2278,98 @@
       ]
     },
     {
-      "id": "jgf-exp-177",
+      "id": "mgf-exp-176",
       "type": "single",
       "scenario": "On-call gorevinde tum remote bilgilerini guncelle ve stale branch'leri temizle.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "git fetch --all --prune",
-          "hint_text": "Remote referanslarini tazelemek icin `fetch --all --prune` kullan.",
+          "hint_text": "Remote referanslarini temizlemek icin `fetch --all --prune` kullan.",
           "hint_partial": "git fetch --all ..."
         }
       ]
     },
     {
-      "id": "jgf-exp-178",
+      "id": "mgf-exp-177",
+      "type": "single",
+      "scenario": "On-call gorevinde `develop` branch'ini remote'dan guncelle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git pull origin develop",
+          "hint_text": "Develop branch'ini remote ile esitlemek icin pull yap.",
+          "hint_partial": "git pull origin ..."
+        }
+      ]
+    },
+    {
+      "id": "mgf-exp-178",
+      "type": "single",
+      "scenario": "On-call gorevinde `develop` branch'ini remote'a gonder.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git push origin develop",
+          "hint_text": "Develop branch'ini origin'e gonder.",
+          "hint_partial": "git push origin ..."
+        }
+      ]
+    },
+    {
+      "id": "mgf-exp-179",
       "type": "single",
       "scenario": "On-call gorevinde tum branch gecmisini graph formatta goster.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "git log --oneline --graph --decorate --all",
-          "hint_text": "Flow akisini graph gorunumuyle kontrol et.",
+          "hint_text": "Flow akisini graph gorunumuyle incele.",
           "hint_partial": "git log ..."
         }
       ]
     },
     {
-      "id": "jgf-exp-179",
+      "id": "mgf-exp-180",
       "type": "single",
-      "scenario": "On-call gorevinde local ve remote branch'leri listele.",
+      "scenario": "On-call gorevinde tum tag'leri remote'a gonder.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "git branch -a",
-          "hint_text": "Tum branch kapsamini `git branch -a` ile gor.",
-          "hint_partial": "git branch -a"
+          "answer": "git push origin --tags",
+          "hint_text": "Release tag'lerini toplu gondermek icin tag push kullan.",
+          "hint_partial": "git push origin ..."
         }
       ]
     },
     {
-      "id": "jgf-exp-180",
-      "type": "single",
-      "scenario": "On-call gorevinde `main` ile `develop` arasindaki farki goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "git diff main...develop",
-          "hint_text": "Release oncesi iki ana branch arasindaki farki incele.",
-          "hint_partial": "git diff main...develop"
-        }
-      ]
-    },
-    {
-      "id": "jgf-exp-181",
+      "id": "mgf-exp-181",
       "type": "single",
       "scenario": "Kesinti sonrasinda git flow yapisini varsayilan ayarlarla baslat.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "git flow init -d",
-          "hint_text": "Flow yapisini varsayilan branch isimleriyle kurmak icin `git flow init -d` kullan.",
+          "hint_text": "Flow yapisini hizli kurmak icin varsayilan init secenegini kullan.",
           "hint_partial": "git flow init ..."
         }
       ]
     },
     {
-      "id": "jgf-exp-182",
-      "type": "single",
-      "scenario": "Kesinti sonrasinda aktif branch adini goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "git branch --show-current",
-          "hint_text": "Bulundugun branch'i hizli gormek icin bu komutu kullan.",
-          "hint_partial": "git branch --show-current"
-        }
-      ]
-    },
-    {
-      "id": "jgf-exp-183",
+      "id": "mgf-exp-182",
       "type": "single",
       "scenario": "Kesinti sonrasinda `release-notes` feature branch'ini baslat.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "git flow feature start release-notes",
-          "hint_text": "Yeni bir feature branch'i acmak icin `feature start` kullan.",
+          "hint_text": "Yeni bir feature icin `feature start` kullan.",
           "hint_partial": "git flow feature start ..."
         }
       ]
     },
     {
-      "id": "jgf-exp-184",
+      "id": "mgf-exp-183",
       "type": "single",
       "scenario": "Kesinti sonrasinda `release-notes` feature branch'ini remote'a publish et.",
       "steps": [
@@ -2719,7 +2382,7 @@
       ]
     },
     {
-      "id": "jgf-exp-185",
+      "id": "mgf-exp-184",
       "type": "single",
       "scenario": "Kesinti sonrasinda `release-notes` feature branch'ini finish et.",
       "steps": [
@@ -2732,7 +2395,7 @@
       ]
     },
     {
-      "id": "jgf-exp-186",
+      "id": "mgf-exp-185",
       "type": "single",
       "scenario": "Kesinti sonrasinda `release-notes` feature branch'ini git flow ile checkout et.",
       "steps": [
@@ -2745,7 +2408,7 @@
       ]
     },
     {
-      "id": "jgf-exp-187",
+      "id": "mgf-exp-186",
       "type": "single",
       "scenario": "Kesinti sonrasinda origin'deki `release-notes` feature branch'ini takip etmeye basla.",
       "steps": [
@@ -2758,20 +2421,7 @@
       ]
     },
     {
-      "id": "jgf-exp-188",
-      "type": "single",
-      "scenario": "Kesinti sonrasinda tum feature branch'lerini listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "git flow feature list",
-          "hint_text": "Aktif feature branch'lerini `feature list` ile gor.",
-          "hint_partial": "git flow feature list"
-        }
-      ]
-    },
-    {
-      "id": "jgf-exp-189",
+      "id": "mgf-exp-187",
       "type": "single",
       "scenario": "Kesinti sonrasinda `2.1.0` release branch'ini baslat.",
       "steps": [
@@ -2784,51 +2434,85 @@
       ]
     },
     {
-      "id": "jgf-exp-190",
+      "id": "mgf-exp-188",
       "type": "single",
       "scenario": "Kesinti sonrasinda `2.1.0` release branch'ini remote'a publish et.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "git flow release publish 2.1.0",
-          "hint_text": "Release branch'ini ekip ile paylasmak icin publish et.",
+          "hint_text": "Takimla ortak release calismasi icin publish et.",
           "hint_partial": "git flow release publish ..."
         }
       ]
     },
     {
-      "id": "jgf-exp-191",
-      "type": "multi-step",
-      "scenario": "Kesinti sonrasinda `2.1.0` release branch'ini finish et, sonra main'i, develop'u ve tag'leri remote'a gonder.",
+      "id": "mgf-exp-189",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `2.1.0` release branch'ini finish et.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "git flow release finish 2.1.0",
-          "hint_text": "Ilk adimda release branch'ini finish et.",
+          "hint_text": "Release'i main ve develop akisina kapatmak icin finish kullan.",
           "hint_partial": "git flow release finish ..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "git push origin main",
-          "hint_text": "Finish sonrasi guncellenen main branch'ini remote'a gonder.",
-          "hint_partial": "git push origin ..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "git push origin develop",
-          "hint_text": "Finish sonrasi guncellenen develop branch'ini remote'a gonder.",
-          "hint_partial": "git push origin ..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "git push origin --tags",
-          "hint_text": "Release tag'lerini de remote'a gonder.",
-          "hint_partial": "git push origin ..."
         }
       ]
     },
     {
-      "id": "jgf-exp-192",
+      "id": "mgf-exp-190",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `search-regression` hotfix branch'ini baslat.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git flow hotfix start search-regression",
+          "hint_text": "Production acili icin hotfix branch'i ac.",
+          "hint_partial": "git flow hotfix start ..."
+        }
+      ]
+    },
+    {
+      "id": "mgf-exp-191",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `search-regression` hotfix branch'ini remote'a publish et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git flow hotfix publish search-regression",
+          "hint_text": "Hotfix calismasini paylasmak icin publish et.",
+          "hint_partial": "git flow hotfix publish ..."
+        }
+      ]
+    },
+    {
+      "id": "mgf-exp-192",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `search-regression` hotfix branch'ini finish et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git flow hotfix finish search-regression",
+          "hint_text": "Hotfix'i main ve develop akisina finish ile kapat.",
+          "hint_partial": "git flow hotfix finish ..."
+        }
+      ]
+    },
+    {
+      "id": "mgf-exp-193",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda tum feature branch'lerini listele.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git flow feature list",
+          "hint_text": "Aktif feature branch'lerini `feature list` ile gor.",
+          "hint_partial": "git flow feature list"
+        }
+      ]
+    },
+    {
+      "id": "mgf-exp-194",
       "type": "single",
       "scenario": "Kesinti sonrasinda tum release branch'lerini listele.",
       "steps": [
@@ -2841,64 +2525,7 @@
       ]
     },
     {
-      "id": "jgf-exp-193",
-      "type": "single",
-      "scenario": "Kesinti sonrasinda `search-regression` hotfix branch'ini baslat.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "git flow hotfix start search-regression",
-          "hint_text": "Production acili icin `hotfix start` kullan.",
-          "hint_partial": "git flow hotfix start ..."
-        }
-      ]
-    },
-    {
-      "id": "jgf-exp-194",
-      "type": "single",
-      "scenario": "Kesinti sonrasinda `search-regression` hotfix branch'ini remote'a publish et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "git flow hotfix publish search-regression",
-          "hint_text": "Acil duzeltmeyi paylasmak icin hotfix publish et.",
-          "hint_partial": "git flow hotfix publish ..."
-        }
-      ]
-    },
-    {
-      "id": "jgf-exp-195",
-      "type": "multi-step",
-      "scenario": "Kesinti sonrasinda `search-regression` hotfix branch'ini finish et, sonra main'i, develop'u ve tag'leri remote'a gonder.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "git flow hotfix finish search-regression",
-          "hint_text": "Ilk adimda hotfix branch'ini finish et.",
-          "hint_partial": "git flow hotfix finish ..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "git push origin main",
-          "hint_text": "Finish sonrasi guncellenen main branch'ini remote'a gonder.",
-          "hint_partial": "git push origin ..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "git push origin develop",
-          "hint_text": "Finish sonrasi guncellenen develop branch'ini remote'a gonder.",
-          "hint_partial": "git push origin ..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "git push origin --tags",
-          "hint_text": "Hotfix tag'lerini de remote'a gonder.",
-          "hint_partial": "git push origin ..."
-        }
-      ]
-    },
-    {
-      "id": "jgf-exp-196",
+      "id": "mgf-exp-195",
       "type": "single",
       "scenario": "Kesinti sonrasinda tum hotfix branch'lerini listele.",
       "steps": [
@@ -2911,54 +2538,67 @@
       ]
     },
     {
-      "id": "jgf-exp-197",
+      "id": "mgf-exp-196",
       "type": "single",
       "scenario": "Kesinti sonrasinda tum remote bilgilerini guncelle ve stale branch'leri temizle.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "git fetch --all --prune",
-          "hint_text": "Remote referanslarini tazelemek icin `fetch --all --prune` kullan.",
+          "hint_text": "Remote referanslarini temizlemek icin `fetch --all --prune` kullan.",
           "hint_partial": "git fetch --all ..."
         }
       ]
     },
     {
-      "id": "jgf-exp-198",
+      "id": "mgf-exp-197",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `develop` branch'ini remote'dan guncelle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git pull origin develop",
+          "hint_text": "Develop branch'ini remote ile esitlemek icin pull yap.",
+          "hint_partial": "git pull origin ..."
+        }
+      ]
+    },
+    {
+      "id": "mgf-exp-198",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `develop` branch'ini remote'a gonder.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "git push origin develop",
+          "hint_text": "Develop branch'ini origin'e gonder.",
+          "hint_partial": "git push origin ..."
+        }
+      ]
+    },
+    {
+      "id": "mgf-exp-199",
       "type": "single",
       "scenario": "Kesinti sonrasinda tum branch gecmisini graph formatta goster.",
       "steps": [
         {
           "prompt": "$ ",
           "answer": "git log --oneline --graph --decorate --all",
-          "hint_text": "Flow akisini graph gorunumuyle kontrol et.",
+          "hint_text": "Flow akisini graph gorunumuyle incele.",
           "hint_partial": "git log ..."
         }
       ]
     },
     {
-      "id": "jgf-exp-199",
+      "id": "mgf-exp-200",
       "type": "single",
-      "scenario": "Kesinti sonrasinda local ve remote branch'leri listele.",
+      "scenario": "Kesinti sonrasinda tum tag'leri remote'a gonder.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "git branch -a",
-          "hint_text": "Tum branch kapsamini `git branch -a` ile gor.",
-          "hint_partial": "git branch -a"
-        }
-      ]
-    },
-    {
-      "id": "jgf-exp-200",
-      "type": "single",
-      "scenario": "Kesinti sonrasinda `main` ile `develop` arasindaki farki goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "git diff main...develop",
-          "hint_text": "Release oncesi iki ana branch arasindaki farki incele.",
-          "hint_partial": "git diff main...develop"
+          "answer": "git push origin --tags",
+          "hint_text": "Release tag'lerini toplu gondermek icin tag push kullan.",
+          "hint_partial": "git push origin ..."
         }
       ]
     }

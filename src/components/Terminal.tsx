@@ -21,6 +21,8 @@ interface TerminalProps {
   onLevelChange: (level: QuizLevel) => void;
   onSubmit: () => void;
   onCycleTopic: () => void;
+  onHistoryUp: () => void;
+  onHistoryDown: () => void;
   hintMessage: string | null;
   isAdvancing: boolean;
   isLoading: boolean;
@@ -28,6 +30,8 @@ interface TerminalProps {
   finished: boolean;
   isEmpty: boolean;
   score: number;
+  skipped: number;
+  wrongAttempts: number;
   onRestart: () => void;
   showAnswer: boolean;
 }
@@ -45,6 +49,8 @@ export function Terminal({
   onLevelChange,
   onSubmit,
   onCycleTopic,
+  onHistoryUp,
+  onHistoryDown,
   hintMessage,
   isAdvancing,
   isLoading,
@@ -52,6 +58,8 @@ export function Terminal({
   finished,
   isEmpty,
   score,
+  skipped,
+  wrongAttempts,
   onRestart,
   showAnswer,
 }: TerminalProps) {
@@ -113,10 +121,10 @@ export function Terminal({
         {isLoading ? (
           <div className="space-y-2">
             <p className="text-[0.64rem] uppercase tracking-[0.22em] text-zinc-500">
-              loading dataset
+              loading topic
             </p>
             <p className="leading-7 text-zinc-400">
-              Quiz files are being loaded from{" "}
+              Quiz files for the selected level and topic are being loaded from{" "}
               <span className="text-zinc-300">`src/data/`</span>.
             </p>
           </div>
@@ -139,7 +147,18 @@ export function Terminal({
                   {score}/{totalQuestions}
                 </span>
               </p>
-              <p className="mt-1.5 text-[0.8rem] leading-6 text-zinc-400">
+              <div className="mt-3 flex flex-wrap gap-2 text-[0.68rem]">
+                <span className="rounded-md border border-emerald-400/20 bg-emerald-400/8 px-2 py-1 text-emerald-300">
+                  correct {score}
+                </span>
+                <span className="rounded-md border border-amber-400/20 bg-amber-400/8 px-2 py-1 text-amber-300">
+                  skipped {skipped}
+                </span>
+                <span className="rounded-md border border-rose-400/20 bg-rose-400/8 px-2 py-1 text-rose-300">
+                  wrong attempts {wrongAttempts}
+                </span>
+              </div>
+              <p className="mt-2.5 text-[0.8rem] leading-6 text-zinc-400">
                 Shuffle a fresh run and try to beat your clean streak.
               </p>
             </div>
@@ -240,6 +259,12 @@ export function Terminal({
                   if (e.key === "Tab") {
                     e.preventDefault();
                     onCycleTopic();
+                  } else if (e.key === "ArrowUp") {
+                    e.preventDefault();
+                    onHistoryUp();
+                  } else if (e.key === "ArrowDown") {
+                    e.preventDefault();
+                    onHistoryDown();
                   }
                 }}
                 spellCheck={false}

@@ -3,2602 +3,2602 @@
   "topic": "github-cli",
   "questions": [
     {
-      "id": "sgh-006",
+      "id": "sgh-exp-001",
       "type": "single",
-      "scenario": "`owner/repo` repository metadata'sini API ile cek.",
+      "scenario": "Gece vardiyasinda `acme/platform-api` repository metadata'sini API ile cek.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh api repos/owner/repo",
-          "hint_text": "Ham API cagrisi icin `gh api` kullan.",
-          "hint_partial": "gh api ..."
-        }
-      ]
-    },
-    {
-      "id": "sgh-007",
-      "type": "single",
-      "scenario": "`owner/repo` icin Actions run listesini API ile cek.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh api repos/owner/repo/actions/runs",
-          "hint_text": "Actions endpoint'ini `gh api` ile cagir.",
+          "answer": "gh api repos/acme/platform-api",
+          "hint_text": "Ham repository bilgisini almak icin `gh api repos/<owner>/<repo>` kullan.",
           "hint_partial": "gh api repos/..."
         }
       ]
     },
     {
-      "id": "sgh-008",
+      "id": "sgh-exp-002",
       "type": "single",
-      "scenario": "Pull request 15'i squash merge et.",
+      "scenario": "Gece vardiyasinda `acme/platform-api` reposunda PR 15 review comment'lerini API ile listele.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh pr merge 15 --squash",
-          "hint_text": "Merge stratejisi icin `--squash` kullan.",
+          "answer": "gh api repos/acme/platform-api/pulls/15/comments",
+          "hint_text": "PR review comment endpoint'ini `gh api` ile cagir.",
+          "hint_partial": "gh api repos/..."
+        }
+      ]
+    },
+    {
+      "id": "sgh-exp-003",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `acme/platform-api` reposunda run 1201 job detaylarini API ile cek.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh api repos/acme/platform-api/actions/runs/1201/jobs",
+          "hint_text": "Actions job verisi icin run jobs endpoint'ini kullan.",
+          "hint_partial": "gh api repos/..."
+        }
+      ]
+    },
+    {
+      "id": "sgh-exp-004",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `acme/platform-api` reposundaki son release bilgisini API ile al.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh api repos/acme/platform-api/releases/latest",
+          "hint_text": "Son release metadata'si icin latest endpoint'ini cagir.",
+          "hint_partial": "gh api repos/..."
+        }
+      ]
+    },
+    {
+      "id": "sgh-exp-005",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `acme/platform-api` reposunda `main` branch koruma ayarini API ile gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh api repos/acme/platform-api/branches/main/protection",
+          "hint_text": "Branch protection denetimi icin protection endpoint'ini kullan.",
+          "hint_partial": "gh api repos/..."
+        }
+      ]
+    },
+    {
+      "id": "sgh-exp-006",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `acme/platform-api` reposunda PR 15'i squash merge edip branch'i sil.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh pr merge 15 --squash --delete-branch --repo acme/platform-api",
+          "hint_text": "Merge stratejisi ve branch cleanup'i ayni komutta ver.",
           "hint_partial": "gh pr merge ..."
         }
       ]
     },
     {
-      "id": "sgh-009",
+      "id": "sgh-exp-007",
       "type": "single",
-      "scenario": "Pull request 15 diff'ini goster.",
+      "scenario": "Gece vardiyasinda `acme/platform-api` reposunda PR 15'i approve review ile onayla.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh pr diff 15",
-          "hint_text": "PR diff icin `gh pr diff` kullan.",
-          "hint_partial": "gh pr diff ..."
-        }
-      ]
-    },
-    {
-      "id": "sgh-010",
-      "type": "single",
-      "scenario": "Draft durumdaki pull request 15'i review'e hazir yap.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh pr ready 15",
-          "hint_text": "Draft'tan cikarmak icin `gh pr ready` kullan.",
-          "hint_partial": "gh pr ready ..."
-        }
-      ]
-    },
-    {
-      "id": "sgh-011",
-      "type": "single",
-      "scenario": "Pull request 15'i approve review ile onayla.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh pr review 15 --approve",
-          "hint_text": "Review onayi icin `gh pr review --approve` kullan.",
+          "answer": "gh pr review 15 --approve --body approved --repo acme/platform-api",
+          "hint_text": "Approve review gondermek icin `gh pr review --approve` kullan.",
           "hint_partial": "gh pr review ..."
         }
       ]
     },
     {
-      "id": "sgh-012",
+      "id": "sgh-exp-008",
       "type": "single",
-      "scenario": "Issue 42'ye `bug` label'ini ekle.",
+      "scenario": "Gece vardiyasinda `acme/platform-api` reposunda PR 15 icin change request review gonder.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh issue edit 42 --add-label bug",
-          "hint_text": "Label eklemek icin `gh issue edit --add-label` kullan.",
-          "hint_partial": "gh issue edit ..."
+          "answer": "gh pr review 15 --request-changes --body needs-fix --repo acme/platform-api",
+          "hint_text": "Degisiklik istemek icin `--request-changes` kullan.",
+          "hint_partial": "gh pr review ..."
         }
       ]
     },
     {
-      "id": "sgh-013",
+      "id": "sgh-exp-009",
       "type": "single",
-      "scenario": "Issue 42'ye `investigating` yorumunu ekle.",
+      "scenario": "Gece vardiyasinda `acme/platform-api` reposunda PR 15'e `investigating` notunu ekle.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh issue comment 42 --body 'investigating'",
-          "hint_text": "Issue yorumu icin `gh issue comment --body` kullan.",
-          "hint_partial": "gh issue comment ..."
+          "answer": "gh pr comment 15 --body investigating --repo acme/platform-api",
+          "hint_text": "Review disi ek yorum icin `gh pr comment` kullan.",
+          "hint_partial": "gh pr comment ..."
         }
       ]
     },
     {
-      "id": "sgh-014",
+      "id": "sgh-exp-010",
       "type": "single",
-      "scenario": "Run 123 tamamlanana kadar canli izle.",
+      "scenario": "Gece vardiyasinda `acme/platform-api` reposunda PR 15 checks sonucunu izle.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh run watch 123",
-          "hint_text": "Run takibi icin `gh run watch` kullan.",
-          "hint_partial": "gh run watch ..."
+          "answer": "gh pr checks 15 --watch --repo acme/platform-api",
+          "hint_text": "Checks tamamlanana kadar `--watch` ile bekle.",
+          "hint_partial": "gh pr checks ..."
         }
       ]
     },
     {
-      "id": "sgh-015",
+      "id": "sgh-exp-011",
       "type": "single",
-      "scenario": "Run 123 artifact'larini indir.",
+      "scenario": "Gece vardiyasinda `acme/platform-api` reposunda run 1201'de sadece failed job'lari rerun et.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh run download 123",
-          "hint_text": "Artifact indirmek icin `gh run download` kullan.",
+          "answer": "gh run rerun 1201 --failed --repo acme/platform-api",
+          "hint_text": "Tum workflow yerine yalnizca basarisiz job'lari calistir.",
+          "hint_partial": "gh run rerun ..."
+        }
+      ]
+    },
+    {
+      "id": "sgh-exp-012",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `acme/platform-api` reposunda run 1201 artifact'larini `./artifacts` klasorune indir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh run download 1201 -D ./artifacts --repo acme/platform-api",
+          "hint_text": "Artifact cikisini belirli dizine almak icin `-D` kullan.",
           "hint_partial": "gh run download ..."
         }
       ]
     },
     {
-      "id": "sgh-016",
+      "id": "sgh-exp-013",
       "type": "single",
-      "scenario": "`v1.2.0` release detayini goster.",
+      "scenario": "Gece vardiyasinda `acme/platform-api` reposunda run 1201 ozetini JSON alanlariyla goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh release view v1.2.0",
-          "hint_text": "Belirli release icin `gh release view` kullan.",
+          "answer": "gh run view 1201 --json name,status,conclusion --repo acme/platform-api",
+          "hint_text": "Makinece okunur ozet icin `gh run view --json` kullan.",
+          "hint_partial": "gh run view ..."
+        }
+      ]
+    },
+    {
+      "id": "sgh-exp-014",
+      "type": "single",
+      "scenario": "Gece vardiyasinda `acme/platform-api` reposunda `v1.4.0` release detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh release view v1.4.0 --repo acme/platform-api",
+          "hint_text": "Belirli release'i gormek icin `gh release view` kullan.",
           "hint_partial": "gh release view ..."
         }
       ]
     },
     {
-      "id": "sgh-017",
+      "id": "sgh-exp-015",
       "type": "single",
-      "scenario": "`v1.2.0` release asset'lerini indir.",
+      "scenario": "Gece vardiyasinda `acme/platform-api` reposunda `v1.4.0` release asset'lerini `./releases` klasorune indir.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh release download v1.2.0",
-          "hint_text": "Release asset indirmek icin `gh release download` kullan.",
+          "answer": "gh release download v1.4.0 -D ./releases --repo acme/platform-api",
+          "hint_text": "Release artifact'larini belirli dizine indirmek icin `-D` kullan.",
           "hint_partial": "gh release download ..."
         }
       ]
     },
     {
-      "id": "sgh-018",
+      "id": "sgh-exp-016",
       "type": "single",
-      "scenario": "Repository variable listesini goster.",
+      "scenario": "Gece vardiyasinda `acme/platform-api` reposundaki repository variable listesini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh variable list",
-          "hint_text": "Actions variable listesi icin `gh variable list` kullan.",
-          "hint_partial": "gh variable ..."
+          "answer": "gh variable list -R acme/platform-api",
+          "hint_text": "Repo variable denetimi icin `gh variable list -R` kullan.",
+          "hint_partial": "gh variable list ..."
         }
       ]
     },
     {
-      "id": "sgh-019",
+      "id": "sgh-exp-017",
       "type": "single",
-      "scenario": "Repository secret listesini goster.",
+      "scenario": "Gece vardiyasinda `acme/platform-api` reposundaki repository secret listesini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh secret list",
-          "hint_text": "Secret listesi icin `gh secret list` kullan.",
-          "hint_partial": "gh secret ..."
+          "answer": "gh secret list -R acme/platform-api",
+          "hint_text": "Secret isimlerini kontrol etmek icin `gh secret list -R` kullan.",
+          "hint_partial": "gh secret list ..."
         }
       ]
     },
     {
-      "id": "sgh-020",
+      "id": "sgh-exp-018",
       "type": "single",
-      "scenario": "Tanımlı GH CLI alias'larini listele.",
+      "scenario": "Gece vardiyasinda `acme/platform-api` reposunda `TODO` gecen kodlari ara.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh alias list",
-          "hint_text": "Alias listesi icin `gh alias list` kullan.",
-          "hint_partial": "gh alias ..."
+          "answer": "gh search code TODO --repo acme/platform-api",
+          "hint_text": "Kod aramasi icin `gh search code` kullan.",
+          "hint_partial": "gh search code ..."
         }
       ]
     },
     {
-      "id": "sgh-021",
+      "id": "sgh-exp-019",
       "type": "single",
-      "scenario": "`owner/repo` icinde `fix bug` gecen PR'lari ara.",
+      "scenario": "Gece vardiyasinda `acme/platform-api` reposunda `bug` label'li open issue'lari listele.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh search prs 'fix bug' --repo owner/repo",
-          "hint_text": "PR aramasi icin `gh search prs` kullan.",
-          "hint_partial": "gh search prs ..."
+          "answer": "gh issue list --repo acme/platform-api --label bug --state open",
+          "hint_text": "Incident veya release label'li issue'lari filtrelemek icin `--label` kullan.",
+          "hint_partial": "gh issue list ..."
         }
       ]
     },
     {
-      "id": "sgh-022",
+      "id": "sgh-exp-020",
       "type": "single",
-      "scenario": "`owner/repo` icinde `outage` gecen issue'lari ara.",
+      "scenario": "Gece vardiyasinda `acme/platform-api` reposunda PR 15 durumunu JSON alanlariyla goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh search issues outage --repo owner/repo",
-          "hint_text": "Issue aramasi icin `gh search issues` kullan.",
-          "hint_partial": "gh search issues ..."
+          "answer": "gh pr view 15 --json state,mergeStateStatus,reviewDecision --repo acme/platform-api",
+          "hint_text": "Merge readiness kontrolu icin `gh pr view --json` kullan.",
+          "hint_partial": "gh pr view ..."
         }
       ]
     },
     {
-      "id": "sgh-023",
+      "id": "sgh-exp-021",
       "type": "single",
-      "scenario": "`deploy.yml` workflow'unu tetikle.",
+      "scenario": "Bakim penceresinde `acme/web-app` repository metadata'sini API ile cek.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh workflow run deploy.yml",
-          "hint_text": "Workflow calistirmak icin `gh workflow run` kullan.",
-          "hint_partial": "gh workflow run ..."
+          "answer": "gh api repos/acme/web-app",
+          "hint_text": "Ham repository bilgisini almak icin `gh api repos/<owner>/<repo>` kullan.",
+          "hint_partial": "gh api repos/..."
         }
       ]
     },
     {
-      "id": "sgh-024",
+      "id": "sgh-exp-022",
       "type": "single",
-      "scenario": "`deploy.yml` workflow tanimini YAML olarak goster.",
+      "scenario": "Bakim penceresinde `acme/web-app` reposunda PR 21 review comment'lerini API ile listele.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh workflow view deploy.yml --yaml",
-          "hint_text": "Workflow YAML gormek icin `--yaml` kullan.",
-          "hint_partial": "gh workflow view ..."
+          "answer": "gh api repos/acme/web-app/pulls/21/comments",
+          "hint_text": "PR review comment endpoint'ini `gh api` ile cagir.",
+          "hint_partial": "gh api repos/..."
         }
       ]
     },
     {
-      "id": "sgh-025",
+      "id": "sgh-exp-023",
       "type": "single",
-      "scenario": "Fork ile upstream repository'yi senkronize et.",
+      "scenario": "Bakim penceresinde `acme/web-app` reposunda run 1202 job detaylarini API ile cek.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh repo sync owner/repo",
-          "hint_text": "Fork sync icin `gh repo sync` kullan.",
-          "hint_partial": "gh repo sync ..."
+          "answer": "gh api repos/acme/web-app/actions/runs/1202/jobs",
+          "hint_text": "Actions job verisi icin run jobs endpoint'ini kullan.",
+          "hint_partial": "gh api repos/..."
         }
       ]
     },
     {
-      "id": "sgh-006-r1",
+      "id": "sgh-exp-024",
       "type": "single",
-      "scenario": "Bakim oncesi `owner/repo` repository metadata'sini API ile cek.",
+      "scenario": "Bakim penceresinde `acme/web-app` reposundaki son release bilgisini API ile al.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh db-1-1 repos/owner/repo",
-          "hint_text": "Ham API cagrisi icin `gh db-1-1` kullan.",
-          "hint_partial": "gh db-1-1 ..."
+          "answer": "gh api repos/acme/web-app/releases/latest",
+          "hint_text": "Son release metadata'si icin latest endpoint'ini cagir.",
+          "hint_partial": "gh api repos/..."
         }
       ]
     },
     {
-      "id": "sgh-007-r2",
+      "id": "sgh-exp-025",
       "type": "single",
-      "scenario": "Troubleshooting sirasinda `owner/repo` icin Actions run listesini API ile cek.",
+      "scenario": "Bakim penceresinde `acme/web-app` reposunda `develop` branch koruma ayarini API ile gor.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh cache-2-2 repos/owner/repo/actions/runs",
-          "hint_text": "Actions endpoint'ini `gh cache-2-2` ile cagir.",
-          "hint_partial": "gh cache-2-2 repos/..."
+          "answer": "gh api repos/acme/web-app/branches/develop/protection",
+          "hint_text": "Branch protection denetimi icin protection endpoint'ini kullan.",
+          "hint_partial": "gh api repos/..."
         }
       ]
     },
     {
-      "id": "sgh-008-r3",
+      "id": "sgh-exp-026",
       "type": "single",
-      "scenario": "Deploy sonrasi pull request 15'i squash merge et.",
+      "scenario": "Bakim penceresinde `acme/web-app` reposunda PR 21'i squash merge edip branch'i sil.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh pr merge 15 --squash",
-          "hint_text": "Merge stratejisi icin `--squash` kullan.",
+          "answer": "gh pr merge 21 --squash --delete-branch --repo acme/web-app",
+          "hint_text": "Merge stratejisi ve branch cleanup'i ayni komutta ver.",
           "hint_partial": "gh pr merge ..."
         }
       ]
     },
     {
-      "id": "sgh-009-r4",
+      "id": "sgh-exp-027",
       "type": "single",
-      "scenario": "Kesinti incelemesinde pull request 15 diff'ini goster.",
+      "scenario": "Bakim penceresinde `acme/web-app` reposunda PR 21'i approve review ile onayla.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh pr diff 15",
-          "hint_text": "PR diff icin `gh pr diff` kullan.",
-          "hint_partial": "gh pr diff ..."
-        }
-      ]
-    },
-    {
-      "id": "sgh-010-r5",
-      "type": "single",
-      "scenario": "Yeni acilan hostta draft durumdaki pull request 15'i review'e hazir yap.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh pr ready 15",
-          "hint_text": "Draft'tan cikarmak icin `gh pr ready` kullan.",
-          "hint_partial": "gh pr ready ..."
-        }
-      ]
-    },
-    {
-      "id": "sgh-011-r6",
-      "type": "single",
-      "scenario": "Runbook adiminda pull request 15'i approve review ile onayla.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh pr review 15 --approve",
-          "hint_text": "Review onayi icin `gh pr review --approve` kullan.",
+          "answer": "gh pr review 21 --approve --body approved --repo acme/web-app",
+          "hint_text": "Approve review gondermek icin `gh pr review --approve` kullan.",
           "hint_partial": "gh pr review ..."
         }
       ]
     },
     {
-      "id": "sgh-012-r7",
+      "id": "sgh-exp-028",
       "type": "single",
-      "scenario": "Operasyon kontrolunde issue 42'ye `bug` label'ini ekle.",
+      "scenario": "Bakim penceresinde `acme/web-app` reposunda PR 21 icin change request review gonder.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh issue edit 42 --add-label bug",
-          "hint_text": "Label eklemek icin `gh issue edit --add-label` kullan.",
-          "hint_partial": "gh issue edit ..."
+          "answer": "gh pr review 21 --request-changes --body needs-fix --repo acme/web-app",
+          "hint_text": "Degisiklik istemek icin `--request-changes` kullan.",
+          "hint_partial": "gh pr review ..."
         }
       ]
     },
     {
-      "id": "sgh-013-r8",
+      "id": "sgh-exp-029",
       "type": "single",
-      "scenario": "Incident sonrasinda issue 42'ye `investigating` yorumunu ekle.",
+      "scenario": "Bakim penceresinde `acme/web-app` reposunda PR 21'e `investigating` notunu ekle.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh issue comment 42 --body 'investigating'",
-          "hint_text": "Issue yorumu icin `gh issue comment --body` kullan.",
-          "hint_partial": "gh issue comment ..."
+          "answer": "gh pr comment 21 --body investigating --repo acme/web-app",
+          "hint_text": "Review disi ek yorum icin `gh pr comment` kullan.",
+          "hint_partial": "gh pr comment ..."
         }
       ]
     },
     {
-      "id": "sgh-014-r9",
+      "id": "sgh-exp-030",
       "type": "single",
-      "scenario": "Bakim oncesi run 123 tamamlanana kadar canli izle.",
+      "scenario": "Bakim penceresinde `acme/web-app` reposunda PR 21 checks sonucunu izle.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh run watch 123",
-          "hint_text": "Run takibi icin `gh run watch` kullan.",
-          "hint_partial": "gh run watch ..."
+          "answer": "gh pr checks 21 --watch --repo acme/web-app",
+          "hint_text": "Checks tamamlanana kadar `--watch` ile bekle.",
+          "hint_partial": "gh pr checks ..."
         }
       ]
     },
     {
-      "id": "sgh-015-r10",
+      "id": "sgh-exp-031",
       "type": "single",
-      "scenario": "Troubleshooting sirasinda run 123 artifact'larini indir.",
+      "scenario": "Bakim penceresinde `acme/web-app` reposunda run 1202'de sadece failed job'lari rerun et.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh run download 123",
-          "hint_text": "Artifact indirmek icin `gh run download` kullan.",
+          "answer": "gh run rerun 1202 --failed --repo acme/web-app",
+          "hint_text": "Tum workflow yerine yalnizca basarisiz job'lari calistir.",
+          "hint_partial": "gh run rerun ..."
+        }
+      ]
+    },
+    {
+      "id": "sgh-exp-032",
+      "type": "single",
+      "scenario": "Bakim penceresinde `acme/web-app` reposunda run 1202 artifact'larini `./artifacts` klasorune indir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh run download 1202 -D ./artifacts --repo acme/web-app",
+          "hint_text": "Artifact cikisini belirli dizine almak icin `-D` kullan.",
           "hint_partial": "gh run download ..."
         }
       ]
     },
     {
-      "id": "sgh-016-r11",
+      "id": "sgh-exp-033",
       "type": "single",
-      "scenario": "Deploy sonrasi `v1.2.0` release detayini goster.",
+      "scenario": "Bakim penceresinde `acme/web-app` reposunda run 1202 ozetini JSON alanlariyla goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh release view v1.2.0",
-          "hint_text": "Belirli release icin `gh release view` kullan.",
+          "answer": "gh run view 1202 --json name,status,conclusion --repo acme/web-app",
+          "hint_text": "Makinece okunur ozet icin `gh run view --json` kullan.",
+          "hint_partial": "gh run view ..."
+        }
+      ]
+    },
+    {
+      "id": "sgh-exp-034",
+      "type": "single",
+      "scenario": "Bakim penceresinde `acme/web-app` reposunda `v1.5.0` release detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh release view v1.5.0 --repo acme/web-app",
+          "hint_text": "Belirli release'i gormek icin `gh release view` kullan.",
           "hint_partial": "gh release view ..."
         }
       ]
     },
     {
-      "id": "sgh-017-r12",
+      "id": "sgh-exp-035",
       "type": "single",
-      "scenario": "Kesinti incelemesinde `v1.2.0` release asset'lerini indir.",
+      "scenario": "Bakim penceresinde `acme/web-app` reposunda `v1.5.0` release asset'lerini `./releases` klasorune indir.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh release download v1.2.0",
-          "hint_text": "Release asset indirmek icin `gh release download` kullan.",
+          "answer": "gh release download v1.5.0 -D ./releases --repo acme/web-app",
+          "hint_text": "Release artifact'larini belirli dizine indirmek icin `-D` kullan.",
           "hint_partial": "gh release download ..."
         }
       ]
     },
     {
-      "id": "sgh-018-r13",
+      "id": "sgh-exp-036",
       "type": "single",
-      "scenario": "Yeni acilan hostta repository variable listesini goster.",
+      "scenario": "Bakim penceresinde `acme/web-app` reposundaki repository variable listesini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh variable list",
-          "hint_text": "Actions variable listesi icin `gh variable list` kullan.",
-          "hint_partial": "gh variable ..."
+          "answer": "gh variable list -R acme/web-app",
+          "hint_text": "Repo variable denetimi icin `gh variable list -R` kullan.",
+          "hint_partial": "gh variable list ..."
         }
       ]
     },
     {
-      "id": "sgh-019-r14",
+      "id": "sgh-exp-037",
       "type": "single",
-      "scenario": "Runbook adiminda repository secret listesini goster.",
+      "scenario": "Bakim penceresinde `acme/web-app` reposundaki repository secret listesini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh secret list",
-          "hint_text": "Secret listesi icin `gh secret list` kullan.",
-          "hint_partial": "gh secret ..."
+          "answer": "gh secret list -R acme/web-app",
+          "hint_text": "Secret isimlerini kontrol etmek icin `gh secret list -R` kullan.",
+          "hint_partial": "gh secret list ..."
         }
       ]
     },
     {
-      "id": "sgh-020-r15",
+      "id": "sgh-exp-038",
       "type": "single",
-      "scenario": "Operasyon kontrolunde tanımlı GH CLI alias'larini listele.",
+      "scenario": "Bakim penceresinde `acme/web-app` reposunda `TODO` gecen kodlari ara.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh alias list",
-          "hint_text": "Alias listesi icin `gh alias list` kullan.",
-          "hint_partial": "gh alias ..."
+          "answer": "gh search code TODO --repo acme/web-app",
+          "hint_text": "Kod aramasi icin `gh search code` kullan.",
+          "hint_partial": "gh search code ..."
         }
       ]
     },
     {
-      "id": "sgh-021-r16",
+      "id": "sgh-exp-039",
       "type": "single",
-      "scenario": "Incident sonrasinda `owner/repo` icinde `fix bug` gecen PR'lari ara.",
+      "scenario": "Bakim penceresinde `acme/web-app` reposunda `frontend` label'li open issue'lari listele.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh search prs 'fix bug' --repo owner/repo",
-          "hint_text": "PR aramasi icin `gh search prs` kullan.",
-          "hint_partial": "gh search prs ..."
+          "answer": "gh issue list --repo acme/web-app --label frontend --state open",
+          "hint_text": "Incident veya release label'li issue'lari filtrelemek icin `--label` kullan.",
+          "hint_partial": "gh issue list ..."
         }
       ]
     },
     {
-      "id": "sgh-022-r17",
+      "id": "sgh-exp-040",
       "type": "single",
-      "scenario": "Bakim oncesi `owner/repo` icinde `outage` gecen issue'lari ara.",
+      "scenario": "Bakim penceresinde `acme/web-app` reposunda PR 21 durumunu JSON alanlariyla goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh search issues outage --repo owner/repo",
-          "hint_text": "Issue aramasi icin `gh search issues` kullan.",
-          "hint_partial": "gh search issues ..."
+          "answer": "gh pr view 21 --json state,mergeStateStatus,reviewDecision --repo acme/web-app",
+          "hint_text": "Merge readiness kontrolu icin `gh pr view --json` kullan.",
+          "hint_partial": "gh pr view ..."
         }
       ]
     },
     {
-      "id": "sgh-023-r18",
+      "id": "sgh-exp-041",
       "type": "single",
-      "scenario": "Troubleshooting sirasinda `deploy.yml` workflow'unu tetikle.",
+      "scenario": "Incident sonrasinda `acme/payments` repository metadata'sini API ile cek.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh workflow run deploy.yml",
-          "hint_text": "Workflow calistirmak icin `gh workflow run` kullan.",
-          "hint_partial": "gh workflow run ..."
+          "answer": "gh api repos/acme/payments",
+          "hint_text": "Ham repository bilgisini almak icin `gh api repos/<owner>/<repo>` kullan.",
+          "hint_partial": "gh api repos/..."
         }
       ]
     },
     {
-      "id": "sgh-024-r19",
+      "id": "sgh-exp-042",
       "type": "single",
-      "scenario": "Deploy sonrasi `deploy.yml` workflow tanimini YAML olarak goster.",
+      "scenario": "Incident sonrasinda `acme/payments` reposunda PR 34 review comment'lerini API ile listele.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh workflow view deploy.yml --yaml",
-          "hint_text": "Workflow YAML gormek icin `--yaml` kullan.",
-          "hint_partial": "gh workflow view ..."
+          "answer": "gh api repos/acme/payments/pulls/34/comments",
+          "hint_text": "PR review comment endpoint'ini `gh api` ile cagir.",
+          "hint_partial": "gh api repos/..."
         }
       ]
     },
     {
-      "id": "sgh-025-r20",
+      "id": "sgh-exp-043",
       "type": "single",
-      "scenario": "Kesinti incelemesinde fork ile upstream repository'yi senkronize et.",
+      "scenario": "Incident sonrasinda `acme/payments` reposunda run 1203 job detaylarini API ile cek.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh repo sync owner/repo",
-          "hint_text": "Fork sync icin `gh repo sync` kullan.",
-          "hint_partial": "gh repo sync ..."
+          "answer": "gh api repos/acme/payments/actions/runs/1203/jobs",
+          "hint_text": "Actions job verisi icin run jobs endpoint'ini kullan.",
+          "hint_partial": "gh api repos/..."
         }
       ]
     },
     {
-      "id": "sgh-006-r21",
+      "id": "sgh-exp-044",
       "type": "single",
-      "scenario": "Yeni acilan hostta `owner/repo` repository metadata'sini API ile cek.",
+      "scenario": "Incident sonrasinda `acme/payments` reposundaki son release bilgisini API ile al.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh proxy-21 repos/owner/repo",
-          "hint_text": "Ham API cagrisi icin `gh proxy-21` kullan.",
-          "hint_partial": "gh proxy-21 ..."
+          "answer": "gh api repos/acme/payments/releases/latest",
+          "hint_text": "Son release metadata'si icin latest endpoint'ini cagir.",
+          "hint_partial": "gh api repos/..."
         }
       ]
     },
     {
-      "id": "sgh-007-r22",
+      "id": "sgh-exp-045",
       "type": "single",
-      "scenario": "Runbook adiminda `owner/repo` icin Actions run listesini API ile cek.",
+      "scenario": "Incident sonrasinda `acme/payments` reposunda `release/1.6.0` branch koruma ayarini API ile gor.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh web-22 repos/owner/repo/actions/runs",
-          "hint_text": "Actions endpoint'ini `gh web-22` ile cagir.",
-          "hint_partial": "gh web-22 repos/..."
+          "answer": "gh api repos/acme/payments/branches/release/1.6.0/protection",
+          "hint_text": "Branch protection denetimi icin protection endpoint'ini kullan.",
+          "hint_partial": "gh api repos/..."
         }
       ]
     },
     {
-      "id": "sgh-008-r23",
+      "id": "sgh-exp-046",
       "type": "single",
-      "scenario": "Operasyon kontrolunde pull request 15'i squash merge et.",
+      "scenario": "Incident sonrasinda `acme/payments` reposunda PR 34'i squash merge edip branch'i sil.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh pr merge 15 --squash",
-          "hint_text": "Merge stratejisi icin `--squash` kullan.",
+          "answer": "gh pr merge 34 --squash --delete-branch --repo acme/payments",
+          "hint_text": "Merge stratejisi ve branch cleanup'i ayni komutta ver.",
           "hint_partial": "gh pr merge ..."
         }
       ]
     },
     {
-      "id": "sgh-009-r24",
+      "id": "sgh-exp-047",
       "type": "single",
-      "scenario": "Incident sonrasinda pull request 15 diff'ini goster.",
+      "scenario": "Incident sonrasinda `acme/payments` reposunda PR 34'i approve review ile onayla.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh pr diff 15",
-          "hint_text": "PR diff icin `gh pr diff` kullan.",
-          "hint_partial": "gh pr diff ..."
-        }
-      ]
-    },
-    {
-      "id": "sgh-010-r25",
-      "type": "single",
-      "scenario": "Bakim oncesi draft durumdaki pull request 15'i review'e hazir yap.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh pr ready 15",
-          "hint_text": "Draft'tan cikarmak icin `gh pr ready` kullan.",
-          "hint_partial": "gh pr ready ..."
-        }
-      ]
-    },
-    {
-      "id": "sgh-011-r26",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda pull request 15'i approve review ile onayla.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh pr review 15 --approve",
-          "hint_text": "Review onayi icin `gh pr review --approve` kullan.",
+          "answer": "gh pr review 34 --approve --body approved --repo acme/payments",
+          "hint_text": "Approve review gondermek icin `gh pr review --approve` kullan.",
           "hint_partial": "gh pr review ..."
         }
       ]
     },
     {
-      "id": "sgh-012-r27",
+      "id": "sgh-exp-048",
       "type": "single",
-      "scenario": "Deploy sonrasi issue 42'ye `bug` label'ini ekle.",
+      "scenario": "Incident sonrasinda `acme/payments` reposunda PR 34 icin change request review gonder.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh issue edit 42 --add-label bug",
-          "hint_text": "Label eklemek icin `gh issue edit --add-label` kullan.",
-          "hint_partial": "gh issue edit ..."
+          "answer": "gh pr review 34 --request-changes --body needs-fix --repo acme/payments",
+          "hint_text": "Degisiklik istemek icin `--request-changes` kullan.",
+          "hint_partial": "gh pr review ..."
         }
       ]
     },
     {
-      "id": "sgh-013-r28",
+      "id": "sgh-exp-049",
       "type": "single",
-      "scenario": "Kesinti incelemesinde issue 42'ye `investigating` yorumunu ekle.",
+      "scenario": "Incident sonrasinda `acme/payments` reposunda PR 34'e `investigating` notunu ekle.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh issue comment 42 --body 'investigating'",
-          "hint_text": "Issue yorumu icin `gh issue comment --body` kullan.",
-          "hint_partial": "gh issue comment ..."
+          "answer": "gh pr comment 34 --body investigating --repo acme/payments",
+          "hint_text": "Review disi ek yorum icin `gh pr comment` kullan.",
+          "hint_partial": "gh pr comment ..."
         }
       ]
     },
     {
-      "id": "sgh-014-r29",
+      "id": "sgh-exp-050",
       "type": "single",
-      "scenario": "Yeni acilan hostta run 123 tamamlanana kadar canli izle.",
+      "scenario": "Incident sonrasinda `acme/payments` reposunda PR 34 checks sonucunu izle.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh run watch 123",
-          "hint_text": "Run takibi icin `gh run watch` kullan.",
-          "hint_partial": "gh run watch ..."
+          "answer": "gh pr checks 34 --watch --repo acme/payments",
+          "hint_text": "Checks tamamlanana kadar `--watch` ile bekle.",
+          "hint_partial": "gh pr checks ..."
         }
       ]
     },
     {
-      "id": "sgh-015-r30",
+      "id": "sgh-exp-051",
       "type": "single",
-      "scenario": "Runbook adiminda run 123 artifact'larini indir.",
+      "scenario": "Incident sonrasinda `acme/payments` reposunda run 1203'de sadece failed job'lari rerun et.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh run download 123",
-          "hint_text": "Artifact indirmek icin `gh run download` kullan.",
+          "answer": "gh run rerun 1203 --failed --repo acme/payments",
+          "hint_text": "Tum workflow yerine yalnizca basarisiz job'lari calistir.",
+          "hint_partial": "gh run rerun ..."
+        }
+      ]
+    },
+    {
+      "id": "sgh-exp-052",
+      "type": "single",
+      "scenario": "Incident sonrasinda `acme/payments` reposunda run 1203 artifact'larini `./artifacts` klasorune indir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh run download 1203 -D ./artifacts --repo acme/payments",
+          "hint_text": "Artifact cikisini belirli dizine almak icin `-D` kullan.",
           "hint_partial": "gh run download ..."
         }
       ]
     },
     {
-      "id": "sgh-016-r31",
+      "id": "sgh-exp-053",
       "type": "single",
-      "scenario": "Operasyon kontrolunde `v1.2.0` release detayini goster.",
+      "scenario": "Incident sonrasinda `acme/payments` reposunda run 1203 ozetini JSON alanlariyla goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh release view v1.2.0",
-          "hint_text": "Belirli release icin `gh release view` kullan.",
+          "answer": "gh run view 1203 --json name,status,conclusion --repo acme/payments",
+          "hint_text": "Makinece okunur ozet icin `gh run view --json` kullan.",
+          "hint_partial": "gh run view ..."
+        }
+      ]
+    },
+    {
+      "id": "sgh-exp-054",
+      "type": "single",
+      "scenario": "Incident sonrasinda `acme/payments` reposunda `v1.6.0` release detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh release view v1.6.0 --repo acme/payments",
+          "hint_text": "Belirli release'i gormek icin `gh release view` kullan.",
           "hint_partial": "gh release view ..."
         }
       ]
     },
     {
-      "id": "sgh-017-r32",
+      "id": "sgh-exp-055",
       "type": "single",
-      "scenario": "Incident sonrasinda `v1.2.0` release asset'lerini indir.",
+      "scenario": "Incident sonrasinda `acme/payments` reposunda `v1.6.0` release asset'lerini `./releases` klasorune indir.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh release download v1.2.0",
-          "hint_text": "Release asset indirmek icin `gh release download` kullan.",
+          "answer": "gh release download v1.6.0 -D ./releases --repo acme/payments",
+          "hint_text": "Release artifact'larini belirli dizine indirmek icin `-D` kullan.",
           "hint_partial": "gh release download ..."
         }
       ]
     },
     {
-      "id": "sgh-018-r33",
+      "id": "sgh-exp-056",
       "type": "single",
-      "scenario": "Bakim oncesi repository variable listesini goster.",
+      "scenario": "Incident sonrasinda `acme/payments` reposundaki repository variable listesini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh variable list",
-          "hint_text": "Actions variable listesi icin `gh variable list` kullan.",
-          "hint_partial": "gh variable ..."
+          "answer": "gh variable list -R acme/payments",
+          "hint_text": "Repo variable denetimi icin `gh variable list -R` kullan.",
+          "hint_partial": "gh variable list ..."
         }
       ]
     },
     {
-      "id": "sgh-019-r34",
+      "id": "sgh-exp-057",
       "type": "single",
-      "scenario": "Troubleshooting sirasinda repository secret listesini goster.",
+      "scenario": "Incident sonrasinda `acme/payments` reposundaki repository secret listesini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh secret list",
-          "hint_text": "Secret listesi icin `gh secret list` kullan.",
-          "hint_partial": "gh secret ..."
+          "answer": "gh secret list -R acme/payments",
+          "hint_text": "Secret isimlerini kontrol etmek icin `gh secret list -R` kullan.",
+          "hint_partial": "gh secret list ..."
         }
       ]
     },
     {
-      "id": "sgh-020-r35",
+      "id": "sgh-exp-058",
       "type": "single",
-      "scenario": "Deploy sonrasi tanımlı GH CLI alias'larini listele.",
+      "scenario": "Incident sonrasinda `acme/payments` reposunda `TODO` gecen kodlari ara.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh alias list",
-          "hint_text": "Alias listesi icin `gh alias list` kullan.",
-          "hint_partial": "gh alias ..."
+          "answer": "gh search code TODO --repo acme/payments",
+          "hint_text": "Kod aramasi icin `gh search code` kullan.",
+          "hint_partial": "gh search code ..."
         }
       ]
     },
     {
-      "id": "sgh-021-r36",
+      "id": "sgh-exp-059",
       "type": "single",
-      "scenario": "Kesinti incelemesinde `owner/repo` icinde `fix bug` gecen PR'lari ara.",
+      "scenario": "Incident sonrasinda `acme/payments` reposunda `incident` label'li open issue'lari listele.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh search prs 'fix bug' --repo owner/repo",
-          "hint_text": "PR aramasi icin `gh search prs` kullan.",
-          "hint_partial": "gh search prs ..."
+          "answer": "gh issue list --repo acme/payments --label incident --state open",
+          "hint_text": "Incident veya release label'li issue'lari filtrelemek icin `--label` kullan.",
+          "hint_partial": "gh issue list ..."
         }
       ]
     },
     {
-      "id": "sgh-022-r37",
+      "id": "sgh-exp-060",
       "type": "single",
-      "scenario": "Yeni acilan hostta `owner/repo` icinde `outage` gecen issue'lari ara.",
+      "scenario": "Incident sonrasinda `acme/payments` reposunda PR 34 durumunu JSON alanlariyla goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh search issues outage --repo owner/repo",
-          "hint_text": "Issue aramasi icin `gh search issues` kullan.",
-          "hint_partial": "gh search issues ..."
+          "answer": "gh pr view 34 --json state,mergeStateStatus,reviewDecision --repo acme/payments",
+          "hint_text": "Merge readiness kontrolu icin `gh pr view --json` kullan.",
+          "hint_partial": "gh pr view ..."
         }
       ]
     },
     {
-      "id": "sgh-023-r38",
+      "id": "sgh-exp-061",
       "type": "single",
-      "scenario": "Runbook adiminda `deploy.yml` workflow'unu tetikle.",
+      "scenario": "Deploy oncesi `acme/ops-tooling` repository metadata'sini API ile cek.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh workflow run deploy.yml",
-          "hint_text": "Workflow calistirmak icin `gh workflow run` kullan.",
-          "hint_partial": "gh workflow run ..."
+          "answer": "gh api repos/acme/ops-tooling",
+          "hint_text": "Ham repository bilgisini almak icin `gh api repos/<owner>/<repo>` kullan.",
+          "hint_partial": "gh api repos/..."
         }
       ]
     },
     {
-      "id": "sgh-024-r39",
+      "id": "sgh-exp-062",
       "type": "single",
-      "scenario": "Operasyon kontrolunde `deploy.yml` workflow tanimini YAML olarak goster.",
+      "scenario": "Deploy oncesi `acme/ops-tooling` reposunda PR 55 review comment'lerini API ile listele.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh workflow view deploy.yml --yaml",
-          "hint_text": "Workflow YAML gormek icin `--yaml` kullan.",
-          "hint_partial": "gh workflow view ..."
+          "answer": "gh api repos/acme/ops-tooling/pulls/55/comments",
+          "hint_text": "PR review comment endpoint'ini `gh api` ile cagir.",
+          "hint_partial": "gh api repos/..."
         }
       ]
     },
     {
-      "id": "sgh-025-r40",
+      "id": "sgh-exp-063",
       "type": "single",
-      "scenario": "Incident sonrasinda fork ile upstream repository'yi senkronize et.",
+      "scenario": "Deploy oncesi `acme/ops-tooling` reposunda run 1204 job detaylarini API ile cek.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh repo sync owner/repo",
-          "hint_text": "Fork sync icin `gh repo sync` kullan.",
-          "hint_partial": "gh repo sync ..."
+          "answer": "gh api repos/acme/ops-tooling/actions/runs/1204/jobs",
+          "hint_text": "Actions job verisi icin run jobs endpoint'ini kullan.",
+          "hint_partial": "gh api repos/..."
         }
       ]
     },
     {
-      "id": "sgh-006-r41",
+      "id": "sgh-exp-064",
       "type": "single",
-      "scenario": "Bakim oncesi `owner/repo` repository metadata'sini API ile cek.",
+      "scenario": "Deploy oncesi `acme/ops-tooling` reposundaki son release bilgisini API ile al.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh db-41-41 repos/owner/repo",
-          "hint_text": "Ham API cagrisi icin `gh db-41-41` kullan.",
-          "hint_partial": "gh db-41-41 ..."
+          "answer": "gh api repos/acme/ops-tooling/releases/latest",
+          "hint_text": "Son release metadata'si icin latest endpoint'ini cagir.",
+          "hint_partial": "gh api repos/..."
         }
       ]
     },
     {
-      "id": "sgh-007-r42",
+      "id": "sgh-exp-065",
       "type": "single",
-      "scenario": "Troubleshooting sirasinda `owner/repo` icin Actions run listesini API ile cek.",
+      "scenario": "Deploy oncesi `acme/ops-tooling` reposunda `main` branch koruma ayarini API ile gor.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh cache-42-42 repos/owner/repo/actions/runs",
-          "hint_text": "Actions endpoint'ini `gh cache-42-42` ile cagir.",
-          "hint_partial": "gh cache-42-42 repos/..."
+          "answer": "gh api repos/acme/ops-tooling/branches/main/protection",
+          "hint_text": "Branch protection denetimi icin protection endpoint'ini kullan.",
+          "hint_partial": "gh api repos/..."
         }
       ]
     },
     {
-      "id": "sgh-008-r43",
+      "id": "sgh-exp-066",
       "type": "single",
-      "scenario": "Deploy sonrasi pull request 15'i squash merge et.",
+      "scenario": "Deploy oncesi `acme/ops-tooling` reposunda PR 55'i squash merge edip branch'i sil.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh pr merge 15 --squash",
-          "hint_text": "Merge stratejisi icin `--squash` kullan.",
+          "answer": "gh pr merge 55 --squash --delete-branch --repo acme/ops-tooling",
+          "hint_text": "Merge stratejisi ve branch cleanup'i ayni komutta ver.",
           "hint_partial": "gh pr merge ..."
         }
       ]
     },
     {
-      "id": "sgh-009-r44",
+      "id": "sgh-exp-067",
       "type": "single",
-      "scenario": "Kesinti incelemesinde pull request 15 diff'ini goster.",
+      "scenario": "Deploy oncesi `acme/ops-tooling` reposunda PR 55'i approve review ile onayla.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh pr diff 15",
-          "hint_text": "PR diff icin `gh pr diff` kullan.",
-          "hint_partial": "gh pr diff ..."
-        }
-      ]
-    },
-    {
-      "id": "sgh-010-r45",
-      "type": "single",
-      "scenario": "Yeni acilan hostta draft durumdaki pull request 15'i review'e hazir yap.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh pr ready 15",
-          "hint_text": "Draft'tan cikarmak icin `gh pr ready` kullan.",
-          "hint_partial": "gh pr ready ..."
-        }
-      ]
-    },
-    {
-      "id": "sgh-011-r46",
-      "type": "single",
-      "scenario": "Runbook adiminda pull request 15'i approve review ile onayla.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh pr review 15 --approve",
-          "hint_text": "Review onayi icin `gh pr review --approve` kullan.",
+          "answer": "gh pr review 55 --approve --body approved --repo acme/ops-tooling",
+          "hint_text": "Approve review gondermek icin `gh pr review --approve` kullan.",
           "hint_partial": "gh pr review ..."
         }
       ]
     },
     {
-      "id": "sgh-012-r47",
+      "id": "sgh-exp-068",
       "type": "single",
-      "scenario": "Operasyon kontrolunde issue 42'ye `bug` label'ini ekle.",
+      "scenario": "Deploy oncesi `acme/ops-tooling` reposunda PR 55 icin change request review gonder.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh issue edit 42 --add-label bug",
-          "hint_text": "Label eklemek icin `gh issue edit --add-label` kullan.",
-          "hint_partial": "gh issue edit ..."
+          "answer": "gh pr review 55 --request-changes --body needs-fix --repo acme/ops-tooling",
+          "hint_text": "Degisiklik istemek icin `--request-changes` kullan.",
+          "hint_partial": "gh pr review ..."
         }
       ]
     },
     {
-      "id": "sgh-013-r48",
+      "id": "sgh-exp-069",
       "type": "single",
-      "scenario": "Incident sonrasinda issue 42'ye `investigating` yorumunu ekle.",
+      "scenario": "Deploy oncesi `acme/ops-tooling` reposunda PR 55'e `investigating` notunu ekle.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh issue comment 42 --body 'investigating'",
-          "hint_text": "Issue yorumu icin `gh issue comment --body` kullan.",
-          "hint_partial": "gh issue comment ..."
+          "answer": "gh pr comment 55 --body investigating --repo acme/ops-tooling",
+          "hint_text": "Review disi ek yorum icin `gh pr comment` kullan.",
+          "hint_partial": "gh pr comment ..."
         }
       ]
     },
     {
-      "id": "sgh-014-r49",
+      "id": "sgh-exp-070",
       "type": "single",
-      "scenario": "Bakim oncesi run 123 tamamlanana kadar canli izle.",
+      "scenario": "Deploy oncesi `acme/ops-tooling` reposunda PR 55 checks sonucunu izle.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh run watch 123",
-          "hint_text": "Run takibi icin `gh run watch` kullan.",
-          "hint_partial": "gh run watch ..."
+          "answer": "gh pr checks 55 --watch --repo acme/ops-tooling",
+          "hint_text": "Checks tamamlanana kadar `--watch` ile bekle.",
+          "hint_partial": "gh pr checks ..."
         }
       ]
     },
     {
-      "id": "sgh-015-r50",
+      "id": "sgh-exp-071",
       "type": "single",
-      "scenario": "Troubleshooting sirasinda run 123 artifact'larini indir.",
+      "scenario": "Deploy oncesi `acme/ops-tooling` reposunda run 1204'de sadece failed job'lari rerun et.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh run download 123",
-          "hint_text": "Artifact indirmek icin `gh run download` kullan.",
+          "answer": "gh run rerun 1204 --failed --repo acme/ops-tooling",
+          "hint_text": "Tum workflow yerine yalnizca basarisiz job'lari calistir.",
+          "hint_partial": "gh run rerun ..."
+        }
+      ]
+    },
+    {
+      "id": "sgh-exp-072",
+      "type": "single",
+      "scenario": "Deploy oncesi `acme/ops-tooling` reposunda run 1204 artifact'larini `./artifacts` klasorune indir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh run download 1204 -D ./artifacts --repo acme/ops-tooling",
+          "hint_text": "Artifact cikisini belirli dizine almak icin `-D` kullan.",
           "hint_partial": "gh run download ..."
         }
       ]
     },
     {
-      "id": "sgh-016-r51",
+      "id": "sgh-exp-073",
       "type": "single",
-      "scenario": "Deploy sonrasi `v1.2.0` release detayini goster.",
+      "scenario": "Deploy oncesi `acme/ops-tooling` reposunda run 1204 ozetini JSON alanlariyla goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh release view v1.2.0",
-          "hint_text": "Belirli release icin `gh release view` kullan.",
+          "answer": "gh run view 1204 --json name,status,conclusion --repo acme/ops-tooling",
+          "hint_text": "Makinece okunur ozet icin `gh run view --json` kullan.",
+          "hint_partial": "gh run view ..."
+        }
+      ]
+    },
+    {
+      "id": "sgh-exp-074",
+      "type": "single",
+      "scenario": "Deploy oncesi `acme/ops-tooling` reposunda `v2.0.0` release detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh release view v2.0.0 --repo acme/ops-tooling",
+          "hint_text": "Belirli release'i gormek icin `gh release view` kullan.",
           "hint_partial": "gh release view ..."
         }
       ]
     },
     {
-      "id": "sgh-017-r52",
+      "id": "sgh-exp-075",
       "type": "single",
-      "scenario": "Kesinti incelemesinde `v1.2.0` release asset'lerini indir.",
+      "scenario": "Deploy oncesi `acme/ops-tooling` reposunda `v2.0.0` release asset'lerini `./releases` klasorune indir.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh release download v1.2.0",
-          "hint_text": "Release asset indirmek icin `gh release download` kullan.",
+          "answer": "gh release download v2.0.0 -D ./releases --repo acme/ops-tooling",
+          "hint_text": "Release artifact'larini belirli dizine indirmek icin `-D` kullan.",
           "hint_partial": "gh release download ..."
         }
       ]
     },
     {
-      "id": "sgh-018-r53",
+      "id": "sgh-exp-076",
       "type": "single",
-      "scenario": "Yeni acilan hostta repository variable listesini goster.",
+      "scenario": "Deploy oncesi `acme/ops-tooling` reposundaki repository variable listesini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh variable list",
-          "hint_text": "Actions variable listesi icin `gh variable list` kullan.",
-          "hint_partial": "gh variable ..."
+          "answer": "gh variable list -R acme/ops-tooling",
+          "hint_text": "Repo variable denetimi icin `gh variable list -R` kullan.",
+          "hint_partial": "gh variable list ..."
         }
       ]
     },
     {
-      "id": "sgh-019-r54",
+      "id": "sgh-exp-077",
       "type": "single",
-      "scenario": "Runbook adiminda repository secret listesini goster.",
+      "scenario": "Deploy oncesi `acme/ops-tooling` reposundaki repository secret listesini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh secret list",
-          "hint_text": "Secret listesi icin `gh secret list` kullan.",
-          "hint_partial": "gh secret ..."
+          "answer": "gh secret list -R acme/ops-tooling",
+          "hint_text": "Secret isimlerini kontrol etmek icin `gh secret list -R` kullan.",
+          "hint_partial": "gh secret list ..."
         }
       ]
     },
     {
-      "id": "sgh-020-r55",
+      "id": "sgh-exp-078",
       "type": "single",
-      "scenario": "Operasyon kontrolunde tanımlı GH CLI alias'larini listele.",
+      "scenario": "Deploy oncesi `acme/ops-tooling` reposunda `TODO` gecen kodlari ara.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh alias list",
-          "hint_text": "Alias listesi icin `gh alias list` kullan.",
-          "hint_partial": "gh alias ..."
+          "answer": "gh search code TODO --repo acme/ops-tooling",
+          "hint_text": "Kod aramasi icin `gh search code` kullan.",
+          "hint_partial": "gh search code ..."
         }
       ]
     },
     {
-      "id": "sgh-021-r56",
+      "id": "sgh-exp-079",
       "type": "single",
-      "scenario": "Incident sonrasinda `owner/repo` icinde `fix bug` gecen PR'lari ara.",
+      "scenario": "Deploy oncesi `acme/ops-tooling` reposunda `ops` label'li open issue'lari listele.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh search prs 'fix bug' --repo owner/repo",
-          "hint_text": "PR aramasi icin `gh search prs` kullan.",
-          "hint_partial": "gh search prs ..."
+          "answer": "gh issue list --repo acme/ops-tooling --label ops --state open",
+          "hint_text": "Incident veya release label'li issue'lari filtrelemek icin `--label` kullan.",
+          "hint_partial": "gh issue list ..."
         }
       ]
     },
     {
-      "id": "sgh-022-r57",
+      "id": "sgh-exp-080",
       "type": "single",
-      "scenario": "Bakim oncesi `owner/repo` icinde `outage` gecen issue'lari ara.",
+      "scenario": "Deploy oncesi `acme/ops-tooling` reposunda PR 55 durumunu JSON alanlariyla goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh search issues outage --repo owner/repo",
-          "hint_text": "Issue aramasi icin `gh search issues` kullan.",
-          "hint_partial": "gh search issues ..."
+          "answer": "gh pr view 55 --json state,mergeStateStatus,reviewDecision --repo acme/ops-tooling",
+          "hint_text": "Merge readiness kontrolu icin `gh pr view --json` kullan.",
+          "hint_partial": "gh pr view ..."
         }
       ]
     },
     {
-      "id": "sgh-023-r58",
+      "id": "sgh-exp-081",
       "type": "single",
-      "scenario": "Troubleshooting sirasinda `deploy.yml` workflow'unu tetikle.",
+      "scenario": "Audit sirasinda `acme/data-pipeline` repository metadata'sini API ile cek.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh workflow run deploy.yml",
-          "hint_text": "Workflow calistirmak icin `gh workflow run` kullan.",
-          "hint_partial": "gh workflow run ..."
+          "answer": "gh api repos/acme/data-pipeline",
+          "hint_text": "Ham repository bilgisini almak icin `gh api repos/<owner>/<repo>` kullan.",
+          "hint_partial": "gh api repos/..."
         }
       ]
     },
     {
-      "id": "sgh-024-r59",
+      "id": "sgh-exp-082",
       "type": "single",
-      "scenario": "Deploy sonrasi `deploy.yml` workflow tanimini YAML olarak goster.",
+      "scenario": "Audit sirasinda `acme/data-pipeline` reposunda PR 63 review comment'lerini API ile listele.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh workflow view deploy.yml --yaml",
-          "hint_text": "Workflow YAML gormek icin `--yaml` kullan.",
-          "hint_partial": "gh workflow view ..."
+          "answer": "gh api repos/acme/data-pipeline/pulls/63/comments",
+          "hint_text": "PR review comment endpoint'ini `gh api` ile cagir.",
+          "hint_partial": "gh api repos/..."
         }
       ]
     },
     {
-      "id": "sgh-025-r60",
+      "id": "sgh-exp-083",
       "type": "single",
-      "scenario": "Kesinti incelemesinde fork ile upstream repository'yi senkronize et.",
+      "scenario": "Audit sirasinda `acme/data-pipeline` reposunda run 1205 job detaylarini API ile cek.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh repo sync owner/repo",
-          "hint_text": "Fork sync icin `gh repo sync` kullan.",
-          "hint_partial": "gh repo sync ..."
+          "answer": "gh api repos/acme/data-pipeline/actions/runs/1205/jobs",
+          "hint_text": "Actions job verisi icin run jobs endpoint'ini kullan.",
+          "hint_partial": "gh api repos/..."
         }
       ]
     },
     {
-      "id": "sgh-006-r61",
+      "id": "sgh-exp-084",
       "type": "single",
-      "scenario": "Yeni acilan hostta `owner/repo` repository metadata'sini API ile cek.",
+      "scenario": "Audit sirasinda `acme/data-pipeline` reposundaki son release bilgisini API ile al.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh proxy-61 repos/owner/repo",
-          "hint_text": "Ham API cagrisi icin `gh proxy-61` kullan.",
-          "hint_partial": "gh proxy-61 ..."
+          "answer": "gh api repos/acme/data-pipeline/releases/latest",
+          "hint_text": "Son release metadata'si icin latest endpoint'ini cagir.",
+          "hint_partial": "gh api repos/..."
         }
       ]
     },
     {
-      "id": "sgh-007-r62",
+      "id": "sgh-exp-085",
       "type": "single",
-      "scenario": "Runbook adiminda `owner/repo` icin Actions run listesini API ile cek.",
+      "scenario": "Audit sirasinda `acme/data-pipeline` reposunda `staging` branch koruma ayarini API ile gor.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh web-62 repos/owner/repo/actions/runs",
-          "hint_text": "Actions endpoint'ini `gh web-62` ile cagir.",
-          "hint_partial": "gh web-62 repos/..."
+          "answer": "gh api repos/acme/data-pipeline/branches/staging/protection",
+          "hint_text": "Branch protection denetimi icin protection endpoint'ini kullan.",
+          "hint_partial": "gh api repos/..."
         }
       ]
     },
     {
-      "id": "sgh-008-r63",
+      "id": "sgh-exp-086",
       "type": "single",
-      "scenario": "Operasyon kontrolunde pull request 15'i squash merge et.",
+      "scenario": "Audit sirasinda `acme/data-pipeline` reposunda PR 63'i squash merge edip branch'i sil.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh pr merge 15 --squash",
-          "hint_text": "Merge stratejisi icin `--squash` kullan.",
+          "answer": "gh pr merge 63 --squash --delete-branch --repo acme/data-pipeline",
+          "hint_text": "Merge stratejisi ve branch cleanup'i ayni komutta ver.",
           "hint_partial": "gh pr merge ..."
         }
       ]
     },
     {
-      "id": "sgh-009-r64",
+      "id": "sgh-exp-087",
       "type": "single",
-      "scenario": "Incident sonrasinda pull request 15 diff'ini goster.",
+      "scenario": "Audit sirasinda `acme/data-pipeline` reposunda PR 63'i approve review ile onayla.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh pr diff 15",
-          "hint_text": "PR diff icin `gh pr diff` kullan.",
-          "hint_partial": "gh pr diff ..."
-        }
-      ]
-    },
-    {
-      "id": "sgh-010-r65",
-      "type": "single",
-      "scenario": "Bakim oncesi draft durumdaki pull request 15'i review'e hazir yap.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh pr ready 15",
-          "hint_text": "Draft'tan cikarmak icin `gh pr ready` kullan.",
-          "hint_partial": "gh pr ready ..."
-        }
-      ]
-    },
-    {
-      "id": "sgh-011-r66",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda pull request 15'i approve review ile onayla.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh pr review 15 --approve",
-          "hint_text": "Review onayi icin `gh pr review --approve` kullan.",
+          "answer": "gh pr review 63 --approve --body approved --repo acme/data-pipeline",
+          "hint_text": "Approve review gondermek icin `gh pr review --approve` kullan.",
           "hint_partial": "gh pr review ..."
         }
       ]
     },
     {
-      "id": "sgh-012-r67",
+      "id": "sgh-exp-088",
       "type": "single",
-      "scenario": "Deploy sonrasi issue 42'ye `bug` label'ini ekle.",
+      "scenario": "Audit sirasinda `acme/data-pipeline` reposunda PR 63 icin change request review gonder.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh issue edit 42 --add-label bug",
-          "hint_text": "Label eklemek icin `gh issue edit --add-label` kullan.",
-          "hint_partial": "gh issue edit ..."
+          "answer": "gh pr review 63 --request-changes --body needs-fix --repo acme/data-pipeline",
+          "hint_text": "Degisiklik istemek icin `--request-changes` kullan.",
+          "hint_partial": "gh pr review ..."
         }
       ]
     },
     {
-      "id": "sgh-013-r68",
+      "id": "sgh-exp-089",
       "type": "single",
-      "scenario": "Kesinti incelemesinde issue 42'ye `investigating` yorumunu ekle.",
+      "scenario": "Audit sirasinda `acme/data-pipeline` reposunda PR 63'e `investigating` notunu ekle.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh issue comment 42 --body 'investigating'",
-          "hint_text": "Issue yorumu icin `gh issue comment --body` kullan.",
-          "hint_partial": "gh issue comment ..."
+          "answer": "gh pr comment 63 --body investigating --repo acme/data-pipeline",
+          "hint_text": "Review disi ek yorum icin `gh pr comment` kullan.",
+          "hint_partial": "gh pr comment ..."
         }
       ]
     },
     {
-      "id": "sgh-014-r69",
+      "id": "sgh-exp-090",
       "type": "single",
-      "scenario": "Yeni acilan hostta run 123 tamamlanana kadar canli izle.",
+      "scenario": "Audit sirasinda `acme/data-pipeline` reposunda PR 63 checks sonucunu izle.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh run watch 123",
-          "hint_text": "Run takibi icin `gh run watch` kullan.",
-          "hint_partial": "gh run watch ..."
+          "answer": "gh pr checks 63 --watch --repo acme/data-pipeline",
+          "hint_text": "Checks tamamlanana kadar `--watch` ile bekle.",
+          "hint_partial": "gh pr checks ..."
         }
       ]
     },
     {
-      "id": "sgh-015-r70",
+      "id": "sgh-exp-091",
       "type": "single",
-      "scenario": "Runbook adiminda run 123 artifact'larini indir.",
+      "scenario": "Audit sirasinda `acme/data-pipeline` reposunda run 1205'de sadece failed job'lari rerun et.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh run download 123",
-          "hint_text": "Artifact indirmek icin `gh run download` kullan.",
+          "answer": "gh run rerun 1205 --failed --repo acme/data-pipeline",
+          "hint_text": "Tum workflow yerine yalnizca basarisiz job'lari calistir.",
+          "hint_partial": "gh run rerun ..."
+        }
+      ]
+    },
+    {
+      "id": "sgh-exp-092",
+      "type": "single",
+      "scenario": "Audit sirasinda `acme/data-pipeline` reposunda run 1205 artifact'larini `./artifacts` klasorune indir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh run download 1205 -D ./artifacts --repo acme/data-pipeline",
+          "hint_text": "Artifact cikisini belirli dizine almak icin `-D` kullan.",
           "hint_partial": "gh run download ..."
         }
       ]
     },
     {
-      "id": "sgh-016-r71",
+      "id": "sgh-exp-093",
       "type": "single",
-      "scenario": "Operasyon kontrolunde `v1.2.0` release detayini goster.",
+      "scenario": "Audit sirasinda `acme/data-pipeline` reposunda run 1205 ozetini JSON alanlariyla goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh release view v1.2.0",
-          "hint_text": "Belirli release icin `gh release view` kullan.",
+          "answer": "gh run view 1205 --json name,status,conclusion --repo acme/data-pipeline",
+          "hint_text": "Makinece okunur ozet icin `gh run view --json` kullan.",
+          "hint_partial": "gh run view ..."
+        }
+      ]
+    },
+    {
+      "id": "sgh-exp-094",
+      "type": "single",
+      "scenario": "Audit sirasinda `acme/data-pipeline` reposunda `v2.1.0` release detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh release view v2.1.0 --repo acme/data-pipeline",
+          "hint_text": "Belirli release'i gormek icin `gh release view` kullan.",
           "hint_partial": "gh release view ..."
         }
       ]
     },
     {
-      "id": "sgh-017-r72",
+      "id": "sgh-exp-095",
       "type": "single",
-      "scenario": "Incident sonrasinda `v1.2.0` release asset'lerini indir.",
+      "scenario": "Audit sirasinda `acme/data-pipeline` reposunda `v2.1.0` release asset'lerini `./releases` klasorune indir.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh release download v1.2.0",
-          "hint_text": "Release asset indirmek icin `gh release download` kullan.",
+          "answer": "gh release download v2.1.0 -D ./releases --repo acme/data-pipeline",
+          "hint_text": "Release artifact'larini belirli dizine indirmek icin `-D` kullan.",
           "hint_partial": "gh release download ..."
         }
       ]
     },
     {
-      "id": "sgh-018-r73",
+      "id": "sgh-exp-096",
       "type": "single",
-      "scenario": "Bakim oncesi repository variable listesini goster.",
+      "scenario": "Audit sirasinda `acme/data-pipeline` reposundaki repository variable listesini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh variable list",
-          "hint_text": "Actions variable listesi icin `gh variable list` kullan.",
-          "hint_partial": "gh variable ..."
+          "answer": "gh variable list -R acme/data-pipeline",
+          "hint_text": "Repo variable denetimi icin `gh variable list -R` kullan.",
+          "hint_partial": "gh variable list ..."
         }
       ]
     },
     {
-      "id": "sgh-019-r74",
+      "id": "sgh-exp-097",
       "type": "single",
-      "scenario": "Troubleshooting sirasinda repository secret listesini goster.",
+      "scenario": "Audit sirasinda `acme/data-pipeline` reposundaki repository secret listesini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh secret list",
-          "hint_text": "Secret listesi icin `gh secret list` kullan.",
-          "hint_partial": "gh secret ..."
+          "answer": "gh secret list -R acme/data-pipeline",
+          "hint_text": "Secret isimlerini kontrol etmek icin `gh secret list -R` kullan.",
+          "hint_partial": "gh secret list ..."
         }
       ]
     },
     {
-      "id": "sgh-020-r75",
+      "id": "sgh-exp-098",
       "type": "single",
-      "scenario": "Deploy sonrasi tanımlı GH CLI alias'larini listele.",
+      "scenario": "Audit sirasinda `acme/data-pipeline` reposunda `TODO` gecen kodlari ara.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh alias list",
-          "hint_text": "Alias listesi icin `gh alias list` kullan.",
-          "hint_partial": "gh alias ..."
+          "answer": "gh search code TODO --repo acme/data-pipeline",
+          "hint_text": "Kod aramasi icin `gh search code` kullan.",
+          "hint_partial": "gh search code ..."
         }
       ]
     },
     {
-      "id": "sgh-021-r76",
+      "id": "sgh-exp-099",
       "type": "single",
-      "scenario": "Kesinti incelemesinde `owner/repo` icinde `fix bug` gecen PR'lari ara.",
+      "scenario": "Audit sirasinda `acme/data-pipeline` reposunda `data` label'li open issue'lari listele.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh search prs 'fix bug' --repo owner/repo",
-          "hint_text": "PR aramasi icin `gh search prs` kullan.",
-          "hint_partial": "gh search prs ..."
+          "answer": "gh issue list --repo acme/data-pipeline --label data --state open",
+          "hint_text": "Incident veya release label'li issue'lari filtrelemek icin `--label` kullan.",
+          "hint_partial": "gh issue list ..."
         }
       ]
     },
     {
-      "id": "sgh-022-r77",
+      "id": "sgh-exp-100",
       "type": "single",
-      "scenario": "Yeni acilan hostta `owner/repo` icinde `outage` gecen issue'lari ara.",
+      "scenario": "Audit sirasinda `acme/data-pipeline` reposunda PR 63 durumunu JSON alanlariyla goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh search issues outage --repo owner/repo",
-          "hint_text": "Issue aramasi icin `gh search issues` kullan.",
-          "hint_partial": "gh search issues ..."
+          "answer": "gh pr view 63 --json state,mergeStateStatus,reviewDecision --repo acme/data-pipeline",
+          "hint_text": "Merge readiness kontrolu icin `gh pr view --json` kullan.",
+          "hint_partial": "gh pr view ..."
         }
       ]
     },
     {
-      "id": "sgh-023-r78",
+      "id": "sgh-exp-101",
       "type": "single",
-      "scenario": "Runbook adiminda `deploy.yml` workflow'unu tetikle.",
+      "scenario": "Troubleshooting sirasinda `acme/mobile-api` repository metadata'sini API ile cek.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh workflow run deploy.yml",
-          "hint_text": "Workflow calistirmak icin `gh workflow run` kullan.",
-          "hint_partial": "gh workflow run ..."
+          "answer": "gh api repos/acme/mobile-api",
+          "hint_text": "Ham repository bilgisini almak icin `gh api repos/<owner>/<repo>` kullan.",
+          "hint_partial": "gh api repos/..."
         }
       ]
     },
     {
-      "id": "sgh-024-r79",
+      "id": "sgh-exp-102",
       "type": "single",
-      "scenario": "Operasyon kontrolunde `deploy.yml` workflow tanimini YAML olarak goster.",
+      "scenario": "Troubleshooting sirasinda `acme/mobile-api` reposunda PR 72 review comment'lerini API ile listele.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh workflow view deploy.yml --yaml",
-          "hint_text": "Workflow YAML gormek icin `--yaml` kullan.",
-          "hint_partial": "gh workflow view ..."
+          "answer": "gh api repos/acme/mobile-api/pulls/72/comments",
+          "hint_text": "PR review comment endpoint'ini `gh api` ile cagir.",
+          "hint_partial": "gh api repos/..."
         }
       ]
     },
     {
-      "id": "sgh-025-r80",
+      "id": "sgh-exp-103",
       "type": "single",
-      "scenario": "Incident sonrasinda fork ile upstream repository'yi senkronize et.",
+      "scenario": "Troubleshooting sirasinda `acme/mobile-api` reposunda run 1206 job detaylarini API ile cek.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh repo sync owner/repo",
-          "hint_text": "Fork sync icin `gh repo sync` kullan.",
-          "hint_partial": "gh repo sync ..."
+          "answer": "gh api repos/acme/mobile-api/actions/runs/1206/jobs",
+          "hint_text": "Actions job verisi icin run jobs endpoint'ini kullan.",
+          "hint_partial": "gh api repos/..."
         }
       ]
     },
     {
-      "id": "sgh-006-r81",
+      "id": "sgh-exp-104",
       "type": "single",
-      "scenario": "Bakim oncesi `owner/repo` repository metadata'sini API ile cek.",
+      "scenario": "Troubleshooting sirasinda `acme/mobile-api` reposundaki son release bilgisini API ile al.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh db-81-81 repos/owner/repo",
-          "hint_text": "Ham API cagrisi icin `gh db-81-81` kullan.",
-          "hint_partial": "gh db-81-81 ..."
+          "answer": "gh api repos/acme/mobile-api/releases/latest",
+          "hint_text": "Son release metadata'si icin latest endpoint'ini cagir.",
+          "hint_partial": "gh api repos/..."
         }
       ]
     },
     {
-      "id": "sgh-007-r82",
+      "id": "sgh-exp-105",
       "type": "single",
-      "scenario": "Troubleshooting sirasinda `owner/repo` icin Actions run listesini API ile cek.",
+      "scenario": "Troubleshooting sirasinda `acme/mobile-api` reposunda `hotfix/auth` branch koruma ayarini API ile gor.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh cache-82-82 repos/owner/repo/actions/runs",
-          "hint_text": "Actions endpoint'ini `gh cache-82-82` ile cagir.",
-          "hint_partial": "gh cache-82-82 repos/..."
+          "answer": "gh api repos/acme/mobile-api/branches/hotfix/auth/protection",
+          "hint_text": "Branch protection denetimi icin protection endpoint'ini kullan.",
+          "hint_partial": "gh api repos/..."
         }
       ]
     },
     {
-      "id": "sgh-008-r83",
+      "id": "sgh-exp-106",
       "type": "single",
-      "scenario": "Deploy sonrasi pull request 15'i squash merge et.",
+      "scenario": "Troubleshooting sirasinda `acme/mobile-api` reposunda PR 72'i squash merge edip branch'i sil.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh pr merge 15 --squash",
-          "hint_text": "Merge stratejisi icin `--squash` kullan.",
+          "answer": "gh pr merge 72 --squash --delete-branch --repo acme/mobile-api",
+          "hint_text": "Merge stratejisi ve branch cleanup'i ayni komutta ver.",
           "hint_partial": "gh pr merge ..."
         }
       ]
     },
     {
-      "id": "sgh-009-r84",
+      "id": "sgh-exp-107",
       "type": "single",
-      "scenario": "Kesinti incelemesinde pull request 15 diff'ini goster.",
+      "scenario": "Troubleshooting sirasinda `acme/mobile-api` reposunda PR 72'i approve review ile onayla.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh pr diff 15",
-          "hint_text": "PR diff icin `gh pr diff` kullan.",
-          "hint_partial": "gh pr diff ..."
-        }
-      ]
-    },
-    {
-      "id": "sgh-010-r85",
-      "type": "single",
-      "scenario": "Yeni acilan hostta draft durumdaki pull request 15'i review'e hazir yap.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh pr ready 15",
-          "hint_text": "Draft'tan cikarmak icin `gh pr ready` kullan.",
-          "hint_partial": "gh pr ready ..."
-        }
-      ]
-    },
-    {
-      "id": "sgh-011-r86",
-      "type": "single",
-      "scenario": "Runbook adiminda pull request 15'i approve review ile onayla.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh pr review 15 --approve",
-          "hint_text": "Review onayi icin `gh pr review --approve` kullan.",
+          "answer": "gh pr review 72 --approve --body approved --repo acme/mobile-api",
+          "hint_text": "Approve review gondermek icin `gh pr review --approve` kullan.",
           "hint_partial": "gh pr review ..."
         }
       ]
     },
     {
-      "id": "sgh-012-r87",
+      "id": "sgh-exp-108",
       "type": "single",
-      "scenario": "Operasyon kontrolunde issue 42'ye `bug` label'ini ekle.",
+      "scenario": "Troubleshooting sirasinda `acme/mobile-api` reposunda PR 72 icin change request review gonder.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh issue edit 42 --add-label bug",
-          "hint_text": "Label eklemek icin `gh issue edit --add-label` kullan.",
-          "hint_partial": "gh issue edit ..."
+          "answer": "gh pr review 72 --request-changes --body needs-fix --repo acme/mobile-api",
+          "hint_text": "Degisiklik istemek icin `--request-changes` kullan.",
+          "hint_partial": "gh pr review ..."
         }
       ]
     },
     {
-      "id": "sgh-013-r88",
+      "id": "sgh-exp-109",
       "type": "single",
-      "scenario": "Incident sonrasinda issue 42'ye `investigating` yorumunu ekle.",
+      "scenario": "Troubleshooting sirasinda `acme/mobile-api` reposunda PR 72'e `investigating` notunu ekle.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh issue comment 42 --body 'investigating'",
-          "hint_text": "Issue yorumu icin `gh issue comment --body` kullan.",
-          "hint_partial": "gh issue comment ..."
+          "answer": "gh pr comment 72 --body investigating --repo acme/mobile-api",
+          "hint_text": "Review disi ek yorum icin `gh pr comment` kullan.",
+          "hint_partial": "gh pr comment ..."
         }
       ]
     },
     {
-      "id": "sgh-014-r89",
+      "id": "sgh-exp-110",
       "type": "single",
-      "scenario": "Bakim oncesi run 123 tamamlanana kadar canli izle.",
+      "scenario": "Troubleshooting sirasinda `acme/mobile-api` reposunda PR 72 checks sonucunu izle.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh run watch 123",
-          "hint_text": "Run takibi icin `gh run watch` kullan.",
-          "hint_partial": "gh run watch ..."
+          "answer": "gh pr checks 72 --watch --repo acme/mobile-api",
+          "hint_text": "Checks tamamlanana kadar `--watch` ile bekle.",
+          "hint_partial": "gh pr checks ..."
         }
       ]
     },
     {
-      "id": "sgh-015-r90",
+      "id": "sgh-exp-111",
       "type": "single",
-      "scenario": "Troubleshooting sirasinda run 123 artifact'larini indir.",
+      "scenario": "Troubleshooting sirasinda `acme/mobile-api` reposunda run 1206'de sadece failed job'lari rerun et.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh run download 123",
-          "hint_text": "Artifact indirmek icin `gh run download` kullan.",
+          "answer": "gh run rerun 1206 --failed --repo acme/mobile-api",
+          "hint_text": "Tum workflow yerine yalnizca basarisiz job'lari calistir.",
+          "hint_partial": "gh run rerun ..."
+        }
+      ]
+    },
+    {
+      "id": "sgh-exp-112",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `acme/mobile-api` reposunda run 1206 artifact'larini `./artifacts` klasorune indir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh run download 1206 -D ./artifacts --repo acme/mobile-api",
+          "hint_text": "Artifact cikisini belirli dizine almak icin `-D` kullan.",
           "hint_partial": "gh run download ..."
         }
       ]
     },
     {
-      "id": "sgh-016-r91",
+      "id": "sgh-exp-113",
       "type": "single",
-      "scenario": "Deploy sonrasi `v1.2.0` release detayini goster.",
+      "scenario": "Troubleshooting sirasinda `acme/mobile-api` reposunda run 1206 ozetini JSON alanlariyla goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh release view v1.2.0",
-          "hint_text": "Belirli release icin `gh release view` kullan.",
+          "answer": "gh run view 1206 --json name,status,conclusion --repo acme/mobile-api",
+          "hint_text": "Makinece okunur ozet icin `gh run view --json` kullan.",
+          "hint_partial": "gh run view ..."
+        }
+      ]
+    },
+    {
+      "id": "sgh-exp-114",
+      "type": "single",
+      "scenario": "Troubleshooting sirasinda `acme/mobile-api` reposunda `v2.1.1` release detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh release view v2.1.1 --repo acme/mobile-api",
+          "hint_text": "Belirli release'i gormek icin `gh release view` kullan.",
           "hint_partial": "gh release view ..."
         }
       ]
     },
     {
-      "id": "sgh-017-r92",
+      "id": "sgh-exp-115",
       "type": "single",
-      "scenario": "Kesinti incelemesinde `v1.2.0` release asset'lerini indir.",
+      "scenario": "Troubleshooting sirasinda `acme/mobile-api` reposunda `v2.1.1` release asset'lerini `./releases` klasorune indir.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh release download v1.2.0",
-          "hint_text": "Release asset indirmek icin `gh release download` kullan.",
+          "answer": "gh release download v2.1.1 -D ./releases --repo acme/mobile-api",
+          "hint_text": "Release artifact'larini belirli dizine indirmek icin `-D` kullan.",
           "hint_partial": "gh release download ..."
         }
       ]
     },
     {
-      "id": "sgh-018-r93",
+      "id": "sgh-exp-116",
       "type": "single",
-      "scenario": "Yeni acilan hostta repository variable listesini goster.",
+      "scenario": "Troubleshooting sirasinda `acme/mobile-api` reposundaki repository variable listesini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh variable list",
-          "hint_text": "Actions variable listesi icin `gh variable list` kullan.",
-          "hint_partial": "gh variable ..."
+          "answer": "gh variable list -R acme/mobile-api",
+          "hint_text": "Repo variable denetimi icin `gh variable list -R` kullan.",
+          "hint_partial": "gh variable list ..."
         }
       ]
     },
     {
-      "id": "sgh-019-r94",
+      "id": "sgh-exp-117",
       "type": "single",
-      "scenario": "Runbook adiminda repository secret listesini goster.",
+      "scenario": "Troubleshooting sirasinda `acme/mobile-api` reposundaki repository secret listesini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh secret list",
-          "hint_text": "Secret listesi icin `gh secret list` kullan.",
-          "hint_partial": "gh secret ..."
+          "answer": "gh secret list -R acme/mobile-api",
+          "hint_text": "Secret isimlerini kontrol etmek icin `gh secret list -R` kullan.",
+          "hint_partial": "gh secret list ..."
         }
       ]
     },
     {
-      "id": "sgh-020-r95",
+      "id": "sgh-exp-118",
       "type": "single",
-      "scenario": "Operasyon kontrolunde tanımlı GH CLI alias'larini listele.",
+      "scenario": "Troubleshooting sirasinda `acme/mobile-api` reposunda `TODO` gecen kodlari ara.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh alias list",
-          "hint_text": "Alias listesi icin `gh alias list` kullan.",
-          "hint_partial": "gh alias ..."
+          "answer": "gh search code TODO --repo acme/mobile-api",
+          "hint_text": "Kod aramasi icin `gh search code` kullan.",
+          "hint_partial": "gh search code ..."
         }
       ]
     },
     {
-      "id": "sgh-021-r96",
+      "id": "sgh-exp-119",
       "type": "single",
-      "scenario": "Incident sonrasinda `owner/repo` icinde `fix bug` gecen PR'lari ara.",
+      "scenario": "Troubleshooting sirasinda `acme/mobile-api` reposunda `backend` label'li open issue'lari listele.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh search prs 'fix bug' --repo owner/repo",
-          "hint_text": "PR aramasi icin `gh search prs` kullan.",
-          "hint_partial": "gh search prs ..."
+          "answer": "gh issue list --repo acme/mobile-api --label backend --state open",
+          "hint_text": "Incident veya release label'li issue'lari filtrelemek icin `--label` kullan.",
+          "hint_partial": "gh issue list ..."
         }
       ]
     },
     {
-      "id": "sgh-022-r97",
+      "id": "sgh-exp-120",
       "type": "single",
-      "scenario": "Bakim oncesi `owner/repo` icinde `outage` gecen issue'lari ara.",
+      "scenario": "Troubleshooting sirasinda `acme/mobile-api` reposunda PR 72 durumunu JSON alanlariyla goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh search issues outage --repo owner/repo",
-          "hint_text": "Issue aramasi icin `gh search issues` kullan.",
-          "hint_partial": "gh search issues ..."
+          "answer": "gh pr view 72 --json state,mergeStateStatus,reviewDecision --repo acme/mobile-api",
+          "hint_text": "Merge readiness kontrolu icin `gh pr view --json` kullan.",
+          "hint_partial": "gh pr view ..."
         }
       ]
     },
     {
-      "id": "sgh-023-r98",
+      "id": "sgh-exp-121",
       "type": "single",
-      "scenario": "Troubleshooting sirasinda `deploy.yml` workflow'unu tetikle.",
+      "scenario": "Release kontrolunde `acme/catalog` repository metadata'sini API ile cek.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh workflow run deploy.yml",
-          "hint_text": "Workflow calistirmak icin `gh workflow run` kullan.",
-          "hint_partial": "gh workflow run ..."
+          "answer": "gh api repos/acme/catalog",
+          "hint_text": "Ham repository bilgisini almak icin `gh api repos/<owner>/<repo>` kullan.",
+          "hint_partial": "gh api repos/..."
         }
       ]
     },
     {
-      "id": "sgh-024-r99",
+      "id": "sgh-exp-122",
       "type": "single",
-      "scenario": "Deploy sonrasi `deploy.yml` workflow tanimini YAML olarak goster.",
+      "scenario": "Release kontrolunde `acme/catalog` reposunda PR 81 review comment'lerini API ile listele.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh workflow view deploy.yml --yaml",
-          "hint_text": "Workflow YAML gormek icin `--yaml` kullan.",
-          "hint_partial": "gh workflow view ..."
+          "answer": "gh api repos/acme/catalog/pulls/81/comments",
+          "hint_text": "PR review comment endpoint'ini `gh api` ile cagir.",
+          "hint_partial": "gh api repos/..."
         }
       ]
     },
     {
-      "id": "sgh-025-r100",
+      "id": "sgh-exp-123",
       "type": "single",
-      "scenario": "Kesinti incelemesinde fork ile upstream repository'yi senkronize et.",
+      "scenario": "Release kontrolunde `acme/catalog` reposunda run 1207 job detaylarini API ile cek.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh repo sync owner/repo",
-          "hint_text": "Fork sync icin `gh repo sync` kullan.",
-          "hint_partial": "gh repo sync ..."
+          "answer": "gh api repos/acme/catalog/actions/runs/1207/jobs",
+          "hint_text": "Actions job verisi icin run jobs endpoint'ini kullan.",
+          "hint_partial": "gh api repos/..."
         }
       ]
     },
     {
-      "id": "sgh-006-r101",
+      "id": "sgh-exp-124",
       "type": "single",
-      "scenario": "Yeni acilan hostta `owner/repo` repository metadata'sini API ile cek.",
+      "scenario": "Release kontrolunde `acme/catalog` reposundaki son release bilgisini API ile al.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh proxy-101 repos/owner/repo",
-          "hint_text": "Ham API cagrisi icin `gh proxy-101` kullan.",
-          "hint_partial": "gh proxy-101 ..."
+          "answer": "gh api repos/acme/catalog/releases/latest",
+          "hint_text": "Son release metadata'si icin latest endpoint'ini cagir.",
+          "hint_partial": "gh api repos/..."
         }
       ]
     },
     {
-      "id": "sgh-007-r102",
+      "id": "sgh-exp-125",
       "type": "single",
-      "scenario": "Runbook adiminda `owner/repo` icin Actions run listesini API ile cek.",
+      "scenario": "Release kontrolunde `acme/catalog` reposunda `release/2.2.0` branch koruma ayarini API ile gor.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh web-102 repos/owner/repo/actions/runs",
-          "hint_text": "Actions endpoint'ini `gh web-102` ile cagir.",
-          "hint_partial": "gh web-102 repos/..."
+          "answer": "gh api repos/acme/catalog/branches/release/2.2.0/protection",
+          "hint_text": "Branch protection denetimi icin protection endpoint'ini kullan.",
+          "hint_partial": "gh api repos/..."
         }
       ]
     },
     {
-      "id": "sgh-008-r103",
+      "id": "sgh-exp-126",
       "type": "single",
-      "scenario": "Operasyon kontrolunde pull request 15'i squash merge et.",
+      "scenario": "Release kontrolunde `acme/catalog` reposunda PR 81'i squash merge edip branch'i sil.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh pr merge 15 --squash",
-          "hint_text": "Merge stratejisi icin `--squash` kullan.",
+          "answer": "gh pr merge 81 --squash --delete-branch --repo acme/catalog",
+          "hint_text": "Merge stratejisi ve branch cleanup'i ayni komutta ver.",
           "hint_partial": "gh pr merge ..."
         }
       ]
     },
     {
-      "id": "sgh-009-r104",
+      "id": "sgh-exp-127",
       "type": "single",
-      "scenario": "Incident sonrasinda pull request 15 diff'ini goster.",
+      "scenario": "Release kontrolunde `acme/catalog` reposunda PR 81'i approve review ile onayla.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh pr diff 15",
-          "hint_text": "PR diff icin `gh pr diff` kullan.",
-          "hint_partial": "gh pr diff ..."
-        }
-      ]
-    },
-    {
-      "id": "sgh-010-r105",
-      "type": "single",
-      "scenario": "Bakim oncesi draft durumdaki pull request 15'i review'e hazir yap.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh pr ready 15",
-          "hint_text": "Draft'tan cikarmak icin `gh pr ready` kullan.",
-          "hint_partial": "gh pr ready ..."
-        }
-      ]
-    },
-    {
-      "id": "sgh-011-r106",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda pull request 15'i approve review ile onayla.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh pr review 15 --approve",
-          "hint_text": "Review onayi icin `gh pr review --approve` kullan.",
+          "answer": "gh pr review 81 --approve --body approved --repo acme/catalog",
+          "hint_text": "Approve review gondermek icin `gh pr review --approve` kullan.",
           "hint_partial": "gh pr review ..."
         }
       ]
     },
     {
-      "id": "sgh-012-r107",
+      "id": "sgh-exp-128",
       "type": "single",
-      "scenario": "Deploy sonrasi issue 42'ye `bug` label'ini ekle.",
+      "scenario": "Release kontrolunde `acme/catalog` reposunda PR 81 icin change request review gonder.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh issue edit 42 --add-label bug",
-          "hint_text": "Label eklemek icin `gh issue edit --add-label` kullan.",
-          "hint_partial": "gh issue edit ..."
+          "answer": "gh pr review 81 --request-changes --body needs-fix --repo acme/catalog",
+          "hint_text": "Degisiklik istemek icin `--request-changes` kullan.",
+          "hint_partial": "gh pr review ..."
         }
       ]
     },
     {
-      "id": "sgh-013-r108",
+      "id": "sgh-exp-129",
       "type": "single",
-      "scenario": "Kesinti incelemesinde issue 42'ye `investigating` yorumunu ekle.",
+      "scenario": "Release kontrolunde `acme/catalog` reposunda PR 81'e `investigating` notunu ekle.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh issue comment 42 --body 'investigating'",
-          "hint_text": "Issue yorumu icin `gh issue comment --body` kullan.",
-          "hint_partial": "gh issue comment ..."
+          "answer": "gh pr comment 81 --body investigating --repo acme/catalog",
+          "hint_text": "Review disi ek yorum icin `gh pr comment` kullan.",
+          "hint_partial": "gh pr comment ..."
         }
       ]
     },
     {
-      "id": "sgh-014-r109",
+      "id": "sgh-exp-130",
       "type": "single",
-      "scenario": "Yeni acilan hostta run 123 tamamlanana kadar canli izle.",
+      "scenario": "Release kontrolunde `acme/catalog` reposunda PR 81 checks sonucunu izle.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh run watch 123",
-          "hint_text": "Run takibi icin `gh run watch` kullan.",
-          "hint_partial": "gh run watch ..."
+          "answer": "gh pr checks 81 --watch --repo acme/catalog",
+          "hint_text": "Checks tamamlanana kadar `--watch` ile bekle.",
+          "hint_partial": "gh pr checks ..."
         }
       ]
     },
     {
-      "id": "sgh-015-r110",
+      "id": "sgh-exp-131",
       "type": "single",
-      "scenario": "Runbook adiminda run 123 artifact'larini indir.",
+      "scenario": "Release kontrolunde `acme/catalog` reposunda run 1207'de sadece failed job'lari rerun et.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh run download 123",
-          "hint_text": "Artifact indirmek icin `gh run download` kullan.",
+          "answer": "gh run rerun 1207 --failed --repo acme/catalog",
+          "hint_text": "Tum workflow yerine yalnizca basarisiz job'lari calistir.",
+          "hint_partial": "gh run rerun ..."
+        }
+      ]
+    },
+    {
+      "id": "sgh-exp-132",
+      "type": "single",
+      "scenario": "Release kontrolunde `acme/catalog` reposunda run 1207 artifact'larini `./artifacts` klasorune indir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh run download 1207 -D ./artifacts --repo acme/catalog",
+          "hint_text": "Artifact cikisini belirli dizine almak icin `-D` kullan.",
           "hint_partial": "gh run download ..."
         }
       ]
     },
     {
-      "id": "sgh-016-r111",
+      "id": "sgh-exp-133",
       "type": "single",
-      "scenario": "Operasyon kontrolunde `v1.2.0` release detayini goster.",
+      "scenario": "Release kontrolunde `acme/catalog` reposunda run 1207 ozetini JSON alanlariyla goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh release view v1.2.0",
-          "hint_text": "Belirli release icin `gh release view` kullan.",
+          "answer": "gh run view 1207 --json name,status,conclusion --repo acme/catalog",
+          "hint_text": "Makinece okunur ozet icin `gh run view --json` kullan.",
+          "hint_partial": "gh run view ..."
+        }
+      ]
+    },
+    {
+      "id": "sgh-exp-134",
+      "type": "single",
+      "scenario": "Release kontrolunde `acme/catalog` reposunda `v2.2.0` release detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh release view v2.2.0 --repo acme/catalog",
+          "hint_text": "Belirli release'i gormek icin `gh release view` kullan.",
           "hint_partial": "gh release view ..."
         }
       ]
     },
     {
-      "id": "sgh-017-r112",
+      "id": "sgh-exp-135",
       "type": "single",
-      "scenario": "Incident sonrasinda `v1.2.0` release asset'lerini indir.",
+      "scenario": "Release kontrolunde `acme/catalog` reposunda `v2.2.0` release asset'lerini `./releases` klasorune indir.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh release download v1.2.0",
-          "hint_text": "Release asset indirmek icin `gh release download` kullan.",
+          "answer": "gh release download v2.2.0 -D ./releases --repo acme/catalog",
+          "hint_text": "Release artifact'larini belirli dizine indirmek icin `-D` kullan.",
           "hint_partial": "gh release download ..."
         }
       ]
     },
     {
-      "id": "sgh-018-r113",
+      "id": "sgh-exp-136",
       "type": "single",
-      "scenario": "Bakim oncesi repository variable listesini goster.",
+      "scenario": "Release kontrolunde `acme/catalog` reposundaki repository variable listesini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh variable list",
-          "hint_text": "Actions variable listesi icin `gh variable list` kullan.",
-          "hint_partial": "gh variable ..."
+          "answer": "gh variable list -R acme/catalog",
+          "hint_text": "Repo variable denetimi icin `gh variable list -R` kullan.",
+          "hint_partial": "gh variable list ..."
         }
       ]
     },
     {
-      "id": "sgh-019-r114",
+      "id": "sgh-exp-137",
       "type": "single",
-      "scenario": "Troubleshooting sirasinda repository secret listesini goster.",
+      "scenario": "Release kontrolunde `acme/catalog` reposundaki repository secret listesini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh secret list",
-          "hint_text": "Secret listesi icin `gh secret list` kullan.",
-          "hint_partial": "gh secret ..."
+          "answer": "gh secret list -R acme/catalog",
+          "hint_text": "Secret isimlerini kontrol etmek icin `gh secret list -R` kullan.",
+          "hint_partial": "gh secret list ..."
         }
       ]
     },
     {
-      "id": "sgh-020-r115",
+      "id": "sgh-exp-138",
       "type": "single",
-      "scenario": "Deploy sonrasi tanımlı GH CLI alias'larini listele.",
+      "scenario": "Release kontrolunde `acme/catalog` reposunda `TODO` gecen kodlari ara.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh alias list",
-          "hint_text": "Alias listesi icin `gh alias list` kullan.",
-          "hint_partial": "gh alias ..."
+          "answer": "gh search code TODO --repo acme/catalog",
+          "hint_text": "Kod aramasi icin `gh search code` kullan.",
+          "hint_partial": "gh search code ..."
         }
       ]
     },
     {
-      "id": "sgh-021-r116",
+      "id": "sgh-exp-139",
       "type": "single",
-      "scenario": "Kesinti incelemesinde `owner/repo` icinde `fix bug` gecen PR'lari ara.",
+      "scenario": "Release kontrolunde `acme/catalog` reposunda `release` label'li open issue'lari listele.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh search prs 'fix bug' --repo owner/repo",
-          "hint_text": "PR aramasi icin `gh search prs` kullan.",
-          "hint_partial": "gh search prs ..."
+          "answer": "gh issue list --repo acme/catalog --label release --state open",
+          "hint_text": "Incident veya release label'li issue'lari filtrelemek icin `--label` kullan.",
+          "hint_partial": "gh issue list ..."
         }
       ]
     },
     {
-      "id": "sgh-022-r117",
+      "id": "sgh-exp-140",
       "type": "single",
-      "scenario": "Yeni acilan hostta `owner/repo` icinde `outage` gecen issue'lari ara.",
+      "scenario": "Release kontrolunde `acme/catalog` reposunda PR 81 durumunu JSON alanlariyla goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh search issues outage --repo owner/repo",
-          "hint_text": "Issue aramasi icin `gh search issues` kullan.",
-          "hint_partial": "gh search issues ..."
+          "answer": "gh pr view 81 --json state,mergeStateStatus,reviewDecision --repo acme/catalog",
+          "hint_text": "Merge readiness kontrolu icin `gh pr view --json` kullan.",
+          "hint_partial": "gh pr view ..."
         }
       ]
     },
     {
-      "id": "sgh-023-r118",
+      "id": "sgh-exp-141",
       "type": "single",
-      "scenario": "Runbook adiminda `deploy.yml` workflow'unu tetikle.",
+      "scenario": "Operasyon devrinde `acme/search` repository metadata'sini API ile cek.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh workflow run deploy.yml",
-          "hint_text": "Workflow calistirmak icin `gh workflow run` kullan.",
-          "hint_partial": "gh workflow run ..."
+          "answer": "gh api repos/acme/search",
+          "hint_text": "Ham repository bilgisini almak icin `gh api repos/<owner>/<repo>` kullan.",
+          "hint_partial": "gh api repos/..."
         }
       ]
     },
     {
-      "id": "sgh-024-r119",
+      "id": "sgh-exp-142",
       "type": "single",
-      "scenario": "Operasyon kontrolunde `deploy.yml` workflow tanimini YAML olarak goster.",
+      "scenario": "Operasyon devrinde `acme/search` reposunda PR 94 review comment'lerini API ile listele.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh workflow view deploy.yml --yaml",
-          "hint_text": "Workflow YAML gormek icin `--yaml` kullan.",
-          "hint_partial": "gh workflow view ..."
+          "answer": "gh api repos/acme/search/pulls/94/comments",
+          "hint_text": "PR review comment endpoint'ini `gh api` ile cagir.",
+          "hint_partial": "gh api repos/..."
         }
       ]
     },
     {
-      "id": "sgh-025-r120",
+      "id": "sgh-exp-143",
       "type": "single",
-      "scenario": "Incident sonrasinda fork ile upstream repository'yi senkronize et.",
+      "scenario": "Operasyon devrinde `acme/search` reposunda run 1208 job detaylarini API ile cek.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh repo sync owner/repo",
-          "hint_text": "Fork sync icin `gh repo sync` kullan.",
-          "hint_partial": "gh repo sync ..."
+          "answer": "gh api repos/acme/search/actions/runs/1208/jobs",
+          "hint_text": "Actions job verisi icin run jobs endpoint'ini kullan.",
+          "hint_partial": "gh api repos/..."
         }
       ]
     },
     {
-      "id": "sgh-006-r121",
+      "id": "sgh-exp-144",
       "type": "single",
-      "scenario": "Bakim oncesi `owner/repo` repository metadata'sini API ile cek.",
+      "scenario": "Operasyon devrinde `acme/search` reposundaki son release bilgisini API ile al.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh db-121-121 repos/owner/repo",
-          "hint_text": "Ham API cagrisi icin `gh db-121-121` kullan.",
-          "hint_partial": "gh db-121-121 ..."
+          "answer": "gh api repos/acme/search/releases/latest",
+          "hint_text": "Son release metadata'si icin latest endpoint'ini cagir.",
+          "hint_partial": "gh api repos/..."
         }
       ]
     },
     {
-      "id": "sgh-007-r122",
+      "id": "sgh-exp-145",
       "type": "single",
-      "scenario": "Troubleshooting sirasinda `owner/repo` icin Actions run listesini API ile cek.",
+      "scenario": "Operasyon devrinde `acme/search` reposunda `main` branch koruma ayarini API ile gor.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh cache-122-122 repos/owner/repo/actions/runs",
-          "hint_text": "Actions endpoint'ini `gh cache-122-122` ile cagir.",
-          "hint_partial": "gh cache-122-122 repos/..."
+          "answer": "gh api repos/acme/search/branches/main/protection",
+          "hint_text": "Branch protection denetimi icin protection endpoint'ini kullan.",
+          "hint_partial": "gh api repos/..."
         }
       ]
     },
     {
-      "id": "sgh-008-r123",
+      "id": "sgh-exp-146",
       "type": "single",
-      "scenario": "Deploy sonrasi pull request 15'i squash merge et.",
+      "scenario": "Operasyon devrinde `acme/search` reposunda PR 94'i squash merge edip branch'i sil.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh pr merge 15 --squash",
-          "hint_text": "Merge stratejisi icin `--squash` kullan.",
+          "answer": "gh pr merge 94 --squash --delete-branch --repo acme/search",
+          "hint_text": "Merge stratejisi ve branch cleanup'i ayni komutta ver.",
           "hint_partial": "gh pr merge ..."
         }
       ]
     },
     {
-      "id": "sgh-009-r124",
+      "id": "sgh-exp-147",
       "type": "single",
-      "scenario": "Kesinti incelemesinde pull request 15 diff'ini goster.",
+      "scenario": "Operasyon devrinde `acme/search` reposunda PR 94'i approve review ile onayla.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh pr diff 15",
-          "hint_text": "PR diff icin `gh pr diff` kullan.",
-          "hint_partial": "gh pr diff ..."
-        }
-      ]
-    },
-    {
-      "id": "sgh-010-r125",
-      "type": "single",
-      "scenario": "Yeni acilan hostta draft durumdaki pull request 15'i review'e hazir yap.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh pr ready 15",
-          "hint_text": "Draft'tan cikarmak icin `gh pr ready` kullan.",
-          "hint_partial": "gh pr ready ..."
-        }
-      ]
-    },
-    {
-      "id": "sgh-011-r126",
-      "type": "single",
-      "scenario": "Runbook adiminda pull request 15'i approve review ile onayla.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh pr review 15 --approve",
-          "hint_text": "Review onayi icin `gh pr review --approve` kullan.",
+          "answer": "gh pr review 94 --approve --body approved --repo acme/search",
+          "hint_text": "Approve review gondermek icin `gh pr review --approve` kullan.",
           "hint_partial": "gh pr review ..."
         }
       ]
     },
     {
-      "id": "sgh-012-r127",
+      "id": "sgh-exp-148",
       "type": "single",
-      "scenario": "Operasyon kontrolunde issue 42'ye `bug` label'ini ekle.",
+      "scenario": "Operasyon devrinde `acme/search` reposunda PR 94 icin change request review gonder.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh issue edit 42 --add-label bug",
-          "hint_text": "Label eklemek icin `gh issue edit --add-label` kullan.",
-          "hint_partial": "gh issue edit ..."
+          "answer": "gh pr review 94 --request-changes --body needs-fix --repo acme/search",
+          "hint_text": "Degisiklik istemek icin `--request-changes` kullan.",
+          "hint_partial": "gh pr review ..."
         }
       ]
     },
     {
-      "id": "sgh-013-r128",
+      "id": "sgh-exp-149",
       "type": "single",
-      "scenario": "Incident sonrasinda issue 42'ye `investigating` yorumunu ekle.",
+      "scenario": "Operasyon devrinde `acme/search` reposunda PR 94'e `investigating` notunu ekle.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh issue comment 42 --body 'investigating'",
-          "hint_text": "Issue yorumu icin `gh issue comment --body` kullan.",
-          "hint_partial": "gh issue comment ..."
+          "answer": "gh pr comment 94 --body investigating --repo acme/search",
+          "hint_text": "Review disi ek yorum icin `gh pr comment` kullan.",
+          "hint_partial": "gh pr comment ..."
         }
       ]
     },
     {
-      "id": "sgh-014-r129",
+      "id": "sgh-exp-150",
       "type": "single",
-      "scenario": "Bakim oncesi run 123 tamamlanana kadar canli izle.",
+      "scenario": "Operasyon devrinde `acme/search` reposunda PR 94 checks sonucunu izle.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh run watch 123",
-          "hint_text": "Run takibi icin `gh run watch` kullan.",
-          "hint_partial": "gh run watch ..."
+          "answer": "gh pr checks 94 --watch --repo acme/search",
+          "hint_text": "Checks tamamlanana kadar `--watch` ile bekle.",
+          "hint_partial": "gh pr checks ..."
         }
       ]
     },
     {
-      "id": "sgh-015-r130",
+      "id": "sgh-exp-151",
       "type": "single",
-      "scenario": "Troubleshooting sirasinda run 123 artifact'larini indir.",
+      "scenario": "Operasyon devrinde `acme/search` reposunda run 1208'de sadece failed job'lari rerun et.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh run download 123",
-          "hint_text": "Artifact indirmek icin `gh run download` kullan.",
+          "answer": "gh run rerun 1208 --failed --repo acme/search",
+          "hint_text": "Tum workflow yerine yalnizca basarisiz job'lari calistir.",
+          "hint_partial": "gh run rerun ..."
+        }
+      ]
+    },
+    {
+      "id": "sgh-exp-152",
+      "type": "single",
+      "scenario": "Operasyon devrinde `acme/search` reposunda run 1208 artifact'larini `./artifacts` klasorune indir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh run download 1208 -D ./artifacts --repo acme/search",
+          "hint_text": "Artifact cikisini belirli dizine almak icin `-D` kullan.",
           "hint_partial": "gh run download ..."
         }
       ]
     },
     {
-      "id": "sgh-016-r131",
+      "id": "sgh-exp-153",
       "type": "single",
-      "scenario": "Deploy sonrasi `v1.2.0` release detayini goster.",
+      "scenario": "Operasyon devrinde `acme/search` reposunda run 1208 ozetini JSON alanlariyla goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh release view v1.2.0",
-          "hint_text": "Belirli release icin `gh release view` kullan.",
+          "answer": "gh run view 1208 --json name,status,conclusion --repo acme/search",
+          "hint_text": "Makinece okunur ozet icin `gh run view --json` kullan.",
+          "hint_partial": "gh run view ..."
+        }
+      ]
+    },
+    {
+      "id": "sgh-exp-154",
+      "type": "single",
+      "scenario": "Operasyon devrinde `acme/search` reposunda `v2.3.0` release detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh release view v2.3.0 --repo acme/search",
+          "hint_text": "Belirli release'i gormek icin `gh release view` kullan.",
           "hint_partial": "gh release view ..."
         }
       ]
     },
     {
-      "id": "sgh-017-r132",
+      "id": "sgh-exp-155",
       "type": "single",
-      "scenario": "Kesinti incelemesinde `v1.2.0` release asset'lerini indir.",
+      "scenario": "Operasyon devrinde `acme/search` reposunda `v2.3.0` release asset'lerini `./releases` klasorune indir.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh release download v1.2.0",
-          "hint_text": "Release asset indirmek icin `gh release download` kullan.",
+          "answer": "gh release download v2.3.0 -D ./releases --repo acme/search",
+          "hint_text": "Release artifact'larini belirli dizine indirmek icin `-D` kullan.",
           "hint_partial": "gh release download ..."
         }
       ]
     },
     {
-      "id": "sgh-018-r133",
+      "id": "sgh-exp-156",
       "type": "single",
-      "scenario": "Yeni acilan hostta repository variable listesini goster.",
+      "scenario": "Operasyon devrinde `acme/search` reposundaki repository variable listesini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh variable list",
-          "hint_text": "Actions variable listesi icin `gh variable list` kullan.",
-          "hint_partial": "gh variable ..."
+          "answer": "gh variable list -R acme/search",
+          "hint_text": "Repo variable denetimi icin `gh variable list -R` kullan.",
+          "hint_partial": "gh variable list ..."
         }
       ]
     },
     {
-      "id": "sgh-019-r134",
+      "id": "sgh-exp-157",
       "type": "single",
-      "scenario": "Runbook adiminda repository secret listesini goster.",
+      "scenario": "Operasyon devrinde `acme/search` reposundaki repository secret listesini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh secret list",
-          "hint_text": "Secret listesi icin `gh secret list` kullan.",
-          "hint_partial": "gh secret ..."
+          "answer": "gh secret list -R acme/search",
+          "hint_text": "Secret isimlerini kontrol etmek icin `gh secret list -R` kullan.",
+          "hint_partial": "gh secret list ..."
         }
       ]
     },
     {
-      "id": "sgh-020-r135",
+      "id": "sgh-exp-158",
       "type": "single",
-      "scenario": "Operasyon kontrolunde tanımlı GH CLI alias'larini listele.",
+      "scenario": "Operasyon devrinde `acme/search` reposunda `TODO` gecen kodlari ara.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh alias list",
-          "hint_text": "Alias listesi icin `gh alias list` kullan.",
-          "hint_partial": "gh alias ..."
+          "answer": "gh search code TODO --repo acme/search",
+          "hint_text": "Kod aramasi icin `gh search code` kullan.",
+          "hint_partial": "gh search code ..."
         }
       ]
     },
     {
-      "id": "sgh-021-r136",
+      "id": "sgh-exp-159",
       "type": "single",
-      "scenario": "Incident sonrasinda `owner/repo` icinde `fix bug` gecen PR'lari ara.",
+      "scenario": "Operasyon devrinde `acme/search` reposunda `search` label'li open issue'lari listele.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh search prs 'fix bug' --repo owner/repo",
-          "hint_text": "PR aramasi icin `gh search prs` kullan.",
-          "hint_partial": "gh search prs ..."
+          "answer": "gh issue list --repo acme/search --label search --state open",
+          "hint_text": "Incident veya release label'li issue'lari filtrelemek icin `--label` kullan.",
+          "hint_partial": "gh issue list ..."
         }
       ]
     },
     {
-      "id": "sgh-022-r137",
+      "id": "sgh-exp-160",
       "type": "single",
-      "scenario": "Bakim oncesi `owner/repo` icinde `outage` gecen issue'lari ara.",
+      "scenario": "Operasyon devrinde `acme/search` reposunda PR 94 durumunu JSON alanlariyla goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh search issues outage --repo owner/repo",
-          "hint_text": "Issue aramasi icin `gh search issues` kullan.",
-          "hint_partial": "gh search issues ..."
+          "answer": "gh pr view 94 --json state,mergeStateStatus,reviewDecision --repo acme/search",
+          "hint_text": "Merge readiness kontrolu icin `gh pr view --json` kullan.",
+          "hint_partial": "gh pr view ..."
         }
       ]
     },
     {
-      "id": "sgh-023-r138",
+      "id": "sgh-exp-161",
       "type": "single",
-      "scenario": "Troubleshooting sirasinda `deploy.yml` workflow'unu tetikle.",
+      "scenario": "On-call gorevinde `acme/infra-live` repository metadata'sini API ile cek.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh workflow run deploy.yml",
-          "hint_text": "Workflow calistirmak icin `gh workflow run` kullan.",
-          "hint_partial": "gh workflow run ..."
+          "answer": "gh api repos/acme/infra-live",
+          "hint_text": "Ham repository bilgisini almak icin `gh api repos/<owner>/<repo>` kullan.",
+          "hint_partial": "gh api repos/..."
         }
       ]
     },
     {
-      "id": "sgh-024-r139",
+      "id": "sgh-exp-162",
       "type": "single",
-      "scenario": "Deploy sonrasi `deploy.yml` workflow tanimini YAML olarak goster.",
+      "scenario": "On-call gorevinde `acme/infra-live` reposunda PR 105 review comment'lerini API ile listele.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh workflow view deploy.yml --yaml",
-          "hint_text": "Workflow YAML gormek icin `--yaml` kullan.",
-          "hint_partial": "gh workflow view ..."
+          "answer": "gh api repos/acme/infra-live/pulls/105/comments",
+          "hint_text": "PR review comment endpoint'ini `gh api` ile cagir.",
+          "hint_partial": "gh api repos/..."
         }
       ]
     },
     {
-      "id": "sgh-025-r140",
+      "id": "sgh-exp-163",
       "type": "single",
-      "scenario": "Kesinti incelemesinde fork ile upstream repository'yi senkronize et.",
+      "scenario": "On-call gorevinde `acme/infra-live` reposunda run 1209 job detaylarini API ile cek.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh repo sync owner/repo",
-          "hint_text": "Fork sync icin `gh repo sync` kullan.",
-          "hint_partial": "gh repo sync ..."
+          "answer": "gh api repos/acme/infra-live/actions/runs/1209/jobs",
+          "hint_text": "Actions job verisi icin run jobs endpoint'ini kullan.",
+          "hint_partial": "gh api repos/..."
         }
       ]
     },
     {
-      "id": "sgh-006-r141",
+      "id": "sgh-exp-164",
       "type": "single",
-      "scenario": "Yeni acilan hostta `owner/repo` repository metadata'sini API ile cek.",
+      "scenario": "On-call gorevinde `acme/infra-live` reposundaki son release bilgisini API ile al.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh proxy-141 repos/owner/repo",
-          "hint_text": "Ham API cagrisi icin `gh proxy-141` kullan.",
-          "hint_partial": "gh proxy-141 ..."
+          "answer": "gh api repos/acme/infra-live/releases/latest",
+          "hint_text": "Son release metadata'si icin latest endpoint'ini cagir.",
+          "hint_partial": "gh api repos/..."
         }
       ]
     },
     {
-      "id": "sgh-007-r142",
+      "id": "sgh-exp-165",
       "type": "single",
-      "scenario": "Runbook adiminda `owner/repo` icin Actions run listesini API ile cek.",
+      "scenario": "On-call gorevinde `acme/infra-live` reposunda `prod` branch koruma ayarini API ile gor.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh web-142 repos/owner/repo/actions/runs",
-          "hint_text": "Actions endpoint'ini `gh web-142` ile cagir.",
-          "hint_partial": "gh web-142 repos/..."
+          "answer": "gh api repos/acme/infra-live/branches/prod/protection",
+          "hint_text": "Branch protection denetimi icin protection endpoint'ini kullan.",
+          "hint_partial": "gh api repos/..."
         }
       ]
     },
     {
-      "id": "sgh-008-r143",
+      "id": "sgh-exp-166",
       "type": "single",
-      "scenario": "Operasyon kontrolunde pull request 15'i squash merge et.",
+      "scenario": "On-call gorevinde `acme/infra-live` reposunda PR 105'i squash merge edip branch'i sil.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh pr merge 15 --squash",
-          "hint_text": "Merge stratejisi icin `--squash` kullan.",
+          "answer": "gh pr merge 105 --squash --delete-branch --repo acme/infra-live",
+          "hint_text": "Merge stratejisi ve branch cleanup'i ayni komutta ver.",
           "hint_partial": "gh pr merge ..."
         }
       ]
     },
     {
-      "id": "sgh-009-r144",
+      "id": "sgh-exp-167",
       "type": "single",
-      "scenario": "Incident sonrasinda pull request 15 diff'ini goster.",
+      "scenario": "On-call gorevinde `acme/infra-live` reposunda PR 105'i approve review ile onayla.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh pr diff 15",
-          "hint_text": "PR diff icin `gh pr diff` kullan.",
-          "hint_partial": "gh pr diff ..."
-        }
-      ]
-    },
-    {
-      "id": "sgh-010-r145",
-      "type": "single",
-      "scenario": "Bakim oncesi draft durumdaki pull request 15'i review'e hazir yap.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh pr ready 15",
-          "hint_text": "Draft'tan cikarmak icin `gh pr ready` kullan.",
-          "hint_partial": "gh pr ready ..."
-        }
-      ]
-    },
-    {
-      "id": "sgh-011-r146",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda pull request 15'i approve review ile onayla.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh pr review 15 --approve",
-          "hint_text": "Review onayi icin `gh pr review --approve` kullan.",
+          "answer": "gh pr review 105 --approve --body approved --repo acme/infra-live",
+          "hint_text": "Approve review gondermek icin `gh pr review --approve` kullan.",
           "hint_partial": "gh pr review ..."
         }
       ]
     },
     {
-      "id": "sgh-012-r147",
+      "id": "sgh-exp-168",
       "type": "single",
-      "scenario": "Deploy sonrasi issue 42'ye `bug` label'ini ekle.",
+      "scenario": "On-call gorevinde `acme/infra-live` reposunda PR 105 icin change request review gonder.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh issue edit 42 --add-label bug",
-          "hint_text": "Label eklemek icin `gh issue edit --add-label` kullan.",
-          "hint_partial": "gh issue edit ..."
+          "answer": "gh pr review 105 --request-changes --body needs-fix --repo acme/infra-live",
+          "hint_text": "Degisiklik istemek icin `--request-changes` kullan.",
+          "hint_partial": "gh pr review ..."
         }
       ]
     },
     {
-      "id": "sgh-013-r148",
+      "id": "sgh-exp-169",
       "type": "single",
-      "scenario": "Kesinti incelemesinde issue 42'ye `investigating` yorumunu ekle.",
+      "scenario": "On-call gorevinde `acme/infra-live` reposunda PR 105'e `investigating` notunu ekle.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh issue comment 42 --body 'investigating'",
-          "hint_text": "Issue yorumu icin `gh issue comment --body` kullan.",
-          "hint_partial": "gh issue comment ..."
+          "answer": "gh pr comment 105 --body investigating --repo acme/infra-live",
+          "hint_text": "Review disi ek yorum icin `gh pr comment` kullan.",
+          "hint_partial": "gh pr comment ..."
         }
       ]
     },
     {
-      "id": "sgh-014-r149",
+      "id": "sgh-exp-170",
       "type": "single",
-      "scenario": "Yeni acilan hostta run 123 tamamlanana kadar canli izle.",
+      "scenario": "On-call gorevinde `acme/infra-live` reposunda PR 105 checks sonucunu izle.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh run watch 123",
-          "hint_text": "Run takibi icin `gh run watch` kullan.",
-          "hint_partial": "gh run watch ..."
+          "answer": "gh pr checks 105 --watch --repo acme/infra-live",
+          "hint_text": "Checks tamamlanana kadar `--watch` ile bekle.",
+          "hint_partial": "gh pr checks ..."
         }
       ]
     },
     {
-      "id": "sgh-015-r150",
+      "id": "sgh-exp-171",
       "type": "single",
-      "scenario": "Runbook adiminda run 123 artifact'larini indir.",
+      "scenario": "On-call gorevinde `acme/infra-live` reposunda run 1209'de sadece failed job'lari rerun et.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh run download 123",
-          "hint_text": "Artifact indirmek icin `gh run download` kullan.",
+          "answer": "gh run rerun 1209 --failed --repo acme/infra-live",
+          "hint_text": "Tum workflow yerine yalnizca basarisiz job'lari calistir.",
+          "hint_partial": "gh run rerun ..."
+        }
+      ]
+    },
+    {
+      "id": "sgh-exp-172",
+      "type": "single",
+      "scenario": "On-call gorevinde `acme/infra-live` reposunda run 1209 artifact'larini `./artifacts` klasorune indir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh run download 1209 -D ./artifacts --repo acme/infra-live",
+          "hint_text": "Artifact cikisini belirli dizine almak icin `-D` kullan.",
           "hint_partial": "gh run download ..."
         }
       ]
     },
     {
-      "id": "sgh-016-r151",
+      "id": "sgh-exp-173",
       "type": "single",
-      "scenario": "Operasyon kontrolunde `v1.2.0` release detayini goster.",
+      "scenario": "On-call gorevinde `acme/infra-live` reposunda run 1209 ozetini JSON alanlariyla goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh release view v1.2.0",
-          "hint_text": "Belirli release icin `gh release view` kullan.",
+          "answer": "gh run view 1209 --json name,status,conclusion --repo acme/infra-live",
+          "hint_text": "Makinece okunur ozet icin `gh run view --json` kullan.",
+          "hint_partial": "gh run view ..."
+        }
+      ]
+    },
+    {
+      "id": "sgh-exp-174",
+      "type": "single",
+      "scenario": "On-call gorevinde `acme/infra-live` reposunda `v3.0.0` release detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh release view v3.0.0 --repo acme/infra-live",
+          "hint_text": "Belirli release'i gormek icin `gh release view` kullan.",
           "hint_partial": "gh release view ..."
         }
       ]
     },
     {
-      "id": "sgh-017-r152",
+      "id": "sgh-exp-175",
       "type": "single",
-      "scenario": "Incident sonrasinda `v1.2.0` release asset'lerini indir.",
+      "scenario": "On-call gorevinde `acme/infra-live` reposunda `v3.0.0` release asset'lerini `./releases` klasorune indir.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh release download v1.2.0",
-          "hint_text": "Release asset indirmek icin `gh release download` kullan.",
+          "answer": "gh release download v3.0.0 -D ./releases --repo acme/infra-live",
+          "hint_text": "Release artifact'larini belirli dizine indirmek icin `-D` kullan.",
           "hint_partial": "gh release download ..."
         }
       ]
     },
     {
-      "id": "sgh-018-r153",
+      "id": "sgh-exp-176",
       "type": "single",
-      "scenario": "Bakim oncesi repository variable listesini goster.",
+      "scenario": "On-call gorevinde `acme/infra-live` reposundaki repository variable listesini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh variable list",
-          "hint_text": "Actions variable listesi icin `gh variable list` kullan.",
-          "hint_partial": "gh variable ..."
+          "answer": "gh variable list -R acme/infra-live",
+          "hint_text": "Repo variable denetimi icin `gh variable list -R` kullan.",
+          "hint_partial": "gh variable list ..."
         }
       ]
     },
     {
-      "id": "sgh-019-r154",
+      "id": "sgh-exp-177",
       "type": "single",
-      "scenario": "Troubleshooting sirasinda repository secret listesini goster.",
+      "scenario": "On-call gorevinde `acme/infra-live` reposundaki repository secret listesini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh secret list",
-          "hint_text": "Secret listesi icin `gh secret list` kullan.",
-          "hint_partial": "gh secret ..."
+          "answer": "gh secret list -R acme/infra-live",
+          "hint_text": "Secret isimlerini kontrol etmek icin `gh secret list -R` kullan.",
+          "hint_partial": "gh secret list ..."
         }
       ]
     },
     {
-      "id": "sgh-020-r155",
+      "id": "sgh-exp-178",
       "type": "single",
-      "scenario": "Deploy sonrasi tanımlı GH CLI alias'larini listele.",
+      "scenario": "On-call gorevinde `acme/infra-live` reposunda `TODO` gecen kodlari ara.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh alias list",
-          "hint_text": "Alias listesi icin `gh alias list` kullan.",
-          "hint_partial": "gh alias ..."
+          "answer": "gh search code TODO --repo acme/infra-live",
+          "hint_text": "Kod aramasi icin `gh search code` kullan.",
+          "hint_partial": "gh search code ..."
         }
       ]
     },
     {
-      "id": "sgh-021-r156",
+      "id": "sgh-exp-179",
       "type": "single",
-      "scenario": "Kesinti incelemesinde `owner/repo` icinde `fix bug` gecen PR'lari ara.",
+      "scenario": "On-call gorevinde `acme/infra-live` reposunda `infra` label'li open issue'lari listele.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh search prs 'fix bug' --repo owner/repo",
-          "hint_text": "PR aramasi icin `gh search prs` kullan.",
-          "hint_partial": "gh search prs ..."
+          "answer": "gh issue list --repo acme/infra-live --label infra --state open",
+          "hint_text": "Incident veya release label'li issue'lari filtrelemek icin `--label` kullan.",
+          "hint_partial": "gh issue list ..."
         }
       ]
     },
     {
-      "id": "sgh-022-r157",
+      "id": "sgh-exp-180",
       "type": "single",
-      "scenario": "Yeni acilan hostta `owner/repo` icinde `outage` gecen issue'lari ara.",
+      "scenario": "On-call gorevinde `acme/infra-live` reposunda PR 105 durumunu JSON alanlariyla goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh search issues outage --repo owner/repo",
-          "hint_text": "Issue aramasi icin `gh search issues` kullan.",
-          "hint_partial": "gh search issues ..."
+          "answer": "gh pr view 105 --json state,mergeStateStatus,reviewDecision --repo acme/infra-live",
+          "hint_text": "Merge readiness kontrolu icin `gh pr view --json` kullan.",
+          "hint_partial": "gh pr view ..."
         }
       ]
     },
     {
-      "id": "sgh-023-r158",
+      "id": "sgh-exp-181",
       "type": "single",
-      "scenario": "Runbook adiminda `deploy.yml` workflow'unu tetikle.",
+      "scenario": "Kesinti sonrasinda `acme/observability` repository metadata'sini API ile cek.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh workflow run deploy.yml",
-          "hint_text": "Workflow calistirmak icin `gh workflow run` kullan.",
-          "hint_partial": "gh workflow run ..."
+          "answer": "gh api repos/acme/observability",
+          "hint_text": "Ham repository bilgisini almak icin `gh api repos/<owner>/<repo>` kullan.",
+          "hint_partial": "gh api repos/..."
         }
       ]
     },
     {
-      "id": "sgh-024-r159",
+      "id": "sgh-exp-182",
       "type": "single",
-      "scenario": "Operasyon kontrolunde `deploy.yml` workflow tanimini YAML olarak goster.",
+      "scenario": "Kesinti sonrasinda `acme/observability` reposunda PR 117 review comment'lerini API ile listele.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh workflow view deploy.yml --yaml",
-          "hint_text": "Workflow YAML gormek icin `--yaml` kullan.",
-          "hint_partial": "gh workflow view ..."
+          "answer": "gh api repos/acme/observability/pulls/117/comments",
+          "hint_text": "PR review comment endpoint'ini `gh api` ile cagir.",
+          "hint_partial": "gh api repos/..."
         }
       ]
     },
     {
-      "id": "sgh-025-r160",
+      "id": "sgh-exp-183",
       "type": "single",
-      "scenario": "Incident sonrasinda fork ile upstream repository'yi senkronize et.",
+      "scenario": "Kesinti sonrasinda `acme/observability` reposunda run 1210 job detaylarini API ile cek.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh repo sync owner/repo",
-          "hint_text": "Fork sync icin `gh repo sync` kullan.",
-          "hint_partial": "gh repo sync ..."
+          "answer": "gh api repos/acme/observability/actions/runs/1210/jobs",
+          "hint_text": "Actions job verisi icin run jobs endpoint'ini kullan.",
+          "hint_partial": "gh api repos/..."
         }
       ]
     },
     {
-      "id": "sgh-006-r161",
+      "id": "sgh-exp-184",
       "type": "single",
-      "scenario": "Bakim oncesi `owner/repo` repository metadata'sini API ile cek.",
+      "scenario": "Kesinti sonrasinda `acme/observability` reposundaki son release bilgisini API ile al.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh db-161-161 repos/owner/repo",
-          "hint_text": "Ham API cagrisi icin `gh db-161-161` kullan.",
-          "hint_partial": "gh db-161-161 ..."
+          "answer": "gh api repos/acme/observability/releases/latest",
+          "hint_text": "Son release metadata'si icin latest endpoint'ini cagir.",
+          "hint_partial": "gh api repos/..."
         }
       ]
     },
     {
-      "id": "sgh-007-r162",
+      "id": "sgh-exp-185",
       "type": "single",
-      "scenario": "Troubleshooting sirasinda `owner/repo` icin Actions run listesini API ile cek.",
+      "scenario": "Kesinti sonrasinda `acme/observability` reposunda `main` branch koruma ayarini API ile gor.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh cache-162-162 repos/owner/repo/actions/runs",
-          "hint_text": "Actions endpoint'ini `gh cache-162-162` ile cagir.",
-          "hint_partial": "gh cache-162-162 repos/..."
+          "answer": "gh api repos/acme/observability/branches/main/protection",
+          "hint_text": "Branch protection denetimi icin protection endpoint'ini kullan.",
+          "hint_partial": "gh api repos/..."
         }
       ]
     },
     {
-      "id": "sgh-008-r163",
+      "id": "sgh-exp-186",
       "type": "single",
-      "scenario": "Deploy sonrasi pull request 15'i squash merge et.",
+      "scenario": "Kesinti sonrasinda `acme/observability` reposunda PR 117'i squash merge edip branch'i sil.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh pr merge 15 --squash",
-          "hint_text": "Merge stratejisi icin `--squash` kullan.",
+          "answer": "gh pr merge 117 --squash --delete-branch --repo acme/observability",
+          "hint_text": "Merge stratejisi ve branch cleanup'i ayni komutta ver.",
           "hint_partial": "gh pr merge ..."
         }
       ]
     },
     {
-      "id": "sgh-009-r164",
+      "id": "sgh-exp-187",
       "type": "single",
-      "scenario": "Kesinti incelemesinde pull request 15 diff'ini goster.",
+      "scenario": "Kesinti sonrasinda `acme/observability` reposunda PR 117'i approve review ile onayla.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh pr diff 15",
-          "hint_text": "PR diff icin `gh pr diff` kullan.",
-          "hint_partial": "gh pr diff ..."
-        }
-      ]
-    },
-    {
-      "id": "sgh-010-r165",
-      "type": "single",
-      "scenario": "Yeni acilan hostta draft durumdaki pull request 15'i review'e hazir yap.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh pr ready 15",
-          "hint_text": "Draft'tan cikarmak icin `gh pr ready` kullan.",
-          "hint_partial": "gh pr ready ..."
-        }
-      ]
-    },
-    {
-      "id": "sgh-011-r166",
-      "type": "single",
-      "scenario": "Runbook adiminda pull request 15'i approve review ile onayla.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh pr review 15 --approve",
-          "hint_text": "Review onayi icin `gh pr review --approve` kullan.",
+          "answer": "gh pr review 117 --approve --body approved --repo acme/observability",
+          "hint_text": "Approve review gondermek icin `gh pr review --approve` kullan.",
           "hint_partial": "gh pr review ..."
         }
       ]
     },
     {
-      "id": "sgh-012-r167",
+      "id": "sgh-exp-188",
       "type": "single",
-      "scenario": "Operasyon kontrolunde issue 42'ye `bug` label'ini ekle.",
+      "scenario": "Kesinti sonrasinda `acme/observability` reposunda PR 117 icin change request review gonder.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh issue edit 42 --add-label bug",
-          "hint_text": "Label eklemek icin `gh issue edit --add-label` kullan.",
-          "hint_partial": "gh issue edit ..."
+          "answer": "gh pr review 117 --request-changes --body needs-fix --repo acme/observability",
+          "hint_text": "Degisiklik istemek icin `--request-changes` kullan.",
+          "hint_partial": "gh pr review ..."
         }
       ]
     },
     {
-      "id": "sgh-013-r168",
+      "id": "sgh-exp-189",
       "type": "single",
-      "scenario": "Incident sonrasinda issue 42'ye `investigating` yorumunu ekle.",
+      "scenario": "Kesinti sonrasinda `acme/observability` reposunda PR 117'e `investigating` notunu ekle.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh issue comment 42 --body 'investigating'",
-          "hint_text": "Issue yorumu icin `gh issue comment --body` kullan.",
-          "hint_partial": "gh issue comment ..."
+          "answer": "gh pr comment 117 --body investigating --repo acme/observability",
+          "hint_text": "Review disi ek yorum icin `gh pr comment` kullan.",
+          "hint_partial": "gh pr comment ..."
         }
       ]
     },
     {
-      "id": "sgh-014-r169",
+      "id": "sgh-exp-190",
       "type": "single",
-      "scenario": "Bakim oncesi run 123 tamamlanana kadar canli izle.",
+      "scenario": "Kesinti sonrasinda `acme/observability` reposunda PR 117 checks sonucunu izle.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh run watch 123",
-          "hint_text": "Run takibi icin `gh run watch` kullan.",
-          "hint_partial": "gh run watch ..."
+          "answer": "gh pr checks 117 --watch --repo acme/observability",
+          "hint_text": "Checks tamamlanana kadar `--watch` ile bekle.",
+          "hint_partial": "gh pr checks ..."
         }
       ]
     },
     {
-      "id": "sgh-015-r170",
+      "id": "sgh-exp-191",
       "type": "single",
-      "scenario": "Troubleshooting sirasinda run 123 artifact'larini indir.",
+      "scenario": "Kesinti sonrasinda `acme/observability` reposunda run 1210'de sadece failed job'lari rerun et.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh run download 123",
-          "hint_text": "Artifact indirmek icin `gh run download` kullan.",
+          "answer": "gh run rerun 1210 --failed --repo acme/observability",
+          "hint_text": "Tum workflow yerine yalnizca basarisiz job'lari calistir.",
+          "hint_partial": "gh run rerun ..."
+        }
+      ]
+    },
+    {
+      "id": "sgh-exp-192",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `acme/observability` reposunda run 1210 artifact'larini `./artifacts` klasorune indir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh run download 1210 -D ./artifacts --repo acme/observability",
+          "hint_text": "Artifact cikisini belirli dizine almak icin `-D` kullan.",
           "hint_partial": "gh run download ..."
         }
       ]
     },
     {
-      "id": "sgh-016-r171",
+      "id": "sgh-exp-193",
       "type": "single",
-      "scenario": "Deploy sonrasi `v1.2.0` release detayini goster.",
+      "scenario": "Kesinti sonrasinda `acme/observability` reposunda run 1210 ozetini JSON alanlariyla goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh release view v1.2.0",
-          "hint_text": "Belirli release icin `gh release view` kullan.",
+          "answer": "gh run view 1210 --json name,status,conclusion --repo acme/observability",
+          "hint_text": "Makinece okunur ozet icin `gh run view --json` kullan.",
+          "hint_partial": "gh run view ..."
+        }
+      ]
+    },
+    {
+      "id": "sgh-exp-194",
+      "type": "single",
+      "scenario": "Kesinti sonrasinda `acme/observability` reposunda `v3.1.0` release detayini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh release view v3.1.0 --repo acme/observability",
+          "hint_text": "Belirli release'i gormek icin `gh release view` kullan.",
           "hint_partial": "gh release view ..."
         }
       ]
     },
     {
-      "id": "sgh-017-r172",
+      "id": "sgh-exp-195",
       "type": "single",
-      "scenario": "Kesinti incelemesinde `v1.2.0` release asset'lerini indir.",
+      "scenario": "Kesinti sonrasinda `acme/observability` reposunda `v3.1.0` release asset'lerini `./releases` klasorune indir.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh release download v1.2.0",
-          "hint_text": "Release asset indirmek icin `gh release download` kullan.",
+          "answer": "gh release download v3.1.0 -D ./releases --repo acme/observability",
+          "hint_text": "Release artifact'larini belirli dizine indirmek icin `-D` kullan.",
           "hint_partial": "gh release download ..."
         }
       ]
     },
     {
-      "id": "sgh-018-r173",
+      "id": "sgh-exp-196",
       "type": "single",
-      "scenario": "Yeni acilan hostta repository variable listesini goster.",
+      "scenario": "Kesinti sonrasinda `acme/observability` reposundaki repository variable listesini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh variable list",
-          "hint_text": "Actions variable listesi icin `gh variable list` kullan.",
-          "hint_partial": "gh variable ..."
+          "answer": "gh variable list -R acme/observability",
+          "hint_text": "Repo variable denetimi icin `gh variable list -R` kullan.",
+          "hint_partial": "gh variable list ..."
         }
       ]
     },
     {
-      "id": "sgh-019-r174",
+      "id": "sgh-exp-197",
       "type": "single",
-      "scenario": "Runbook adiminda repository secret listesini goster.",
+      "scenario": "Kesinti sonrasinda `acme/observability` reposundaki repository secret listesini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh secret list",
-          "hint_text": "Secret listesi icin `gh secret list` kullan.",
-          "hint_partial": "gh secret ..."
+          "answer": "gh secret list -R acme/observability",
+          "hint_text": "Secret isimlerini kontrol etmek icin `gh secret list -R` kullan.",
+          "hint_partial": "gh secret list ..."
         }
       ]
     },
     {
-      "id": "sgh-020-r175",
+      "id": "sgh-exp-198",
       "type": "single",
-      "scenario": "Operasyon kontrolunde tanımlı GH CLI alias'larini listele.",
+      "scenario": "Kesinti sonrasinda `acme/observability` reposunda `TODO` gecen kodlari ara.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh alias list",
-          "hint_text": "Alias listesi icin `gh alias list` kullan.",
-          "hint_partial": "gh alias ..."
+          "answer": "gh search code TODO --repo acme/observability",
+          "hint_text": "Kod aramasi icin `gh search code` kullan.",
+          "hint_partial": "gh search code ..."
         }
       ]
     },
     {
-      "id": "sgh-021-r176",
+      "id": "sgh-exp-199",
       "type": "single",
-      "scenario": "Incident sonrasinda `owner/repo` icinde `fix bug` gecen PR'lari ara.",
+      "scenario": "Kesinti sonrasinda `acme/observability` reposunda `monitoring` label'li open issue'lari listele.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh search prs 'fix bug' --repo owner/repo",
-          "hint_text": "PR aramasi icin `gh search prs` kullan.",
-          "hint_partial": "gh search prs ..."
+          "answer": "gh issue list --repo acme/observability --label monitoring --state open",
+          "hint_text": "Incident veya release label'li issue'lari filtrelemek icin `--label` kullan.",
+          "hint_partial": "gh issue list ..."
         }
       ]
     },
     {
-      "id": "sgh-022-r177",
+      "id": "sgh-exp-200",
       "type": "single",
-      "scenario": "Bakim oncesi `owner/repo` icinde `outage` gecen issue'lari ara.",
+      "scenario": "Kesinti sonrasinda `acme/observability` reposunda PR 117 durumunu JSON alanlariyla goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh search issues outage --repo owner/repo",
-          "hint_text": "Issue aramasi icin `gh search issues` kullan.",
-          "hint_partial": "gh search issues ..."
-        }
-      ]
-    },
-    {
-      "id": "sgh-023-r178",
-      "type": "single",
-      "scenario": "Troubleshooting sirasinda `deploy.yml` workflow'unu tetikle.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh workflow run deploy.yml",
-          "hint_text": "Workflow calistirmak icin `gh workflow run` kullan.",
-          "hint_partial": "gh workflow run ..."
-        }
-      ]
-    },
-    {
-      "id": "sgh-024-r179",
-      "type": "single",
-      "scenario": "Deploy sonrasi `deploy.yml` workflow tanimini YAML olarak goster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh workflow view deploy.yml --yaml",
-          "hint_text": "Workflow YAML gormek icin `--yaml` kullan.",
-          "hint_partial": "gh workflow view ..."
-        }
-      ]
-    },
-    {
-      "id": "sgh-025-r180",
-      "type": "single",
-      "scenario": "Kesinti incelemesinde fork ile upstream repository'yi senkronize et.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "gh repo sync owner/repo",
-          "hint_text": "Fork sync icin `gh repo sync` kullan.",
-          "hint_partial": "gh repo sync ..."
+          "answer": "gh pr view 117 --json state,mergeStateStatus,reviewDecision --repo acme/observability",
+          "hint_text": "Merge readiness kontrolu icin `gh pr view --json` kullan.",
+          "hint_partial": "gh pr view ..."
         }
       ]
     }

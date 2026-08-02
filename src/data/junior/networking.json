@@ -5,498 +5,213 @@
     {
       "id": "jnet-001",
       "type": "single",
-      "scenario": "Makinedeki tüm IP adreslerini ve network interface'leri listele.",
+      "scenario": "Makinedeki tum interface'leri kisa formatta goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "ip a",
-          "hint_text": "Tüm address bilgilerini görmek için `ip a` kullan.",
-          "hint_partial": "ip ..."
+          "answer": "ip -br a",
+          "accepted_answers": ["ip -br a", "ip -br addr", "ip -brief address", "ip -brief addr"],
+          "hint_text": "Adresleri ve interface durumlarini tek ekranda gormek icin kisa `ip` gorunumunu kullan.",
+          "hint_partial": "ip -br ..."
         }
       ]
     },
     {
       "id": "jnet-002",
       "type": "single",
-      "scenario": "Makinedeki tüm IPv4 adreslerini listele.",
+      "scenario": "Varsayilan route bilgisini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "ip -4 a",
-          "hint_text": "Sadece IPv4 address'leri için `ip -4 a` kullan.",
-          "hint_partial": "ip -4 ..."
+          "answer": "ip route show default",
+          "accepted_answers": ["ip route show default", "ip r show default", "ip route show"],
+          "hint_text": "Default gateway bilgisini routing tablosundan filtrele.",
+          "hint_partial": "ip route show ..."
         }
       ]
     },
     {
       "id": "jnet-003",
       "type": "single",
-      "scenario": "Makinedeki tüm IPv6 adreslerini listele.",
+      "scenario": "Dinleyen TCP portlarini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "ip -6 a",
-          "hint_text": "Sadece IPv6 address'leri için `ip -6 a` kullan.",
-          "hint_partial": "ip -6 ..."
+          "answer": "ss -ltn",
+          "accepted_answers": ["ss -ltn", "ss -tln", "ss --listening --tcp --numeric"],
+          "hint_text": "Sunucuda dinleyen TCP socket'leri listelemek icin `ss` kullan.",
+          "hint_partial": "ss -l..."
         }
       ]
     },
     {
       "id": "jnet-004",
       "type": "single",
-      "scenario": "Interface'leri kısa formatta göster.",
+      "scenario": "8.8.8.8 adresine 4 paket gondererek erisim testi yap.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "ip -br a",
-          "hint_text": "Kısa özet görünüm için `ip -br a` kullan.",
-          "hint_partial": "ip -br ..."
+          "answer": "ping -c 4 8.8.8.8",
+          "hint_text": "Paket sayisini sinirlayarak basit bir baglanti testi yap.",
+          "hint_partial": "ping -c 4 ..."
         }
       ]
     },
     {
       "id": "jnet-005",
       "type": "single",
-      "scenario": "Tüm network link bilgilerini listele.",
+      "scenario": "`example.com` icin A kaydini kisa formatta sorgula.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "ip link show",
-          "hint_text": "Link seviyesi bilgileri için `ip link show` kullan.",
-          "hint_partial": "ip link ..."
+          "answer": "dig +short example.com",
+          "accepted_answers": ["dig +short example.com", "dig +short example.com a"],
+          "hint_text": "Sadece cozulmus adresi gormek icin `dig +short` kullan.",
+          "hint_partial": "dig +short ..."
         }
       ]
     },
     {
       "id": "jnet-006",
       "type": "single",
-      "scenario": "Sadece UP durumundaki interface'leri göster.",
+      "scenario": "`example.com` icin AAAA kaydini kisa formatta sorgula.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "ip link show up",
-          "hint_text": "Aktif link'leri filtrelemek için `ip link show up` kullan.",
-          "hint_partial": "ip link show ..."
+          "answer": "dig +short aaaa example.com",
+          "hint_text": "IPv6 DNS kaydini kisa formatta iste.",
+          "hint_partial": "dig +short aaaa ..."
         }
       ]
     },
     {
       "id": "jnet-007",
       "type": "single",
-      "scenario": "Loopback interface bilgisini göster.",
+      "scenario": "`example.com` icin HTTP response header'larini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "ip a show lo",
-          "hint_text": "Belirli bir interface için `ip a show <interface>` kullan.",
-          "hint_partial": "ip a show ..."
+          "answer": "curl -I https://example.com",
+          "accepted_answers": ["curl -i https://example.com", "curl --head https://example.com"],
+          "hint_text": "Sadece header'lari gormek icin `curl`'un head modunu kullan.",
+          "hint_partial": "curl -I ..."
         }
       ]
     },
     {
       "id": "jnet-008",
       "type": "single",
-      "scenario": "Loopback interface'in sadece IPv4 adresini göster.",
+      "scenario": "Sistem resolver sonucunu kullanarak `localhost` kaydini cozdur.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "ip -4 a show lo",
-          "hint_text": "Belirli interface'in IPv4 bilgisi için `ip -4 a show lo` kullan.",
-          "hint_partial": "ip -4 a show ..."
+          "answer": "getent hosts localhost",
+          "hint_text": "Hostname cozumunu libc resolver uzerinden gormek icin `getent hosts` kullan.",
+          "hint_partial": "getent hosts ..."
         }
       ]
     },
     {
       "id": "jnet-009",
       "type": "single",
-      "scenario": "Routing table'i göster.",
+      "scenario": "`/etc/resolv.conf` dosyasini oku.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "ip route",
-          "hint_text": "Route bilgileri için `ip route` kullan.",
-          "hint_partial": "ip r..."
+          "answer": "cat /etc/resolv.conf",
+          "hint_text": "Aktif DNS resolver ayarini dosya uzerinden gor.",
+          "hint_partial": "cat /etc/..."
         }
       ]
     },
     {
       "id": "jnet-010",
       "type": "single",
-      "scenario": "Default route bilgisini göster.",
+      "scenario": "Socket ozetini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "ip route show default",
-          "hint_text": "Sadece default route için `ip route show default` kullan.",
-          "hint_partial": "ip route show ..."
+          "answer": "ss -s",
+          "hint_text": "Toplam socket durumlarini hizli gormek icin `ss -s` kullan.",
+          "hint_partial": "ss -s"
         }
       ]
     },
     {
       "id": "jnet-011",
       "type": "single",
-      "scenario": "Makinenin hostname bilgisini göster.",
+      "scenario": "1.1.1.1 adresine giderken hangi route kullaniliyor goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "hostname",
-          "hint_text": "Hostname görmek için doğrudan `hostname` kullan.",
-          "hint_partial": "host..."
+          "answer": "ip route get 1.1.1.1",
+          "hint_text": "Belirli bir hedef icin secilen route'u `ip route get` ile sorgula.",
+          "hint_partial": "ip route get ..."
         }
       ]
     },
     {
       "id": "jnet-012",
       "type": "single",
-      "scenario": "Makinenin FQDN bilgisini göster.",
+      "scenario": "Tum link istatistiklerini goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "hostname -f",
-          "hint_text": "Tam hostname için `hostname -f` kullan.",
-          "hint_partial": "hostname ..."
+          "answer": "ip -s link",
+          "hint_text": "Paket ve hata sayilarini interface bazinda gormek icin link istatistiklerini iste.",
+          "hint_partial": "ip -s ..."
         }
       ]
     },
     {
       "id": "jnet-013",
       "type": "single",
-      "scenario": "Makinenin IP adreslerini tek satırda göster.",
+      "scenario": "`nmcli` ile device durumlarini listele.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "hostname -I",
-          "hint_text": "Atanmış IP adreslerini hızlı görmek için `hostname -I` kullan.",
-          "hint_partial": "hostname -I"
+          "answer": "nmcli device status",
+          "hint_text": "NetworkManager tarafindaki device durumlarini topluca gormek icin `nmcli` kullan.",
+          "hint_partial": "nmcli device ..."
         }
       ]
     },
     {
       "id": "jnet-014",
       "type": "single",
-      "scenario": "`/etc/hosts` dosyasını oku.",
+      "scenario": "`localhost` uzerinde 5432 portu dinliyor mu test et.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "cat /etc/hosts",
-          "hint_text": "Hosts dosyasını görmek için `cat /etc/hosts` kullan.",
-          "hint_partial": "cat /etc/..."
+          "answer": "nc -zv localhost 5432",
+          "hint_text": "Belirli bir porta TCP baglanti testi yapmak icin `nc -zv` kullan.",
+          "hint_partial": "nc -zv ..."
         }
       ]
     },
     {
       "id": "jnet-015",
       "type": "single",
-      "scenario": "`/etc/resolv.conf` dosyasını oku.",
+      "scenario": "`example.com` hedefine giden hop'lari goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "cat /etc/resolv.conf",
-          "hint_text": "DNS resolver ayarlarını görmek için `cat /etc/resolv.conf` kullan.",
-          "hint_partial": "cat /etc/..."
+          "answer": "traceroute example.com",
+          "hint_text": "Paketi hangi ara noktalardan gectigini gormek icin `traceroute` kullan.",
+          "hint_partial": "traceroute ..."
         }
       ]
     },
     {
       "id": "jnet-016",
       "type": "single",
-      "scenario": "8.8.8.8 adresine 4 paket göndererek erişim testi yap.",
+      "scenario": "Makinenin atanmis IP adreslerini tek satirda goster.",
       "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "ping -c 4 8.8.8.8",
-          "hint_text": "Paket sayısını sınırlamak için `ping -c` kullan.",
-          "hint_partial": "ping -c 4 ..."
-        }
-      ]
-    },
-    {
-      "id": "jnet-017",
-      "type": "single",
-      "scenario": "localhost adresine 2 paket gönder.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "ping -c 2 localhost",
-          "hint_text": "Kısa test için `ping -c 2 localhost` kullan.",
-          "hint_partial": "ping -c 2 ..."
-        }
-      ]
-    },
-    {
-      "id": "jnet-018",
-      "type": "single",
-      "scenario": "localhost'a zorla IPv4 ile ping at.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "ping -4 -c 2 localhost",
-          "hint_text": "IPv4 zorlamak için `ping -4` kullan.",
-          "hint_partial": "ping -4 ..."
-        }
-      ]
-    },
-    {
-      "id": "jnet-019",
-      "type": "single",
-      "scenario": "localhost'a zorla IPv6 ile ping at.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "ping -6 -c 2 localhost",
-          "hint_text": "IPv6 zorlamak için `ping -6` kullan.",
-          "hint_partial": "ping -6 ..."
-        }
-      ]
-    },
-    {
-      "id": "jnet-020",
-      "type": "single",
-      "scenario": "1.1.1.1 adresine 1 saniye timeout ile 2 paket gönder.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "ping -W 1 -c 2 1.1.1.1",
-          "hint_text": "Timeout için `-W`, paket sayısı için `-c` kullan.",
-          "hint_partial": "ping -W 1 ..."
-        }
-      ]
-    },
-    {
-      "id": "jnet-021",
-      "type": "single",
-      "scenario": "localhost'a yarım saniye aralıkla 4 paket gönder.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "ping -i 0.5 -c 4 localhost",
-          "hint_text": "Paket aralığını ayarlamak için `-i` kullan.",
-          "hint_partial": "ping -i 0.5 ..."
-        }
-      ]
-    },
-    {
-      "id": "jnet-022",
-      "type": "single",
-      "scenario": "example.com için temel DNS sorgusu yap.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "nslookup example.com",
-          "hint_text": "Temel DNS sorgusu için `nslookup` kullan.",
-          "hint_partial": "nslookup ..."
-        }
-      ]
-    },
-    {
-      "id": "jnet-023",
-      "type": "single",
-      "scenario": "example.com alan adını `host` ile çözümle.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "host example.com",
-          "hint_text": "Hızlı DNS çözümü için `host` kullan.",
-          "hint_partial": "host ..."
-        }
-      ]
-    },
-    {
-      "id": "jnet-024",
-      "type": "single",
-      "scenario": "example.com için `dig` sorgusu yap.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "dig example.com",
-          "hint_text": "Ayrıntılı DNS sorgusu için `dig` kullan.",
-          "hint_partial": "dig ..."
-        }
-      ]
-    },
-    {
-      "id": "jnet-025",
-      "type": "single",
-      "scenario": "example.com sonucunu kısa formatta göster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "dig +short example.com",
-          "hint_text": "Kısa DNS çıktısı için `dig +short` kullan.",
-          "hint_partial": "dig +short ..."
-        }
-      ]
-    },
-    {
-      "id": "jnet-026",
-      "type": "single",
-      "scenario": "example.com için `getent` ile hosts sorgusu yap.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "getent hosts example.com",
-          "hint_text": "Sistem resolver sonucunu görmek için `getent hosts` kullan.",
-          "hint_partial": "getent hosts ..."
-        }
-      ]
-    },
-    {
-      "id": "jnet-027",
-      "type": "single",
-      "scenario": "gmail.com için MX kaydını `nslookup` ile sorgula.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "nslookup -type=mx gmail.com",
-          "hint_text": "Belirli kayıt türü için `nslookup -type=mx` kullan.",
-          "hint_partial": "nslookup -type=..."
-        }
-      ]
-    },
-    {
-      "id": "jnet-028",
-      "type": "single",
-      "scenario": "example.com için NS kaydını `host` ile sorgula.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "host -t ns example.com",
-          "hint_text": "Belirli kayıt türü için `host -t ns` kullan.",
-          "hint_partial": "host -t ..."
-        }
-      ]
-    },
-    {
-      "id": "jnet-029",
-      "type": "single",
-      "scenario": "Dinleyen TCP ve UDP portlarını numeric formatta listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "ss -tuln",
-          "hint_text": "TCP, UDP, listen ve numeric için `ss -tuln` kullan.",
-          "hint_partial": "ss -..."
-        }
-      ]
-    },
-    {
-      "id": "jnet-030",
-      "type": "single",
-      "scenario": "Tüm dinleyen socket'leri numeric formatta listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "ss -ln",
-          "hint_text": "Tüm listen socket'ler için `ss -ln` kullan.",
-          "hint_partial": "ss -..."
-        }
-      ]
-    },
-    {
-      "id": "jnet-031",
-      "type": "single",
-      "scenario": "Dinleyen TCP portlarını process bilgisiyle listele.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "ss -tlnp",
-          "hint_text": "TCP, listen, numeric ve process için `ss -tlnp` kullan.",
-          "hint_partial": "ss -..."
-        }
-      ]
-    },
-    {
-      "id": "jnet-032",
-      "type": "multi-step",
-      "scenario": "Önce IP adreslerini kontrol et, sonra routing table'i göster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "ip a",
-          "hint_text": "İlk adımda address bilgilerini kontrol et.",
-          "hint_partial": "ip ..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "ip route",
-          "hint_text": "İkinci adımda route bilgisini göster.",
-          "hint_partial": "ip r..."
-        }
-      ]
-    },
-    {
-      "id": "jnet-033",
-      "type": "multi-step",
-      "scenario": "Önce 192.168.1.1 adresine ping at, sonra default route'u göster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "ping -c 2 192.168.1.1",
-          "hint_text": "İlk adımda gateway erişimini test et.",
-          "hint_partial": "ping -c 2 ..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "ip route show default",
-          "hint_text": "İkinci adımda default route'u göster.",
-          "hint_partial": "ip route show ..."
-        }
-      ]
-    },
-    {
-      "id": "jnet-034",
-      "type": "multi-step",
-      "scenario": "Önce example.com için DNS çözümü yap, sonra alan adına ping at.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "nslookup example.com",
-          "hint_text": "İlk adımda DNS çözümünü kontrol et.",
-          "hint_partial": "nslookup ..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "ping -c 2 example.com",
-          "hint_text": "İkinci adımda erişim testi yap.",
-          "hint_partial": "ping -c 2 ..."
-        }
-      ]
-    },
-    {
-      "id": "jnet-035",
-      "type": "multi-step",
-      "scenario": "Önce hostname bilgisini, sonra makinenin IP adreslerini göster.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "hostname",
-          "hint_text": "İlk adımda hostname'i göster.",
-          "hint_partial": "host..."
-        },
         {
           "prompt": "$ ",
           "answer": "hostname -I",
-          "hint_text": "İkinci adımda IP adreslerini listele.",
+          "hint_text": "Atanmis IP adreslerini hizli gormek icin `hostname -I` kullan.",
           "hint_partial": "hostname -I"
-        }
-      ]
-    },
-    {
-      "id": "jnet-036",
-      "type": "multi-step",
-      "scenario": "Önce DNS resolver ayarlarını gör, sonra example.com için kısa DNS sonucu al.",
-      "steps": [
-        {
-          "prompt": "$ ",
-          "answer": "cat /etc/resolv.conf",
-          "hint_text": "İlk adımda resolver ayarlarını kontrol et.",
-          "hint_partial": "cat /etc/..."
-        },
-        {
-          "prompt": "$ ",
-          "answer": "dig +short example.com",
-          "hint_text": "İkinci adımda kısa DNS sonucunu göster.",
-          "hint_partial": "dig +short ..."
         }
       ]
     }

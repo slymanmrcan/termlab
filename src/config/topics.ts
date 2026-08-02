@@ -12,6 +12,7 @@ const TOPIC_DEFINITIONS = [
   { id: "ssh", label: "SSH", section: "infra" },
   { id: "git", label: "Git", section: "infra" },
   { id: "package", label: "Packages", section: "infra" },
+  { id: "postgres", label: "PostgreSQL", section: "infra" },
   { id: "monitoring", label: "Monitoring", section: "infra" },
   { id: "github-cli", label: "GitHub CLI", section: "infra" },
   { id: "docker", label: "Docker", section: "containers" },

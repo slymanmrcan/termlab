@@ -5,65 +5,130 @@
     {
       "id": "mgh-001",
       "type": "single",
-      "scenario": "Open issue'ları label bilgisiyle listele.",
+      "scenario": "GitHub CLI auth durumunu kontrol et.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh issue list --state open",
-          "hint_text": "Open issue'lar için `gh issue list --state open` kullan.",
-          "hint_partial": "gh issue list ..."
+          "answer": "gh auth status",
+          "hint_text": "Aktif login ve host bilgisini gormek icin `gh auth status` kullan.",
+          "hint_partial": "gh auth status"
         }
       ]
     },
     {
       "id": "mgh-002",
       "type": "single",
-      "scenario": "Issue 42 detayını göster.",
+      "scenario": "Varsayilan repo baglamini `acme/platform-api` yap.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh issue view 42",
-          "hint_text": "Belirli issue için `gh issue view <number>` kullan.",
-          "hint_partial": "gh issue view ..."
+          "answer": "gh repo set-default acme/platform-api",
+          "hint_text": "Bulundugun klasorde default repo secmek icin `gh repo set-default` kullan.",
+          "hint_partial": "gh repo set-default ..."
         }
       ]
     },
     {
       "id": "mgh-003",
       "type": "single",
-      "scenario": "Mevcut branch için pull request oluşturma akışını başlat.",
+      "scenario": "`acme/platform-api` reposunu clone et.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh pr create",
-          "hint_text": "PR oluşturmak için `gh pr create` kullan.",
-          "hint_partial": "gh pr ..."
+          "answer": "gh repo clone acme/platform-api",
+          "hint_text": "GitHub repo clone icin `gh repo clone` kullan.",
+          "hint_partial": "gh repo clone ..."
         }
       ]
     },
     {
       "id": "mgh-004",
       "type": "single",
-      "scenario": "Pull request 15 detayını göster.",
+      "scenario": "Uzerine atanmis open issue'lari listele.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh pr view 15",
-          "hint_text": "Belirli PR için `gh pr view <number>` kullan.",
-          "hint_partial": "gh pr view ..."
+          "answer": "gh issue list --state open --assignee @me",
+          "hint_text": "Kendi issue kuyruğunu gormek icin `gh issue list --assignee @me` kullan.",
+          "hint_partial": "gh issue list ..."
         }
       ]
     },
     {
       "id": "mgh-005",
       "type": "single",
-      "scenario": "Workflow run listesini göster.",
+      "scenario": "Issue 42 detayini yorumlariyla birlikte goster.",
       "steps": [
         {
           "prompt": "$ ",
-          "answer": "gh run list",
-          "hint_text": "GitHub Actions run listesi için `gh run list` kullan.",
-          "hint_partial": "gh run ..."
+          "answer": "gh issue view 42 --comments",
+          "hint_text": "Issue gecmisini yorumlarla gormek icin `--comments` ekle.",
+          "hint_partial": "gh issue view ..."
+        }
+      ]
+    },
+    {
+      "id": "mgh-006",
+      "type": "single",
+      "scenario": "Issue 42'ye `investigating` notunu ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh issue comment 42 --body investigating",
+          "hint_text": "CLI uzerinden kisa issue yorumu icin `gh issue comment` kullan.",
+          "hint_partial": "gh issue comment ..."
+        }
+      ]
+    },
+    {
+      "id": "mgh-007",
+      "type": "single",
+      "scenario": "Mevcut branch icin aciklamayi doldurarak PR olusturma akisina gir.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh pr create --fill",
+          "hint_text": "Son commit bilgisinden PR metni doldurmak icin `--fill` kullan.",
+          "hint_partial": "gh pr create ..."
+        }
+      ]
+    },
+    {
+      "id": "mgh-008",
+      "type": "single",
+      "scenario": "PR 15 branch'ine gec.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh pr checkout 15",
+          "hint_text": "Review oncesi PR branch'ini cekmek icin `gh pr checkout` kullan.",
+          "hint_partial": "gh pr checkout ..."
+        }
+      ]
+    },
+    {
+      "id": "mgh-009",
+      "type": "single",
+      "scenario": "PR 15 check sonucunu tamamlanana kadar izle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh pr checks 15 --watch",
+          "hint_text": "Checks sonuclanana kadar beklemek icin `--watch` kullan.",
+          "hint_partial": "gh pr checks ..."
+        }
+      ]
+    },
+    {
+      "id": "mgh-010",
+      "type": "single",
+      "scenario": "Son 10 workflow run kaydini goster.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "gh run list --limit 10",
+          "hint_text": "En son run'lari kisa listelemek icin `gh run list --limit` kullan.",
+          "hint_partial": "gh run list ..."
         }
       ]
     }

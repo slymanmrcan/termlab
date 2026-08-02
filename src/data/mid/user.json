@@ -1,0 +1,142 @@
+{
+  "level": "mid",
+  "topic": "user",
+  "questions": [
+    {
+      "id": "musr-001",
+      "type": "single",
+      "scenario": "`deploy` kullanicisinin passwd kaydini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "getent passwd deploy",
+          "hint_text": "Bir hesabin sistem kaydini gormek icin `getent passwd` kullan.",
+          "hint_partial": "getent passwd ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-002",
+      "type": "single",
+      "scenario": "`deploy` kullanicisinin UID, GID ve group bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "id deploy",
+          "hint_text": "Belirli bir kullanicinin kimlik bilgisini `id` ile gor.",
+          "hint_partial": "id ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-003",
+      "type": "multi-step",
+      "scenario": "`deploy` kullanicisini home dizini ve bash shell ile olustur, sonra `docker` grubuna ekle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "useradd -m -s /bin/bash deploy",
+          "hint_text": "Login shell ve home dizini ile kullanici olustur.",
+          "hint_partial": "useradd -m -s ..."
+        },
+        {
+          "prompt": "$ ",
+          "answer": "usermod -aG docker deploy",
+          "hint_text": "Kullaniciyi ek bir gruba dahil etmek icin group ekleme secenegini kullan.",
+          "hint_partial": "usermod -aG ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-004",
+      "type": "single",
+      "scenario": "`deploy` kullanicisinin parola durumunu gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -S deploy",
+          "hint_text": "Parolanin aktif, kilitli veya tarih durumunu `passwd` durum gorunumuyle oku.",
+          "hint_partial": "passwd -S ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-005",
+      "type": "single",
+      "scenario": "`deploy` kullanicisi icin parola aging bilgisini gor.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -l deploy",
+          "hint_text": "Parola yaslandirma politikasini `chage -l` ile gor.",
+          "hint_partial": "chage -l ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-006",
+      "type": "single",
+      "scenario": "`deploy` kullanicisinin parolasini kilitle.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -l deploy",
+          "hint_text": "Hesabi tamamen silmeden parola ile girisi kilitle.",
+          "hint_partial": "passwd -l ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-007",
+      "type": "single",
+      "scenario": "`deploy` kullanicisinin parola kilidini ac.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "passwd -u deploy",
+          "hint_text": "Daha once kilitlenen parolayi geri ac.",
+          "hint_partial": "passwd -u ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-008",
+      "type": "single",
+      "scenario": "`deploy` kullanicisi icin parola maksimum yasini 90 gun yap.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "chage -M 90 deploy",
+          "hint_text": "Parola suresini gun bazinda `chage` ile ayarla.",
+          "hint_partial": "chage -M ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-009",
+      "type": "single",
+      "scenario": "`deploy` kullanicisinin sudo yetkilerini kontrol et.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "sudo -l -U deploy",
+          "hint_text": "Bir kullanicinin sudo kapsamini denetlemek icin `sudo -l -U` kullan.",
+          "hint_partial": "sudo -l -U ..."
+        }
+      ]
+    },
+    {
+      "id": "musr-010",
+      "type": "single",
+      "scenario": "`deploy` kullanicisi ve `docker` grubu sahibi olacak sekilde `/srv/deploy` dizinini olustur.",
+      "steps": [
+        {
+          "prompt": "$ ",
+          "answer": "install -d -o deploy -g docker /srv/deploy",
+          "hint_text": "Sahiplik vererek dizin olusturmak icin `install -d` kullan.",
+          "hint_partial": "install -d ..."
+        }
+      ]
+    }
+  ]
+}

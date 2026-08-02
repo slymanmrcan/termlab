@@ -2,15 +2,23 @@ import { createEmptyQuizDataset, mergeQuizFiles } from "./quizData";
 import {
   LEVELS,
   TOPICS,
-  type QuizDataset,
+  type QuizLevel,
   type QuizQuestion,
   type QuizQuestionFile,
   type QuizStep,
+  type QuizTopic,
 } from "../types/quiz";
 
 const quizModules = import.meta.glob(["../data/**/*.json"], {
   import: "default",
 }) as Record<string, () => Promise<unknown>>;
+
+const TOPIC_FILE_STEMS: Partial<Record<QuizTopic, readonly string[]>> = {
+  package: ["packages"],
+  docker: ["containers"],
+};
+
+const quizTopicCache = new Map<string, Promise<QuizQuestionFile>>();
 
 function isObject(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null;
@@ -29,6 +37,8 @@ function isQuizStep(value: unknown): value is QuizStep {
     isObject(value) &&
     typeof value.prompt === "string" &&
     typeof value.answer === "string" &&
+    (value.accepted_answers === undefined ||
+      (Array.isArray(value.accepted_answers) && value.accepted_answers.every((item: unknown) => typeof item === "string"))) &&
     typeof value.hint_text === "string" &&
     typeof value.hint_partial === "string"
   );
@@ -63,16 +73,52 @@ function normalizeQuizFile(modulePath: string, value: unknown): QuizQuestionFile
   return value;
 }
 
-export async function loadQuizData(): Promise<QuizDataset> {
-  const modules = Object.entries(quizModules).sort(([leftPath], [rightPath]) => leftPath.localeCompare(rightPath));
+function resolveQuizModulePaths(level: QuizLevel, topic: QuizTopic) {
+  const fileStems = TOPIC_FILE_STEMS[topic] ?? [topic];
 
-  if (modules.length === 0) {
-    return createEmptyQuizDataset();
+  return fileStems
+    .flatMap((fileStem) => [`../data/${level}/${fileStem}.json`, `../data/${level}/${fileStem}-expanded.json`])
+    .filter((modulePath) => modulePath in quizModules)
+    .sort((leftPath, rightPath) => leftPath.localeCompare(rightPath));
+}
+
+function normalizeQuizTopicFile(modulePath: string, value: unknown, level: QuizLevel, topic: QuizTopic) {
+  const file = normalizeQuizFile(modulePath, value);
+
+  if (file.level !== level || file.topic !== topic) {
+    throw new Error(`Quiz file does not match requested selection: ${modulePath}`);
   }
 
-  const files = await Promise.all(
-    modules.map(async ([modulePath, loadModule]) => normalizeQuizFile(modulePath, await loadModule())),
-  );
+  return file;
+}
 
-  return mergeQuizFiles(files);
+export function loadQuizTopicData(level: QuizLevel, topic: QuizTopic): Promise<QuizQuestionFile> {
+  const cacheKey = `${level}:${topic}`;
+  const cachedLoad = quizTopicCache.get(cacheKey);
+
+  if (cachedLoad) {
+    return cachedLoad;
+  }
+
+  const nextLoad = (async () => {
+    const modulePaths = resolveQuizModulePaths(level, topic);
+
+    if (modulePaths.length === 0) {
+      return createEmptyQuizDataset()[level][topic];
+    }
+
+    const files = await Promise.all(
+      modulePaths.map(async (modulePath) =>
+        normalizeQuizTopicFile(modulePath, await quizModules[modulePath](), level, topic),
+      ),
+    );
+
+    return mergeQuizFiles(files)[level][topic];
+  })().catch((error) => {
+    quizTopicCache.delete(cacheKey);
+    throw error;
+  });
+
+  quizTopicCache.set(cacheKey, nextLoad);
+  return nextLoad;
 }
