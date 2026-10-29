@@ -41,32 +41,54 @@ export function BottomBar({
     return () => window.clearInterval(intervalId);
   }, [timerRunning]);
 
+  const progressPercentage = progressTotal > 0 ? Math.min(100, Math.round((progressCurrent / progressTotal) * 100)) : 0;
+
   return (
-    <div className="rounded-[1.25rem] border border-emerald-400/10 bg-[linear-gradient(180deg,rgba(13,17,20,0.96),rgba(10,13,16,0.95))] px-3 py-2.5 font-mono text-sm shadow-[0_18px_50px_rgba(0,0,0,0.2)] sm:px-4 sm:py-3">
-      <div className="flex flex-col gap-1.5 sm:flex-row sm:items-center sm:justify-between">
-        {/* Action buttons */}
-        <div className="flex flex-wrap gap-1">
+    <footer className="rounded-[1.25rem] border border-emerald-500/20 bg-slate-950/80 p-3 shadow-[0_12px_40px_rgba(0,0,0,0.5)] backdrop-blur-md sm:p-4">
+      {/* Top Bar: Progress Line */}
+      <div className="mb-3 space-y-1">
+        <div className="flex items-center justify-between font-mono text-[0.65rem] text-zinc-400">
+          <span className="flex items-center gap-1">
+            <span>Session Progress</span>
+            <span className="font-semibold text-emerald-400">({progressPercentage}%)</span>
+          </span>
+          <span>{progressCurrent} / {progressTotal} Completed</span>
+        </div>
+        <div className="h-1.5 w-full overflow-hidden rounded-full bg-slate-900 border border-white/5">
+          <div
+            className="h-full bg-gradient-to-r from-emerald-500 to-emerald-400 transition-all duration-300 shadow-[0_0_10px_rgba(16,185,129,0.5)]"
+            style={{ width: `${progressPercentage}%` }}
+          />
+        </div>
+      </div>
+
+      {/* Main Bar: Actions & Stats */}
+      <div className="flex flex-col gap-2.5 sm:flex-row sm:items-center sm:justify-between font-mono">
+        {/* Interactive Action Buttons */}
+        <div className="flex flex-wrap items-center gap-1.5">
           <button
             type="button"
             onClick={onHint}
             disabled={disabled}
             title="Shortcut: ,"
-            className="flex items-center gap-1.5 rounded-md border border-emerald-400/[0.07] bg-emerald-400/[0.05] px-2.5 py-1 text-[0.64rem] text-zinc-300 transition-all duration-150 enabled:hover:border-emerald-300/20 enabled:hover:bg-emerald-300/[0.08] enabled:hover:text-zinc-100 disabled:cursor-not-allowed disabled:text-zinc-600"
+            className="flex items-center gap-2 rounded-lg border border-amber-500/30 bg-amber-500/10 px-3 py-1.5 text-xs text-amber-200 transition-all duration-150 enabled:hover:border-amber-400 enabled:hover:bg-amber-500/20 disabled:opacity-40 disabled:cursor-not-allowed"
           >
-            [hint]
-            <span className="rounded bg-white/[0.05] px-1 py-0.5 text-[0.58rem] leading-none text-zinc-500">
+            <span>💡 Hint</span>
+            <span className="rounded bg-amber-500/20 px-1.5 py-0.5 text-[0.6rem] font-bold text-amber-300">
               {Math.min(hintStage + 1, 2)}/2
             </span>
-            <span className="text-zinc-600">,</span>
+            <kbd className="rounded border border-amber-500/30 bg-slate-900/80 px-1 py-0.2 text-[0.6rem] text-amber-400 font-mono">
+              ,
+            </kbd>
           </button>
 
           <button
             type="button"
             onClick={onSkip}
             disabled={disabled}
-            className="flex items-center gap-1.5 rounded-md border border-white/[0.07] bg-slate-950/20 px-2.5 py-1 text-[0.64rem] text-zinc-400 transition-all duration-150 enabled:hover:border-amber-300/15 enabled:hover:bg-amber-300/[0.06] enabled:hover:text-zinc-200 disabled:cursor-not-allowed disabled:text-zinc-600"
+            className="flex items-center gap-1.5 rounded-lg border border-white/10 bg-slate-900/60 px-3 py-1.5 text-xs text-zinc-300 transition-all duration-150 enabled:hover:border-rose-400/40 enabled:hover:bg-rose-500/10 enabled:hover:text-rose-200 disabled:opacity-40 disabled:cursor-not-allowed"
           >
-            [skip]
+            <span>⏩ Skip</span>
           </button>
 
           <button
@@ -74,59 +96,67 @@ export function BottomBar({
             onClick={onToggleAnswer}
             disabled={disabled}
             title="Shortcut: ."
-            className={`flex items-center gap-1.5 rounded-md border px-2.5 py-1 text-[0.64rem] transition-all duration-150 disabled:cursor-not-allowed disabled:text-zinc-600 ${
+            className={`flex items-center gap-2 rounded-lg border px-3 py-1.5 text-xs transition-all duration-150 disabled:opacity-40 disabled:cursor-not-allowed ${
               showAnswer
-                ? "border-emerald-400/35 bg-emerald-400/12 text-emerald-100 shadow-[0_0_10px_rgba(52,211,153,0.08)]"
-                : "border-white/[0.07] bg-slate-950/20 text-zinc-400 enabled:hover:border-emerald-400/20 enabled:hover:bg-emerald-400/[0.06] enabled:hover:text-zinc-200"
+                ? "border-emerald-400/50 bg-emerald-500/20 text-emerald-100 shadow-[0_0_12px_rgba(16,185,129,0.2)] font-semibold"
+                : "border-white/10 bg-slate-900/60 text-zinc-300 enabled:hover:border-emerald-500/30 enabled:hover:bg-emerald-500/10 enabled:hover:text-emerald-200"
             }`}
           >
-            [{showAnswer ? "hide answer" : "show answer"}]
-            <span className={`text-[0.58rem] ${showAnswer ? "text-emerald-500" : "text-zinc-600"}`}>.</span>
+            <span>{showAnswer ? "🙈 Hide Answer" : "👁️ Show Answer"}</span>
+            <kbd className={`rounded border px-1 py-0.2 text-[0.6rem] font-mono ${showAnswer ? "border-emerald-400/40 bg-emerald-900/60 text-emerald-300" : "border-white/10 bg-slate-900/80 text-zinc-400"}`}>
+              .
+            </kbd>
           </button>
         </div>
 
-        {/* Stats */}
-        <div className="flex flex-wrap items-center gap-1 text-[0.64rem]">
-          <span className="flex items-center gap-1.5 rounded-md border border-emerald-400/25 bg-emerald-400/10 px-2.5 py-1 text-emerald-200">
-            time
-            <span className="rounded bg-emerald-400/15 px-1 py-0.5 text-[0.58rem] leading-none text-emerald-400">
-              {formatElapsed(elapsedSeconds)}
-            </span>
-          </span>
-          <span className="flex items-center gap-1.5 rounded-md border border-white/[0.07] bg-slate-950/20 px-2.5 py-1 text-zinc-400">
-            progress
-            <span className="rounded bg-white/[0.05] px-1 py-0.5 text-[0.58rem] leading-none text-zinc-500">
-              {progressCurrent}/{progressTotal}
-            </span>
-          </span>
-          <span className="flex items-center gap-1.5 rounded-md border border-white/[0.07] bg-slate-950/20 px-2.5 py-1 text-zinc-400">
-            score
-            <span className="rounded bg-white/[0.05] px-1 py-0.5 text-[0.58rem] leading-none text-zinc-500">
-              {score}
-            </span>
-          </span>
+        {/* Live Timer & Score Badges */}
+        <div className="flex flex-wrap items-center gap-2 text-xs">
+          <div className="flex items-center gap-1.5 rounded-lg border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-1 text-emerald-300">
+            <span>⏱️</span>
+            <span>TIME:</span>
+            <span className="font-bold font-mono text-emerald-400">{formatElapsed(elapsedSeconds)}</span>
+          </div>
+
+          <div className="flex items-center gap-1.5 rounded-lg border border-white/10 bg-slate-900/80 px-2.5 py-1 text-zinc-300">
+            <span>⭐</span>
+            <span>SCORE:</span>
+            <span className="font-bold font-mono text-emerald-400">{score}</span>
+          </div>
         </div>
       </div>
 
-      {/* Shortcut bar — header section label mantığıyla */}
-      <div className="mt-2 flex items-center gap-2">
-        <div className="h-px flex-1 bg-white/[0.06]" />
-        <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[0.55rem] uppercase tracking-[0.18em] text-zinc-600">
-          <span>. answer</span>
-          <span className="text-white/[0.06]">·</span>
-          <span>, hint</span>
-          <span className="text-white/[0.06]">·</span>
-          <span>↑↓ history</span>
-          <span className="text-white/[0.06]">·</span>
-          <span>tab topic</span>
-          <span className="text-white/[0.06]">·</span>
-          <span>enter submit</span>
+      {/* Shortcuts Legend */}
+      <div className="mt-3 border-t border-white/5 pt-2.5">
+        <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 text-[0.65rem] text-zinc-400 font-mono">
+          <span className="flex items-center gap-1">
+            <kbd className="rounded border border-white/10 bg-slate-900 px-1.5 py-0.5 text-zinc-300 font-bold">.</kbd>
+            <span>Show Answer</span>
+          </span>
+          <span className="text-white/10">•</span>
+          <span className="flex items-center gap-1">
+            <kbd className="rounded border border-white/10 bg-slate-900 px-1.5 py-0.5 text-zinc-300 font-bold">,</kbd>
+            <span>Hint</span>
+          </span>
+          <span className="text-white/10">•</span>
+          <span className="flex items-center gap-1">
+            <kbd className="rounded border border-white/10 bg-slate-900 px-1.5 py-0.5 text-zinc-300 font-bold">↑↓</kbd>
+            <span>History</span>
+          </span>
+          <span className="text-white/10">•</span>
+          <span className="flex items-center gap-1">
+            <kbd className="rounded border border-white/10 bg-slate-900 px-1.5 py-0.5 text-zinc-300 font-bold">Tab</kbd>
+            <span>Next Topic</span>
+          </span>
+          <span className="text-white/10">•</span>
+          <span className="flex items-center gap-1">
+            <kbd className="rounded border border-white/10 bg-slate-900 px-1.5 py-0.5 text-zinc-300 font-bold">Enter</kbd>
+            <span>Submit</span>
+          </span>
         </div>
-        <div className="h-px flex-1 bg-white/[0.06]" />
+        <p className="mt-1.5 text-center text-[0.6rem] text-zinc-500 font-mono">
+          Shortcuts are active when input is empty • Skip is button-only
+        </p>
       </div>
-      <p className="mt-1.5 text-center text-[0.55rem] uppercase tracking-[0.15em] text-zinc-600">
-        skip sadece butondan · kısayollar input boşken aktif
-      </p>
-    </div>
+    </footer>
   );
 }
