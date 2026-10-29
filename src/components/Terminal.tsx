@@ -102,16 +102,14 @@ export function Terminal({
       onClick={handleContainerClick}
       className={`terminal-shell flex min-h-[26rem] flex-col overflow-hidden rounded-[1.25rem] border border-emerald-500/20 bg-slate-950/90 shadow-[0_20px_60px_rgba(0,0,0,0.6)] backdrop-blur-xl sm:min-h-[29rem] ${className ?? ""}`}
     >
-      {/* Terminal Header Bar with Window Dots & Level Selector */}
+      {/* Linux Terminal Header Bar & Level Selector */}
       <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 bg-slate-900/80 px-4 py-2.5 backdrop-blur-md">
-        {/* macOS Style Window Control Dots */}
-        <div className="flex items-center gap-2">
-          <div className="flex gap-1.5">
-            <div className="h-3 w-3 rounded-full bg-rose-500/80 hover:bg-rose-500 transition-colors" />
-            <div className="h-3 w-3 rounded-full bg-amber-500/80 hover:bg-amber-500 transition-colors" />
-            <div className="h-3 w-3 rounded-full bg-emerald-500/80 hover:bg-emerald-500 transition-colors" />
-          </div>
-          <span className="ml-2 hidden font-mono text-[0.7rem] text-zinc-400 sm:inline">
+        {/* Pure Linux CLI Header */}
+        <div className="flex items-center gap-3 font-mono text-[0.7rem]">
+          <span className="flex items-center gap-1.5 rounded border border-emerald-500/30 bg-emerald-500/10 px-2 py-0.5 text-emerald-400 font-bold">
+            <span className="text-emerald-500">#</span> TTY: /dev/pts/0
+          </span>
+          <span className="hidden text-zinc-400 sm:inline">
             {shellLocation}
           </span>
         </div>
